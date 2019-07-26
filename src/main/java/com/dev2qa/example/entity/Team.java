@@ -14,21 +14,15 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @javax.persistence.Column(name = "user_name")
-    private String userName;
-
-    private String password;
-
-    private String email;
-
+    @javax.persistence.Column(name = "team_name")
     private String teamName;
-
+    @javax.persistence.Column(name = "captain_name")
     private String captainName;
-
+    @javax.persistence.Column(name = "captain_phone")
     private String captainPhone;
-
+    @javax.persistence.Column(name = "captain_email")
     private String captainEmail;
-
+    @javax.persistence.Column(name = "player_list")
     private List<Player> playerList;
 
     public Long getId() {
@@ -37,30 +31,6 @@ public class Team {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getTeamName() {

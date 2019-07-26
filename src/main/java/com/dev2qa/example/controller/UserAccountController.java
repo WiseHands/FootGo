@@ -18,47 +18,28 @@ public class UserAccountController {
 
     /*
      * Mapping url exmaple:
-     * http://localhost:8080/userAccount/add?userName=Jerry&password=888888&email=
+     * http://localhost:8080/userAccount/signup?userName=Jerry&password=888888&email=
      * jerry@dev2qa.com
-     * http://localhost:8080/userAccount/add?userName=Richard&password=888888&email=
+     * http://localhost:8080/userAccount/signup?userName=Richard&password=888888&email=
      * richard@google.com
      */
-    @PostMapping(path = "/add")
+    @PostMapping(path = "/signup")
     @ResponseBody
-    public String addUser(@RequestParam String userName, @RequestParam String password, @RequestParam String email) {
+    public String addPlayer(@RequestParam String teamName, @RequestParam String captainName, @RequestParam String captainPhone, @RequestParam String captainEmail) {
 
         Team team = new Team();
-        team.setUserName(userName);
-        team.setPassword(password);
-        team.setEmail(email);
+        team.setTeamName(teamName);
+        team.setCaptainName(captainName);
+        team.setCaptainPhone(captainPhone);
+        team.setCaptainEmail(captainEmail);
 
         userAccountRepository.save(team);
 
-        String ret = "User account has been added, user name = " + userName + ", password = " + password + ", email = "
-                + email;
+        String ret = "User account has been added, user name = " + captainName + ", phone = " + captainPhone + ", email = "
+                + captainEmail;
 
         return ret;
-
     }
-
-/*    @PostMapping(path = "/signup")
-    @ResponseBody
-    public String addPlayer(@RequestParam String teamName, @RequestParam String password, @RequestParam String email) {
-
-        Team team = new Team();
-        team.setUserName(teamName);
-        team.setPassword(password);
-        team.setEmail(email);
-
-        userAccountRepository.save(team);
-
-        String ret = "User account has been added, user name = " + username + ", password = " + password + ", email = "
-                + email;
-
-        return ret;
-
-    } */
-
 
     /*
      * Mapping url exmaple: http://localhost:8080/userAccount/findAll
@@ -73,12 +54,12 @@ public class UserAccountController {
 
         if (teamList != null) {
             for (Team team : teamList) {
-                retBuf.append("user name = ");
-                retBuf.append(team.getUserName());
-                retBuf.append(", password = ");
-                retBuf.append(team.getPassword());
+                retBuf.append("captain name = ");
+                retBuf.append(team.getCaptainName());
+                retBuf.append(", captain phone = ");
+                retBuf.append(team.getCaptainPhone());
                 retBuf.append(", email = ");
-                retBuf.append(team.getEmail());
+                retBuf.append(team.getCaptainEmail());
                 retBuf.append("\r\n");
             }
         }
@@ -97,6 +78,7 @@ public class UserAccountController {
      * Mapping url exmaple:
      * http://localhost:8080/userAccount/findByName?userName=Jerry
      */
+/*
     @GetMapping(path = "/findByName")
     @ResponseBody
     public String findByName(@RequestParam String userName) {
@@ -108,11 +90,11 @@ public class UserAccountController {
         if (teamList != null) {
             for (Team team : teamList) {
                 retBuf.append("user name = ");
-                retBuf.append(team.getUserName());
-                retBuf.append(", password = ");
-                retBuf.append(team.getPassword());
+                retBuf.append(team.getCaptainName());
+                retBuf.append(", captain phone = ");
+                retBuf.append(team.getCaptainPhone());
                 retBuf.append(", email = ");
-                retBuf.append(team.getEmail());
+                retBuf.append(team.getCaptainEmail());
                 retBuf.append("\r\n");
             }
         }
@@ -123,12 +105,14 @@ public class UserAccountController {
 
         return retBuf.toString();
     }
+*/
 
     /*
      * Mapping url exmaple:
      * http://localhost:8080/userAccount/findByNameAndPassword?userName=Jerry&
      * password=888888
      */
+/*
     @GetMapping(path = "/findByNameAndPassword")
     @ResponseBody
     public String findByNameAndPassword(@RequestParam String userName, @RequestParam String password) {
@@ -141,11 +125,11 @@ public class UserAccountController {
         if (teamList != null) {
             for (Team team : teamList) {
                 retBuf.append("user name = ");
-                retBuf.append(team.getUserName());
-                retBuf.append(", password = ");
-                retBuf.append(team.getPassword());
+                retBuf.append(team.getCaptainPhone());
+                retBuf.append(", captain phone = ");
+                retBuf.append(team.getCaptainPhone());
                 retBuf.append(", email = ");
-                retBuf.append(team.getEmail());
+                retBuf.append(team.getCaptainEmail());
                 retBuf.append("<br/>");
             }
         }
@@ -156,12 +140,14 @@ public class UserAccountController {
 
         return retBuf.toString();
     }
+*/
 
     /*
      * Mapping url exmaple:
      * http://localhost:8080/userAccount/updateUser?userName=Jerry&password=hello&
      * email=hello_jerry@gmail.com
      */
+/*
     @GetMapping(path = "/updateUser")
     @ResponseBody
     public String updateUser(@RequestParam String userName, @RequestParam String password, @RequestParam String email) {
@@ -183,11 +169,13 @@ public class UserAccountController {
 
         return retBuf.toString();
     }
+*/
 
     /*
      * Mapping url exmaple:
      * http://localhost:8080/userAccount/deleteByUserName?userName=Richard
      */
+/*
     @GetMapping(path = "/deleteByUserName")
     @ResponseBody
     public String deleteByUserName(@RequestParam String userName) {
@@ -200,12 +188,14 @@ public class UserAccountController {
 
         return retBuf.toString();
     }
+*/
 
     /*
      * Mapping url exmaple:
      * http://localhost:8080/userAccount/deleteByUserNameAndPassword?userName=
      * Richard&password=888888
      */
+/*
     @GetMapping(path = "/deleteByUserNameAndPassword")
     @ResponseBody
     public String deleteByUserNameAndPassword(@RequestParam String userName, @RequestParam String password) {
@@ -218,5 +208,6 @@ public class UserAccountController {
 
         return retBuf.toString();
     }
+*/
 
 }
