@@ -1,0 +1,50 @@
+
+module my-cp 1.0;
+
+require {
+	type config_home_t;
+	type snappy_home_t;
+	type user_home_t;
+	type snappy_t;
+	class dir { add_name create setattr write };
+	class file { create getattr open read setattr write };
+	class lnk_file create;
+	class process setfscreate;
+	class capability { chown fsetid };
+}
+
+#============= snappy_t ==============
+allow snappy_t config_home_t:file { create getattr open read setattr write };
+allow snappy_t self:capability { chown fsetid };
+allow snappy_t self:process setfscreate;
+
+#!!!! This avc is a constraint violation.  You would need to modify the attributes of either the source or target types to allow this access.
+#Constraint rule: 
+#	constrain dir { create relabelfrom relabelto } ((u1 == u2 -Fail-)  or (t1 == can_change_object_identity -Fail-) ); Constraint DENIED
+
+#	Possible cause is the source user (system_u) and target user (unconfined_u) are different.
+allow snappy_t snappy_home_t:dir create;
+
+#!!!! This avc is a constraint violation.  You would need to modify the attributes of either the source or target types to allow this access.
+#Constraint rule: 
+#	constrain file { create relabelfrom relabelto } ((u1 == u2 -Fail-)  or (t1 == can_change_object_identity -Fail-) ); Constraint DENIED
+
+#	Possible cause is the source user (system_u) and target user (unconfined_u) are different.
+allow snappy_t snappy_home_t:file create;
+
+#!!!! This avc is a constraint violation.  You would need to modify the attributes of either the source or target types to allow this access.
+#Constraint rule: 
+#	constrain lnk_file { create relabelfrom relabelto } ((u1 == u2 -Fail-)  or (t1 == can_change_object_identity -Fail-) ); Constraint DENIED
+
+#	Possible cause is the source user (system_u) and target user (unconfined_u) are different.
+allow snappy_t snappy_home_t:lnk_file create;
+
+#!!!! This avc is a constraint violation.  You would need to modify the attributes of either the source or target types to allow this access.
+#Constraint rule: 
+#	constrain dir { create relabelfrom relabelto } ((u1 == u2 -Fail-)  or (t1 == can_change_object_identity -Fail-) ); Constraint DENIED
+
+#	Possible cause is the source user (system_u) and target user (unconfined_u) are different.
+allow snappy_t user_home_t:dir create;
+
+#!!!! This avc is allowed in the current policy
+allow snappy_t user_home_t:dir { add_name setattr write };

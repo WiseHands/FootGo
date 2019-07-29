@@ -1,4 +1,4 @@
-package com.dev2qa.example.controller;
+package com.dev2qa.footgo.controller;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import com.dev2qa.example.entity.Team;
-import com.dev2qa.example.repository.UserAccountRepository;
+import com.dev2qa.footgo.entity.Team;
+import com.dev2qa.footgo.repository.UserAccountRepository;
 
 @Controller
 @RequestMapping(path = "/userAccount")

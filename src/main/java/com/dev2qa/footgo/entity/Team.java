@@ -1,4 +1,4 @@
-package com.dev2qa.example.entity;
+package com.dev2qa.footgo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

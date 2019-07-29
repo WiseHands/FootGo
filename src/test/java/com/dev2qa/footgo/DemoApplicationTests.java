@@ -1,4 +1,4 @@
-package com.dev2qa.example;
+package com.dev2qa.footgo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
