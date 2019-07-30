@@ -5,6 +5,8 @@ import java.util.List;
 import com.dev2qa.footgo.entity.Player;
 import com.dev2qa.footgo.repository.TeamAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,32 +23,8 @@ public class UserAccountController {
     @Autowired
     TeamAccountRepository teamAccountRepository;
 
-    /*
-     * Mapping url exmaple: jsonplayersignup
-     * http://localhost:8080/userAccount/signup?key=value&key1=value1& ...
-     */
-    @PostMapping(path = "/playersignup")
-    @ResponseBody
-    public String addPlayer(@RequestParam String firstName, @RequestParam String lastName, @RequestParam Integer number, @RequestParam String email, @RequestParam String mobile) {
-
-        Player player = new Player();
-        player.setFirstName(firstName);
-        player.setLastName(lastName);
-        player.setNumber(number);
-        player.setEmail(email);
-        player.setPhone(mobile);
-//        player.setCaptain(isCaptain);
-
-        userAccountRepository.save(player);
-
-        String ret = "User account has been added, user name = " + lastName + ", phone = " + mobile + ", email = " + email;
-
-        return ret;
-    }
-
-
     @PostMapping(path = "/jsonplayersignup", consumes = "application/json", produces = "application/json")
-    public String addPlayerViaJson(@RequestBody  Player player) {
+    public ResponseEntity <String> addPlayerViaJson(@RequestBody  Player player) {
 
         player.getFirstName();
 
@@ -54,44 +32,21 @@ public class UserAccountController {
 
         String ret = "User account has been added via JSON, user name = " + player.getFirstName();
         System.out.println(ret);
-        return ret;
+        return new ResponseEntity<>("saved player", HttpStatus.OK);
+
     }
 
-//    work with team
-
-    @RequestMapping(path = "/jsonteamsignup", method = RequestMethod.POST, produces = "application/json")
-    public String addTeamViaJson(@RequestBody  Team team) {
+    @RequestMapping(value = "/jsonteamsignup", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    public ResponseEntity < String > addTeamViaJson(@RequestBody Team team) {
 
         team.getCaptainName();
         team.getPlayerList();
 
         teamAccountRepository.save(team);
 
-        String returns = "User team has been added via JSON, captain name = " + team.getCaptainName() + " and players " + team.getPlayerList();
-        System.out.println(returns);
-        return returns;
+        return new ResponseEntity<>("saved team", HttpStatus.OK);
     }
 
-
-    @PostMapping(path = "/teamsignup")
-    @ResponseBody
-    public String createTeam(@RequestParam String teamName, @RequestParam String captainName,
-                             @RequestParam String captainPhone, @RequestParam String captainEmail) {
-
-        Team team = new Team();
-        team.setTeamName(teamName);
-        team.setCaptainName(captainName);
-        team.setCaptainPhone(captainPhone);
-        team.setCaptainEmail(captainEmail);
-//        team.setPlayerList(players.toString());
-
-        teamAccountRepository.save(team);
-
-        String ret = "Team has been added, user name = " + captainName + ", phone = " + captainPhone
-                + ", email = " + captainEmail;
-
-        return ret;
-    }
 
     @GetMapping(path = "/deleteByCaptainName")
     @ResponseBody

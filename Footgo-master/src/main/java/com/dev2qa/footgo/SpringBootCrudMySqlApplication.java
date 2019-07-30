@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.dev2qa.footgo")
 @EnableAutoConfiguration
-@ComponentScan(basePackages = { "com.dev2qa.footgo" })
+//@ComponentScan(basePackages = { "com.dev2qa.footgo" })
 
 public class SpringBootCrudMySqlApplication {
 
