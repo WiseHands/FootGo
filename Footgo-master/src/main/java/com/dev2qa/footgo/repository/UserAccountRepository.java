@@ -3,6 +3,9 @@ package com.dev2qa.footgo.repository;
 import com.dev2qa.footgo.entity.Player;
 import org.springframework.data.repository.CrudRepository;
 
+import javax.transaction.Transactional;
+import java.util.List;
+
 public interface UserAccountRepository extends CrudRepository<Player, Long> {
 
     /*
@@ -18,7 +21,7 @@ public interface UserAccountRepository extends CrudRepository<Player, Long> {
 //    List<Team> findByUsernameAndPassword(String username, String password);
 //
 //    @Transactional
-//    void deleteByUsernameAndPassword(String username, String password);
+//    void deleteByFirstNameAndLastName(String firstName, String lastName);
 //
 //    @Transactional
 //    void deleteByUsername(String last_name);

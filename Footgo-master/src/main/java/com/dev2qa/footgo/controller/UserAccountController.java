@@ -20,8 +20,7 @@ public class UserAccountController {
     @Autowired
     UserAccountRepository userAccountRepository;
 
-    @Autowired
-    TeamAccountRepository teamAccountRepository;
+
 
     @PostMapping(path = "/jsonplayersignup", consumes = "application/json", produces = "application/json")
     public ResponseEntity <String> addPlayerViaJson(@RequestBody  Player player) {
@@ -36,63 +35,7 @@ public class UserAccountController {
 
     }
 
-    @RequestMapping(value = "/jsonteamsignup", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    public ResponseEntity < String > addTeamViaJson(@RequestBody Team team) {
 
-        team.getCaptainName();
-        team.getPlayerList();
-
-        teamAccountRepository.save(team);
-
-        return new ResponseEntity<>("saved team", HttpStatus.OK);
-    }
-
-
-    @GetMapping(path = "/deleteByCaptainName")
-    @ResponseBody
-    public String deleteTeamByCaptainName(@RequestParam String captain_name) {
-
-        StringBuffer retBuf = new StringBuffer();
-
-        teamAccountRepository.deleteByCaptainName(captain_name);
-
-        retBuf.append("User data has been deleted successfully.");
-
-        return retBuf.toString();
-    }
-
-    /*
-     * Mapping url exmaple: http://localhost:8080/userAccount/findAll
-     */
-    @GetMapping(path = "/findAll")
-    @ResponseBody
-    public String findAllUser() {
-
-        StringBuffer retBuf = new StringBuffer();
-
-        List<Team> teamList = (List<Team>) teamAccountRepository.findAll();
-
-        if (teamList != null) {
-            for (Team team : teamList) {
-                retBuf.append("captain name = ");
-                retBuf.append(team.getCaptainName());
-                retBuf.append(", captain phone = ");
-                retBuf.append(team.getCaptainPhone());
-                retBuf.append(", email = ");
-                retBuf.append(team.getCaptainEmail());
-                retBuf.append("\r\n");
-            }
-        }
-
-//        if (retBuf.length() == 0) {
-//            retBuf.append("No record find.");
-//        } else {
-//            retBuf.insert(0, "<pre>");
-//            retBuf.append("</pre>");
-//        }
-
-        return retBuf.toString();
-    }
 
     /*
      * Mapping url exmaple:
