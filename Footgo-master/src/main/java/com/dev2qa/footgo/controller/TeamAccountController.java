@@ -1,9 +1,11 @@
 package com.dev2qa.footgo.controller;
 
+import com.dev2qa.footgo.entity.Gamer;
 import com.dev2qa.footgo.entity.JsonBody;
 import com.dev2qa.footgo.entity.Player;
 import com.dev2qa.footgo.entity.Team;
 import com.dev2qa.footgo.repository.TeamAccountRepository;
+import com.dev2qa.footgo.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping(path = "/userAccount")
@@ -20,8 +21,21 @@ public class TeamAccountController {
     @Autowired
     TeamAccountRepository teamAccountRepository;
 
+    @Autowired
+    UserAccountRepository userAccountRepository;
+
+
     @RequestMapping(value = "/jsonteamsignup", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity< String > addTeamViaJson(@RequestBody JsonBody jsonBody){
+
+        Player player = new Player();
+        for (Gamer gamer : jsonBody.getPlayerList()){
+            player.setPlayerName(gamer.getGamerName());
+            userAccountRepository.save(player);
+        }
+
+
+        System.out.println("pla " + jsonBody.getPlayerList().size());
 
         Team team = new Team();
         team.setCaptainName(jsonBody.getCaptainName());

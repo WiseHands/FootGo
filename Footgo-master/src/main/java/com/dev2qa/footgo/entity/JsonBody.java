@@ -1,7 +1,5 @@
 package com.dev2qa.footgo.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
 public class JsonBody {
@@ -10,9 +8,7 @@ public class JsonBody {
     private String captainName;
     private String captainPhone;
     private String captainEmail;
-    private List<Player> playerList;
-
-
+    private List<Gamer> playerList;
 
     public String getTeamName() {
         return teamName;
@@ -46,12 +42,12 @@ public class JsonBody {
         this.captainEmail = captainEmail;
     }
 
-    public List<Player> getPlayerList() {
+    public List<Gamer> getPlayerList() {
 
         return playerList;
     }
 
-    public void setPlayerList(List<Player> playerList) {
+    public void setPlayerList(List<Gamer> playerList) {
         this.playerList = playerList;
     }
 
