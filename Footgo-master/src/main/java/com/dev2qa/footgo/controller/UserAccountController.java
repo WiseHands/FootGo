@@ -59,7 +59,7 @@ public class UserAccountController {
 
 //    work with team
 
-    @PostMapping(path = "/jsonteamsignup", consumes = "application/json", produces = "application/json")
+    @RequestMapping(path = "/jsonteamsignup", method = RequestMethod.POST, produces = "application/json")
     public String addTeamViaJson(@RequestBody  Team team) {
 
         team.getCaptainName();
