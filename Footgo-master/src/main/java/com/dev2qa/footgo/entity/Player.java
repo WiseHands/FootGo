@@ -1,48 +1,27 @@
 package com.dev2qa.footgo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "player")
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "player_id")
     private Long id;
 
-    @javax.persistence.Column(name = "first_name")
-    private String firstName;
+    @Column(name = "player_name")
+    private String playerName;
 
-    @javax.persistence.Column(name = "last_name")
-    private String lastName;
+//    @ManyToOne
+//    @JoinColumn
+//    private Team team;
 
-    @javax.persistence.Column(name = "phone")
-    private String phone;
-
-    @javax.persistence.Column(name = "number")
-    private Integer number;
-
-//    @javax.persistence.Column(name = "isCaptain")
-//    private Boolean isCaptain;
-
-    @javax.persistence.Column(name = "email")
-    private String email;
-
-//    public Boolean getCaptain() {
-//        return isCaptain;
-//    }
-//
-//    public void setCaptain(Boolean captain) {
-//        isCaptain = captain;
-//    }
-
-    public Integer getNumber() {
-        return number;
+    public String getPlayerName() {
+        return playerName;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
     public Long getId() {
@@ -53,35 +32,5 @@ public class Player {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }
