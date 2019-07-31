@@ -1,5 +1,7 @@
 package com.dev2qa.footgo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity(name = "player")
@@ -14,6 +16,7 @@ public class Player {
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     private Team team;
 
     public String getPlayerName() {

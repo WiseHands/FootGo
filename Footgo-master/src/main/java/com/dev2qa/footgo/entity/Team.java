@@ -23,10 +23,16 @@ public class Team {
     @Column(name = "captain_email")
     private String captainEmail;
 
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
+    private List<Player> players;
 
+    public List<Player> getPlayers() {
+        return players;
+    }
 
-//    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
-//    private List<Player> players;
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
 
     public Long getId() {
         return id;

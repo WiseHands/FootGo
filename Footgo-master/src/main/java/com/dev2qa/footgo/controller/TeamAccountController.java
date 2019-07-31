@@ -43,12 +43,35 @@ public class TeamAccountController {
             userAccountRepository.save(player);
         }
 
-
-
         return new ResponseEntity<>("saved team", HttpStatus.OK);
     }
+    /*
+     * Mapping url exmaple:
+     * http://localhost:8080/userAccount/findByTeamName?teamName=team17
+     */
+    @GetMapping(path = "/findByTeamName")
+    @ResponseBody
+    public List<Team> findByTeamName(@RequestParam String team_name) {
 
+        StringBuffer retBuf = new StringBuffer();
 
+        List<Team> teamList;
+        teamList = teamAccountRepository.findByTeamName(team_name);
+
+        if (teamList != null) {
+            for (Team team : teamList) {
+                retBuf.append("player list: ");
+                retBuf.append(team.getPlayers());
+                retBuf.append("\r\n");
+            }
+        }
+
+        return teamList;
+    }
+    /*
+     * Mapping url exmaple:
+     * http://localhost:8080/userAccount/deleteByCaptainName?captainName=Richard
+     */
     @GetMapping(path = "/deleteByCaptainName")
     @ResponseBody
     public String deleteTeamByCaptainName(@RequestParam String captain_name) {
@@ -71,7 +94,8 @@ public class TeamAccountController {
 
         StringBuffer retBuf = new StringBuffer();
 
-        List<Team> teamList = (List<Team>) teamAccountRepository.findAll();
+        List<Team> teamList;
+        teamList = (List<Team>) teamAccountRepository.findAll();
 
         if (teamList != null) {
             for (Team team : teamList) {
