@@ -2,13 +2,13 @@ package com.dev2qa.footgo.entity;
 
 import java.util.List;
 
-public class JsonBody {
+public class TeamCreationRequestJsonBody {
 
     private String teamName;
     private String captainName;
     private String captainPhone;
     private String captainEmail;
-    private List<Gamer> playerList;
+    private List<FootballPlayer> playerList;
 
     public String getTeamName() {
         return teamName;
@@ -42,12 +42,12 @@ public class JsonBody {
         this.captainEmail = captainEmail;
     }
 
-    public List<Gamer> getPlayerList() {
+    public List<FootballPlayer> getPlayerList() {
 
         return playerList;
     }
 
-    public void setPlayerList(List<Gamer> playerList) {
+    public void setPlayerList(List<FootballPlayer> playerList) {
         this.playerList = playerList;
     }
 

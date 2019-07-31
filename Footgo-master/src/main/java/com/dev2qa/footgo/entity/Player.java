@@ -12,9 +12,9 @@ public class Player {
     @Column(name = "player_name")
     private String playerName;
 
-//    @ManyToOne
-//    @JoinColumn
-//    private Team team;
+    @ManyToOne
+    @JoinColumn
+    private Team team;
 
     public String getPlayerName() {
         return playerName;
@@ -32,5 +32,12 @@ public class Player {
         this.id = id;
     }
 
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
 
 }

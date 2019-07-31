@@ -25,10 +25,6 @@ public class Team {
 
 
 
-//    @JoinColumn(name = "player_id")
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private Player player;
-//
 //    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
 //    private List<Player> players;
 

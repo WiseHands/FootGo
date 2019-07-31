@@ -1,7 +1,8 @@
+
 package com.dev2qa.footgo.controller;
 
-import com.dev2qa.footgo.entity.Gamer;
-import com.dev2qa.footgo.entity.JsonBody;
+import com.dev2qa.footgo.entity.FootballPlayer;
+import com.dev2qa.footgo.entity.TeamCreationRequestJsonBody;
 import com.dev2qa.footgo.entity.Player;
 import com.dev2qa.footgo.entity.Team;
 import com.dev2qa.footgo.repository.TeamAccountRepository;
@@ -26,24 +27,23 @@ public class TeamAccountController {
 
 
     @RequestMapping(value = "/jsonteamsignup", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    public ResponseEntity< String > addTeamViaJson(@RequestBody JsonBody jsonBody){
+    public ResponseEntity< String > addTeamViaJson(@RequestBody TeamCreationRequestJsonBody teamCreationRequestJsonBody){
 
-        Player player = new Player();
-        for (Gamer gamer : jsonBody.getPlayerList()){
-            player.setPlayerName(gamer.getGamerName());
+        Team team = new Team();
+        team.setCaptainName(teamCreationRequestJsonBody.getCaptainName());
+        team.setTeamName(teamCreationRequestJsonBody.getTeamName());
+        team.setCaptainPhone(teamCreationRequestJsonBody.getCaptainPhone());
+        team.setCaptainEmail(teamCreationRequestJsonBody.getCaptainEmail());
+        team = teamAccountRepository.save(team);
+
+        for (FootballPlayer footballPlayer : teamCreationRequestJsonBody.getPlayerList()){
+            Player player = new Player();
+            player.setPlayerName(footballPlayer.getFootballPlayerName());
+            player.setTeam(team);
             userAccountRepository.save(player);
         }
 
 
-        System.out.println("pla " + jsonBody.getPlayerList().size());
-
-        Team team = new Team();
-        team.setCaptainName(jsonBody.getCaptainName());
-        team.setTeamName(jsonBody.getTeamName());
-        team.setCaptainPhone(jsonBody.getCaptainPhone());
-        team.setCaptainEmail(jsonBody.getCaptainEmail());
-
-        teamAccountRepository.save(team);
 
         return new ResponseEntity<>("saved team", HttpStatus.OK);
     }
