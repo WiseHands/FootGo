@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping(path = "/userAccount")
+@RequestMapping(path = "/team")
 public class TeamAccountController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class TeamAccountController {
     UserAccountRepository userAccountRepository;
 
 
-    @RequestMapping(value = "/jsonteamsignup", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    @RequestMapping(value = "/signup", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity< String > addTeamViaJson(@RequestBody TeamCreationRequestJsonBody teamCreationRequestJsonBody){
 
         Team team = new Team();
