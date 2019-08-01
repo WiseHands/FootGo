@@ -1,0 +1,336 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+header   {
+    background-color: #0D0B20;
+}
+.header-full {
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    height: 100%;
+    margin: 0 auto;
+}
+.header-first-block {
+    display: flex;
+}
+.header-img {
+    padding: 0.3em;
+    max-height: 48px;
+    max-width: 48px;
+}
+a {
+    text-decoration: none;
+    list-style-type: none;
+}
+.header-text {
+    display: flex;
+}
+.header-text p {
+    color: #fff;
+    font-size: 1.2em;
+    font-family: 'Roboto', sans-serif;
+    padding: 1em;
+}
+.header-text p:hover {
+    color: #868686;
+}
+
+
+.main-photo {
+    background: url("img/foot1.jpg");
+    background-position: center;
+    background-size: cover;
+    height: calc(100vh - 61.375px) ;
+}
+.slogan-text {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(2,3,14,0.3);
+    max-width: 550px;
+    margin: 0 auto;
+    border-radius: 15px;
+    text-align: center;
+}
+.slogan-null {
+    height: 25vh;
+}
+.slogan-text h1 {
+    font-size: 3em;
+    padding: 20px 30px 0 30px;
+    color: #dfdfe5;
+}
+.slogan-text h3 {
+    font-size: 2.2em;
+    padding: 0 30px 20px 30px;
+    color: #c4c5c6;
+}
+.slogan-button {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.input-button {
+    width: auto;
+    height: auto;
+    color: #fff;
+    background-color: #42a444;
+    font-size: 2em;
+    padding: 10px 30px;
+    margin-top: 50px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.input-button:hover {
+    background-color: #347e36;
+    border-radius: 10px;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 30px;
+    font-size: 1.1em;
+    text-align: center;
+}
+input[type=text], input[type=tel], input[type=email] {
+    padding: 15px;
+    margin: 5px 0 10px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+.team-capitan {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-bottom: 20px;
+}
+.team-name {
+    background-color: rgba(220,216,216, 0.6);
+    padding: 10px;
+    border-radius: 10px;
+}
+.capitan {
+    background-color: rgba(220,216,216, 0.6);
+    padding: 10px;
+    border-radius: 10px;
+}
+    .capitan p, .team-name p {
+        font-size: 1.2em;
+        font-weight: 700 ;
+    }
+.player p {
+    font-weight: 600;
+}
+.player1-3 {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+}
+input[type=submit] {
+    padding: 15px;
+    margin: 5px 0 10px 0;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.registration-photo {
+    background: url("img/foot33.jpg");
+    background-position: center;
+    background-size: cover;
+    height: calc(100vh - 61.375px);
+    opacity: 0.7;
+}
+
+.table-full {
+    background: url("img/foot22.jpg");
+    background-position: center;
+    background-size: cover;
+    height: calc(100vh - 60.375px);
+    opacity: 0.8;
+}
+.table-head, .bomb-head {
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
+}
+.table-head p, .bomb-head p {
+    font-size: 2.2em;
+    padding-bottom: 10px;
+    font-weight: 700;
+    color: #fff;
+}
+.table, .bomb {
+    display: flex;
+    justify-content: center;
+    line-height: 2.5;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+.table-position, .bomb-position {
+    width: 50px;
+}
+.table-team-name {
+    min-width: 200px;
+    text-align: left;
+}
+    .table-team-name p {
+        padding-left: 5px;
+    }
+    .table-team-name div:first-child {
+        text-align: center;
+    }
+.table-offset {
+    width: 40px;
+}
+.table-goals {
+    width: 60px;
+}
+.table-title, .bomb-title {
+    background-color: rgba(108, 118, 136, 0.6);
+}
+.table-firstplace, .bomb-firstplace {
+    background-color: rgba(143, 217, 71,0.7);
+}
+.table-secondplace, .bomb-secondplace{
+    background-color: rgba(217, 212, 71,0.7);
+}
+.table-thirdplace, .bomb-thirdplace {
+    background-color: rgba(234, 106, 118,0.7);
+}
+.table-position div:nth-of-type(n+5), .table-team-name div:nth-of-type(n+5),.table-games div:nth-of-type(n+5),
+.table-wins div:nth-of-type(n+5),.table-draws div:nth-of-type(n+5), .table-defeats div:nth-of-type(n+5), .table-goals div:nth-of-type(n+5), .table-points div:nth-of-type(n+5), .bomb-position div:nth-of-type(n+5),
+.bomb-player-name div:nth-of-type(n+5), .bomb-scored div:nth-of-type(n+5), .bomb-scored-pen div:nth-of-type(n+5),
+.bomb-matches div:nth-of-type(n+5), .bomb-team div:nth-of-type(n+5)
+{
+    background-color: rgba(220, 216, 216,0.7);
+}
+
+.table div, .bomb div {
+    margin: 1px;
+}
+
+.bomb-full {
+    background: url("img/foot66.jpg");
+    background-position: center;
+    background-size: cover;
+    height: calc(100vh - 60.375px);
+    opacity: 0.9;
+}
+.bomb-player-name {
+    min-width: 400px;
+    text-align: left;
+}
+.bomb-player-name p {
+    padding-left: 5px;
+}
+.bomb-player-name div:first-child {
+    text-align: center;
+}
+.bomb-scored {
+     min-width: 70px;
+ }
+.bomb-scored-pen {
+    min-width: 120px;
+}
+.bomb-matches {
+    min-width: 60px;
+}
+.bomb-team {
+    min-width: 150px;
+}
+
+.results-full {
+    background: url("img/foot7.jpg") repeat-y;
+    background-size: contain;
+    opacity: 1;
+}
+.results {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0 0 100px;
+    line-height: 2;
+    text-align: center;
+    font-size: 1.1em;
+    margin: 0 auto;
+}
+.results-block {
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+.results-tour-title{
+    font-weight: 600;
+}
+
+.results-tour {
+    display: flex;
+}
+.results-tour-title  {
+    text-align: left;
+    padding-left: 30px;
+}
+.results-date {
+    min-width: 100px;
+}
+.results-team1 {
+    min-width: 150px;
+    text-align: right;
+}
+.results-score {
+    min-width: 80px;
+}
+.results-team2 {
+     min-width: 150px;
+    text-align: left;
+}
+
+
+
+@media screen and (max-width: 870px) {
+    .team-capitan {
+        flex-direction: column;
+    }
+    .team-name {
+        margin-bottom: 5px;
+    }
+    .registration-photo {
+        background: url("img/foot33.jpg");
+        background-position: center;
+        background-size: cover;
+        height: 100vh;
+        opacity: 0.7;
+    }
+}
+@media screen and (max-width: 667px) {
+    .slogan-null {
+        height: 35vh;
+    }
+    .slogan-text {
+        max-width: 400px;
+    }
+    .slogan-text h1 {
+        font-size: 2.3em;
+    }
+    .slogan-text h3 {
+        font-size: 2em;
+    }
+    .header-text, .header-img {
+        display: none;
+    }
+}
