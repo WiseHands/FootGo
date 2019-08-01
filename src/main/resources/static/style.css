@@ -28,6 +28,7 @@ a {
     text-decoration: none;
     list-style-type: none;
 }
+
 .header-text {
     display: flex;
 }
@@ -330,7 +331,65 @@ input[type=submit] {
     .slogan-text h3 {
         font-size: 2em;
     }
-    .header-text, .header-img {
+    .header-text {
         display: none;
     }
+
+    /*burger-icon*/
+    #nav-icon {
+        width: 32px;
+        height: 32px;
+        position: relative;
+        margin: 15px auto;
+        transform: rotate(0deg);
+        transition: .5s ease-in-out;
+        cursor: pointer;
+    }
+    #nav-icon span {
+        display: block;
+        position: absolute;
+        height: 5px;
+        width: 100%;
+        background: #dcd8d8;
+        border-radius: 6px;
+        opacity: 1;
+        left: 20px;
+        transform: rotate(0deg);
+        transition: .25s ease-in-out;
+    }
+    #nav-icon span:nth-child(1) {
+        top: 0px;
+    }
+
+    #nav-icon span:nth-child(2) {
+        top: 12px;
+    }
+
+    #nav-icon span:nth-child(3) {
+        top: 24px;
+    }
+    #nav-icon.open span:nth-child(1) {
+        top: 12px;
+        transform: rotate(135deg);
+    }
+
+    #nav-icon.open span:nth-child(2) {
+        opacity: 0;
+        left: -60px;
+    }
+    #nav-icon.open span:nth-child(3) {
+        top: 12px;
+        transform: rotate(-135deg);
+    }
+    .main-photo {
+        height: calc(100vh - 62px) ;
+    }
+    .header-first-block {
+        width: 100%;
+        flex-direction: row-reverse;
+    }
+    .header-null{
+        flex-grow: 1;
+            }
+    /*burger-icon*/
 }
