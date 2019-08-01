@@ -11,20 +11,26 @@ public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "team_id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "team_name")
+    @Column(name = "name")
     private String teamName;
-    @Column(name = "captain_name")
-    private String captainName;
-    @Column(name = "captain_phone")
-    private String captainPhone;
-    @Column(name = "captain_email")
-    private String captainEmail;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
     private List<Player> players;
+
+    @OneToOne
+    @JoinColumn
+    private Captain captain;
+
+    public Captain getCaptain() {
+        return captain;
+    }
+
+    public void setCaptain(Captain captain) {
+        this.captain = captain;
+    }
 
     public List<Player> getPlayers() {
         return players;
@@ -50,29 +56,9 @@ public class Team {
         this.teamName = teamName;
     }
 
-    public String getCaptainName() {
-        return captainName;
-    }
 
-    public void setCaptainName(String captainName) {
-        this.captainName = captainName;
-    }
 
-    public String getCaptainPhone() {
-        return captainPhone;
-    }
 
-    public void setCaptainPhone(String captainPhone) {
-        this.captainPhone = captainPhone;
-    }
-
-    public String getCaptainEmail() {
-        return captainEmail;
-    }
-
-    public void setCaptainEmail(String captainEmail) {
-        this.captainEmail = captainEmail;
-    }
 
 
 }
