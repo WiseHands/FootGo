@@ -5,6 +5,7 @@
 body {
     height: 100%;
     font-family: 'Roboto', sans-serif;
+    min-width: 300px;
 }
 header   {
     background-color: #0D0B20;
@@ -43,7 +44,6 @@ a {
 .header-text p:hover {
     color: #868686;
 }
-
 
 .main-photo {
     background: url("img/foot1.jpg");
@@ -96,6 +96,26 @@ a {
     border-radius: 10px;
 }
 
+.registration-photo {
+    background: url("img/foot33.jpg");
+    background-position: center;
+    background-size: cover;
+    height: calc(100vh - 60.375px);
+}
+/*.registration-photo { background:transparent; }*/
+/*.registration-photo:after {*/
+    /*content:"";*/
+    /*position:fixed;*/
+    /*left:0;*/
+    /*top:0;*/
+    /*right:0;*/
+    /*bottom:0;*/
+    /*z-index:-1;*/
+    /*display:block;*/
+    /*background:url("img/foot33.jpg") no-repeat 50% 50%;*/
+    /*background-size:cover;*/
+/*}*/
+
 .registration-form {
     display: flex;
     flex-direction: column;
@@ -103,7 +123,7 @@ a {
     max-width: 900px;
     margin: 0 auto;
     padding-top: 30px;
-    font-size: 1.1em;
+    font-size: 1.2em;
     text-align: center;
 }
 input[type=text], input[type=tel], input[type=email] {
@@ -123,11 +143,14 @@ input[type=text], input[type=tel], input[type=email] {
     background-color: rgba(220,216,216, 0.6);
     padding: 10px;
     border-radius: 10px;
+    margin: 0 10px;
 }
 .capitan {
     background-color: rgba(220,216,216, 0.6);
     padding: 10px;
     border-radius: 10px;
+    margin: 0 10px;
+
 }
     .capitan p, .team-name p {
         font-size: 1.2em;
@@ -139,7 +162,6 @@ input[type=text], input[type=tel], input[type=email] {
 .player1-3 {
     display: flex;
     justify-content: space-around;
-    padding-bottom: 10px;
 }
 input[type=submit] {
     padding: 15px;
@@ -150,20 +172,12 @@ input[type=submit] {
     border-radius: 10px;
 }
 
-.registration-photo {
-    background: url("img/foot33.jpg");
-    background-position: center;
-    background-size: cover;
-    height: calc(100vh - 61.375px);
-    opacity: 0.7;
-}
-
 .table-full {
     background: url("img/foot22.jpg");
     background-position: center;
     background-size: cover;
     height: calc(100vh - 60.375px);
-    opacity: 0.8;
+    opacity: 0.9;
 }
 .table-head, .bomb-head {
     justify-content: center;
@@ -313,16 +327,14 @@ input[type=submit] {
         margin-bottom: 5px;
     }
     .registration-photo {
-        background: url("img/foot33.jpg");
         background-position: center;
         background-size: cover;
-        height: 100vh;
-        opacity: 0.7;
+        height: 100%;
     }
 }
 @media screen and (max-width: 667px) {
     .slogan-null {
-        height: 35vh;
+        height: 25vh;
     }
     .slogan-text {
         max-width: 400px;
@@ -337,6 +349,14 @@ input[type=submit] {
         display: none;
     }
 
+    .registration-photo {
+        background-position: center;
+        background-size: cover;
+        height: 100%;
+    }
+    .player1-3 {
+        flex-direction: column;
+    }
     /*burger-icon*/
     #nav-icon {
         width: 32px;
