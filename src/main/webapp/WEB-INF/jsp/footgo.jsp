@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,7 @@
     <div class="header-full">
         <div class="header-first-block">
             <div class="header-icon">
-                <a href="footgo.html"><img class="header-img" src="img/footgo-light-icon.png" alt="wiselogo"></a>
+                <a href="/"><img class="header-img" src="img/footgo-light-icon.png" alt="wiselogo"></a>
             </div>
             <div class="header-null"></div>
             <div id="nav-icon">
@@ -34,10 +35,10 @@
             </div>
             <!---->
             <div class="header-text">
-                <a href="registration.html"><p>Реєстрація</p></a>
-                <a href="results.html"><p>Результати</p></a>
-                <a href="table.html"><p>Таблиця</p></a>
-                <a href="bombardier.html"><p>Бомбардири</p></a>
+                <a href="/signup"><p>Реєстрація</p></a>
+                <a href="/results"><p>Результати</p></a>
+                <a href="/gametable"><p>Таблиця</p></a>
+                <a href="/bombardier"><p>Бомбардири</p></a>
             </div>
         </div>
         <!--<div class="header-second-block">-->

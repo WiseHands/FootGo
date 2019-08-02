@@ -8,10 +8,10 @@ import javax.persistence.*;
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "player_id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "player_name")
+    @Column(name = "name")
     private String playerName;
 
     @ManyToOne

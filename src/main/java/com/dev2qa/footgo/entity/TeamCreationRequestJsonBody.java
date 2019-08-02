@@ -5,10 +5,19 @@ import java.util.List;
 public class TeamCreationRequestJsonBody {
 
     private String teamName;
-    private String captainName;
-    private String captainPhone;
-    private String captainEmail;
+
+
+    private FootballCaptain captain;
+
     private List<FootballPlayer> playerList;
+
+    public FootballCaptain getCaptain() {
+        return captain;
+    }
+
+    public void setCaptain(FootballCaptain captain) {
+        this.captain = captain;
+    }
 
     public String getTeamName() {
         return teamName;
@@ -16,30 +25,6 @@ public class TeamCreationRequestJsonBody {
 
     public void setTeamName(String teamName) {
         this.teamName = teamName;
-    }
-
-    public String getCaptainName() {
-        return captainName;
-    }
-
-    public void setCaptainName(String captainName) {
-        this.captainName = captainName;
-    }
-
-    public String getCaptainPhone() {
-        return captainPhone;
-    }
-
-    public void setCaptainPhone(String captainPhone) {
-        this.captainPhone = captainPhone;
-    }
-
-    public String getCaptainEmail() {
-        return captainEmail;
-    }
-
-    public void setCaptainEmail(String captainEmail) {
-        this.captainEmail = captainEmail;
     }
 
     public List<FootballPlayer> getPlayerList() {
