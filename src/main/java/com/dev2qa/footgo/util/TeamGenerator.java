@@ -23,9 +23,17 @@ public class TeamGenerator {
     @Autowired
     PlayerAccountRepository playerAccountRepository;
 
+    static final int TEAMS = 5;
+    static final int PLAYERS = 10;
+
     @PostConstruct
     public void createTeam() {
-        for(int i=0; i<5; i++) {
+        List allTeams = (List) teamAccountRepository.findAll();
+        if (!allTeams.isEmpty()) {
+            return;
+        }
+
+        for(int i=0; i<TEAMS; i++) {
             Team team = new Team();
             team.setTeamName("Team" + i);
 
@@ -34,8 +42,6 @@ public class TeamGenerator {
 
             List<Player> playerList = createPlayerList(team);
             team.setPlayers(playerList);
-
-            team = teamAccountRepository.save(team);
         }
     }
     public Captain createCaptain(Team team) {
@@ -54,7 +60,7 @@ public class TeamGenerator {
     }
     public List<Player> createPlayerList(Team team) {
         List<Player> playerList = new ArrayList<Player>();
-        for(int i=0; i<10; i++) {
+        for(int i=0; i<PLAYERS; i++) {
             playerList.add(createPlayer(team));
         }
         return playerList;
