@@ -1,7 +1,5 @@
 package com.dev2qa.footgo.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -23,6 +21,18 @@ public class Team {
     @OneToOne
     @JoinColumn
     private Captain captain;
+
+    @OneToOne
+    @JoinColumn
+    private Game game;
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
 
     public Captain getCaptain() {
         return captain;

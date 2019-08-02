@@ -1,5 +1,6 @@
 package com.dev2qa.footgo;
 
+import com.dev2qa.footgo.util.TeamGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
