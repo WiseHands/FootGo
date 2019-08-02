@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class TeamGenerator {
@@ -25,10 +27,14 @@ public class TeamGenerator {
     public void createTeam() {
         for(int i=0; i<5; i++) {
             Team team = new Team();
-            Captain captain = createCaptain(team);
-            Player player = createPlayer(team);
-            team.setCaptain(captain);
             team.setTeamName("Team" + i);
+
+            Captain captain = createCaptain(team);
+            team.setCaptain(captain);
+
+            List<Player> playerList = createPlayerList(team);
+            team.setPlayers(playerList);
+
             team = teamAccountRepository.save(team);
         }
     }
@@ -45,5 +51,12 @@ public class TeamGenerator {
         player.setTeam(team);
         player = playerAccountRepository.save(player);
         return player;
+    }
+    public List<Player> createPlayerList(Team team) {
+        List<Player> playerList = new ArrayList<Player>();
+        for(int i=0; i<10; i++) {
+            playerList.add(createPlayer(team));
+        }
+        return playerList;
     }
 }
