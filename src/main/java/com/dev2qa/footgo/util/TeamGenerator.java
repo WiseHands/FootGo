@@ -3,10 +3,9 @@ package com.dev2qa.footgo.util;
 import com.dev2qa.footgo.entity.Captain;
 import com.dev2qa.footgo.entity.Player;
 import com.dev2qa.footgo.entity.Team;
-import com.dev2qa.footgo.repository.CaptainAccountRepository;
-import com.dev2qa.footgo.repository.PlayerAccountRepository;
-import com.dev2qa.footgo.repository.TeamAccountRepository;
-import org.aspectj.apache.bcel.util.Play;
+import com.dev2qa.footgo.repository.CaptainRepository;
+import com.dev2qa.footgo.repository.PlayerRepository;
+import com.dev2qa.footgo.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,18 +16,18 @@ import java.util.List;
 @Component
 public class TeamGenerator {
     @Autowired
-    TeamAccountRepository teamAccountRepository;
+    TeamRepository teamRepository;
     @Autowired
-    CaptainAccountRepository captainAccountRepository;
+    CaptainRepository captainRepository;
     @Autowired
-    PlayerAccountRepository playerAccountRepository;
+    PlayerRepository playerRepository;
 
     static final int TEAMS = 5;
     static final int PLAYERS = 10;
 
     @PostConstruct
     public void createTeam() {
-        List allTeams = (List) teamAccountRepository.findAll();
+        List allTeams = (List) teamRepository.findAll();
         if (!allTeams.isEmpty()) {
             return;
         }
@@ -48,14 +47,14 @@ public class TeamGenerator {
         Captain captain = new Captain();
         captain.setCaptainName("Captain " + team.getTeamName());
         captain.setTeam(team);
-        captain = captainAccountRepository.save(captain);
+        captain = captainRepository.save(captain);
         return captain;
     }
     public Player createPlayer(Team team) {
         Player player = new Player();
         player.setPlayerName("Player");
         player.setTeam(team);
-        player = playerAccountRepository.save(player);
+        player = playerRepository.save(player);
         return player;
     }
     public List<Player> createPlayerList(Team team) {

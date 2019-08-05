@@ -7,7 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface TeamAccountRepository extends CrudRepository<Team, Long> {
+public interface TeamRepository extends CrudRepository<Team, Long> {
+
+//    Team findByTeamName(String name);
 
     List<Team> findByTeamName(String team_name);
 //    List<Team> findByCaptainName(String captain_name);

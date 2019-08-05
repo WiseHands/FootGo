@@ -6,8 +6,12 @@ import org.springframework.data.repository.CrudRepository;
 import javax.transaction.Transactional;
 import java.util.List;
 
-public interface UserAccountRepository extends CrudRepository<Player, Long> {
+public interface PlayerRepository extends CrudRepository<Player, Long> {
 
+    Player findByPlayerName(String playerName);
+
+    @Transactional
+    void deleteAll();
     /*
      * Get user list by user name. Please note the format should be
      * findBy<column_name>.
@@ -23,8 +27,7 @@ public interface UserAccountRepository extends CrudRepository<Player, Long> {
 //    @Transactional
 //    void deleteByFirstNameAndLastName(String firstName, String lastName);
 //
-//    @Transactional
-//    void deleteByUsername(String last_name);
+
 
 }
 

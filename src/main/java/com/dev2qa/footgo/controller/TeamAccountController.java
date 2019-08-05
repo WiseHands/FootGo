@@ -2,9 +2,9 @@
 package com.dev2qa.footgo.controller;
 
 import com.dev2qa.footgo.entity.*;
-import com.dev2qa.footgo.repository.CaptainAccountRepository;
-import com.dev2qa.footgo.repository.TeamAccountRepository;
-import com.dev2qa.footgo.repository.PlayerAccountRepository;
+import com.dev2qa.footgo.repository.CaptainRepository;
+import com.dev2qa.footgo.repository.TeamRepository;
+import com.dev2qa.footgo.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +18,13 @@ import java.util.List;
 public class TeamAccountController {
 
     @Autowired
-    TeamAccountRepository teamAccountRepository;
+    TeamRepository teamRepository;
 
     @Autowired
-    PlayerAccountRepository playerAccountRepository;
+    PlayerRepository playerRepository;
 
     @Autowired
-    CaptainAccountRepository captainAccountRepository;
+    CaptainRepository captainRepository;
 
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
@@ -35,13 +35,13 @@ public class TeamAccountController {
         captain.setCaptainName(teamCreationRequestJsonBody.getCaptain().getName());
         captain.setCaptainPhone(teamCreationRequestJsonBody.getCaptain().getPhone());
         captain.setCaptainEmail(teamCreationRequestJsonBody.getCaptain().getEmail());
-        captain = captainAccountRepository.save(captain);
+        captain = captainRepository.save(captain);
 
 
         Team team = new Team();
         team.setTeamName(teamCreationRequestJsonBody.getTeamName());
         team.setCaptain(captain);
-        team = teamAccountRepository.save(team);
+        team = teamRepository.save(team);
 
 
 
@@ -49,7 +49,7 @@ public class TeamAccountController {
             Player player = new Player();
             player.setPlayerName(footballPlayer.getFootballPlayerName());
             player.setTeam(team);
-            playerAccountRepository.save(player);
+            playerRepository.save(player);
         }
 
         return new ResponseEntity<>("saved team", HttpStatus.OK);
@@ -65,7 +65,7 @@ public class TeamAccountController {
         StringBuffer retBuf = new StringBuffer();
 
         List<Team> teamList;
-        teamList = teamAccountRepository.findByTeamName(team_name);
+        teamList = teamRepository.findByTeamName(team_name);
 
         if (teamList != null) {
             for (Team team : teamList) {
@@ -87,7 +87,7 @@ public class TeamAccountController {
 
         StringBuffer retBuf = new StringBuffer();
 
-        captainAccountRepository.deleteByCaptainName(captain_name);
+        captainRepository.deleteByCaptainName(captain_name);
 
         retBuf.append("User data has been deleted successfully.");
 
@@ -104,7 +104,7 @@ public class TeamAccountController {
         StringBuffer retBuf = new StringBuffer();
 
         List<Captain> captainList;
-        captainList = (List<Captain>) captainAccountRepository.findAll();
+        captainList = (List<Captain>) captainRepository.findAll();
 
         if (captainList != null) {
             for (Captain captain : captainList) {

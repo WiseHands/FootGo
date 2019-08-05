@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import javax.transaction.Transactional;
 import java.util.List;
 
-public interface PlayerAccountRepository extends CrudRepository<Player, Long> {
+public interface AdminRepository extends CrudRepository<Player, Long> {
 
     /*
      * Get user list by user name. Please note the format should be
