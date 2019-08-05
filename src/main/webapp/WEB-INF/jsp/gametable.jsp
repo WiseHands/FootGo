@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,16 +56,12 @@
         </div>
         <div class="table-team-name">
             <div class="table-title">Команда</div>
-            <div class="table-firstplace"><p>не заявлена</p></div>
-            <div class="table-secondplace"><p>не заявлена</p></div>
-            <div class="table-thirdplace"><p>не заявлена</p></div>
-            <div><p>не заявлена</p></div>
-            <div><p>не заявлена</p></div>
-            <div><p>не заявлена</p></div>
-            <div><p>не заявлена</p></div>
-            <div><p>не заявлена</p></div>
-            <div><p>не заявлена</p></div>
-            <div><p>не заявлена</p></div>
+            <div class="table-firstplace"><p>${firstPlace.teamName}</p></div>
+            <div class="table-secondplace"><p>${secondPlace.teamName}</p></div>
+            <div class="table-thirdplace"><p>${thirdPlace.teamName}</p></div>
+            <c:forEach items="${teamList}" var="item">
+                 <div><p><c:out value="${item.teamName}" /></p></div>
+            </c:forEach>
         </div>
         <div class="table-games table-offset ">
             <div class="table-title">І</div>

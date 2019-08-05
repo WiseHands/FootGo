@@ -22,7 +22,7 @@ public class TeamGenerator {
     @Autowired
     PlayerRepository playerRepository;
 
-    static final int TEAMS = 5;
+    static final int TEAMS = 10;
     static final int PLAYERS = 10;
 
     @PostConstruct

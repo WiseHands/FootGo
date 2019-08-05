@@ -1,12 +1,19 @@
 package com.dev2qa.footgo;
 
+import com.dev2qa.footgo.repository.TeamRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class HttpRequestsController {
+    @Autowired
+    TeamRepository teamRepository;
+
     @GetMapping({"/", "/footgo"})
     public String footgo(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("name", name);
@@ -27,7 +34,13 @@ public class HttpRequestsController {
 
     @GetMapping({"/gametable"})
     public String gametable(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-        model.addAttribute("name", name);
+        List allTeams = (List) teamRepository.findAll();
+        model.addAttribute("firstPlace", allTeams.get(0));
+        model.addAttribute("secondPlace", allTeams.get(1));
+        model.addAttribute("thirdPlace", allTeams.get(2));
+        model.addAttribute("teamList", allTeams.subList(3, allTeams.size()));
+        System.out.println("\n\nallTeams:");
+        System.out.println(allTeams);
         return "gametable";
     }
 
