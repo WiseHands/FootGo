@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path = "/team")
-public class TeamAccountController {
+public class TeamController {
 
     @Autowired
     TeamRepository teamRepository;
@@ -52,7 +52,7 @@ public class TeamAccountController {
             playerRepository.save(player);
         }
 
-        return new ResponseEntity<>("saved team", HttpStatus.OK);
+        return new ResponseEntity<>("Team is created successfully", HttpStatus.CREATED);
     }
     /*
      * Mapping url exmaple:

@@ -22,7 +22,7 @@ public class GoalUnitTests {
 	private GoalRepository goalRepository;
 
 	@Test
-	public void whenFindByName_thenReturnEmployee() {
+	public void checkIsSomePropertiesInDataBase() {
 		// given
 		Goal goal = new Goal();
 		goal.setTime(180);

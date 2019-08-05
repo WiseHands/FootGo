@@ -24,7 +24,7 @@ public class TeamUnitTests {
 	private TeamRepository teamRepository;
 
 	@Test
-	public void whenFindByName_thenReturnEmployee() {
+	public void checkIsSomePropertiesInDataBase() {
 		// given
 		Team team = new Team();
 		team.setTeamName("ToniTeam");

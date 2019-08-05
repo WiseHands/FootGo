@@ -24,7 +24,7 @@ public class GameUnitTests {
 	private GameRepository gameRepository;
 
 	@Test
-	public void whenFindByName_thenReturnEmployee() {
+	public void checkIsSomePropertiesInDataBase() {
 		// given
 		Game game = new Game();
 		game.setTour(1);

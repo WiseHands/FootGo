@@ -4,6 +4,14 @@ public class FootballPlayer {
 
     private String footballPlayerName;
 
+    public FootballPlayer(){
+
+    }
+
+    public FootballPlayer(String footballPlayerName) {
+        this.footballPlayerName = footballPlayerName;
+    }
+
     public String getFootballPlayerName() {
         return footballPlayerName;
     }

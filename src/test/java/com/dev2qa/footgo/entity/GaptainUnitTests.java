@@ -22,7 +22,7 @@ public class GaptainUnitTests {
 	private CaptainRepository captainRepository;
 
 	@Test
-	public void whenFindByName_thenReturnEmployee() {
+	public void checkIsSomePropertiesInDataBase() {
 		// given
 		Captain captain = new Captain();
 		captain.setCaptainName("Toni");

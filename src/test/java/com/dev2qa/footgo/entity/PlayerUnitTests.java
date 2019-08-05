@@ -22,7 +22,7 @@ public class PlayerUnitTests {
 	private PlayerRepository playerRepository;
 
 	@Test
-	public void whenFindByName_thenReturnEmployee() {
+	public void checkIsSomePropertiesInDataBase() {
 		// given
 		Player player = new Player();
 		player.setPlayerName("Toni");
