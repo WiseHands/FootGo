@@ -9,15 +9,15 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@ComponentScan(basePackages = { "com.dev2qa.footgo" })
+@ComponentScan(basePackages = { "ua.lviv.footgo" })
 
-public class SpringBootCrudMySqlApplication extends SpringBootServletInitializer {
+public class FootGoApplication extends SpringBootServletInitializer {
 
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(SpringBootCrudMySqlApplication.class);
+        return application.sources(FootGoApplication.class);
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootCrudMySqlApplication.class, args);
+        SpringApplication.run(FootGoApplication.class, args);
     }
 }

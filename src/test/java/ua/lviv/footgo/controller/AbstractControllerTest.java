@@ -1,7 +1,7 @@
 package ua.lviv.footgo.controller;
 
 
-import ua.lviv.footgo.SpringBootCrudMySqlApplication;
+import ua.lviv.footgo.FootGoApplication;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -17,16 +17,13 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.io.IOException;
 
-//@RunWith(SpringRunner.class)
-//@ContextConfiguration(classes = SpringBootCrudMySqlApplication.class)
-//@WebMvcTest(TeamController.class)
-
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringBootCrudMySqlApplication.class)
+@SpringBootTest(classes = FootGoApplication.class)
 @WebAppConfiguration
 public abstract class AbstractControllerTest {
 
     protected MockMvc mvc;
+
     @Autowired
     WebApplicationContext webApplicationContext;
 

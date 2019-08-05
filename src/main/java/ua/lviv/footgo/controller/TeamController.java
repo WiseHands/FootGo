@@ -1,7 +1,6 @@
 
 package ua.lviv.footgo.controller;
 
-import com.dev2qa.footgo.entity.*;
 import ua.lviv.footgo.entity.*;
 import ua.lviv.footgo.repository.CaptainRepository;
 import ua.lviv.footgo.repository.TeamRepository;
