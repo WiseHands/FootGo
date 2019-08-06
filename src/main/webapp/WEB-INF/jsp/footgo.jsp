@@ -36,14 +36,14 @@
 
             </div>
             <!---->
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            </div>
+            <!--<div class="dropdown">-->
+                <!--<button onclick="myFunction()" class="dropbtn">Dropdown</button>-->
+                <!--<div id="myDropdown" class="dropdown-content">-->
+                    <!--<a href="#home">Home</a>-->
+                    <!--<a href="#about">About</a>-->
+                    <!--<a href="#contact">Contact</a>-->
+                <!--</div>-->
+            <!--</div>-->
             <!---->
             <div class="header-text">
                 <a href="/signup"><p>Реєстрація</p></a>
