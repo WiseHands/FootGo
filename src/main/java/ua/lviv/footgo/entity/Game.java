@@ -19,10 +19,10 @@ public class Game {
     @Column
     private String location;
 
-    @OneToOne(mappedBy = "game", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "game")
     private Team firstTeam;
 
-    @OneToOne(mappedBy = "game", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "game")
     private Team secondTeam;
 
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
