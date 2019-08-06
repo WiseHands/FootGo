@@ -50,7 +50,7 @@
                     <input type="email" name="email" placeholder="введіть email" required>
                 </div>
             </div>
-
+            <div class="player-bg">
             <div class="player1-3">
                 <div class="player">
                     <p>Гравець</p>
@@ -107,8 +107,8 @@
                     <input type="text" name="player" placeholder="Прізвище ім'я" required>
                 </div>
             </div>
-
-     <input type="submit" value="Зареєструватися">
+            </div>
+     <input class="reg-input-button" type="submit" value="Зареєструватися">
      </form>
  </div>
 </div>

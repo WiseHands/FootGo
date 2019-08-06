@@ -79,7 +79,7 @@ a {
     margin: 0 auto;
     margin-bottom: 20px;
 }
-.input-button {
+.main-input-button {
     width: auto;
     height: auto;
     color: #fff;
@@ -91,7 +91,7 @@ a {
     border-radius: 10px;
     cursor: pointer;
 }
-.input-button:hover {
+.main-input-button:hover {
     background-color: #347e36;
     border-radius: 10px;
 }
@@ -100,7 +100,8 @@ a {
     background: url("img/foot33.jpg");
     background-position: center;
     background-size: cover;
-    height: calc(100vh - 60.375px);
+    height: 100%;
+    /*height: calc(100vh - 60.375px);*/
 }
 /*.registration-photo { background:transparent; }*/
 /*.registration-photo:after {*/
@@ -140,13 +141,13 @@ input[type=text], input[type=tel], input[type=email] {
     padding-bottom: 20px;
 }
 .team-name {
-    background-color: rgba(220,216,216, 0.6);
+    background-color: rgba(220,216,216, 0.5);
     padding: 10px;
     border-radius: 10px;
     margin: 0 10px;
 }
 .capitan {
-    background-color: rgba(220,216,216, 0.6);
+    background-color: rgba(220,216,216, 0.5);
     padding: 10px;
     border-radius: 10px;
     margin: 0 10px;
@@ -156,12 +157,22 @@ input[type=text], input[type=tel], input[type=email] {
         font-size: 1.2em;
         font-weight: 700 ;
     }
+
+.player-bg {
+    background-color: rgba(220,216,216, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 10px;
+}
 .player p {
     font-weight: 600;
 }
 .player1-3 {
     display: flex;
     justify-content: space-around;
+}
+input[type=text] {
+    width: 80%;
 }
 input[type=submit] {
     padding: 15px;
@@ -172,12 +183,28 @@ input[type=submit] {
     border-radius: 10px;
 }
 
+.reg-input-button {
+    width: auto;
+    height: auto;
+    color: #fff;
+    background-color: #42a444;
+    font-size: 1.5em;
+    padding: 7px 30px;
+    margin-top: 50px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.reg-input-button:hover {
+    background-color: #347e36;
+    border-radius: 10px;
+}
+
 .table-full {
     background: url("img/foot22.jpg");
     background-position: center;
     background-size: cover;
     height: calc(100vh - 60.375px);
-    opacity: 0.9;
 }
 .table-head, .bomb-head {
     justify-content: center;
@@ -186,7 +213,7 @@ input[type=submit] {
     text-align: center;
     padding-top: 20px;
 }
-.table-head p, .bomb-head p {
+.table-head p {
     font-size: 2.2em;
     padding-bottom: 10px;
     font-weight: 700;
@@ -201,7 +228,7 @@ input[type=submit] {
     font-weight: 600;
 }
 .table-position, .bomb-position {
-    width: 50px;
+    width: 5%;
 }
 .table-team-name {
     min-width: 200px;
@@ -244,14 +271,18 @@ input[type=submit] {
 }
 
 .bomb-full {
-    background: url("img/foot66.jpg");
+    background: url("img/foot44.jpg");
     background-position: center;
     background-size: cover;
     height: calc(100vh - 60.375px);
-    opacity: 0.9;
+}
+.bomb-head p {
+    font-size: 2.2em;
+    padding-bottom: 10px;
+    font-weight: 700;
 }
 .bomb-player-name {
-    min-width: 400px;
+    min-width: 30%;
     text-align: left;
 }
 .bomb-player-name p {
@@ -261,46 +292,58 @@ input[type=submit] {
     text-align: center;
 }
 .bomb-scored {
-     min-width: 70px;
+     min-width: 7%;
  }
 .bomb-scored-pen {
-    min-width: 120px;
+    min-width: 10%;
 }
 .bomb-matches {
-    min-width: 60px;
+    min-width: 5%;
 }
 .bomb-team {
-    min-width: 150px;
+    min-width: 15%;
 }
 
 .results-full {
-    background: url("img/foot7.jpg") repeat-y;
+    background: url("img/foot66.jpg");
     background-size: contain;
     opacity: 1;
 }
+
 .results {
     display: flex;
     flex-direction: column;
-    padding: 20px 0 0 100px;
+    justify-content: center;
+    max-width: 70%;
+    margin: 0 auto;
     line-height: 2;
     text-align: center;
     font-size: 1.1em;
-    margin: 0 auto;
+    padding-top: 30px;
+    font-weight: 600;
+}
+.results-bg {
+    background-color: rgba(220,216,216, 0.5);
+    padding: 10px;
+    border-radius: 10px;
 }
 .results-block {
     margin: 0 auto;
     padding-bottom: 30px;
 }
-.results-tour-title{
-    font-weight: 600;
+.results-block p {
+    text-align: center;
+}
+.results-tour-title span{
+    display: none;
 }
 
 .results-tour {
     display: flex;
+    justify-content: space-around;
 }
 .results-tour-title  {
     text-align: left;
-    padding-left: 30px;
 }
 .results-date {
     min-width: 100px;
@@ -330,6 +373,15 @@ input[type=submit] {
         background-position: center;
         background-size: cover;
         height: 100%;
+    }
+}
+@media screen and (max-width: 720px) {
+    .results-date {
+        display: none;
+    }
+    .results-tour-title span{
+        display: inline-block;
+        margin-left: 10px;
     }
 }
 @media screen and (max-width: 667px) {
@@ -413,9 +465,60 @@ input[type=submit] {
     .header-null{
         flex-grow: 1;
             }
+    /*burger-menu*/
+
     /*burger-icon*/
 
     .dropdown {
         display: none;
+    }
+    .results {
+        max-width: 90%;
+    }
+    .table-full, .bomb-full {
+        height: calc(100vh - 62px);
+    }
+    .table-head p {
+        font-size: 1.7em;
+    }
+    .table-position, .bomb-position {
+        width: 40px;
+    }
+    .table-team-name {
+        min-width: 40%;
+        text-align: left;
+    }
+    .table-games, .table-wins, .table-draws {
+        display: none;
+    }
+    .table-team-name p {
+        padding-left: 5px;
+    }
+    .table-team-name div:first-child {
+        text-align: center;
+    }
+    .table-offset {
+        width: 40px;
+    }
+    .table-goals {
+        width: 60px;
+    }
+    .bomb-head p {
+        font-size: 1.5em;
+    }
+    .bomb-matches {
+        min-width: 10%;
+    }
+    .bomb-player-name {
+        min-width: 45%;
+    }
+    .bomb-scored {
+        min-width: 15%;
+    }
+    .bomb-scored-pen, .bomb-matches {
+        display: none;
+    }
+    .bomb-team {
+        min-width: 30%;
     }
 }

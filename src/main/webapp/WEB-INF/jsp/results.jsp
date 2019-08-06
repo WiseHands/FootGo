@@ -35,8 +35,9 @@
 </header>
 <div class="results-full">
     <div class="results">
+        <div class="results-bg">
         <div class="results-block">
-            <p class="results-tour-title">1-й тур</p>
+            <p class="results-tour-title">1-й тур<span>01.01.2019</span></p>
             <div class="results-tour">
                 <div class="results-date"><p>01.01.2019</p></div>
                 <div class="results-team1"><p>Команда</p></div>
@@ -70,7 +71,7 @@
         </div>
 
         <div class="results-block">
-            <p class="results-tour-title">2-й тур</p>
+            <p class="results-tour-title">2-й тур<span>01.01.2019</span></p>
             <div class="results-tour">
                 <div class="results-date"><p>01.01.2019</p></div>
                 <div class="results-team1"><p>Команда</p></div>
@@ -104,7 +105,7 @@
         </div>
 
         <div class="results-block">
-            <p class="results-tour-title">3-й тур</p>
+            <p class="results-tour-title">3-й тур<span>01.01.2019</span></p>
             <div class="results-tour">
                 <div class="results-date"><p>01.01.2019</p></div>
                 <div class="results-team1"><p>Команда</p></div>
@@ -138,7 +139,7 @@
         </div>
 
         <div class="results-block">
-            <p class="results-tour-title">4-й тур</p>
+            <p class="results-tour-title">4-й тур<span>01.01.2019</span></p>
             <div class="results-tour">
                 <div class="results-date"><p>01.01.2019</p></div>
                 <div class="results-team1"><p>Команда</p></div>
@@ -172,7 +173,7 @@
         </div>
 
         <div class="results-block">
-            <p class="results-tour-title">5-й тур</p>
+            <p class="results-tour-title">5-й тур<span>01.01.2019</span></p>
             <div class="results-tour">
                 <div class="results-date"><p>01.01.2019</p></div>
                 <div class="results-team1"><p>Команда</p></div>
@@ -206,7 +207,7 @@
         </div>
 
         <div class="results-block">
-            <p class="results-tour-title">6-й тур</p>
+            <p class="results-tour-title">6-й тур<span>01.01.2019</span></p>
             <div class="results-tour">
                 <div class="results-date"><p>01.01.2019</p></div>
                 <div class="results-team1"><p>Команда</p></div>
@@ -240,7 +241,7 @@
         </div>
 
         <div class="results-block">
-            <p class="results-tour-title">7-й тур</p>
+            <p class="results-tour-title">7-й тур<span>01.01.2019</span></p>
             <div class="results-tour">
                 <div class="results-date"><p>01.01.2019</p></div>
                 <div class="results-team1"><p>Команда</p></div>
@@ -274,7 +275,7 @@
         </div>
 
         <div class="results-block">
-            <p class="results-tour-title">8-й тур</p>
+            <p class="results-tour-title">8-й тур<span>01.01.2019</span></p>
             <div class="results-tour">
                 <div class="results-date"><p>01.01.2019</p></div>
                 <div class="results-team1"><p>Команда</p></div>
@@ -308,7 +309,7 @@
         </div>
 
         <div class="results-block">
-            <p class="results-tour-title">9-й тур</p>
+            <p class="results-tour-title">9-й тур<span>01.01.2019</span></p>
             <div class="results-tour">
                 <div class="results-date"><p>01.01.2019</p></div>
                 <div class="results-team1"><p>Команда</p></div>
@@ -339,6 +340,7 @@
                 <div class="results-score"><p>0 : 0</p></div>
                 <div class="results-team2"><p>Команда</p></div>
             </div>
+        </div>
         </div>
     </div>
 

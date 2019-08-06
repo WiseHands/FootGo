@@ -80,7 +80,7 @@
             <div>0</div>
         </div>
         <div class="bomb-scored-pen">
-            <div class="bomb-title">М'ячів(з пен.)</div>
+            <div class="bomb-title">М'ячів (пен)</div>
             <div class="bomb-firstplace">0</div>
             <div class="bomb-secondplace">0</div>
             <div class="bomb-thirdplace">0</div>

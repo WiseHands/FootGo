@@ -20,9 +20,20 @@
             </div>
             <div class="header-null"></div>
             <div id="nav-icon">
+                <!--<input type="checkbox">-->
+
                 <span></span>
                 <span></span>
                 <span></span>
+
+                <!--<ul id="menu">-->
+                    <!--<a href="#"><li>FootGo</li></a>-->
+                    <!--<a href="#"><li>Реєстрація</li></a>-->
+                    <!--<a href="#"><li>Результати</li></a>-->
+                    <!--<a href="#"><li>Таблиця</li></a>-->
+                    <!--<a href="#"><li>Бомбардири</li></a>-->
+                <!--</ul>-->
+
             </div>
             <!---->
             <div class="dropdown">
@@ -59,7 +70,7 @@
         <h1>Аматорський турнір</h1>
         <h3>по футболу 8*8</h3>
         <div class="slogan-button">
-            <input class="input-button" type="submit" value="Взяти участь">
+            <input class="main-input-button" type="submit" value="Взяти участь">
         </div>
     </div>
 </div>
