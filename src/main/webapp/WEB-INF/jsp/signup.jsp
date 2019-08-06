@@ -37,113 +37,85 @@
 <div class="registration-photo">
  <div class="registration-form">
 
-     <form action="/action_page.php">
+     <form name="signUpForm">
+
             <div class="team-capitan">
                 <div class="team-name">
                     <p>Назва команди</p>
-                    <input type="text" name="TeamName" placeholder="Назва команди" required>
+                    <input type="text" name="teamName" placeholder="Назва команди" required>
                 </div>
                 <div class="capitan">
                     <p>Капітан команди</p>
-                    <input type="text" name="CapitanName" placeholder="Прізвище ім'я" required>
-                    <input type="tel" name="phone" pattern="[0-9]{10}" placeholder="номер в форматі 10 цифр" required>
-                    <input type="email" name="email" placeholder="введіть email" required>
+                    <input type="text" name="captainName" placeholder="Прізвище ім'я" required>
+                    <input type="tel" name="captainPhone" pattern="[0-9]{10}" placeholder="номер телефону 093 ..." required>
+                    <input type="email" name="captainEmail" placeholder="введіть email" required>
                 </div>
             </div>
             <div class="player-bg">
             <div class="player1-3">
                 <div class="player">
                     <p>Гравець</p>
-                    <input type="text" name="player" placeholder="Прізвище Ім'я" required>
+                    <input type="text" name="player1" placeholder="Прізвище Ім'я">
                 </div>
                 <div class="player">
                     <p>Гравець</p>
-                    <input type="text" name="player" placeholder="Прізвище Ім'я" required>
+                    <input type="text" name="player2" placeholder="Прізвище Ім'я">
                 </div>
                 <div class="player">
                     <p>Гравець</p>
-                    <input type="text" name="player" placeholder="Прізвище Ім'я" required>
+                    <input type="text" name="player3" placeholder="Прізвище Ім'я">
             </div>
             </div>
             <div class="player1-3">
                 <div class="player">
                     <p>Гравець</p>
-                    <input type="text" name="player" placeholder="Прізвище Ім'я" required>
+                    <input type="text" name="player4" placeholder="Прізвище Ім'я">
                 </div>
                 <div class="player">
                     <p>Гравець</p>
-                    <input type="text" name="player" placeholder="Прізвище Ім'я" required>
+                    <input type="text" name="player5" placeholder="Прізвище Ім'я">
                 </div>
                 <div class="player">
                     <p>Гравець</p>
-                    <input type="text" name="player" placeholder="Прізвище Ім'я" required>
+                    <input type="text" name="player6" placeholder="Прізвище Ім'я">
                 </div>
             </div>
             <div class="player1-3">
                 <div class="player">
                     <p>Гравець</p>
-                    <input type="text" name="player" placeholder="Прізвище Ім'я" required>
+                    <input type="text" name="player7" placeholder="Прізвище Ім'я">
                 </div>
                 <div class="player">
                     <p>Гравець</p>
-                    <input type="text" name="player" placeholder="Прізвище Ім'я" required>
+                    <input type="text" name="player8" placeholder="Прізвище Ім'я">
                 </div>
                 <div class="player">
                     <p>Гравець</p>
-                    <input type="text" name="player" placeholder="Прізвище Ім'я" required>
+                    <input type="text" name="player9" placeholder="Прізвище Ім'я">
                 </div>
             </div>
             <div class="player1-3">
                 <div class="player">
                     <p>Гравець</p>
-                    <input type="text" name="player" placeholder="Прізвище ім'я" required>
+                    <input type="text" name="player10" placeholder="Прізвище ім'я">
                 </div>
                 <div class="player">
                     <p>Гравець</p>
-                    <input type="text" name="player" placeholder="Прізвище ім'я" required>
+                    <input type="text" name="player11" placeholder="Прізвище ім'я">
                 </div>
                 <div class="player">
                     <p>Гравець</p>
-                    <input type="text" name="player" placeholder="Прізвище ім'я" required>
+                    <input type="text" name="player12" placeholder="Прізвище ім'я">
                 </div>
             </div>
-            </div>
-     <input class="reg-input-button" type="submit" value="Зареєструватися">
+
+        <input class="reg-input-button" type="submit" onClick="submitform()" value="Зареєструватися">
+
      </form>
  </div>
 </div>
-        <!--<form action="/action_page.php">
-            <div class="offset">Команда <input type="text" name="teamname" placeholder="Назва команди" required></div>
-            <div class="offset">Капітан команди <input type="text" name="FirstName" placeholder="Прізвище ім'я" required>
-                Телефон <input type="tel" name="phone" pattern="[0-9]{10}" placeholder="номер в форматі 10 цифр" required>
-                Email  <input type="email" name="email" placeholder="введіть">
-            </div>
-            <div class="offset">Заступник капітана <input type="text" name="FirstName" placeholder="Прізвище ім'я" required>
-                Телефон <input type="tel" name="phone" pattern="[0-9]{10}" placeholder="номер в форматі 10 цифр" required>
-                Email  <input type="email" name="email" placeholder="введіть">
-            </div>
-            <div class="offset">Гравець: <input type="text" name="Player" value=""></div>
-            <div class="offset">Гравець: <input type="text" name="Player" value=""></div>
-            <div class="offset">Гравець: <input type="text" name="Player" value=""></div>
-            <div class="offset">Гравець: <input type="text" name="Player" value=""></div>
-            <div class="offset">Гравець: <input type="text" name="Player" value=""></div>
-            <div class="offset">Гравець: <input type="text" name="Player" value=""></div>
-            <div class="offset">Гравець: <input type="text" name="Player" value=""></div>
-            <div class="offset">Гравець: <input type="text" name="Player" value=""></div>
-            <div class="offset">Гравець: <input type="text" name="Player" value=""></div>
-            <div class="offset">Гравець: <input type="text" name="Player" value=""></div>
-            <div class="offset">Гравець: <input type="text" name="Player" value=""></div>
-            <div class="offset">Гравець: <input type="text" name="Player" value=""></div>
-            <div class="offset">Гравець: <input type="text" name="Player" value=""></div>
-
-
-            <input type="submit" value="Зареєструватися">
-        </form>-->
-<script src="scrypt.js"></script>
+<script src="signUpScrypt.js" type="text/javascript"></script>
 
 
 </body>
-<script>
-
-</script>
 </html>
