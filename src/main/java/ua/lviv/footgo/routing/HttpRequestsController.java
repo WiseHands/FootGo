@@ -1,4 +1,4 @@
-package ua.lviv.footgo;
+package ua.lviv.footgo.routing;
 
 import ua.lviv.footgo.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;

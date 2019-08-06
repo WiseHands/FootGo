@@ -1,8 +1,8 @@
 package ua.lviv.footgo.controller;
 
-import ua.lviv.footgo.entity.FootballCaptain;
-import ua.lviv.footgo.entity.FootballPlayer;
-import ua.lviv.footgo.entity.TeamCreationRequestJsonBody;
+import ua.lviv.footgo.jsonmapper.FootballCaptain;
+import ua.lviv.footgo.jsonmapper.FootballPlayer;
+import ua.lviv.footgo.jsonmapper.TeamCreationRequestJsonBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.MediaType;

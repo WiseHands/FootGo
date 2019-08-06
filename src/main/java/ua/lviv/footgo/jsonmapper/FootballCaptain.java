@@ -1,4 +1,4 @@
-package ua.lviv.footgo.entity;
+package ua.lviv.footgo.jsonmapper;
 
 public class FootballCaptain {
 
