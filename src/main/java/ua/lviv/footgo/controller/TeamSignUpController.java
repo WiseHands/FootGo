@@ -18,8 +18,6 @@ public class TeamSignUpController {
     TeamSignUpRepository teamSignUpRepository;
 
 
-
-
     @RequestMapping(value = "/signuprequest", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity< String > addTeamViaJson(@RequestBody TeamSignUpRequestJsonBody teamSignUpRequestJsonBody) {
 

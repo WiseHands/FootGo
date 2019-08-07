@@ -109,12 +109,12 @@
                 </div>
             </div>
 
-        <input class="reg-input-button" type="submit" onClick="submitform()" value="Зареєструватися">
+        <input class="reg-input-button" type="submit" onclick="submitform()" value="Зареєструватися">
 
      </form>
  </div>
 </div>
-<script src="signUpScrypt.js" type="text/javascript"></script>
+<script src="signUpScript.js" type="text/javascript"></script>
 
 
 </body>

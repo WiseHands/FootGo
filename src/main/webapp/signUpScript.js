@@ -7,10 +7,35 @@ function submitform(ev) {
     event.preventDefault();
 
     document.signUpForm.teamName.value.required;
-    var teamName = document.signUpForm.teamName.value;
-    var captainName = document.signUpForm.captainName.value.required;
-    var captainPhone = document.signUpForm.captainPhone.value.required;
-    var captainEmail = document.signUpForm.captainEmail.value.required;
+    var teamNameInput = document.signUpForm.teamName;
+    var teamName = teamNameInput.value;
+    if (!teamName){
+        teamNameInput.setAttribute('invalid-input', true);
+    } else {
+        teamNameInput.removeAttribute('invalid-input');
+    }
+    var captainNameInput = document.signUpForm.captainName;
+    var captainName = captainNameInput.value;
+    if (!captainName){
+        captainNameInput.setAttribute('invalid-input', true);
+    } else {
+        captainNameInput.removeAttribute('invalid-input');
+    }
+    var captainPhoneInput = document.signUpForm.captainPhone;
+    var captainPhone = captainPhoneInput.value;
+    if (!captainPhone){
+        captainPhoneInput.setAttribute('invalid-input', true);
+    } else {
+        captainPhoneInput.removeAttribute('invalid-input');
+    }
+    var captainEmailInput = document.signUpForm.captainEmail;
+    var captainEmail = captainEmailInput.value;
+    if (!captainEmail){
+        captainEmailInput.setAttribute('invalid-input', true);
+    } else {
+        captainEmailInput.removeAttribute('invalid-input');
+    }
+
 
     var playerList = new Array();
     playerList.push(document.signUpForm.player1.value);
@@ -35,9 +60,23 @@ function submitform(ev) {
     jsonObject.playerList = players;
     var jsonTeamInString = JSON.stringify(jsonObject);
 
-    var url = '/team/signuprequest';
-    var data = jsonTeamInString;
+    if (teamName && captainName && captainPhone && captainEmail){
+        var url = '/team/signuprequest';
+        sendPostRequestTeamSignUp(jsonTeamInString, url);
+    }
 
+
+
+    console.log("press button" + teamName
+        + " " + captainName
+        + " " + captainPhone
+        + " " + captainEmail
+        + " " + playerList
+        + " " + jsonTeamInString
+        + " " + "/team/signuprequest");
+}
+
+function sendPostRequestTeamSignUp(data, url) {
     fetch(url, {
         method: 'post',
         body: data,
@@ -52,11 +91,4 @@ function submitform(ev) {
             console.log('Request failed', error);
         });
 
-    console.log("press button" + teamName
-        + " " + captainName
-        + " " + captainPhone
-        + " " + captainEmail
-        + " " + playerList
-        + " " + jsonTeamInString
-        + " " + "/team/signuprequest");
 }
