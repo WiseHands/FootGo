@@ -20,7 +20,7 @@ public class Captain {
     private String captainEmail;
 
 
-    @OneToOne(mappedBy = "captain", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "captain")
     private Team team;
 
     public Team getTeam() {

@@ -9,5 +9,8 @@ public interface CaptainRepository extends CrudRepository<Captain, Long> {
     Captain findByCaptainName(String name);
 
     @Transactional
-    void deleteByCaptainName(String captain_name);
+    void deleteByCaptainEmail(String captainEmail);
+
+    @Transactional
+    void deleteById(Long id);
 }

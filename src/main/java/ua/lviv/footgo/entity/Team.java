@@ -22,18 +22,6 @@ public class Team {
     @JoinColumn
     private Captain captain;
 
-    @OneToOne
-    @JoinColumn
-    private Game game;
-
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
-
     public Captain getCaptain() {
         return captain;
     }
