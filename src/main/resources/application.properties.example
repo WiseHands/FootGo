@@ -1,0 +1,20 @@
+# MySQL jdbc connection url.
+spring.datasource.url=jdbc:mysql://localhost:3306/footgo?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+# MySQL jdbc driver class name.
+spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+# MySQL database username and password
+spring.datasource.username=root
+spring.datasource.password=pwd
+
+# try to auto create DB MySQL
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.database-platform=org.hibernate.dialect.MySQL57Dialect
+spring.jpa.generate-ddl=true
+spring.jpa.show-sql=true
+spring.mvc.view.prefix: /WEB-INF/jsp/
+spring.mvc.view.suffix: .jsp
+
+#properties for sending mail
+mailer.userName=test@gmail.com
+mailer.password=test
+footgo.admin.email=test@gmail.com
