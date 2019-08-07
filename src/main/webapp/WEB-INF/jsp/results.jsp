@@ -346,7 +346,7 @@
 
 
 </div>
-<script src="scrypt.js"></script>
+<script src="signUpScript.js"></script>
 
 
 </body>
