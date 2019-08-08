@@ -27,4 +27,7 @@ target
 target/*
 /target/
 application.properties
+.idea
+.idea/*
+/.idea/
 
