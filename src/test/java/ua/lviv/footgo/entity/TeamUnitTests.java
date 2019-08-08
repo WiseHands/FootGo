@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -83,9 +84,38 @@ public class TeamUnitTests {
 		assertThat(teamFromDataStore.get(0).getCaptain().getCaptainName()).isEqualTo(team.getCaptain().getCaptainName());
 	}
 
+	@Test
+	public void testCaptainDeletion() {
+		Team team = new Team();
+		team.setTeamName(TEAM_NAME);
+
+		Captain captain = new Captain();
+		captain.setCaptainName(CAPTAIN_NAME);
+		captain.setCaptainEmail(CAPTAIN_EMAIL);
+		captain.setCaptainPhone(CAPTAIN_PHONE);
+
+		captain.setTeam(team);
+		team.setCaptain(captain);
+
+		entityManager.persist(team);
+		captain = entityManager.persist(captain);
+		entityManager.flush();
+
+
+		team.setCaptain(null);
+		teamRepository.save(team);
+		captainRepository.deleteById(captain.getId());
+
+		Optional<Captain> captainFromDb = captainRepository.findById(captain.getId());
+
+		assertThat(captainFromDb.isPresent()).isFalse();
+		assertThat(teamRepository.count()).isEqualTo(1);
+	}
+
 	@After
 	public void cleanUp() {
 		teamRepository.deleteAll();
+		captainRepository.deleteAll();
 	}
 	
 }
