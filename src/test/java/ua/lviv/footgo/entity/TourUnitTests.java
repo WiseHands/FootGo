@@ -92,7 +92,6 @@ public class TourUnitTests {
         teamA.addPlayer(teamAPlayer1);
         teamA.addPlayer(teamAplayer2);
 
-        entityManager.persist(captainA);
         entityManager.persist(teamA);
         entityManager.flush();
 
@@ -174,9 +173,106 @@ public class TourUnitTests {
 
     }
 
+    @Test
+    public void testTourGenerator() {
+        Team teamA = new Team();
+        teamA.setTeamName(TEAM_A_NAME);
+
+        Captain captainA = _createCaptain(teamA);
+        entityManager.persist(captainA);
+
+        _createPlayerList(teamA);
+        entityManager.persist(teamA);
+
+//        created team B
+        Team teamB = new Team();
+        teamB.setTeamName(TEAM_B_NAME);
+
+        Captain captainB = _createCaptain(teamB);
+        entityManager.persist(captainB);
+
+        _createPlayerList(teamB);
+        entityManager.persist(teamB);
+
+        entityManager.flush();
+
+//        create game
+        Game game = new Game();
+        game.setFirstTeam(teamA);
+        game.setSecondTeam(teamB);
+
+//         create goal for team A
+        Goal goalTeamA = new Goal();
+        goalTeamA.setTime(TEAM_A_GOAL_TIME);
+        goalTeamA.setPlayer(teamA.getPlayers().get(0));
+        goalTeamA.setGame(game);
+
+//         create goal for team B
+        Goal goalTeamB = new Goal();
+        goalTeamB.setTime(TEAM_B_GOAL_TIME);
+        goalTeamB.setPlayer(teamB.getPlayers().get(0));
+        goalTeamB.setGame(game);
+
+        Goal goalTeamBTwo = new Goal();
+        goalTeamBTwo.setTime(TEAM_B_GOAL_TWO_TIME);
+        goalTeamBTwo.setPlayer(teamB.getPlayers().get(1));
+        goalTeamBTwo.setGame(game);
+
+
+        game.addGoalForFirstTeam(goalTeamA);
+        game.addGoalForSecondTeam(goalTeamB);
+        game.addGoalForSecondTeam(goalTeamBTwo);
+
+        Tour tour = new Tour();
+        tour.setTourNumber(TOUR_NUMBER);
+        tour.addGame(game);
+        game.setTour(tour);
+
+        entityManager.persist(tour);
+        entityManager.flush();
+
+        Optional<Tour> tourFromDbOptional = tourRepository.findById(tour.getId());
+        assertThat(tourFromDbOptional.isPresent()).isTrue();
+
+        Tour tourFromDb = tourFromDbOptional.get();
+        assertThat(tourFromDb.getTourNumber()).isEqualTo(TOUR_NUMBER);
+
+        assertThat(tourFromDb.getGameList().size()).isEqualTo(1);
+
+        assertThat(tourFromDb.getGameList().get(0).getFirstTeam().getTeamName()).isEqualTo(TEAM_A_NAME);
+        assertThat(tourFromDb.getGameList().get(0).getFirstTeam().getCaptain().getCaptainName()).isEqualTo("CAPTAIN " + teamA.getTeamName());
+
+        assertThat(tourFromDb.getGameList().get(0).getSecondTeam().getTeamName()).isEqualTo(TEAM_B_NAME);
+        assertThat(tourFromDb.getGameList().get(0).getSecondTeam().getCaptain().getCaptainName()).isEqualTo("CAPTAIN " + teamB.getTeamName());
+    }
+
 	@After
 	public void cleanUp() {
 		gameRepository.deleteAll();
 	}
+
+	private Captain _createCaptain(Team team) {
+        Captain captain = new Captain();
+        captain.setCaptainName("CAPTAIN " + team.getTeamName());
+        captain.setCaptainEmail("CAPTAIN EMAIL" + team.getTeamName());
+        captain.setCaptainPhone("CAPTAIN PHONE" + team.getTeamName());
+
+        captain.setTeam(team);
+        team.setCaptain(captain);
+
+        return captain;
+    }
+
+    private void _createPlayerList(Team team) {
+        _createPlayer(team, TEAM_A_PLAYER_ONE_NAME);
+        _createPlayer(team, TEAM_A_PLAYER_TWO_NAME);
+    }
+
+    private void _createPlayer(Team team, String name) {
+        Player player = new Player();
+        player.setPlayerName(team.getTeamName() + name);
+        player.setTeam(team);
+        team.addPlayer(player);
+    }
 	
 }
