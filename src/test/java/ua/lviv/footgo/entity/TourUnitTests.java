@@ -194,30 +194,13 @@ public class TourUnitTests {
         _createPlayerList(teamB);
         entityManager.persist(teamB);
 
-        entityManager.flush();
-
-//        create game
         Game game = new Game();
         game.setFirstTeam(teamA);
         game.setSecondTeam(teamB);
 
-//         create goal for team A
-        Goal goalTeamA = new Goal();
-        goalTeamA.setTime(TEAM_A_GOAL_TIME);
-        goalTeamA.setPlayer(teamA.getPlayers().get(0));
-        goalTeamA.setGame(game);
-
-//         create goal for team B
-        Goal goalTeamB = new Goal();
-        goalTeamB.setTime(TEAM_B_GOAL_TIME);
-        goalTeamB.setPlayer(teamB.getPlayers().get(0));
-        goalTeamB.setGame(game);
-
-        Goal goalTeamBTwo = new Goal();
-        goalTeamBTwo.setTime(TEAM_B_GOAL_TWO_TIME);
-        goalTeamBTwo.setPlayer(teamB.getPlayers().get(1));
-        goalTeamBTwo.setGame(game);
-
+        Goal goalTeamA = _createGoal(game, teamA.getPlayers().get(0), TEAM_A_GOAL_TIME);
+        Goal goalTeamB = _createGoal(game, teamB.getPlayers().get(0), TEAM_B_GOAL_TIME);
+        Goal goalTeamBTwo = _createGoal(game, teamB.getPlayers().get(1), TEAM_B_GOAL_TWO_TIME);
 
         game.addGoalForFirstTeam(goalTeamA);
         game.addGoalForSecondTeam(goalTeamB);
@@ -273,6 +256,14 @@ public class TourUnitTests {
         player.setPlayerName(team.getTeamName() + name);
         player.setTeam(team);
         team.addPlayer(player);
+    }
+
+    private Goal _createGoal(Game game, Player player, Integer time) {
+        Goal goal = new Goal();
+        goal.setTime(time);
+        goal.setPlayer(player);
+        goal.setGame(game);
+        return goal;
     }
 	
 }
