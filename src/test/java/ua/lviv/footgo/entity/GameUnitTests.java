@@ -10,12 +10,16 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class GameUnitTests {
+
+	public static final String TIME = "1920 010203";
+	public static final String LOCATION = "FC SOKIL";
 
 	@Autowired
 	private TestEntityManager entityManager;
@@ -24,21 +28,20 @@ public class GameUnitTests {
 	private GameRepository gameRepository;
 
 	@Test
-	public void checkIsSomePropertiesInDataBase() {
-		// given
+	public void testBasicProperties() {
 		Game game = new Game();
-		game.setTour(1);
-		entityManager.persist(game);
+		game.setGameTime(TIME);
+		game.setLocation(LOCATION);
+
+		game = entityManager.persist(game);
 		entityManager.flush();
 
-		// when
-		List<Game> captainFromDataStore = gameRepository.findByTour(game.getTour());
+		Optional<Game> gameFromDBOptional = gameRepository.findById(game.getId());
+		assertThat(gameFromDBOptional.isPresent()).isTrue();
 
-		// then
-		assertThat(captainFromDataStore.get(0).getTour())
-				.isEqualTo(game.getTour());
-
-		
+		Game gameFromDB = gameFromDBOptional.get();
+		assertThat(gameFromDB.getGameTime()).isEqualTo(TIME);
+		assertThat(gameFromDB.getLocation()).isEqualTo(LOCATION);
 	}
 
 	@After

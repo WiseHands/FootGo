@@ -13,8 +13,6 @@ public class Game {
     private Long id;
 
     @Column
-    private Integer tour;
-    @Column
     private String gameTime;
     @Column
     private String location;
@@ -44,13 +42,6 @@ public class Game {
         return teamAGoals.size() == teamBGoals.size();
     }
 
-    public Integer getTour() {
-        return tour;
-    }
-
-    public void setTour(Integer tour) {
-        this.tour = tour;
-    }
 
     public String getGameTime() {
         return gameTime;
@@ -98,6 +89,10 @@ public class Game {
 
     public void setTeamBGoals(List<Goal> teamBGoals) {
         this.teamBGoals = teamBGoals;
+    }
+
+    public Long getId() {
+        return id;
     }
 
 }

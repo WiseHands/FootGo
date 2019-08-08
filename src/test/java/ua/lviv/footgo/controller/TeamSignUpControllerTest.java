@@ -26,7 +26,7 @@ public class TeamSignUpControllerTest extends AbstractControllerTest {
     public void createTeamTest() throws Exception {
         String uri = "/team/signuprequest";
 
-        TeamSignUpRequestJsonBody teamJsonBody = new TeamSignUpRequestJsonBody("Team", "Toni", "+38096", "@mail", "one,two,three");
+        TeamSignUpRequestJsonBody teamJsonBody = new TeamSignUpRequestJsonBody("Team", "Toni", "+38096", "test@mail", "one,two,three");
 
         String inputJson = super.mapToJson(teamJsonBody);
         System.out.println("inputJson " + inputJson);
