@@ -202,6 +202,49 @@ public class TeamUnitTests {
 		assertThat(playersFromDB.size()).isEqualTo(1);
 	}
 
+	@Test
+	public void testTeamDeletion() {
+		Team team = new Team();
+		team.setTeamName(TEAM_NAME);
+
+		Captain captain = new Captain();
+		captain.setCaptainName(CAPTAIN_NAME);
+		captain.setCaptainEmail(CAPTAIN_EMAIL);
+		captain.setCaptainPhone(CAPTAIN_PHONE);
+
+		captain.setTeam(team);
+		team.setCaptain(captain);
+
+		entityManager.persist(team);
+		captain = entityManager.persist(captain);
+
+		Player player = new Player();
+		player.setPlayerName(PLAYER_ONE_NAME);
+		player.setTeam(team);
+
+		Player player2 = new Player();
+		player2.setPlayerName(PLAYER_TWO_NAME);
+		player2.setTeam(team);
+
+		team.addPlayer(player);
+		team.addPlayer(player2);
+
+		team = entityManager.persist(team);
+		entityManager.flush();
+
+		captainRepository.deleteById(captain.getId());
+		teamRepository.deleteById(team.getId());
+		Optional<Team> teamAfterDeletionOptional = teamRepository.findById(team.getId());
+		assertThat(teamAfterDeletionOptional.isPresent()).isFalse();
+
+		List<Player> playersFromDB = playerRepository.findByTeam(team);
+		assertThat(playersFromDB.size()).isEqualTo(0);
+
+		Optional<Captain> captainOptional = captainRepository.findById(captain.getId());
+		assertThat(captainOptional.isPresent()).isFalse();
+	}
+
+
 	@After
 	public void cleanUp() {
 		teamRepository.deleteAll();
