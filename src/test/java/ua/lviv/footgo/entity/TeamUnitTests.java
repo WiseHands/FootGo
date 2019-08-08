@@ -48,7 +48,7 @@ public class TeamUnitTests {
 	public void checkIsSomePropertiesInDataBase() {
 		// given
 		Team team = new Team();
-		team.setTeamName("ToniTeam");
+		team.setTeamName(TEAM_NAME);
 		entityManager.persist(team);
 		entityManager.flush();
 
@@ -143,6 +143,37 @@ public class TeamUnitTests {
 
         List<Player> playersFromDB = playerRepository.findByTeam(team);
         assertThat(playersFromDB.size()).isEqualTo(playerList.size());
+    }
+
+
+    @Test
+    public void testPlayerListPlayerDeletion() {
+        Team team = new Team();
+        team.setTeamName(TEAM_NAME);
+
+        Player player = new Player();
+        player.setPlayerName(PLAYER_ONE_NAME);
+        player.setTeam(team);
+
+        Player player2 = new Player();
+        player2.setPlayerName(PLAYER_TWO_NAME);
+        player2.setTeam(team);
+
+        List<Player> playerList = new ArrayList();
+        playerList.add(player);
+        playerList.add(player2);
+        team.setPlayers(playerList);
+
+        entityManager.persist(team);
+        entityManager.flush();
+
+		team.setPlayers(null);
+		playerRepository.deleteById(player.getId());
+        playerRepository.deleteById(player2.getId());
+        teamRepository.save(team);
+
+        List<Player> playersFromDB = playerRepository.findByTeam(team);
+        assertThat(playersFromDB.size()).isEqualTo(0);
     }
 
 	@After
