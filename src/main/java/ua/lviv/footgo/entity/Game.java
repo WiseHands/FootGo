@@ -1,5 +1,7 @@
 package ua.lviv.footgo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,10 @@ public class Game {
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
     private List<Goal> teamBGoals;
 
+    @ManyToOne
+    @JoinColumn
+    @JsonIgnore
+    private Tour tour;
 
     public boolean hasTeamAWin(){
         if(this.teamAGoals == null) {
@@ -120,6 +126,14 @@ public class Game {
             this.teamBGoals = new ArrayList<>();
         }
         this.teamBGoals.add(goal);
+    }
+
+    public Tour getTour() {
+        return tour;
+    }
+
+    public void setTour(Tour tour) {
+        this.tour = tour;
     }
 
 }

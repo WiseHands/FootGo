@@ -1,5 +1,7 @@
 package ua.lviv.footgo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity(name = "goal")
@@ -16,10 +18,12 @@ public class Goal {
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     private Game game;
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     private Player player;
 
 
