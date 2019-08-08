@@ -27,17 +27,28 @@ public class TeamSignUpUnitTests {
 	@Test
 	public void checkIsSomePropertiesInDataBase() {
 		// given
-		TeamSignUpRequest team = new TeamSignUpRequest();
-		team.setTeamName("ToniTeam");
-		entityManager.persist(team);
+		TeamSignUpRequest teamSignUpRequest = new TeamSignUpRequest();
+		teamSignUpRequest.setTeamName("ToniTeam");
+		teamSignUpRequest.setCaptainName("toni");
+		teamSignUpRequest.setCaptainPhone("380965658");
+		teamSignUpRequest.setCaptainEmail("teamSignUpRequest@mail");
+		teamSignUpRequest.setPlayerList("1,3,4");
+		entityManager.persist(teamSignUpRequest);
 		entityManager.flush();
 
 		// when
-		TeamSignUpRequest teamFromDataStore = teamSignUpRepository.findByTeamName(team.getTeamName());
+		TeamSignUpRequest teamFrom = teamSignUpRepository.findByTeamName(teamSignUpRequest.getTeamName());
+		TeamSignUpRequest teamFromData = teamSignUpRepository.findByCaptainName(teamSignUpRequest.getCaptainName());
+		TeamSignUpRequest teamFromDataS = teamSignUpRepository.findByCaptainPhone(teamSignUpRequest.getCaptainPhone());
+		TeamSignUpRequest teamFromDataSt = teamSignUpRepository.findByCaptainEmail(teamSignUpRequest.getCaptainEmail());
+		TeamSignUpRequest teamFromDataStore = teamSignUpRepository.findByPlayerList(teamSignUpRequest.getPlayerList());
 
 		// then
-		assertThat(teamFromDataStore.getTeamName())
-				.isEqualTo(team.getTeamName());
+		assertThat(teamFrom.getTeamName()).isEqualTo(teamSignUpRequest.getTeamName());
+		assertThat(teamFromData.getCaptainName()).isEqualTo(teamSignUpRequest.getCaptainName());
+		assertThat(teamFromDataS.getCaptainPhone()).isEqualTo(teamSignUpRequest.getCaptainPhone());
+		assertThat(teamFromDataSt.getCaptainEmail()).isEqualTo(teamSignUpRequest.getCaptainEmail());
+		assertThat(teamFromDataStore.getPlayerList()).isEqualTo(teamSignUpRequest.getPlayerList());
 
 		
 	}

@@ -32,10 +32,6 @@ public class Player {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Team getTeam() {
         return team;
     }

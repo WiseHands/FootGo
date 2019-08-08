@@ -22,10 +22,6 @@ public class Tour {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Integer getTourNumber() {
         return tourNumber;
     }

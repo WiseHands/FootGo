@@ -11,5 +11,10 @@ import java.util.List;
 public interface TeamSignUpRepository extends CrudRepository<TeamSignUpRequest, Long> {
 
     TeamSignUpRequest findByTeamName(String teamName);
+    TeamSignUpRequest findByCaptainName(String captainName);
+    TeamSignUpRequest findByCaptainPhone(String captainPhone);
+    TeamSignUpRequest findByCaptainEmail(String captainEmail);
+    TeamSignUpRequest findByPlayerList(String playerList);
+
 
 }

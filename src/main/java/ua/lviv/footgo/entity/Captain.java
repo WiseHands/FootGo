@@ -51,9 +51,6 @@ public class Captain {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getCaptainName() {
         return captainName;

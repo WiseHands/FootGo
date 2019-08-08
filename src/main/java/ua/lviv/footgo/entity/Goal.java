@@ -31,10 +31,6 @@ public class Goal {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
 
     public Integer getTime() {
         return time;

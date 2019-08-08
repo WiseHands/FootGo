@@ -25,10 +25,6 @@ public class TeamSignUpRequest {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getTeamName() {
         return teamName;
     }
