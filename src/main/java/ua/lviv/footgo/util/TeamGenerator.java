@@ -35,7 +35,7 @@ public class TeamGenerator {
     static final int NUMBER_OF_TOURS = 9;
 
 
-    @PostConstruct
+//    @PostConstruct
     public void createTeam() {
         List allTeams = (List) teamRepository.findAll();
         if (!allTeams.isEmpty()) {

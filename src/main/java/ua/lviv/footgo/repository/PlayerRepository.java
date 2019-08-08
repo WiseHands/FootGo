@@ -2,8 +2,10 @@ package ua.lviv.footgo.repository;
 
 import ua.lviv.footgo.entity.Player;
 import org.springframework.data.repository.CrudRepository;
+import ua.lviv.footgo.entity.Team;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 public interface PlayerRepository extends CrudRepository<Player, Long> {
 
@@ -15,7 +17,7 @@ public interface PlayerRepository extends CrudRepository<Player, Long> {
      * Get user list by user name. Please note the format should be
      * findBy<column_name>.
      */
-//    List<Player> findByUsername(String last_name);
+    List<Player> findByTeam(Team team);
 
     /*
      * Get user list by user name and password. Please note the format should be

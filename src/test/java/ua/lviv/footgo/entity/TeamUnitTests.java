@@ -1,6 +1,7 @@
 package ua.lviv.footgo.entity;
 
 import ua.lviv.footgo.repository.CaptainRepository;
+import ua.lviv.footgo.repository.PlayerRepository;
 import ua.lviv.footgo.repository.TeamRepository;
 import org.junit.After;
 import org.junit.Test;
@@ -10,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +27,9 @@ public class TeamUnitTests {
 
 	private static final String TEAM_NAME = "ToniTeam";
 
+    private static final String PLAYER_ONE_NAME = "Player 1";
+    private static final String PLAYER_TWO_NAME = "Player 2";
+
 
 
 	@Autowired
@@ -35,6 +40,9 @@ public class TeamUnitTests {
 
 	@Autowired
 	private CaptainRepository captainRepository;
+
+    @Autowired
+    private PlayerRepository playerRepository;
 
 	@Test
 	public void checkIsSomePropertiesInDataBase() {
@@ -111,6 +119,31 @@ public class TeamUnitTests {
 		assertThat(captainFromDb.isPresent()).isFalse();
 		assertThat(teamRepository.count()).isEqualTo(1);
 	}
+
+	@Test
+    public void testPlayerListRelation() {
+        Team team = new Team();
+        team.setTeamName(TEAM_NAME);
+
+        Player player = new Player();
+        player.setPlayerName(PLAYER_ONE_NAME);
+        player.setTeam(team);
+
+        Player player2 = new Player();
+        player2.setPlayerName(PLAYER_TWO_NAME);
+        player2.setTeam(team);
+
+        List<Player> playerList = new ArrayList();
+        playerList.add(player);
+        playerList.add(player2);
+        team.setPlayers(playerList);
+
+        entityManager.persist(team);
+        entityManager.flush();
+
+        List<Player> playersFromDB = playerRepository.findByTeam(team);
+        assertThat(playersFromDB.size()).isEqualTo(playerList.size());
+    }
 
 	@After
 	public void cleanUp() {
