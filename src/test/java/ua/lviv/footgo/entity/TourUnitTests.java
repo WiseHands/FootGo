@@ -181,20 +181,20 @@ public class TourUnitTests {
         teamA.setTeamName(TEAM_A_NAME);
 
         Captain captainA = _createCaptain(teamA);
-        entityManager.persist(captainA);
+        captainRepository.save(captainA);
 
         _createPlayerList(teamA);
-        entityManager.persist(teamA);
+        teamRepository.save(teamA);
 
 //        created team B
         Team teamB = new Team();
         teamB.setTeamName(TEAM_B_NAME);
 
         Captain captainB = _createCaptain(teamB);
-        entityManager.persist(captainB);
+        captainRepository.save(captainB);
 
         _createPlayerList(teamB);
-        entityManager.persist(teamB);
+        teamRepository.save(teamB);
 
         Game game = new Game();
         game.setFirstTeam(teamA);
@@ -211,8 +211,7 @@ public class TourUnitTests {
         Tour tour = _createTour(TOUR_NUMBER);
         _addGameToTour(tour, game);
 
-        entityManager.persist(tour);
-        entityManager.flush();
+        tourRepository.save(tour);
 
         Optional<Tour> tourFromDbOptional = tourRepository.findById(tour.getId());
         assertThat(tourFromDbOptional.isPresent()).isTrue();
