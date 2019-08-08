@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
-import ua.lviv.footgo.repository.GameRepository;
-import ua.lviv.footgo.repository.GoalRepository;
-import ua.lviv.footgo.repository.TeamRepository;
-import ua.lviv.footgo.repository.TourRepository;
+import ua.lviv.footgo.repository.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -62,6 +59,9 @@ public class TourUnitTests {
     private GoalRepository goalRepository;
 
     @Autowired
+    private CaptainRepository captainRepository;
+
+    @Autowired
     private TeamRepository teamRepository;
 
     @Autowired
@@ -80,6 +80,7 @@ public class TourUnitTests {
 
         captainA.setTeam(teamA);
         teamA.setCaptain(captainA);
+        entityManager.persist(captainA);
 
         Player teamAPlayer1 = new Player();
         teamAPlayer1.setPlayerName(TEAM_A_PLAYER_ONE_NAME);
@@ -106,6 +107,7 @@ public class TourUnitTests {
 
         captainB.setTeam(teamB);
         teamB.setCaptain(captainB);
+        entityManager.persist(captainB);
 
         Player teamBplayer = new Player();
         teamBplayer.setPlayerName(TEAM_B_PLAYER_ONE_NAME);
