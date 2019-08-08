@@ -206,10 +206,8 @@ public class TourUnitTests {
         game.addGoalForSecondTeam(goalTeamB);
         game.addGoalForSecondTeam(goalTeamBTwo);
 
-        Tour tour = new Tour();
-        tour.setTourNumber(TOUR_NUMBER);
-        tour.addGame(game);
-        game.setTour(tour);
+        Tour tour = _createTour(TOUR_NUMBER);
+        _addGameToTour(tour, game);
 
         entityManager.persist(tour);
         entityManager.flush();
@@ -264,6 +262,17 @@ public class TourUnitTests {
         goal.setPlayer(player);
         goal.setGame(game);
         return goal;
+    }
+
+    private Tour _createTour(Integer tourNumber) {
+        Tour tour = new Tour();
+        tour.setTourNumber(tourNumber);
+        return tour;
+    }
+
+    private void _addGameToTour(Tour tour, Game game) {
+        tour.addGame(game);
+        game.setTour(tour);
     }
 	
 }
