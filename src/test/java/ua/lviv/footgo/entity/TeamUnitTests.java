@@ -133,16 +133,14 @@ public class TeamUnitTests {
         player2.setPlayerName(PLAYER_TWO_NAME);
         player2.setTeam(team);
 
-        List<Player> playerList = new ArrayList();
-        playerList.add(player);
-        playerList.add(player2);
-        team.setPlayers(playerList);
+		team.addPlayer(player);
+		team.addPlayer(player2);
 
         entityManager.persist(team);
         entityManager.flush();
 
         List<Player> playersFromDB = playerRepository.findByTeam(team);
-        assertThat(playersFromDB.size()).isEqualTo(playerList.size());
+        assertThat(playersFromDB.size()).isEqualTo(2);
     }
 
 
@@ -159,10 +157,8 @@ public class TeamUnitTests {
         player2.setPlayerName(PLAYER_TWO_NAME);
         player2.setTeam(team);
 
-        List<Player> playerList = new ArrayList();
-        playerList.add(player);
-        playerList.add(player2);
-        team.setPlayers(playerList);
+        team.addPlayer(player);
+        team.addPlayer(player2);
 
         entityManager.persist(team);
         entityManager.flush();
@@ -175,6 +171,36 @@ public class TeamUnitTests {
         List<Player> playersFromDB = playerRepository.findByTeam(team);
         assertThat(playersFromDB.size()).isEqualTo(0);
     }
+
+	@Test
+	public void testPlayerListPlayerPartialDeletion() {
+		Team team = new Team();
+		team.setTeamName(TEAM_NAME);
+
+		Player player = new Player();
+		player.setPlayerName(PLAYER_ONE_NAME);
+		player.setTeam(team);
+
+		Player player2 = new Player();
+		player2.setPlayerName(PLAYER_TWO_NAME);
+		player2.setTeam(team);
+
+		List<Player> playerList = new ArrayList();
+		playerList.add(player);
+		playerList.add(player2);
+		team.setPlayers(playerList);
+
+		entityManager.persist(team);
+		entityManager.flush();
+
+
+		playerRepository.deleteById(player.getId());
+		team.removePlayer(player);
+		teamRepository.save(team);
+
+		List<Player> playersFromDB = playerRepository.findByTeam(team);
+		assertThat(playersFromDB.size()).isEqualTo(1);
+	}
 
 	@After
 	public void cleanUp() {

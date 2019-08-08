@@ -1,6 +1,7 @@
 package ua.lviv.footgo.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /* Map this entity class to user_account table. */
@@ -54,9 +55,16 @@ public class Team {
         this.teamName = teamName;
     }
 
+    public void removePlayer(Player player) {
+        this.players.remove(player);
+    }
 
-
-
+    public void addPlayer(Player player) {
+        if(this.players == null) {
+            this.players = new ArrayList<>();
+        }
+        this.players.add(player);
+    }
 
 
 }
