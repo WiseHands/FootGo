@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
+import ua.lviv.footgo.repository.GoalRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +31,8 @@ public class GameUnitTests {
     private static final String TEAM_A_PLAYER_ONE_NAME = "Player A1";
     private static final String TEAM_A_PLAYER_TWO_NAME = "Player A2";
 
+    private static final Integer TEAM_A_GOAL_TIME = 123;
+
 
 
     private static final String TEAM_B_NAME = "ToniTeamB";
@@ -47,11 +50,15 @@ public class GameUnitTests {
 	@Autowired
 	private GameRepository gameRepository;
 
+	@Autowired
+    private GoalRepository goalRepository;
+
 	@Test
 	public void testBasicProperties() {
 		Game game = new Game();
 		game.setGameTime(TIME);
 		game.setLocation(LOCATION);
+
 
 		game = entityManager.persist(game);
 		entityManager.flush();
@@ -138,6 +145,56 @@ public class GameUnitTests {
         assertThat(gameFromDb.getSecondTeam().getTeamName()).isEqualTo(teamB.getTeamName());
         assertThat(gameFromDb.getSecondTeam().getPlayers().size()).isEqualTo(teamB.getPlayers().size());
         assertThat(gameFromDb.getSecondTeam().getCaptain().getCaptainName()).isEqualTo(teamB.getCaptain().getCaptainName());
+    }
+
+    @Test
+    public void testGoalRelation() {
+        Team teamA = new Team();
+        teamA.setTeamName(TEAM_A_NAME);
+
+        Captain captainA = new Captain();
+        captainA.setCaptainName(TEAM_A_CAPTAIN_NAME);
+        captainA.setCaptainEmail(TEAM_A_CAPTAIN_EMAIL);
+        captainA.setCaptainPhone(TEAM_A_CAPTAIN_PHONE);
+
+        captainA.setTeam(teamA);
+        teamA.setCaptain(captainA);
+
+        Player teamAPlayer1 = new Player();
+        teamAPlayer1.setPlayerName(TEAM_A_PLAYER_ONE_NAME);
+        teamAPlayer1.setTeam(teamA);
+
+        Player teamAplayer2 = new Player();
+        teamAplayer2.setPlayerName(TEAM_A_PLAYER_TWO_NAME);
+        teamAplayer2.setTeam(teamA);
+
+        teamA.addPlayer(teamAPlayer1);
+        teamA.addPlayer(teamAplayer2);
+
+
+        entityManager.persist(captainA);
+        entityManager.persist(teamA);
+        entityManager.flush();
+
+
+        Game game = new Game();
+        game.setFirstTeam(teamA);
+
+        Goal goal = new Goal();
+        goal.setTime(TEAM_A_GOAL_TIME);
+        goal.setPlayer(teamAPlayer1);
+        goal.setGame(game);
+
+        game.addGoalForFirstTeam(goal);
+
+        game = gameRepository.save(game);
+
+        Optional<Game> gameFromDBOptional = gameRepository.findById(game.getId());
+        assertThat(gameFromDBOptional.isPresent()).isTrue();
+
+        Game gameFromDb = gameFromDBOptional.get();
+        assertThat(gameFromDb.getTeamAGoals().get(0).getTime()).isEqualTo(TEAM_A_GOAL_TIME);
+
     }
 
 	@After

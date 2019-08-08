@@ -1,6 +1,7 @@
 package ua.lviv.footgo.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "game")
@@ -93,6 +94,20 @@ public class Game {
 
     public Long getId() {
         return id;
+    }
+
+    public void addGoalForFirstTeam(Goal goal) {
+        if(this.teamAGoals == null) {
+            this.teamAGoals = new ArrayList<>();
+        }
+        this.teamAGoals.add(goal);
+    }
+
+    public void addGoalForSecondTeam(Goal goal) {
+        if(this.teamBGoals == null) {
+            this.teamBGoals = new ArrayList<>();
+        }
+        this.teamBGoals.add(goal);
     }
 
 }
