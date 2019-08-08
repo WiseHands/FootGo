@@ -32,10 +32,22 @@ public class Game {
 
 
     public boolean hasTeamAWin(){
+        if(this.teamAGoals == null) {
+            this.teamAGoals = new ArrayList<>();
+        }
+        if(this.teamBGoals == null) {
+            this.teamBGoals = new ArrayList<>();
+        }
         return  teamAGoals.size() > teamBGoals.size();
     }
 
     public boolean hasTeamBWin(){
+        if(this.teamAGoals == null) {
+            this.teamAGoals = new ArrayList<>();
+        }
+        if(this.teamBGoals == null) {
+            this.teamBGoals = new ArrayList<>();
+        }
         return  teamAGoals.size() < teamBGoals.size();
     }
 

@@ -236,6 +236,83 @@ public class GameUnitTests {
 
     }
 
+    @Test
+    public void testWinTeamRelation() {
+        Team teamA = new Team();
+        teamA.setTeamName(TEAM_A_NAME);
+
+        Captain captainA = new Captain();
+        captainA.setCaptainName(TEAM_A_CAPTAIN_NAME);
+        captainA.setCaptainEmail(TEAM_A_CAPTAIN_EMAIL);
+        captainA.setCaptainPhone(TEAM_A_CAPTAIN_PHONE);
+
+        captainA.setTeam(teamA);
+        teamA.setCaptain(captainA);
+
+        Player teamAPlayer1 = new Player();
+        teamAPlayer1.setPlayerName(TEAM_A_PLAYER_ONE_NAME);
+        teamAPlayer1.setTeam(teamA);
+
+        Player teamAplayer2 = new Player();
+        teamAplayer2.setPlayerName(TEAM_A_PLAYER_TWO_NAME);
+        teamAplayer2.setTeam(teamA);
+
+        teamA.addPlayer(teamAPlayer1);
+        teamA.addPlayer(teamAplayer2);
+
+        entityManager.persist(captainA);
+        entityManager.persist(teamA);
+        entityManager.flush();
+
+//        created team B
+        Team teamB = new Team();
+        teamB.setTeamName(TEAM_B_NAME);
+
+        Captain captainB = new Captain();
+        captainB.setCaptainName(TEAM_B_CAPTAIN_NAME);
+        captainB.setCaptainEmail(TEAM_B_CAPTAIN_EMAIL);
+        captainB.setCaptainPhone(TEAM_B_CAPTAIN_PHONE);
+
+        captainB.setTeam(teamB);
+        teamB.setCaptain(captainB);
+
+        Player teamBplayer = new Player();
+        teamBplayer.setPlayerName(TEAM_B_PLAYER_ONE_NAME);
+        teamBplayer.setTeam(teamB);
+
+        Player teamBplayer2 = new Player();
+        teamBplayer2.setPlayerName(TEAM_B_PLAYER_TWO_NAME);
+        teamBplayer2.setTeam(teamB);
+
+        teamB.addPlayer(teamBplayer);
+        teamB.addPlayer(teamBplayer2);
+
+        entityManager.persist(captainB);
+        entityManager.persist(teamB);
+        entityManager.flush();
+
+        Game game = new Game();
+        game.setFirstTeam(teamA);
+        game.setSecondTeam(teamB);
+
+        Goal goalTeamA = new Goal();
+        goalTeamA.setTime(TEAM_A_GOAL_TIME);
+        goalTeamA.setPlayer(teamAPlayer1);
+        goalTeamA.setGame(game);
+
+        game.addGoalForFirstTeam(goalTeamA);
+
+        game = gameRepository.save(game);
+
+
+        Optional<Game> gameFromDBOptional = gameRepository.findById(game.getId());
+        assertThat(gameFromDBOptional.isPresent()).isTrue();
+
+        Game gameFromDb = gameFromDBOptional.get();
+        assertThat(gameFromDb.getTeamAGoals().get(0).getTime()).isEqualTo(TEAM_A_GOAL_TIME);
+        assertThat(gameFromDb.hasTeamAWin()).isEqualTo(true);
+    }
+
 	@After
 	public void cleanUp() {
 		gameRepository.deleteAll();
