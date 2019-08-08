@@ -1,6 +1,7 @@
 package ua.lviv.footgo.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "game")
@@ -12,8 +13,6 @@ public class Game {
     @Column(name = "id")
     private Long id;
 
-    @Column
-    private Integer tour;
     @Column
     private String gameTime;
     @Column
@@ -33,10 +32,22 @@ public class Game {
 
 
     public boolean hasTeamAWin(){
+        if(this.teamAGoals == null) {
+            this.teamAGoals = new ArrayList<>();
+        }
+        if(this.teamBGoals == null) {
+            this.teamBGoals = new ArrayList<>();
+        }
         return  teamAGoals.size() > teamBGoals.size();
     }
 
     public boolean hasTeamBWin(){
+        if(this.teamAGoals == null) {
+            this.teamAGoals = new ArrayList<>();
+        }
+        if(this.teamBGoals == null) {
+            this.teamBGoals = new ArrayList<>();
+        }
         return  teamAGoals.size() < teamBGoals.size();
     }
 
@@ -44,13 +55,6 @@ public class Game {
         return teamAGoals.size() == teamBGoals.size();
     }
 
-    public Integer getTour() {
-        return tour;
-    }
-
-    public void setTour(Integer tour) {
-        this.tour = tour;
-    }
 
     public String getGameTime() {
         return gameTime;
@@ -98,6 +102,24 @@ public class Game {
 
     public void setTeamBGoals(List<Goal> teamBGoals) {
         this.teamBGoals = teamBGoals;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void addGoalForFirstTeam(Goal goal) {
+        if(this.teamAGoals == null) {
+            this.teamAGoals = new ArrayList<>();
+        }
+        this.teamAGoals.add(goal);
+    }
+
+    public void addGoalForSecondTeam(Goal goal) {
+        if(this.teamBGoals == null) {
+            this.teamBGoals = new ArrayList<>();
+        }
+        this.teamBGoals.add(goal);
     }
 
 }

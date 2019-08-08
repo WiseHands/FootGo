@@ -11,7 +11,6 @@ import ua.lviv.footgo.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -169,7 +168,6 @@ public class TeamGenerator {
         Game game = new Game();
         game.setFirstTeam(atHome);
         game.setSecondTeam(guestTeam);
-        game.setTour(tour);
         game.setGameTime(Instant.now().toString());
         game.setLocation("FC Sokil");
         atHome = teamRepository.save(atHome);
