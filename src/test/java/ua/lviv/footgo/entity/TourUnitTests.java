@@ -228,6 +228,44 @@ public class TourUnitTests {
         assertThat(tourFromDb.getGameList().get(0).getSecondTeam().getCaptain().getCaptainName()).isEqualTo("CAPTAIN " + teamB.getTeamName());
     }
 
+
+    @Test
+    public void testCreateNineTours() {
+        Team teamA = new Team();
+        teamA.setTeamName(TEAM_A_NAME);
+        Captain captainA = _createCaptain(teamA);
+        captainRepository.save(captainA);
+        _createPlayerList(teamA);
+        teamRepository.save(teamA);
+
+//        created team B
+        Team teamB = new Team();
+        teamB.setTeamName(TEAM_B_NAME);
+        Captain captainB = _createCaptain(teamB);
+        captainRepository.save(captainB);
+        _createPlayerList(teamB);
+        teamRepository.save(teamB);
+
+        Game game = _createGame(teamA, teamB);
+        Tour tour = _createTour(TOUR_NUMBER);
+        _addGameToTour(tour, game);
+        tourRepository.save(tour);
+
+        Optional<Tour> tourFromDbOptional = tourRepository.findById(tour.getId());
+        assertThat(tourFromDbOptional.isPresent()).isTrue();
+
+        Tour tourFromDb = tourFromDbOptional.get();
+        assertThat(tourFromDb.getTourNumber()).isEqualTo(TOUR_NUMBER);
+
+        assertThat(tourFromDb.getGameList().size()).isEqualTo(1);
+
+        assertThat(tourFromDb.getGameList().get(0).getFirstTeam().getTeamName()).isEqualTo(TEAM_A_NAME);
+        assertThat(tourFromDb.getGameList().get(0).getFirstTeam().getCaptain().getCaptainName()).isEqualTo("CAPTAIN " + teamA.getTeamName());
+
+        assertThat(tourFromDb.getGameList().get(0).getSecondTeam().getTeamName()).isEqualTo(TEAM_B_NAME);
+        assertThat(tourFromDb.getGameList().get(0).getSecondTeam().getCaptain().getCaptainName()).isEqualTo("CAPTAIN " + teamB.getTeamName());
+    }
+
 	@After
 	public void cleanUp() {
 		gameRepository.deleteAll();
@@ -274,6 +312,13 @@ public class TourUnitTests {
     private void _addGameToTour(Tour tour, Game game) {
         tour.addGame(game);
         game.setTour(tour);
+    }
+
+    private Game _createGame(Team homeTeam, Team guestTeam) {
+        Game game = new Game();
+        game.setFirstTeam(homeTeam);
+        game.setSecondTeam(guestTeam);
+        return game;
     }
 	
 }
