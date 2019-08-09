@@ -47,6 +47,7 @@ public class TourUnitTests {
     private static final Integer TEAM_B_GOAL_TWO_TIME = 176;
 
     private static final Integer TOUR_NUMBER = 1;
+    private static final Integer NUMBER_OF_PLAYERS_IN_TEAM = 11;
 
 
     @Autowired
@@ -67,6 +68,8 @@ public class TourUnitTests {
     @Autowired
     private TourRepository tourRepository;
 
+    @Autowired
+    private PlayerRepository playerRepository;
 
     @Test
     public void testGameDeletion(){
@@ -231,25 +234,17 @@ public class TourUnitTests {
 
     @Test
     public void testCreateNineTours() {
-        Team teamA = new Team();
-        teamA.setTeamName(TEAM_A_NAME);
-        Captain captainA = _createCaptain(teamA);
-        captainRepository.save(captainA);
-        _createPlayerList(teamA);
-        teamRepository.save(teamA);
+        Team teamA = _createTeam(TEAM_A_NAME);
 
-//        created team B
-        Team teamB = new Team();
-        teamB.setTeamName(TEAM_B_NAME);
-        Captain captainB = _createCaptain(teamB);
-        captainRepository.save(captainB);
-        _createPlayerList(teamB);
-        teamRepository.save(teamB);
+        Team teamB = _createTeam(TEAM_B_NAME);
 
         Game game = _createGame(teamA, teamB);
+
         Tour tour = _createTour(TOUR_NUMBER);
         _addGameToTour(tour, game);
         tourRepository.save(tour);
+
+
 
         Optional<Tour> tourFromDbOptional = tourRepository.findById(tour.getId());
         assertThat(tourFromDbOptional.isPresent()).isTrue();
@@ -269,6 +264,10 @@ public class TourUnitTests {
 	@After
 	public void cleanUp() {
 		gameRepository.deleteAll();
+        captainRepository.deleteAll();
+        playerRepository.deleteAll();
+		teamRepository.deleteAll();
+		goalRepository.deleteAll();
 	}
 
 	private Captain _createCaptain(Team team) {
@@ -284,8 +283,9 @@ public class TourUnitTests {
     }
 
     private void _createPlayerList(Team team) {
-        _createPlayer(team, TEAM_A_PLAYER_ONE_NAME);
-        _createPlayer(team, TEAM_A_PLAYER_TWO_NAME);
+        for(int i=0; i<NUMBER_OF_PLAYERS_IN_TEAM; i++) {
+            _createPlayer(team, team.getTeamName() + " " + i);
+        }
     }
 
     private void _createPlayer(Team team, String name) {
@@ -319,6 +319,16 @@ public class TourUnitTests {
         game.setFirstTeam(homeTeam);
         game.setSecondTeam(guestTeam);
         return game;
+    }
+
+    private Team _createTeam(String name) {
+        Team team = new Team();
+        team.setTeamName(name);
+        Captain captain = _createCaptain(team);
+        captainRepository.save(captain);
+        _createPlayerList(team);
+        teamRepository.save(team);
+        return team;
     }
 	
 }
