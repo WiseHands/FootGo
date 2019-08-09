@@ -1,6 +1,7 @@
 package ua.lviv.footgo.entity;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 import ua.lviv.footgo.repository.*;
+import ua.lviv.footgo.util.ResultsGenerator;
 
 import java.util.List;
 import java.util.Optional;
@@ -48,10 +50,6 @@ public class TourUnitTests {
 
     private static final Integer TOUR_NUMBER = 1;
 
-    private static final Integer NUMBER_OF_TEAMS = 10;
-    private static final Integer NUMBER_OF_PLAYERS_IN_TEAM = 11;
-    private static final Integer NUMBER_OF_TOURS = 9;
-    private static final Integer NUMBER_OF_GAMES_IN_TOUR = 5;
 
 
     @Autowired
@@ -74,6 +72,9 @@ public class TourUnitTests {
 
     @Autowired
     private PlayerRepository playerRepository;
+
+    @Autowired
+    private ResultsGenerator generator;
 
     @Test
     public void testGameDeletion(){
@@ -187,36 +188,36 @@ public class TourUnitTests {
         Team teamA = new Team();
         teamA.setTeamName(TEAM_A_NAME);
 
-        Captain captainA = _createCaptain(teamA);
+        Captain captainA = generator._createCaptain(teamA);
         captainRepository.save(captainA);
 
-        _createPlayerList(teamA);
+        generator._createPlayerList(teamA);
         teamRepository.save(teamA);
 
 //        created team B
         Team teamB = new Team();
         teamB.setTeamName(TEAM_B_NAME);
 
-        Captain captainB = _createCaptain(teamB);
+        Captain captainB = generator._createCaptain(teamB);
         captainRepository.save(captainB);
 
-        _createPlayerList(teamB);
+        generator._createPlayerList(teamB);
         teamRepository.save(teamB);
 
         Game game = new Game();
         game.setFirstTeam(teamA);
         game.setSecondTeam(teamB);
 
-        Goal goalTeamA = _createGoal(game, teamA.getPlayers().get(0), TEAM_A_GOAL_TIME);
-        Goal goalTeamB = _createGoal(game, teamB.getPlayers().get(0), TEAM_B_GOAL_TIME);
-        Goal goalTeamBTwo = _createGoal(game, teamB.getPlayers().get(1), TEAM_B_GOAL_TWO_TIME);
+        Goal goalTeamA = generator._createGoal(game, teamA.getPlayers().get(0), TEAM_A_GOAL_TIME);
+        Goal goalTeamB = generator._createGoal(game, teamB.getPlayers().get(0), TEAM_B_GOAL_TIME);
+        Goal goalTeamBTwo = generator._createGoal(game, teamB.getPlayers().get(1), TEAM_B_GOAL_TWO_TIME);
 
         game.addGoalForFirstTeam(goalTeamA);
         game.addGoalForSecondTeam(goalTeamB);
         game.addGoalForSecondTeam(goalTeamBTwo);
 
-        Tour tour = _createTour(TOUR_NUMBER);
-        _addGameToTour(tour, game);
+        Tour tour = generator._createTour(TOUR_NUMBER);
+        generator._addGameToTour(tour, game);
 
         tourRepository.save(tour);
 
@@ -238,10 +239,31 @@ public class TourUnitTests {
 
     @Test
     public void testCreateLeague() {
-        _createLeague();
+       generator._createLeague();
+
+        List<Team> teamList = (List<Team>) teamRepository.findAll();
+        assertThat(teamList.size()).isEqualTo(generator.NUMBER_OF_TEAMS);
+        for(int i=0; i<teamList.size(); i++) {
+            Team team = teamList.get(i);
+            List<Player> playerList = team.getPlayers();
+            assertThat(playerList.size()).isEqualTo(generator.NUMBER_OF_PLAYERS_IN_TEAM);
+            for(int j =0; j< playerList.size(); j++) {
+                Player player = playerList.get(j);
+                assertThat(player.getPlayerName()).isEqualTo(team.getTeamName() + " " + j);
+            }
+        }
+
+        List<Tour> tourList = (List<Tour>) tourRepository.findAll();
+        assertThat(tourList.size()).isEqualTo(generator.NUMBER_OF_TOURS);
+        for(int i=0; i< tourList.size(); i++) {
+            Tour tour = tourList.get(i);
+            List<Game> gameList = tour.getGameList();
+            assertThat(gameList.size()).isEqualTo(generator.NUMBER_OF_GAMES_IN_TOUR);
+        }
     }
 
 	@After
+    @Before
 	public void cleanUp() {
         tourRepository.deleteAll();
 		gameRepository.deleteAll();
@@ -251,206 +273,8 @@ public class TourUnitTests {
 		goalRepository.deleteAll();
 	}
 
-	private void _createLeague() {
-        for(int i=0; i<NUMBER_OF_TEAMS; i++) {
-            _createTeam("TEAM " + i);
-        }
-        List<Team> teamList = (List<Team>) teamRepository.findAll();
-        assertThat(teamList.size()).isEqualTo(NUMBER_OF_TEAMS);
-        for(int i=0; i<teamList.size(); i++) {
-            Team team = teamList.get(i);
-            List<Player> playerList = team.getPlayers();
-            assertThat(playerList.size()).isEqualTo(NUMBER_OF_PLAYERS_IN_TEAM);
-            for(int j =0; j< playerList.size(); j++) {
-                Player player = playerList.get(j);
-                assertThat(player.getPlayerName()).isEqualTo(team.getTeamName() + " " + j);
-            }
-        }
-
-        for(int i=0; i<NUMBER_OF_TOURS; i++) {
-
-            switch (Integer.valueOf(i)) {
-                case 0:
-                    Tour tour = _createTour(i);
-                    tour.setTourNumber(i);
-
-                    _createGame(teamList.get(0), teamList.get(9), tour);
-                    _createGame(teamList.get(1), teamList.get(8), tour);
-                    _createGame(teamList.get(2), teamList.get(7), tour);
-                    _createGame(teamList.get(3), teamList.get(6), tour);
-                    _createGame(teamList.get(4), teamList.get(5), tour);
-
-                    tourRepository.save(tour);
-                    break;
-                case 1:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
-
-                    _createGame(teamList.get(9), teamList.get(5), tour);
-                    _createGame(teamList.get(6), teamList.get(4), tour);
-                    _createGame(teamList.get(7), teamList.get(3), tour);
-                    _createGame(teamList.get(8), teamList.get(2), tour);
-                    _createGame(teamList.get(0), teamList.get(1), tour);
-
-                    tourRepository.save(tour);
-                    break;
-                case 2:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
-
-                    _createGame(teamList.get(1), teamList.get(9), tour);
-                    _createGame(teamList.get(2), teamList.get(0), tour);
-                    _createGame(teamList.get(3), teamList.get(8), tour);
-                    _createGame(teamList.get(4), teamList.get(7), tour);
-                    _createGame(teamList.get(5), teamList.get(6), tour);
-
-                    tourRepository.save(tour);
-                    break;
-                case 3:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
-
-                    _createGame(teamList.get(9), teamList.get(6), tour);
-                    _createGame(teamList.get(7), teamList.get(5), tour);
-                    _createGame(teamList.get(8), teamList.get(4), tour);
-                    _createGame(teamList.get(0), teamList.get(3), tour);
-                    _createGame(teamList.get(1), teamList.get(2), tour);
-
-                    tourRepository.save(tour);
-                    break;
-                case 4:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
-
-                    _createGame(teamList.get(2), teamList.get(9), tour);
-                    _createGame(teamList.get(3), teamList.get(1), tour);
-                    _createGame(teamList.get(4), teamList.get(0), tour);
-                    _createGame(teamList.get(5), teamList.get(8), tour);
-                    _createGame(teamList.get(4), teamList.get(7), tour);
-
-                    tourRepository.save(tour);
-                    break;
-                case 5:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
-
-                    _createGame(teamList.get(9), teamList.get(7), tour);
-                    _createGame(teamList.get(8), teamList.get(6), tour);
-                    _createGame(teamList.get(0), teamList.get(5), tour);
-                    _createGame(teamList.get(1), teamList.get(4), tour);
-                    _createGame(teamList.get(2), teamList.get(3), tour);
-
-                    tourRepository.save(tour);
-                    break;
-                case 6:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
-
-                    _createGame(teamList.get(3), teamList.get(9), tour);
-                    _createGame(teamList.get(4), teamList.get(2), tour);
-                    _createGame(teamList.get(5), teamList.get(1), tour);
-                    _createGame(teamList.get(6), teamList.get(0), tour);
-                    _createGame(teamList.get(7), teamList.get(8), tour);
-
-                    tourRepository.save(tour);
-                    break;
-                case 7:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
-
-                    _createGame(teamList.get(9), teamList.get(8), tour);
-                    _createGame(teamList.get(0), teamList.get(7), tour);
-                    _createGame(teamList.get(1), teamList.get(6), tour);
-                    _createGame(teamList.get(2), teamList.get(5), tour);
-                    _createGame(teamList.get(3), teamList.get(4), tour);
-
-                    tourRepository.save(tour);
-                    break;
-                case 8:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
-
-                    _createGame(teamList.get(4), teamList.get(9), tour);
-                    _createGame(teamList.get(5), teamList.get(3), tour);
-                    _createGame(teamList.get(6), teamList.get(2), tour);
-                    _createGame(teamList.get(7), teamList.get(1), tour);
-                    _createGame(teamList.get(8), teamList.get(0), tour);
-
-                    tourRepository.save(tour);
-                    break;
-            }
-        }
 
 
-        List<Tour> tourList = (List<Tour>) tourRepository.findAll();
-        assertThat(tourList.size()).isEqualTo(NUMBER_OF_TOURS);
-        for(int i=0; i< tourList.size(); i++) {
-            Tour tour = tourList.get(i);
-            List<Game> gameList = tour.getGameList();
-            assertThat(gameList.size()).isEqualTo(NUMBER_OF_GAMES_IN_TOUR);
-        }
-    }
 
-	private Captain _createCaptain(Team team) {
-        Captain captain = new Captain();
-        captain.setCaptainName("CAPTAIN " + team.getTeamName());
-        captain.setCaptainEmail("CAPTAIN EMAIL" + team.getTeamName());
-        captain.setCaptainPhone("CAPTAIN PHONE" + team.getTeamName());
-
-        captain.setTeam(team);
-        team.setCaptain(captain);
-
-        return captain;
-    }
-
-    private void _createPlayerList(Team team) {
-        for(int i=0; i<NUMBER_OF_PLAYERS_IN_TEAM; i++) {
-            _createPlayer(team, team.getTeamName() + " " + i);
-        }
-    }
-
-    private void _createPlayer(Team team, String name) {
-        Player player = new Player();
-        player.setPlayerName(name);
-        player.setTeam(team);
-        team.addPlayer(player);
-    }
-
-    private Goal _createGoal(Game game, Player player, Integer time) {
-        Goal goal = new Goal();
-        goal.setTime(time);
-        goal.setPlayer(player);
-        goal.setGame(game);
-        return goal;
-    }
-
-    private Tour _createTour(Integer tourNumber) {
-        Tour tour = new Tour();
-        tour.setTourNumber(tourNumber);
-        return tour;
-    }
-
-    private void _addGameToTour(Tour tour, Game game) {
-        tour.addGame(game);
-        game.setTour(tour);
-    }
-
-    private Game _createGame(Team homeTeam, Team guestTeam, Tour tour) {
-        Game game = new Game();
-        game.setFirstTeam(homeTeam);
-        game.setSecondTeam(guestTeam);
-        _addGameToTour(tour, game);
-        return game;
-    }
-
-    private Team _createTeam(String name) {
-        Team team = new Team();
-        team.setTeamName(name);
-        Captain captain = _createCaptain(team);
-        captainRepository.save(captain);
-        _createPlayerList(team);
-        teamRepository.save(team);
-        return team;
-    }
 	
 }
