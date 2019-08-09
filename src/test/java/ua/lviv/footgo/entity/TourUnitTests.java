@@ -47,6 +47,7 @@ public class TourUnitTests {
     private static final Integer TEAM_B_GOAL_TWO_TIME = 176;
 
     private static final Integer TOUR_NUMBER = 1;
+    private static final Integer NUMBER_OF_TEAMS = 10;
     private static final Integer NUMBER_OF_PLAYERS_IN_TEAM = 11;
 
 
@@ -234,39 +235,34 @@ public class TourUnitTests {
 
     @Test
     public void testCreateNineTours() {
-        Team teamA = _createTeam(TEAM_A_NAME);
+        for(int i=0; i<NUMBER_OF_TEAMS; i++) {
+            Team team = _createTeam("TEAM " + i);
+        }
+        List<Team> teamList = (List<Team>) teamRepository.findAll();
+        assertThat(teamList.size()).isEqualTo(NUMBER_OF_TEAMS);
+        for(int i=0; i<teamList.size(); i++) {
+            Team team = teamList.get(i);
+            List<Player> playerList = team.getPlayers();
+            assertThat(playerList.size()).isEqualTo(NUMBER_OF_PLAYERS_IN_TEAM);
+            for(int j =0; j< playerList.size(); j++) {
+                Player player = playerList.get(j);
+                assertThat(player.getPlayerName()).isEqualTo(team.getTeamName() + " " + j);
+            }
+        }
 
-        Team teamB = _createTeam(TEAM_B_NAME);
-
-        Game game = _createGame(teamA, teamB);
-
-        Tour tour = _createTour(TOUR_NUMBER);
-        _addGameToTour(tour, game);
-        tourRepository.save(tour);
-
-
-
-        Optional<Tour> tourFromDbOptional = tourRepository.findById(tour.getId());
-        assertThat(tourFromDbOptional.isPresent()).isTrue();
-
-        Tour tourFromDb = tourFromDbOptional.get();
-        assertThat(tourFromDb.getTourNumber()).isEqualTo(TOUR_NUMBER);
-
-        assertThat(tourFromDb.getGameList().size()).isEqualTo(1);
-
-        assertThat(tourFromDb.getGameList().get(0).getFirstTeam().getTeamName()).isEqualTo(TEAM_A_NAME);
-        assertThat(tourFromDb.getGameList().get(0).getFirstTeam().getCaptain().getCaptainName()).isEqualTo("CAPTAIN " + teamA.getTeamName());
-
-        assertThat(tourFromDb.getGameList().get(0).getSecondTeam().getTeamName()).isEqualTo(TEAM_B_NAME);
-        assertThat(tourFromDb.getGameList().get(0).getSecondTeam().getCaptain().getCaptainName()).isEqualTo("CAPTAIN " + teamB.getTeamName());
+//        Game game = _createGame(teamA, teamB);
+//
+//        Tour tour = _createTour(TOUR_NUMBER);
+//        _addGameToTour(tour, game);
+//        tourRepository.save(tour);
     }
 
 	@After
 	public void cleanUp() {
 		gameRepository.deleteAll();
         captainRepository.deleteAll();
+        teamRepository.deleteAll();
         playerRepository.deleteAll();
-		teamRepository.deleteAll();
 		goalRepository.deleteAll();
 	}
 
@@ -290,7 +286,7 @@ public class TourUnitTests {
 
     private void _createPlayer(Team team, String name) {
         Player player = new Player();
-        player.setPlayerName(team.getTeamName() + name);
+        player.setPlayerName(name);
         player.setTeam(team);
         team.addPlayer(player);
     }
