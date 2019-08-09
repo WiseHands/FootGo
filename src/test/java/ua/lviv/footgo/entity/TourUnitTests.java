@@ -237,9 +237,23 @@ public class TourUnitTests {
 
 
     @Test
-    public void testCreateNineTours() {
+    public void testCreateLeague() {
+        _createLeague();
+    }
+
+	@After
+	public void cleanUp() {
+        tourRepository.deleteAll();
+		gameRepository.deleteAll();
+        captainRepository.deleteAll();
+        teamRepository.deleteAll();
+        playerRepository.deleteAll();
+		goalRepository.deleteAll();
+	}
+
+	private void _createLeague() {
         for(int i=0; i<NUMBER_OF_TEAMS; i++) {
-            Team team = _createTeam("TEAM " + i);
+            _createTeam("TEAM " + i);
         }
         List<Team> teamList = (List<Team>) teamRepository.findAll();
         assertThat(teamList.size()).isEqualTo(NUMBER_OF_TEAMS);
@@ -376,16 +390,6 @@ public class TourUnitTests {
             assertThat(gameList.size()).isEqualTo(NUMBER_OF_GAMES_IN_TOUR);
         }
     }
-
-	@After
-	public void cleanUp() {
-        tourRepository.deleteAll();
-		gameRepository.deleteAll();
-        captainRepository.deleteAll();
-        teamRepository.deleteAll();
-        playerRepository.deleteAll();
-		goalRepository.deleteAll();
-	}
 
 	private Captain _createCaptain(Team team) {
         Captain captain = new Captain();
