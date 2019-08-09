@@ -49,6 +49,7 @@ public class TourUnitTests {
     private static final Integer TOUR_NUMBER = 1;
     private static final Integer NUMBER_OF_TEAMS = 10;
     private static final Integer NUMBER_OF_PLAYERS_IN_TEAM = 11;
+    private static final Integer NUMBER_OF_TOURS = 9;
 
 
     @Autowired
@@ -250,15 +251,128 @@ public class TourUnitTests {
             }
         }
 
-//        Game game = _createGame(teamA, teamB);
-//
-//        Tour tour = _createTour(TOUR_NUMBER);
-//        _addGameToTour(tour, game);
-//        tourRepository.save(tour);
+        for(int i=0; i<NUMBER_OF_TOURS; i++) {
+
+            switch (Integer.valueOf(i)) {
+                case 0:
+                    Tour tour = _createTour(i);
+                    tour.setTourNumber(i);
+
+                    _createGame(teamList.get(0), teamList.get(9), tour);
+                    _createGame(teamList.get(1), teamList.get(8), tour);
+                    _createGame(teamList.get(2), teamList.get(7), tour);
+                    _createGame(teamList.get(3), teamList.get(6), tour);
+                    _createGame(teamList.get(4), teamList.get(5), tour);
+
+                    tourRepository.save(tour);
+                    break;
+                case 1:
+                    tour = _createTour(i);
+                    tour.setTourNumber(i);
+
+                    _createGame(teamList.get(9), teamList.get(5), tour);
+                    _createGame(teamList.get(6), teamList.get(4), tour);
+                    _createGame(teamList.get(7), teamList.get(3), tour);
+                    _createGame(teamList.get(8), teamList.get(2), tour);
+                    _createGame(teamList.get(0), teamList.get(1), tour);
+
+                    tourRepository.save(tour);
+                    break;
+                case 2:
+                    tour = _createTour(i);
+                    tour.setTourNumber(i);
+
+                    _createGame(teamList.get(1), teamList.get(9), tour);
+                    _createGame(teamList.get(2), teamList.get(0), tour);
+                    _createGame(teamList.get(3), teamList.get(8), tour);
+                    _createGame(teamList.get(4), teamList.get(7), tour);
+                    _createGame(teamList.get(5), teamList.get(6), tour);
+
+                    tourRepository.save(tour);
+                    break;
+                case 3:
+                    tour = _createTour(i);
+                    tour.setTourNumber(i);
+
+                    _createGame(teamList.get(9), teamList.get(6), tour);
+                    _createGame(teamList.get(7), teamList.get(5), tour);
+                    _createGame(teamList.get(8), teamList.get(4), tour);
+                    _createGame(teamList.get(0), teamList.get(3), tour);
+                    _createGame(teamList.get(1), teamList.get(2), tour);
+
+                    tourRepository.save(tour);
+                    break;
+                case 4:
+                    tour = _createTour(i);
+                    tour.setTourNumber(i);
+
+                    _createGame(teamList.get(2), teamList.get(9), tour);
+                    _createGame(teamList.get(3), teamList.get(1), tour);
+                    _createGame(teamList.get(4), teamList.get(0), tour);
+                    _createGame(teamList.get(5), teamList.get(8), tour);
+                    _createGame(teamList.get(4), teamList.get(7), tour);
+
+                    tourRepository.save(tour);
+                    break;
+                case 5:
+                    tour = _createTour(i);
+                    tour.setTourNumber(i);
+
+                    _createGame(teamList.get(9), teamList.get(7), tour);
+                    _createGame(teamList.get(8), teamList.get(6), tour);
+                    _createGame(teamList.get(0), teamList.get(5), tour);
+                    _createGame(teamList.get(1), teamList.get(4), tour);
+                    _createGame(teamList.get(2), teamList.get(3), tour);
+
+                    tourRepository.save(tour);
+                    break;
+                case 6:
+                    tour = _createTour(i);
+                    tour.setTourNumber(i);
+
+                    _createGame(teamList.get(3), teamList.get(9), tour);
+                    _createGame(teamList.get(4), teamList.get(2), tour);
+                    _createGame(teamList.get(5), teamList.get(1), tour);
+                    _createGame(teamList.get(6), teamList.get(0), tour);
+                    _createGame(teamList.get(7), teamList.get(8), tour);
+
+                    tourRepository.save(tour);
+                    break;
+                case 7:
+                    tour = _createTour(i);
+                    tour.setTourNumber(i);
+
+                    _createGame(teamList.get(9), teamList.get(8), tour);
+                    _createGame(teamList.get(0), teamList.get(7), tour);
+                    _createGame(teamList.get(1), teamList.get(6), tour);
+                    _createGame(teamList.get(2), teamList.get(5), tour);
+                    _createGame(teamList.get(3), teamList.get(4), tour);
+
+                    tourRepository.save(tour);
+                    break;
+                case 8:
+                    tour = _createTour(i);
+                    tour.setTourNumber(i);
+
+                    _createGame(teamList.get(4), teamList.get(9), tour);
+                    _createGame(teamList.get(5), teamList.get(3), tour);
+                    _createGame(teamList.get(6), teamList.get(2), tour);
+                    _createGame(teamList.get(7), teamList.get(1), tour);
+                    _createGame(teamList.get(8), teamList.get(0), tour);
+
+                    tourRepository.save(tour);
+                    break;
+            }
+        }
+
+
+        List<Tour> tourList = (List<Tour>) tourRepository.findAll();
+        assertThat(tourList.size()).isEqualTo(NUMBER_OF_TOURS);
     }
 
 	@After
 	public void cleanUp() {
+        tourRepository.deleteAll();
 		gameRepository.deleteAll();
         captainRepository.deleteAll();
         teamRepository.deleteAll();
@@ -310,10 +424,12 @@ public class TourUnitTests {
         game.setTour(tour);
     }
 
-    private Game _createGame(Team homeTeam, Team guestTeam) {
+    private Game _createGame(Team homeTeam, Team guestTeam, Tour tour) {
         Game game = new Game();
         game.setFirstTeam(homeTeam);
         game.setSecondTeam(guestTeam);
+        tour.addGame(game);
+        game.setTour(tour);
         return game;
     }
 
