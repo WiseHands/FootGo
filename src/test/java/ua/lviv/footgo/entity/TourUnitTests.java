@@ -47,9 +47,11 @@ public class TourUnitTests {
     private static final Integer TEAM_B_GOAL_TWO_TIME = 176;
 
     private static final Integer TOUR_NUMBER = 1;
+
     private static final Integer NUMBER_OF_TEAMS = 10;
     private static final Integer NUMBER_OF_PLAYERS_IN_TEAM = 11;
     private static final Integer NUMBER_OF_TOURS = 9;
+    private static final Integer NUMBER_OF_GAMES_IN_TOUR = 5;
 
 
     @Autowired
@@ -368,6 +370,11 @@ public class TourUnitTests {
 
         List<Tour> tourList = (List<Tour>) tourRepository.findAll();
         assertThat(tourList.size()).isEqualTo(NUMBER_OF_TOURS);
+        for(int i=0; i< tourList.size(); i++) {
+            Tour tour = tourList.get(i);
+            List<Game> gameList = tour.getGameList();
+            assertThat(gameList.size()).isEqualTo(NUMBER_OF_GAMES_IN_TOUR);
+        }
     }
 
 	@After
@@ -428,8 +435,7 @@ public class TourUnitTests {
         Game game = new Game();
         game.setFirstTeam(homeTeam);
         game.setSecondTeam(guestTeam);
-        tour.addGame(game);
-        game.setTour(tour);
+        _addGameToTour(tour, game);
         return game;
     }
 
