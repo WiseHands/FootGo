@@ -1,11 +1,13 @@
 package ua.lviv.footgo.routing;
 
+import ua.lviv.footgo.repository.GameRepository;
 import ua.lviv.footgo.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ua.lviv.footgo.repository.TourRepository;
 
 import java.util.List;
 
@@ -13,6 +15,12 @@ import java.util.List;
 public class HttpRequestsController {
     @Autowired
     TeamRepository teamRepository;
+
+    @Autowired
+    TourRepository tourRepository;
+
+    @Autowired
+    GameRepository gameRepository;
 
     @GetMapping({"/", "/footgo"})
     public String footgo(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
@@ -28,7 +36,8 @@ public class HttpRequestsController {
 
     @GetMapping({"/results"})
     public String results(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-        model.addAttribute("name", name);
+        List tourList = (List) tourRepository.findAll();
+        model.addAttribute("tourList", tourList);
         return "results";
     }
 
