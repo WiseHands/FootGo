@@ -59,6 +59,11 @@ public class HttpRequestsController {
         return "bombardier";
     }
 
+    @GetMapping({"/admin/submission"})
+    public String submission(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+        return "/admin/SubmissionProgress";
+    }
+
     @GetMapping({"/login"})
     public String login(Model model, String error, String logout) {
         if (error != null)
