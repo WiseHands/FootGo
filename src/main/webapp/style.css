@@ -28,7 +28,6 @@ header   {
 }
 a {
     text-decoration: none;
-    list-style-type: none;
 }
 .dropdown {
     display: none;
@@ -187,7 +186,6 @@ input[type=submit] {
 .reg-input-button {
     width: auto;
     height: auto;
-    color: #fff;
     background-color: #42a444;
     font-size: 1.5em;
     padding: 7px 30px;
@@ -360,7 +358,6 @@ input[type=submit] {
      min-width: 150px;
     text-align: left;
 }
-
 
 
 @media screen and (max-width: 870px) {
