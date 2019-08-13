@@ -66,7 +66,7 @@ public class HttpRequestsController {
 
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
-        return "/admin/LoginForm";
+        return "loginAdminForm";
     }
 
 }

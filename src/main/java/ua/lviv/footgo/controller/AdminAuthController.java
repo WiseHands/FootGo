@@ -5,13 +5,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import ua.lviv.footgo.jsonmapper.AdminSignUpRequestJsonbody;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminAuthController {
-    @GetMapping(value="/login", headers="Accept=*/*")
-    public ResponseEntity< String > login(@RequestParam String email, @RequestParam String password) {
-        System.out.println(email + password);
-        return new ResponseEntity<>("Successful login", HttpStatus.OK);
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+    public ResponseEntity< String > addTeamViaJson(@RequestBody AdminSignUpRequestJsonbody adminSignUpRequestJsonbody) {
+
+
+
+
+        return new ResponseEntity<>("Admin is created successfully", HttpStatus.CREATED);
     }
 }

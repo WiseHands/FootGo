@@ -62,7 +62,7 @@ function submitform(ev) {
 
     if (teamName && captainName && captainPhone && captainEmail){
         var url = '/team/signuprequest';
-        sendPostRequestTeamSignUp(jsonTeamInString, url);
+        sendPostRequestSignUp(jsonTeamInString, url);
     }
 
 
@@ -76,7 +76,7 @@ function submitform(ev) {
         + " " + "/team/signuprequest");
 }
 
-function sendPostRequestTeamSignUp(data, url) {
+function sendPostRequestSignUp(data, url) {
     fetch(url, {
         method: 'post',
         body: data,

@@ -63,6 +63,21 @@
                  <div><p><c:out value="${item.teamName}" /></p></div>
             </c:forEach>
         </div>
+
+    <%--<div class="results-block">--%>
+    <%--<c:forEach items="${tourList}" var="tourItem">--%>
+        <%--<div><p class="results-tour-title"><c:out value="${tourItem.tourNumber}-й тур"/></p></div>--%>
+    <%--</c:forEach>--%>
+    <%--<div class="results-tour">--%>
+    <%--<c:forEach items="${gameList}" var="gameItem">--%>
+        <%--<div class="results-date"><p><c:out value="${gameItem.gameTime}"/></p></div>--%>
+        <%--<div class="results-team1"><p><c:out value="${gameItem.firstTeam}"/></p></div>--%>
+        <%--<div class="results-score"><p>0 : 0</p></div>--%>
+        <%--<div class="results-team2"><p><c:out value="${gameItem.secondTeam}"/></p></div>--%>
+    <%--</c:forEach>--%>
+    <%--</div>--%>
+    <%--</div>--%>
+
         <div class="table-games table-offset ">
             <div class="table-title">І</div>
             <div class="table-firstplace">0</div>
