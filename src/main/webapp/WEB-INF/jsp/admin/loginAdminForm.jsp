@@ -36,16 +36,16 @@
             <div class="registration-form">
                 <form name="adminSignUpForm">
                     <div class="team-capitan">
-                       <div class="capitan">
+                         <div class="capitan">
                             <p>Вхід для адміна</p>
-                            <input type="tel" name="email" placeholder="введіть email" required>
-                            <input type="email" name="password" placeholder="введіть пароль" required>
-                       </div>
+                            <input type="email" name="email" placeholder="введіть email" required>
+                            <input type="text" name="password" placeholder="введіть пароль" required>
+                         </div>
                     </div>
-                    <input class="reg-input-button" type="submit" onclick="adminLoginform()" value="Увійти">
+                    <input id="adminSignUp" class="reg-input-button" type="submit" value="Увійти">
                 </form>
             </div>
         </div>
-        <script src="loginAdminScript.js" type="text/javascript"></script>
+        <script src="signUpScript.js" type="text/javascript"></script>
     </body>
 </html>

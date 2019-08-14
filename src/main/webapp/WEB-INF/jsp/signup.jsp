@@ -38,7 +38,6 @@
  <div class="registration-form">
 
      <form name="signUpForm">
-
             <div class="team-capitan">
                 <div class="team-name">
                     <p>Назва команди</p>
@@ -52,65 +51,64 @@
                 </div>
             </div>
             <div class="player-bg">
-            <div class="player1-3">
-                <div class="player">
-                    <p>Гравець</p>
-                    <input type="text" name="player1" placeholder="Прізвище Ім'я">
+                <div class="player1-3">
+                    <div class="player">
+                        <p>Гравець</p>
+                        <input type="text" name="player1" placeholder="Прізвище Ім'я">
+                    </div>
+                    <div class="player">
+                        <p>Гравець</p>
+                        <input type="text" name="player2" placeholder="Прізвище Ім'я">
+                    </div>
+                    <div class="player">
+                        <p>Гравець</p>
+                        <input type="text" name="player3" placeholder="Прізвище Ім'я">
+                    </div>
                 </div>
-                <div class="player">
-                    <p>Гравець</p>
-                    <input type="text" name="player2" placeholder="Прізвище Ім'я">
+                <div class="player1-3">
+                    <div class="player">
+                        <p>Гравець</p>
+                        <input type="text" name="player4" placeholder="Прізвище Ім'я">
+                    </div>
+                    <div class="player">
+                        <p>Гравець</p>
+                        <input type="text" name="player5" placeholder="Прізвище Ім'я">
+                    </div>
+                    <div class="player">
+                        <p>Гравець</p>
+                        <input type="text" name="player6" placeholder="Прізвище Ім'я">
+                    </div>
                 </div>
-                <div class="player">
-                    <p>Гравець</p>
-                    <input type="text" name="player3" placeholder="Прізвище Ім'я">
+                <div class="player1-3">
+                    <div class="player">
+                        <p>Гравець</p>
+                        <input type="text" name="player7" placeholder="Прізвище Ім'я">
+                    </div>
+                    <div class="player">
+                        <p>Гравець</p>
+                        <input type="text" name="player8" placeholder="Прізвище Ім'я">
+                    </div>
+                    <div class="player">
+                        <p>Гравець</p>
+                        <input type="text" name="player9" placeholder="Прізвище Ім'я">
+                    </div>
+                </div>
+                <div class="player1-3">
+                    <div class="player">
+                        <p>Гравець</p>
+                        <input type="text" name="player10" placeholder="Прізвище ім'я">
+                    </div>
+                    <div class="player">
+                        <p>Гравець</p>
+                        <input type="text" name="player11" placeholder="Прізвище ім'я">
+                    </div>
+                    <div class="player">
+                        <p>Гравець</p>
+                        <input type="text" name="player12" placeholder="Прізвище ім'я">
+                    </div>
+                </div>
             </div>
-            </div>
-            <div class="player1-3">
-                <div class="player">
-                    <p>Гравець</p>
-                    <input type="text" name="player4" placeholder="Прізвище Ім'я">
-                </div>
-                <div class="player">
-                    <p>Гравець</p>
-                    <input type="text" name="player5" placeholder="Прізвище Ім'я">
-                </div>
-                <div class="player">
-                    <p>Гравець</p>
-                    <input type="text" name="player6" placeholder="Прізвище Ім'я">
-                </div>
-            </div>
-            <div class="player1-3">
-                <div class="player">
-                    <p>Гравець</p>
-                    <input type="text" name="player7" placeholder="Прізвище Ім'я">
-                </div>
-                <div class="player">
-                    <p>Гравець</p>
-                    <input type="text" name="player8" placeholder="Прізвище Ім'я">
-                </div>
-                <div class="player">
-                    <p>Гравець</p>
-                    <input type="text" name="player9" placeholder="Прізвище Ім'я">
-                </div>
-            </div>
-            <div class="player1-3">
-                <div class="player">
-                    <p>Гравець</p>
-                    <input type="text" name="player10" placeholder="Прізвище ім'я">
-                </div>
-                <div class="player">
-                    <p>Гравець</p>
-                    <input type="text" name="player11" placeholder="Прізвище ім'я">
-                </div>
-                <div class="player">
-                    <p>Гравець</p>
-                    <input type="text" name="player12" placeholder="Прізвище ім'я">
-                </div>
-            </div>
-
         <input class="reg-input-button" type="submit" onclick="submitform()" value="Зареєструватися">
-
      </form>
  </div>
 </div>

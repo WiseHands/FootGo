@@ -32,7 +32,7 @@ public class HttpRequestsController {
     public String signup(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("name", name);
         return "signup";
-    }
+    }  
 
     @GetMapping({"/results"})
     public String results(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
@@ -65,13 +65,10 @@ public class HttpRequestsController {
     }
 
     @GetMapping({"/login"})
-    public String login(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+    public String login(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+        model.addAttribute("name", name);
 
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
-        return "loginAdminForm";
+        return "/admin/loginAdminForm";
     }
 
 }

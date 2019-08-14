@@ -14,8 +14,7 @@ public class AdminAuthController {
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity< String > addTeamViaJson(@RequestBody AdminSignUpRequestJsonbody adminSignUpRequestJsonbody) {
 
-
-
+        System.out.println("admin's email + " + adminSignUpRequestJsonbody.getEmail() + " " + "password " + adminSignUpRequestJsonbody.getPassword());
 
         return new ResponseEntity<>("Admin is created successfully", HttpStatus.CREATED);
     }
