@@ -9,6 +9,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -22,12 +24,11 @@ public class GoalUnitTests {
 	private GoalRepository goalRepository;
 
 	@Test
-	public void checkIsSomePropertiesInDataBase() {
-		// given
+	public void createGoal() {
+		// create goal
 		Goal goal = new Goal();
 		goal.setTime(180);
-		entityManager.persist(goal);
-		entityManager.flush();
+		goalRepository.save(goal);
 
 		// when
 		Goal foundGoal = goalRepository.findByTime(goal.getTime());
@@ -37,6 +38,25 @@ public class GoalUnitTests {
 				.isEqualTo(goal.getTime());
 
 		
+	}
+
+	@Test
+	public void removeGoal() {
+		// create goal
+		Goal goal = new Goal();
+		goal.setTime(180);
+		goalRepository.save(goal);
+
+		// get goal from DB and check it
+		Optional<Goal> goalFromDB = goalRepository.findById(goal.getId());
+		assertThat(goalFromDB.isPresent()).isTrue();
+
+		goalRepository.deleteById(goalFromDB.get().getId());
+
+		goalFromDB = goalRepository.findById(goal.getId());
+		assertThat(goalFromDB.isPresent()).isFalse();
+
+
 	}
 
 	@After
