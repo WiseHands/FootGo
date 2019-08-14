@@ -63,6 +63,10 @@ function submitform(ev) {
     if (teamName && captainName && captainPhone && captainEmail){
         var url = '/team/signuprequest';
         sendPostRequestSignUp(jsonTeamInString, url);
+        document.getElementById('hideifsuccess_0').style.display = 'none';
+        document.getElementById('hideifsuccess_1').style.display = 'none';
+        document.getElementsByClassName('reg-input-button')[0].style.display = 'none';
+        document.getElementById('success').style.display = 'block';
     }
 
     console.log("press button" + teamName

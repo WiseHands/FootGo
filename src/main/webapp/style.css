@@ -153,11 +153,17 @@ input[type=text], input[type=tel], input[type=email] {
     margin: 0 10px;
 
 }
-    .capitan p, .team-name p {
-        font-size: 1.2em;
-        font-weight: 700 ;
-    }
-
+.capitan p, .team-name p {
+    font-size: 1.2em;
+    font-weight: 700 ;
+}
+#success {
+    display: none;
+}
+.note {
+    text-align: left;
+    margin-bottom: 1em;
+}
 .player-bg {
     background-color: rgba(220,216,216, 0.5);
     padding: 10px;

@@ -38,7 +38,7 @@
  <div class="registration-form">
 
      <form name="signUpForm">
-            <div class="team-capitan">
+            <div id="hideifsuccess_0" class="team-capitan">
                 <div class="team-name">
                     <p>Назва команди</p>
                     <input type="text" name="teamName" placeholder="Назва команди" required>
@@ -50,7 +50,9 @@
                     <input type="email" name="captainEmail" placeholder="введіть email" required>
                 </div>
             </div>
-            <div class="player-bg">
+            <div id="success" class="player-bg"><p>Запит успішно надіслано!</p></div>
+            <div id="hideifsuccess_1" class="player-bg">
+            <p class="note">* Для реєстрації не обовязково заповняти всі поля</p>
                 <div class="player1-3">
                     <div class="player">
                         <p>Гравець</p>
