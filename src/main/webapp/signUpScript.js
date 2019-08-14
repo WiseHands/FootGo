@@ -1,4 +1,3 @@
-
 document.getElementById('nav-icon').addEventListener("click", function(){
     document.getElementById("nav-icon").classList.toggle('open');
 });
@@ -112,11 +111,11 @@ adminSignUp.addEventListener('click', function () {
 // http post request
 function sendPostRequestSignUp(data, url) {
     fetch(url, {
-        method: 'post',
-        body: data,
+        method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
-        }
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: data
     })
         .then(function (data) {
             console.log('Request succeeded with JSON response', data);

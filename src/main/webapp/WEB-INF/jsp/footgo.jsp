@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +71,7 @@
         <h1>Аматорський турнір</h1>
         <h3>по футболу 8*8</h3>
         <div class="slogan-button">
-            <input class="main-input-button" type="submit" value="Взяти участь">
+            <input class="main-input-button" type="button" value="Взяти участь" onclick="location.href='/signup';">
         </div>
     </div>
 </div>
