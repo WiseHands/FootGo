@@ -377,7 +377,7 @@ input[type=submit] {
     .registration-photo {
         background-position: center;
         background-size: cover;
-        height: 100%;
+        height: calc(100vh - 60.375px);
     }
 }
 @media screen and (max-width: 720px) {
@@ -409,7 +409,7 @@ input[type=submit] {
     .registration-photo {
         background-position: center;
         background-size: cover;
-        height: 100%;
+        height: calc(100vh - 62px);
     }
     .player1-3 {
         flex-direction: column;

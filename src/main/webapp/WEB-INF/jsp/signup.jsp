@@ -52,64 +52,64 @@
             </div>
             <div id="success" class="player-bg"><p>Запит успішно надіслано!</p></div>
             <div id="hideifsuccess_1" class="player-bg">
-            <p class="note">* Для реєстрації не обовязково заповняти всі поля</p>
-                <div class="player1-3">
-                    <div class="player">
-                        <p>Гравець</p>
-                        <input type="text" name="player1" placeholder="Прізвище Ім'я">
-                    </div>
-                    <div class="player">
-                        <p>Гравець</p>
-                        <input type="text" name="player2" placeholder="Прізвище Ім'я">
-                    </div>
-                    <div class="player">
-                        <p>Гравець</p>
-                        <input type="text" name="player3" placeholder="Прізвище Ім'я">
-                    </div>
-                </div>
-                <div class="player1-3">
-                    <div class="player">
-                        <p>Гравець</p>
-                        <input type="text" name="player4" placeholder="Прізвище Ім'я">
-                    </div>
-                    <div class="player">
-                        <p>Гравець</p>
-                        <input type="text" name="player5" placeholder="Прізвище Ім'я">
-                    </div>
-                    <div class="player">
-                        <p>Гравець</p>
-                        <input type="text" name="player6" placeholder="Прізвище Ім'я">
-                    </div>
-                </div>
-                <div class="player1-3">
-                    <div class="player">
-                        <p>Гравець</p>
-                        <input type="text" name="player7" placeholder="Прізвище Ім'я">
-                    </div>
-                    <div class="player">
-                        <p>Гравець</p>
-                        <input type="text" name="player8" placeholder="Прізвище Ім'я">
-                    </div>
-                    <div class="player">
-                        <p>Гравець</p>
-                        <input type="text" name="player9" placeholder="Прізвище Ім'я">
-                    </div>
-                </div>
-                <div class="player1-3">
-                    <div class="player">
-                        <p>Гравець</p>
-                        <input type="text" name="player10" placeholder="Прізвище ім'я">
-                    </div>
-                    <div class="player">
-                        <p>Гравець</p>
-                        <input type="text" name="player11" placeholder="Прізвище ім'я">
-                    </div>
-                    <div class="player">
-                        <p>Гравець</p>
-                        <input type="text" name="player12" placeholder="Прізвище ім'я">
-                    </div>
-                </div>
-            </div>
+            <!--<p class="note">* Для реєстрації не обовязково заповняти всі поля</p>-->
+                <!--<div class="player1-3">-->
+                    <!--<div class="player">-->
+                        <!--<p>Гравець</p>-->
+                        <!--<input type="text" name="player1" placeholder="Прізвище Ім'я">-->
+                    <!--</div>-->
+                    <!--<div class="player">-->
+                        <!--<p>Гравець</p>-->
+                        <!--<input type="text" name="player2" placeholder="Прізвище Ім'я">-->
+                    <!--</div>-->
+                    <!--<div class="player">-->
+                        <!--<p>Гравець</p>-->
+                        <!--<input type="text" name="player3" placeholder="Прізвище Ім'я">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="player1-3">-->
+                    <!--<div class="player">-->
+                        <!--<p>Гравець</p>-->
+                        <!--<input type="text" name="player4" placeholder="Прізвище Ім'я">-->
+                    <!--</div>-->
+                    <!--<div class="player">-->
+                        <!--<p>Гравець</p>-->
+                        <!--<input type="text" name="player5" placeholder="Прізвище Ім'я">-->
+                    <!--</div>-->
+                    <!--<div class="player">-->
+                        <!--<p>Гравець</p>-->
+                        <!--<input type="text" name="player6" placeholder="Прізвище Ім'я">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="player1-3">-->
+                    <!--<div class="player">-->
+                        <!--<p>Гравець</p>-->
+                        <!--<input type="text" name="player7" placeholder="Прізвище Ім'я">-->
+                    <!--</div>-->
+                    <!--<div class="player">-->
+                        <!--<p>Гравець</p>-->
+                        <!--<input type="text" name="player8" placeholder="Прізвище Ім'я">-->
+                    <!--</div>-->
+                    <!--<div class="player">-->
+                        <!--<p>Гравець</p>-->
+                        <!--<input type="text" name="player9" placeholder="Прізвище Ім'я">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="player1-3">-->
+                    <!--<div class="player">-->
+                        <!--<p>Гравець</p>-->
+                        <!--<input type="text" name="player10" placeholder="Прізвище ім'я">-->
+                    <!--</div>-->
+                    <!--<div class="player">-->
+                        <!--<p>Гравець</p>-->
+                        <!--<input type="text" name="player11" placeholder="Прізвище ім'я">-->
+                    <!--</div>-->
+                    <!--<div class="player">-->
+                        <!--<p>Гравець</p>-->
+                        <!--<input type="text" name="player12" placeholder="Прізвище ім'я">-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
         <input class="reg-input-button" type="submit" onclick="submitform()" value="Зареєструватися">
      </form>
  </div>
