@@ -7,16 +7,27 @@
     justify-content: space-around;
     height: 100%;
 }
+
+.bar-block {
+    display: flex;
+    max-width: 720px;
+    width: 830px;
+}
+.bar-block p {
+}
+.bar-application, .bar-games, .bar-reward {
+    width: 33.3%;
+}
+
+
 .admin-logo {
-    width: 25%;
 }
 .admin-img {
     padding: 1em;
-    max-height: 206px;
-    max-width: 206px;
+    max-height: 180px;
+    max-width: 180px;
 }
 .admin-bar {
-    width: 75%;
 }
 .admin-bar p {
     font-size: 2em;
@@ -29,7 +40,7 @@
     justify-content: space-around;
     padding-bottom: 10px;
 }
-.progress-title p {
+.progress-title p, .bar-block p {
     font-size: 1.5em;
     font-weight: 400;
     margin: 0 10px;
@@ -44,7 +55,7 @@
     height: 17px;
     border: 2px solid black;
     border-radius: 50%;
-    position: ;
+    margin: 0 auto;
 }
 .circle-point {
     width: 1px;
@@ -62,3 +73,91 @@
     position: relative;
     top: -10px;
 }
+.circle:nth-of-type(2)::after {
+    border-bottom: 2px solid black;
+    width: 100px;
+    position: relative;
+    top: -10px;
+}
+
+.b-someclass {
+    text-align: center;
+}
+.b-someclass-inner {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+.b-someclass-inner:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    width: calc(100% - 30px);
+    height: 6px;
+    background: #000;
+    margin-top: -3px;
+    z-index: 2;
+}
+.b-someclass-inner input {
+    display: none;
+}
+.b-someclass-inner input + label {
+    display: inline-block;
+    vertical-align: top;
+    margin: 15px;
+    width: 50px;
+    height: 50px;
+    background: #000;
+    border-radius: 50%;
+    position: relative;
+    z-index: 9;
+}
+.b-someclass-inner input + label:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 50%;
+    width: 50%;
+    margin: -25% 0 0 -25%;
+    border-radius: 50%;
+    background: tomato;
+    transform: scale(0);
+    transition: .25s;
+    transition-delay: .2s;
+}
+.b-someclass-inner input:checked + label:after {
+    background: tomato;
+    transform: scale(1);
+}
+.b-someclass-line {
+    position: absolute;
+    top: 50%;
+    margin-top: -3px;
+    left: 15px;
+    width: 0;
+    height: 6px;
+    background: tomato;
+    transition: .35s;
+    z-index: 2;
+    pointer-events: none;
+}
+.b-someclass-inner input:checked + label ~ .b-someclass-line {
+    left: 50px;
+}
+.b-someclass-inner #check-2:checked + label ~ .b-someclass-line {
+    width: calc(100% / 6 * 2);
+}
+.b-someclass-inner #check-3:checked + label ~ .b-someclass-line {
+    width: calc(100% / 6 * 4);
+}
+/*.b-someclass-inner #check-4:checked + label ~ .b-someclass-line {*/
+    /*width: calc(100% / 6 * 3);*/
+/*}*/
+/*.b-someclass-inner #check-5:checked + label ~ .b-someclass-line {*/
+    /*width: calc(100% / 6 * 4);*/
+/*}*/
+/*.b-someclass-inner #check-6:checked + label ~ .b-someclass-line {*/
+    /*width: calc(100% / 6 * 5);*/
+/*}*/
