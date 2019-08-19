@@ -2,10 +2,14 @@
     margin: 0;
     padding: 0;
 }
+body{
+    background-color: #f5f5f5;
+    max-width: 900px;
+    margin: 0 auto;
+}
 .admin-main {
     display: flex;
     justify-content: space-around;
-    height: 100%;
 }
 
 .bar-block {
@@ -85,6 +89,7 @@
 }
 .b-someclass-inner {
     display: inline-block;
+    width: 450px;
     vertical-align: top;
     position: relative;
 }
@@ -161,3 +166,67 @@
 /*.b-someclass-inner #check-6:checked + label ~ .b-someclass-line {*/
     /*width: calc(100% / 6 * 5);*/
 /*}*/
+
+
+.requests {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.requests p {
+    font-size: 1.7rem;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+.all-requests {
+    display: flex;
+    flex-wrap: wrap;
+}
+.request-block {
+    padding: 24px 16px;
+    margin: 10px 15px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2),
+                0px 1px 1px 0px rgba(0,0,0,0.14),
+                0px 2px 1px -1px rgba(0,0,0,0.12);
+    cursor: pointer;
+}
+.request-block h3 {
+    font-size: 1.5rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.33;
+}
+.request-block p {
+    font-size: 1rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+}
+@media screen and (max-width: 667px) {
+    .admin-bar {
+        display: none;
+    }
+}
+
+/*SubmissionEntryEdit*/
+.team-request {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+
+}
+.team-request p {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.admin-team-name {
+    display: flex;
+    justify-content: center;
+}
+.admin-players {
+    display: flex;
+    flex-wrap: wrap;
+}

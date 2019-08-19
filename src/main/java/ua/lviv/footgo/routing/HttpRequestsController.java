@@ -1,15 +1,16 @@
 package ua.lviv.footgo.routing;
 
+import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.repository.GameRepository;
 import ua.lviv.footgo.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import ua.lviv.footgo.repository.TourRepository;
 
 import java.util.List;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 public class HttpRequestsController {
@@ -62,6 +63,11 @@ public class HttpRequestsController {
     @GetMapping({"/admin/submission"})
     public String submission(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         return "/admin/SubmissionProgress";
+    }
+
+    @RequestMapping(value = "/admin/submission/{uuid}/edit", method = GET)
+    public String submissionEdit(Model model, @PathVariable long uuid) {
+        return "/admin/SubmissionEntryEdit";
     }
 
     @GetMapping({"/login"})

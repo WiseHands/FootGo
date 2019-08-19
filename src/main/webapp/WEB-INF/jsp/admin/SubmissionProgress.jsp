@@ -75,5 +75,50 @@
                 <!--</div>-->
             </div>
         </div>
+        <div class="requests">
+            <p>Заявки</p>
+            <div class="all-requests">
+                <div class="request-block">
+                    <h3>Команда 1</h3>
+                    <p>Капітан 1</p>
+                </div>
+                <div class="request-block">
+                    <h3>Команда 1</h3>
+                    <p>Капітан 1</p>
+                </div>
+                <div class="request-block">
+                    <h3>Команда 1</h3>
+                    <p>Капітан 1</p>
+                </div>
+                <div class="request-block">
+                    <h3>Команда 1</h3>
+                    <p>Капітан 1</p>
+                </div>
+                <div class="request-block">
+                    <h3>Команда 1</h3>
+                    <p>Капітан 1</p>
+                </div>
+                <div class="request-block">
+                    <h3>Команда 1</h3>
+                    <p>Капітан 1</p>
+                </div>
+                <div class="request-block">
+                    <h3>Команда 1</h3>
+                    <p>Капітан 1</p>
+                </div>
+                <div class="request-block">
+                    <h3>Команда 1</h3>
+                    <p>Капітан 1</p>
+                </div>
+                <div class="request-block">
+                    <h3>Команда 1</h3>
+                    <p>Капітан 1</p>
+                </div>
+                <div class="request-block">
+                    <h3>Команда 1</h3>
+                    <p>Капітан 1</p>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
