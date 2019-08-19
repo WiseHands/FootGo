@@ -26,8 +26,8 @@ public class Mailer {
         try {
             MimeMessage message = new MimeMessage(session);
             message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
-            message.setSubject(sub);
-            message.setText(msg);
+            message.setSubject(sub, "UTF-8");
+            message.setText(msg,"UTF-8","html");
             //send message
             Transport.send(message);
             System.out.println("message sent successfully");
