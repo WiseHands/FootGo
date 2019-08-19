@@ -81,6 +81,7 @@ public class ResultsGenerator {
 
     public Game _createGame(Team homeTeam, Team guestTeam, Tour tour) {
         Game game = new Game();
+        game.setGameTime("Saturday, Jan 7th");
         game.setFirstTeam(homeTeam);
         game.setSecondTeam(guestTeam);
         _addGameToTour(tour, game);
