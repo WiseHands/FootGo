@@ -6,7 +6,9 @@ import ua.lviv.footgo.entity.*;
 import ua.lviv.footgo.repository.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class ResultsGenerator {
@@ -85,7 +87,40 @@ public class ResultsGenerator {
         game.setFirstTeam(homeTeam);
         game.setSecondTeam(guestTeam);
         _addGameToTour(tour, game);
+        _generateResult(game, homeTeam, guestTeam);
         return game;
+    }
+
+    public void _generateResult(Game game, Team homeTeam, Team guestTeam) {
+        Random random = new Random();
+
+        for(int i=0; i<random.nextInt(5); i++) {
+
+
+            Integer teamSelected = random.nextInt(2);
+
+            List<Team> teamList = Arrays.asList(homeTeam, guestTeam);
+            Team team = teamList.get(teamSelected);
+
+
+            Integer playerToScore = random.nextInt(team.getPlayers().size());
+            Player player = team.getPlayers().get(playerToScore);
+
+            Goal goal = new Goal();
+            goal.setTime(random.nextInt(91));
+            goal.setPlayer(player);
+
+            player = playerRepository.save(player);
+
+            goal.setGame(game);
+            if(teamSelected == 0) {
+                game.addGoalForFirstTeam(goal);
+            } else {
+                game.addGoalForSecondTeam(goal);
+            }
+
+        }
+
     }
 
     public Team _createTeam(String name) {
