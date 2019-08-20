@@ -216,17 +216,62 @@ body{
     flex-direction: column;
     text-align: center;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    margin-left: 40px;
 
 }
-.team-request p {
+.team-request h3 {
     font-size: 1.5rem;
     font-weight: 600;
+    padding-bottom: 10px;
+    text-align: center;
+}
+.team-request p {
+    font-size: 1.2rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
 }
 .admin-team-name {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
 }
+.admin-team-name p {
+    margin-right: 15px;
+}
+.admin-capitan {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.admin-capitan p {
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+.admin-capitan input {
+    margin-right: 10px;
+}
+
 .admin-players {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+
+}
+.admin-players p {
+    margin-right: 10px
+}
+.admin-player-name {
+    display: flex;
+    align-items: center;
+}
+.admin-player-name p {
+    padding-left: 10px;
+}
+input[type=text], input[type=tel], input[type=email] {
+    padding: 15px;
+    margin: 5px 0 10px 0;
+    display: inline-block;
+    border: none;
+    background: #fff;
 }

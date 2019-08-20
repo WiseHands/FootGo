@@ -16,7 +16,7 @@
         </div>
 
         <div class="team-request">
-            <p>Заявка команди 1</p>
+            <h3>Заявка команди 1</h3>
             <div class="admin-team-name">
                 <p>Назва команди</p>
                 <input type="text" name="teamName" placeholder="Назва команди" required>
@@ -27,28 +27,27 @@
                 <input type="tel" name="captainPhone" pattern="[0-9]{10}" placeholder="номер телефону 093 ..." required>
                 <input type="email" name="captainEmail" placeholder="введіть email" required>
             </div>
-            <p>Гравці</p>
-            <div class="admin-players">
 
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
-                <div><p>Ім'я<input type="text" name="player6"></p></div>
+            <div class="admin-players">
+                <p>Гравці</p>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
+
             </div>
         </div>
 
