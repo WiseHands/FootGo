@@ -97,7 +97,19 @@ public class ResultsGenerator {
         Random random = new Random();
         System.out.println("\n\n\n Game " + game.getGameTime());
 
+
+        for(int i=0; i<random.nextInt(5); i++) {
+            _addGoal(game, homeTeam, guestTeam);
+        }
+
+
+
+    }
+
+    private void  _addGoal(Game game, Team homeTeam, Team guestTeam) {
+        Random random = new Random();
         Boolean addGoalToHomeTeam = random.nextBoolean();
+
         if(addGoalToHomeTeam) {
             Integer playerToScore = random.nextInt(homeTeam.getPlayers().size());
             Player player = homeTeam.getPlayers().get(playerToScore);
@@ -110,7 +122,6 @@ public class ResultsGenerator {
 
             goal.setGame(game);
             game.addGoalForFirstTeam(goal);
-            System.out.println("\nGoal for Home Team " + goal.getTime());
         } else {
             Integer playerToScore = random.nextInt(guestTeam.getPlayers().size());
             Player player = guestTeam.getPlayers().get(playerToScore);
@@ -123,9 +134,7 @@ public class ResultsGenerator {
 
             goal.setGame(game);
             game.addGoalForSecondTeam(goal);
-            System.out.println("\nGoal for Guest Team " + goal.getTime());
         }
-
     }
 
 
