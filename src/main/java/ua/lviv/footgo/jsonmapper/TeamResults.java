@@ -1,16 +1,111 @@
 package ua.lviv.footgo.jsonmapper;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import ua.lviv.footgo.entity.Team;
 
 public class TeamResults {
-
+    @JsonIgnore
     private Team team;
-    private Integer points;
-    private Integer numberOfGames;
-    private Integer numberOfWins;
-    private Integer numberOfDraws;
-    private Integer numberOfLoses;
-    private Integer numberOfGoalsScored;
-    private Integer numberOfGoalsMissed;
 
+    private String teamName;
+    private Integer points = 0;
+    private Integer numberOfGames = 0;
+    private Integer numberOfWins = 0;
+    private Integer numberOfDraws = 0;
+    private Integer numberOfLoses = 0;
+    private Integer numberOfGoalsScored = 0;
+    private Integer numberOfGoalsMissed = 0;
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+        this.teamName = team.getTeamName();
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
+
+    public Integer getNumberOfGames() {
+        return numberOfGames;
+    }
+
+    public void setNumberOfGames(Integer numberOfGames) {
+        this.numberOfGames = numberOfGames;
+    }
+
+    public Integer getNumberOfWins() {
+        return numberOfWins;
+    }
+
+    public void setNumberOfWins(Integer numberOfWins) {
+        this.numberOfWins = numberOfWins;
+    }
+
+    public Integer getNumberOfDraws() {
+        return numberOfDraws;
+    }
+
+    public void setNumberOfDraws(Integer numberOfDraws) {
+        this.numberOfDraws = numberOfDraws;
+    }
+
+    public Integer getNumberOfLoses() {
+        return numberOfLoses;
+    }
+
+    public void setNumberOfLoses(Integer numberOfLoses) {
+        this.numberOfLoses = numberOfLoses;
+    }
+
+    public Integer getNumberOfGoalsScored() {
+        return numberOfGoalsScored;
+    }
+
+    public void setNumberOfGoalsScored(Integer numberOfGoalsScored) {
+        this.numberOfGoalsScored = numberOfGoalsScored;
+    }
+
+    public Integer getNumberOfGoalsMissed() {
+        return numberOfGoalsMissed;
+    }
+
+    public void setNumberOfGoalsMissed(Integer numberOfGoalsMissed) {
+        this.numberOfGoalsMissed = numberOfGoalsMissed;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public void addWin(Integer numberOfScoredGoals, Integer numberOfGoalsMissed) {
+        this.numberOfGoalsScored = this.numberOfGoalsScored + numberOfScoredGoals;
+        this.numberOfGoalsMissed = this.numberOfGoalsMissed + numberOfGoalsMissed;
+        this.points += 3;
+        this.numberOfWins++;
+    }
+
+    public void addDraw(Integer numberOfScoredGoals, Integer numberOfGoalsMissed) {
+        this.numberOfGoalsScored = this.numberOfGoalsScored + numberOfScoredGoals;
+        this.numberOfGoalsMissed = this.numberOfGoalsMissed + numberOfGoalsMissed;
+        this.points += 1;
+        this.numberOfDraws++;
+    }
+
+    public void addLoss(Integer numberOfScoredGoals, Integer numberOfGoalsMissed) {
+        this.numberOfGoalsScored = this.numberOfGoalsScored + numberOfScoredGoals;
+        this.numberOfGoalsMissed = this.numberOfGoalsMissed + numberOfGoalsMissed;
+        this.numberOfLoses++;
+    }
 }
