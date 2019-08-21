@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "game")
+@Entity
 public class Game {
 
 
@@ -26,10 +26,10 @@ public class Game {
     @OneToOne
     private Team secondTeam;
 
-    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Goal> teamAGoals;
 
-    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Goal> teamBGoals;
 
     @ManyToOne

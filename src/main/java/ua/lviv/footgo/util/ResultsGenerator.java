@@ -83,7 +83,9 @@ public class ResultsGenerator {
 
     public Game _createGame(Team homeTeam, Team guestTeam, Tour tour) {
         Game game = new Game();
-        game.setGameTime("Saturday, Jan 7th");
+        Random random = new Random();
+
+        game.setGameTime("Saturday, Jan " + random.nextInt(40));
         game.setFirstTeam(homeTeam);
         game.setSecondTeam(guestTeam);
         _addGameToTour(tour, game);
@@ -93,18 +95,12 @@ public class ResultsGenerator {
 
     public void _generateResult(Game game, Team homeTeam, Team guestTeam) {
         Random random = new Random();
+        System.out.println("\n\n\n Game " + game.getGameTime());
 
-        for(int i=0; i<random.nextInt(5); i++) {
-
-
-            Integer teamSelected = random.nextInt(2);
-
-            List<Team> teamList = Arrays.asList(homeTeam, guestTeam);
-            Team team = teamList.get(teamSelected);
-
-
-            Integer playerToScore = random.nextInt(team.getPlayers().size());
-            Player player = team.getPlayers().get(playerToScore);
+        Boolean addGoalToHomeTeam = random.nextBoolean();
+        if(addGoalToHomeTeam) {
+            Integer playerToScore = random.nextInt(homeTeam.getPlayers().size());
+            Player player = homeTeam.getPlayers().get(playerToScore);
 
             Goal goal = new Goal();
             goal.setTime(random.nextInt(91));
@@ -113,15 +109,25 @@ public class ResultsGenerator {
             player = playerRepository.save(player);
 
             goal.setGame(game);
-            if(teamSelected == 0) {
-                game.addGoalForFirstTeam(goal);
-            } else {
-                game.addGoalForSecondTeam(goal);
-            }
+            game.addGoalForFirstTeam(goal);
+            System.out.println("\nGoal for Home Team " + goal.getTime());
+        } else {
+            Integer playerToScore = random.nextInt(guestTeam.getPlayers().size());
+            Player player = guestTeam.getPlayers().get(playerToScore);
 
+            Goal goal = new Goal();
+            goal.setTime(random.nextInt(91));
+            goal.setPlayer(player);
+
+            player = playerRepository.save(player);
+
+            goal.setGame(game);
+            game.addGoalForSecondTeam(goal);
+            System.out.println("\nGoal for Guest Team " + goal.getTime());
         }
 
     }
+
 
     public Team _createTeam(String name) {
         Team team = new Team();
