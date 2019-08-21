@@ -70,6 +70,11 @@ public class HttpRequestsController {
         return "/admin/SubmissionEntryEdit";
     }
 
+    @RequestMapping(value = "/admin/matches", method = GET)
+    public String matchesReview(Model model) {
+        return "/admin/MatchesReview";
+    }
+
     @GetMapping({"/login"})
     public String login(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("name", name);

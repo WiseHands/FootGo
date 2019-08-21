@@ -21,15 +21,14 @@
                 <p>Назва команди</p>
                 <input type="text" name="teamName" placeholder="Назва команди" required>
             </div>
+            <p class="admin-title-row">Капітан</p>
             <div class="admin-capitan">
-                <p>Капітан</p>
                 <input type="text" name="captainName" placeholder="Прізвище ім'я" required>
                 <input type="tel" name="captainPhone" pattern="[0-9]{10}" placeholder="номер телефону 093 ..." required>
                 <input type="email" name="captainEmail" placeholder="введіть email" required>
             </div>
-
+            <p  class="admin-title-row">Гравці</p>
             <div class="admin-players">
-                <p>Гравці</p>
                 <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
                 <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
                 <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
@@ -47,7 +46,9 @@
                 <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
                 <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
                 <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-
+            </div>
+            <div class="slogan-button">
+                  <input class="main-input-button" type="button" value="Зареєструвати"">
             </div>
         </div>
 

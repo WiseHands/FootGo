@@ -39,40 +39,6 @@
                         <div class="b-someclass-line"></div>
                     </div>
                 </div>
-
-                <!--<div class="bar-block">-->
-                    <!--<div class="bar-application">-->
-                        <!--<p>Збір заявок</p>-->
-                        <!--<div class="circle">-->
-                            <!--<div class="circle-point">-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="bar-games">-->
-                        <!--<p>Ігри ліги</p>-->
-                        <!--<div class="circle"></div>-->
-                        <!--<div class="circle-line"></div>-->
-                    <!--</div>-->
-                    <!--<div class="bar-reward">-->
-                        <!--<p>Нагородження</p>-->
-                        <!--<div class="circle"></div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="progress-title">-->
-                    <!--<p>Збір заявок</p>-->
-                    <!--<p>Ігри ліги</p>-->
-                    <!--<p>Нагородження</p>-->
-                <!--</div>-->
-                <!--<div class="progress-bar">-->
-                    <!--<div class="circle">-->
-                        <!--<div class="circle-point"></div>-->
-                    <!--</div>-->
-                    <!--<div class="circle-line"></div>-->
-                    <!--<div class="circle"></div>-->
-                    <!--<div class="circle-line"></div>-->
-                    <!--<div class="circle"></div>-->
-                <!--</div>-->
             </div>
         </div>
         <div class="requests">

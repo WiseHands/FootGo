@@ -3,7 +3,7 @@
     padding: 0;
 }
 body{
-    background-color: #f5f5f5;
+    background-color: #cee0dd;
     max-width: 900px;
     margin: 0 auto;
 }
@@ -248,15 +248,15 @@ body{
     margin-bottom: 5px;
     margin-right: 10px;
 }
-.admin-capitan input {
-    margin-right: 10px;
+.admin-capitan input[type=text], .admin-capitan input[type=tel], .admin-capitan input[type=email] {
+    margin-right: 15px;
+    margin-left: 70px ;
 }
 
 .admin-players {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-
 }
 .admin-players p {
     margin-right: 10px
@@ -264,14 +264,130 @@ body{
 .admin-player-name {
     display: flex;
     align-items: center;
+    padding-left: 30px;
 }
-.admin-player-name p {
-    padding-left: 10px;
+.admin-title-row {
+    text-align: left;
 }
 input[type=text], input[type=tel], input[type=email] {
     padding: 15px;
     margin: 5px 0 10px 0;
     display: inline-block;
     border: none;
+    border-radius: 5px;
     background: #fff;
+}
+
+.main-input-button {
+    color: #fff;
+    background-color: #4e73ad;
+    font-size: 1.7em;
+    padding: 10px 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.main-input-button:hover {
+    background-color: #285294;
+    border-radius: 10px;
+}
+.admin-tour-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+}
+.tour-match {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    font-size: 1.3rem;
+}
+.tour-team1 {
+    display: flex;
+}
+.tour-team1 span {
+    margin-left: 10px;
+    cursor: pointer;
+}
+.tour-score {
+    padding: 0 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+/*modal*/
+#myBtn {
+    padding: 0px 10px;
+}
+#myBtn:hover {
+    background-color: #67bae0;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 800px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #2b5cbd;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #2b5cbd;
+    color: white;
 }
