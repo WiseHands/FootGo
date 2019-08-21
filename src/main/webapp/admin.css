@@ -347,7 +347,7 @@ input[type=text], input[type=tel], input[type=email], select {
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 400px;
+    width: 360px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -372,6 +372,9 @@ input[type=text], input[type=tel], input[type=email], select {
     float: right;
     font-size: 28px;
     font-weight: bold;
+    position: relative;
+    top: -2px;
+    right: 5px;
 }
 
 .close:hover,
@@ -385,10 +388,12 @@ input[type=text], input[type=tel], input[type=email], select {
     font-size: 1.3rem;
     text-align: center;
 }
-.modal-body {
+.modal-body, .modal-body-goal {
     padding: 2px 16px;
     font-size: 1.2rem;
 }
+
+/*modal end*/
 .goal-minute, .goal-author {
     display: flex;
     align-items: center;
@@ -400,4 +405,31 @@ input[type=text], input[type=tel], input[type=email], select {
 .goal-add {
     display: flex;
     justify-content: center;
+}
+.modal-goal {
+    display: flex;
+    justify-content: space-between;
+    width: 330px;
+}
+.modal-goal h3 {
+    font-size: 1.3rem;
+    padding: 10px;
+}
+.modal-goal p {
+    font-size: 1.2rem;
+    padding: 5px 10px;
+}
+.modal-goal img {
+    width: 16px;
+    height: 16px;
+    padding-right: 5px;
+}
+.modal-goal span {
+    font-size: 2rem;
+    cursor: pointer;
+    color: red;
+    padding-left: 5px;
+}
+.modal-goal span:hover {
+    color: #FF6A4F;
 }

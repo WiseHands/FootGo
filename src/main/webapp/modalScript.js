@@ -24,3 +24,23 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+//modal2
+var goalModal = document.getElementById("goalModal");
+
+var gbtn = document.getElementById("goalBtn");
+
+gbtn.onclick = function() {
+    goalModal.style.display = "block";
+}
+
+var span2 = document.getElementsByClassName("close")[1];
+
+span2.onclick = function() {
+    goalModal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == goalModal) {
+        goalModal.style.display = "none";
+    }
+}
