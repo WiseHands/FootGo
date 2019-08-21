@@ -45,44 +45,60 @@
     <div class="tour-match">
         <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
         <div class="tour-score"><p>0 : 0</p></div>
-        <div class="tour-team2"><p>Команда 2</p></div>
+        <div class="tour-team2"><span id="myBtn">+</span><p>Команда 2</p></div>
+    </div>
+
+        <div class="tour-match">
+            <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
+            <div class="tour-score"><p>0 : 0</p></div>
+            <div class="tour-team2"><span id="myBtn">+</span><p>Команда 2</p></div>
+        </div>    <div class="tour-match">
+            <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
+            <div class="tour-score"><p>0 : 0</p></div>
+            <div class="tour-team2"><span id="myBtn">+</span><p>Команда 2</p></div>
+        </div>    <div class="tour-match">
+            <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
+            <div class="tour-score"><p>0 : 0</p></div>
+            <div class="tour-team2"><span id="myBtn">+</span><p>Команда 2</p></div>
+        </div>    <div class="tour-match">
+            <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
+            <div class="tour-score"><p>0 : 0</p></div>
+            <div class="tour-team2"><span id="myBtn">+</span><p>Команда 2</p></div>
+        </div>
 
         <div id="myModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
                 <div class="modal-header">
                     <span class="close">&times;</span>
-                    <h2>Modal Header</h2>
+                    <h2>Гол</h2>
                 </div>
                 <div class="modal-body">
-                    <p>Some text in the Modal Body</p>
-                    <p>Some other text...</p>
+                    <div class="goal-minute">
+                        <p>Хвилина</p>
+                        <input type="text" name="minute">
+                    </div>
+                    <div class="goal-author">
+                        <p>Автор</p>
+                        <select>
+                            <option value="">Гравець1</option>
+                            <option value="">Гравець1</option>
+                            <option value="">Гравець1</option>
+                            <option value="">Гравець1</option>
+                            <option value="">Гравець1</option>
+                            <option value="">Гравець1</option>
+                            <option value="">Гравець1</option>
+                            <option value="">Гравець1</option>
+                            <option value="">Гравець1</option>
+                            <option value="">Гравець1</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <h3>Modal Footer</h3>
+                <div class="goal-add">
+                    <input class="main-input-button" type="button" value="Додати">
                 </div>
             </div>
         </div>
-    </div>
-
-        <div class="tour-match">
-            <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
-            <div class="tour-score"><p>0 : 0</p></div>
-            <div class="tour-team2"><p>Команда 2</p></div>
-        </div>    <div class="tour-match">
-            <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
-            <div class="tour-score"><p>0 : 0</p></div>
-            <div class="tour-team2"><p>Команда 2</p></div>
-        </div>    <div class="tour-match">
-            <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
-            <div class="tour-score"><p>0 : 0</p></div>
-            <div class="tour-team2"><p>Команда 2</p></div>
-        </div>    <div class="tour-match">
-            <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
-            <div class="tour-score"><p>0 : 0</p></div>
-            <div class="tour-team2"><p>Команда 2</p></div>
-        </div>
-
 
 <script src="/modalScript.js" type="text/javascript"></script>
     </body>

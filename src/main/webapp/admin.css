@@ -6,6 +6,7 @@ body{
     background-color: #cee0dd;
     max-width: 900px;
     margin: 0 auto;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 .admin-main {
     display: flex;
@@ -194,13 +195,11 @@ body{
 }
 .request-block h3 {
     font-size: 1.5rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     line-height: 1.33;
 }
 .request-block p {
     font-size: 1rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     line-height: 1.5;
 }
@@ -215,7 +214,6 @@ body{
     display: flex;
     flex-direction: column;
     text-align: center;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     margin-left: 40px;
 
 }
@@ -227,7 +225,6 @@ body{
 }
 .team-request p {
     font-size: 1.2rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
 }
 .admin-team-name {
@@ -269,7 +266,7 @@ body{
 .admin-title-row {
     text-align: left;
 }
-input[type=text], input[type=tel], input[type=email] {
+input[type=text], input[type=tel], input[type=email], select {
     padding: 15px;
     margin: 5px 0 10px 0;
     display: inline-block;
@@ -304,7 +301,7 @@ input[type=text], input[type=tel], input[type=email] {
     padding-top: 15px;
     font-size: 1.3rem;
 }
-.tour-team1 {
+.tour-team1, .tour-team2 {
     display: flex;
 }
 .tour-team1 span {
@@ -316,9 +313,15 @@ input[type=text], input[type=tel], input[type=email] {
     font-size: 1.5rem;
     cursor: pointer;
 }
+.tour-team2 span {
+    margin-right: 10px;
+    cursor: pointer;
+}
 /*modal*/
 #myBtn {
-    padding: 0px 10px;
+    padding: 0px 6px;
+    border: 1px solid #15274a;
+    border-radius: 50%;
 }
 #myBtn:hover {
     background-color: #67bae0;
@@ -340,11 +343,11 @@ input[type=text], input[type=tel], input[type=email] {
 /* Modal Content */
 .modal-content {
     position: relative;
-    background-color: #fefefe;
+    background-color: #cee0dd;
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 800px;
+    width: 400px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -377,17 +380,24 @@ input[type=text], input[type=tel], input[type=email] {
     text-decoration: none;
     cursor: pointer;
 }
-
 .modal-header {
-    padding: 2px 16px;
-    background-color: #2b5cbd;
-    color: white;
+    padding: 10px 16px;
+    font-size: 1.3rem;
+    text-align: center;
 }
-
-.modal-body {padding: 2px 16px;}
-
-.modal-footer {
+.modal-body {
     padding: 2px 16px;
-    background-color: #2b5cbd;
-    color: white;
+    font-size: 1.2rem;
+}
+.goal-minute, .goal-author {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.goal-minute input, .goal-author select {
+    width: 200px;
+}
+.goal-add {
+    display: flex;
+    justify-content: center;
 }
