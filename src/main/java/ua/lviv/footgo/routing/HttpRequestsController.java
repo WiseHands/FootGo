@@ -82,4 +82,10 @@ public class HttpRequestsController {
         return "/admin/loginAdminForm";
     }
 
+    @RequestMapping(value = "/.well-known/acme-challenge/{uuid}", method = GET)
+    @ResponseBody
+    public String submissionEdit(Model model, @PathVariable String uuid) {
+        return uuid;
+    }
+
 }

@@ -69,9 +69,9 @@
     <div class="slogan-null"></div>
     <div class="slogan-text">
         <h1>Аматорський турнір</h1>
-        <h3>по футболу 8*8</h3>
+        <h3>з футболу 8*8</h3>
         <div class="slogan-button">
-            <input class="main-input-button" type="button" value="Взяти участь" onclick="location.href='/signup';">
+            <input class="main-input-button" type="button" value="Прийняти участь" onclick="location.href='/signup';">
         </div>
     </div>
 </div>
