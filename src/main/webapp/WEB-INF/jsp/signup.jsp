@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="img/footgo-dark-icon.png" type="image/x-icon">
 
-
 </head>
 <body>
 <header>
@@ -52,6 +51,7 @@
             </div>
             <div id="success" class="player-bg"><p>Запит успішно надіслано!</p></div>
             <div id="hideifsuccess_1" class="player-bg">
+
             <!--<p class="note">* Для реєстрації не обовязково заповняти всі поля</p>-->
                 <!--<div class="player1-3">-->
                     <!--<div class="player">-->

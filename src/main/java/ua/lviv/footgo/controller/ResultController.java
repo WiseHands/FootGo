@@ -36,12 +36,8 @@ public class ResultController {
     @Autowired
     TeamRepository teamRepository;
 
-
-
-
     @RequestMapping(value = "/table", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
     public List<TeamResults> buildResultsTable() {
-
 
         List<Game> gameList = (List<Game>) gameRepository.findAll();
 

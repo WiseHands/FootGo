@@ -45,7 +45,7 @@ public class TeamSignUpController {
         String captainPhone = teamSignUpRequestJsonBody.getCaptainPhone();
 
         String titleMessage = "Заявка на участь. FootGO - аматорський турнір з футболу";
-        String message = String.format("Доброї дня капітане %s, ваша заявка надійшла у систему. Невдовзі з вами зв'яжуться організатори", captainName, teamName);
+        String message = String.format("Доброго дня капітане %s, ваша заявка надійшла у систему. Невдовзі з вами зв'яжуться організатори", captainName, teamName);
 
 
         //for send message check to own Gmail setting https://myaccount.google.com/lesssecureapps pls turn ON for sending message
