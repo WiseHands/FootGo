@@ -3,6 +3,8 @@ package ua.lviv.footgo.jsonmapper;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import ua.lviv.footgo.entity.Team;
 
+import java.util.Comparator;
+
 public class TeamResults {
     @JsonIgnore
     private Team team;
@@ -15,6 +17,14 @@ public class TeamResults {
     private Integer numberOfLoses = 0;
     private Integer numberOfGoalsScored = 0;
     private Integer numberOfGoalsMissed = 0;
+
+    public static class TeamResultsComparator implements Comparator<TeamResults>
+    {
+        public int compare(TeamResults a, TeamResults b)
+        {
+            return b.points - a.points;
+        }
+    }
 
     public Team getTeam() {
         return team;
@@ -94,6 +104,7 @@ public class TeamResults {
         this.numberOfGoalsMissed = this.numberOfGoalsMissed + numberOfGoalsMissed;
         this.points += 3;
         this.numberOfWins++;
+        this.numberOfGames++;
     }
 
     public void addDraw(Integer numberOfScoredGoals, Integer numberOfGoalsMissed) {
@@ -101,11 +112,13 @@ public class TeamResults {
         this.numberOfGoalsMissed = this.numberOfGoalsMissed + numberOfGoalsMissed;
         this.points += 1;
         this.numberOfDraws++;
+        this.numberOfGames++;
     }
 
     public void addLoss(Integer numberOfScoredGoals, Integer numberOfGoalsMissed) {
         this.numberOfGoalsScored = this.numberOfGoalsScored + numberOfScoredGoals;
         this.numberOfGoalsMissed = this.numberOfGoalsMissed + numberOfGoalsMissed;
         this.numberOfLoses++;
+        this.numberOfGames++;
     }
 }
