@@ -184,6 +184,7 @@ body{
     flex-wrap: wrap;
 }
 .request-block {
+    width: 12rem;
     padding: 24px 16px;
     margin: 10px 15px;
     background-color: #fff;
@@ -432,4 +433,9 @@ input[type=text], input[type=tel], input[type=email], select {
 }
 .modal-goal span:hover {
     color: #FF6A4F;
+}
+.link-style {
+   color: inherit;
+   text-decoration: inherit;
+   cursor: inherit;
 }

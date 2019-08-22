@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -44,46 +45,14 @@
         <div class="requests">
             <p>Заявки</p>
             <div class="all-requests">
-                <div class="request-block">
-                    <h3>Команда 1</h3>
-                    <p>Капітан 1</p>
-                </div>
-                <div class="request-block">
-                    <h3>Команда 1</h3>
-                    <p>Капітан 1</p>
-                </div>
-                <div class="request-block">
-                    <h3>Команда 1</h3>
-                    <p>Капітан 1</p>
-                </div>
-                <div class="request-block">
-                    <h3>Команда 1</h3>
-                    <p>Капітан 1</p>
-                </div>
-                <div class="request-block">
-                    <h3>Команда 1</h3>
-                    <p>Капітан 1</p>
-                </div>
-                <div class="request-block">
-                    <h3>Команда 1</h3>
-                    <p>Капітан 1</p>
-                </div>
-                <div class="request-block">
-                    <h3>Команда 1</h3>
-                    <p>Капітан 1</p>
-                </div>
-                <div class="request-block">
-                    <h3>Команда 1</h3>
-                    <p>Капітан 1</p>
-                </div>
-                <div class="request-block">
-                    <h3>Команда 1</h3>
-                    <p>Капітан 1</p>
-                </div>
-                <div class="request-block">
-                    <h3>Команда 1</h3>
-                    <p>Капітан 1</p>
-                </div>
+            <c:forEach items="${submissions}" var="item">
+                <a class="link-style" href="/admin/submission/edit?uuid=${item.id}">
+                    <div class="request-block">
+                        <h3>${item.teamName}</h3>
+                        <p>${item.captainName}</p>
+                    </div>
+                </a>
+             </c:forEach>
             </div>
         </div>
     </body>

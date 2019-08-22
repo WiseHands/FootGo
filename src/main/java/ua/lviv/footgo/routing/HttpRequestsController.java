@@ -6,6 +6,7 @@ import ua.lviv.footgo.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import ua.lviv.footgo.repository.TeamSignUpRepository;
 import ua.lviv.footgo.repository.TourRepository;
 
 import java.util.List;
@@ -16,6 +17,9 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class HttpRequestsController {
     @Autowired
     TeamRepository teamRepository;
+
+    @Autowired
+    TeamSignUpRepository teamSignUpRepository;
 
     @Autowired
     TourRepository tourRepository;
@@ -62,11 +66,12 @@ public class HttpRequestsController {
 
     @GetMapping({"/admin/submission"})
     public String submission(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+        model.addAttribute("submissions", teamSignUpRepository.findAll());
         return "/admin/SubmissionProgress";
     }
 
-    @RequestMapping(value = "/admin/submission/{uuid}/edit", method = GET)
-    public String submissionEdit(Model model, @PathVariable long uuid) {
+    @RequestMapping(value = "/admin/submission/edit", method = GET)
+    public String submissionEdit(Model model, @RequestParam long uuid) {
         return "/admin/SubmissionEntryEdit";
     }
 
