@@ -19,6 +19,8 @@ public class TeamSignUpRequest {
     private String captainEmail;
     @Column
     private String playerList;
+    @Column
+    private String utcDateTime;
 
 
     public Long getId() {
@@ -65,5 +67,11 @@ public class TeamSignUpRequest {
         this.playerList = playerList;
     }
 
+    public String getUtcDateTime() {
+        return utcDateTime;
+    }
 
+    public void setUtcDateTime(String utcDateTime) {
+        this.utcDateTime = utcDateTime;
+    }
 }

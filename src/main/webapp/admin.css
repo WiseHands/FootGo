@@ -184,7 +184,7 @@ body{
     flex-wrap: wrap;
 }
 .request-block {
-    width: 12rem;
+    min-width: 238px;
     padding: 24px 16px;
     margin: 10px 15px;
     background-color: #fff;
@@ -435,6 +435,7 @@ input[type=text], input[type=tel], input[type=email], select {
     color: #FF6A4F;
 }
 .link-style {
+	flex: 1;
     color: inherit;
     text-decoration: inherit;
     cursor: inherit;

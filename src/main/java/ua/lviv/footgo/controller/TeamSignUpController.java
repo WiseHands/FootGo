@@ -12,6 +12,8 @@ import ua.lviv.footgo.jsonmapper.TeamSignUpRequestJsonBody;
 import ua.lviv.footgo.repository.TeamSignUpRepository;
 import ua.lviv.footgo.util.Mailer;
 
+import java.time.Clock;
+
 @Controller
 @RequestMapping(path = "/team")
 public class TeamSignUpController {
@@ -36,6 +38,7 @@ public class TeamSignUpController {
         team.setCaptainName(teamSignUpRequestJsonBody.getCaptainName());
         team.setCaptainPhone(teamSignUpRequestJsonBody.getCaptainPhone());
         team.setCaptainEmail(teamSignUpRequestJsonBody.getCaptainEmail());
+        team.setUtcDateTime(Clock.systemUTC().instant().toString());
         teamSignUpRepository.save(team);
 
         String teamName = teamSignUpRequestJsonBody.getTeamName();
