@@ -81,55 +81,39 @@
         </div>
         <div class="table-wins table-offset">
             <div class="table-title">В</div>
-            <div class="table-firstplace">0</div>
-            <div class="table-secondplace">0</div>
-            <div class="table-thirdplace">0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
+            <div class="table-firstplace">${firstPlace.numberOfWins}</div>
+            <div class="table-secondplace">${secondPlace.numberOfWins}</div>
+            <div class="table-thirdplace">${thirdPlace.numberOfWins}</div>
+            <c:forEach items="${teamList}" var="item">
+                 <div><p><c:out value="${item.numberOfWins}" /></p></div>
+            </c:forEach>
         </div>
         <div class="table-draws table-offset">
             <div class="table-title">Н</div>
-            <div class="table-firstplace">0</div>
-            <div class="table-secondplace">0</div>
-            <div class="table-thirdplace">0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
+            <div class="table-firstplace">${firstPlace.numberOfDraws}</div>
+            <div class="table-secondplace">${secondPlace.numberOfDraws}</div>
+            <div class="table-thirdplace">${thirdPlace.numberOfDraws}</div>
+            <c:forEach items="${teamList}" var="item">
+                 <div><p><c:out value="${item.numberOfDraws}" /></p></div>
+            </c:forEach>
         </div>
         <div class="table-defeats table-offset">
             <div class="table-title">П</div>
-            <div class="table-firstplace">0</div>
-            <div class="table-secondplace">0</div>
-            <div class="table-thirdplace">0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
+            <div class="table-firstplace">${firstPlace.numberOfLoses}</div>
+            <div class="table-secondplace">${secondPlace.numberOfLoses}</div>
+            <div class="table-thirdplace">${thirdPlace.numberOfLoses}</div>
+            <c:forEach items="${teamList}" var="item">
+                 <div><p><c:out value="${item.numberOfLoses}" /></p></div>
+            </c:forEach>
         </div>
         <div class="table-goals">
             <div class="table-title">З-П</div>
-            <div class="table-firstplace">0-0</div>
-            <div class="table-secondplace">0-0</div>
-            <div class="table-thirdplace">0-0</div>
-            <div>0-0</div>
-            <div>0-0</div>
-            <div>0-0</div>
-            <div>0-0</div>
-            <div>0-0</div>
-            <div>0-0</div>
-            <div>0-0</div>
+            <div class="table-firstplace">${firstPlace.numberOfGoalsScored} - ${firstPlace.numberOfGoalsMissed}</div>
+            <div class="table-secondplace">${secondPlace.numberOfGoalsScored} - ${secondPlace.numberOfGoalsMissed}</div>
+            <div class="table-thirdplace">${thirdPlace.numberOfGoalsScored} - ${thirdPlace.numberOfGoalsMissed}</div>
+            <c:forEach items="${teamList}" var="item">
+                 <div><p><c:out value="${item.numberOfGoalsScored} - ${item.numberOfGoalsMissed}" /></p></div>
+            </c:forEach>
         </div>
         <div class="table-points table-offset">
             <div class="table-title">О</div>

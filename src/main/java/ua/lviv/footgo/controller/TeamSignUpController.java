@@ -53,7 +53,7 @@ public class TeamSignUpController {
 
         String adminMessage = String.format("Отримано нову заявку на участь в турнірі, команда %s, контактні дані капітана %s %s", teamName, captainName, captainPhone);
         String adminEmailTitle = String.format("Нова заявка на участь FootGO від команди %s", teamName);
-        Mailer.send(gmailUserName, gmailPassword, captainEmail, adminEmailTitle, adminMessage);
+        Mailer.send(gmailUserName, gmailPassword, footGoAdmin, adminEmailTitle, adminMessage);
         return new ResponseEntity<>("Team is created successfully", HttpStatus.CREATED);
     }
 
