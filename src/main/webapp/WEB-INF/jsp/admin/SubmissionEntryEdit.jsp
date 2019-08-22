@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -6,7 +7,7 @@
         <title>Admin Page</title>
         <link rel="stylesheet" href="../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
-
+        <script src="/submissionById.js" type="text/javascript"></script>
     </head>
     <body>
         <div class="admin-main">
@@ -27,30 +28,5 @@
                 <input type="tel" name="captainPhone" pattern="[0-9]{10}" placeholder="номер телефону 093 ..." required>
                 <input type="email" name="captainEmail" placeholder="введіть email" required>
             </div>
-            <p  class="admin-title-row">Гравці</p>
-            <div class="admin-players">
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-                <div class="admin-player-name"><p>Ім'я</p><input type="text" name="player6"></div>
-            </div>
-            <div class="slogan-button">
-                  <input class="main-input-button" type="button" value="Зареєструвати"">
-            </div>
-        </div>
-
     </body>
 </html>
