@@ -17,29 +17,29 @@
             <div class="admin-bar">
                 <p>FootGo</p>
 
-                <div class="b-someclass">
-                    <div class="b-someclass-inner">
-                        <input type="radio" name="check" id="check-1" checked>
-                        <label for="check-1"></label>
+                <!--<div class="b-someclass">-->
+                    <!--<div class="b-someclass-inner">-->
+                        <!--<input type="radio" name="check" id="check-1" checked>-->
+                        <!--<label for="check-1"></label>-->
 
-                        <input type="radio" name="check" id="check-2">
-                        <label for="check-2"></label>
+                        <!--<input type="radio" name="check" id="check-2">-->
+                        <!--<label for="check-2"></label>-->
 
-                        <input type="radio" name="check" id="check-3">
-                        <label for="check-3"></label>
+                        <!--<input type="radio" name="check" id="check-3">-->
+                        <!--<label for="check-3"></label>-->
 
-                        <!--<input type="radio" name="check" id="check-4">-->
-                        <!--<label for="check-4"></label>-->
+                        <!--&lt;!&ndash;<input type="radio" name="check" id="check-4">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label for="check-4"></label>&ndash;&gt;-->
 
-                        <!--<input type="radio" name="check" id="check-5">-->
-                        <!--<label for="check-5"></label>-->
+                        <!--&lt;!&ndash;<input type="radio" name="check" id="check-5">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label for="check-5"></label>&ndash;&gt;-->
 
-                        <!--<input type="radio" name="check" id="check-6">-->
-                        <!--<label for="check-6"></label>-->
+                        <!--&lt;!&ndash;<input type="radio" name="check" id="check-6">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label for="check-6"></label>&ndash;&gt;-->
 
-                        <div class="b-someclass-line"></div>
-                    </div>
-                </div>
+                        <!--<div class="b-someclass-line"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
         </div>
         <div class="requests">

@@ -29,7 +29,7 @@ header   {
 a {
     text-decoration: none;
 }
-.dropdown {
+.header-null {
     display: none;
 }
 .header-text {
@@ -100,8 +100,8 @@ a {
     background: url("img/foot33.jpg");
     background-position: center;
     background-size: cover;
-    height: 100vh;
-    /*height: calc(100vh - 60.375px);*/
+    /*height: 100vh;*/
+    height: calc(100vh - 60.375px);
 }
 /*.registration-photo { background:transparent; }*/
 /*.registration-photo:after {*/
@@ -469,6 +469,7 @@ input[type=submit] {
     }
     .header-null{
         flex-grow: 1;
+        display: block;
             }
     /*burger-menu*/
 

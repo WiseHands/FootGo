@@ -438,4 +438,19 @@ input[type=text], input[type=tel], input[type=email], select {
    color: inherit;
    text-decoration: inherit;
    cursor: inherit;
+
+.send-match-result {
+    display: flex;
+    justify-content: center;
+}
+.send-match-result input {
+    color: #fff;
+    background-color: #4e73ad;
+    font-size: 1.5em;
+    padding: 8px 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
 }
