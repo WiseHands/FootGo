@@ -7,8 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Foot&Go</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="img/footgo-dark-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="hamburger.css">
     <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
@@ -19,33 +21,13 @@
             <div class="header-icon">
                 <a href="/"><img class="header-img" src="img/footgo-light-icon.png" alt="wiselogo"></a>
             </div>
-            <div class="header-null"></div>
-            <div id="nav-icon">
-                <!--<input type="checkbox">-->
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-                <!--<ul id="menu">-->
-                    <!--<a href="#"><li>FootGo</li></a>-->
-                    <!--<a href="#"><li>Реєстрація</li></a>-->
-                    <!--<a href="#"><li>Результати</li></a>-->
-                    <!--<a href="#"><li>Таблиця</li></a>-->
-                    <!--<a href="#"><li>Бомбардири</li></a>-->
-                <!--</ul>-->
-
+            <div class="header-null">
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="hamburger fa fa-bars"></i>
+                </a>
             </div>
-            <!---->
-            <!--<div class="dropdown">-->
-                <!--<button onclick="myFunction()" class="dropbtn">Dropdown</button>-->
-                <!--<div id="myDropdown" class="dropdown-content">-->
-                    <!--<a href="#home">Home</a>-->
-                    <!--<a href="#about">About</a>-->
-                    <!--<a href="#contact">Contact</a>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!---->
+
+
             <div class="header-text">
                 <a href="/signup"><p>Реєстрація</p></a>
                 <a href="/results"><p>Результати</p></a>
@@ -53,15 +35,13 @@
                 <a href="/bombardier"><p>Бомбардири</p></a>
             </div>
         </div>
-        <!--<div class="header-second-block">-->
 
-            <!--&lt;!&ndash;<div class="signup">-->
-                <!--<a href="#"><p>Зареєструватися</p></a>-->
-            <!--</div>-->
-            <!--<div class="login" >-->
-                <!--<a href="https://wisehands.me/#/"><p>Увійти</p></a>-->
-            <!--</div>&ndash;&gt;-->
-        <!--</div>-->
+    </div>
+    <div id="myLinks">
+        <div><a class="link-item" href="/signup">Реєстрація</a></div>
+        <div><a class="link-item" href="/results">Результати</a></div>
+        <div><a class="link-item" href="/gametable">Таблиця</a></div>
+        <div><a class="link-item" href="/bombardier">Бомбардири</a></div>
     </div>
 </header>
 
@@ -77,6 +57,7 @@
 </div>
 
 <script src="signUpScript.js"></script>
+<script src="hamburger.js"></script>
 
 </body>
 </html>
