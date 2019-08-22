@@ -83,7 +83,9 @@ public class ResultsGenerator {
 
     public Game _createGame(Team homeTeam, Team guestTeam, Tour tour) {
         Game game = new Game();
-        game.setGameTime("Saturday, Jan 7th");
+        Random random = new Random();
+
+        game.setGameTime("Saturday, Jan " + random.nextInt(40));
         game.setFirstTeam(homeTeam);
         game.setSecondTeam(guestTeam);
         _addGameToTour(tour, game);
@@ -93,18 +95,24 @@ public class ResultsGenerator {
 
     public void _generateResult(Game game, Team homeTeam, Team guestTeam) {
         Random random = new Random();
+        System.out.println("\n\n\n Game " + game.getGameTime());
+
 
         for(int i=0; i<random.nextInt(5); i++) {
+            _addGoal(game, homeTeam, guestTeam);
+        }
 
 
-            Integer teamSelected = random.nextInt(2);
 
-            List<Team> teamList = Arrays.asList(homeTeam, guestTeam);
-            Team team = teamList.get(teamSelected);
+    }
 
+    private void  _addGoal(Game game, Team homeTeam, Team guestTeam) {
+        Random random = new Random();
+        Boolean addGoalToHomeTeam = random.nextBoolean();
 
-            Integer playerToScore = random.nextInt(team.getPlayers().size());
-            Player player = team.getPlayers().get(playerToScore);
+        if(addGoalToHomeTeam) {
+            Integer playerToScore = random.nextInt(homeTeam.getPlayers().size());
+            Player player = homeTeam.getPlayers().get(playerToScore);
 
             Goal goal = new Goal();
             goal.setTime(random.nextInt(91));
@@ -113,15 +121,22 @@ public class ResultsGenerator {
             player = playerRepository.save(player);
 
             goal.setGame(game);
-            if(teamSelected == 0) {
-                game.addGoalForFirstTeam(goal);
-            } else {
-                game.addGoalForSecondTeam(goal);
-            }
+            game.addGoalForFirstTeam(goal);
+        } else {
+            Integer playerToScore = random.nextInt(guestTeam.getPlayers().size());
+            Player player = guestTeam.getPlayers().get(playerToScore);
 
+            Goal goal = new Goal();
+            goal.setTime(random.nextInt(91));
+            goal.setPlayer(player);
+
+            player = playerRepository.save(player);
+
+            goal.setGame(game);
+            game.addGoalForSecondTeam(goal);
         }
-
     }
+
 
     public Team _createTeam(String name) {
         Team team = new Team();
@@ -138,7 +153,7 @@ public class ResultsGenerator {
         List<Team> teamList = new ArrayList<>();
 
         for(int i=0; i<NUMBER_OF_TEAMS; i++) {
-            Team team = _createTeam("TEAM " + i);
+            Team team = _createTeam("TEAM " + (1 + i));
             teamList.add(team);
         }
 
@@ -202,7 +217,7 @@ public class ResultsGenerator {
                     _createGame(teamList.get(3), teamList.get(1), tour);
                     _createGame(teamList.get(4), teamList.get(0), tour);
                     _createGame(teamList.get(5), teamList.get(8), tour);
-                    _createGame(teamList.get(4), teamList.get(7), tour);
+                    _createGame(teamList.get(6), teamList.get(7), tour);
 
                     tourRepository.save(tour);
                     break;

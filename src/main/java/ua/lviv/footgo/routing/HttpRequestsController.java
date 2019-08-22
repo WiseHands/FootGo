@@ -1,6 +1,7 @@
 package ua.lviv.footgo.routing;
 
 import org.springframework.web.bind.annotation.*;
+import ua.lviv.footgo.jsonmapper.TeamResults;
 import ua.lviv.footgo.repository.GameRepository;
 import ua.lviv.footgo.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import ua.lviv.footgo.repository.TeamSignUpRepository;
 import ua.lviv.footgo.repository.TourRepository;
+import ua.lviv.footgo.service.ResultService;
 
 import java.util.List;
 
@@ -26,6 +28,9 @@ public class HttpRequestsController {
 
     @Autowired
     GameRepository gameRepository;
+
+    @Autowired
+    ResultService resultService;
 
     @GetMapping({"/", "/footgo"})
     public String footgo(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
@@ -48,11 +53,14 @@ public class HttpRequestsController {
 
     @GetMapping({"/gametable"})
     public String gametable(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+        List<TeamResults> results = resultService.getResults();
+
+
         List allTeams = (List) teamRepository.findAll();
-        model.addAttribute("firstPlace", allTeams.get(0));
-        model.addAttribute("secondPlace", allTeams.get(1));
-        model.addAttribute("thirdPlace", allTeams.get(2));
-        model.addAttribute("teamList", allTeams.subList(3, allTeams.size()));
+        model.addAttribute("firstPlace", results.get(0));
+        model.addAttribute("secondPlace", results.get(1));
+        model.addAttribute("thirdPlace", results.get(2));
+        model.addAttribute("teamList", results.subList(3, allTeams.size()));
         System.out.println("\n\nallTeams:");
         System.out.println(allTeams);
         return "gametable";

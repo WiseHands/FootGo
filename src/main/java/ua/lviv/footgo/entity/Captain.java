@@ -1,5 +1,7 @@
 package ua.lviv.footgo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity(name = "captain")
@@ -20,6 +22,8 @@ public class Captain {
     private String captainEmail;
 
 
+    @JoinColumn
+    @JsonIgnore
     @OneToOne(mappedBy = "captain")
     private Team team;
 

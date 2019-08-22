@@ -5,8 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Таблиця</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="hamburger.css">
     <link rel="shortcut icon" href="img/footgo-dark-icon.png" type="image/x-icon">
 
 
@@ -19,13 +21,11 @@
             <div class="header-icon">
                 <a href="/"><img class="header-img" src="img/footgo-light-icon.png" alt="wiselogo"></a>
             </div>
-            <div class="header-null"></div>
-            <div id="nav-icon">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="header-null">
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="hamburger fa fa-bars"></i>
+                </a>
             </div>
-
             <div class="header-text">
                 <a href="/signup"><p>Реєстрація</p></a>
                 <a href="/results"><p>Результати</p></a>
@@ -33,6 +33,12 @@
                 <a href="/bombardier"><p>Бомбардири</p></a>
             </div>
         </div>
+    </div>
+    <div id="myLinks">
+        <div><a class="link-item" href="/signup">Реєстрація</a></div>
+        <div><a class="link-item" href="/results">Результати</a></div>
+        <div><a class="link-item" href="/gametable">Таблиця</a></div>
+        <div><a class="link-item" href="/bombardier">Бомбардири</a></div>
     </div>
 </header>
 
@@ -64,32 +70,14 @@
             </c:forEach>
         </div>
 
-    <%--<div class="results-block">--%>
-    <%--<c:forEach items="${tourList}" var="tourItem">--%>
-        <%--<div><p class="results-tour-title"><c:out value="${tourItem.tourNumber}-й тур"/></p></div>--%>
-    <%--</c:forEach>--%>
-    <%--<div class="results-tour">--%>
-    <%--<c:forEach items="${gameList}" var="gameItem">--%>
-        <%--<div class="results-date"><p><c:out value="${gameItem.gameTime}"/></p></div>--%>
-        <%--<div class="results-team1"><p><c:out value="${gameItem.firstTeam}"/></p></div>--%>
-        <%--<div class="results-score"><p>0 : 0</p></div>--%>
-        <%--<div class="results-team2"><p><c:out value="${gameItem.secondTeam}"/></p></div>--%>
-    <%--</c:forEach>--%>
-    <%--</div>--%>
-    <%--</div>--%>
-
         <div class="table-games table-offset ">
             <div class="table-title">І</div>
-            <div class="table-firstplace">0</div>
-            <div class="table-secondplace">0</div>
-            <div class="table-thirdplace">0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
+            <div class="table-firstplace">${firstPlace.numberOfGames}</div>
+            <div class="table-secondplace">${secondPlace.numberOfGames}</div>
+            <div class="table-thirdplace">${thirdPlace.numberOfGames}</div>
+            <c:forEach items="${teamList}" var="item">
+                 <div><p><c:out value="${item.numberOfGames}" /></p></div>
+            </c:forEach>
         </div>
         <div class="table-wins table-offset">
             <div class="table-title">В</div>
@@ -145,21 +133,18 @@
         </div>
         <div class="table-points table-offset">
             <div class="table-title">О</div>
-            <div class="table-firstplace">0</div>
-            <div class="table-secondplace">0</div>
-            <div class="table-thirdplace">0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
-            <div>0</div>
+            <div class="table-firstplace">${firstPlace.points}</div>
+            <div class="table-secondplace">${secondPlace.points}</div>
+            <div class="table-thirdplace">${thirdPlace.points}</div>
+            <c:forEach items="${teamList}" var="item">
+				 <div><p><c:out value="${item.points}" /></p></div>
+			</c:forEach>
         </div>
     </div>
 </div>
 
 <script src="signUpScript.js"></script>
+<script src="hamburger.js"></script>
 
 </body>
 </html>

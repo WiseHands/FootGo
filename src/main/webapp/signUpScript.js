@@ -1,7 +1,3 @@
-document.getElementById('nav-icon').addEventListener("click", function(){
-    document.getElementById("nav-icon").classList.toggle('open');
-});
-
 // sign up form for team registration
 function submitform(ev) {
     event.preventDefault();
@@ -36,28 +32,11 @@ function submitform(ev) {
         captainEmailInput.removeAttribute('invalid-input');
     }
 
-
-    var playerList = new Array();
-    playerList.push(document.signUpForm.player1.value);
-    playerList.push(document.signUpForm.player2.value);
-    playerList.push(document.signUpForm.player3.value);
-    playerList.push(document.signUpForm.player4.value);
-    playerList.push(document.signUpForm.player5.value);
-    playerList.push(document.signUpForm.player6.value);
-    playerList.push(document.signUpForm.player7.value);
-    playerList.push(document.signUpForm.player8.value);
-    playerList.push(document.signUpForm.player9.value);
-    playerList.push(document.signUpForm.player10.value);
-    playerList.push(document.signUpForm.player11.value);
-    playerList.push(document.signUpForm.player12.value);
-    var players = playerList.toString();
-
     var jsonObject = new Object();
     jsonObject.teamName = teamName;
     jsonObject.captainName = captainName;
     jsonObject.captainPhone = captainPhone;
     jsonObject.captainEmail = captainEmail;
-    jsonObject.playerList = players;
     var jsonTeamInString = JSON.stringify(jsonObject);
 
     if (teamName && captainName && captainPhone && captainEmail){
@@ -78,39 +57,7 @@ function submitform(ev) {
         + " " + "/team/signuprequest");
 }
 
-// sign up form for admin
-var adminSignUp = document.getElementById('adminSignUp');
-adminSignUp.addEventListener('click', function () {
-    // Some code...
-    console.log('press button');
-    var emailInput = document.adminSignUpForm.email;
-    var email = emailInput.value;
-    if (!email){
-        emailInput.setAttribute('invalid-input', true);
-    } else {
-        emailInput.removeAttribute('invalid-input');
-    }
 
-    var passwordInput = document.adminSignUpForm.password;
-    var password = passwordInput.value;
-    if (!password){
-        passwordInput.setAttribute('invalid-input', true);
-    } else {
-        passwordInput.removeAttribute('invalid-input');
-    }
-    console.log("submitForm");
-
-    var jsonObject = new Object();
-    jsonObject.email = email;
-    jsonObject.password = password;
-    var json = JSON.stringify(jsonObject);
-
-    if (email && password){
-        var url = '/admin/login';
-        sendPostRequestSignUp(json, url);
-    }
-
-});
 
 // http post request
 function sendPostRequestSignUp(data, url) {

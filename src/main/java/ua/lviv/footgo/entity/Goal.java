@@ -23,7 +23,6 @@ public class Goal {
 
     @ManyToOne
     @JoinColumn
-    @JsonIgnore
     private Player player;
 
 
