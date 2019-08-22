@@ -153,7 +153,7 @@ public class ResultsGenerator {
         List<Team> teamList = new ArrayList<>();
 
         for(int i=0; i<NUMBER_OF_TEAMS; i++) {
-            Team team = _createTeam("TEAM " + i);
+            Team team = _createTeam("TEAM " + (1 + i));
             teamList.add(team);
         }
 
@@ -217,7 +217,7 @@ public class ResultsGenerator {
                     _createGame(teamList.get(3), teamList.get(1), tour);
                     _createGame(teamList.get(4), teamList.get(0), tour);
                     _createGame(teamList.get(5), teamList.get(8), tour);
-                    _createGame(teamList.get(4), teamList.get(7), tour);
+                    _createGame(teamList.get(6), teamList.get(7), tour);
 
                     tourRepository.save(tour);
                     break;
