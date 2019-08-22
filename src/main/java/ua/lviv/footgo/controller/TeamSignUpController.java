@@ -36,7 +36,6 @@ public class TeamSignUpController {
         team.setCaptainName(teamSignUpRequestJsonBody.getCaptainName());
         team.setCaptainPhone(teamSignUpRequestJsonBody.getCaptainPhone());
         team.setCaptainEmail(teamSignUpRequestJsonBody.getCaptainEmail());
-        team.setPlayerList(teamSignUpRequestJsonBody.getPlayerList());
         teamSignUpRepository.save(team);
 
         String teamName = teamSignUpRequestJsonBody.getTeamName();

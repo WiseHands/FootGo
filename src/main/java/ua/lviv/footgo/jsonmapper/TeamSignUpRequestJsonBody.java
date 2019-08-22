@@ -6,15 +6,14 @@ public class TeamSignUpRequestJsonBody {
     private String captainName;
     private String captainPhone;
     private String captainEmail;
-    private String playerList;
 
+    public TeamSignUpRequestJsonBody() {}
 
-    public TeamSignUpRequestJsonBody(String teamName, String captainName, String captainPhone, String captainEmail, String playerList) {
+    public TeamSignUpRequestJsonBody(String teamName, String captainName, String captainPhone, String captainEmail) {
         this.teamName = teamName;
         this.captainName = captainName;
         this.captainPhone = captainPhone;
         this.captainEmail = captainEmail;
-        this.playerList = playerList;
     }
 
 
@@ -50,18 +49,5 @@ public class TeamSignUpRequestJsonBody {
     public void setCaptainEmail(String captainEmail) {
         this.captainEmail = captainEmail;
     }
-
-    public String getPlayerList() {
-        return playerList;
-    }
-
-    public void setPlayerList(String playerList) {
-        this.playerList = playerList;
-    }
-
-
-
-
-
 
 }

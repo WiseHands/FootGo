@@ -160,6 +160,9 @@ input[type=text], input[type=tel], input[type=email] {
 #success {
     display: none;
 }
+#error {
+	display: none;
+}
 .note {
     text-align: left;
     margin-bottom: 1em;

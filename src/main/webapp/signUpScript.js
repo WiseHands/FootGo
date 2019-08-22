@@ -45,14 +45,12 @@ function submitform(ev) {
         document.getElementById('hideifsuccess_0').style.display = 'none';
         document.getElementById('hideifsuccess_1').style.display = 'none';
         document.getElementsByClassName('reg-input-button')[0].style.display = 'none';
-        document.getElementById('success').style.display = 'block';
     }
 
     console.log("press button" + teamName
         + " " + captainName
         + " " + captainPhone
         + " " + captainEmail
-        + " " + playerList
         + " " + jsonTeamInString
         + " " + "/team/signuprequest");
 }
@@ -68,8 +66,13 @@ function sendPostRequestSignUp(data, url) {
         },
         body: data
     })
-        .then(function (data) {
+        .then(function (response) {
             console.log('Request succeeded with JSON response', data);
+            if(response.ok) {
+				document.getElementById('success').style.display = 'block';
+            } else {
+            	document.getElementById('error').style.display = 'block';
+            }
         })
         .catch(function (error) {
             console.log('Request failed', error);
