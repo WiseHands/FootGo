@@ -13,32 +13,32 @@
             <div class="admin-logo">
                 <img class="admin-img" src="/img/footgo-dark-icon.png" alt="logo">
             </div>
-            <div class="admin-bar">
-                <p>FootGo</p>
-                <!--<div class="b-someclass">-->
-                    <!--<div class="b-someclass-inner">-->
-                        <!--<input type="radio" name="check" id="check-1" checked>-->
-                        <!--<label for="check-1"></label>-->
+            <!--<div class="admin-bar">-->
+                <!--<p>FootGo</p>-->
+                <!--&lt;!&ndash;<div class="b-someclass">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="b-someclass-inner">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="radio" name="check" id="check-1" checked>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label for="check-1"></label>&ndash;&gt;-->
 
-                        <!--<input type="radio" name="check" id="check-2">-->
-                        <!--<label for="check-2"></label>-->
+                        <!--&lt;!&ndash;<input type="radio" name="check" id="check-2">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label for="check-2"></label>&ndash;&gt;-->
 
-                        <!--<input type="radio" name="check" id="check-3">-->
-                        <!--<label for="check-3"></label>-->
+                        <!--&lt;!&ndash;<input type="radio" name="check" id="check-3">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label for="check-3"></label>&ndash;&gt;-->
 
-                        <!--&lt;!&ndash;<input type="radio" name="check" id="check-4">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<label for="check-4"></label>&ndash;&gt;-->
+                        <!--&lt;!&ndash;&lt;!&ndash;<input type="radio" name="check" id="check-4">&ndash;&gt;&ndash;&gt;-->
+                        <!--&lt;!&ndash;&lt;!&ndash;<label for="check-4"></label>&ndash;&gt;&ndash;&gt;-->
 
-                        <!--&lt;!&ndash;<input type="radio" name="check" id="check-5">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<label for="check-5"></label>&ndash;&gt;-->
+                        <!--&lt;!&ndash;&lt;!&ndash;<input type="radio" name="check" id="check-5">&ndash;&gt;&ndash;&gt;-->
+                        <!--&lt;!&ndash;&lt;!&ndash;<label for="check-5"></label>&ndash;&gt;&ndash;&gt;-->
 
-                        <!--&lt;!&ndash;<input type="radio" name="check" id="check-6">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<label for="check-6"></label>&ndash;&gt;-->
+                        <!--&lt;!&ndash;&lt;!&ndash;<input type="radio" name="check" id="check-6">&ndash;&gt;&ndash;&gt;-->
+                        <!--&lt;!&ndash;&lt;!&ndash;<label for="check-6"></label>&ndash;&gt;&ndash;&gt;-->
 
-                        <!--<div class="b-someclass-line"></div>-->
-                    <!--</div>-->
-                <!--</div>-->
-        </div>
+                        <!--&lt;!&ndash;<div class="b-someclass-line"></div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</div>-->
         </div>
 
     <p class="admin-tour-title">Тур 1</p>

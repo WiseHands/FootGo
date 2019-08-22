@@ -435,10 +435,10 @@ input[type=text], input[type=tel], input[type=email], select {
     color: #FF6A4F;
 }
 .link-style {
-   color: inherit;
-   text-decoration: inherit;
-   cursor: inherit;
-
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit;
+}
 .send-match-result {
     display: flex;
     justify-content: center;
