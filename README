@@ -1,0 +1,7 @@
+# Docker commands:
+* build a docker image - docker build -t footgo .
+* run a docker container - docker run -it --rm -p [LOCALHOST_PORT]:8080 footgo:latest
+* now you can open app via http://localhost:[LOCALHOST_PORT]/
+* login into docker container
+  ** find container id - docker ps
+  ** login - docker exec -it [CONTAINER_ID] bash
