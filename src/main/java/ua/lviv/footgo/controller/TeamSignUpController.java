@@ -31,7 +31,7 @@ public class TeamSignUpController {
     private String footGoAdmin;
 
     @RequestMapping(value = "/signuprequest", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> addTeamViaJson(@RequestBody TeamSignUpRequestJsonBody teamSignUpRequestJsonBody) {
+    public ResponseEntity<String> addTeamViaJson(@RequestBody TeamSignUpRequestJsonBody teamSignUpRequestJsonBody, @RequestHeader(value="User-Agent") String userAgent) {
 
         TeamSignUpRequest team = new TeamSignUpRequest();
         team.setTeamName(teamSignUpRequestJsonBody.getTeamName());
@@ -39,6 +39,7 @@ public class TeamSignUpController {
         team.setCaptainPhone(teamSignUpRequestJsonBody.getCaptainPhone());
         team.setCaptainEmail(teamSignUpRequestJsonBody.getCaptainEmail());
         team.setUtcDateTime(Clock.systemUTC().instant().toString());
+        team.setUserAgent(userAgent);
         teamSignUpRepository.save(team);
 
         String teamName = teamSignUpRequestJsonBody.getTeamName();

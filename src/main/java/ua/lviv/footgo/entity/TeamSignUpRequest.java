@@ -21,6 +21,8 @@ public class TeamSignUpRequest {
     private String playerList;
     @Column
     private String utcDateTime;
+    @Column
+    private String userAgent;
 
 
     public Long getId() {
@@ -73,5 +75,13 @@ public class TeamSignUpRequest {
 
     public void setUtcDateTime(String utcDateTime) {
         this.utcDateTime = utcDateTime;
+    }
+
+    public String getUserAgent() {
+        return userAgent;
+    }
+
+    public void setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
     }
 }
