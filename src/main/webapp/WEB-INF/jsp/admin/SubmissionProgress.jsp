@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <title>Admin Page</title>
+        <title>Заявки на участь | FootGo</title>
         <link rel="stylesheet" href="../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
         <script src="/submissionAll.js" type="text/javascript"></script>

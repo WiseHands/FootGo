@@ -85,7 +85,7 @@ public class ResultsGenerator {
         Game game = new Game();
         Random random = new Random();
 
-        game.setGameTime("Saturday, Jan " + random.nextInt(40));
+        game.setGameTime("Saturday, Jan " + random.nextInt(31));
         game.setFirstTeam(homeTeam);
         game.setSecondTeam(guestTeam);
         _addGameToTour(tour, game);
@@ -162,8 +162,7 @@ public class ResultsGenerator {
 
             switch (Integer.valueOf(i)) {
                 case 0:
-                    Tour tour = _createTour(i);
-                    tour.setTourNumber(i);
+                    Tour tour = _createTour(i+1);
 
                     _createGame(teamList.get(0), teamList.get(9), tour);
                     _createGame(teamList.get(1), teamList.get(8), tour);
@@ -174,8 +173,7 @@ public class ResultsGenerator {
                     tourRepository.save(tour);
                     break;
                 case 1:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
+                    tour = _createTour(i+1);
 
                     _createGame(teamList.get(9), teamList.get(5), tour);
                     _createGame(teamList.get(6), teamList.get(4), tour);
@@ -186,8 +184,7 @@ public class ResultsGenerator {
                     tourRepository.save(tour);
                     break;
                 case 2:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
+                    tour = _createTour(i+1);
 
                     _createGame(teamList.get(1), teamList.get(9), tour);
                     _createGame(teamList.get(2), teamList.get(0), tour);
@@ -198,8 +195,8 @@ public class ResultsGenerator {
                     tourRepository.save(tour);
                     break;
                 case 3:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
+                    tour = _createTour(i+1);
+
 
                     _createGame(teamList.get(9), teamList.get(6), tour);
                     _createGame(teamList.get(7), teamList.get(5), tour);
@@ -210,8 +207,7 @@ public class ResultsGenerator {
                     tourRepository.save(tour);
                     break;
                 case 4:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
+                    tour = _createTour(i+1);
 
                     _createGame(teamList.get(2), teamList.get(9), tour);
                     _createGame(teamList.get(3), teamList.get(1), tour);
@@ -222,8 +218,7 @@ public class ResultsGenerator {
                     tourRepository.save(tour);
                     break;
                 case 5:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
+                    tour = _createTour(i+1);
 
                     _createGame(teamList.get(9), teamList.get(7), tour);
                     _createGame(teamList.get(8), teamList.get(6), tour);
@@ -234,8 +229,7 @@ public class ResultsGenerator {
                     tourRepository.save(tour);
                     break;
                 case 6:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
+                    tour = _createTour(i+1);
 
                     _createGame(teamList.get(3), teamList.get(9), tour);
                     _createGame(teamList.get(4), teamList.get(2), tour);
@@ -246,8 +240,7 @@ public class ResultsGenerator {
                     tourRepository.save(tour);
                     break;
                 case 7:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
+                    tour = _createTour(i+1);
 
                     _createGame(teamList.get(9), teamList.get(8), tour);
                     _createGame(teamList.get(0), teamList.get(7), tour);
@@ -258,8 +251,7 @@ public class ResultsGenerator {
                     tourRepository.save(tour);
                     break;
                 case 8:
-                    tour = _createTour(i);
-                    tour.setTourNumber(i);
+                    tour = _createTour(i+1);
 
                     _createGame(teamList.get(4), teamList.get(9), tour);
                     _createGame(teamList.get(5), teamList.get(3), tour);

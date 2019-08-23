@@ -57,7 +57,6 @@
             <div id="success" class="player-bg"><p>Запит успішно надіслано!</p></div>
             <div id="error" class="player-bg"><p>Помилка при надсиланні запиту! Зв'яжіться з з адміністраторами footgo.league@gmail.com </p></div>
 
-
         <input class="reg-input-button" type="submit" onclick="submitform()" value="Зареєструватися">
      </form>
  </div>

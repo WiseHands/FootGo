@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Entity
@@ -36,6 +37,14 @@ public class Game {
     @JoinColumn
     @JsonIgnore
     private Tour tour;
+
+    public static class SortByTour implements Comparator<Game>
+    {
+        public int compare(Game a, Game b)
+        {
+            return b.tour.getTourNumber() - a.tour.getTourNumber();
+        }
+    }
 
     public boolean hasTeamAWin(){
         if(this.teamAGoals == null) {
