@@ -17,7 +17,7 @@
         </div>
 
         <div class="team-request">
-            <h3>Заявка команди 1</h3>
+            <h3>Заявка Команди</h3>
             <div class="admin-team-name">
                 <p>Назва команди</p>
                 <input type="text" name="teamName" placeholder="Назва команди" required>
