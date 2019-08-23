@@ -51,6 +51,9 @@
     padding-left: 10px;
     font-size: 20px;
 }
+.link-item:hover {
+    background-color: #181439;
+}
 
 .hamburger {
     font-size: 45px;
