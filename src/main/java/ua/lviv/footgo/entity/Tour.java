@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "tour")
+@Entity
 public class Tour {
 
     @Id
@@ -12,10 +12,9 @@ public class Tour {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "tourNumber")
     private Integer tourNumber;
 
-    @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Game> gameList;
 
     public Long getId() {
