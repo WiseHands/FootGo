@@ -332,7 +332,7 @@ input[type=submit] {
     font-weight: 600;
 }
 .results-bg {
-    background-color: rgba(220,216,216, 0.5);
+    background-color: rgba(220,216,216, 0.8);
     padding: 10px;
     border-radius: 10px;
 }
