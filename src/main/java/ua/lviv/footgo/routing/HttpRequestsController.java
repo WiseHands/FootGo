@@ -1,6 +1,8 @@
 package ua.lviv.footgo.routing;
 
 import org.springframework.web.bind.annotation.*;
+import ua.lviv.footgo.entity.Game;
+import ua.lviv.footgo.entity.Team;
 import ua.lviv.footgo.jsonmapper.TeamResults;
 import ua.lviv.footgo.repository.GameRepository;
 import ua.lviv.footgo.repository.TeamRepository;
@@ -9,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import ua.lviv.footgo.repository.TeamSignUpRepository;
 import ua.lviv.footgo.repository.TourRepository;
+import ua.lviv.footgo.service.GameFinder;
 import ua.lviv.footgo.service.ResultService;
 
+import java.util.Collections;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -32,6 +36,9 @@ public class HttpRequestsController {
     @Autowired
     ResultService resultService;
 
+    @Autowired
+    GameFinder gameFinder;
+
     @GetMapping({"/", "/footgo"})
     public String footgo(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("name", name);
@@ -49,6 +56,15 @@ public class HttpRequestsController {
         List tourList = (List) tourRepository.findAll();
         model.addAttribute("tourList", tourList);
         return "results";
+    }
+
+    @GetMapping({"/results/{teamId}"})
+    public String results(Model model, @PathVariable("teamId") Long teamId) {
+        Team team = teamRepository.findById(teamId).get();
+
+        model.addAttribute("gameList", gameFinder.findAllGamesForTeam(team));
+        model.addAttribute("team", team);
+        return "teamresults";
     }
 
     @GetMapping({"/gametable"})

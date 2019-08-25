@@ -21,14 +21,18 @@ public class ResultService {
     @Autowired
     TeamRepository teamRepository;
 
+    @Autowired
+    GameFinder gameFinder;
+
     public List<TeamResults> getResults() {
-        List<Game> gameList = (List<Game>) gameRepository.findAll();
         List<Team> teamList = (List<Team>) teamRepository.findAll();
 
         List<TeamResults> teamResultsList = new ArrayList<>();
         for(Team team: teamList) {
             TeamResults teamResults = new TeamResults();
             teamResults.setTeam(team);
+
+            List<Game> gameList = gameFinder.findAllGamesForTeam(team);
 
             for(Game game: gameList) {
                 _calculateResultForTeamInGame(game, team, teamResults);
@@ -55,11 +59,11 @@ public class ResultService {
             }
 
         } else if (game.getSecondTeam() == team) {
-            if(game.hasTeamAWin()) {
+            if(game.hasTeamBWin()) {
                 teamResults.addWin(numberOfTeamBGoals, numberOfTeamAGoals);
             } else if (game.isADraw()) {
                 teamResults.addDraw(numberOfTeamBGoals, numberOfTeamAGoals);
-            } else if (game.hasTeamBWin()) {
+            } else if (game.hasTeamAWin()) {
                 teamResults.addLoss(numberOfTeamBGoals, numberOfTeamAGoals);
             }
         }
