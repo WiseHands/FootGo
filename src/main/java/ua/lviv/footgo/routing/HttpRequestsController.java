@@ -75,30 +75,17 @@ public class HttpRequestsController {
     @GetMapping({"/admin/submission"})
     public String submission(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("submissions", teamSignUpRepository.findAll());
-        return "/admin/SubmissionProgress";
+        return "AdminSubmissionProgress";
     }
 
     @RequestMapping(value = "/admin/submission/edit", method = GET)
     public String submissionEdit(Model model, @RequestParam long uuid) {
-        return "/admin/SubmissionEntryEdit";
+        return "AdminSubmissionEntryEdit";
     }
 
     @RequestMapping(value = "/admin/matches", method = GET)
     public String matchesReview(Model model) {
-        return "/admin/MatchesReview";
-    }
-
-    @GetMapping({"/login"})
-    public String login(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-        model.addAttribute("name", name);
-
-        return "/admin/loginAdminForm";
-    }
-
-    @RequestMapping(value = "/.well-known/acme-challenge/{uuid}", method = GET)
-    @ResponseBody
-    public String submissionEdit(Model model, @PathVariable String uuid) {
-        return uuid;
+        return "AdminMatchesReview";
     }
 
 }
