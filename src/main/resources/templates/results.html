@@ -53,18 +53,22 @@
                                 </p>
                             </div>
                             <div class="results-team1">
-                                <p th:text="${game.firstTeam.teamName}">
-                                    game.firstTeam.teamName
-                                </p>
+                                <a th:attr="href=${'/results/' + game.firstTeam.id}">
+                                    <p th:text="${game.firstTeam.teamName}">
+                                        game.firstTeam.teamName
+                                    </p>
+                                </a>
                             </div>
                             <div class="results-score"><p>
                                 <span th:text="${game.teamAGoals.size()}">game.teamAGoals.size()</span>
                                 :
                                 <span th:text="${game.teamBGoals.size()}">game.teamBGoals.size()</span></p></div>
                             <div class="results-team2">
-                                <p th:text="${game.secondTeam.teamName}">
-                                    game.secondTeam.teamName
-                                </p>
+                                <a th:attr="href=${'/results/' + game.secondTeam.id}">
+                                    <p th:text="${game.secondTeam.teamName}">
+                                        game.secondTeam.teamName
+                                    </p>
+                                </a>
                             </div>
                         </div>
                 </div>

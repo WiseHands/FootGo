@@ -41,11 +41,11 @@
 <div class="results-full">
     <div class="results">
         <div class="results-bg">
+            <div class="results-block">
+
 
                 <h2 th:text="${team.teamName}"></h2>
 
-                    <div>
-                        <p class="results-tour-title">Tur</p>
                     </div>
                         <div th:each="game : ${gameList}" class="results-tour">
                             <div class="results-date">
@@ -68,6 +68,7 @@
                                 </p>
                             </div>
                         </div>
+            </div>
 
         </div>
     </div>
