@@ -104,4 +104,15 @@ public class HttpRequestsController {
         return "AdminMatchesReview";
     }
 
+    @GetMapping({"/admin/team"})
+    public String teamList(Model model) {
+        model.addAttribute("teamList", teamRepository.findAll());
+        return "AdminSubmissionTeamList";
+    }
+
+    @GetMapping(value = "/admin/team/edit")
+    public String teamEdit(Model model, @RequestParam long uuid) {
+        return "AdminSubmissionTeamEntryEdit";
+    }
+
 }
