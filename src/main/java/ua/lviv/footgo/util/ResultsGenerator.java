@@ -1,5 +1,6 @@
 package ua.lviv.footgo.util;
 
+import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ua.lviv.footgo.entity.*;
@@ -37,11 +38,13 @@ public class ResultsGenerator {
     @Autowired
     private PlayerRepository playerRepository;
 
+    private Faker faker = new Faker();
+
     public Captain _createCaptain(Team team) {
         Captain captain = new Captain();
-        captain.setCaptainName("CAPTAIN " + team.getTeamName());
-        captain.setCaptainEmail("CAPTAIN EMAIL" + team.getTeamName());
-        captain.setCaptainPhone("CAPTAIN PHONE" + team.getTeamName());
+        captain.setCaptainName(faker.name().name());
+        captain.setCaptainEmail(captain.getCaptainName() + "@gmail.com");
+        captain.setCaptainPhone(faker.phoneNumber().phoneNumber());
 
         captain.setTeam(team);
         team.setCaptain(captain);
@@ -57,7 +60,7 @@ public class ResultsGenerator {
 
     public void _createPlayer(Team team, String name) {
         Player player = new Player();
-        player.setPlayerName(name);
+        player.setPlayerName(faker.name().name());
         player.setTeam(team);
         team.addPlayer(player);
     }

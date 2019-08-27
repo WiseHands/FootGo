@@ -8,8 +8,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EnableAutoConfiguration
-@ComponentScan(basePackages = { "ua.lviv.footgo" })
+@ComponentScan(basePackages = { "ua.lviv.footgo", "com.github.javafaker" })
 
 public class FootGoApplication extends SpringBootServletInitializer {
 

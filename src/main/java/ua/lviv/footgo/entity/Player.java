@@ -12,8 +12,9 @@ public class Player {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
     private String playerName;
+    private String email;
+    private String phone;
 
     @ManyToOne
     @JoinColumn
@@ -40,4 +41,19 @@ public class Player {
         this.team = team;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }

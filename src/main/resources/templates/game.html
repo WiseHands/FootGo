@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>Деталі Гри | FootGo League</title>
+		<style>
+			.goal-scored {
+				color: red;
+				font-size: 2em;
+			}
+			.goal-list {
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>
+			<p th:text="${game.gameTime}">13:00 Четвер, 6 серпня</p>
+			<span th:text="${game.firstTeam.teamName}">Інтер</span>
+			<span class="goal-scored" th:text="${game.teamAGoals.size()}"></span>
+			<span>VS</span>
+			<span class="goal-scored" th:text="${game.teamBGoals.size()}"></span>
+			<span th:text="${game.secondTeam.teamName}">Лечче</span>
+
+			<p th:text="${game.firstTeam.teamName + ' Goals:'}"></p>
+			<div class="goal-list">
+				<div  th:each="goal : ${game.teamAGoals}">
+					<p th:text="${goal.player.playerName + ' ' + goal.time + '&quot;'}">Ібрагімовіч 21"</p>
+				</div>
+			</div>
+
+
+			<p th:text="${game.secondTeam.teamName + ' Goals:'}"></p>
+			<div class="goal-list">
+				<div  th:each="goal : ${game.teamBGoals}">
+					<p th:text="${goal.player.playerName + ' ' + goal.time + '&quot;'}">Шевченкo 66"</p>
+				</div>
+			</div>
+
+		</h2>
+
+		<div>
+
+		</div>
+
+	</body>
+</html>

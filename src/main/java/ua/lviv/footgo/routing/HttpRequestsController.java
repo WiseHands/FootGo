@@ -88,6 +88,13 @@ public class HttpRequestsController {
         return "bombardier";
     }
 
+    @GetMapping({"/game/{id}"})
+    public String gameDetails(Model model, @PathVariable("id") Long id) {
+        Game game = gameRepository.findById(id).get();
+        model.addAttribute("game", game);
+        return "game";
+    }
+
     @GetMapping({"/admin/submission"})
     public String submission(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("submissions", teamSignUpRepository.findAll());
