@@ -215,8 +215,6 @@ body{
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-left: 40px;
-
 }
 .team-request h3 {
     font-size: 1.5rem;
@@ -227,6 +225,7 @@ body{
 .team-request p {
     font-size: 1.2rem;
     font-weight: 400;
+    margin-bottom: 1rem;
 }
 .admin-team-name {
     display: flex;

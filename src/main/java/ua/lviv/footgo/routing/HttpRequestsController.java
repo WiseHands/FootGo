@@ -94,12 +94,12 @@ public class HttpRequestsController {
         return "AdminSubmissionProgress";
     }
 
-    @RequestMapping(value = "/admin/submission/edit", method = GET)
+    @GetMapping(value = "/admin/submission/edit")
     public String submissionEdit(Model model, @RequestParam long uuid) {
         return "AdminSubmissionEntryEdit";
     }
 
-    @RequestMapping(value = "/admin/matches", method = GET)
+    @GetMapping(value = "/admin/matches")
     public String matchesReview(Model model) {
         return "AdminMatchesReview";
     }
@@ -112,6 +112,7 @@ public class HttpRequestsController {
 
     @GetMapping(value = "/admin/team/edit")
     public String teamEdit(Model model, @RequestParam long uuid) {
+        model.addAttribute("team", teamRepository.findById(uuid).get());
         return "AdminSubmissionTeamEntryEdit";
     }
 

@@ -16,9 +16,9 @@
 
         <div class="team-request">
             <h3>Редагування Команди</h3>
+            <p class="admin-title-row">Назва команди</p>
             <div class="admin-team-name">
-                <p>Назва команди</p>
-                <input type="text" name="teamName" placeholder="Назва команди" required>
+                <div class="admin-capitan"><input type="text" name="teamName" placeholder="Назва команди" required></div>
             </div>
             <p class="admin-title-row">Капітан</p>
             <div class="admin-capitan">
@@ -26,7 +26,16 @@
                 <input type="tel" name="captainPhone" pattern="[0-9]{10}" placeholder="номер телефону 093 ..." required>
                 <input type="email" name="captainEmail" placeholder="введіть email" required>
             </div>
-
+            <p class="admin-title-row">Гравці</p>
+            <div class="all-requests">
+                <div th:each="item : ${team.players}">
+                    <a th:attr="href=${'/admin/player/edit?uuid=' + item.id}" class="link-style">
+                        <div class="request-block">
+                            <h3 th:text="${item.playerName}"></h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
 
     </body>
 </html>
