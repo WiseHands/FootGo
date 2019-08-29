@@ -29,6 +29,9 @@ header   {
 a {
     text-decoration: none;
 }
+a, a:hover {
+	color: #212121;
+}
 .header-null {
     display: none;
 }
