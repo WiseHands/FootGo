@@ -547,3 +547,76 @@ input[invalid-input] {
     border: 2px solid red;
     border-radius: 4px;
 }
+
+/*match review*/
+.matches-full {
+    background: url("img/foot88.jpg");
+    background-size: cover;
+    height: calc(100vh - 60.375px);
+}
+.mathces-bg {
+    max-width: 800px;
+    background-color: rgba(220,216,216, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+.review-match {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+.review-match p {
+    overflow: hidden;
+}
+.review-head {
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+
+}
+.review-head p {
+    text-align: center;
+}
+.review-team1 img, .review-team2 img {
+    width: 128px;
+    height: 128px;
+    padding-bottom: 10px;
+}
+.review-team1 p, .review-team2 p {
+    font-size: 1.5rem;
+}
+.review-score {
+    padding: 20px 50px;
+}
+.review-score p {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.details-match {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    font-size: 1.3rem;
+}
+.details-match p {
+    overflow: hidden;
+}
+.details-match img {
+    width: 16px;
+    height: 16px;
+    padding-right: 5px;
+}
+.details-team1 {
+    padding-right: 15px;
+}
+.details-team2 {
+    padding-left: 15px;
+}
+.details-team1, .details-team2 {
+}
+.team1-goals, .team2-goals {
+    display: flex;
+    align-items: center;
+}
