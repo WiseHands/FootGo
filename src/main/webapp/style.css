@@ -321,7 +321,12 @@ input[type=submit] {
     background-size: contain;
     opacity: 1;
 }
-
+.team-results-full {
+    background: url("img/foot66.jpg");
+    background-size: cover;
+    opacity: 1;
+    height: calc(100vh - 60.375px);
+}
 .results {
     display: flex;
     flex-direction: column;
@@ -333,6 +338,9 @@ input[type=submit] {
     font-size: 1.1em;
     padding-top: 30px;
     font-weight: 600;
+}
+.results p {
+    overflow: hidden;
 }
 .results-bg {
     background-color: rgba(220,216,216, 0.8	);
