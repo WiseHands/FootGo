@@ -21,23 +21,6 @@
             <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
             <div class="tour-score"><span id="goalBtn"><p>0 : 0</p></span></div>
             <div class="tour-team2"><span id="myBtn">+</span><p>Команда 2</p></div>
-        </div>    <div class="tour-match">
-            <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
-            <div class="tour-score"><p>0 : 0</p></div>
-            <div class="tour-team2"><span id="myBtn">+</span><p>Команда 2</p></div>
-        </div>    <div class="tour-match">
-            <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
-            <div class="tour-score"><p>0 : 0</p></div>
-            <div class="tour-team2"><span id="myBtn">+</span><p>Команда 2</p></div>
-        </div>    <div class="tour-match">
-            <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
-            <div class="tour-score"><p>0 : 0</p></div>
-            <div class="tour-team2"><span id="myBtn">+</span><p>Команда 2</p></div>
-        </div>
-        </div>    <div class="tour-match">
-            <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
-            <div class="tour-score"><p>0 : 0</p></div>
-            <div class="tour-team2"><span id="myBtn">+</span><p>Команда 2</p></div>
         </div>
 
         <div id="myModal" class="modal">
@@ -102,6 +85,25 @@
 
         </div>
 
-<script src="/modalScript.js" type="text/javascript"></script>
+    <script>
+        const path = location.toString();
+        let url = new URL(path);
+        let searchParams = new URLSearchParams(url.search);
+
+        const id = searchParams.get('uuid');
+
+        let apiUrl = '/match/' + id;
+        fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }).then(function(response){
+            console.log(response)
+            return  response.json();
+        }).then(function(data) {
+            console.log(data);
+        });
+    </script>
     </body>
 </html>
