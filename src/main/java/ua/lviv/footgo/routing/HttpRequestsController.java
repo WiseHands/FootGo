@@ -95,6 +95,23 @@ public class HttpRequestsController {
         return "game";
     }
 
+    @GetMapping({"/admin"})
+    public String submission(Model model) {
+        return "Admin";
+    }
+
+    @GetMapping({"/admin/tour"})
+    public String tourList(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+        model.addAttribute("tourList", tourRepository.findAll());
+        return "AdminTourList";
+    }
+
+    @GetMapping({"/admin/tour/details"})
+    public String tourDetails(Model model, @RequestParam long uuid) {
+        model.addAttribute("tour", tourRepository.findById(uuid).get());
+        return "AdminTourDetails";
+    }
+
     @GetMapping({"/admin/submission"})
     public String submission(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("submissions", teamSignUpRepository.findAll());
@@ -106,9 +123,9 @@ public class HttpRequestsController {
         return "AdminSubmissionEntryEdit";
     }
 
-    @GetMapping(value = "/admin/matches")
-    public String matchesReview(Model model) {
-        return "AdminMatchesReview";
+    @GetMapping(value = "/admin/match/edit")
+    public String matchesReview(Model model, @RequestParam long uuid) {
+        return "AdminMatchDetail";
     }
 
     @GetMapping({"/admin/team"})
