@@ -42,7 +42,7 @@
                     <p th:text="${game.firstTeam.teamName}">Команда 1</p>
                 </div>
                 <div class="tour-score">
-                    <span id="goalBtn"><p>0 : 0</p></span>
+                    <span id="goalBtn"><p><span th:text="${game.teamAGoals.size()}">0</span> : <span th:text="${game.teamBGoals.size()}">0</span></p></span>
                 </div>
                 <div class="tour-team2">
                     <p th:text="${game.secondTeam.teamName}">Команда 2</p>

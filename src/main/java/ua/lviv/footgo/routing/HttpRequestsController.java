@@ -125,6 +125,7 @@ public class HttpRequestsController {
 
     @GetMapping(value = "/admin/match/edit")
     public String matchesReview(Model model, @RequestParam long uuid) {
+        model.addAttribute("game", gameRepository.findById(uuid).get());
         return "AdminMatchDetail";
     }
 

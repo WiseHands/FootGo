@@ -1,15 +1,21 @@
+let state = {};
+
 // Get the modal
 var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
 
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal
-btn.onclick = function() {
+var plusHomeTeamGoal = document.getElementById("plusHomeTeamGoal");
+plusHomeTeamGoal.onclick = function() {
+	state.homeTeamGoal = true;
+    modal.style.display = "block";
+}
+var plusGuestTeamGoal = document.getElementById("plusGuestTeamGoal");
+plusGuestTeamGoal.onclick = function() {
+	state.homeTeamGoal = true;
     modal.style.display = "block";
 }
 

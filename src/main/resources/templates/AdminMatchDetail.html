@@ -18,9 +18,21 @@
 
 
         <div class="tour-match">
-            <div class="tour-team1"><p>Команда 1</p><span id="myBtn">+</span></div>
-            <div class="tour-score"><span id="goalBtn"><p>0 : 0</p></span></div>
-            <div class="tour-team2"><span id="myBtn">+</span><p>Команда 2</p></div>
+            <div class="tour-team1">
+                <p th:text="${game.firstTeam.teamName}">Команда 1</p>
+                <span id="plusHomeTeamGoal">+</span>
+            </div>
+            <div class="tour-score">
+                <span id="goalBtn">
+                    <p>
+                        <span th:text="${game.teamAGoals.size()}">0</span> : <span th:text="${game.teamBGoals.size()}">0</span>
+                    </p>
+                </span>
+            </div>
+            <div class="tour-team2">
+                <span id="plusGuestTeamGoal">+</span>
+                <p th:text="${game.secondTeam.teamName}">Команда 2</p>
+            </div>
         </div>
 
         <div id="myModal" class="modal">
@@ -92,7 +104,7 @@
 
         const id = searchParams.get('uuid');
 
-        let apiUrl = '/match/' + id;
+        let apiUrl = '/games/' + id;
         fetch(apiUrl, {
           method: 'GET',
           headers: {
@@ -102,8 +114,10 @@
             console.log(response)
             return  response.json();
         }).then(function(data) {
+            window.gameData = data;
             console.log(data);
         });
     </script>
+    <script src="/modalScript.js"></script>
     </body>
 </html>

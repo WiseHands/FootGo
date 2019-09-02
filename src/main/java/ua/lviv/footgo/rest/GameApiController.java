@@ -2,10 +2,7 @@
 package ua.lviv.footgo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.entity.Game;
 import ua.lviv.footgo.entity.Team;
 import ua.lviv.footgo.repository.GameRepository;
@@ -25,6 +22,13 @@ public class GameApiController {
 
     @Autowired
     TeamRepository teamRepository;
+
+    @GetMapping("/{id}")
+    public Game getTeam(@PathVariable Long id) {
+        Game game = gameRepository.findById(id).get();
+        return game;
+
+    }
 
 
     @RequestMapping(value = "/all", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
