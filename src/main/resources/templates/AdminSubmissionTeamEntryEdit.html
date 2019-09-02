@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
         <script src="/submissionTeamById.js" type="text/javascript"></script>
+        <script src="/putTeamAndCaptainById.js" type="text/javascript"></script>
     </head>
     <body>
         <div class="admin-main">
@@ -18,13 +19,16 @@
             <h3>Редагування Команди</h3>
             <p class="admin-title-row">Назва команди</p>
             <div class="admin-team-name">
-                <div class="admin-capitan"><input type="text" name="teamName" placeholder="Назва команди" required></div>
+                <div class="admin-capitan"><input type="text" id="name" name="teamName" placeholder="Назва команди" required></div>
             </div>
             <p class="admin-title-row">Капітан</p>
             <div class="admin-capitan">
-                <input type="text" name="captainName" placeholder="Прізвище ім'я" required>
-                <input type="tel" name="captainPhone" pattern="[0-9]{10}" placeholder="номер телефону 093 ..." required>
-                <input type="email" name="captainEmail" placeholder="введіть email" required>
+                <input type="text" id="captain_name" name="captainName" placeholder="Прізвище ім'я" required>
+                <input type="tel" id="captain_phone" name="captainPhone" pattern="[0-9]{10}" placeholder="номер телефону 093 ..." required>
+                <input type="email" id="captain_email" name="captainEmail" placeholder="введіть email" required>
+            </div>
+            <div class="slogan-button">
+                <input class="main-input-button" type="button" value="Зберегти" onclick="putTeamAndCaptainById()">
             </div>
             <p class="admin-title-row">Гравці</p>
             <div class="all-requests">

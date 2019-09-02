@@ -54,8 +54,6 @@ function submitform(ev) {
         + " " + "/team/signuprequest");
 }
 
-
-
 // http post request
 function sendPostRequestSignUp(data, url) {
     fetch(url, {
