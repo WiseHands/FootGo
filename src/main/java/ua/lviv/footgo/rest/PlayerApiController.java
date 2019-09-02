@@ -1,10 +1,7 @@
 package ua.lviv.footgo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.entity.Player;
 import ua.lviv.footgo.entity.Team;
 import ua.lviv.footgo.repository.PlayerRepository;
@@ -29,5 +26,14 @@ public class PlayerApiController {
     public Player getById(@PathVariable Long id) {
         Player request = playerRepository.findById(id).get();
         return request;
+    }
+    @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
+    public Player update(@PathVariable Long id, @RequestParam String name, String phone, String email) {
+        Player player = playerRepository.findById(id).get();
+        player.setPlayerName(name);
+        player.setPhone(phone);
+        player.setEmail(email);
+        playerRepository.save(player);
+        return player;
     }
 }
