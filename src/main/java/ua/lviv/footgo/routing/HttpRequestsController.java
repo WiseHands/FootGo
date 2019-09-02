@@ -123,4 +123,10 @@ public class HttpRequestsController {
         return "AdminSubmissionTeamEntryEdit";
     }
 
+    @GetMapping(value = "/admin/player/edit")
+    public String playerEdit(Model model, @RequestParam long uuid) {
+        model.addAttribute("player", teamRepository.findById(uuid));
+        return "AdminSubmissionPlayerEntryEdit";
+    }
+
 }
