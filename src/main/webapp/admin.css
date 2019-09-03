@@ -298,11 +298,15 @@ input[type=text], input[type=tel], input[type=email], select {
 .tour-match {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding-top: 15px;
     font-size: 1.3rem;
 }
 .tour-team1, .tour-team2 {
     display: flex;
+}
+.tour-team1 p {
+    text-align: right;
 }
 .tour-team1 span {
     margin-left: 10px;
@@ -408,8 +412,8 @@ input[type=text], input[type=tel], input[type=email], select {
 }
 .modal-goal {
     display: flex;
-    justify-content: space-between;
     width: 330px;
+    margin: 0 auto;
 }
 .modal-goal h3 {
     font-size: 1.3rem;
