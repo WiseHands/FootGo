@@ -274,7 +274,6 @@ input[type=text], input[type=tel], input[type=email], select {
     border-radius: 5px;
     background: #fff;
 }
-
 .main-input-button {
     color: #fff;
     background-color: #4e73ad;
@@ -289,6 +288,21 @@ input[type=text], input[type=tel], input[type=email], select {
 .main-input-button:hover {
     background-color: #285294;
     border-radius: 10px;
+}
+.main-input-button-all {
+   margin: 1em auto;
+   background-color: #008000;
+   display: none;
+}
+.main-input-button-all:hover {
+   background-color: #026402;
+}
+.main-input-button-del {
+   text-align: left;
+   background-color: #ff4500;
+}
+.main-input-button-del:hover {
+   background-color: #b63403;
 }
 .admin-tour-title {
     text-align: center;
@@ -457,4 +471,14 @@ input[type=text], input[type=tel], input[type=email], select {
     border: none;
     border-radius: 10px;
     cursor: pointer;
+}
+
+/*messages*/
+#success {
+    display: none;
+    text-align: center;
+}
+#error {
+	display: none;
+	text-align: center;
 }
