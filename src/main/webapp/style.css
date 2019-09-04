@@ -234,6 +234,8 @@ input[type=submit] {
 .table, .bomb {
     display: flex;
     justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
     line-height: 2.5;
     text-align: center;
     font-size: 1.1em;
@@ -243,11 +245,13 @@ input[type=submit] {
     width: 5%;
 }
 .table-team-name {
-    min-width: 200px;
+    max-width: 400px;
     text-align: left;
 }
     .table-team-name p {
         padding-left: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .table-team-name div:first-child {
         text-align: center;
@@ -294,11 +298,13 @@ input[type=submit] {
     font-weight: 700;
 }
 .bomb-player-name {
-    min-width: 30%;
+    width: 35%;
     text-align: left;
 }
 .bomb-player-name p {
     padding-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .bomb-player-name div:first-child {
     text-align: center;
