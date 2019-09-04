@@ -185,6 +185,7 @@ body{
 }
 .request-block {
     min-width: 238px;
+    max-width: 250px;
     padding: 24px 16px;
     margin: 10px 15px;
     background-color: #fff;
@@ -198,11 +199,15 @@ body{
     font-size: 1.5rem;
     font-weight: 400;
     line-height: 1.33;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .request-block p {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 @media screen and (max-width: 667px) {
     .admin-bar {
@@ -315,23 +320,33 @@ input[type=text], input[type=tel], input[type=email], select {
     align-items: center;
     padding-top: 15px;
     font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.tour-team1-details, .tour-team2-details {
+    width: 40%;
 }
 .tour-team1, .tour-team2 {
     display: flex;
+    width: 40%;
 }
-.tour-team1 p {
+.tour-team1 p, .tour-team1-details p {
     text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.tour-team1 span {
+.tour-team1 span, .tour-team1-details span {
     margin-left: 10px;
     cursor: pointer;
+    display: inline-block;
 }
 .tour-score {
-    padding: 0 20px;
+    width: 60px;
+    padding: 0 15px;
     font-size: 1.5rem;
     cursor: pointer;
 }
-.tour-team2 span {
+.tour-team2 span, .tour-team2-details span {
     margin-right: 10px;
     cursor: pointer;
 }
@@ -426,7 +441,7 @@ input[type=text], input[type=tel], input[type=email], select {
 }
 .modal-goal {
     display: flex;
-    width: 330px;
+    width: 400px;
     margin: 0 auto;
 }
 .modal-goal h3 {
@@ -450,6 +465,9 @@ input[type=text], input[type=tel], input[type=email], select {
 }
 .modal-goal span:hover {
     color: #FF6A4F;
+}
+.team1-goal, .team2-goal {
+    width: 50%;
 }
 .link-style {
 	flex: 1;

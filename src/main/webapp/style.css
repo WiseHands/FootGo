@@ -354,6 +354,7 @@ input[type=submit] {
 .results-block p {
     text-align: center;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 .results-tour-title span{
     display: none;
@@ -385,7 +386,6 @@ input[type=submit] {
 }
 .results-score {
     width: 10%;
-    margin: 0 50px;
 }
 
 
@@ -618,9 +618,11 @@ input[invalid-input] {
 }
 .details-team1 {
     padding-right: 15px;
+    width: 50%;
 }
 .details-team2 {
     padding-left: 15px;
+    width: 50%;
 }
 .details-team1, .details-team2 {
 }

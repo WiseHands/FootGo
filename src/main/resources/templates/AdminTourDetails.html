@@ -38,13 +38,13 @@
 
         <a th:attr="href=${'/admin/match/edit?uuid=' + game.id}" th:each="game : ${tour.gameList}">
             <div class="tour-match">
-                <div class="tour-team1">
+                <div class="tour-team1-details">
                     <p th:text="${game.firstTeam.teamName}">Команда 1</p>
                 </div>
                 <div class="tour-score">
                     <span id="goalBtn"><p><span th:text="${game.teamAGoals.size()}">0</span> : <span th:text="${game.teamBGoals.size()}">0</span></p></span>
                 </div>
-                <div class="tour-team2">
+                <div class="tour-team2-details">
                     <p th:text="${game.secondTeam.teamName}">Команда 2</p>
                 </div>
             </div>
