@@ -4,8 +4,11 @@ package ua.lviv.footgo.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.entity.Game;
+import ua.lviv.footgo.entity.Goal;
+import ua.lviv.footgo.entity.Player;
 import ua.lviv.footgo.entity.Team;
 import ua.lviv.footgo.repository.GameRepository;
+import ua.lviv.footgo.repository.GoalRepository;
 import ua.lviv.footgo.repository.TeamRepository;
 
 import java.util.Collections;
@@ -23,6 +26,9 @@ public class GameApiController {
     @Autowired
     TeamRepository teamRepository;
 
+    @Autowired
+    GoalRepository goalRepository;
+
     @GetMapping("/{id}")
     public Game getTeam(@PathVariable Long id) {
         Game game = gameRepository.findById(id).get();
@@ -31,13 +37,13 @@ public class GameApiController {
     }
 
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
+    @GetMapping(value = "/all", consumes = "application/json", produces = "application/json")
     public List<Game> getResults() {
         List<Game> gameList = (List<Game>) gameRepository.findAll();
         return gameList;
     }
 
-    @RequestMapping(value = "/team", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
+    @GetMapping(value = "/team", consumes = "application/json", produces = "application/json")
     public List<Game> getResults(@RequestParam Long teamId) {
         Team team = teamRepository.findById(teamId).get();
         List<Game> homeGames = gameRepository.findByFirstTeam(team);
@@ -48,4 +54,20 @@ public class GameApiController {
         return  allGames;
     }
 
+    @PostMapping(value = "/{id}/goal", consumes = "application/json", produces = "application/json")
+    public Goal addGoal(@PathVariable Long id, @RequestParam Player playerId, @RequestParam int goalMinute, @RequestParam  boolean homeTeamGoal) {
+        Game game = gameRepository.findById(id).get();
+        Goal goal = new Goal();
+        goal.setPlayer(playerId);
+        goal.setTime(goalMinute);
+        goal.setGame(game);
+        if(homeTeamGoal) {
+            game.addGoalForFirstTeam(goal);
+        } else {
+            game.addGoalForSecondTeam(goal);
+        }
+        goalRepository.save(goal);
+        gameRepository.save(game);
+        return goal;
+    }
 }
