@@ -184,8 +184,7 @@ body{
     flex-wrap: wrap;
 }
 .request-block {
-    min-width: 238px;
-    max-width: 250px;
+    width: 230px;
     padding: 24px 16px;
     margin: 10px 15px;
     background-color: #fff;
