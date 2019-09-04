@@ -51,6 +51,9 @@
                 <p><img src="../../../img/soccer-ball.png">Гравець, 66'<span>-</span></p>
             </div>
         </div>
+
+
+
         <div id="myModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
@@ -61,56 +64,18 @@
                 <div class="modal-body">
                     <div class="goal-minute">
                         <p>Хвилина</p>
-                        <input type="text" name="minute">
+                        <input type="text" name="minute" id="goalMinute">
                     </div>
                     <div class="goal-author">
                         <p>Автор</p>
-                        <select>
-                            <option value="">Гравець1</option>
-                            <option value="">Гравець1</option>
-                            <option value="">Гравець1</option>
-                            <option value="">Гравець1</option>
-                            <option value="">Гравець1</option>
-                            <option value="">Гравець1</option>
-                            <option value="">Гравець1</option>
-                            <option value="">Гравець1</option>
-                            <option value="">Гравець1</option>
-                            <option value="">Гравець1</option>
+                        <select id="playerSelect">
                         </select>
                     </div>
                 </div>
                 <div class="goal-add">
-                    <input class="main-input-button" type="button" value="Додати">
+                    <input onclick="addGoalBtnClicked()" id="savebutton" class="main-input-button" type="button" value="Додати">
                 </div>
             </div>
-        </div>
-
-        <div id="goalModal" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div class="modal-goal">
-                    <div class="team1-goal">
-                        <h3>Команда 1</h3>
-                        <p><img src="../../../img/soccer-ball.png">Гравець, 32'<span>-</span></p>
-                        <p><img src="../../../img/soccer-ball.png">Гравець, 32'<span>-</span></p>
-                        <p><img src="../../../img/soccer-ball.png">Гравець, 32'<span>-</span></p>
-                    </div>
-
-                    <div class="team2-goal">
-                        <h3>Команда 2</h3>
-                        <p><img src="../../../img/soccer-ball.png">Гравець, 66'<span>-</span></p>
-                        <p><img src="../../../img/soccer-ball.png">Гравець, 66'<span>-</span></p>
-                        <p><img src="../../../img/soccer-ball.png">Гравець, 66'<span>-</span></p>
-                        <p><img src="../../../img/soccer-ball.png">Гравець, 66'<span>-</span></p>
-                    </div>
-                </div>
-                <div class="send-match-result">
-                    <input type="button" value="Завершити матч">
-                </div>
-            </div>
-
         </div>
 
     <script>
