@@ -24,8 +24,17 @@ plusHomeTeamGoal.onclick = function() {
 }
 var plusGuestTeamGoal = document.getElementById("plusGuestTeamGoal");
 plusGuestTeamGoal.onclick = function() {
-	state.homeTeamGoal = true;
+	state.homeTeamGoal = false;
     modal.style.display = "block";
+    let playerSelect = document.getElementById("playerSelect");
+        playerSelect.innerHTML = '';
+        for(index in window.gameData.secondTeam.players) {
+           let player = window.gameData.secondTeam.players[index];
+           var opt = document.createElement("option");
+           opt.value= player.id;
+           opt.innerHTML = player.playerName; // whatever property it has
+           playerSelect.appendChild(opt);
+        }
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -45,11 +54,11 @@ var goalModal = document.getElementById("goalModal");
 
 var gbtn = document.getElementById("goalBtn");
 
-gbtn.onclick = function() {
-    goalModal.style.display = "block";
+goalBtn.onclick = function() {
+    myModal.style.display = "block";
 }
 
-var span2 = document.getElementsByClassName("close")[1];
+var span2 = document.getElementsByClassName("close")/*[1]*/;
 
 span2.onclick = function() {
     goalModal.style.display = "none";
@@ -63,6 +72,25 @@ function addGoalBtnClicked(event) {
     let goalMinute = document.getElementById("goalMinute");
     let playerSelect = document.getElementById("playerSelect");
     console.log('addGoalBtnClicked', playerSelect.value, goalMinute.value);
-
 //    POST /games/4/goal?playerId=2&minute=33&homeTeamGoal=true;
+    let params = '?playerId=' + playerSelect.value + '&goalMinute=' + goalMinute.value + "&homeTeamGoal=" + state.homeTeamGoal;
+    let apiUrl = '/games/' + id + '/goal/' + params;
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+    }).then(function(response) {
+        console.log(response);
+        if(response.ok) {
+            document.getElementById('myModal').style.display = "none";
+            location.pathname = location.pathname;
+        } else {
+            document.getElementById('myModal').style.display = "none";
+            alert('Error');
+        }
+        return  response.json();
+    }).then(function(data) {
+        console.log(data);
+    })
 }
