@@ -421,13 +421,13 @@ input[type=submit] {
 }
 @media screen and (max-width: 667px) {
     .slogan-null {
-        height: 10vh;
+        height: 2vh;
     }
     .slogan-text {
         max-width: 400px;
     }
     .slogan-text iframe {
-        width: 360px;
+        width: 90%;
         height: 202px;
     }
     .slogan-text h1 {
