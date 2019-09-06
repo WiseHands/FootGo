@@ -63,7 +63,11 @@ a, a:hover {
     text-align: center;
 }
 .slogan-null {
-    height: 25vh;
+    height: 15vh;
+}
+.slogan-text iframe {
+    margin: 0 auto;
+    padding: 10px 0;
 }
 .slogan-text h1 {
     font-size: 3em;
@@ -73,7 +77,7 @@ a, a:hover {
 .slogan-text h3 {
     font-size: 2.2em;
     padding: 0 30px 20px 30px;
-    color: #c4c5c6;
+    color: #dfdfe5;
 }
 .slogan-button {
     display: flex;
@@ -88,7 +92,6 @@ a, a:hover {
     background-color: #42a444;
     font-size: 2em;
     padding: 10px 30px;
-    margin-top: 50px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -418,16 +421,22 @@ input[type=submit] {
 }
 @media screen and (max-width: 667px) {
     .slogan-null {
-        height: 25vh;
+        height: 10vh;
     }
     .slogan-text {
         max-width: 400px;
     }
+    .slogan-text iframe {
+        width: 360px;
+        height: 202px;
+    }
     .slogan-text h1 {
         font-size: 2.3em;
+        line-height: 1.5;
     }
     .slogan-text h3 {
         font-size: 2em;
+        padding: 15px 0;
     }
     .header-text {
         display: none;
