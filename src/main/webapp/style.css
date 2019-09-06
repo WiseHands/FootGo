@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -49,19 +48,11 @@ a, a:hover {
 }
 
 .main-photo {
-    /*background: url("img/foot1.jpg");*/
-    /*background-position: center;*/
-    /*background-size: cover;*/
-    /*height: calc(100vh - 61.375px) ;*/
+    background: url("img/foot1.jpg");
+    background-position: center;
+    background-size: cover;
+    height: calc(100vh - 61.375px) ;
 }
-#myVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: calc(100vh - 61.375px);
-}
-
 .slogan-text {
     display: flex;
     flex-direction: column;
@@ -82,7 +73,7 @@ a, a:hover {
 .slogan-text h3 {
     font-size: 2.2em;
     padding: 0 30px 20px 30px;
-    color: #dfdfe5;
+    color: #c4c5c6;
 }
 .slogan-button {
     display: flex;
