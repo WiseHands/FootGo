@@ -16,8 +16,8 @@ public class GameFinder {
     GameRepository gameRepository;
 
     public List<Game> findAllGamesForTeam(Team team) {
-        List<Game> gameList = (List<Game>) gameRepository.findByFirstTeam(team);
-        gameList.addAll((List<Game>) gameRepository.findBySecondTeam(team));
+        List<Game> gameList = (List<Game>) gameRepository.findByFirstTeamAndIsCompleted(team, true);
+        gameList.addAll((List<Game>) gameRepository.findBySecondTeamAndIsCompleted(team, true));
         return gameList;
     }
 }

@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface GameRepository extends CrudRepository<Game, Long> {
 
-    List<Game> findByFirstTeam(Team firstTeam);
+    List<Game> findByFirstTeamAndIsCompleted(Team firstTeam, boolean isCompleted);
 
-    List<Game> findBySecondTeam(Team secondTeam);
+    List<Game> findBySecondTeamAndIsCompleted(Team secondTeam, boolean isCompleted);
 
     @Transactional
     void deleteAll();

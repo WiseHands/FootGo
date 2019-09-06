@@ -140,7 +140,7 @@ public class GameUnitTests {
         game.setSecondTeam(teamB);
         gameRepository.save(game);
 
-        List<Game> gameListByFirstTeam = gameRepository.findByFirstTeam(teamA);
+        List<Game> gameListByFirstTeam = gameRepository.findByFirstTeamAndIsCompleted(teamA, true);
         assertThat(gameListByFirstTeam.size()).isEqualTo(1);
 
         Game gameFromDb = gameListByFirstTeam.get(0);

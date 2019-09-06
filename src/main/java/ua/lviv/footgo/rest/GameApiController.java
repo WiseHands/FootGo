@@ -46,8 +46,8 @@ public class GameApiController {
     @GetMapping(value = "/team", consumes = "application/json", produces = "application/json")
     public List<Game> getResults(@RequestParam Long teamId) {
         Team team = teamRepository.findById(teamId).get();
-        List<Game> homeGames = gameRepository.findByFirstTeam(team);
-        List<Game> guestGames = gameRepository.findBySecondTeam(team);
+        List<Game> homeGames = gameRepository.findByFirstTeamAndIsCompleted(team, true);
+        List<Game> guestGames = gameRepository.findBySecondTeamAndIsCompleted(team, true);
         List<Game> allGames = Stream.concat(homeGames.stream(), guestGames.stream())
                 .collect(Collectors.toList());
         Collections.sort(allGames, new Game.SortByTour());
