@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RestController
-@RequestMapping(path = "/games")
+@RequestMapping(path = "/api/game")
 public class GameApiController {
 
     @Autowired
@@ -69,5 +69,17 @@ public class GameApiController {
         goalRepository.save(goal);
         gameRepository.save(game);
         return goal;
+    }
+
+    @DeleteMapping(value = "/{gameId}/goal/{goalId}", consumes = "application/json", produces = "application/json")
+    public void deleteGoal(@PathVariable Long goalId, @PathVariable Long gameId, @RequestParam Boolean isHomeTeamGoal) {
+        Game game = gameRepository.findById(gameId).get();
+        Goal goal = goalRepository.findById(goalId).get();
+        if(isHomeTeamGoal) {
+            game.removeGoalForFirstTeam(goal);
+        } else {
+            game.removeGoalForSecondTeam(goal);
+        }
+        gameRepository.save(game);
     }
 }

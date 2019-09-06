@@ -37,18 +37,24 @@
 
         <div class="modal-goal">
             <div class="team1-goal">
-
-                <p><img src="../../../img/soccer-ball.png">Гравець, 32'<span>-</span></p>
-                <p><img src="../../../img/soccer-ball.png">Гравець, 32'<span>-</span></p>
-                <p><img src="../../../img/soccer-ball.png">Гравець, 32'<span>-</span></p>
+                <div th:each="goal : ${game.teamAGoals}">
+                    <p><img src="../../../img/soccer-ball.png">
+                        <span th:text="${goal.player.playerName}"></span>,
+                        <span th:text="${' ' + goal.time}"></span>
+                        <span class="delete-goal" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', true)'}">-</span>
+                    </p>
+                    <!--<p><img src="../../../img/soccer-ball.png">Гравець, 32'<span>-</span></p>-->
+                </div>
             </div>
 
             <div class="team2-goal">
-
-                <p><img src="../../../img/soccer-ball.png">Гравець, 66'<span>-</span></p>
-                <p><img src="../../../img/soccer-ball.png">Гравець, 66'<span>-</span></p>
-                <p><img src="../../../img/soccer-ball.png">Гравець, 66'<span>-</span></p>
-                <p><img src="../../../img/soccer-ball.png">Гравець, 66'<span>-</span></p>
+                <div th:each="goal : ${game.teamBGoals}">
+                    <p><img src="../../../img/soccer-ball.png">
+                        <span th:text="${goal.player.playerName}"></span>,
+                        <span th:text="${' ' + goal.time}"></span>
+                        <span class="delete-goal" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', false)'}">-</span>
+                    </p>
+                <!--<p><img src="../../../img/soccer-ball.png">Гравець, 66'<span class="delete-goal">-</span></p>-->
             </div>
         </div>
 
@@ -85,7 +91,7 @@
 
         const id = searchParams.get('uuid');
 
-        let apiUrl = '/games/' + id;
+        let apiUrl = '/api/game/' + id;
         fetch(apiUrl, {
           method: 'GET',
           headers: {
