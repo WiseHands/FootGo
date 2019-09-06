@@ -114,3 +114,28 @@ function deleteGoal(gameId, goalId, homeTeamGoal) {
     }).then(function(data) {
     })
 }
+
+var checkbox = document.querySelector("input[name=match-over]");
+
+checkbox.addEventListener( 'change', function(checked) {
+    if(this.checked) {
+        console.log('checked');
+    } else {
+        console.log('unchecked');
+    }
+
+    let apiUrl = '/api/game/' + id + '/completed/' + this.checked;
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+        }).then(function(response) {
+            console.log(response);
+            if(response.ok) {
+            } else {
+                alert('Error');
+            }
+        })
+
+});

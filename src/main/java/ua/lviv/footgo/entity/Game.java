@@ -38,6 +38,8 @@ public class Game {
     @JsonIgnore
     private Tour tour;
 
+    private boolean isCompleted;
+
     public static class SortByTour implements Comparator<Game>
     {
         public int compare(Game a, Game b)
@@ -153,4 +155,11 @@ public class Game {
         this.tour = tour;
     }
 
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
+    }
 }

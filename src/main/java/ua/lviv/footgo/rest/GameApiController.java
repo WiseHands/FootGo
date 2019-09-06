@@ -82,4 +82,10 @@ public class GameApiController {
         }
         gameRepository.save(game);
     }
+    @PostMapping(value = "/{gameId}/completed/{isCompleted}", consumes = "application/json", produces = "application/json")
+    public void  markCompleted(@PathVariable Long gameId, @PathVariable boolean isCompleted) {
+        Game game = gameRepository.findById(gameId).get();
+        game.setCompleted(isCompleted);
+        gameRepository.save(game);
+    }
 }
