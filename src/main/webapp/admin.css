@@ -456,7 +456,7 @@ input[type=text], input[type=tel], input[type=email], select {
     height: 16px;
     padding-right: 5px;
 }
-.modal-goal span {
+span.delete-goal {
     font-size: 2rem;
     cursor: pointer;
     color: red;
@@ -464,6 +464,7 @@ input[type=text], input[type=tel], input[type=email], select {
 }
 .modal-goal span:hover {
     color: #FF6A4F;
+    cursor: pointer;
 }
 .team1-goal, .team2-goal {
     width: 50%;

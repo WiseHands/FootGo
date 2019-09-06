@@ -130,11 +130,19 @@ public class Game {
         this.teamAGoals.add(goal);
     }
 
+    public void removeGoalForFirstTeam(Goal goal) {
+        this.teamAGoals.remove(goal);
+    }
+
     public void addGoalForSecondTeam(Goal goal) {
         if(this.teamBGoals == null) {
             this.teamBGoals = new ArrayList<>();
         }
         this.teamBGoals.add(goal);
+    }
+
+    public void removeGoalForSecondTeam(Goal goal) {
+        this.teamBGoals.remove(goal);
     }
 
     public Tour getTour() {

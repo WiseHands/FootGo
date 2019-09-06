@@ -74,7 +74,7 @@ function addGoalBtnClicked(event) {
     console.log('addGoalBtnClicked', playerSelect.value, goalMinute.value);
 //    POST /games/4/goal?playerId=2&minute=33&homeTeamGoal=true;
     let params = '?playerId=' + playerSelect.value + '&goalMinute=' + goalMinute.value + "&homeTeamGoal=" + state.homeTeamGoal;
-    let apiUrl = '/games/' + id + '/goal/' + params;
+    let apiUrl = '/api/game/' + id + '/goal/' + params;
     fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -92,5 +92,25 @@ function addGoalBtnClicked(event) {
         return  response.json();
     }).then(function(data) {
         console.log(data);
+    })
+}
+
+function deleteGoal(gameId, goalId, homeTeamGoal) {
+    console.log('deleteGoal', goalId)
+    let apiUrl = '/api/game/' + gameId + '/goal/' + goalId + '?isHomeTeamGoal=' + homeTeamGoal;
+    fetch(apiUrl, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+    }).then(function(response) {
+        console.log(response);
+        if(response.ok) {
+            location.pathname = location.pathname;
+        } else {
+            alert('Error');
+        }
+        return  response.json();
+    }).then(function(data) {
     })
 }
