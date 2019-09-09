@@ -18,6 +18,7 @@ public class Game {
 
     @Column
     private String gameTime;
+
     @Column
     private String location;
 
