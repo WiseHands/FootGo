@@ -573,3 +573,17 @@ span.delete-goal {
     text-align: center;
     font-weight: bold;
 }
+
+/*time picker*/
+.time-picker{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+/*input for time-picker*/
+.label-time-picker{
+    margin-right: 5px;
+}

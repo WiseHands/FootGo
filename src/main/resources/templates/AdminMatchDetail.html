@@ -5,7 +5,8 @@
         <title>Admin Page</title>
         <link rel="stylesheet" href="../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     </head>
     <body>
         <div class="admin-main">
@@ -16,6 +17,10 @@
 
     <p class="admin-tour-title">Тур 1</p>
 
+        <div class="time-picker">
+            <p class="label-time-picker">Час гри</p>
+            <input type="text" id="gameDateTime" onchange="setGameDateTime()">
+        </div>
 
         <div class="tour-match">
             <div class="tour-team1">
@@ -106,9 +111,30 @@
         }).then(function(data) {
             window.gameData = data;
             document.getElementById('match-over').checked = data.completed;
+            document.getElementById('gameDateTime').value = data.gameTime;
             console.log(data);
         });
+
     </script>
     <script src="/modalScript.js"></script>
+    <script>
+        flatpickr("#gameDateTime", {enableTime: true});
+        function setGameDateTime() {
+            let gameTime = document.getElementById('gameDateTime').value;
+            let urls = '/api/game/' + id + '/setgametime/' + gameTime;
+            fetch(urls, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }).then(function(response){
+                console.log("gameTime", response);
+            }).then(function(data) {
+                console.log("gameTime", data);
+
+            });
+        }
+
+    </script>
     </body>
 </html>
