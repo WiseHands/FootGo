@@ -569,6 +569,8 @@ span.delete-goal {
     left: calc(50% - 20px);
 }
 .label-check-text {
+    margin-top: 2em;
+    margin-bottom: 1em;
     text-align: center;
     font-weight: bold;
 }
