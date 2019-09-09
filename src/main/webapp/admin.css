@@ -566,7 +566,6 @@ span.delete-goal {
 
 .label-check-center {
     position: absolute;
-    top: calc(50% - -40px);
     left: calc(50% - 20px);
 }
 .label-check-text {
