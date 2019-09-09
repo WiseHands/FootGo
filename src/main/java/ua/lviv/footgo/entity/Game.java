@@ -3,8 +3,13 @@ package ua.lviv.footgo.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -162,5 +167,22 @@ public class Game {
 
     public void setCompleted(boolean completed) {
         isCompleted = completed;
+    }
+
+    public String formatTime() throws ParseException {
+        String time = this.gameTime;
+        if(this.gameTime == null) {
+            return "TBD";
+        }
+        String[] dates = time.split(" ");
+        //+ ", " + dates[1];
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(dates[0]);
+        SimpleDateFormat format1 = new SimpleDateFormat("EEEE, MMM d");
+        String[] formatDate = format1.format(date).split(", ");
+        String day = formatDate[0].substring(0, 1).toUpperCase() + formatDate[0].substring(1);
+        String month = formatDate[1].substring(0, 1).toUpperCase() + formatDate[1].substring(1);
+        String newDate = day + ", " + month + ", " + dates[1];
+        return newDate;
     }
 }

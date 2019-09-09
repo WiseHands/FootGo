@@ -48,7 +48,7 @@
                     </div>
                         <div th:each="game : ${tour.gameList}" class="results-tour">
                             <div class="results-date">
-                                <p th:text="${game.gameTime}">
+                                <p th:text="${game.formatTime()}">
                                     game.gameTime
                                 </p>
                             </div>

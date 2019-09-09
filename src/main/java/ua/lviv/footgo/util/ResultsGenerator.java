@@ -88,7 +88,6 @@ public class ResultsGenerator {
         Game game = new Game();
         Random random = new Random();
 
-        game.setGameTime("Saturday, Jan " + random.nextInt(31));
         game.setFirstTeam(homeTeam);
         game.setSecondTeam(guestTeam);
         _addGameToTour(tour, game);

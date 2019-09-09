@@ -11,6 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ua.lviv.footgo.repository.GoalRepository;
 import ua.lviv.footgo.repository.TeamRepository;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -606,6 +608,16 @@ public class GameUnitTests {
 
         Optional<Team> teamBFromDB = teamRepository.findById(teamB.getId());
         assertThat(teamBFromDB.isPresent()).isTrue();
+
+    }
+
+    @Test
+    public void convertTime() throws ParseException {
+	    Game game = new Game();
+	    String time = "2019-09-17 16:20";
+	    game.setGameTime(time);
+
+        assertThat(game.formatTime()).isEqualTo("Saturday, Jan 28");
 
     }
 
