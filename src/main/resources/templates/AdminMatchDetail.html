@@ -111,17 +111,43 @@
         }).then(function(data) {
             window.gameData = data;
             document.getElementById('match-over').checked = data.completed;
-            document.getElementById('gameDateTime').value = data.gameTime;
+            formattingGameTime(data.gameTime);
             console.log(data);
         });
 
+        function formattingGameTime(gameTimeISO){
+            let date = new Date(gameTimeISO);
+            console.log("time date from server", date);
+            let year = date.getFullYear();
+            let month = date.getMonth()+1;
+            let day = date.getDate();
+            let minutes = date.getMinutes();
+
+            if (day < 10) {
+                day = '0' + day;
+            }
+            if (month < 10) {
+                month = '0' + month;
+            }
+            if (minutes < 10) {
+                minutes = '0' + minutes;
+            }
+            let gameTime = year + "-" + month + "-" + day + " " +
+                            date.getHours() + ":" + minutes;
+            document.getElementById('gameDateTime').value = gameTime;
+
+        }
     </script>
     <script src="/modalScript.js"></script>
     <script>
         flatpickr("#gameDateTime", {enableTime: true});
         function setGameDateTime() {
             let gameTime = document.getElementById('gameDateTime').value;
-            let urls = '/api/game/' + id + '/setgametime/' + gameTime;
+            // convert to utc
+            let date = new Date(gameTime);
+            console.log("utc time ", date.toISOString());
+
+            let urls = '/api/game/' + id + '/setgametime/' + date.toISOString();
             fetch(urls, {
                 method: 'POST',
                 headers: {
