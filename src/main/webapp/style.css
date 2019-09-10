@@ -63,7 +63,7 @@ a, a:hover {
     text-align: center;
 }
 .slogan-null {
-    height: 15vh;
+    height: 10vh;
 }
 .slogan-text iframe {
     margin: 0 auto;
@@ -327,6 +327,7 @@ input[type=submit] {
     background: url("img/foot66.jpg");
     background-size: contain;
     opacity: 1;
+    height: calc(100vh - 60.375px);
 }
 .team-results-full {
     background: url("img/foot66.jpg");
@@ -334,11 +335,23 @@ input[type=submit] {
     opacity: 1;
     height: calc(100vh - 60.375px);
 }
-.results {
+.res-tour {
     display: flex;
     flex-direction: column;
+    max-width: 750px;
+    margin: 0 auto;
+}
+.res-tour-title {
+    text-align: center;
+    color: #FFF;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-top: 15px;
+}
+.res-tour-allmatch {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    max-width: 70%;
     margin: 0 auto;
     line-height: 2;
     text-align: center;
@@ -346,9 +359,34 @@ input[type=submit] {
     padding-top: 10px;
     font-weight: 600;
 }
-.results p {
-    overflow: hidden;
+.results-container {
+    display: flex;
+    width: 320px;
+    background-color: rgba(220,216,216, 0.8);
+    padding: 15px;
+    border-radius: 5px;
+    margin: 0 7px 7px 0;
 }
+.res-title {
+    color: #FFF;
+}
+.res-teams {
+    width: 60%;
+}
+.res-teams p {
+    text-align: left;
+    padding-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.res-score {
+    width: 10%;
+}
+.res-date {
+    width: 30%;
+}
+
+
 .results-bg {
     background-color: rgba(220,216,216, 0.8	);
     padding: 10px;
@@ -690,5 +728,10 @@ input[invalid-input] {
     }
     .review-score p {
         font-size: 2rem;
+    }
+    .results-container {
+        width: 90%;
+        padding: 5px;
+        margin: 7px 0;
     }
 }
