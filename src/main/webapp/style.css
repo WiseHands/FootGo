@@ -225,11 +225,10 @@ input[type=submit] {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 7px;
 }
 .table-head p {
     font-size: 2.2em;
-    padding-bottom: 10px;
     font-weight: 700;
     color: #fff;
 }
@@ -238,7 +237,7 @@ input[type=submit] {
     justify-content: center;
     max-width: 900px;
     margin: 0 auto;
-    line-height: 2.5;
+    line-height: 2.4;
     text-align: center;
     font-size: 1.1em;
     font-weight: 600;
@@ -247,7 +246,7 @@ input[type=submit] {
     width: 5%;
 }
 .table-team-name {
-    max-width: 400px;
+    width: 35%;
     text-align: left;
 }
     .table-team-name p {
@@ -344,7 +343,7 @@ input[type=submit] {
     line-height: 2;
     text-align: center;
     font-size: 1.1em;
-    padding-top: 30px;
+    padding-top: 10px;
     font-weight: 600;
 }
 .results p {
@@ -396,6 +395,105 @@ input[type=submit] {
     width: 10%;
 }
 
+/*input validation*/
+input[invalid-input] {
+    border: 2px solid red;
+    border-radius: 4px;
+}
+
+/*match review*/
+.matches-full {
+    background: url("img/foot88.jpg");
+    background-size: cover;
+    height: calc(100vh - 60.375px);
+}
+.mathces-null {
+    height: 2vh;
+}
+.mathces-bg {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    background-color: rgba(220,216,216, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+.review-match {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+.review-match p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.review-head {
+    display: flex;
+    width: 500px;
+    align-items: center;
+    padding: 30px 0;
+
+}
+.review-head p {
+    text-align: center;
+}
+.review-team1, .review-team2 {
+    width: 35%;
+}
+.review-team1 img, .review-team2 img {
+    width: 128px;
+    height: 128px;
+    padding-bottom: 10px;
+}
+.review-team1 p, .review-team2 p {
+    font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.review-score {
+    width: 30%;
+    padding: 20px 20px;
+}
+.review-score p {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.details-match {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    font-size: 1.3rem;
+}
+.details-match p {
+    overflow: hidden;
+}
+.details-match img {
+    width: 16px;
+    height: 16px;
+    padding-right: 5px;
+}
+.details-team1 {
+    padding-right: 15px;
+    width: 50%;
+}
+.details-team2 {
+    padding-left: 10px;
+    width: 50%;
+}
+
+.team1-goals, .team2-goals {
+    display: flex;
+    align-items: center;
+}
+.team1-goals {
+    justify-content: flex-end;
+}
+.team1-goals p {
+    text-align: right;
+}
+
 
 @media screen and (max-width: 870px) {
     .team-capitan {
@@ -408,6 +506,9 @@ input[type=submit] {
         background-position: center;
         background-size: cover;
         height: calc(100vh - 60.375px);
+    }
+    .mathces-bg {
+        width: 95%;
     }
 }
 @media screen and (max-width: 720px) {
@@ -445,7 +546,7 @@ input[type=submit] {
     .registration-photo {
         background-position: center;
         background-size: cover;
-        height: calc(100vh - 62px);
+        height: calc(100vh - 59.984px);
     }
     .player1-3 {
         flex-direction: column;
@@ -497,7 +598,7 @@ input[type=submit] {
         transform: rotate(-135deg);
     }
     .main-photo {
-        height: calc(100vh - 62px) ;
+        height: calc(100vh - 59.984px) ;
     }
     .header-first-block {
         width: 100%;
@@ -507,6 +608,7 @@ input[type=submit] {
         flex-grow: 1;
         display: block;
             }
+
     /*burger-menu*/
 
     /*burger-icon*/
@@ -517,11 +619,20 @@ input[type=submit] {
     .results {
         max-width: 90%;
     }
+    .results-team1, .results-team2 {
+        width: 40%;
+    }
+    .results-score {
+        width: 20%;
+    }
+    .results-bg {
+        margin-bottom: 10px;
+    }
     .table-full, .bomb-full {
-        height: calc(100vh - 62px);
+        height: calc(100vh - 59.984px);
     }
     .table-head p {
-        font-size: 1.7em;
+        font-size: 1.4em;
     }
     .table-position, .bomb-position {
         width: 40px;
@@ -546,101 +657,38 @@ input[type=submit] {
         width: 60px;
     }
     .bomb-head p {
+        padding-bottom: 0;
         font-size: 1.5em;
     }
     .bomb-matches {
         min-width: 10%;
     }
     .bomb-player-name {
-        min-width: 45%;
+        width: 45%;
     }
     .bomb-scored {
-        min-width: 15%;
+        width: 22%;
     }
     .bomb-scored-pen, .bomb-matches {
         display: none;
     }
     .bomb-team {
-        min-width: 30%;
+        width: 27%;
     }
-}
-/*input validation*/
-input[invalid-input] {
-    border: 2px solid red;
-    border-radius: 4px;
-}
-
-/*match review*/
-.matches-full {
-    background: url("img/foot88.jpg");
-    background-size: cover;
-    height: calc(100vh - 60.375px);
-}
-.mathces-bg {
-    max-width: 800px;
-    background-color: rgba(220,216,216, 0.8);
-    padding: 10px;
-    border-radius: 10px;
-    margin: 0 auto;
-}
-.review-match {
-    display: flex;
-    justify-content: center;
-    height: 100%;
-}
-.review-match p {
-    overflow: hidden;
-}
-.review-head {
-    display: flex;
-    align-items: center;
-    padding: 30px 0;
-
-}
-.review-head p {
-    text-align: center;
-}
-.review-team1 img, .review-team2 img {
-    width: 128px;
-    height: 128px;
-    padding-bottom: 10px;
-}
-.review-team1 p, .review-team2 p {
-    font-size: 1.5rem;
-}
-.review-score {
-    padding: 20px 50px;
-}
-.review-score p {
-    font-size: 3rem;
-    font-weight: 600;
-}
-
-.details-match {
-    display: flex;
-    justify-content: center;
-    padding-top: 10px;
-    font-size: 1.3rem;
-}
-.details-match p {
-    overflow: hidden;
-}
-.details-match img {
-    width: 16px;
-    height: 16px;
-    padding-right: 5px;
-}
-.details-team1 {
-    padding-right: 15px;
-    width: 50%;
-}
-.details-team2 {
-    padding-left: 15px;
-    width: 50%;
-}
-.details-team1, .details-team2 {
-}
-.team1-goals, .team2-goals {
-    display: flex;
-    align-items: center;
+    .review-head {
+        width: 350px;
+    }
+    .mathces-bg {
+        width: 90%  ;
+    }
+    .review-team1 img, .review-team2 img {
+        width: 96px;
+        height: 96px;
+    }
+    .review-team1 p, .review-team2 p {
+        font-size: 1.3rem;
+    }
+    .review-score p {
+        font-size: 2rem;
+    }
 }
