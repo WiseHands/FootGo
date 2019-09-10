@@ -614,7 +614,7 @@ public class GameUnitTests {
     @Test
     public void convertTime() throws ParseException {
 	    Game game = new Game();
-	    String time = "2019-09-17 16:20";
+	    String time = "2019-09-11T02:00:00.000Z";
 	    game.setGameTime(time);
 
         assertThat(game.formatTime()).isEqualTo("Saturday, Jan 28");

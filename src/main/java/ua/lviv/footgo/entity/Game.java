@@ -7,10 +7,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class Game {
@@ -174,15 +171,26 @@ public class Game {
         if(this.gameTime == null) {
             return "TBD";
         }
-        String[] dates = time.split(" ");
-        //+ ", " + dates[1];
+
+        // set UTC zone in date
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        dateFormat.parse(time);
+        TimeZone timeZone = TimeZone.getTimeZone("UTC");
+        dateFormat.setTimeZone(timeZone);
+        Date hourTime = dateFormat.parse(time);
+        // get time
+        String[] hours = String.valueOf(hourTime).split(" ");
+        String[] hoursTime = hours[3].split(":");
+        // get and reformat date
+        String[] dates = time.split("T");
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = format.parse(dates[0]);
         SimpleDateFormat format1 = new SimpleDateFormat("EEEE, MMM d");
         String[] formatDate = format1.format(date).split(", ");
         String day = formatDate[0].substring(0, 1).toUpperCase() + formatDate[0].substring(1);
         String month = formatDate[1].substring(0, 1).toUpperCase() + formatDate[1].substring(1);
-        String newDate = day + ", " + month + ", " + dates[1];
+        String newDate = day + ", " + month + ", " + hoursTime[0] + ":" + hoursTime[1];
+
         return newDate;
     }
 }
