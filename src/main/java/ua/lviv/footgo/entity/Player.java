@@ -12,7 +12,8 @@ public class Player {
     @Column(name = "id")
     private Long id;
 
-    private String playerName;
+    private String firstName;
+    private String lastName;
     private String email;
     private String phone;
 
@@ -21,12 +22,20 @@ public class Player {
     @JsonIgnore
     private Team team;
 
-    public String getPlayerName() {
-        return playerName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Long getId() {

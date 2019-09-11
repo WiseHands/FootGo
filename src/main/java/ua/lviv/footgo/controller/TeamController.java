@@ -13,8 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 @RequestMapping(path = "/team")
 public class TeamController {
@@ -49,7 +47,8 @@ public class TeamController {
 
         for (FootballPlayer footballPlayer : teamCreationRequestJsonBody.getPlayerList()){
             Player player = new Player();
-            player.setPlayerName(footballPlayer.getFootballPlayerName());
+            player.setFirstName(footballPlayer.getFootballPlayerFirstName());
+            player.setLastName(footballPlayer.getFootballPlayerLastName());
             player.setTeam(team);
             playerRepository.save(player);
         }

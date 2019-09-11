@@ -1,9 +1,13 @@
 function putPlayerById(data) {
-        let name = document.getElementById('name').value;
+        let firstName = document.getElementById('firstName').value;
+        let lastName = document.getElementById('lastName').value;
         let phone = document.getElementById('phone').value;
         let email = document.getElementById('email').value;
 
-    let params = '?name=' + name + '&phone=' + phone + "&email=" + email;
+    let params = '?firstName=' + firstName
+                + '?lastName=' + lastName
+                + '&phone=' + phone
+                + "&email=" + email;
 
     let apiUrl = '/player/' + id + params;
     fetch(apiUrl, {

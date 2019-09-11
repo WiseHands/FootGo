@@ -28,9 +28,10 @@ public class PlayerApiController {
         return request;
     }
     @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
-    public Player update(@PathVariable Long id, @RequestParam String name, String phone, String email) {
+    public Player update(@PathVariable Long id, @RequestParam String firstName, String lastName, String phone, String email) {
         Player player = playerRepository.findById(id).get();
-        player.setPlayerName(name);
+        player.setFirstName(firstName);
+        player.setLastName(lastName);
         player.setPhone(phone);
         player.setEmail(email);
         playerRepository.save(player);

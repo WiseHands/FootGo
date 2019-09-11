@@ -7,7 +7,6 @@ import ua.lviv.footgo.entity.*;
 import ua.lviv.footgo.repository.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -60,7 +59,8 @@ public class ResultsGenerator {
 
     public void _createPlayer(Team team, String name) {
         Player player = new Player();
-        player.setPlayerName(faker.name().name());
+        player.setFirstName(faker.name().firstName());
+        player.setLastName(faker.name().lastName());
         player.setTeam(team);
         team.addPlayer(player);
     }

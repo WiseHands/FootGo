@@ -29,8 +29,10 @@ public class TourUnitTests {
     private static final String TEAM_A_CAPTAIN_PHONE = "CapA@gmail.com";
     private static final String TEAM_A_CAPTAIN_EMAIL = "30666666666";
 
-    private static final String TEAM_A_PLAYER_ONE_NAME = "Player A1";
-    private static final String TEAM_A_PLAYER_TWO_NAME = "Player A2";
+    private static final String TEAM_A_PLAYER_ONE_FIRST_NAME = "Player";
+    private static final String TEAM_A_PLAYER_ONE_LAST_NAME = "A1";
+    private static final String TEAM_A_PLAYER_TWO_FIRST_NAME = "Player";
+    private static final String TEAM_A_PLAYER_TWO_LAST_NAME = " A2";
 
     private static final Integer TEAM_A_GOAL_TIME = 123;
 
@@ -42,8 +44,10 @@ public class TourUnitTests {
     private static final String TEAM_B_CAPTAIN_PHONE = "CapB@gmail.com";
     private static final String TEAM_B_CAPTAIN_EMAIL = "39666666666";
 
-    private static final String TEAM_B_PLAYER_ONE_NAME = "Player B1";
-    private static final String TEAM_B_PLAYER_TWO_NAME = "Player B2";
+    private static final String TEAM_B_PLAYER_ONE_FIRST_NAME = "Player";
+    private static final String TEAM_B_PLAYER_ONE_LAST_NAME = "B1";
+    private static final String TEAM_B_PLAYER_TWO_FIRST_NAME = "Player";
+    private static final String TEAM_B_PLAYER_TWO_LAST_NAME = "B2";
 
     private static final Integer TEAM_B_GOAL_TIME = 136;
     private static final Integer TEAM_B_GOAL_TWO_TIME = 176;
@@ -91,11 +95,13 @@ public class TourUnitTests {
         entityManager.persist(captainA);
 
         Player teamAPlayer1 = new Player();
-        teamAPlayer1.setPlayerName(TEAM_A_PLAYER_ONE_NAME);
+        teamAPlayer1.setFirstName(TEAM_A_PLAYER_ONE_FIRST_NAME);
+        teamAPlayer1.setLastName(TEAM_A_PLAYER_ONE_LAST_NAME);
         teamAPlayer1.setTeam(teamA);
 
         Player teamAplayer2 = new Player();
-        teamAplayer2.setPlayerName(TEAM_A_PLAYER_TWO_NAME);
+        teamAplayer2.setFirstName(TEAM_A_PLAYER_TWO_FIRST_NAME);
+        teamAplayer2.setLastName(TEAM_A_PLAYER_TWO_LAST_NAME);
         teamAplayer2.setTeam(teamA);
 
         teamA.addPlayer(teamAPlayer1);
@@ -118,11 +124,13 @@ public class TourUnitTests {
         entityManager.persist(captainB);
 
         Player teamBplayer = new Player();
-        teamBplayer.setPlayerName(TEAM_B_PLAYER_ONE_NAME);
+        teamBplayer.setFirstName(TEAM_B_PLAYER_ONE_FIRST_NAME);
+        teamBplayer.setLastName(TEAM_B_PLAYER_ONE_LAST_NAME);
         teamBplayer.setTeam(teamB);
 
         Player teamBplayer2 = new Player();
-        teamBplayer2.setPlayerName(TEAM_B_PLAYER_TWO_NAME);
+        teamBplayer2.setFirstName(TEAM_B_PLAYER_TWO_FIRST_NAME);
+        teamBplayer2.setLastName(TEAM_B_PLAYER_TWO_LAST_NAME);
         teamBplayer2.setTeam(teamB);
 
         teamB.addPlayer(teamBplayer);
@@ -249,7 +257,7 @@ public class TourUnitTests {
             assertThat(playerList.size()).isEqualTo(generator.NUMBER_OF_PLAYERS_IN_TEAM);
             for(int j =0; j< playerList.size(); j++) {
                 Player player = playerList.get(j);
-                assertThat(player.getPlayerName()).isEqualTo(team.getTeamName() + " " + j);
+                assertThat(player.getFirstName()).isEqualTo(team.getTeamName() + " " + j);
             }
         }
 
@@ -273,8 +281,4 @@ public class TourUnitTests {
 		goalRepository.deleteAll();
 	}
 
-
-
-
-	
 }

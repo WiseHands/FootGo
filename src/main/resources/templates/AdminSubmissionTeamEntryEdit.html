@@ -35,7 +35,7 @@
                 <div th:each="item : ${team.players}">
                     <a th:attr="href=${'/admin/player/edit?uuid=' + item.id}" class="link-style">
                         <div class="request-block">
-                            <h3 th:text="${item.playerName}"></h3>
+                            <h3 th:text="${item.firstName}"></h3>
                         </div>
                     </a>
                 </div>

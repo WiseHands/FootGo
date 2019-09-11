@@ -27,8 +27,10 @@ public class TeamUnitTests {
 
 	private static final String TEAM_NAME = "ToniTeam";
 
-    private static final String PLAYER_ONE_NAME = "Player 1";
-    private static final String PLAYER_TWO_NAME = "Player 2";
+    private static final String PLAYER_ONE_FIRST_NAME = "Player";
+    private static final String PLAYER_ONE_LAST_NAME = "P1";
+    private static final String PLAYER_TWO_FIRST_NAME = "Player";
+    private static final String PLAYER_TWO_LAST_NAME = "P2";
 
 
 
@@ -126,11 +128,13 @@ public class TeamUnitTests {
         team.setTeamName(TEAM_NAME);
 
         Player player = new Player();
-        player.setPlayerName(PLAYER_ONE_NAME);
+        player.setFirstName(PLAYER_ONE_FIRST_NAME);
+        player.setLastName(PLAYER_ONE_LAST_NAME);
         player.setTeam(team);
 
         Player player2 = new Player();
-        player2.setPlayerName(PLAYER_TWO_NAME);
+        player2.setFirstName(PLAYER_TWO_FIRST_NAME);
+        player2.setLastName(PLAYER_TWO_LAST_NAME);
         player2.setTeam(team);
 
 		team.addPlayer(player);
@@ -150,11 +154,13 @@ public class TeamUnitTests {
         team.setTeamName(TEAM_NAME);
 
         Player player = new Player();
-        player.setPlayerName(PLAYER_ONE_NAME);
+        player.setFirstName(PLAYER_ONE_FIRST_NAME);
+        player.setLastName(PLAYER_ONE_LAST_NAME);
         player.setTeam(team);
 
         Player player2 = new Player();
-        player2.setPlayerName(PLAYER_TWO_NAME);
+        player2.setFirstName(PLAYER_TWO_FIRST_NAME);
+        player2.setLastName(PLAYER_TWO_LAST_NAME);
         player2.setTeam(team);
 
         team.addPlayer(player);
@@ -178,11 +184,13 @@ public class TeamUnitTests {
 		team.setTeamName(TEAM_NAME);
 
 		Player player = new Player();
-		player.setPlayerName(PLAYER_ONE_NAME);
+		player.setFirstName(PLAYER_ONE_FIRST_NAME);
+		player.setLastName(PLAYER_ONE_LAST_NAME);
 		player.setTeam(team);
 
 		Player player2 = new Player();
-		player2.setPlayerName(PLAYER_TWO_NAME);
+		player2.setFirstName(PLAYER_TWO_FIRST_NAME);
+		player2.setLastName(PLAYER_TWO_LAST_NAME);
 		player2.setTeam(team);
 
 		List<Player> playerList = new ArrayList();
@@ -219,11 +227,13 @@ public class TeamUnitTests {
 		captain = entityManager.persist(captain);
 
 		Player player = new Player();
-		player.setPlayerName(PLAYER_ONE_NAME);
+		player.setFirstName(PLAYER_ONE_FIRST_NAME);
+		player.setLastName(PLAYER_ONE_LAST_NAME);
 		player.setTeam(team);
 
 		Player player2 = new Player();
-		player2.setPlayerName(PLAYER_TWO_NAME);
+		player2.setFirstName(PLAYER_TWO_FIRST_NAME);
+		player2.setLastName(PLAYER_TWO_LAST_NAME);
 		player2.setTeam(team);
 
 		team.addPlayer(player);

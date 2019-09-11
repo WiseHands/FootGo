@@ -9,7 +9,8 @@ import java.util.List;
 
 public interface PlayerRepository extends CrudRepository<Player, Long> {
 
-    Player findByPlayerName(String playerName);
+    Player findByFirstName(String firstName);
+    Player findByLastName(String lastName);
 
     @Transactional
     void deleteAll();

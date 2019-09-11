@@ -31,9 +31,9 @@ public class TeamControllerTest extends AbstractControllerTest {
         teamJsonBody.setCaptain(footballCaptain);
 
         ArrayList<FootballPlayer> playerList = new ArrayList<>();
-        FootballPlayer playerOne = new FootballPlayer("Red");
+        FootballPlayer playerOne = new FootballPlayer("Red", "RedBool");
         playerList.add(playerOne);
-        FootballPlayer playerTwo = new FootballPlayer("Blue");
+        FootballPlayer playerTwo = new FootballPlayer("Blue", "BlueSky");
         playerList.add(playerTwo);
 
         teamJsonBody.setPlayerList(playerList);

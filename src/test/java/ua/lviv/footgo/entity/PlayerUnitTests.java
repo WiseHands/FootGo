@@ -25,17 +25,18 @@ public class PlayerUnitTests {
 	public void checkIsSomePropertiesInDataBase() {
 		// given
 		Player player = new Player();
-		player.setPlayerName("Toni");
+		player.setFirstName("Roma");
+		player.setLastName("Toni");
 		entityManager.persist(player);
 		entityManager.flush();
 
 		// when
-		Player foundPlayer = playerRepository.findByPlayerName(player.getPlayerName());
-
+		Player foundPlayerByFirstName = playerRepository.findByFirstName(player.getFirstName());
+		Player foundPlayerByLastName =playerRepository.findByLastName(player.getLastName());
 		// then
-		assertThat(foundPlayer.getPlayerName())
-				.isEqualTo(player.getPlayerName());
-
+		assertThat(foundPlayerByFirstName.getFirstName())
+				.isEqualTo(player.getFirstName());
+		assertThat(foundPlayerByLastName.getLastName()).isEqualTo(player.getLastName());
 		
 	}
 
