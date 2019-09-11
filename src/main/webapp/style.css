@@ -48,7 +48,7 @@ a, a:hover {
 }
 
 .main-photo {
-    background: url("img/foot1.jpg");
+    background: url("img/foot11.jpg");
     background-position: center;
     background-size: cover;
     height: calc(100vh - 61.375px) ;
@@ -108,19 +108,6 @@ a, a:hover {
     /*height: 100vh;*/
     height: calc(100vh - 60.375px);
 }
-/*.registration-photo { background:transparent; }*/
-/*.registration-photo:after {*/
-    /*content:"";*/
-    /*position:fixed;*/
-    /*left:0;*/
-    /*top:0;*/
-    /*right:0;*/
-    /*bottom:0;*/
-    /*z-index:-1;*/
-    /*display:block;*/
-    /*background:url("img/foot33.jpg") no-repeat 50% 50%;*/
-    /*background-size:cover;*/
-/*}*/
 
 .registration-form {
     display: flex;
