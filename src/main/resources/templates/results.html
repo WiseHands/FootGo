@@ -39,122 +39,34 @@
     </div>
 </header>
 <div class="results-full">
-    <div class="res-tour">
-        <p class="res-tour-title">Tour 1</p>
+    <div th:each="tour : ${tourList}" class="res-tour">
+        <p class="res-tour-title" th:text="${'Тур ' + tour.tourNumber}"></p>
             <div class="res-tour-allmatch">
-            <div class="results-container">
-                <div class="res-teams">
-                    <p>Team 1</p>
-                    <p>Team 2</p>
-                </div>
-                <div class="res-score">
-                    <p>0</p>
-                    <p>2</p>
-                </div>
-                <div class="res-date">
-                    <p>Сб, 14.09</p>
-                    <p>19:00</p>
-                </div>
-            </div>
-            <div class="results-container">
-                <div class="res-teams">
-                    <p>Team 1</p>
-                    <p>Team 2</p>
-                </div>
-                <div class="res-score">
-                    <p>0</p>
-                    <p>2</p>
-                </div>
-                <div class="res-date">
-                    <p>Сб, 14.09</p>
-                    <p>19:00</p>
+                <div class="results-container" th:each="game : ${tour.gameList}">
+                    <div class="res-teams">
+                        <a th:attr="href=${'/results/' + game.firstTeam.id}">
+                            <p th:text="${game.firstTeam.teamName}">
+                                game.firstTeam.teamName
+                            </p>
+                        </a>
+                        <a th:attr="href=${'/results/' + game.secondTeam.id}">
+                            <p th:text="${game.secondTeam.teamName}">
+                                game.secondTeam.teamName
+                            </p>
+                        </a>
+                    </div>
+                    <div class="res-score">
+                        <a th:attr="href=${'/game/' + game.id}">
+                            <p th:text="${game.teamAGoals.size()}">game.teamAGoals.size()</p>
+                            <p th:text="${game.teamBGoals.size()}">game.teamBGoals.size()</p>
+                        </a>
+                    </div>
+                    <div class="res-date">
+                        <p th:text="${game.formatDate()}"></p>
+                        <p th:text="${game.formatTime()}"></p>
+                    </div>
                 </div>
             </div>
-            <div class="results-container">
-                <div class="res-teams">
-                    <p>Team 1</p>
-                    <p>Team 2</p>
-                </div>
-                <div class="res-score">
-                    <p>0</p>
-                    <p>2</p>
-                </div>
-                <div class="res-date">
-                    <p>Сб, 14.09</p>
-                    <p>19:00</p>
-                </div>
-            </div>
-            <div class="results-container">
-                <div class="res-teams">
-                    <p>Team 1</p>
-                    <p>Team 2</p>
-                </div>
-                <div class="res-score">
-                    <p>0</p>
-                    <p>2</p>
-                </div>
-                <div class="res-date">
-                    <p>Сб, 14.09</p>
-                    <p>19:00</p>
-                </div>
-            </div>
-            <div class="results-container">
-                <div class="res-teams">
-                    <p>Team 1</p>
-                    <p>Team 2</p>
-                </div>
-                <div class="res-score">
-                    <p>0</p>
-                    <p>2</p>
-                </div>
-                <div class="res-date">
-                    <p>Сб, 14.09</p>
-                    <p>19:00</p>
-                </div>
-            </div>
-        </div>
-
-
-
-        <!--<div class="results-bg">-->
-
-                <!--<div th:each="tour : ${tourList}" class="results-block">-->
-                    <!--<div>-->
-                        <!--<p class="results-tour-title" th:text="${'Тур ' + tour.tourNumber}"></p>-->
-                    <!--</div>-->
-                        <!--<div th:each="game : ${tour.gameList}" class="results-tour">-->
-                            <!--<div class="results-date">-->
-                                <!--<p th:text="${game.formatTime()}">-->
-                                    <!--game.gameTime-->
-                                <!--</p>-->
-                            <!--</div>-->
-                            <!--<div class="results-team1">-->
-                                <!--<a th:attr="href=${'/results/' + game.firstTeam.id}">-->
-                                    <!--<p th:text="${game.firstTeam.teamName}">-->
-                                        <!--game.firstTeam.teamName-->
-                                    <!--</p>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                            <!--<div class="results-score">-->
-                                <!--<p>-->
-                                    <!--<a th:attr="href=${'/game/' + game.id}">-->
-                                        <!--<span th:text="${game.teamAGoals.size()}">game.teamAGoals.size()</span>-->
-                                        <!--:-->
-                                        <!--<span th:text="${game.teamBGoals.size()}">game.teamBGoals.size()</span>-->
-                                    <!--</a>-->
-                                <!--</p>-->
-                            <!--</div>-->
-                            <!--<div class="results-team2">-->
-                                <!--<a th:attr="href=${'/results/' + game.secondTeam.id}">-->
-                                    <!--<p th:text="${game.secondTeam.teamName}">-->
-                                        <!--game.secondTeam.teamName-->
-                                    <!--</p>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                <!--</div>-->
-
-        <!--</div>-->
     </div>
 </div>
 <script src="signUpScript.js"></script>
