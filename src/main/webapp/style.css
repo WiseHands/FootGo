@@ -314,7 +314,7 @@ input[type=submit] {
     background: url("img/foot66.jpg");
     background-size: contain;
     opacity: 1;
-    height: calc(100vh - 60.375px);
+    height: 100%;
 }
 .team-results-full {
     background: url("img/foot66.jpg");
@@ -333,7 +333,7 @@ input[type=submit] {
     color: #FFF;
     font-size: 1.2rem;
     font-weight: 600;
-    padding-top: 15px;
+    padding-top: 10px;
 }
 .res-tour-allmatch {
     display: flex;
@@ -655,6 +655,9 @@ input[invalid-input] {
     }
     .table-full, .bomb-full {
         height: calc(100vh - 59.984px);
+    }
+    .table, .bomb {
+        width: 98%;
     }
     .table-head p {
         font-size: 1.4em;
