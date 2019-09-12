@@ -585,11 +585,11 @@ span.delete-goal {
 /*time picker*/
 .time-picker{
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: center;
     margin-top: 10px;
-    margin-left: 200px;
-    margin-right: 200px;
+    /*margin-left: 200px;
+    margin-right: 200px;*/
 }
 /*input for time-picker*/
 .label-time-picker{
