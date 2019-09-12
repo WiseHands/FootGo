@@ -22,6 +22,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<maven.test.skip>true</maven.test.skip>
+		<myCustomName>${artifactId}-${version}</myCustomName>
 	</properties>
 
 	<dependencies>
@@ -146,6 +147,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>${myCustomName}</finalName>
 	</build>
 
 </project>
