@@ -173,6 +173,7 @@ body{
     display: flex;
     flex-direction: column;
     text-align: center;
+    justify-content: center;
 }
 .requests p {
     font-size: 1.7rem;
@@ -182,11 +183,12 @@ body{
 .all-requests {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 .request-block {
     width: 230px;
     padding: 24px 16px;
-    margin: 10px 15px;
+    margin: 10px 0;
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2),
@@ -212,9 +214,18 @@ body{
     .admin-bar {
         display: none;
     }
+    .all-requests {
+        flex-direction: column;
+    }
+    .request-block {
+        justify-content: center;
+        margin: 15px auto;
+
+    }
 }
 
 /*SubmissionEntryEdit*/
+
 .team-request {
     display: flex;
     flex-direction: column;
@@ -229,10 +240,8 @@ body{
 .team-request p {
     font-size: 1.2rem;
     font-weight: 400;
-    margin-bottom: 1rem;
 }
 .admin-team-name {
-    display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
@@ -250,8 +259,9 @@ body{
     margin-right: 10px;
 }
 .admin-capitan input[type=text], .admin-capitan input[type=tel], .admin-capitan input[type=email] {
-    margin-right: 15px;
-    margin-left: 70px ;
+
+    margin: 10px auto;
+
 }
 
 .admin-players {
@@ -268,7 +278,7 @@ body{
     padding-left: 30px;
 }
 .admin-title-row {
-    text-align: left;
+    text-align: center;
 }
 input[type=text], input[type=tel], input[type=email], select {
     padding: 15px;
@@ -336,6 +346,7 @@ input[type=text], input[type=tel], input[type=email], select {
     text-align: right;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-right: 5px;
 }
 .tour-team2 p, .tour-team2-details p {
     overflow: hidden;
@@ -476,6 +487,10 @@ span.delete-goal {
 .team1-goal, .team2-goal {
     width: 50%;
 }
+.team1-goal {
+    text-align: right;
+    padding-right: 5px;
+}
 .link-style {
 	flex: 1;
     color: inherit;
@@ -588,10 +603,10 @@ span.delete-goal {
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-    margin-left: 200px;
-    margin-right: 200px;
+    /*margin-left: 200px;
+    margin-right: 200px;*/
 }
 /*input for time-picker*/
 .label-time-picker{
-    margin-right: 5px;
+    padding-right: 5px;
 }

@@ -3,9 +3,10 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.footgo-league</groupId>
-	<artifactId>footgo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<!--<artifactId>footgo</artifactId>-->
+	<artifactId>ROOT</artifactId>
+	<!--<version>0.0.1-SNAPSHOT</version>-->
+	<packaging>war</packaging>
 	<name>FootGo League</name>
 	<description>FootGo soccer league site</description>
 
@@ -21,6 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<maven.test.skip>true</maven.test.skip>
 	</properties>
 
 	<dependencies>
@@ -71,6 +73,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			    <exclusions>
+				    <exclusion>
+					    <groupId>com.vaadin.external.google</groupId>
+					    <artifactId>android-json</artifactId>
+				    </exclusion>
+			    </exclusions>
 		</dependency>
 
 		<dependency>
@@ -139,6 +147,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>${project.artifactId}</finalName>
 	</build>
 
 </project>
