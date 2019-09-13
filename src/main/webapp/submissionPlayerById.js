@@ -14,7 +14,8 @@ fetch(apiUrl, {
     console.log(response)
     return  response.json();
 }).then(function(data) {
-    document.querySelector('input[name="playerName"]').value = data.playerName;
+    document.querySelector('input[name="playerFirstName"]').value = data.firstName;
+    document.querySelector('input[name="playerLastName"]').value = data.lastName;
     document.querySelector('input[name="playerPhone"]').value = data.phone;
     document.querySelector('input[name="playerEmail"]').value = data.email;
     console.log(data);
