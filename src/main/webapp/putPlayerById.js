@@ -5,7 +5,7 @@ function putPlayerById(data) {
         let email = document.getElementById('email').value;
 
     let params = '?firstName=' + firstName
-                + '?lastName=' + lastName
+                + '&lastName=' + lastName
                 + '&phone=' + phone
                 + "&email=" + email;
 
