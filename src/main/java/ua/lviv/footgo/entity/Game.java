@@ -169,7 +169,7 @@ public class Game {
     public String formatTime() throws ParseException {
         String time = this.gameTime;
         if(this.gameTime == null) {
-            return "TBD";
+            return "";
         }
 
         // set UTC zone in date

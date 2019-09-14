@@ -3,6 +3,7 @@ package ua.lviv.footgo.routing;
 import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.entity.Game;
 import ua.lviv.footgo.entity.Team;
+import ua.lviv.footgo.jsonmapper.PlayerGoals;
 import ua.lviv.footgo.jsonmapper.TeamResults;
 import ua.lviv.footgo.repository.GameRepository;
 import ua.lviv.footgo.repository.TeamRepository;
@@ -13,6 +14,7 @@ import ua.lviv.footgo.repository.TeamSignUpRepository;
 import ua.lviv.footgo.repository.TourRepository;
 import ua.lviv.footgo.service.GameFinder;
 import ua.lviv.footgo.service.ResultService;
+import ua.lviv.footgo.service.TopScorerService;
 
 import java.util.Collections;
 import java.util.List;
@@ -38,6 +40,9 @@ public class HttpRequestsController {
 
     @Autowired
     GameFinder gameFinder;
+
+    @Autowired
+    TopScorerService topScorerService;
 
     @GetMapping({"/", "/footgo"})
     public String footgo(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
@@ -84,7 +89,8 @@ public class HttpRequestsController {
 
     @GetMapping({"/bombardier"})
     public String bombardier(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-        model.addAttribute("name", name);
+        List<PlayerGoals> playerGoals = topScorerService.getResults();
+        model.addAttribute("playerGoals", playerGoals);
         return "bombardier";
     }
 

@@ -16,6 +16,7 @@ public class Player {
     private String lastName;
     private String email;
     private String phone;
+    private Integer number;
 
     @ManyToOne
     @JoinColumn
@@ -64,5 +65,13 @@ public class Player {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 }
