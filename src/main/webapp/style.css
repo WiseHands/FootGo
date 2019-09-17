@@ -7,6 +7,9 @@ body {
     font-family: 'Roboto', sans-serif;
     min-width: 300px;
 }
+body p {
+    white-space: nowrap;
+}
 header   {
     background-color: #0D0B20;
 }
@@ -224,7 +227,7 @@ input[type=submit] {
     justify-content: center;
     max-width: 900px;
     margin: 0 auto;
-    line-height: 2.4;
+    line-height: 2.3;
     text-align: center;
     font-size: 1.1em;
     font-weight: 600;
@@ -275,10 +278,12 @@ input[type=submit] {
 }
 
 .bomb-full {
-    background: url("img/foot44.jpg");
+    background-image: url("img/foot44.jpg");
+    background-attachment: fixed;
     background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
-    height: calc(100vh - 60.375px);
+
 }
 .bomb-head p {
     font-size: 2.2em;
@@ -359,6 +364,13 @@ input[type=submit] {
 }
 .res-teams {
     width: 60%;
+}
+.res-teams a {
+    display: flex;
+    align-items: center;
+}
+.res-teams img {
+    width: 24px;
 }
 .res-teams p {
     text-align: left;
