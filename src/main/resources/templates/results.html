@@ -45,11 +45,13 @@
                 <div class="results-container" th:each="game : ${tour.gameList}">
                     <div class="res-teams">
                         <a th:attr="href=${'/results/' + game.firstTeam.id}">
+                            <img src="/logo/logo1.png">
                             <p th:text="${game.firstTeam.teamName}">
                                 game.firstTeam.teamName
                             </p>
                         </a>
                         <a th:attr="href=${'/results/' + game.secondTeam.id}">
+                            <img src="/logo/logo2.png">
                             <p th:text="${game.secondTeam.teamName}">
                                 game.secondTeam.teamName
                             </p>
