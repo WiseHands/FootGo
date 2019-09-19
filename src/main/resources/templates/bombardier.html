@@ -80,7 +80,7 @@
             <div class="bomb-title">Команда</div>
             <div class="bomb-firstplace"> <p th:text="${firstPlace.player.team.teamName}">0</p></div>
             <div class="bomb-secondplace"> <p th:text="${secondPlace.player.team.teamName}">0</p></div>
-            <div class="bomb-thirdplace"> <p th:text="${thirdPlace.player.team.teamName}">0</p>ra</div>
+            <div class="bomb-thirdplace"> <p th:text="${thirdPlace.player.team.teamName}">0</p></div>
             <div th:each="playerGoal : ${playerGoals}">
                 <p th:text="${playerGoal.player.team.teamName}">Lions</p>
             </div>
