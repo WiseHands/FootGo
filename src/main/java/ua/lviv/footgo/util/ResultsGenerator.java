@@ -14,7 +14,7 @@ import java.util.Random;
 public class ResultsGenerator {
 
     public static final Integer NUMBER_OF_TEAMS = 10;
-    public static final Integer NUMBER_OF_PLAYERS_IN_TEAM = 11;
+    public static final Integer NUMBER_OF_PLAYERS_IN_TEAM = 25;
     public static final Integer NUMBER_OF_TOURS = 9;
     public static final Integer NUMBER_OF_GAMES_IN_TOUR = 5;
 
