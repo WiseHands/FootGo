@@ -1,0 +1,736 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    min-width: 300px;
+}
+body p {
+    white-space: nowrap;
+}
+header   {
+    background-color: #0D0B20;
+}
+.header-full {
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    height: 100%;
+    margin: 0 auto;
+}
+.header-first-block {
+    display: flex;
+}
+.header-img {
+    padding: 0.3em;
+    max-height: 48px;
+    max-width: 48px;
+}
+a {
+    text-decoration: none;
+}
+a, a:hover {
+	color: #212121;
+}
+.header-null {
+    display: none;
+}
+.header-text {
+    display: flex;
+}
+.header-text p {
+    color: #fff;
+    font-size: 1.2em;
+    font-family: 'Roboto', sans-serif;
+    padding: 1em;
+}
+.header-text p:hover {
+    color: #868686;
+}
+
+.main-photo {
+    background: url("img/foot11.jpg");
+    background-position: center;
+    background-size: cover;
+    height: calc(100vh - 61.375px) ;
+}
+.slogan-text {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(2,3,14,0.3);
+    max-width: 550px;
+    margin: 0 auto;
+    border-radius: 15px;
+    text-align: center;
+}
+.slogan-null {
+    height: 10vh;
+}
+.slogan-text iframe {
+    margin: 0 auto;
+    padding: 10px 0;
+}
+.slogan-text h1 {
+    font-size: 3em;
+    padding: 20px 30px 0 30px;
+    color: #dfdfe5;
+}
+.slogan-text h3 {
+    font-size: 2.2em;
+    padding: 0 30px 20px 30px;
+    color: #dfdfe5;
+}
+.slogan-button {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.main-input-button {
+    width: auto;
+    height: auto;
+    color: #fff;
+    background-color: #42a444;
+    font-size: 2em;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.main-input-button:hover {
+    background-color: #347e36;
+    border-radius: 10px;
+}
+
+.registration-photo {
+    background: url("img/foot33.jpg");
+    background-position: center;
+    background-size: cover;
+    /*height: 100vh;*/
+    height: calc(100vh - 60.375px);
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 30px;
+    font-size: 1.2em;
+    text-align: center;
+}
+input[type=text], input[type=tel], input[type=email] {
+    padding: 15px;
+    margin: 5px 0 10px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+.team-capitan {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-bottom: 20px;
+}
+.team-name {
+    background-color: rgba(220,216,216, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+.capitan {
+    background-color: rgba(220,216,216, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 10px;
+
+}
+.capitan p, .team-name p {
+    font-size: 1.2em;
+    font-weight: 700 ;
+}
+#success {
+    display: none;
+}
+#error {
+	display: none;
+}
+.note {
+    text-align: left;
+    margin-bottom: 1em;
+}
+.player-bg {
+    background-color: rgba(220,216,216, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+.player p {
+    font-weight: 600;
+}
+.player1-3 {
+    display: flex;
+    justify-content: space-around;
+}
+input[type=text] {
+    width: 80%;
+}
+input[type=submit] {
+    padding: 15px;
+    margin: 5px 0 10px 0;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.reg-input-button {
+    width: auto;
+    height: auto;
+    background-color: #42a444;
+    font-size: 1.5em;
+    color: #fff;
+    padding: 7px 30px;
+    margin-top: 50px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.reg-input-button:hover {
+    background-color: #347e36;
+    border-radius: 10px;
+}
+
+.table-full {
+    background: url("img/foot22.jpg");
+    background-position: center;
+    background-size: cover;
+    height: calc(100vh - 60.375px);
+}
+.table-head, .bomb-head {
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 7px;
+}
+.table-head p {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #fff;
+}
+.table, .bomb {
+    display: flex;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 2.3;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+.table-position, .bomb-position {
+    width: 5%;
+}
+.table-team-name {
+    width: 35%;
+    text-align: left;
+}
+    .table-team-name p {
+        padding-left: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .table-team-name div:first-child {
+        text-align: center;
+    }
+.table-offset {
+    width: 40px;
+}
+.table-goals {
+    width: 60px;
+}
+.table-title, .bomb-title {
+    background-color: rgba(108, 118, 136, 0.6);
+}
+.table-firstplace, .bomb-firstplace {
+    background-color: rgba(143, 217, 71,0.7);
+}
+.table-secondplace, .bomb-secondplace{
+    background-color: rgba(217, 212, 71,0.7);
+}
+.table-thirdplace, .bomb-thirdplace {
+    background-color: rgba(234, 106, 118,0.7);
+}
+.table-position div:nth-of-type(n+5), .table-team-name div:nth-of-type(n+5),.table-games div:nth-of-type(n+5),
+.table-wins div:nth-of-type(n+5),.table-draws div:nth-of-type(n+5), .table-defeats div:nth-of-type(n+5), .table-goals div:nth-of-type(n+5), .table-points div:nth-of-type(n+5), .bomb-position div:nth-of-type(n+5),
+.bomb-player-name div:nth-of-type(n+5), .bomb-scored div:nth-of-type(n+5),
+.bomb-matches div:nth-of-type(n+5), .bomb-team div:nth-of-type(n+5)
+{
+    background-color: rgba(220, 216, 216,0.7);
+}
+
+.table div, .bomb div {
+    margin: 1px;
+}
+
+.bomb-full {
+    background-image: url("img/foot44.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.bomb-head p {
+    font-size: 2.2em;
+    padding-bottom: 10px;
+    font-weight: 700;
+}
+.bomb-player-name {
+    width: 35%;
+    text-align: left;
+}
+.bomb-player-name p {
+    padding-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.bomb-player-name div:first-child {
+    text-align: center;
+}
+.bomb-scored {
+     min-width: 7%;
+ }
+.bomb-matches {
+    min-width: 5%;
+}
+.bomb-team {
+    min-width: 15%;
+}
+
+.results-full {
+    background: url("img/foot66.jpg");
+    background-size: contain;
+    opacity: 1;
+    height: 100%;
+}
+.team-results-full {
+    background: url("img/foot66.jpg");
+    background-size: cover;
+    opacity: 1;
+    height: calc(100vh - 60.375px);
+}
+.res-tour {
+    display: flex;
+    flex-direction: column;
+    max-width: 750px;
+    margin: 0 auto;
+}
+.res-tour-title {
+    text-align: center;
+    color: #FFF;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-top: 10px;
+}
+.res-tour-allmatch {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    line-height: 2;
+    text-align: center;
+    font-size: 1.1em;
+    padding-top: 10px;
+    font-weight: 600;
+}
+.results-container {
+    display: flex;
+    width: 320px;
+    background-color: rgba(220,216,216, 0.8);
+    padding: 15px;
+    border-radius: 5px;
+    margin: 0 7px 7px 0;
+}
+.res-title {
+    color: #FFF;
+}
+.res-teams {
+    width: 60%;
+}
+.res-teams a {
+    display: flex;
+    align-items: center;
+}
+.res-teams img {
+    width: 24px;
+}
+.res-teams p {
+    text-align: left;
+    padding-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.res-score {
+    width: 10%;
+}
+.res-date {
+    width: 30%;
+}
+
+
+.results-bg {
+    background-color: rgba(220,216,216, 0.8	);
+    padding: 10px;
+    border-radius: 10px;
+}
+.results-block {
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+.results-block p {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.results-tour-title span{
+    display: none;
+}
+
+.results-tour {
+    display: flex;
+    justify-content: space-around;
+}
+.results-tour-title  {
+    text-align: left;
+}
+.results-date, .results-team1, .results-team2 {
+    width: 30%;
+}
+.results-date p, .results-team1 p, .results-team2 p {
+    width: 90%;
+}
+.results-date p {
+    text-align: left;
+    padding-left: 40px;
+}
+.results-team1 p {
+    text-align: right;
+    padding-right: 100px;
+}
+.results-team2 p {
+    text-align: left;
+}
+.results-score {
+    width: 10%;
+}
+
+/*input validation*/
+input[invalid-input] {
+    border: 2px solid red;
+    border-radius: 4px;
+}
+
+/*match review*/
+.matches-full {
+    background: url("img/foot88.jpg");
+    background-size: cover;
+    height: calc(100vh - 60.375px);
+}
+.mathces-null {
+    height: 2vh;
+}
+.mathces-bg {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    background-color: rgba(220,216,216, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+.review-match {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+.review-match p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.review-head {
+    display: flex;
+    width: 500px;
+    align-items: center;
+    padding: 30px 0;
+
+}
+.review-head p {
+    text-align: center;
+}
+.review-team1, .review-team2 {
+    width: 35%;
+}
+.review-team1 img, .review-team2 img {
+    width: 128px;
+    height: 128px;
+    padding-bottom: 10px;
+}
+.review-team1 p, .review-team2 p {
+    font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.review-score {
+    width: 30%;
+    padding: 20px 20px;
+}
+.review-score p {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.details-match {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    font-size: 1.3rem;
+}
+.details-match p {
+    overflow: hidden;
+}
+.details-match img {
+    width: 16px;
+    height: 16px;
+    padding-right: 5px;
+}
+.details-team1 {
+    padding-right: 15px;
+    width: 50%;
+}
+.details-team2 {
+    padding-left: 10px;
+    width: 50%;
+}
+
+.team1-goals, .team2-goals {
+    display: flex;
+    align-items: center;
+}
+.team1-goals {
+    justify-content: flex-end;
+}
+.team1-goals p {
+    text-align: right;
+}
+
+
+@media screen and (max-width: 870px) {
+    .team-capitan {
+        flex-direction: column;
+    }
+    .team-name {
+        margin-bottom: 5px;
+    }
+    .registration-photo {
+        background-position: center;
+        background-size: cover;
+        height: calc(100vh - 60.375px);
+    }
+    .mathces-bg {
+        width: 95%;
+    }
+}
+@media screen and (max-width: 720px) {
+    .results-date {
+        display: none;
+    }
+    .results-tour-title span{
+        display: inline-block;
+        margin-left: 10px;
+    }
+}
+@media screen and (max-width: 667px) {
+    .slogan-null {
+        height: 2vh;
+    }
+    .slogan-text {
+        max-width: 400px;
+    }
+    .slogan-text iframe {
+        width: 90%;
+        height: 202px;
+    }
+    .slogan-text h1 {
+        font-size: 2.3em;
+        line-height: 1.5;
+    }
+    .slogan-text h3 {
+        font-size: 2em;
+        padding: 15px 0;
+    }
+    .header-text {
+        display: none;
+    }
+
+    .registration-photo {
+        background-position: center;
+        background-size: cover;
+        height: calc(100vh - 59.984px);
+    }
+    .player1-3 {
+        flex-direction: column;
+    }
+    /*burger-icon*/
+    #nav-icon {
+        width: 32px;
+        height: 32px;
+        position: relative;
+        margin: 15px auto;
+        transform: rotate(0deg);
+        transition: .5s ease-in-out;
+        cursor: pointer;
+    }
+    #nav-icon span {
+        display: block;
+        position: absolute;
+        height: 5px;
+        width: 100%;
+        background: #dcd8d8;
+        border-radius: 6px;
+        opacity: 1;
+        left: 20px;
+        transform: rotate(0deg);
+        transition: .25s ease-in-out;
+    }
+    #nav-icon span:nth-child(1) {
+        top: 0px;
+    }
+
+    #nav-icon span:nth-child(2) {
+        top: 12px;
+    }
+
+    #nav-icon span:nth-child(3) {
+        top: 24px;
+    }
+    #nav-icon.open span:nth-child(1) {
+        top: 12px;
+        transform: rotate(135deg);
+    }
+
+    #nav-icon.open span:nth-child(2) {
+        opacity: 0;
+        left: -60px;
+    }
+    #nav-icon.open span:nth-child(3) {
+        top: 12px;
+        transform: rotate(-135deg);
+    }
+    .main-photo {
+        height: calc(100vh - 59.984px) ;
+    }
+    .header-first-block {
+        width: 100%;
+        flex-direction: row-reverse;
+    }
+    .header-null{
+        flex-grow: 1;
+        display: block;
+            }
+
+    /*burger-menu*/
+
+    /*burger-icon*/
+
+    .dropdown {
+        display: none;
+    }
+    .results {
+        max-width: 90%;
+    }
+    .results-team1, .results-team2 {
+        width: 40%;
+    }
+    .results-score {
+        width: 20%;
+    }
+    .results-bg {
+        margin-bottom: 10px;
+    }
+    .table-full, .bomb-full {
+        height: calc(100vh - 59.984px);
+    }
+    .table, .bomb {
+        width: 98%;
+    }
+    .table-head p {
+        font-size: 1.4em;
+    }
+    .table-position, .bomb-position {
+        width: 40px;
+    }
+    .table-team-name {
+        min-width: 40%;
+        text-align: left;
+    }
+    .table-games, .table-wins, .table-draws {
+        display: none;
+    }
+    .table-team-name p {
+        padding-left: 5px;
+    }
+    .table-team-name div:first-child {
+        text-align: center;
+    }
+    .table-offset {
+        width: 40px;
+    }
+    .table-goals {
+        width: 60px;
+    }
+    .bomb-head p {
+        padding-bottom: 0;
+        font-size: 1.5em;
+    }
+    .bomb-matches {
+        min-width: 10%;
+    }
+    .bomb-player-name {
+        width: 45%;
+    }
+    .bomb-scored {
+        width: 22%;
+    }
+    .bomb-matches {
+        display: none;
+    }
+    .bomb-team {
+        width: 27%;
+    }
+    .review-head {
+        width: 350px;
+    }
+    .mathces-bg {
+        width: 90%  ;
+    }
+    .review-team1 img, .review-team2 img {
+        width: 96px;
+        height: 96px;
+    }
+    .review-team1 p, .review-team2 p {
+        font-size: 1.3rem;
+    }
+    .review-score p {
+        font-size: 2rem;
+    }
+    .results-container {
+        width: 90%;
+        padding: 5px;
+        margin: 7px 0;
+    }
+}

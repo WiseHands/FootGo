@@ -267,7 +267,7 @@ input[type=submit] {
 }
 .table-position div:nth-of-type(n+5), .table-team-name div:nth-of-type(n+5),.table-games div:nth-of-type(n+5),
 .table-wins div:nth-of-type(n+5),.table-draws div:nth-of-type(n+5), .table-defeats div:nth-of-type(n+5), .table-goals div:nth-of-type(n+5), .table-points div:nth-of-type(n+5), .bomb-position div:nth-of-type(n+5),
-.bomb-player-name div:nth-of-type(n+5), .bomb-scored div:nth-of-type(n+5), .bomb-scored-pen div:nth-of-type(n+5),
+.bomb-player-name div:nth-of-type(n+5), .bomb-scored div:nth-of-type(n+5),
 .bomb-matches div:nth-of-type(n+5), .bomb-team div:nth-of-type(n+5)
 {
     background-color: rgba(220, 216, 216,0.7);
@@ -305,9 +305,6 @@ input[type=submit] {
 .bomb-scored {
      min-width: 7%;
  }
-.bomb-scored-pen {
-    min-width: 10%;
-}
 .bomb-matches {
     min-width: 5%;
 }
@@ -709,7 +706,7 @@ input[invalid-input] {
     .bomb-scored {
         width: 22%;
     }
-    .bomb-scored-pen, .bomb-matches {
+    .bomb-matches {
         display: none;
     }
     .bomb-team {

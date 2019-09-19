@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Admin Page</title>
+        <link rel="stylesheet" href="../../../admin.css">
+        <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
+        <style>
+            a {
+                color: black;
+            }
+            a:link {
+              text-decoration: none;
+            }
+
+            a:visited {
+              text-decoration: none;
+            }
+
+            a:hover {
+              text-decoration: none;
+            }
+
+            a:active {
+              text-decoration: none;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="admin-main">
+            <div class="admin-logo">
+                <a href="/admin"><img class="admin-img" src="/img/footgo-dark-icon.png" alt="logo"></a>
+            </div>
+        </div>
+
+        <p class="admin-tour-title" th:text="${'Тур ' + tour.tourNumber}">Тур 1</p>
+
+        <a th:attr="href=${'/admin/match/edit?uuid=' + game.id}" th:each="game : ${tour.gameList}">
+            <div class="tour-match">
+                <div class="tour-team1-details">
+                    <p th:text="${game.firstTeam.teamName}">Команда 1</p>
+                </div>
+                <div class="tour-score">
+                    <span id="goalBtn"><p><span th:text="${game.teamAGoals.size()}">0</span> : <span th:text="${game.teamBGoals.size()}">0</span></p></span>
+                </div>
+                <div class="tour-team2-details">
+                    <p th:text="${game.secondTeam.teamName}">Команда 2</p>
+                </div>
+            </div>
+        </a>
+
+    </body>
+</html>

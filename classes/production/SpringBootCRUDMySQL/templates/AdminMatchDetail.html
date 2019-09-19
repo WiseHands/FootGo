@@ -1,0 +1,166 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Admin Page</title>
+        <link rel="stylesheet" href="../../../admin.css">
+        <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    </head>
+    <body>
+        <div class="admin-main">
+            <div class="admin-logo">
+                <a href="/admin"><img class="admin-img" src="/img/footgo-dark-icon.png" alt="logo"></a>
+            </div>
+        </div>
+
+    <p class="admin-tour-title">Тур 1</p>
+
+        <div class="time-picker">
+            <p class="label-time-picker">Час гри</p>
+            <input type="text" id="gameDateTime" onchange="setGameDateTime()">
+        </div>
+
+        <div class="tour-match">
+            <div class="tour-team1">
+                <p th:text="${game.firstTeam.teamName}">Команда 1</p>
+                <span id="plusHomeTeamGoal">+</span>
+            </div>
+            <div class="tour-score">
+                <span id="goalBtn">
+                    <p>
+                        <span th:text="${game.teamAGoals.size()}">0</span> : <span th:text="${game.teamBGoals.size()}">0</span>
+                    </p>
+                </span>
+            </div>
+            <div class="tour-team2">
+                <span id="plusGuestTeamGoal">+</span>
+                <p th:text="${game.secondTeam.teamName}">Команда 2</p>
+            </div>
+        </div>
+
+        <div class="modal-goal">
+            <div class="team1-goal">
+                <div th:each="goal : ${game.teamAGoals}">
+                    <p><img src="../../../img/soccer-ball.png">
+                        <span th:text="${goal.player.firstName}"></span>,
+                        <span th:text="${' ' + goal.time}"></span>
+                        <span class="delete-goal" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', true)'}">-</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="team2-goal">
+                <div th:each="goal : ${game.teamBGoals}">
+                    <p><img src="../../../img/soccer-ball.png">
+                        <span th:text="${goal.player.firstName}"></span>,
+                        <span th:text="${' ' + goal.time}"></span>
+                        <span class="delete-goal" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', false)'}">-</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <p class="label-check-text">Матч завершено</p>
+        <div class="label-check-center">
+            <input type="checkbox" id="match-over" name="match-over" style="display:none">
+            <label for="match-over" class="toggle"><span></span></label>
+        </div>
+
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Гол</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="goal-minute">
+                        <p>Хвилина</p>
+                        <input type="text" name="minute" id="goalMinute">
+                    </div>
+                    <div class="goal-author">
+                        <p>Автор</p>
+                        <select id="playerSelect">
+                        </select>
+                    </div>
+                </div>
+                <div class="goal-add">
+                    <input onclick="addGoalBtnClicked()" id="savebutton" class="main-input-button" type="button" value="Додати">
+                </div>
+            </div>
+        </div>
+
+    <script>
+        const path = location.toString();
+        let url = new URL(path);
+        let searchParams = new URLSearchParams(url.search);
+
+        const id = searchParams.get('uuid');
+
+        let apiUrl = '/api/game/' + id;
+        fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }).then(function(response){
+            console.log(response)
+            return  response.json();
+        }).then(function(data) {
+            window.gameData = data;
+            document.getElementById('match-over').checked = data.completed;
+            formattingGameTime(data.gameTime);
+            console.log(data);
+        });
+
+        function formattingGameTime(gameTimeISO){
+            let date = new Date(gameTimeISO);
+            console.log("time date from server", date);
+            let year = date.getFullYear();
+            let month = date.getMonth()+1;
+            let day = date.getDate();
+            let minutes = date.getMinutes();
+
+            if (day < 10) {
+                day = '0' + day;
+            }
+            if (month < 10) {
+                month = '0' + month;
+            }
+            if (minutes < 10) {
+                minutes = '0' + minutes;
+            }
+            let gameTime = year + "-" + month + "-" + day + " " +
+                            date.getHours() + ":" + minutes;
+            document.getElementById('gameDateTime').value = gameTime;
+
+        }
+    </script>
+    <script src="/modalScript.js"></script>
+    <script>
+        flatpickr("#gameDateTime", {enableTime: true});
+        function setGameDateTime() {
+            let gameTime = document.getElementById('gameDateTime').value;
+            // convert to utc
+            let date = new Date(gameTime);
+            console.log("utc time ", date.toISOString());
+
+            let urls = '/api/game/' + id + '/setgametime/' + date.toISOString();
+            fetch(urls, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }).then(function(response){
+                console.log("gameTime", response);
+            }).then(function(data) {
+                console.log("gameTime", data);
+
+            });
+        }
+
+    </script>
+    </body>
+</html>

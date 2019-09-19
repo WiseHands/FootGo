@@ -65,28 +65,29 @@
             <div class="bomb-firstplace"><p>не заявлена</p></div>
             <div class="bomb-secondplace"><p>не заявлена</p></div>
             <div class="bomb-thirdplace"><p>не заявлена</p></div>
-            <div th:each="playerGoal : ${playerGoals}"><p>не заявлена</p></div>
+            <div th:each="playerGoal : ${playerGoals}">
+                <p th:text="${playerGoal.player.firstName + ' ' + playerGoal.player.lastName}">не заявлена</p>
+            </div>
         </div>
         <div class="bomb-scored">
             <div class="bomb-title">М'ячів</div>
             <div class="bomb-firstplace">0</div>
             <div class="bomb-secondplace">0</div>
             <div class="bomb-thirdplace">0</div>
-            <div th:each="playerGoal : ${playerGoals}">0</div>
-        </div>
-        <div class="bomb-scored-pen">
-            <div class="bomb-title">М'ячів (пен)</div>
-            <div class="bomb-firstplace">0</div>
-            <div class="bomb-secondplace">0</div>
-            <div class="bomb-thirdplace">0</div>
-            <div th:each="playerGoal : ${playerGoals}">0</div>
+            <div th:each="playerGoal : ${playerGoals}">
+                <p th:text="${playerGoal.goalList.size()}">
+                    0
+                </p>
+            </div>
         </div>
         <div class="bomb-team">
             <div class="bomb-title">Команда</div>
             <div class="bomb-firstplace">0</div>
             <div class="bomb-secondplace">0</div>
             <div class="bomb-thirdplace">0</div>
-            <div th:each="playerGoal : ${playerGoals}">0</div>
+            <div th:each="playerGoal : ${playerGoals}">
+                <p th:text="${playerGoal.player.team.teamName}">Lions</p>
+            </div>
         </div>
 
 

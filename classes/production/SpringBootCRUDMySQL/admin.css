@@ -1,0 +1,612 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #cee0dd;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+.admin-main {
+    display: flex;
+    justify-content: space-around;
+}
+
+.bar-block {
+    display: flex;
+    max-width: 720px;
+    width: 830px;
+}
+.bar-block p {
+}
+.bar-application, .bar-games, .bar-reward {
+    width: 33.3%;
+}
+
+
+.admin-logo {
+}
+.admin-img {
+    padding: 1em;
+    max-height: 180px;
+    max-width: 180px;
+}
+.admin-bar {
+}
+.admin-bar p {
+    font-size: 2em;
+    font-weight: 600;
+    padding-top: 1em;
+    text-align: center;
+}
+.progress-title {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+}
+.progress-title p, .bar-block p {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 0 10px;
+}
+.progress-bar {
+    display: flex;
+    justify-content: space-around;
+
+}
+.circle {
+    width: 17px;
+    height: 17px;
+    border: 2px solid black;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+.circle-point {
+    width: 1px;
+    height: 1px;
+    border: 1px solid black;
+    background-color: #000;
+    border-radius: 50%;
+    position: relative;
+    top: 7px;
+    left: 7px;
+}
+.circle-line {
+    width: 40%;
+    border-bottom: 2px solid black;
+    position: relative;
+    top: -10px;
+}
+.circle:nth-of-type(2)::after {
+    border-bottom: 2px solid black;
+    width: 100px;
+    position: relative;
+    top: -10px;
+}
+
+.b-someclass {
+    text-align: center;
+}
+.b-someclass-inner {
+    display: inline-block;
+    width: 450px;
+    vertical-align: top;
+    position: relative;
+}
+.b-someclass-inner:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    width: calc(100% - 30px);
+    height: 6px;
+    background: #000;
+    margin-top: -3px;
+    z-index: 2;
+}
+.b-someclass-inner input {
+    display: none;
+}
+.b-someclass-inner input + label {
+    display: inline-block;
+    vertical-align: top;
+    margin: 15px;
+    width: 50px;
+    height: 50px;
+    background: #000;
+    border-radius: 50%;
+    position: relative;
+    z-index: 9;
+}
+.b-someclass-inner input + label:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 50%;
+    width: 50%;
+    margin: -25% 0 0 -25%;
+    border-radius: 50%;
+    background: tomato;
+    transform: scale(0);
+    transition: .25s;
+    transition-delay: .2s;
+}
+.b-someclass-inner input:checked + label:after {
+    background: tomato;
+    transform: scale(1);
+}
+.b-someclass-line {
+    position: absolute;
+    top: 50%;
+    margin-top: -3px;
+    left: 15px;
+    width: 0;
+    height: 6px;
+    background: tomato;
+    transition: .35s;
+    z-index: 2;
+    pointer-events: none;
+}
+.b-someclass-inner input:checked + label ~ .b-someclass-line {
+    left: 50px;
+}
+.b-someclass-inner #check-2:checked + label ~ .b-someclass-line {
+    width: calc(100% / 6 * 2);
+}
+.b-someclass-inner #check-3:checked + label ~ .b-someclass-line {
+    width: calc(100% / 6 * 4);
+}
+/*.b-someclass-inner #check-4:checked + label ~ .b-someclass-line {*/
+    /*width: calc(100% / 6 * 3);*/
+/*}*/
+/*.b-someclass-inner #check-5:checked + label ~ .b-someclass-line {*/
+    /*width: calc(100% / 6 * 4);*/
+/*}*/
+/*.b-someclass-inner #check-6:checked + label ~ .b-someclass-line {*/
+    /*width: calc(100% / 6 * 5);*/
+/*}*/
+
+
+.requests {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+.requests p {
+    font-size: 1.7rem;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+.all-requests {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.request-block {
+    width: 230px;
+    padding: 24px 16px;
+    margin: 10px 0;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2),
+                0px 1px 1px 0px rgba(0,0,0,0.14),
+                0px 2px 1px -1px rgba(0,0,0,0.12);
+    cursor: pointer;
+}
+.request-block h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.33;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.request-block p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@media screen and (max-width: 667px) {
+    .admin-bar {
+        display: none;
+    }
+    .all-requests {
+        flex-direction: column;
+    }
+    .request-block {
+        justify-content: center;
+        margin: 15px auto;
+
+    }
+}
+
+/*SubmissionEntryEdit*/
+
+.team-request {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.team-request h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+    text-align: center;
+}
+.team-request p {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+.admin-team-name {
+    align-items: center;
+    margin-bottom: 10px;
+}
+.admin-team-name p {
+    margin-right: 15px;
+}
+.admin-capitan {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.admin-capitan p {
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+.admin-capitan input[type=text], .admin-capitan input[type=tel], .admin-capitan input[type=email] {
+
+    margin: 10px auto;
+
+}
+
+.admin-players {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.admin-players p {
+    margin-right: 10px
+}
+.admin-player-name {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+.admin-title-row {
+    text-align: center;
+}
+input[type=text], input[type=tel], input[type=email], select {
+    padding: 15px;
+    margin: 5px 0 10px 0;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+}
+.main-input-button {
+    color: #fff;
+    background-color: #4e73ad;
+    font-size: 1.7em;
+    padding: 10px 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.main-input-button:hover {
+    background-color: #285294;
+    border-radius: 10px;
+}
+.main-input-button-all {
+   margin: 1em auto;
+   background-color: #008000;
+   display: none;
+}
+.main-input-button-all:hover {
+   background-color: #026402;
+}
+.main-input-button-del {
+   text-align: left;
+   background-color: #ff4500;
+}
+.main-input-button-del:hover {
+   background-color: #b63403;
+}
+.admin-tour-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+}
+.tour-match {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.tour-team1-details, .tour-team2-details {
+    width: 40%;
+}
+.tour-team1 {
+    justify-content: flex-end;
+}
+.tour-team1, .tour-team2 {
+    display: flex;
+    width: 40%;
+}
+.tour-team1 p, .tour-team1-details p {
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 5px;
+}
+.tour-team2 p, .tour-team2-details p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tour-team1 span, .tour-team1-details span {
+    margin-left: 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+.tour-score {
+    width: 60px;
+    padding: 0 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.tour-team2 span, .tour-team2-details span {
+    margin-right: 10px;
+    cursor: pointer;
+}
+/*modal*/
+#myBtn {
+    padding: 0px 6px;
+    border: 1px solid #15274a;
+    border-radius: 50%;
+}
+#myBtn:hover {
+    background-color: #67bae0;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #cee0dd;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 360px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: relative;
+    top: -2px;
+    right: 5px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-header {
+    padding: 10px 16px;
+    font-size: 1.3rem;
+    text-align: center;
+}
+.modal-body, .modal-body-goal {
+    padding: 2px 16px;
+    font-size: 1.2rem;
+}
+
+/*modal end*/
+.goal-minute, .goal-author {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.goal-minute input, .goal-author select {
+    width: 200px;
+}
+.goal-add {
+    display: flex;
+    justify-content: center;
+}
+.modal-goal {
+    display: flex;
+    width: 400px;
+    margin: 0 auto;
+}
+.modal-goal h3 {
+    font-size: 1.3rem;
+    padding: 10px;
+}
+.modal-goal p {
+    font-size: 1.2rem;
+    padding: 5px 10px;
+}
+.modal-goal img {
+    width: 16px;
+    height: 16px;
+    padding-right: 5px;
+}
+span.delete-goal {
+    font-size: 2rem;
+    cursor: pointer;
+    color: red;
+    padding-left: 5px;
+}
+.modal-goal span:hover {
+    color: #FF6A4F;
+    cursor: pointer;
+}
+.team1-goal, .team2-goal {
+    width: 50%;
+}
+.team1-goal {
+    text-align: right;
+    padding-right: 5px;
+}
+.link-style {
+	flex: 1;
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit;
+}
+.send-match-result {
+    display: flex;
+    justify-content: center;
+}
+.send-match-result input {
+    color: #fff;
+    background-color: #4e73ad;
+    font-size: 1.5em;
+    padding: 8px 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/*messages*/
+#success {
+    display: none;
+    text-align: center;
+}
+#error {
+	display: none;
+	text-align: center;
+}
+
+/*admin checkbox*/
+.toggle {
+    /*position: relative;
+    display: block;
+    width: 40px;
+    height: 20px;*/
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+}
+.toggle:before {
+    content: "";
+    position: relative;
+    top: 3px;
+    left: 3px;
+    width: 34px;
+    height: 14px;
+    display: block;
+    background: #9A9999;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+.toggle span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: white;
+    border-radius: 10px;
+    box-shadow: rgba(54, 221, 193, 0.47);
+    transition: all 0.2s ease;
+}
+.toggle span:before {
+    content: "";
+    position: absolute;
+    display: block;
+    margin: -18px;
+    width: 56px;
+    height: 56px;
+    background: rgba(79, 46, 220, 0.5);
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 1;
+    pointer-events: none;
+}
+
+#match-over:checked + .toggle:before {
+    background: #0ca38a;
+}
+#match-over:checked + .toggle span {
+    background: #057764;
+    transform: translateX(20px);
+    transition: all 0.2s cubic-bezier(0.8, 0.4, 0.3, 1.25), background 0.15s ease;
+    box-shadow: 0 3px 8px rgba(79, 46, 220, 0.2);
+}
+#match-over:checked + .toggle span:before {
+    transform: scale(1);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.label-check-center {
+    position: absolute;
+    left: calc(50% - 20px);
+}
+.label-check-text {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    text-align: center;
+    font-weight: bold;
+}
+
+/*time picker*/
+.time-picker{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    /*margin-left: 200px;
+    margin-right: 200px;*/
+}
+/*input for time-picker*/
+.label-time-picker{
+    padding-right: 5px;
+}
