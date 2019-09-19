@@ -90,7 +90,10 @@ public class HttpRequestsController {
     @GetMapping({"/bombardier"})
     public String bombardier(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         List<PlayerGoals> playerGoals = topScorerService.getResults();
-        model.addAttribute("playerGoals", playerGoals);
+        model.addAttribute("firstPlace", playerGoals.get(0));
+        model.addAttribute("secondPlace", playerGoals.get(1));
+        model.addAttribute("thirdPlace", playerGoals.get(2));
+        model.addAttribute("playerGoals", playerGoals.subList(3, playerGoals.size()));
         return "bombardier";
     }
 

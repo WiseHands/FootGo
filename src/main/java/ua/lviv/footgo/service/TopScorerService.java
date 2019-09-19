@@ -20,6 +20,8 @@ public class TopScorerService {
     @Autowired
     GoalRepository goalRepository;
 
+
+
     public List<PlayerGoals> getResults() {
         Map<Player, PlayerGoals> playGoalMap = new HashMap<>();
         List<Goal> goalList = (List<Goal>) goalRepository.findAll();
@@ -42,6 +44,8 @@ public class TopScorerService {
         for (PlayerGoals _playerGoals : playGoalMap.values()) {
             playerGoalsList.add(_playerGoals);
         }
+
+        Collections.sort(playerGoalsList, new PlayerGoals.SortByGoals());
 
         return playerGoalsList;
     }

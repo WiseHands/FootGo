@@ -3,11 +3,22 @@ package ua.lviv.footgo.jsonmapper;
 import ua.lviv.footgo.entity.Goal;
 import ua.lviv.footgo.entity.Player;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class PlayerGoals {
     Player player;
     List<Goal> goalList;
+
+    public static class SortByGoals implements Comparator<PlayerGoals>
+    {
+        // Used for sorting in ascending order of
+        // roll number
+        public int compare(PlayerGoals a, PlayerGoals b)
+        {
+            return a.goalList.size() - b.goalList.size();
+        }
+    }
 
     public Player getPlayer() {
         return player;
