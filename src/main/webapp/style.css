@@ -662,8 +662,11 @@ input[invalid-input] {
     .results-bg {
         margin-bottom: 10px;
     }
-    .table-full, .bomb-full {
+    .table-full,  {
         height: calc(100vh - 59.984px);
+    }
+    .bomb-full {
+        height: 100%;
     }
     .table, .bomb {
         width: 98%;
