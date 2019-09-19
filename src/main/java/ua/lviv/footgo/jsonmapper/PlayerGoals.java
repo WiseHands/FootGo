@@ -16,7 +16,7 @@ public class PlayerGoals {
         // roll number
         public int compare(PlayerGoals a, PlayerGoals b)
         {
-            return a.goalList.size() - b.goalList.size();
+            return b.goalList.size() - a.goalList.size();
         }
     }
 
