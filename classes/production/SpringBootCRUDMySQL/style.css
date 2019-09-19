@@ -285,13 +285,18 @@ input[type=submit] {
     background-size: cover;
 
 }
+.bomb-full p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .bomb-head p {
     font-size: 2.2em;
     padding-bottom: 10px;
     font-weight: 700;
 }
 .bomb-player-name {
-    width: 35%;
+    width: 45%;
     text-align: left;
 }
 .bomb-player-name p {
@@ -303,13 +308,10 @@ input[type=submit] {
     text-align: center;
 }
 .bomb-scored {
-     min-width: 7%;
+     width: 15%;
  }
-.bomb-matches {
-    min-width: 5%;
-}
 .bomb-team {
-    min-width: 15%;
+    width: 25%;
 }
 
 .results-full {
@@ -445,7 +447,7 @@ input[invalid-input] {
 
 /*match review*/
 .matches-full {
-    background: url("img/foot88.jpg");
+    background: url("img/foot77.jpg");
     background-size: cover;
     height: calc(100vh - 60.375px);
 }
@@ -518,7 +520,7 @@ input[invalid-input] {
     height: 16px;
 }
 .details-team1 {
-    padding-right: 20px;
+    paddiling-right: 20px;
     width: 50%;
 }
 .details-team2 {
@@ -695,11 +697,6 @@ input[invalid-input] {
     .bomb-full {
         height: 100%;
     }
-    .bomb-full P {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
     .table, .bomb {
         width: 98%;
     }
@@ -748,7 +745,7 @@ input[invalid-input] {
         width: 27%;
     }
     .review-head {
-        width: 350px;
+        width: 320px;
     }
     .mathces-bg {
         width: 90%  ;
@@ -767,5 +764,11 @@ input[invalid-input] {
         width: 90%;
         padding: 5px;
         margin: 7px 0;
+    }
+    .details-team1 {
+        paddiling-right: 5px;
+    }
+    .details-team2 {
+        padding-left: 5px;
     }
 }

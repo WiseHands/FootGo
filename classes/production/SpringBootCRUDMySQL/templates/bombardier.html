@@ -52,28 +52,24 @@
             <div class="bomb-firstplace">1</div>
             <div class="bomb-secondplace">2</div>
             <div class="bomb-thirdplace">3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>7</div>
-            <div>8</div>
-            <div>9</div>
-            <div>10</div>
+<!--            <div th:each="playerGoal : ${playerGoals}">-->
+<!--                <p th:text="${index}">не заявлена</p>-->
+<!--            </div>-->
         </div>
         <div class="bomb-player-name">
             <div class="bomb-title">Футболіст</div>
-            <div class="bomb-firstplace"><p>не заявлена</p></div>
-            <div class="bomb-secondplace"><p>не заявлена</p></div>
-            <div class="bomb-thirdplace"><p>не заявлена</p></div>
+            <div class="bomb-firstplace"><p th:text="${firstPlace.player.firstName + ' ' + firstPlace.player.lastName}">не заявлена</p></div>
+            <div class="bomb-secondplace"><p th:text="${secondPlace.player.firstName + ' ' + secondPlace.player.lastName}">не заявлена</p></div>
+            <div class="bomb-thirdplace"><p th:text="${thirdPlace.player.firstName + ' ' + thirdPlace.player.lastName}">не заявлена</p></div>
             <div th:each="playerGoal : ${playerGoals}">
                 <p th:text="${playerGoal.player.firstName + ' ' + playerGoal.player.lastName}">не заявлена</p>
             </div>
         </div>
         <div class="bomb-scored">
             <div class="bomb-title">М'ячів</div>
-            <div class="bomb-firstplace">0</div>
-            <div class="bomb-secondplace">0</div>
-            <div class="bomb-thirdplace">0</div>
+            <div class="bomb-firstplace" th:text="${firstPlace.goalList.size()}">0</div>
+            <div class="bomb-secondplace" th:text="${secondPlace.goalList.size()}">0</div>
+            <div class="bomb-thirdplace" th:text="${thirdPlace.goalList.size()}">0</div>
             <div th:each="playerGoal : ${playerGoals}">
                 <p th:text="${playerGoal.goalList.size()}">
                     0
@@ -82,9 +78,9 @@
         </div>
         <div class="bomb-team">
             <div class="bomb-title">Команда</div>
-            <div class="bomb-firstplace">0</div>
-            <div class="bomb-secondplace">0</div>
-            <div class="bomb-thirdplace">0</div>
+            <div class="bomb-firstplace"> <p th:text="${firstPlace.player.team.teamName}">0</p></div>
+            <div class="bomb-secondplace"> <p th:text="${secondPlace.player.team.teamName}">0</p></div>
+            <div class="bomb-thirdplace"> <p th:text="${thirdPlace.player.team.teamName}">0</p></div>
             <div th:each="playerGoal : ${playerGoals}">
                 <p th:text="${playerGoal.player.team.teamName}">Lions</p>
             </div>
