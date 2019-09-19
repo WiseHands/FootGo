@@ -58,9 +58,9 @@
         </div>
         <div class="bomb-player-name">
             <div class="bomb-title">Футболіст</div>
-            <div class="bomb-firstplace"><p th:text="${firstPlace.player.firstName + ' ' + playerGoal.player.lastName}">не заявлена</p></div>
-            <div class="bomb-secondplace"><p th:text="${secondPlace.player.firstName + ' ' + playerGoal.player.lastName}">не заявлена</p></div>
-            <div class="bomb-thirdplace"><p th:text="${thirdPlace.player.firstName + ' ' + playerGoal.player.lastName}">не заявлена</p></div>
+            <div class="bomb-firstplace"><p th:text="${firstPlace.player.firstName + ' ' + firstPlace.player.lastName}">не заявлена</p></div>
+            <div class="bomb-secondplace"><p th:text="${secondPlace.player.firstName + ' ' + secondPlace.player.lastName}">не заявлена</p></div>
+            <div class="bomb-thirdplace"><p th:text="${thirdPlace.player.firstName + ' ' + thirdPlace.player.lastName}">не заявлена</p></div>
             <div th:each="playerGoal : ${playerGoals}">
                 <p th:text="${playerGoal.player.firstName + ' ' + playerGoal.player.lastName}">не заявлена</p>
             </div>
