@@ -668,6 +668,11 @@ input[invalid-input] {
     .bomb-full {
         height: 100%;
     }
+    .bomb-full P {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
     .table, .bomb {
         width: 98%;
     }
@@ -675,7 +680,7 @@ input[invalid-input] {
         font-size: 1.4em;
     }
     .table-position, .bomb-position {
-        width: 40px;
+        width: 7%;
     }
     .table-team-name {
         min-width: 40%;
@@ -704,7 +709,7 @@ input[invalid-input] {
         min-width: 10%;
     }
     .bomb-player-name {
-        width: 45%;
+        width: 43%;
     }
     .bomb-scored {
         width: 22%;
