@@ -285,13 +285,18 @@ input[type=submit] {
     background-size: cover;
 
 }
+.bomb-full p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .bomb-head p {
     font-size: 2.2em;
     padding-bottom: 10px;
     font-weight: 700;
 }
 .bomb-player-name {
-    width: 35%;
+    width: 45%;
     text-align: left;
 }
 .bomb-player-name p {
@@ -303,13 +308,10 @@ input[type=submit] {
     text-align: center;
 }
 .bomb-scored {
-     min-width: 7%;
+     width: 15%;
  }
-.bomb-matches {
-    min-width: 5%;
-}
 .bomb-team {
-    min-width: 15%;
+    width: 25%;
 }
 
 .results-full {
@@ -445,7 +447,7 @@ input[invalid-input] {
 
 /*match review*/
 .matches-full {
-    background: url("img/foot88.jpg");
+    background: url("img/foot77.jpg");
     background-size: cover;
     height: calc(100vh - 60.375px);
 }
@@ -481,12 +483,16 @@ input[invalid-input] {
     text-align: center;
 }
 .review-team1, .review-team2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 35%;
 }
 .review-team1 img, .review-team2 img {
-    width: 128px;
-    height: 128px;
+    width: 72px;
+    height: 72px;
     padding-bottom: 10px;
+
 }
 .review-team1 p, .review-team2 p {
     font-size: 1.5rem;
@@ -504,8 +510,6 @@ input[invalid-input] {
 
 .details-match {
     display: flex;
-    justify-content: center;
-    padding-top: 10px;
     font-size: 1.3rem;
 }
 .details-match p {
@@ -514,26 +518,40 @@ input[invalid-input] {
 .details-match img {
     width: 16px;
     height: 16px;
-    padding-right: 5px;
 }
 .details-team1 {
-    padding-right: 15px;
+    paddiling-right: 20px;
     width: 50%;
 }
 .details-team2 {
-    padding-left: 10px;
+    padding-left: 20px;
     width: 50%;
-}
-
-.team1-goals, .team2-goals {
-    display: flex;
-    align-items: center;
 }
 .team1-goals {
     justify-content: flex-end;
 }
+.team1-goals, .team2-goals {
+    display: flex;
+    align-items: center;
+}
+.team1-goals img {
+    padding-left: 5px;
+}
+.team2-goals img {
+    padding-right: 5px;
+}
 .team1-goals p {
+    font-size: 1.1rem;
     text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.team2-goals p {
+    font-size: 1.1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
@@ -679,11 +697,6 @@ input[invalid-input] {
     .bomb-full {
         height: 100%;
     }
-    .bomb-full P {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
     .table, .bomb {
         width: 98%;
     }
@@ -732,7 +745,7 @@ input[invalid-input] {
         width: 27%;
     }
     .review-head {
-        width: 350px;
+        width: 320px;
     }
     .mathces-bg {
         width: 90%  ;
@@ -751,5 +764,11 @@ input[invalid-input] {
         width: 90%;
         padding: 5px;
         margin: 7px 0;
+    }
+    .details-team1 {
+        paddiling-right: 5px;
+    }
+    .details-team2 {
+        padding-left: 5px;
     }
 }
