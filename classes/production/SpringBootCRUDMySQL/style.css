@@ -324,6 +324,11 @@ input[type=submit] {
     opacity: 1;
     height: calc(100vh - 60.375px);
 }
+.results {
+    max-width: 820px;
+    margin: 0 auto;
+    padding-top: 15px;
+}
 .res-tour {
     display: flex;
     flex-direction: column;
@@ -391,6 +396,9 @@ input[type=submit] {
 .results-block {
     margin: 0 auto;
     padding-bottom: 30px;
+}
+.results-block h2 {
+    text-align: center;
 }
 .results-block p {
     text-align: center;
@@ -530,6 +538,9 @@ input[invalid-input] {
 
 
 @media screen and (max-width: 870px) {
+    .results {
+        width: 90%;
+    }
     .team-capitan {
         flex-direction: column;
     }
@@ -662,8 +673,16 @@ input[invalid-input] {
     .results-bg {
         margin-bottom: 10px;
     }
-    .table-full, .bomb-full {
+    .table-full,  {
         height: calc(100vh - 59.984px);
+    }
+    .bomb-full {
+        height: 100%;
+    }
+    .bomb-full P {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .table, .bomb {
         width: 98%;
@@ -672,7 +691,7 @@ input[invalid-input] {
         font-size: 1.4em;
     }
     .table-position, .bomb-position {
-        width: 40px;
+        width: 7%;
     }
     .table-team-name {
         min-width: 40%;
@@ -701,7 +720,7 @@ input[invalid-input] {
         min-width: 10%;
     }
     .bomb-player-name {
-        width: 45%;
+        width: 43%;
     }
     .bomb-scored {
         width: 22%;

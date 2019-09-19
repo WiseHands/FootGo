@@ -14,9 +14,10 @@ import java.util.Random;
 public class ResultsGenerator {
 
     public static final Integer NUMBER_OF_TEAMS = 10;
-    public static final Integer NUMBER_OF_PLAYERS_IN_TEAM = 11;
+    public static final Integer NUMBER_OF_PLAYERS_IN_TEAM = 25;
     public static final Integer NUMBER_OF_TOURS = 9;
     public static final Integer NUMBER_OF_GAMES_IN_TOUR = 5;
+    public static final String GAME_TIME = "2019-09-20T09:00:00.000Z";
 
 
     @Autowired
@@ -90,6 +91,7 @@ public class ResultsGenerator {
 
         game.setFirstTeam(homeTeam);
         game.setSecondTeam(guestTeam);
+        game.setGameTime(GAME_TIME);
         _addGameToTour(tour, game);
         _generateResult(game, homeTeam, guestTeam);
         return game;

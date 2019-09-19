@@ -40,7 +40,7 @@
 		<div class="review-match">
 			<div class="review-head">
 				<div class="review-team1">
-					<img src="/img/unicorn2.png">
+					<img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}">
 					<p th:text="${game.firstTeam.teamName}">Команда 1</p>
 				</div>
 				<div class="review-score">
@@ -49,7 +49,7 @@
                     </p>
 				</div>
 				<div class="review-team2">
-					<img src="/img/unicorn1.png">
+					<img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}">
 					<p th:text="${game.secondTeam.teamName}">Команда 2</p>
 				</div>
 			</div>
@@ -59,13 +59,13 @@
 			<div class="details-team1">
 				<div class="team1-goals" th:each="goal : ${game.teamAGoals}">
 					<img src="/img/soccer-ball.png">
-					<p th:text="${goal.player.firstName + ' (' + goal.time + '&lsquo;)'}">Ім'я Прізвище (22')</p>
+					<p th:text="${goal.player.firstName + ' ' + goal.player.lastName +  ' (' + goal.time + '&lsquo;)'}">Ім'я Прізвище (22')</p>
 				</div>
 			</div>
 			<div class="details-team2">
 				<div class="team2-goals" th:each="goal : ${game.teamBGoals}">
 					<img src="/img/soccer-ball.png">
-					<p th:text="${goal.player.firstName + ' (' + goal.time + '&lsquo;)'}">Ім'я Прізвище (22')</p>
+					<p th:text="${goal.player.firstName + ' ' + goal.player.lastName + ' (' + goal.time + '&lsquo;)'}">Ім'я Прізвище (22')</p>
 				</div>
 			</div>
 		</div>

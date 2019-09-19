@@ -44,7 +44,7 @@
             <div class="team1-goal">
                 <div th:each="goal : ${game.teamAGoals}">
                     <p><img src="../../../img/soccer-ball.png">
-                        <span th:text="${goal.player.firstName}"></span>,
+                        <span th:text="${goal.player.firstName + goal.player.lastName}"></span>,
                         <span th:text="${' ' + goal.time}"></span>
                         <span class="delete-goal" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', true)'}">-</span>
                     </p>
@@ -54,7 +54,7 @@
             <div class="team2-goal">
                 <div th:each="goal : ${game.teamBGoals}">
                     <p><img src="../../../img/soccer-ball.png">
-                        <span th:text="${goal.player.firstName}"></span>,
+                        <span th:text="${goal.player.firstName + goal.player.lastName}"></span>,
                         <span th:text="${' ' + goal.time}"></span>
                         <span class="delete-goal" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', false)'}">-</span>
                     </p>

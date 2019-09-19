@@ -18,6 +18,8 @@ public class Player {
     private String phone;
     private Integer number;
 
+    private Boolean isActive;
+
     @ManyToOne
     @JoinColumn
     @JsonIgnore
@@ -73,5 +75,13 @@ public class Player {
 
     public void setNumber(Integer number) {
         this.number = number;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
     }
 }

@@ -18,7 +18,7 @@ plusHomeTeamGoal.onclick = function() {
        let player = window.gameData.firstTeam.players[index];
        var opt = document.createElement("option");
        opt.value= player.id;
-       opt.innerHTML = player.playerName; // whatever property it has
+       opt.innerHTML = player.firstName + ' ' + player.lastName;
        playerSelect.appendChild(opt);
     }
 }
@@ -32,7 +32,7 @@ plusGuestTeamGoal.onclick = function() {
            let player = window.gameData.secondTeam.players[index];
            var opt = document.createElement("option");
            opt.value= player.id;
-           opt.innerHTML = player.playerName; // whatever property it has
+           opt.innerHTML = player.firstName + ' ' + player.lastName;
            playerSelect.appendChild(opt);
         }
 }

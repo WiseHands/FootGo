@@ -30,4 +30,4 @@ application.properties
 .idea
 .idea/*
 /.idea/
-
+classes/*
