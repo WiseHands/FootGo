@@ -433,7 +433,7 @@ input[type=submit] {
 
 .results-tour {
     display: flex;
-    width: 360px;
+    width: 80%;
     background-color: rgba(220,216,216, 0.8);
     padding: 15px;
     border-radius: 5px;
@@ -442,18 +442,18 @@ input[type=submit] {
 .results-tour-title  {
     text-align: left;
 }
+.results-tour img {
+    width: 24px;
+    padding-right: 5px;
+}
 .results-date, .results-team1, .results-team2 {
     width: 30%;
 }
 .results-date p, .results-team1 p, .results-team2 p {
     width: 90%;
 }
-.results-date p {
-    text-align: left;
-}
 .results-team1 p {
     text-align: right;
-    padding-right: 100px;
 }
 .results-team2 p {
     text-align: left;
@@ -551,13 +551,14 @@ input[invalid-input] {
     padding-left: 20px;
     width: 50%;
 }
-.team1-goals {
+.team1-goals, .results-team1 {
     justify-content: flex-end;
 }
-.team1-goals, .team2-goals {
+.team1-goals, .team2-goals,.results-team1, .results-team2 {
     display: flex;
     align-items: center;
 }
+
 .team1-goals img {
     padding-left: 5px;
 }
