@@ -20,4 +20,10 @@ public class GameFinder {
         gameList.addAll((List<Game>) gameRepository.findBySecondTeam(team));
         return gameList;
     }
+
+    public List<Game> findAllCompletedGamesForTeam(Team team) {
+        List<Game> gameList = (List<Game>) gameRepository.findByFirstTeamAndIsCompleted(team, true);
+        gameList.addAll((List<Game>) gameRepository.findBySecondTeamAndIsCompleted(team, true));
+        return gameList;
+    }
 }

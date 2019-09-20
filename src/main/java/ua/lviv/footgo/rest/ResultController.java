@@ -20,7 +20,7 @@ public class ResultController {
 
     @RequestMapping(value = "/table", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
     public List<TeamResults> buildResultsTable() {
-        return resultService.getResults();
+        return resultService.getResults(true);
     }
 
 

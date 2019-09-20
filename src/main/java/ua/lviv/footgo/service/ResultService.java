@@ -24,7 +24,7 @@ public class ResultService {
     @Autowired
     GameFinder gameFinder;
 
-    public List<TeamResults> getResults() {
+    public List<TeamResults> getResults(boolean forCompletedGamesOnly) {
         List<Team> teamList = (List<Team>) teamRepository.findAll();
 
         List<TeamResults> teamResultsList = new ArrayList<>();
@@ -32,7 +32,13 @@ public class ResultService {
             TeamResults teamResults = new TeamResults();
             teamResults.setTeam(team);
 
-            List<Game> gameList = gameFinder.findAllGamesForTeam(team);
+
+            List<Game> gameList;
+            if(forCompletedGamesOnly) {
+                gameList = gameFinder.findAllCompletedGamesForTeam(team);
+            } else {
+                gameList = gameFinder.findAllGamesForTeam(team);
+            }
 
             for(Game game: gameList) {
                 _calculateResultForTeamInGame(game, team, teamResults);

@@ -74,7 +74,7 @@ public class HttpRequestsController {
 
     @GetMapping({"/gametable"})
     public String gametable(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-        List<TeamResults> results = resultService.getResults();
+        List<TeamResults> results = resultService.getResults(true);
 
 
         List allTeams = (List) teamRepository.findAll();
