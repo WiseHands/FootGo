@@ -232,6 +232,7 @@ input[type=submit] {
     font-size: 1.1em;
     font-weight: 600;
 }
+
 .table-position, .bomb-position {
     width: 5%;
 }
@@ -243,14 +244,18 @@ input[type=submit] {
     display: flex;
     align-items: center;
 }
-    .table-team-name p {
-        padding-left: 5px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    .table-team-name div:first-child {
-        text-align: center;
-    }
+.table-team-name img {
+    width: 24px;
+    padding-left: 3px;
+}
+.table-team-name p {
+    padding-left: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.table-team-name div:first-child {
+    text-align: center;
+}
 .table-offset {
     width: 40px;
 }
@@ -270,9 +275,7 @@ input[type=submit] {
     background-color: rgba(234, 106, 118,0.7);
 }
 .table-position div:nth-of-type(n+5), .table-team-name div:nth-of-type(n+5),.table-games div:nth-of-type(n+5),
-.table-wins div:nth-of-type(n+5),.table-draws div:nth-of-type(n+5), .table-defeats div:nth-of-type(n+5), .table-goals div:nth-of-type(n+5), .table-points div:nth-of-type(n+5), .bomb-position div:nth-of-type(n+5),
-.bomb-player-name div:nth-of-type(n+5), .bomb-scored div:nth-of-type(n+5),
-.bomb-matches div:nth-of-type(n+5), .bomb-team div:nth-of-type(n+5)
+.table-wins div:nth-of-type(n+5),.table-draws div:nth-of-type(n+5), .table-defeats div:nth-of-type(n+5), .table-goals div:nth-of-type(n+5), .table-points div:nth-of-type(n+5)
 {
     background-color: rgba(220, 216, 216,0.7);
 }
@@ -287,7 +290,7 @@ input[type=submit] {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
+    height: calc(100vh - 60.375px);
 }
 .bomb-full p {
     overflow: hidden;
@@ -298,6 +301,9 @@ input[type=submit] {
     font-size: 2.2em;
     padding-bottom: 10px;
     font-weight: 700;
+}
+.bomb-position div, .bomb-player-name div, .bomb-scored div, .bomb-team div  {
+    background-color: rgba(220, 216, 216,0.7);
 }
 .bomb-player-name {
     width: 45%;
