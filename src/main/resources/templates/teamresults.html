@@ -43,10 +43,11 @@
         <div class="results-bg">
             <div class="results-block">
 
-
                 <h2 th:text="${team.teamName}"></h2>
 
                     </div>
+
+                    <div class="results-all-tour">
                         <div th:each="game : ${gameList}" class="results-tour">
                             <div class="results-date">
                                 <p th:text="${game.formatDate() + '  ' + game.formatTime()}">
@@ -61,13 +62,15 @@
                             <div class="results-score"><p>
                                 <span th:text="${game.teamAGoals.size()}">game.teamAGoals.size()</span>
                                 :
-                                <span th:text="${game.teamBGoals.size()}">game.teamBGoals.size()</span></p></div>
+                                <span th:text="${game.teamBGoals.size()}">game.teamBGoals.size()</span></p>
+                            </div>
                             <div class="results-team2">
                                 <p th:text="${game.secondTeam.teamName}">
                                     game.secondTeam.teamName
                                 </p>
                             </div>
                         </div>
+                    </div>
             </div>
 
         </div>
