@@ -2,6 +2,7 @@ package ua.lviv.footgo.routing;
 
 import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.entity.Game;
+import ua.lviv.footgo.entity.Player;
 import ua.lviv.footgo.entity.Team;
 import ua.lviv.footgo.jsonmapper.PlayerGoals;
 import ua.lviv.footgo.jsonmapper.TeamResults;
@@ -16,6 +17,7 @@ import ua.lviv.footgo.service.GameFinder;
 import ua.lviv.footgo.service.ResultService;
 import ua.lviv.footgo.service.TopScorerService;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -90,10 +92,7 @@ public class HttpRequestsController {
     @GetMapping({"/bombardier"})
     public String bombardier(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         List<PlayerGoals> playerGoals = topScorerService.getResults();
-        model.addAttribute("firstPlace", playerGoals.get(0));
-        model.addAttribute("secondPlace", playerGoals.get(1));
-        model.addAttribute("thirdPlace", playerGoals.get(2));
-        model.addAttribute("playerGoals", playerGoals.subList(3, playerGoals.size()));
+        model.addAttribute("playerGoals", playerGoals);
         return "bombardier";
     }
 

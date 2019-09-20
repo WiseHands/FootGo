@@ -26,6 +26,11 @@ public class TopScorerService {
         Map<Player, PlayerGoals> playGoalMap = new HashMap<>();
         List<Goal> goalList = (List<Goal>) goalRepository.findAll();
         for(Goal _goal : goalList) {
+            if(_goal.getGame() == null || !_goal.getGame().isCompleted()) {
+                continue;
+            }
+
+
             Player _player = _goal.getPlayer();
             PlayerGoals _playerGoals = playGoalMap.get(_player);
             if(_playerGoals == null) {
@@ -46,6 +51,7 @@ public class TopScorerService {
         }
 
         Collections.sort(playerGoalsList, new PlayerGoals.SortByGoals());
+
 
         return playerGoalsList;
     }
