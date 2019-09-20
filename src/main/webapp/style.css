@@ -433,7 +433,7 @@ input[type=submit] {
 
 .results-tour {
     display: flex;
-    width: 320px;
+    width: 360px;
     background-color: rgba(220,216,216, 0.8);
     padding: 15px;
     border-radius: 5px;
@@ -450,7 +450,6 @@ input[type=submit] {
 }
 .results-date p {
     text-align: left;
-    padding-left: 40px;
 }
 .results-team1 p {
     text-align: right;
