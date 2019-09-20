@@ -61,16 +61,16 @@
         <div class="table-team-name">
             <div class="table-title">Команда</div>
             <div class="table-firstplace">
-                <img src="../../webapp/logo/logo2.png">
+                <img th:attr="src=${'/logo/logo' + firstPlace.team.id + '.png'}">
                 <p th:text="${firstPlace.teamName}"></p></div>
             <div class="table-secondplace">
-                <img src="../../webapp/logo/logo4.png">
+                <img th:attr="src=${'/logo/logo' + secondPlace.team.id + '.png'}">
                 <p th:text="${secondPlace.teamName}"></p></div>
             <div class="table-thirdplace">
-                <img src="../../webapp/logo/logo6.png">
+                <img th:attr="src=${'/logo/logo' + thirdPlace.team.id + '.png'}">
                 <p th:text="${thirdPlace.teamName}"></p></div>
             <div th:each="item : ${teamList}">
-                <img src="../../webapp/logo/logo9.png">
+                <img th:attr="src=${'/logo/logo' + item.team.id + '.png'}">
 
                 <p th:text="${item.teamName}"></p>
             </div>
