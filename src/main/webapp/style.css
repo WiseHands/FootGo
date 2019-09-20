@@ -446,6 +446,10 @@ input[type=submit] {
     width: 24px;
     padding-right: 5px;
 }
+.results-tour p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .results-date, .results-team1, .results-team2 {
     width: 30%;
 }
