@@ -705,7 +705,7 @@ input[invalid-input] {
         height: calc(100vh - 59.984px);
     }
     .bomb-full {
-        height: 100%;
+        height: calc(100vh - 60.375px);
     }
     .table, .bomb {
         width: 98%;
