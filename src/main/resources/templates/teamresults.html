@@ -55,10 +55,10 @@
                                 </p>
                             </div>
                             <div class="results-team1">
-                                <img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}">
                                 <p th:text="${game.firstTeam.teamName}">
                                     game.firstTeam.teamName
                                 </p>
+                                <img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}">
                             </div>
                             <div class="results-score"><p>
                                 <span th:text="${game.teamAGoals.size()}">game.teamAGoals.size()</span>

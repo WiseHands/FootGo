@@ -442,7 +442,11 @@ input[type=submit] {
 .results-tour-title  {
     text-align: left;
 }
-.results-tour img {
+.results-team1 img {
+    width: 24px;
+    padding-left: 5px;
+}
+.results-team2 img {
     width: 24px;
     padding-right: 5px;
 }
