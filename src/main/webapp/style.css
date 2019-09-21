@@ -73,7 +73,7 @@ a, a:hover {
     padding: 10px 0;
 }
 .slogan-text h1 {
-    font-size: 3em;
+    font-size: 2.8em;
     padding: 20px 30px 0 30px;
     color: #dfdfe5;
 }
@@ -237,7 +237,7 @@ input[type=submit] {
     width: 5%;
 }
 .table-team-name {
-    width: 35%;
+    width: 45%;
     text-align: left;
 }
 .table-team-name div {
@@ -361,7 +361,6 @@ input[type=submit] {
     margin: 0 auto;
     line-height: 2;
     text-align: center;
-    font-size: 1.1em;
     padding-top: 10px;
     font-weight: 600;
 }
@@ -628,7 +627,7 @@ input[invalid-input] {
         height: 202px;
     }
     .slogan-text h1 {
-        font-size: 2.3em;
+        font-size: 2.1em;
         line-height: 1.5;
     }
     .slogan-text h3 {
@@ -740,7 +739,7 @@ input[invalid-input] {
         width: 7%;
     }
     .table-team-name {
-        min-width: 40%;
+        width: 40%;
         text-align: left;
     }
     .table-games, .table-wins, .table-draws {
