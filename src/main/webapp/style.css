@@ -627,11 +627,10 @@ input[invalid-input] {
         height: 202px;
     }
     .slogan-text h1 {
-        font-size: 2.1em;
-        line-height: 1.5;
+        font-size: 1.6em;
     }
     .slogan-text h3 {
-        font-size: 2em;
+        font-size: 1.6em;
         padding: 15px 0;
     }
     .header-text {
@@ -641,7 +640,7 @@ input[invalid-input] {
     .registration-photo {
         background-position: center;
         background-size: cover;
-        height: calc(100vh - 59.984px);
+        height: 100%;
     }
     .player1-3 {
         flex-direction: column;
@@ -723,8 +722,8 @@ input[invalid-input] {
     .results-bg {
         margin-bottom: 10px;
     }
-    .table-full,  {
-        height: calc(100vh - 59.984px);
+    .table-full  {
+        height: 100%;
     }
     .bomb-full {
         height: calc(100vh - 60.375px);
@@ -739,7 +738,7 @@ input[invalid-input] {
         width: 7%;
     }
     .table-team-name {
-        width: 40%;
+        width: 45%;
         text-align: left;
     }
     .table-games, .table-wins, .table-draws {
