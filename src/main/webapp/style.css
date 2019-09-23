@@ -121,6 +121,13 @@ a, a:hover {
     font-size: 1.2em;
     text-align: center;
 }
+.reg-end {
+    margin: 0 auto;
+}
+.reg-end p {
+    color: #fff;
+    font-size: 3rem;
+}
 input[type=text], input[type=tel], input[type=email] {
     padding: 15px;
     margin: 5px 0 10px 0;
@@ -326,6 +333,7 @@ input[type=submit] {
 .results-full {
     background: url("img/foot66.jpg");
     background-attachment: fixed;
+    background-position: center;
     background-size: contain;
     opacity: 1;
     height: 100%;
@@ -333,6 +341,7 @@ input[type=submit] {
 .team-results-full {
     background: url("img/foot66.jpg");
     background-attachment: fixed;
+    background-position: center;
     background-size: cover;
     opacity: 1;
     height: 100vh;
@@ -635,6 +644,12 @@ input[invalid-input] {
 
     .registration-photo {
         height: 100vh;
+    }
+    .reg-end {
+        padding-top: 20vh;
+    }
+    .reg-end p {
+        font-size: 1.9rem;
     }
     .player1-3 {
         flex-direction: column;
