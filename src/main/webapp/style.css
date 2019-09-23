@@ -325,12 +325,14 @@ input[type=submit] {
 
 .results-full {
     background: url("img/foot66.jpg");
+    background-attachment: fixed;
     background-size: contain;
     opacity: 1;
     height: 100%;
 }
 .team-results-full {
     background: url("img/foot66.jpg");
+    background-attachment: fixed;
     background-size: cover;
     opacity: 1;
     height: 100vh;
@@ -587,9 +589,6 @@ input[invalid-input] {
 
 
 @media screen and (max-width: 870px) {
-    .results {
-        width: 90%;
-    }
     .team-capitan {
         flex-direction: column;
     }
@@ -704,9 +703,6 @@ input[invalid-input] {
 
     .dropdown {
         display: none;
-    }
-    .results {
-        max-width: 90%;
     }
     .results-team1, .results-team2 {
         width: 40%;
