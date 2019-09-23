@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="hamburger.css">
 
 </head>
-<body>
+<body class="bomb-full">
 <header>
     <div class="header-full">
         <div class="header-first-block">
@@ -18,7 +18,7 @@
                 <a href="/"><img class="header-img" src="img/footgo-light-icon.png" alt="wiselogo"></a>
             </div>
             <div class="header-null">
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <a href="javascript:void(0)" class="icon" onclick="myFunction()">
                     <i class="hamburger fa fa-bars"></i>
                 </a>
             </div>
@@ -41,7 +41,7 @@
     </div>
 </header>
 
-<div class="bomb-full">
+<div>
     <div class="bomb-head">
         <p>Кращі бомбардири</p>
     </div>
@@ -49,27 +49,18 @@
     <div class="bomb">
         <div class="bomb-position">
             <div class="bomb-title">№</div>
-            <div class="bomb-firstplace">1</div>
-            <div class="bomb-secondplace">2</div>
-            <div class="bomb-thirdplace">3</div>
-<!--            <div th:each="playerGoal : ${playerGoals}">-->
-<!--                <p th:text="${index}">не заявлена</p>-->
-<!--            </div>-->
+            <div th:each="playerGoal, iter : ${playerGoals}">
+                <p th:text="${iter.index}">не заявлена</p>
+            </div>
         </div>
         <div class="bomb-player-name">
             <div class="bomb-title">Футболіст</div>
-            <div class="bomb-firstplace"><p th:text="${firstPlace.player.firstName + ' ' + firstPlace.player.lastName}">не заявлена</p></div>
-            <div class="bomb-secondplace"><p th:text="${secondPlace.player.firstName + ' ' + secondPlace.player.lastName}">не заявлена</p></div>
-            <div class="bomb-thirdplace"><p th:text="${thirdPlace.player.firstName + ' ' + thirdPlace.player.lastName}">не заявлена</p></div>
             <div th:each="playerGoal : ${playerGoals}">
                 <p th:text="${playerGoal.player.firstName + ' ' + playerGoal.player.lastName}">не заявлена</p>
             </div>
         </div>
         <div class="bomb-scored">
             <div class="bomb-title">М'ячів</div>
-            <div class="bomb-firstplace" th:text="${firstPlace.goalList.size()}">0</div>
-            <div class="bomb-secondplace" th:text="${secondPlace.goalList.size()}">0</div>
-            <div class="bomb-thirdplace" th:text="${thirdPlace.goalList.size()}">0</div>
             <div th:each="playerGoal : ${playerGoals}">
                 <p th:text="${playerGoal.goalList.size()}">
                     0
@@ -78,9 +69,6 @@
         </div>
         <div class="bomb-team">
             <div class="bomb-title">Команда</div>
-            <div class="bomb-firstplace"> <p th:text="${firstPlace.player.team.teamName}">0</p></div>
-            <div class="bomb-secondplace"> <p th:text="${secondPlace.player.team.teamName}">0</p></div>
-            <div class="bomb-thirdplace"> <p th:text="${thirdPlace.player.team.teamName}">0</p></div>
             <div th:each="playerGoal : ${playerGoals}">
                 <p th:text="${playerGoal.player.team.teamName}">Lions</p>
             </div>

@@ -11,7 +11,7 @@
 
 
 </head>
-<body>
+<body class="team-results-full">
 <header>
     <div class="header-full">
         <div class="header-first-block">
@@ -19,7 +19,7 @@
                 <a href="/"><img class="header-img" src="/img/footgo-light-icon.png" alt="wiselogo"></a>
             </div>
             <div class="header-null">
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <a href="javascript:void(0)" class="icon" onclick="myFunction()">
                     <i class="hamburger fa fa-bars"></i>
                 </a>
             </div>
@@ -38,7 +38,7 @@
         <div><a class="link-item" href="/bombardier">Бомбардири</a></div>
     </div>
 </header>
-<div class="team-results-full">
+<div>
     <div class="results">
         <div class="results-bg">
             <div class="results-block">
@@ -48,29 +48,54 @@
                     </div>
 
                     <div class="results-all-tour">
-                        <div th:each="game : ${gameList}" class="results-tour">
-                            <div class="results-date">
-                                <p th:text="${game.formatDate() + '  ' + game.formatTime()}">
-                                    game.gameTime
-                                </p>
+                        <div th:each="game : ${gameList}" class="results-container">
+                            <div class="res-teams">
+                                <a th:attr="href=${'/results/' + game.firstTeam.id}">
+                                    <img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}">
+                                    <p th:text="${game.firstTeam.teamName}">
+                                        game.firstTeam.teamName
+                                    </p>
+                                </a>
+                                <a th:attr="href=${'/results/' + game.secondTeam.id}">
+                                    <img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}">
+                                    <p th:text="${game.secondTeam.teamName}">
+                                        game.secondTeam.teamName
+                                    </p>
+                                </a>
                             </div>
-                            <div class="results-team1">
-                                <p th:text="${game.firstTeam.teamName}">
-                                    game.firstTeam.teamName
-                                </p>
-                                <img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}">
+                            <div class="res-score">
+                                <a th:attr="href=${'/game/' + game.id}">
+                                    <p th:text="${game.teamAGoals.size()}">game.teamAGoals.size()</p>
+                                    <p th:text="${game.teamBGoals.size()}">game.teamBGoals.size()</p>
+                                </a>
                             </div>
-                            <div class="results-score"><p>
-                                <span th:text="${game.teamAGoals.size()}">game.teamAGoals.size()</span>
-                                :
-                                <span th:text="${game.teamBGoals.size()}">game.teamBGoals.size()</span></p>
+                            <div class="res-date">
+                                <p th:text="${game.formatDate()}"></p>
+                                <p th:text="${game.formatTime()}"></p>
                             </div>
-                            <div class="results-team2">
-                                <img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}">
-                                <p th:text="${game.secondTeam.teamName}">
-                                    game.secondTeam.teamName
-                                </p>
-                            </div>
+                        </div>
+                            <!--<div class="results-date">-->
+                                <!--<p th:text="${game.formatDate() + '  ' + game.formatTime()}">-->
+                                    <!--game.gameTime-->
+                                <!--</p>-->
+                            <!--</div>-->
+                            <!--<div class="results-team1">-->
+                                <!--<p th:text="${game.firstTeam.teamName}">-->
+                                    <!--game.firstTeam.teamName-->
+                                <!--</p>-->
+                                <!--<img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}">-->
+                            <!--</div>-->
+                            <!--<div class="results-score"><p>-->
+                                <!--<span th:text="${game.teamAGoals.size()}">game.teamAGoals.size()</span>-->
+                                <!--:-->
+                                <!--<span th:text="${game.teamBGoals.size()}">game.teamBGoals.size()</span></p>-->
+                            <!--</div>-->
+                            <!--<div class="results-team2">-->
+                                <!--<img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}">-->
+                                <!--<p th:text="${game.secondTeam.teamName}">-->
+                                    <!--game.secondTeam.teamName-->
+                                <!--</p>-->
+                            <!--</div>-->
                         </div>
                     </div>
             </div>
