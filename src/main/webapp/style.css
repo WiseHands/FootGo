@@ -289,7 +289,7 @@ input[type=submit] {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100%);
+    height: 100vh;
 }
 .bomb-full p {
     overflow: hidden;
@@ -721,7 +721,7 @@ input[invalid-input] {
         height: 100vh;
     }
     .bomb-full {
-        height: 100%);
+        height: 100vh;
     }
     .table, .bomb {
         width: 98%;
