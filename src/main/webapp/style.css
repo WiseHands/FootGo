@@ -54,7 +54,7 @@ a, a:hover {
     background: url("img/foot11.jpg");
     background-position: center;
     background-size: cover;
-    height: calc(100vh - 61.375px) ;
+    height: 100vh ;
 }
 .slogan-text {
     display: flex;
@@ -692,7 +692,7 @@ input[invalid-input] {
         transform: rotate(-135deg);
     }
     .main-photo {
-        height: calc(100vh - 59.984px) ;
+        height: 100vh ;
     }
     .header-first-block {
         width: 100%;
