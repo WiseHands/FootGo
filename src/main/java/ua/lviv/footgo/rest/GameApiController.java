@@ -81,6 +81,7 @@ public class GameApiController {
             game.removeGoalForSecondTeam(goal);
         }
         gameRepository.save(game);
+        goalRepository.delete(goal);
     }
 
     @PostMapping(value = "/{gameId}/completed/{isCompleted}", consumes = "application/json", produces = "application/json")
