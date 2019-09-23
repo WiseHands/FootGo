@@ -207,7 +207,7 @@ input[type=submit] {
     background: url("img/foot22.jpg");
     background-position: center;
     background-size: cover;
-    height: calc(100vh - 60.375px);
+    height: 100vh;
 }
 .table-head, .bomb-head {
     justify-content: center;
@@ -289,7 +289,7 @@ input[type=submit] {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: calc(100vh - 60.375px);
+    height: 100vh;
 }
 .bomb-full p {
     overflow: hidden;
@@ -333,7 +333,7 @@ input[type=submit] {
     background: url("img/foot66.jpg");
     background-size: cover;
     opacity: 1;
-    height: calc(100vh - 60.375px);
+    height: 100vh;
 }
 .results {
     max-width: 820px;
@@ -718,10 +718,10 @@ input[invalid-input] {
         margin-bottom: 10px;
     }
     .table-full  {
-        height: 100%;
+        height: 100vh;
     }
     .bomb-full {
-        height: calc(100vh - 60.375px);
+        height: 100vh;
     }
     .table, .bomb {
         width: 98%;
@@ -798,6 +798,6 @@ input[invalid-input] {
         padding-left: 5px;
     }
     .team-results-full {
-        height: 100%;
+        height: 100vh;
     }
 }
