@@ -15,8 +15,7 @@
             </div>
         </div>
 
-    <p class="admin-tour-title">Тур 1</p>
-
+    <p class="admin-tour-title" th:text="${'Тур ' + game.tour.tourNumber }">Тур 1</p>
         <div class="time-picker">
             <p class="label-time-picker">Час гри</p>
             <input type="text" id="gameDateTime" onchange="setGameDateTime()">
