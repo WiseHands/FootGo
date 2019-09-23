@@ -108,8 +108,7 @@ a, a:hover {
     background: url("img/foot33.jpg");
     background-position: center;
     background-size: cover;
-    /*height: 100vh;*/
-    height: calc(100vh - 60.375px);
+    height: 100vh;
 }
 
 .registration-form {
@@ -208,7 +207,7 @@ input[type=submit] {
     background: url("img/foot22.jpg");
     background-position: center;
     background-size: cover;
-    height: calc(100vh - 60.375px);
+    height: 100vh;
 }
 .table-head, .bomb-head {
     justify-content: center;
@@ -598,9 +597,7 @@ input[invalid-input] {
         margin-bottom: 5px;
     }
     .registration-photo {
-        background-position: center;
-        background-size: cover;
-        height: calc(100vh - 60.375px);
+        height: 100vh;
     }
     .mathces-bg {
         width: 95%;
@@ -638,9 +635,7 @@ input[invalid-input] {
     }
 
     .registration-photo {
-        background-position: center;
-        background-size: cover;
-        height: 100%;
+        height: 100vh;
     }
     .player1-3 {
         flex-direction: column;
@@ -723,7 +718,7 @@ input[invalid-input] {
         margin-bottom: 10px;
     }
     .table-full  {
-        height: 100%;
+        height: 100vh;
     }
     .bomb-full {
         height: calc(100vh - 60.375px);
