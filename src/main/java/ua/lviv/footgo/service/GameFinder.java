@@ -20,6 +20,14 @@ public class GameFinder {
     public List<Game> findAllGamesForTeam(Team team) {
         List<Game> gameList = (List<Game>) gameRepository.findByFirstTeam(team);
         gameList.addAll((List<Game>) gameRepository.findBySecondTeam(team));
+
+        Collections.sort(gameList, new Comparator<Game>() {
+            public int compare(Game o1, Game o2) {
+                return o1.getTour().getTourNumber().compareTo(o2.getTour().getTourNumber());
+            }
+        });
+
+
         return gameList;
     }
 
