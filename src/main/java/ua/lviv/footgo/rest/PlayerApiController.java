@@ -37,4 +37,8 @@ public class PlayerApiController {
         playerRepository.save(player);
         return player;
     }
+    @DeleteMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
+    public void deleteById(@PathVariable Long id) {
+        playerRepository.deleteById(id);
+    }
 }

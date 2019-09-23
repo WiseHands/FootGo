@@ -20,3 +20,6 @@ fetch(apiUrl, {
     document.querySelector('input[name="playerEmail"]').value = data.email;
     console.log(data);
 });
+function returnToTeamsPage() {
+    location.href = '/admin/team';
+}

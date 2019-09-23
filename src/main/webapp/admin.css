@@ -210,7 +210,7 @@ body{
     overflow: hidden;
     text-overflow: ellipsis;
 }
-@media screen and (max-width: 667px) {
+@media screen and (max-width: 800px) {
     .admin-bar {
         display: none;
     }
