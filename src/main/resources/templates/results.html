@@ -59,8 +59,8 @@
                     </div>
                     <div class="res-score">
                         <a th:attr="href=${'/game/' + game.id}">
-                            <p th:text="${game.teamAGoals.size()}">game.teamAGoals.size()</p>
-                            <p th:text="${game.teamBGoals.size()}">game.teamBGoals.size()</p>
+                            <p th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</p>
+                            <p th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</p>
                         </a>
                     </div>
                     <div class="res-date">

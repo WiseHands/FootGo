@@ -211,4 +211,20 @@ public class Game {
 
         return newDate;
     }
+
+    public String formatGoalsForTeamA() {
+        if (!isCompleted) {
+            return "";
+        } else {
+            return String.valueOf(teamAGoals.size());
+        }
+    }
+
+    public String formatGoalsForTeamB() {
+        if (!isCompleted) {
+            return "";
+        } else {
+            return String.valueOf(teamBGoals.size());
+        }
+    }
 }
