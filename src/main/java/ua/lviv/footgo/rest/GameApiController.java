@@ -29,18 +29,27 @@ public class GameApiController {
     @Autowired
     GoalRepository goalRepository;
 
+    @DeleteMapping(value = "/clear", consumes = "application/json", produces = "application/json")
+    public void  clear() {
+        Iterable<Game> gameList = gameRepository.findAll();
+        for (Game game : gameList) {
+            game.getTeamAGoals().clear();
+            game.getTeamBGoals().clear();
+            gameRepository.save(game);
+        }
+        goalRepository.deleteAll();
+
+    }
+
     @GetMapping("/{id}")
     public Game getTeam(@PathVariable Long id) {
-        Game game = gameRepository.findById(id).get();
-        return game;
-
+        return gameRepository.findById(id).get();
     }
 
 
     @GetMapping(value = "/all", consumes = "application/json", produces = "application/json")
     public List<Game> getResults() {
-        List<Game> gameList = (List<Game>) gameRepository.findAll();
-        return gameList;
+        return (List<Game>) gameRepository.findAll();
     }
 
     @GetMapping(value = "/team", consumes = "application/json", produces = "application/json")
