@@ -641,10 +641,16 @@ input[invalid-input] {
     margin: 0 auto;
     padding-bottom: 5px;
 }
-.player-photo p {
+.player-1digit {
     position: relative;
     top: 50%;
     left: 44%;
+    font-size: 2rem;
+}
+player-2digit {
+    position: relative;
+    top: 50%;
+    left: 38%;
     font-size: 2rem;
 }
 .player-info {
