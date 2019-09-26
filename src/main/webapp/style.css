@@ -489,6 +489,9 @@ input[invalid-input] {
 /*match review*/
 .matches-full {
     background: url("img/foot77.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
 }
@@ -801,6 +804,7 @@ input[invalid-input] {
     }
     .table, .bomb {
         width: 98%;
+        line-height: 2;
     }
     .table-head p {
         font-size: 1.4em;
