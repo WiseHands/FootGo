@@ -561,12 +561,15 @@ input[invalid-input] {
     height: 16px;
 }
 .details-team1 {
-    paddiling-right: 20px;
+    padding-right: 20px;
     width: 50%;
 }
 .details-team2 {
     padding-left: 20px;
     width: 50%;
+}
+.minute {
+    color: red;
 }
 .team1-goals, .results-team1 {
     justify-content: flex-end;
@@ -595,8 +598,63 @@ input[invalid-input] {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
-
+.team-players {
+    margin: 0 auto;
+    max-width: 900px;
+}
+.all-players{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 20px;
+}
+.team-players h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+}
+.player-card {
+    width: 230px;
+    padding: 8px 16px;
+    margin: 10px 0;
+    background-color: #e6edeb;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.player-photo img {
+    width: 128px;
+}
+.player-photo {
+    width: 128px;
+    height: 128px;
+    margin: 0 auto;
+    padding-bottom: 5px;
+}
+.player-photo p {
+    position: relative;
+    top: 50%;
+    left: 44%;
+    font-size: 2rem;
+}
+.player-info {
+    display: flex;
+    padding-top: 35px;
+}
+.player-logo img {
+    width: 48px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.player-score-name {
+    padding-left: 7px;
+}
+.player-score-name h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 5px;
+}
 @media screen and (max-width: 870px) {
     .team-capitan {
         flex-direction: column;
@@ -803,7 +861,7 @@ input[invalid-input] {
         margin: 7px 0;
     }
     .details-team1 {
-        paddiling-right: 5px;
+        padding-right: 5px;
     }
     .details-team2 {
         padding-left: 5px;

@@ -102,6 +102,31 @@
 
         </div>
     </div>
+
+    <div class="team-players">
+        <h2>Гравці</h2>
+        <div class="all-players">
+            <div th:each="item : ${team.players}">
+                    <div class="player-card">
+                        <div class="player-photo">
+                            <p>8</p>
+                            <img src="/img/tshirt.png">
+                        </div>
+                        <div class="player-info">
+                            <div class="player-logo">
+                                <img src="/logo/logo3.png">
+                            </div>
+                            <div class="player-score-name">
+                                <h3 th:text="${item.firstName}"></h3>
+                                <p>Забито голів: 0</p>
+                            </div>
+                         </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
 </div>
 <script src="/signUpScript.js"></script>
 <script src="/hamburger.js"></script>
