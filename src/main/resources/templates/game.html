@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<title>Резьтат гри</title>
+	<title>Результат гри</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/hamburger.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
@@ -64,14 +64,20 @@
 		<div class="details-match">
 			<div class="details-team1">
 				<div class="team1-goals" th:each="goal : ${game.teamAGoals}">
-					<p th:text="${goal.player.firstName + ' ' + goal.player.lastName +  ' (' + goal.time + '&lsquo;)'}">Ім'я Прізвище </p><span class="minute">(22')</span>
+					<p>
+						<span th:text="${goal.player.firstName + ' ' + goal.player.lastName}" class="player-name">Ім'я Прізвище</span>
+						<span th:text="${' (' + goal.time + '&lsquo;)'}" class="minute">(22')</span>
+					</p>
 					<img src="/img/soccer-ball.png">
 				</div>
 			</div>
 			<div class="details-team2">
 				<div class="team2-goals" th:each="goal : ${game.teamBGoals}">
 					<img src="/img/soccer-ball.png">
-					<p th:text="${goal.player.firstName + ' ' + goal.player.lastName + ' (' + goal.time + '&lsquo;)'}">Ім'я Прізвище <span class="minute">(22')</span></p>
+					<p>
+						<span th:text="${goal.player.firstName + ' ' + goal.player.lastName}">Ім'я Прізвище</span>
+						<span th:text="${' (' + goal.time + '&lsquo;)'}" class="minute">(22')</span>
+					</p>
 				</div>
 			</div>
 		</div>
