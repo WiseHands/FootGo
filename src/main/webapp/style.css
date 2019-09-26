@@ -490,7 +490,7 @@ input[invalid-input] {
 .matches-full {
     background: url("img/foot77.jpg");
     background-size: cover;
-    height: calc(100vh - 60.375px);
+    height: 100vh;
 }
 .matches-full p {
     white-space: normal;
@@ -579,7 +579,9 @@ input[invalid-input] {
     display: flex;
     align-items: center;
 }
-
+.team1-goals, .team2-goals {
+    padding-bottom: 5px;
+}
 .team1-goals img {
     padding-left: 5px;
 }
@@ -850,6 +852,7 @@ input[invalid-input] {
     .mathces-bg {
         width: 90%  ;
     }
+
     .review-team1 img, .review-team2 img {
         width: 96px;
         height: 96px;
@@ -873,5 +876,9 @@ input[invalid-input] {
     }
     .team-results-full {
         height: 100vh;
+    }
+    .details-match img {
+        width: 12px;
+        height: 12px;
     }
 }
