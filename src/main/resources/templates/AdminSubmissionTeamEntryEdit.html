@@ -31,6 +31,9 @@
                 <input class="main-input-button" type="button" value="Зберегти" onclick="putTeamAndCaptainById()">
             </div>
             <p class="admin-title-row">Гравці</p>
+            <div class="slogan-button">
+                <input class="main-input-button main-input-button-player" type="button" value="Додати гравця" onclick="addNewPlayer()">
+            </div>
             <div class="all-requests">
                 <div th:each="item : ${team.players}">
                     <a th:attr="href=${'/admin/player/edit?uuid=' + item.id}" class="link-style">

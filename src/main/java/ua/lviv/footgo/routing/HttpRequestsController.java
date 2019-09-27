@@ -155,4 +155,9 @@ public class HttpRequestsController {
         return "AdminSubmissionPlayerEntryEdit";
     }
 
+    @GetMapping(value = "/admin/team/player/add")
+    public String playerAdd(Model model) {
+        return "AdminTeamPlayerEntryAdd";
+    }
+
 }

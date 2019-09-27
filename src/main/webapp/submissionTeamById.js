@@ -20,3 +20,6 @@ fetch(apiUrl, {
     document.querySelector('input[type=email]').value = data.captain.captainEmail;
     console.log(data);
 });
+function addNewPlayer() {
+    location.href = '/admin/team/player/add?teamUuid=' + id;
+}

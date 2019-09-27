@@ -3,6 +3,7 @@ package ua.lviv.footgo.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.entity.Captain;
+import ua.lviv.footgo.entity.Player;
 import ua.lviv.footgo.entity.Team;
 import ua.lviv.footgo.entity.TeamSignUpRequest;
 import ua.lviv.footgo.repository.CaptainRepository;
@@ -38,6 +39,21 @@ public class TeamApiController {
         team.getCaptain().setCaptainName(captainName);
         team.getCaptain().setCaptainEmail(captainEmail);
         team.getCaptain().setCaptainPhone(captainPhone);
+        teamRepository.save(team);
+        return team;
+    }
+
+    @PostMapping(value = "/{teamId}/player/new", consumes = "application/json", produces = "application/json")
+    public Team create(@PathVariable Long teamId, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String phone, @RequestParam String email) {
+        Team team = teamRepository.findById(teamId).get();
+        Player player = new Player();
+        player.setFirstName(firstName);
+        player.setLastName(lastName);
+        player.setPhone(phone);
+        player.setEmail(email);
+        team.addPlayer(player);
+        player.setTeam(team);
+
         teamRepository.save(team);
         return team;
     }

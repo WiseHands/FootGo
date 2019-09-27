@@ -302,6 +302,12 @@ input[type=text], input[type=tel], input[type=email], select {
     background-color: #285294;
     border-radius: 10px;
 }
+.main-input-button-player {
+    background-color: #0ca38a;
+}
+.main-input-button-player:hover {
+    background-color: #057764;
+}
 .main-input-button-all {
    margin: 1em auto;
    background-color: #008000;
