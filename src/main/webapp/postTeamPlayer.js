@@ -7,11 +7,13 @@ const teamUuid = searchParams.get('teamUuid');
 
         let firstName = document.getElementById('firstName').value;
         let lastName = document.getElementById('lastName').value;
+        let number = document.getElementById('number').value;
         let phone = document.getElementById('phone').value;
         let email = document.getElementById('email').value;
 
     let params = '?firstName=' + firstName
                 + '&lastName=' + lastName
+                + '&number=' + number
                 + '&phone=' + phone
                 + '&email=' + email;
 

@@ -44,11 +44,12 @@ public class TeamApiController {
     }
 
     @PostMapping(value = "/{teamId}/player/new", consumes = "application/json", produces = "application/json")
-    public Team create(@PathVariable Long teamId, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String phone, @RequestParam String email) {
+    public Team create(@PathVariable Long teamId, @RequestParam String firstName, String lastName, int number, String phone, String email) {
         Team team = teamRepository.findById(teamId).get();
         Player player = new Player();
         player.setFirstName(firstName);
         player.setLastName(lastName);
+        player.setNumber(number);
         player.setPhone(phone);
         player.setEmail(email);
         team.addPlayer(player);
