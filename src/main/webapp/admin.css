@@ -316,6 +316,13 @@ input[type=text], input[type=tel], input[type=email], select {
 .main-input-button-all:hover {
    background-color: #026402;
 }
+.main-input-button-display {
+   margin: auto;
+   background-color: #008000;
+}
+.main-input-button-display:hover {
+   background-color: #026402;
+}
 .main-input-button-del {
    text-align: left;
    background-color: #ff4500;
