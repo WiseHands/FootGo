@@ -19,6 +19,11 @@ function putPlayerById(data) {
         body: data
       }
     }).then(function(response){
+        if(response.ok) {
+        	document.getElementById('successChange').style.display = 'block';
+        } else {
+        	document.getElementById('errorChange').style.display = 'block';
+        }
         console.log(response)
         return  response.json();
     }).then(function(data) {

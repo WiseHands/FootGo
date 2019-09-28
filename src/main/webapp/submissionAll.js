@@ -1,4 +1,4 @@
-let url = 'http://localhost:8080/submission/all';
+let url = '/submission/all';
 fetch(url, {
   method: 'GET',
   headers: {

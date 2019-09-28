@@ -519,11 +519,11 @@ span.delete-goal {
 }
 
 /*messages*/
-#success {
+#success, #successDel, #successChange {
     display: none;
     text-align: center;
 }
-#error {
+#error, #errorDel, #errorChange {
 	display: none;
 	text-align: center;
 }
