@@ -50,7 +50,7 @@
         <div class="bomb-position">
             <div class="bomb-title">№</div>
             <div th:each="playerGoal, iter : ${playerGoals}">
-                <p th:text="${iter.index}">не заявлена</p>
+                <p th:text="${playerGoal.formatPosition(iter.index)}">не заявлена</p>
             </div>
         </div>
         <div class="bomb-player-name">

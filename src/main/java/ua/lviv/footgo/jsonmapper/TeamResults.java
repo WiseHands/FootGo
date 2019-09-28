@@ -22,6 +22,11 @@ public class TeamResults {
     {
         public int compare(TeamResults a, TeamResults b)
         {
+            if(a.points == b.points) {
+                int aDiff = a.numberOfGoalsScored - a.numberOfGoalsMissed;
+                int bDiff = b.numberOfGoalsScored - b.numberOfGoalsMissed;
+                return bDiff - aDiff;
+            }
             return b.points - a.points;
         }
     }

@@ -39,4 +39,8 @@ public class PlayerGoals {
     public void addGoal(Goal goal) {
         this.goalList.add(goal);
     }
+
+    public String formatPosition(Integer index){
+        return "" + (1 +index);
+    }
 }
