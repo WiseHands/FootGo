@@ -44,8 +44,9 @@
             <div class="results-block">
 
                 <h2 th:text="${team.teamName}"></h2>
+                <h3>Ігри</h3>
 
-                    </div>
+            </div>
 
                     <div class="results-all-tour">
                         <div th:each="game : ${gameList}" class="results-container">
@@ -104,7 +105,7 @@
     </div>
 
     <div class="team-players">
-        <h2>Гравці</h2>
+        <h3>Гравці</h3>
         <div class="all-players">
             <div th:each="item : ${team.players}">
                     <div class="player-card">

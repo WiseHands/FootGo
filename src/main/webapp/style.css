@@ -376,8 +376,8 @@ input[type=submit] {
 }
 .results-container {
     display: flex;
-    width: 320px;
-    background-color: rgba(220,216,216, 0.8);
+    width: 350px;
+    background-color: #fff;
     padding: 15px;
     border-radius: 5px;
     margin: 0 7px 7px 0;
@@ -409,14 +409,14 @@ input[type=submit] {
 }
 
 .results-bg {
-    padding: 10px;
     border-radius: 10px;
 }
 .results-block {
     margin: 0 auto;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
 }
 .results-block h2 {
+    font-size: 2rem;
     text-align: center;
     color: #FFF;
 }
@@ -610,7 +610,7 @@ input[invalid-input] {
 }
 .team-players {
     margin: 0 auto;
-    max-width: 900px;
+    max-width: 800px;
 }
 .all-players{
     display: flex;
@@ -618,7 +618,7 @@ input[invalid-input] {
     justify-content: space-around;
     padding-top: 20px;
 }
-.team-players h2 {
+.team-results-full h3 {
     font-size: 1.5rem;
     font-weight: 600;
     color: #fff;
