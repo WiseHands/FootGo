@@ -675,6 +675,7 @@ input[invalid-input] {
 }
 .player-score-name {
     padding-left: 7px;
+    padding-bottom: 7px;
 }
 .player-score-name h3 {
     white-space: nowrap;

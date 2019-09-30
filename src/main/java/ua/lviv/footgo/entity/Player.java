@@ -90,6 +90,7 @@ public class Player {
     }
 
     public boolean isTwoDigits() {
+        if(this.number == null) return false;
         return this.number > 9;
     }
 }

@@ -111,7 +111,7 @@
                     <div class="player-card">
                         <div class="player-photo">
                             <img src="/img/tshirt.png">
-                            <span th:if="${item.isTwoDigits() == false}" class="player-2digit">
+                            <span th:if="${item.isTwoDigits() == false}" class="player-1digit">
                                 <span th:text="${item.formatNumber()}"></span>
                             </span>
                             <span th:if="${item.isTwoDigits() == true}" class="player-2digit">
@@ -119,12 +119,12 @@
                             </span>
                         </div>
                         <div class="player-info">
-                            <div class="player-logo">
-                                <img src="/logo/logo3.png">
-                            </div>
+<!--                            <div class="player-logo">-->
+<!--                                <img src="/logo/logo3.png">-->
+<!--                            </div>-->
                             <div class="player-score-name">
-                                <h3 th:text="${item.firstName}"></h3>
-                                <p>Забито голів: 0</p>
+                                <h4 class="player-name" th:text="${item.firstName}"></h4>
+                                <h4 class="player-name" th:text="${item.lastName}"></h4>
                             </div>
                          </div>
                     </div>
