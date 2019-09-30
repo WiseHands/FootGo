@@ -84,4 +84,12 @@ public class Player {
     public void setActive(Boolean active) {
         isActive = active;
     }
+
+    public String formatNumber() {
+        return  "" + this.number;
+    }
+
+    public boolean isTwoDigits() {
+        return this.number > 9;
+    }
 }

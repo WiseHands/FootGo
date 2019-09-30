@@ -653,12 +653,12 @@ input[invalid-input] {
     left: 46% ;
     font-size: 2rem;
 }
-/*.player-2digit {*/
-    /*position: relative;*/
-    /*top: 20%;*/
-    /*left: 43% ;*/
-    /*font-size: 2rem;*/
-/*}*/
+.player-2digit {
+    position: relative;
+    top: 20%;
+    left: 43% ;
+    font-size: 2rem;
+}
 .player-info {
     display: flex;
     padding-top: 10px;

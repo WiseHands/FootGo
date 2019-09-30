@@ -111,7 +111,12 @@
                     <div class="player-card">
                         <div class="player-photo">
                             <img src="/img/tshirt.png">
-                            <span class="player-1digit player-2digit">8</span>
+                            <span th:if="${item.isTwoDigits() == false}" class="player-2digit">
+                                <span th:text="${item.formatNumber()}"></span>
+                            </span>
+                            <span th:if="${item.isTwoDigits() == true}" class="player-2digit">
+                                <span th:text="${item.formatNumber()}"></span>
+                            </span>
                         </div>
                         <div class="player-info">
                             <div class="player-logo">
