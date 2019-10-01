@@ -57,4 +57,14 @@ public class FileController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dbFile.getFileName() + "\"")
                 .body(new ByteArrayResource(dbFile.getData()));
     }
+
+    @GetMapping("/viewFile/{fileId}")
+    public ResponseEntity<Resource> viewFile(@PathVariable String fileId) {
+        // Load file from database
+        DBFile dbFile = DBFileStorageService.getFile(fileId);
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(dbFile.getFileType()))
+                .body(new ByteArrayResource(dbFile.getData()));
+    }
 }
