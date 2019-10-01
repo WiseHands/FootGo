@@ -6,13 +6,10 @@ import ua.lviv.footgo.entity.Player;
 import ua.lviv.footgo.entity.Team;
 import ua.lviv.footgo.jsonmapper.PlayerGoals;
 import ua.lviv.footgo.jsonmapper.TeamResults;
-import ua.lviv.footgo.repository.GameRepository;
-import ua.lviv.footgo.repository.TeamRepository;
+import ua.lviv.footgo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import ua.lviv.footgo.repository.TeamSignUpRepository;
-import ua.lviv.footgo.repository.TourRepository;
 import ua.lviv.footgo.service.GameFinder;
 import ua.lviv.footgo.service.ResultService;
 import ua.lviv.footgo.service.TopScorerService;
@@ -27,6 +24,9 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class HttpRequestsController {
     @Autowired
     TeamRepository teamRepository;
+
+    @Autowired
+    PlayerRepository playerRepository;
 
     @Autowired
     TeamSignUpRepository teamSignUpRepository;
@@ -158,6 +158,13 @@ public class HttpRequestsController {
     @GetMapping(value = "/admin/team/player/add")
     public String playerAdd(Model model) {
         return "AdminTeamPlayerEntryAdd";
+    }
+
+    @GetMapping({"/player/{id}"})
+    public String playersDetails(Model model, @PathVariable("id") Long id) {
+        Player player = playerRepository.findById(id).get();
+        model.addAttribute("player", player);
+        return "player";
     }
 
 }
