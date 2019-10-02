@@ -287,7 +287,7 @@ input[type=text], input[type=tel], input[type=email], select {
     border-radius: 5px;
     background: #fff;
 }
-.main-input-button {
+.main-input-button, .save-video-button {
     color: #fff;
     background-color: #4e73ad;
     font-size: 1.7em;
@@ -597,7 +597,21 @@ span.delete-goal {
     opacity: 0;
     transition: all 0.4s ease;
 }
-
+.add-video-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.add-video-link p {
+    font-size: 0.8rem;
+    padding-left: 10px;
+}
+.add-video-link input[type=text] {
+    width: 360px;
+}
+.save-video-button {
+    font-size: 1.3rem;
+}
 .label-check-center {
     position: absolute;
     left: calc(50% - 20px);
@@ -621,4 +635,7 @@ span.delete-goal {
 /*input for time-picker*/
 .label-time-picker{
     padding-right: 5px;
+}
+@media screen and (max-width: 667px) {
+
 }
