@@ -8,6 +8,11 @@ body{
     margin: 0 auto;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
+body p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis ;
+}
 .admin-main {
     display: flex;
     justify-content: space-around;
@@ -456,13 +461,20 @@ input[type=text], input[type=tel], input[type=email], select {
 }
 
 /*modal end*/
-.goal-minute, .goal-author {
+.goal-minute, .goal-author, .goal-second {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.goal-minute input, .goal-author select {
-    width: 200px;
+.modal-body p {
+    width: 50%;
+}
+.goal-minute input, .goal-author select, .goal-second input
+{
+    width: 50%;
+}
+.goal-second p {
+    white-space: normal;
 }
 .goal-add {
     display: flex;
