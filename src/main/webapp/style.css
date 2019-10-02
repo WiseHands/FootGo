@@ -849,7 +849,7 @@ input[invalid-input] {
         width: 45%;
         text-align: left;
     }
-    .table-games, .table-wins, .table-draws {
+    .table-wins, .table-draws, .table-defeats {
         display: none;
     }
     .table-team-name p {
