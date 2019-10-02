@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
+<<<<<<< Updated upstream
     <title th:text="${'Команда ' + team.teamName + ' | FootGo League'}"></title>
+=======
+    <title th:text="${'Команда ' + team.teamName}"></title>
+>>>>>>> Stashed changes
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/style.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
@@ -43,7 +47,7 @@
         <div class="results-bg">
             <div class="results-block">
 
-                <h2 th:text="${team.teamName}"></h2>
+                <p th:text="${team.teamName}"></p>
                 <h3>Ігри</h3>
 
             </div>
@@ -123,8 +127,13 @@
 <!--                                <img src="/logo/logo3.png">-->
 <!--                            </div>-->
                             <div class="player-score-name">
+<<<<<<< Updated upstream
                                 <h4 class="player-name" th:text="${item.firstName}"></h4>
                                 <h4 class="player-name" th:text="${item.lastName}"></h4>
+=======
+                                <p th:text="${item.firstName}"></p>
+                                <p>Забито голів: 0</p>
+>>>>>>> Stashed changes
                             </div>
                          </div>
                     </div>

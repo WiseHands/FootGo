@@ -252,12 +252,17 @@ input[type=submit] {
 }
 .table-team-name img {
     width: 24px;
+    height: 24px;
     padding-left: 3px;
 }
 .table-team-name p {
     padding-left: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.table-team-name a {
+    display: flex;
+    align-items: center;
 }
 .table-team-name div:first-child {
     text-align: center;
@@ -354,7 +359,7 @@ input[type=submit] {
 .res-tour {
     display: flex;
     flex-direction: column;
-    max-width: 750px;
+    max-width: 900px;
     margin: 0 auto;
 }
 .res-tour-title {
@@ -415,16 +420,15 @@ input[type=submit] {
     margin: 0 auto;
     padding-bottom: 10px;
 }
-.results-block h2 {
+.results-block p {
     font-size: 2rem;
+    font-weight: 600;
     text-align: center;
     color: #FFF;
-}
-.results-block p {
-    text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .results-all-tour {
     display: flex;
     flex-wrap: wrap;
@@ -612,11 +616,15 @@ input[invalid-input] {
     margin: 0 auto;
     max-width: 800px;
 }
-.all-players{
+.all-players {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     padding-top: 20px;
+}
+.all-players p {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .team-results-full h3 {
     font-size: 1.5rem;
@@ -629,6 +637,8 @@ input[invalid-input] {
     flex-direction: column;
     padding: 10px 0;
     cursor: pointer;
+    width: 230px;
+
 }
 
 .player-photo {
@@ -677,11 +687,11 @@ input[invalid-input] {
     padding-left: 7px;
     padding-bottom: 7px;
 }
-.player-score-name h3 {
+.player-score-name p:first-child {
+    font-size: 1.2rem;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     padding-top: 5px;
+    padding-bottom: 10px;
 }
 @media screen and (max-width: 870px) {
     .team-capitan {

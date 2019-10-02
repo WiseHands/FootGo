@@ -60,19 +60,34 @@
         </div>
         <div class="table-team-name">
             <div class="table-title">Команда</div>
-            <div class="table-firstplace">
-                <img th:attr="src=${'/logo/logo' + firstPlace.team.id + '.png'}">
-                <p th:text="${firstPlace.teamName}"></p></div>
-            <div class="table-secondplace">
-                <img th:attr="src=${'/logo/logo' + secondPlace.team.id + '.png'}">
-                <p th:text="${secondPlace.teamName}"></p></div>
-            <div class="table-thirdplace">
-                <img th:attr="src=${'/logo/logo' + thirdPlace.team.id + '.png'}">
-                <p th:text="${thirdPlace.teamName}"></p></div>
-            <div th:each="item : ${teamList}">
-                <img th:attr="src=${'/logo/logo' + item.team.id + '.png'}">
 
-                <p th:text="${item.teamName}"></p>
+                <div class="table-firstplace">
+                    <a th:attr="href=${'/results/' + firstPlace.team.id}">
+                        <img th:attr="src=${'/logo/logo' + firstPlace.team.id + '.png'}">
+                        <p th:text="${firstPlace.teamName}"></p>
+                    </a>
+                </div>
+
+                <div class="table-secondplace">
+                    <a th:attr="href=${'/results/' + secondPlace.team.id}">
+                        <img th:attr="src=${'/logo/logo' + secondPlace.team.id + '.png'}">
+                        <p th:text="${secondPlace.teamName}"></p>
+                    </a>
+                </div>
+
+                <div class="table-thirdplace">
+                    <a th:attr="href=${'/results/' + thirdPlace.team.id}">
+                        <img th:attr="src=${'/logo/logo' + thirdPlace.team.id + '.png'}">
+                        <p th:text="${thirdPlace.teamName}"></p>
+                    </a>
+                </div>
+
+
+            <div th:each="item : ${teamList}">
+                <a th:attr="href=${'/results/' + item.team.id}">
+                    <img th:attr="src=${'/logo/logo' + item.team.id + '.png'}">
+                    <p th:text="${item.teamName}"></p>
+                </a>
             </div>
         </div>
 
