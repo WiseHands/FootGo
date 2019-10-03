@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
         <script src="/postTeamPlayer.js" type="text/javascript"></script>
+        <script src="/fileUploadScript.js" type="text/javascript"></script>
     </head>
     <body>
         <div class="admin-main">
@@ -16,6 +17,13 @@
 
         <div id="hideifsuccess" class="team-request">
             <p class="admin-title-row">Гравець</p>
+            <div class="admin-file-upload">
+                <label class="fileUploadLabel" for="fileUpload">
+                    <div class="fileUpload">Додати фото</div>
+                    <input type="file" id="fileUpload" />
+                </label>
+                <p id="filename"></p>
+            </div>
             <div class="admin-capitan">
                 <input type="text" id="firstName" name="playerFirstName" placeholder="Ім'я гравця" required>
             </div>
@@ -30,6 +38,9 @@
             </div>
             <div class="admin-capitan">
                 <input type="text" id="email" name="playerEmail" placeholder="E-mail" required>
+            </div>
+            <div class="admin-capitan">
+                <input disabled type="text" id="imageUrl" name="playerImageUrl" placeholder="Фото" required>
             </div>
             <div class="slogan-button">
                 <input class="main-input-button main-input-button-display" type="button" value="Всі команди" onclick="returnToTeamsPage()">

@@ -19,6 +19,7 @@ fetch(apiUrl, {
     document.querySelector('input[name="playerNumber"]').value = data.number;
     document.querySelector('input[name="playerPhone"]').value = data.phone;
     document.querySelector('input[name="playerEmail"]').value = data.email;
+    document.querySelector('input[name="playerImageUrl"]').value = data.imageUrl;
     console.log(data);
 });
 function returnToTeamsPage() {

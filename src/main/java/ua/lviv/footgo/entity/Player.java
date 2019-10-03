@@ -16,6 +16,7 @@ public class Player {
     private String lastName;
     private String email;
     private String phone;
+    private String imageUrl;
     private Integer number;
 
     private Boolean isActive;
@@ -69,6 +70,14 @@ public class Player {
         this.phone = phone;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public Integer getNumber() {
         return number;
     }
@@ -93,4 +102,5 @@ public class Player {
         if(this.number == null) return false;
         return this.number > 9;
     }
+
 }

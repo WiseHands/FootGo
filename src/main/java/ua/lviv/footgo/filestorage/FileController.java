@@ -35,7 +35,12 @@ public class FileController {
                 .path(dbFile.getId())
                 .toUriString();
 
-        return new UploadFileResponse(dbFile.getFileName(), fileDownloadUri,
+        String fileViewUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/viewFile/")
+                .path(dbFile.getId())
+                .toUriString();
+
+        return new UploadFileResponse(dbFile.getFileName(), fileDownloadUri, fileViewUri,
                 file.getContentType(), file.getSize());
     }
 

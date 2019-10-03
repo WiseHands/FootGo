@@ -116,6 +116,7 @@ function deleteGoal(gameId, goalId, homeTeamGoal) {
 }
 
 var checkbox = document.querySelector("input[name=match-over]");
+console.log(checkbox);
 
 checkbox.addEventListener( 'change', function(checked) {
     if(this.checked) {

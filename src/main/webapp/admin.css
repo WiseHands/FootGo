@@ -622,3 +622,41 @@ span.delete-goal {
 .label-time-picker{
     padding-right: 5px;
 }
+/*input for file upload*/
+.admin-file-upload {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input[type="file"] {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.fileUpload {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ccc;
+    border: 3px dotted #bebebe;
+    border-radius: 10px;
+}
+
+.fileUploadLabel {
+    display: inline-block;
+    position: relative;
+    height: 4em;
+    width: 15em;
+}
+
+.fileUpload.dragover {
+    background-color: #aaa;
+}
