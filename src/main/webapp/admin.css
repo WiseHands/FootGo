@@ -8,6 +8,11 @@ body{
     margin: 0 auto;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
+body p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis ;
+}
 .admin-main {
     display: flex;
     justify-content: space-around;
@@ -287,7 +292,7 @@ input[type=text], input[type=tel], input[type=email], select {
     border-radius: 5px;
     background: #fff;
 }
-.main-input-button {
+.main-input-button, .save-video-button {
     color: #fff;
     background-color: #4e73ad;
     font-size: 1.7em;
@@ -456,13 +461,20 @@ input[type=text], input[type=tel], input[type=email], select {
 }
 
 /*modal end*/
-.goal-minute, .goal-author {
+.goal-minute, .goal-author, .goal-second {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.goal-minute input, .goal-author select {
-    width: 200px;
+.modal-body p {
+    width: 50%;
+}
+.goal-minute input, .goal-author select, .goal-second input
+{
+    width: 50%;
+}
+.goal-second p {
+    white-space: normal;
 }
 .goal-add {
     display: flex;
@@ -597,7 +609,21 @@ span.delete-goal {
     opacity: 0;
     transition: all 0.4s ease;
 }
-
+.add-video-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.add-video-link p {
+    font-size: 0.8rem;
+    padding-left: 10px;
+}
+.add-video-link input[type=text] {
+    width: 360px;
+}
+.save-video-button {
+    font-size: 1.3rem;
+}
 .label-check-center {
     position: absolute;
     left: calc(50% - 20px);
@@ -622,6 +648,7 @@ span.delete-goal {
 .label-time-picker{
     padding-right: 5px;
 }
+
 /*input for file upload*/
 .admin-file-upload {
     margin-top: 10px;
@@ -659,4 +686,8 @@ input[type="file"] {
 
 .fileUpload.dragover {
     background-color: #aaa;
+}
+
+@media screen and (max-width: 667px) {
+
 }

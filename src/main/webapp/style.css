@@ -252,12 +252,17 @@ input[type=submit] {
 }
 .table-team-name img {
     width: 24px;
+    height: 24px;
     padding-left: 3px;
 }
 .table-team-name p {
     padding-left: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.table-team-name a {
+    display: flex;
+    align-items: center;
 }
 .table-team-name div:first-child {
     text-align: center;
@@ -354,7 +359,7 @@ input[type=submit] {
 .res-tour {
     display: flex;
     flex-direction: column;
-    max-width: 750px;
+    max-width: 900px;
     margin: 0 auto;
 }
 .res-tour-title {
@@ -412,18 +417,30 @@ input[type=submit] {
     border-radius: 10px;
 }
 .results-block {
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
     padding-bottom: 10px;
 }
-.results-block h2 {
-    font-size: 2rem;
-    text-align: center;
-    color: #FFF;
+.logo-team-bg {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 10px auto;
+    padding: 5px 0;
+    background-color: #fff;
+    border-radius: 5px;
 }
 .results-block p {
+    font-size: 2rem;
+    font-weight: 600;
+    padding-left: 3px;
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.results-block img {
+    margin: 0 auto;
 }
 .results-all-tour {
     display: flex;
@@ -608,15 +625,24 @@ input[invalid-input] {
 .minute {
     font-size: 0.8rem;
 }
+.match-video iframe {
+    display: flex;
+    margin: 0 auto;
+    padding: 10px 0;
+}
 .team-players {
     margin: 0 auto;
     max-width: 800px;
 }
-.all-players{
+.all-players {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     padding-top: 20px;
+}
+.all-players p {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .team-results-full h3 {
     font-size: 1.5rem;
@@ -629,6 +655,8 @@ input[invalid-input] {
     flex-direction: column;
     padding: 10px 0;
     cursor: pointer;
+    width: 230px;
+
 }
 
 .player-photo {
@@ -677,11 +705,11 @@ input[invalid-input] {
     padding-left: 7px;
     padding-bottom: 7px;
 }
-.player-score-name h3 {
+.player-score-name p:first-child {
+    font-size: 1.2rem;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     padding-top: 5px;
+    padding-bottom: 10px;
 }
 @media screen and (max-width: 870px) {
     .team-capitan {
@@ -713,7 +741,7 @@ input[invalid-input] {
     .slogan-text {
         max-width: 400px;
     }
-    .slogan-text iframe {
+    .slogan-text iframe, .match-video iframe {
         width: 90%;
         height: 202px;
     }
@@ -834,7 +862,7 @@ input[invalid-input] {
         width: 45%;
         text-align: left;
     }
-    .table-games, .table-wins, .table-draws {
+    .table-wins, .table-draws, .table-defeats {
         display: none;
     }
     .table-team-name p {

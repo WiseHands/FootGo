@@ -56,7 +56,7 @@
         <div class="bomb-player-name">
             <div class="bomb-title">Футболіст</div>
             <div th:each="playerGoal : ${playerGoals}">
-                <p th:text="${playerGoal.player.firstName + ' ' + playerGoal.player.lastName}">не заявлена</p>
+                <p th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}">не заявлена</p>
             </div>
         </div>
         <div class="bomb-scored">

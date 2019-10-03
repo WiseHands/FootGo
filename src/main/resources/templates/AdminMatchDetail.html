@@ -61,6 +61,12 @@
             </div>
         </div>
 
+        <div class="add-video-link">
+            <p>посилання у форматі https://www.youtube.com/embed/re-1-nt0tdY </p>
+            <input type="text" id="videoLink" name="addVideoLink" placeholder="посилання на відео" required="">
+            <input class="save-video-button" type="button" value="Зберегти відео" onclick="">
+        </div>
+
         <p class="label-check-text">Матч завершено</p>
         <div class="label-check-center">
             <input type="checkbox" id="match-over" name="match-over" style="display:none">
@@ -83,6 +89,10 @@
                         <p>Автор</p>
                         <select id="playerSelect">
                         </select>
+                    </div>
+                    <div class="goal-second">
+                        <p>Секунда голу у відео</p>
+                        <input type="text" name="minute" id="goalMinute">
                     </div>
                 </div>
                 <div class="goal-add">
