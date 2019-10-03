@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function(){
             .then(function(data){
                 console.log(data);
                 document.querySelector('input[name="playerImageUrl"]').value = data.fileViewUri;
+                document.getElementById("image").src = data.fileViewUri;
         });
     }
 });

@@ -688,6 +688,10 @@ input[type="file"] {
     background-color: #aaa;
 }
 
+.admin-file-upload img {
+    width: 200px;
+}
+
 @media screen and (max-width: 667px) {
 
 }

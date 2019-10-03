@@ -20,6 +20,13 @@ fetch(apiUrl, {
     document.querySelector('input[name="playerPhone"]').value = data.phone;
     document.querySelector('input[name="playerEmail"]').value = data.email;
     document.querySelector('input[name="playerImageUrl"]').value = data.imageUrl;
+    document.getElementById("image").src = data.imageUrl;
+
+    let img = document.getElementById('image');
+    if(img.getAttribute('src') == "null") {
+        img.src = 'https://www.w3schools.com/css/img_avatar.png';
+    }
+    
     console.log(data);
 });
 function returnToTeamsPage() {
