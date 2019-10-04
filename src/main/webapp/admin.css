@@ -503,6 +503,7 @@ span.delete-goal {
     cursor: pointer;
     color: red;
     padding-left: 5px;
+    display: flex;
 }
 .modal-goal span:hover {
     color: #FF6A4F;
