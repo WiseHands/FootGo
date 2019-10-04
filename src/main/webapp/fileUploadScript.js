@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function() {
     let fileInput = document.querySelector('input[type=file]');
     let filenameContainer = document.querySelector('#filename');
     let dropzone = document.querySelector('#fileUpload');

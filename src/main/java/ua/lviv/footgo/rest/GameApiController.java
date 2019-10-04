@@ -30,7 +30,7 @@ public class GameApiController {
     GoalRepository goalRepository;
 
     @DeleteMapping(value = "/clear", consumes = "application/json", produces = "application/json")
-    public void  clear() {
+    public void clear() {
         Iterable<Game> gameList = gameRepository.findAll();
         for (Game game : gameList) {
             game.getTeamAGoals().clear();
@@ -60,17 +60,17 @@ public class GameApiController {
         List<Game> allGames = Stream.concat(homeGames.stream(), guestGames.stream())
                 .collect(Collectors.toList());
         Collections.sort(allGames, new Game.SortByTour());
-        return  allGames;
+        return allGames;
     }
 
     @PostMapping(value = "/{id}/goal", consumes = "application/json", produces = "application/json")
-    public Goal addGoal(@PathVariable Long id, @RequestParam Player playerId, @RequestParam int goalMinute, @RequestParam  boolean homeTeamGoal) {
+    public Goal addGoal(@PathVariable Long id, @RequestParam Player playerId, @RequestParam int goalMinute, @RequestParam boolean homeTeamGoal) {
         Game game = gameRepository.findById(id).get();
         Goal goal = new Goal();
         goal.setPlayer(playerId);
         goal.setTime(goalMinute);
         goal.setGame(game);
-        if(homeTeamGoal) {
+        if (homeTeamGoal) {
             game.addGoalForFirstTeam(goal);
         } else {
             game.addGoalForSecondTeam(goal);
@@ -84,7 +84,7 @@ public class GameApiController {
     public void deleteGoal(@PathVariable Long goalId, @PathVariable Long gameId, @RequestParam Boolean isHomeTeamGoal) {
         Game game = gameRepository.findById(gameId).get();
         Goal goal = goalRepository.findById(goalId).get();
-        if(isHomeTeamGoal) {
+        if (isHomeTeamGoal) {
             game.removeGoalForFirstTeam(goal);
         } else {
             game.removeGoalForSecondTeam(goal);
@@ -94,16 +94,23 @@ public class GameApiController {
     }
 
     @PostMapping(value = "/{gameId}/completed/{isCompleted}", consumes = "application/json", produces = "application/json")
-    public void  markCompleted(@PathVariable Long gameId, @PathVariable boolean isCompleted) {
+    public void markCompleted(@PathVariable Long gameId, @PathVariable boolean isCompleted) {
         Game game = gameRepository.findById(gameId).get();
         game.setCompleted(isCompleted);
         gameRepository.save(game);
     }
 
     @PostMapping(value = "/{gameId}/setgametime/{timeGame}", consumes = "application/json", produces = "application/json")
-    public void  setGameTime(@PathVariable Long gameId, @PathVariable String timeGame) {
+    public void setGameTime(@PathVariable Long gameId, @PathVariable String timeGame) {
         Game game = gameRepository.findById(gameId).get();
         game.setGameTime(timeGame);
+        gameRepository.save(game);
+    }
+
+    @PutMapping(value = "/{gameId}/setvideourl", consumes = "application/json", produces = "application/json")
+    public void setVideoUrl(@PathVariable Long gameId, @RequestParam String videoUrl) {
+        Game game = gameRepository.findById(gameId).get();
+        game.setVideoUrl(videoUrl);
         gameRepository.save(game);
     }
 }

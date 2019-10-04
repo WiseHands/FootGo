@@ -81,9 +81,9 @@
 				</div>
 			</div>
 		</div>
-		<!--<div class="match-video">-->
-			<!--<iframe width="500" height="281" src="https://www.youtube.com/embed/re-1-nt0tdY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-		<!--</div>-->
+		<div class="match-video" th:if="${game.videoUrl != null}">
+			<iframe width="500" height="281" th:attr="src=${game.videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
 	</div>
 </div>
 
