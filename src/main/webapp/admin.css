@@ -4,6 +4,7 @@
 }
 body{
     background-color: #cee0dd;
+    max-width: 900px;
     margin: 0 auto;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
