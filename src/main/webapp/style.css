@@ -711,6 +711,23 @@ input[invalid-input] {
     padding-top: 5px;
     padding-bottom: 10px;
 }
+.player-details {
+    display: flex;
+    max-width: 900px;
+    margin: 10px auto 0;
+    background-color: #fff;
+}
+.player-main-photo img {
+    width: 200px;
+}
+.player-main-info {
+    padding-left: 20px;
+    line-height: 1.5;
+}
+.player-main-info p:first-child {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
 @media screen and (max-width: 870px) {
     .team-capitan {
         flex-direction: column;
@@ -723,6 +740,9 @@ input[invalid-input] {
     }
     .mathces-bg {
         width: 95%;
+    }
+    .player-details {
+        width: 90%;
     }
 }
 @media screen and (max-width: 720px) {
@@ -930,5 +950,8 @@ input[invalid-input] {
     .details-match img {
         width: 12px;
         height: 12px;
+    }
+    .player-details {
+        width: 90%;
     }
 }
