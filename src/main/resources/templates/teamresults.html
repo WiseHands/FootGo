@@ -47,9 +47,7 @@
                     <p th:text="${team.teamName}"></p>
                 </div>
                 <h3>Ігри</h3>
-
             </div>
-
             <div class="results-all-tour">
                 <div th:each="game : ${gameList}" class="results-container">
                     <div class="res-teams">
@@ -110,27 +108,28 @@
         <h3>Гравці</h3>
         <div class="all-players">
             <div th:each="item : ${team.players}">
-                    <div class="player-card">
-                        <div class="player-photo">
-                            <img src="/img/tshirt.png">
-                            <span th:if="${item.isTwoDigits() == false}" class="player-1digit">
-                                <span th:text="${item.formatNumber()}"></span>
-                            </span>
-                            <span th:if="${item.isTwoDigits() == true}" class="player-2digit">
-                                <span th:text="${item.formatNumber()}"></span>
-                            </span>
-                        </div>
-                        <div class="player-info">
-<!--                            <div class="player-logo">-->
-<!--                                <img src="/logo/logo3.png">-->
-<!--                            </div>-->
-                            <div class="player-score-name">
-                                <h4 class="player-name" th:text="${item.firstName}"></h4>
-                                <h4 class="player-name" th:text="${item.lastName}"></h4>
+                    <a th:attr="href=${'/player/' + item.id}">
+                        <div class="player-card">
+                            <div class="player-photo">
+                                <img src="/img/tshirt.png">
+                                <span th:if="${item.isTwoDigits() == false}" class="player-1digit">
+                                    <span th:text="${item.formatNumber()}"></span>
+                                </span>
+                                <span th:if="${item.isTwoDigits() == true}" class="player-2digit">
+                                    <span th:text="${item.formatNumber()}"></span>
+                                </span>
                             </div>
-                         </div>
-                    </div>
-
+                            <div class="player-info">
+    <!--                            <div class="player-logo">-->
+    <!--                                <img src="/logo/logo3.png">-->
+    <!--                            </div>-->
+                                <div class="player-score-name">
+                                    <h4 class="player-name" th:text="${item.firstName}"></h4>
+                                    <h4 class="player-name" th:text="${item.lastName}"></h4>
+                                </div>
+                             </div>
+                        </div>
+                    </a>
             </div>
         </div>
     </div>

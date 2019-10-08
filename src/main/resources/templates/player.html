@@ -40,8 +40,31 @@
 </header>
 
 
-<div>
-	Player page
+<div class="player-card-main">
+	<div class="player-card-photo">
+		<img src="https://www.w3schools.com/css/img_avatar.png" alt="logo">
+	</div>
+	<div class="player-card-info">
+		<p th:text="${player.lastName + ' ' + player.firstName}"></p>
+		<!--<p>Дата народження</p>-->
+		<!--<p>01.01.1900</p>-->
+		<p>Команда</p>
+		<div class="player-card-logo-team">
+			<a th:attr="href=${'/results/' + player.team.id}">
+				<img th:attr="src=${'/logo/logo' + player.team.id + '.png'}">
+				<p th:text="${player.team.teamName}"></p>
+			</a>
+		</div>
+		<!--<p>Забито голів:<span>15</span></p>-->
+		<!--<div class="player-card-logo-team-score">-->
+			<!--<a th:attr="href=${'/results/' + player.team.id}">-->
+				<!--<img th:attr="src=${'/logo/logo' + player.team.id + '.png'}">-->
+				<!--<p th:text="${player.team.teamName}"></p>-->
+			<!--</a>-->
+			<!--<p>3 голи</p>-->
+		<!--</div>-->
+
+	</div>
 </div>
 
 <script src="/signUpScript.js"></script>
