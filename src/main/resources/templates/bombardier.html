@@ -56,7 +56,9 @@
         <div class="bomb-player-name">
             <div class="bomb-title">Футболіст</div>
             <div th:each="playerGoal : ${playerGoals}">
-                <p th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}">не заявлена</p>
+                <a th:attr="href=${'/player/' + playerGoal.player.id}">
+                    <p th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}">не заявлена</p>
+                </a>
             </div>
         </div>
         <div class="bomb-scored">
@@ -70,7 +72,9 @@
         <div class="bomb-team">
             <div class="bomb-title">Команда</div>
             <div th:each="playerGoal : ${playerGoals}">
-                <p th:text="${playerGoal.player.team.teamName}">Lions</p>
+                <a th:attr="href=${'/results/' + playerGoal.player.team.id}">
+                    <p th:text="${playerGoal.player.team.teamName}">Lions</p>
+                </a>
             </div>
         </div>
 
@@ -84,6 +88,16 @@
 
 <script src="signUpScript.js"></script>
 <script src="hamburger.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39722519-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-39722519-3');
+</script>
 
 
 </body>

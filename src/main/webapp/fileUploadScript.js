@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
       	dropzone.classList.remove('dragover');
     });
 
+    let img = document.getElementById('image');
+    if(img.getAttribute('src') == "" || null) {
+        img.src = 'https://www.w3schools.com/css/img_avatar.png';
+    }
+
     fileInput.onchange = function() {
         let fileInput = document.querySelector('#fileUpload');
         const formData = new FormData();

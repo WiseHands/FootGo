@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<title>Профіль гравця</title>
+	<title th:text="${'Профіль гравця ' + player.firstName + ' ' + player.lastName + ' | Команда ' + player.team.teamName }">Профіль гравця </title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/hamburger.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
@@ -40,20 +40,47 @@
 </header>
 
 
-<div class="player-details">
-	<div class="player-main-photo">
-		<img src="https://www.w3schools.com/css/img_avatar.png" alt="">
+
+
+<div class="player-card-main">
+	<div class="player-card-photo">
+		<img src="https://www.w3schools.com/css/img_avatar.png" alt="logo">
 	</div>
-	<div class="player-main-info">
-		<p>Прізвище ім'я</p>
-		<p>Дата народження</p>
+	<div class="player-card-info">
+		<p th:text="${player.lastName + ' ' + player.firstName}"></p>
+		<!--<p>Дата народження</p>-->
+		<!--<p>01.01.1900</p>-->
 		<p>Команда</p>
-		<p>Забито голів</p>
+		<div class="player-card-logo-team">
+			<a th:attr="href=${'/results/' + player.team.id}">
+				<img th:attr="src=${'/logo/logo' + player.team.id + '.png'}">
+				<p th:text="${player.team.teamName}"></p>
+			</a>
+		</div>
+		<!--<p>Забито голів:<span>15</span></p>-->
+		<!--<div class="player-card-logo-team-score">-->
+			<!--<a th:attr="href=${'/results/' + player.team.id}">-->
+				<!--<img th:attr="src=${'/logo/logo' + player.team.id + '.png'}">-->
+				<!--<p th:text="${player.team.teamName}"></p>-->
+			<!--</a>-->
+			<!--<p>3 голи</p>-->
+		<!--</div>-->
 	</div>
 </div>
 
 
 <script src="/signUpScript.js"></script>
 <script src="/hamburger.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39722519-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-39722519-3');
+</script>
+
 </body>
 </html>
