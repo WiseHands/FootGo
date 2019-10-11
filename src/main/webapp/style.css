@@ -49,7 +49,24 @@ a, a:hover {
 .header-text p:hover {
     color: #868686;
 }
-
+.main-block {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.main-where-when {
+    display: flex;
+    padding-top: 10px;
+}
+.main-where {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    background-color: #fff;
+}
+.main-where iframe {
+    padding: 5px 0;
+}
 .main-photo {
     background: url("img/foot11.jpg");
     background-position: center;
@@ -438,6 +455,9 @@ input[type=submit] {
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.results-block p:last-child {
+    font-size: 1rem;
 }
 .results-block img {
     margin: 0 auto;
