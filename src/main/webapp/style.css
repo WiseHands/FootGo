@@ -619,9 +619,7 @@ input[invalid-input] {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.player-name {
-    word-wrap: break-word;
-}
+
 .minute {
     font-size: 0.8rem;
 }
@@ -656,9 +654,12 @@ input[invalid-input] {
     padding: 10px 0;
     cursor: pointer;
     width: 230px;
-
 }
-
+.player-score-name h4{
+    max-width: 187px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .player-photo {
     position: relative;
     height: 140px;
@@ -986,8 +987,11 @@ input[invalid-input] {
         width: 12px;
         height: 12px;
     }
-    .player-card, .player-photo {
+    .player-card, .player-photo{
         width: 150px;
+    }
+    .player-info {
+        max-width: 150px;
     }
     .player-photo {
         height: 120px;
@@ -1012,5 +1016,8 @@ input[invalid-input] {
     }
     .player-card-info p:first-child {
         text-align: center;
+    }
+    .player-score-name h4 {
+        max-width: 107px;
     }
 }
