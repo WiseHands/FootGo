@@ -522,7 +522,7 @@ input[invalid-input] {
     display: flex;
     flex-direction: column;
     max-width: 800px;
-    background-color: rgba(220,216,216, 0.8);
+    background-color: #fff;
     padding: 10px;
     border-radius: 10px;
     margin: 0 auto;
@@ -696,7 +696,7 @@ input[invalid-input] {
     border-top-right-radius: 0;
 }
 .player-logo img {
-    width: 48px;
+    width: 36px;
     padding-left: 7px;
     border-radius: 50%;
     background-color: #fff;
@@ -985,6 +985,24 @@ input[invalid-input] {
     .details-match img {
         width: 12px;
         height: 12px;
+    }
+    .player-card, .player-photo {
+        width: 150px;
+    }
+    .player-photo {
+        height: 120px;
+    }
+    .player-photo img {
+        width: 96px;
+        left: 27px;
+    }
+    .player-1digit {
+        font-size: 1.5rem;
+    }
+    .player-2digit {
+        top: 20%;
+        left: 42% ;
+        font-size: 1.5rem;
     }
     .player-card-main {
         flex-direction: column;
