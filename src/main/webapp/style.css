@@ -4,7 +4,7 @@
 }
 body {
     height: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     min-width: 300px;
 }
 body p {
@@ -43,7 +43,7 @@ a, a:hover {
 .header-text p {
     color: #fff;
     font-size: 1.2em;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     padding: 1em;
 }
 .header-text p:hover {
@@ -56,16 +56,64 @@ a, a:hover {
 .main-where-when {
     display: flex;
     padding-top: 10px;
+    margin-bottom: 50px;
 }
-.main-where {
+.main-where, .main-when {
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 50%;
     background-color: #fff;
+    border-radius: 5px;
+}
+.main-where h1, .main-when h1 {
+    font-size: 1.5rem;
+    padding: 10px 0 0 10px;
+    line-height: 1.4;
+}
+.main-where p {
+    font-size: 0.9rem;
+    padding: 0 0 5px 10px;
 }
 .main-where iframe {
-    padding: 5px 0;
+    width: 100%;
+    height: 250px;
+    margin: 0 auto;
+    padding: 10px 0 0 0;
+}
+.main-when {
+    margin-left: 20px;
+}
+.main-when ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.main-when ul li {
+    padding: 5px 10px ;
+}
+.main-when ul span {
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: rgba(0,0,0,0.4);
+    padding: 3px;
+    margin: 1px;
+    border-radius: 3px;
+}
+.main-when p {
+    padding: 10px 5px 15px 20px;
+    white-space: normal;
+}
+.main-when-gametime {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.main-when-time {
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 0 10px;
 }
 .main-photo {
     background: url("img/foot11.jpg");
@@ -799,6 +847,13 @@ input[invalid-input] {
 
     .player-card-main {
         width: 90%;
+    }
+    .main-where-when {
+        flex-direction: column;
+    }
+    .main-where, .main-when {
+        width: 95%;
+        margin: 10px auto;
     }
 }
 @media screen and (max-width: 720px) {
