@@ -2,6 +2,7 @@ package ua.lviv.footgo.routing;
 
 import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.entity.Game;
+import ua.lviv.footgo.entity.League;
 import ua.lviv.footgo.entity.Player;
 import ua.lviv.footgo.entity.Team;
 import ua.lviv.footgo.jsonmapper.PlayerGoals;
@@ -46,15 +47,22 @@ public class HttpRequestsController {
     @Autowired
     TopScorerService topScorerService;
 
+    @Autowired
+    LeagueManagementRepository leagueManagementRepository;
+
     @GetMapping({"/", "/footgo"})
     public String footgo(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("name", name);
+        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        model.addAttribute("league", leagueList.get(0));
         return "footgo";
     }
 
     @GetMapping({"/signup"})
     public String signup(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("name", name);
+        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        model.addAttribute("league", leagueList.get(0));
         return "signup";
     }  
 
@@ -62,6 +70,8 @@ public class HttpRequestsController {
     public String results(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         List tourList = (List) tourRepository.findAll();
         model.addAttribute("tourList", tourList);
+        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        model.addAttribute("league", leagueList.get(0));
         return "results";
     }
 
@@ -84,6 +94,8 @@ public class HttpRequestsController {
         model.addAttribute("secondPlace", results.get(1));
         model.addAttribute("thirdPlace", results.get(2));
         model.addAttribute("teamList", results.subList(3, allTeams.size()));
+        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        model.addAttribute("league", leagueList.get(0));
         System.out.println("\n\nallTeams:");
         System.out.println(allTeams);
         return "gametable";
@@ -93,6 +105,8 @@ public class HttpRequestsController {
     public String bombardier(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         List<PlayerGoals> playerGoals = topScorerService.getResults();
         model.addAttribute("playerGoals", playerGoals);
+        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        model.addAttribute("league", leagueList.get(0));
         return "bombardier";
     }
 
@@ -100,6 +114,8 @@ public class HttpRequestsController {
     public String gameDetails(Model model, @PathVariable("id") Long id) {
         Game game = gameRepository.findById(id).get();
         model.addAttribute("game", game);
+        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        model.addAttribute("league", leagueList.get(0));
         return "game";
     }
 
@@ -164,6 +180,8 @@ public class HttpRequestsController {
     public String playersDetails(Model model, @PathVariable("id") Long id) {
         Player player = playerRepository.findById(id).get();
         model.addAttribute("player", player);
+        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        model.addAttribute("league", leagueList.get(0));
         return "player";
     }
 

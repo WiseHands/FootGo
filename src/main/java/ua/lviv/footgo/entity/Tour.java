@@ -17,6 +17,17 @@ public class Tour {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Game> gameList;
 
+    @ManyToOne
+    private League league;
+
+    public League getLeague() {
+        return league;
+    }
+
+    public void setLeague(League league) {
+        this.league = league;
+    }
+
     public Long getId() {
         return id;
     }

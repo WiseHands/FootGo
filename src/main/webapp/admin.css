@@ -599,16 +599,16 @@ span.delete-goal {
     pointer-events: none;
 }
 
-#match-over:checked + .toggle:before {
+#request-over:checked + .toggle:before, #match-over:checked + .toggle:before {
     background: #0ca38a;
 }
-#match-over:checked + .toggle span {
+#request-over:checked + .toggle span, #match-over:checked + .toggle span {
     background: #057764;
     transform: translateX(20px);
     transition: all 0.2s cubic-bezier(0.8, 0.4, 0.3, 1.25), background 0.15s ease;
     box-shadow: 0 3px 8px rgba(79, 46, 220, 0.2);
 }
-#match-over:checked + .toggle span:before {
+#request-over:checked + .toggle span:before, #match-over:checked + .toggle span:before {
     transform: scale(1);
     opacity: 0;
     transition: all 0.4s ease;

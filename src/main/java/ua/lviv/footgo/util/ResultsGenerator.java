@@ -38,6 +38,9 @@ public class ResultsGenerator {
     @Autowired
     private PlayerRepository playerRepository;
 
+    @Autowired
+    private  LeagueManagementRepository leagueManagementRepository;
+
     private Faker faker = new Faker();
 
     public Captain _createCaptain(Team team) {
@@ -267,6 +270,18 @@ public class ResultsGenerator {
                     break;
             }
         }
+    }
+
+    public League _createLeagueStatusIfDoesntExist() {
+        League league = new League();
+        league.setIsSubmissionOpened(true);
+        List<Tour> tourList = (List<Tour>) tourRepository.findAll();
+        for(Tour tour : tourList) {
+            tour.setLeague(league);
+        }
+        leagueManagementRepository.save(league);
+
+        return league;
     }
 
 
