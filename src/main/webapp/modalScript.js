@@ -17,7 +17,7 @@ plusHomeTeamGoal.onclick = function() {
     for(index in window.gameData.firstTeam.players) {
        let player = window.gameData.firstTeam.players[index];
        var opt = document.createElement("option");
-       opt.value= player.id;
+       opt.value = player.id;
        opt.innerHTML = player.firstName + ' ' + player.lastName;
        playerSelect.appendChild(opt);
     }
@@ -31,15 +31,37 @@ plusGuestTeamGoal.onclick = function() {
         for(index in window.gameData.secondTeam.players) {
            let player = window.gameData.secondTeam.players[index];
            var opt = document.createElement("option");
-           opt.value= player.id;
+           opt.value = player.id;
            opt.innerHTML = player.firstName + ' ' + player.lastName;
            playerSelect.appendChild(opt);
         }
 }
 
+var span3 = document.getElementsByClassName("close")[1];
+
+var technicalDefeat = document.getElementById("technicalDefeat");
+technicalDefeat.onclick = function() {
+    tDefeatModal.style.display = "block";
+    let teamSelect = document.getElementById("teamSelect");
+        teamSelect.innerHTML = '';
+        let first_team = window.gameData.firstTeam;
+        let second_team = window.gameData.secondTeam;
+        let opt = document.createElement("option");
+        let opt2 = document.createElement("option");
+        opt.value = first_team.id;
+        opt2.value = second_team.id;
+        opt.innerHTML = first_team.teamName;
+        opt2.innerHTML = second_team.teamName;
+        teamSelect.appendChild(opt);
+        teamSelect.appendChild(opt2);
+}
+
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
+}
+span3.onclick = function() {
+    tDefeatModal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -52,11 +74,11 @@ window.onclick = function(event) {
 //modal2
 var goalModal = document.getElementById("goalModal");
 
-var gbtn = document.getElementById("goalBtn");
+/*var gbtn = document.getElementById("goalBtn");
 
 goalBtn.onclick = function() {
     myModal.style.display = "block";
-}
+}*/
 
 var span2 = document.getElementsByClassName("close")/*[1]*/;
 
@@ -87,6 +109,32 @@ function addGoalBtnClicked(event) {
             location.pathname = location.pathname;
         } else {
             document.getElementById('myModal').style.display = "none";
+            alert('Error');
+        }
+        return  response.json();
+    }).then(function(data) {
+        console.log(data);
+    })
+}
+
+function addTeamTechDefeat(event) {
+    /*let goalMinute = document.getElementById("goalMinute");*/
+    let teamSelect = document.getElementById("teamSelect");
+    console.log('addTeamTechDefeat', playerSelect.value);
+    let params = '?playerId=' + teamSelect.value;
+    let apiUrl = '/api/game/' + id + '/goal/' + params;
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+    }).then(function(response) {
+        console.log(response);
+        if(response.ok) {
+            document.getElementById('tDefeatModal').style.display = "none";
+            location.pathname = location.pathname;
+        } else {
+            document.getElementById('tDefeatModal').style.display = "none";
             alert('Error');
         }
         return  response.json();

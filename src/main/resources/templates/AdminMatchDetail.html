@@ -65,6 +65,7 @@
             </div>
 
             <div class="add-video-link">
+                <input id="technicalDefeat" class="save-video-button" type="button" value="Зарахувати технічну поразку">
                 <p>Посилання у форматі https://www.youtube.com/embed/re-1-nt0tdY</p>
                 <input type="text" id="videoLink" name="addVideoLink" placeholder="Посилання на відео" required="">
                 <input class="save-video-button" type="button" value="Зберегти відео" onclick="putVideoUrlById()">
@@ -103,6 +104,26 @@
                     </div>
                     <div class="goal-add">
                         <input onclick="addGoalBtnClicked()" id="savebutton" class="main-input-button" type="button" value="Додати">
+                    </div>
+                </div>
+            </div>
+
+            <div id="tDefeatModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>Зарахувати технічну поразку команді:</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="goal-author">
+                            <p>Команда</p>
+                            <select id="teamSelect">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="goal-add">
+                        <input onclick="addGoalBtnClicked()" id="tdSaveButton" class="main-input-button" type="button" value="Зарахувати">
                     </div>
                 </div>
             </div>
