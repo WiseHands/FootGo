@@ -53,34 +53,45 @@ a, a:hover {
     max-width: 900px;
     margin: 0 auto;
 }
-.main-where-when {
+.main-text, .main-where-when {
     display: flex;
     padding-top: 10px;
     margin-bottom: 50px;
 }
-.main-where, .main-when {
+.main-where, .main-when, .main-about, .main-video {
     display: flex;
     flex-direction: column;
     width: 50%;
     background-color: #fff;
     border-radius: 5px;
 }
+.main-video {
+    justify-content: space-between;
+}
 .main-where h1, .main-when h1 {
     font-size: 1.5rem;
     padding: 10px 0 0 10px;
     line-height: 1.4;
 }
-.main-where p {
+.main-about p {
+    font-size: 1rem;
+    padding: 10px 0 5px 10px;
+}
+.main-where p{
     font-size: 0.9rem;
     padding: 0 0 5px 10px;
 }
-.main-where iframe {
+.main-where iframe, .main-video iframe {
     width: 100%;
     height: 250px;
     margin: 0 auto;
     padding: 10px 0 0 0;
 }
-.main-when {
+.main-video iframe {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.main-when, .main-video {
     margin-left: 20px;
 }
 .main-when ul {
@@ -121,28 +132,18 @@ a, a:hover {
     background-size: cover;
     height: 100vh ;
 }
-.slogan-text {
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(2,3,14,0.3);
-    max-width: 550px;
-    margin: 0 auto;
-    border-radius: 15px;
-    text-align: center;
-}
 .slogan-null {
     height: 10vh;
 }
-.slogan-text iframe {
+.main-about iframe {
     margin: 0 auto;
     padding: 10px 0;
 }
-.slogan-text h1 {
-    font-size: 2.8em;
-    padding: 20px 30px 0 30px;
-    color: #dfdfe5;
+.main-about h1, .main-video h1 {
+    font-size: 1.8rem;
+    padding: 10px 0 0 10px;
 }
-.slogan-text h3 {
+.main-about h3 {
     font-size: 2.2em;
     padding: 0 30px 20px 30px;
     color: #dfdfe5;
@@ -160,6 +161,7 @@ a, a:hover {
     background-color: #42a444;
     font-size: 2em;
     padding: 10px 30px;
+    margin-top: 100px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -848,10 +850,10 @@ input[invalid-input] {
     .player-card-main {
         width: 90%;
     }
-    .main-where-when {
+    .main-where-when, .main-text {
         flex-direction: column;
     }
-    .main-where, .main-when {
+    .main-where, .main-when, .main-about, .main-video {
         width: 95%;
         margin: 10px auto;
     }
@@ -869,17 +871,17 @@ input[invalid-input] {
     .slogan-null {
         height: 2vh;
     }
-    .slogan-text {
+    .main-about {
         max-width: 400px;
     }
-    .slogan-text iframe, .match-video iframe {
+    .main-about iframe, .match-video iframe {
         width: 90%;
         height: 202px;
     }
-    .slogan-text h1 {
+    .main-about h1 {
         font-size: 1.6em;
     }
-    .slogan-text h3 {
+    .main-about h3 {
         font-size: 1.6em;
         padding: 15px 0;
     }
