@@ -64,6 +64,7 @@ a, a:hover {
     width: 50%;
     background-color: #fff;
     border-radius: 5px;
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
 }
 .main-video {
     justify-content: space-between;
@@ -72,6 +73,19 @@ a, a:hover {
     font-size: 1.5rem;
     padding: 10px 0 0 10px;
     line-height: 1.4;
+}
+.main-about-team-match {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+.main-about-team, .main-about-match {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main-about-team img, .main-about-match img {
+    width: 72px;
 }
 .main-about p {
     font-size: 1rem;
@@ -105,7 +119,7 @@ a, a:hover {
     padding: 5px 10px ;
 }
 .main-when ul span {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #fff;
     background-color: rgba(0,0,0,0.4);
     padding: 3px;
@@ -113,7 +127,7 @@ a, a:hover {
     border-radius: 3px;
 }
 .main-when p {
-    padding: 10px 5px 15px 20px;
+    padding: 10px 5px 10px 20px;
     white-space: normal;
 }
 .main-when-gametime {
@@ -122,25 +136,53 @@ a, a:hover {
     align-items: center;
 }
 .main-when-time {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 600;
     padding: 0 10px;
 }
 .main-photo {
-    background: url("img/foot11.jpg");
-    background-position: center;
-    background-size: cover;
+    /*background: url("img/foot11.jpg");*/
+    /*background-position: center;*/
+    /*background-size: cover;*/
+    background-color: #f7f7f5;
     height: 100vh ;
 }
-.slogan-null {
-    height: 10vh;
+.main-head {
+    background: url("img/mainphoto.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+    width: 100%;
+    padding-top: 20vh;
+}
+.main-head-title {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
+
+}
+.main-head-teamlogo {
+    display: flex;
+    padding-bottom: 5px;
+}
+.main-head-teamlogo img {
+    width: 88px;
+    height: 88px;
+}
+.main-head h1 {
+    padding: 10px 0 20px 0;
 }
 .main-about iframe {
     margin: 0 auto;
     padding: 10px 0;
 }
 .main-about h1, .main-video h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     padding: 10px 0 0 10px;
 }
 .main-about h3 {
@@ -161,7 +203,7 @@ a, a:hover {
     background-color: #42a444;
     font-size: 2em;
     padding: 10px 30px;
-    margin-top: 100px;
+    margin-top: 10px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -833,7 +875,13 @@ input[invalid-input] {
 .player-card-logo-team-score p:last-child {
     padding-left: 5px;
 }
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 900px) {
+    .main-head {
+        display: none;
+    }
+    .main-text, .main-where-when {
+        margin-bottom: 0;
+    }
     .team-capitan {
         flex-direction: column;
     }
@@ -868,11 +916,8 @@ input[invalid-input] {
     }
 }
 @media screen and (max-width: 667px) {
-    .slogan-null {
-        height: 2vh;
-    }
-    .main-about {
-        max-width: 400px;
+    .main-head {
+        height: 20vh;
     }
     .main-about iframe, .match-video iframe {
         width: 90%;

@@ -50,11 +50,13 @@ public class HttpRequestsController {
     @Autowired
     LeagueManagementRepository leagueManagementRepository;
 
-    @GetMapping({"/", "/footgo"})
+    @GetMapping({"/"})
     public String footgo(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("name", name);
         List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         model.addAttribute("league", leagueList.get(0));
+        List allTeams = (List) teamRepository.findAll();
+        model.addAttribute("teamList", allTeams);
         return "footgo";
     }
 
@@ -81,6 +83,8 @@ public class HttpRequestsController {
 
         model.addAttribute("gameList", gameFinder.findAllGamesForTeam(team));
         model.addAttribute("team", team);
+        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        model.addAttribute("league", leagueList.get(0));
         return "teamresults";
     }
 

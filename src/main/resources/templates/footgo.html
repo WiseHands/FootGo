@@ -39,17 +39,36 @@
         <div><a class="link-item" href="/bombardier">Бомбардири</a></div>
     </div>
 </header>
-
+    <div class="main-head">
+        <div class="main-head-title">
+            <h1>Аматорський турнір з футболу</h1>
+            <div class="main-head-teamlogo">
+                <div th:each="item : ${teamList}">
+                    <a th:attr="href=${'/results/'
+                    + item.id}">
+                        <img th:attr="src=${'/logo/logo' + item.id + '.png'}">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="main-block">
-        <div class="slogan-null"></div>
+
 
         <div class="main-text">
             <div class="main-about">
-                <h1>Аматорський турнір</h1>
-                <h1>з футболу</h1>
+                <h1>Аматорський турнір з футболу</h1>
                 <p>Новий формат гри 8 на 8</p>
-                <p>10 команд</p>
-                <p>45 матчів</p>
+                <div class="main-about-team-match">
+                    <div class="main-about-team">
+                        <img src="/img/team-icon.png">
+                        <p>10 команд</p>
+                    </div>
+                    <div class="main-about-match">
+                        <img src="/img/soccer-ball.png">
+                        <p>45 матчів</p>
+                    </div>
+                </div>
                 <div class="slogan-button">
                     <input class="main-input-button" type="button" value="Результати" onclick="location.href='/results'">
                 </div>
