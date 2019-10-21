@@ -26,7 +26,7 @@ public class TopScorerService {
         Map<Player, PlayerGoals> playGoalMap = new HashMap<>();
         List<Goal> goalList = (List<Goal>) goalRepository.findAll();
         for(Goal _goal : goalList) {
-            if(_goal.getGame() == null || !_goal.getGame().isCompleted()) {
+            if(_goal.getGame() == null || !_goal.getGame().isCompleted() || _goal.getGame().isTeamAHasTechnicalDefeat() || _goal.getGame().isTeamBHasTechnicalDefeat()) {
                 continue;
             }
 

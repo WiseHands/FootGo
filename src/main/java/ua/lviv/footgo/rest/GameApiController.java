@@ -113,4 +113,25 @@ public class GameApiController {
         game.setVideoUrl(videoUrl);
         gameRepository.save(game);
     }
+
+    @PutMapping(value = "/{gameId}/technicaldefeat/{teamId}", consumes = "application/json", produces = "application/json")
+    public void setTeamATechnicalDefeat(@PathVariable Long gameId, @PathVariable Long teamId) {
+        Game game = gameRepository.findById(gameId).get();
+
+        if(game.getFirstTeam().getId().equals(teamId)) {
+            game.setTeamATechnicalDefeat();
+        } else {
+            game.setTeamBTechnicalDefeat();
+        }
+        gameRepository.save(game);
+    }
+
+    @DeleteMapping(value = "/{gameId}/technicaldefeat", consumes = "application/json", produces = "application/json")
+    public void deleteTechnicalDefeat(@PathVariable Long gameId) {
+        Game game = gameRepository.findById(gameId).get();
+        game.clearTechnicalDefeat();
+        gameRepository.save(game);
+    }
+
+
 }

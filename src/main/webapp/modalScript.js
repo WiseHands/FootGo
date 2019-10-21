@@ -1,14 +1,14 @@
 let state = {};
 
 // Get the modal
-var modal = document.getElementById("myModal");
+let modal = document.getElementById("myModal");
 
 
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+let span = document.getElementsByClassName("close")[0];
 
-var plusHomeTeamGoal = document.getElementById("plusHomeTeamGoal");
+let plusHomeTeamGoal = document.getElementById("plusHomeTeamGoal");
 plusHomeTeamGoal.onclick = function() {
 	state.homeTeamGoal = true;
     modal.style.display = "block";
@@ -16,13 +16,13 @@ plusHomeTeamGoal.onclick = function() {
     playerSelect.innerHTML = '';
     for(index in window.gameData.firstTeam.players) {
        let player = window.gameData.firstTeam.players[index];
-       var opt = document.createElement("option");
+       let opt = document.createElement("option");
        opt.value = player.id;
        opt.innerHTML = player.firstName + ' ' + player.lastName;
        playerSelect.appendChild(opt);
     }
 }
-var plusGuestTeamGoal = document.getElementById("plusGuestTeamGoal");
+let plusGuestTeamGoal = document.getElementById("plusGuestTeamGoal");
 plusGuestTeamGoal.onclick = function() {
 	state.homeTeamGoal = false;
     modal.style.display = "block";
@@ -30,16 +30,16 @@ plusGuestTeamGoal.onclick = function() {
         playerSelect.innerHTML = '';
         for(index in window.gameData.secondTeam.players) {
            let player = window.gameData.secondTeam.players[index];
-           var opt = document.createElement("option");
+           let opt = document.createElement("option");
            opt.value = player.id;
            opt.innerHTML = player.firstName + ' ' + player.lastName;
            playerSelect.appendChild(opt);
         }
 }
 
-var span3 = document.getElementsByClassName("close")[1];
+let span3 = document.getElementsByClassName("close")[1];
 
-var technicalDefeat = document.getElementById("technicalDefeat");
+let technicalDefeat = document.getElementById("technicalDefeat");
 technicalDefeat.onclick = function() {
     tDefeatModal.style.display = "block";
     let teamSelect = document.getElementById("teamSelect");
@@ -72,7 +72,7 @@ window.onclick = function(event) {
 }
 
 //modal2
-var goalModal = document.getElementById("goalModal");
+let goalModal = document.getElementById("goalModal");
 
 /*var gbtn = document.getElementById("goalBtn");
 
@@ -80,7 +80,7 @@ goalBtn.onclick = function() {
     myModal.style.display = "block";
 }*/
 
-var span2 = document.getElementsByClassName("close")/*[1]*/;
+let span2 = document.getElementsByClassName("close")/*[1]*/;
 
 span2.onclick = function() {
     goalModal.style.display = "none";
@@ -117,14 +117,14 @@ function addGoalBtnClicked(event) {
     })
 }
 
-function addTeamTechDefeat(event) {
-    /*let goalMinute = document.getElementById("goalMinute");*/
+let tdbutton = document.getElementById("tdSaveButton");
+
+tdbutton.addEventListener( 'click', function(clicked) {
     let teamSelect = document.getElementById("teamSelect");
-    console.log('addTeamTechDefeat', playerSelect.value);
-    let params = '?playerId=' + teamSelect.value;
-    let apiUrl = '/api/game/' + id + '/goal/' + params;
+    console.log('addTeamTechDefeat', teamSelect.value);
+    let apiUrl = '/api/game/' + id + '/technicaldefeat/' + teamSelect.value;
     fetch(apiUrl, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         }
@@ -132,14 +132,33 @@ function addTeamTechDefeat(event) {
         console.log(response);
         if(response.ok) {
             document.getElementById('tDefeatModal').style.display = "none";
-            location.pathname = location.pathname;
+            document.location.reload(true);
         } else {
             document.getElementById('tDefeatModal').style.display = "none";
             alert('Error');
         }
-        return  response.json();
+        //return  response.json();
     }).then(function(data) {
         console.log(data);
+    })
+})
+
+function clearTechnicalDefeat(gameId) {
+    let apiUrl = '/api/game/' + gameId  + '/technicaldefeat';
+    fetch(apiUrl, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+    }).then(function(response) {
+        console.log(response);
+        if(response.ok) {
+            location.pathname = location.pathname;
+        } else {
+            alert('Error');
+        }
+        return  response.json();
+    }).then(function(data) {
     })
 }
 
@@ -163,7 +182,7 @@ function deleteGoal(gameId, goalId, homeTeamGoal) {
     })
 }
 
-var checkbox = document.querySelector("input[name=match-over]");
+let checkbox = document.querySelector("input[name=match-over]");
 console.log(checkbox);
 
 checkbox.addEventListener( 'change', function(checked) {

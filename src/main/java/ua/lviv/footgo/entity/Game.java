@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Entity
@@ -23,6 +22,12 @@ public class Game {
 
     @Column
     private  String videoUrl;
+
+    @Column
+    private Boolean isTeamAHasTechnicalDefeat;
+
+    @Column
+    private Boolean isTeamBHasTechnicalDefeat;
 
     @Column
     private String location;
@@ -46,15 +51,13 @@ public class Game {
 
     private boolean isCompleted;
 
-    public static class SortByTour implements Comparator<Game>
-    {
-        public int compare(Game a, Game b)
-        {
+    public static class SortByTour implements Comparator<Game> {
+        public int compare(Game a, Game b) {
             return b.tour.getTourNumber() - a.tour.getTourNumber();
         }
     }
 
-    public boolean hasTeamAWin(){
+    public boolean hasTeamAWin() {
         if(this.teamAGoals == null) {
             this.teamAGoals = new ArrayList<>();
         }
@@ -64,7 +67,7 @@ public class Game {
         return  teamAGoals.size() > teamBGoals.size();
     }
 
-    public boolean hasTeamBWin(){
+    public boolean hasTeamBWin() {
         if(this.teamAGoals == null) {
             this.teamAGoals = new ArrayList<>();
         }
@@ -74,10 +77,38 @@ public class Game {
         return  teamAGoals.size() < teamBGoals.size();
     }
 
+    public void setTeamATechnicalDefeat() {
+        this.isTeamAHasTechnicalDefeat = true;
+        this.isTeamBHasTechnicalDefeat = false;
+    }
+
+    public void setTeamBTechnicalDefeat() {
+       this.isTeamBHasTechnicalDefeat = true;
+       this.isTeamAHasTechnicalDefeat = false;
+    }
+
+    public boolean isTeamAHasTechnicalDefeat() {
+        if (this.isTeamAHasTechnicalDefeat == null) {
+            return false;
+        }
+        return this.isTeamAHasTechnicalDefeat;
+    }
+
+    public boolean isTeamBHasTechnicalDefeat() {
+        if (this.isTeamBHasTechnicalDefeat == null) {
+            return false;
+        }
+        return this.isTeamBHasTechnicalDefeat;
+    }
+
+    public void clearTechnicalDefeat() {
+        this.isTeamBHasTechnicalDefeat = false;
+        this.isTeamAHasTechnicalDefeat = false;
+    }
+
     public boolean isADraw() {
         return teamAGoals.size() == teamBGoals.size();
     }
-
 
     public String getGameTime() {
         return gameTime;

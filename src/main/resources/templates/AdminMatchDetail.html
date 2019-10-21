@@ -42,6 +42,18 @@
                 </div>
             </div>
 
+            <div th:if="${game.isTeamAHasTechnicalDefeat() == true}" class="team-defeat">
+                <p>Техніча поразка&nbsp;</p>
+                <p th:text="${game.firstTeam.teamName}">Команда 1</p>
+                <span class="clear-technical-defeat" th:attr="onclick=${'clearTechnicalDefeat(' + game.id + ')'}">-</span>
+            </div>
+
+            <div th:if="${game.isTeamBHasTechnicalDefeat() == true}" class="team-defeat">
+                <p>Техніча поразка&nbsp;</p>
+                <p th:text="${game.secondTeam.teamName}">Команда 2</p>
+                <span class="clear-technical-defeat" th:attr="onclick=${'clearTechnicalDefeat(' + game.id + ')'}">-</span>
+            </div>
+
             <div class="modal-goal">
                 <div class="team1-goal">
                     <div th:each="goal : ${game.teamAGoals}">
@@ -53,15 +65,15 @@
                     </div>
                 </div>
 
-                <div class="team2-goal">
-                    <div th:each="goal : ${game.teamBGoals}">
-                        <p><img src="../../../img/soccer-ball.png">
-                            <span th:text="${goal.player.firstName + goal.player.lastName}"></span>,
-                            <span th:text="${' ' + goal.time}"></span>
-                            <span class="delete-goal" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', false)'}">-</span>
-                        </p>
-                    </div>
-                </div>
+<!--                <div class="team2-goal">-->
+<!--                    <div th:each="goal : ${game.teamBGoals}">-->
+<!--                        <p><img src="../../../img/soccer-ball.png">-->
+<!--                            <span th:text="${goal.player.firstName + goal.player.lastName}"></span>,-->
+<!--                            <span th:text="${' ' + goal.time}"></span>-->
+<!--                            <span class="delete-goal" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', false)'}">-</span>-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
 
             <div class="add-video-link">
@@ -123,7 +135,7 @@
                         </div>
                     </div>
                     <div class="goal-add">
-                        <input onclick="addGoalBtnClicked()" id="tdSaveButton" class="main-input-button" type="button" value="Зарахувати">
+                        <input id="tdSaveButton" class="main-input-button" type="button" value="Зарахувати">
                     </div>
                 </div>
             </div>
