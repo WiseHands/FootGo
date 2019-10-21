@@ -45,7 +45,7 @@
                 <div class="logo-team-bg">
                     <img th:attr="src=${'/logo/logo' + team.id + '.png'}">
                     <p th:text="${team.teamName}"></p>
-                    <p>Місце в чемпіонаті - <span>8</span></p>
+                    <p>Місце в чемпіонаті - <span th:text="${position}">8</span></p>
                 </div>
                 <h3>Ігри</h3>
             </div>

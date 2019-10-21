@@ -85,6 +85,20 @@ public class HttpRequestsController {
         model.addAttribute("team", team);
         List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         model.addAttribute("league", leagueList.get(0));
+
+
+        List<TeamResults> results = resultService.getResults(true);
+        Integer position = 1;
+        for(int i=0; i<results.size(); i++) {
+            TeamResults result = results.get(i);
+
+            if(result.getTeam().getId().equals(teamId)) {
+                position +=i;
+            }
+        }
+        model.addAttribute("position", position);
+
+
         return "teamresults";
     }
 
