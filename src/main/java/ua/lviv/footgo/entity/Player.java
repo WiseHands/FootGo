@@ -95,12 +95,29 @@ public class Player {
     }
 
     public String formatNumber() {
+        if(this.number == null) {
+            return "";
+        }
         return  "" + this.number;
     }
 
     public boolean isTwoDigits() {
         if(this.number == null) return false;
         return this.number > 9;
+    }
+
+    public String getPlayerFirstName() {
+        if(this.firstName != null) {
+            return  this.firstName;
+        }
+        return "";
+    }
+
+    public String getPlayerLastName() {
+        if(this.lastName != null) {
+            return  this.lastName;
+        }
+        return "";
     }
 
 }
