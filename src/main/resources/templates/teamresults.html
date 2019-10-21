@@ -67,8 +67,12 @@
                     </div>
                     <div class="res-score">
                         <a th:attr="href=${'/game/' + game.id}">
-                            <p th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</p>
-                            <p th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</p>
+                            <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</p>
+                            <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</p>
+                            <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</p>
+                            <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</p>
+                            <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</p>
+                            <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</p>
                         </a>
                     </div>
                     <div class="res-date">

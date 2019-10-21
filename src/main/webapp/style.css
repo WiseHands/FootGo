@@ -1143,3 +1143,6 @@ input[invalid-input] {
         max-width: 107px;
     }
 }
+.center-text {
+    text-align: center;
+}

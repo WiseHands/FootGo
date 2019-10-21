@@ -269,4 +269,8 @@ public class Game {
             return String.valueOf(teamBGoals.size());
         }
     }
+
+    public boolean isNoTechnicalDefeat() {
+        return !this.isTeamAHasTechnicalDefeat() && !this.isTeamBHasTechnicalDefeat();
+    }
 }

@@ -53,7 +53,16 @@
 				</div>
 				<div class="review-score">
 					<p>
-                        <span th:text="${game.teamAGoals.size()}">0</span> : <span th:text="${game.teamBGoals.size()}">0</span>
+						<span th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</span>
+						<span th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</span>
+						<span th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</span>
+
+<!--                        <span th:text="${game.teamAGoals.size()}">0</span> -->
+						:
+<!--						<span th:text="${game.teamBGoals.size()}">0</span>-->
+						<span th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</span>
+						<span th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</span>
+						<span th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</span>
                     </p>
 				</div>
 				<div class="review-team2">
@@ -65,7 +74,15 @@
 			</div>
 		</div>
 
-		<div class="details-match">
+		<div class="center-text" th:if="${game.isTeamAHasTechnicalDefeat() == true}">
+			Технічна поразка команди <span th:text="${game.firstTeam.teamName}">Команда 1</span>
+		</div>
+
+		<div class="center-text" th:if="${game.isTeamBHasTechnicalDefeat() == true}">
+			Технічна поразка команди <span th:text="${game.secondTeam.teamName}">Команда 2</span>
+		</div>
+
+		<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-match">
 			<div class="details-team1">
 				<div class="team1-goals" th:each="goal : ${game.teamAGoals}">
 						<p>
