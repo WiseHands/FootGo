@@ -56,7 +56,11 @@ public class ResultService {
         int numberOfTeamAGoals = game.getTeamAGoals().size();
         int numberOfTeamBGoals =  game.getTeamBGoals().size();
         if(game.getFirstTeam() == team) {
-            if(game.hasTeamAWin()) {
+            if(game.isTeamAHasTechnicalDefeat()) {
+                teamResults.addTechnicalLose();
+            } else if(game.isTeamBHasTechnicalDefeat()) {
+                teamResults.addTechnicalWin();
+            } else if(game.hasTeamAWin()) {
                 teamResults.addWin(numberOfTeamAGoals, numberOfTeamBGoals);
             } else if (game.isADraw()) {
                 teamResults.addDraw(numberOfTeamAGoals, numberOfTeamBGoals);
@@ -65,7 +69,11 @@ public class ResultService {
             }
 
         } else if (game.getSecondTeam() == team) {
-            if(game.hasTeamBWin()) {
+            if(game.isTeamAHasTechnicalDefeat()) {
+                teamResults.addTechnicalWin();
+            } else if(game.isTeamBHasTechnicalDefeat()) {
+                teamResults.addTechnicalLose();
+            } else if(game.hasTeamBWin()) {
                 teamResults.addWin(numberOfTeamBGoals, numberOfTeamAGoals);
             } else if (game.isADraw()) {
                 teamResults.addDraw(numberOfTeamBGoals, numberOfTeamAGoals);

@@ -112,6 +112,21 @@ public class TeamResults {
         this.numberOfGames++;
     }
 
+    public void addTechnicalWin() {
+        int technicalGoals = 3;
+        this.numberOfGoalsScored = this.numberOfGoalsScored + technicalGoals;
+        this.points += 3;
+        this.numberOfWins++;
+        this.numberOfGames++;
+    }
+
+    public void addTechnicalLose() {
+        int technicalGoals = 3;
+        this.numberOfGoalsMissed = this.numberOfGoalsMissed + technicalGoals;
+        this.numberOfLoses++;
+        this.numberOfGames++;
+    }
+
     public void addDraw(Integer numberOfScoredGoals, Integer numberOfGoalsMissed) {
         this.numberOfGoalsScored = this.numberOfGoalsScored + numberOfScoredGoals;
         this.numberOfGoalsMissed = this.numberOfGoalsMissed + numberOfGoalsMissed;
