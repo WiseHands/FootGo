@@ -18,6 +18,8 @@ public interface GameRepository extends CrudRepository<Game, Long> {
 
     List<Game> findBySecondTeamAndIsCompleted(Team secondTeam, boolean isCompleted);
 
+    List<Game> findByFirstTeamAndSecondTeam(Team firstTeam, Team secondTeam);
+
     @Transactional
     void deleteAll();
 }
