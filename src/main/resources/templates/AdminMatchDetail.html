@@ -30,10 +30,18 @@
                     <span id="plusHomeTeamGoal">+</span>
                 </div>
                 <div class="tour-score">
-                <span id="goalBtn">
+                <span th:if="${game.isTeamAHasTechnicalDefeat() == true}" id="goalBtn">
                     <p>
-                        <span th:text="${game.teamAGoals.size()}">0</span> : <span th:text="${game.teamBGoals.size()}">0</span>
+                        <span>0</span> : <span>3</span>
                     </p>
+                </span>
+                <span th:if="${game.isTeamBHasTechnicalDefeat() == true}" id="goalBtn">
+                     <p>
+                        <span>3</span> : <span>0</span>
+                    </p>
+                </span>
+                <span th:if="${game.isTeamAHasTechnicalDefeat() == false} and ${game.isTeamBHasTechnicalDefeat() == false}" id="goalBtn">
+                    <span th:text="${game.teamAGoals.size()}">0</span> : <span th:text="${game.teamBGoals.size()}">0</span>
                 </span>
                 </div>
                 <div class="tour-team2">
