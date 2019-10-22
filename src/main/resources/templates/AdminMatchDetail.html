@@ -45,13 +45,13 @@
             <div th:if="${game.isTeamAHasTechnicalDefeat() == true}" class="team-defeat">
                 <p>Техніча поразка&nbsp;</p>
                 <p th:text="${game.firstTeam.teamName}">Команда 1</p>
-                <span class="clear-technical-defeat" th:attr="onclick=${'clearTechnicalDefeat(' + game.id + ')'}">-</span>
+                <span class="clear-technical-defeat" th:attr="onclick=${'clearTechnicalDefeat(' + game.id + ')'}">x</span>
             </div>
 
             <div th:if="${game.isTeamBHasTechnicalDefeat() == true}" class="team-defeat">
                 <p>Техніча поразка&nbsp;</p>
                 <p th:text="${game.secondTeam.teamName}">Команда 2</p>
-                <span class="clear-technical-defeat" th:attr="onclick=${'clearTechnicalDefeat(' + game.id + ')'}">-</span>
+                <span class="clear-technical-defeat" th:attr="onclick=${'clearTechnicalDefeat(' + game.id + ')'}">x</span>
             </div>
 
             <div class="modal-goal">

@@ -509,11 +509,11 @@ span.delete-goal {
 }
 
 span.clear-technical-defeat {
-    font-size: 2rem;
     cursor: pointer;
     color: black;
-    padding-left: 5px;
+    padding-left: inherit;
     display: flex;
+    font-weight: 600;
 }
 
 .modal-goal span:hover {
