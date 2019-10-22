@@ -1,2 +1,3 @@
 # Footgo
-Footgo project
+[FootGo amateur soccer leageue](https://footgo-league.com/)
+
