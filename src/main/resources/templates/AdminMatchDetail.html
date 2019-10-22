@@ -73,15 +73,15 @@
                     </div>
                 </div>
 
-<!--                <div class="team2-goal">-->
-<!--                    <div th:each="goal : ${game.teamBGoals}">-->
-<!--                        <p><img src="../../../img/soccer-ball.png">-->
-<!--                            <span th:text="${goal.player.firstName + goal.player.lastName}"></span>,-->
-<!--                            <span th:text="${' ' + goal.time}"></span>-->
-<!--                            <span class="delete-goal" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', false)'}">-</span>-->
-<!--                        </p>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div class="team2-goal">
+                    <div th:each="goal : ${game.teamBGoals}">
+                        <p><img src="../../../img/soccer-ball.png">
+                            <span th:text="${goal.player.firstName + goal.player.lastName}"></span>,
+                            <span th:text="${' ' + goal.time}"></span>
+                            <span class="delete-goal" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', false)'}">-</span>
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <div class="add-video-link">
