@@ -531,6 +531,9 @@ span.clear-technical-defeat {
     text-align: right;
     padding-right: 5px;
 }
+.team1-goal div {
+    display: flex;
+}
 .link-style {
 	flex: 1;
     color: inherit;
