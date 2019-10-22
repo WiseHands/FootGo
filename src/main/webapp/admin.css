@@ -287,6 +287,10 @@ body p {
 .admin-title-row {
     text-align: center;
 }
+.plogo {
+    font-size: 1em !important;
+    margin-bottom: 0.3em;
+}
 input[type=text], input[type=tel], input[type=email], select {
     padding: 15px;
     margin: 5px 0 10px 0;
@@ -702,6 +706,7 @@ input[type="file"] {
 
 .admin-file-upload img {
     width: 200px;
+    border-radius: 50%;
 }
 
 .team-defeat {

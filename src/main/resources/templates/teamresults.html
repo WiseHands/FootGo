@@ -126,7 +126,8 @@
                             </div>
                             <div class="player-info">
                                 <div class="player-logo">
-                                    <img src="/logo/logo3.png">
+                                    <img th:if="${item.getImageUrl() != null}" th:attr="src=${item.getImageUrl()}">
+                                    <img th:if="${item.getImageUrl() == null}" src="/img/img_avatar.png">
                                 </div>
                                 <div class="player-score-name">
                                     <h4 th:text="${item.getPlayerFirstName()}"></h4>

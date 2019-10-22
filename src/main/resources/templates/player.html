@@ -44,7 +44,8 @@
 
 <div class="player-card-main">
 	<div class="player-card-photo">
-		<img src="https://www.w3schools.com/css/img_avatar.png" alt="logo">
+		<img th:if="${player.getImageUrl() != null}" th:attr="src=${player.getImageUrl()}">
+		<img th:if="${player.getImageUrl() == null}" src="/img/img_avatar.png">
 	</div>
 	<div class="player-card-info">
 		<p th:text="${player.lastName + ' ' + player.firstName}"></p>
