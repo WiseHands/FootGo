@@ -43,9 +43,8 @@
         <div class="main-head-title">
             <h1>Аматорський турнір з футболу</h1>
             <div class="main-head-teamlogo">
-                <div th:each="item : ${teamList}">
-                    <a th:attr="href=${'/results/'
-                    + item.id}">
+                <div th:each="item : ${teamList}" class="main-head-eachteam">
+                    <a th:attr="href=${'/results/' + item.id}">
                         <img th:attr="src=${'/logo/logo' + item.id + '.png'}">
                     </a>
                 </div>
@@ -53,7 +52,6 @@
         </div>
     </div>
     <div class="main-block">
-
 
         <div class="main-text">
             <div class="main-about">

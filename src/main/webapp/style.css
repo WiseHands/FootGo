@@ -171,8 +171,12 @@ a, a:hover {
     padding-bottom: 5px;
 }
 .main-head-teamlogo img {
-    width: 88px;
-    height: 88px;
+    width: 90%;
+    height: 90%;
+}
+.main-head-eachteam {
+    width: 85px;
+    height: 85px;
 }
 .main-head h1 {
     padding: 10px 0 20px 0;
