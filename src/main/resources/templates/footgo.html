@@ -45,7 +45,7 @@
             <div class="main-head-teamlogo">
                 <div th:each="item : ${teamList}" class="main-head-eachteam">
                     <a th:attr="href=${'/results/' + item.id}">
-                        <img th:attr="src=${'/logo/logo' + item.id + '.png'}">
+                        <img th:attr="src=${'/logo/logo' + item.id + '.png'}, class=${'team' + item.id}">
                     </a>
                 </div>
             </div>

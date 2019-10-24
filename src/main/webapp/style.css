@@ -164,7 +164,6 @@ a, a:hover {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
-
 }
 .main-head-teamlogo {
     display: flex;
@@ -1149,4 +1148,92 @@ input[invalid-input] {
 }
 .center-text {
     text-align: center;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+  --main-bg-color: #121212;
+  --main-text-color: #e1e1e1;
+  --main-sf-color: #1d1d1d;
+}
+  .main-head-title {
+      background: var(--main-bg-color);
+      color: var(--main-text-color);
+  }
+  .main-photo {
+      background: var(--main-bg-color);
+  }
+  .main-where, .main-when, .main-about, .main-video {
+      background: var(--main-sf-color);
+      color: var(--main-text-color);
+  }
+  .main-when ul span {
+      background: rgba(255,255,255,0.4);
+  }
+  header {
+      background: var(--main-bg-color);
+  }
+  .header-text p {
+      color: var(--main-text-color);
+  }
+   .main-about-team img {
+       background: url(/img/team-icon-dark.png) no-repeat;
+   }
+   .main-about-match img {
+       background: url(/img/soccer-ball-dark.png) no-repeat;
+   }
+  .main-about-team img, .main-about-match img {
+      display: block;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      background-size: 72px 72px;
+      padding-left: 72px;
+  }
+  .team1 {
+      background: url(/logo/logo1-dark.png) no-repeat;
+      background-size: 90%;
+  }
+  .team2 {
+      background: url(/logo/logo2-dark.png) no-repeat;
+      background-size: 75%;
+  }
+  .team3 {
+      background: url(/logo/logo3-dark.png) no-repeat;
+      background-size: 85%;
+  }
+  .team4 {
+      background: url(/logo/logo4-dark.png) no-repeat;
+      background-size: 70%;
+  }
+  .team5 {
+      background: url(/logo/logo5-dark.png) no-repeat;
+      background-size: 90%;
+  }
+  .team6 {
+      background: url(/logo/logo6-dark.png) no-repeat;
+      background-size: 90%;
+  }
+  .team7 {
+      background: url(/logo/logo7-dark.png) no-repeat;
+      background-size: 90%;
+  }
+  .team8 {
+      background: url(/logo/logo8-dark.png) no-repeat;
+      background-size: 90%;
+  }
+  .team9 {
+      background: url(/logo/logo9-dark.png) no-repeat;
+      background-size: 90%;
+  }
+  .team10 {
+      background: url(/logo/logo10-dark.png) no-repeat;
+      background-size: 85%;
+  }
+  .main-head-teamlogo img {
+      display: block;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding-left: 90px;
+      height: 90px;
+  }
+
 }
