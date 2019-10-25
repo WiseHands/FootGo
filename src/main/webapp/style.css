@@ -95,7 +95,7 @@ a, a:hover {
     font-size: 0.9rem;
     padding: 0 0 5px 10px;
 }
-.main-where iframe, .main-video iframe {
+.main-where iframe, .main-video iframe, #map {
     width: 100%;
     height: 250px;
     margin: 0 auto;
@@ -1149,6 +1149,12 @@ input[invalid-input] {
 .center-text {
     text-align: center;
 }
+@media (prefers-color-scheme: light) {
+  #map {
+      display: none;
+  }
+}
+/*Dark-mode*/
 @media (prefers-color-scheme: dark) {
 :root {
   --main-bg-color: #121212;
@@ -1159,7 +1165,7 @@ input[invalid-input] {
       background: var(--main-bg-color);
       color: var(--main-text-color);
   }
-  .main-photo {
+  header, .main-photo {
       background: var(--main-bg-color);
   }
   .main-where, .main-when, .main-about, .main-video {
@@ -1169,10 +1175,7 @@ input[invalid-input] {
   .main-when ul span {
       background: rgba(255,255,255,0.4);
   }
-  header {
-      background: var(--main-bg-color);
-  }
-  .header-text p {
+  .header-text p, .res-tour-title, a, a:hover {
       color: var(--main-text-color);
   }
    .main-about-team img {
@@ -1234,6 +1237,20 @@ input[invalid-input] {
       box-sizing: border-box;
       padding-left: 90px;
       height: 90px;
+  }
+  .main-where iframe {
+      display: none;
+  }
+  .results-container {
+      background: var(--main-sf-color);
+      color: var(--main-text-color);
+  }
+  .res-teams img {
+      display: block;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding-left: 27px;
+      height: 27px;
   }
 
 }
