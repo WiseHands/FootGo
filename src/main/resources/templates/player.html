@@ -53,14 +53,14 @@
 		<!--<p>01.01.1900</p>-->
 		<p>Команда</p>
 		<div class="player-card-logo-team">
-			<a th:attr="href=${'/results/' + player.team.id}">
+			<a th:attr="href=${'/team/' + player.team.id}">
 				<img th:attr="src=${'/logo/logo' + player.team.id + '.png'}">
 				<p th:text="${player.team.teamName}"></p>
 			</a>
 		</div>
 		<!--<p>Забито голів:<span>15</span></p>-->
 		<!--<div class="player-card-logo-team-score">-->
-			<!--<a th:attr="href=${'/results/' + player.team.id}">-->
+			<!--<a th:attr="href=${'/team/' + player.team.id}">-->
 				<!--<img th:attr="src=${'/logo/logo' + player.team.id + '.png'}">-->
 				<!--<p th:text="${player.team.teamName}"></p>-->
 			<!--</a>-->

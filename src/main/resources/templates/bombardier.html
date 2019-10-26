@@ -72,7 +72,7 @@
         <div class="bomb-team">
             <div class="bomb-title">Команда</div>
             <div th:each="playerGoal : ${playerGoals}">
-                <a th:attr="href=${'/results/' + playerGoal.player.team.id}">
+                <a th:attr="href=${'/team/' + playerGoal.player.team.id}">
                     <p th:text="${playerGoal.player.team.teamName}">Lions</p>
                 </a>
             </div>

@@ -52,13 +52,13 @@
             <div class="results-all-tour">
                 <div th:each="game : ${gameList}" class="results-container">
                     <div class="res-teams">
-                        <a th:attr="href=${'/results/' + game.firstTeam.id}">
+                        <a th:attr="href=${'/team/' + game.firstTeam.id}">
                             <img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}">
                             <p th:text="${game.firstTeam.teamName}">
                                 game.firstTeam.teamName
                             </p>
                         </a>
-                        <a th:attr="href=${'/results/' + game.secondTeam.id}">
+                        <a th:attr="href=${'/team/' + game.secondTeam.id}">
                             <img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}">
                             <p th:text="${game.secondTeam.teamName}">
                                 game.secondTeam.teamName
