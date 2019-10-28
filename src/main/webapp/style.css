@@ -1163,7 +1163,7 @@ input[invalid-input] {
   --main-sf-color: #1d1d1d;
 }
   .main-head-title {
-      background: var(--main-bg-color);
+      background: var(--main-sf-color);
       color: var(--main-text-color);
   }
   header, .main-photo {
