@@ -763,6 +763,7 @@ input[invalid-input] {
     font-weight: 600;
     color: #fff;
     text-align: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 .player-card {
     display: flex;
@@ -1176,7 +1177,7 @@ input[invalid-input] {
   .main-when ul span {
       background: rgba(255,255,255,0.4);
   }
-  .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3 {
+  .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3, .bomb-head p {
       color: var(--main-text-color);
   }
   .main-about-team img {
@@ -1315,5 +1316,22 @@ input[invalid-input] {
             height: 96px;
             width: 96px;
         }
+    }
+    .bomb-full {
+        background-image: url(img/foot44-dark.jpg);
+    }
+    .table-full {
+        background-image: url(img/foot22-dark.jpg);
+    }
+    .matches-full {
+        background-image: url(img/foot77-dark.jpg);
+    }
+    .results-full {
+        background-image: url(img/foot66-dark.jpg);
+    }
+    .main-head {
+        background: url(img/mainphoto-dark.jpg);
+        background-position: center;
+        background-size: cover;
     }
 }
