@@ -480,6 +480,7 @@ input[type=submit] {
     font-size: 1.2rem;
     font-weight: 600;
     padding-top: 10px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 .res-tour-allmatch {
     display: flex;
@@ -1314,4 +1315,5 @@ input[invalid-input] {
             height: 96px;
             width: 96px;
         }
+    }
 }
