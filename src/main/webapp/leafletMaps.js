@@ -1,4 +1,7 @@
-var map = L.map('map').setView([49.823774, 23.953927], 13);
+var map = L.map('map', {
+   dragging: !L.Browser.mobile,
+   touchZoom: true
+}).setView([49.823774, 23.953927], 13);
 L.tileLayer('https://api.maptiler.com/maps/darkmatter/{z}/{x}/{y}.png?key=gazyc6Cl99WzG1oKAzUT', {
      attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
      maxZoom: 18

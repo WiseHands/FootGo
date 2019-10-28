@@ -54,7 +54,7 @@
 		<p>Команда</p>
 		<div class="player-card-logo-team">
 			<a th:attr="href=${'/team/' + player.team.id}">
-				<img th:attr="src=${'/logo/logo' + player.team.id + '.png'}">
+				<img th:attr="src=${'/logo/logo' + player.team.id + '.png'}, class=${'team' + player.team.id}">
 				<p th:text="${player.team.teamName}"></p>
 			</a>
 		</div>

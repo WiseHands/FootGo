@@ -43,7 +43,7 @@
         <div class="results-bg">
             <div class="results-block">
                 <div class="logo-team-bg">
-                    <img th:attr="src=${'/logo/logo' + team.id + '.png'}">
+                    <img th:attr="src=${'/logo/logo' + team.id + '.png'}, class=${'team' + team.id}">
                     <p th:text="${team.teamName}"></p>
                     <p>Місце в чемпіонаті - <span th:text="${position}">8</span></p>
                 </div>
@@ -53,13 +53,13 @@
                 <div th:each="game : ${gameList}" class="results-container">
                     <div class="res-teams">
                         <a th:attr="href=${'/team/' + game.firstTeam.id}">
-                            <img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}">
+                            <img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}, class=${'team' + game.firstTeam.id}">
                             <p th:text="${game.firstTeam.teamName}">
                                 game.firstTeam.teamName
                             </p>
                         </a>
                         <a th:attr="href=${'/team/' + game.secondTeam.id}">
-                            <img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}">
+                            <img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}, class=${'team' + game.secondTeam.id}">
                             <p th:text="${game.secondTeam.teamName}">
                                 game.secondTeam.teamName
                             </p>

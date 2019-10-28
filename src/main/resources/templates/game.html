@@ -47,7 +47,7 @@
 			<div class="review-head">
 				<div class="review-team1">
 					<a th:attr="href=${'/team/' + game.firstTeam.id}">
-						<img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}">
+						<img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'} , class=${'team' + game.firstTeam.id}">
 						<p th:text="${game.firstTeam.teamName}">Команда 1</p>
 					</a>
 				</div>
@@ -67,7 +67,7 @@
 				</div>
 				<div class="review-team2">
 					<a th:attr="href=${'/team/' + game.secondTeam.id}">
-						<img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}">
+						<img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}, class=${'team' + game.secondTeam.id}">
 						<p th:text="${game.secondTeam.teamName}">Команда 2</p>
 					</a>
 				</div>

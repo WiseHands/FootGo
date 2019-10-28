@@ -1168,22 +1168,22 @@ input[invalid-input] {
   header, .main-photo {
       background: var(--main-bg-color);
   }
-  .main-where, .main-when, .main-about, .main-video {
+  .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .mathces-bg {
       background: var(--main-sf-color);
       color: var(--main-text-color);
   }
   .main-when ul span {
       background: rgba(255,255,255,0.4);
   }
-  .header-text p, .res-tour-title, a, a:hover {
+  .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3 {
       color: var(--main-text-color);
   }
-   .main-about-team img {
-       background: url(/img/team-icon-dark.png) no-repeat;
-   }
-   .main-about-match img {
-       background: url(/img/soccer-ball-dark.png) no-repeat;
-   }
+  .main-about-team img {
+      background: url(/img/team-icon-dark.png) no-repeat;
+  }
+  .main-about-match img {
+      background: url(/img/soccer-ball-dark.png) no-repeat;
+  }
   .main-about-team img, .main-about-match img {
       display: block;
       -moz-box-sizing: border-box;
@@ -1252,5 +1252,66 @@ input[invalid-input] {
       padding-left: 27px;
       height: 27px;
   }
-
+  .table-title, .bomb-title {
+      background: rgba(39, 42, 48, 0.7);
+  }
+  .table-position div:nth-of-type(n+5), .table-team-name div:nth-of-type(n+5), .table-games div:nth-of-type(n+5), .table-wins div:nth-of-type(n+5), .table-draws div:nth-of-type(n+5), .table-defeats div:nth-of-type(n+5), .table-goals div:nth-of-type(n+5), .table-points div:nth-of-type(n+5) {
+      background: rgba(13, 13, 13, 0.7);
+  }
+    .table-team-name img {
+        display: block;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding-left: 27px;
+        height: 27px;
+    }
+    .table-secondplace img {
+        background: url(/logo/logo2.png) no-repeat;
+        background-size: 75%;
+    }
+    .logo-team-bg img {
+        display: block;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding-left: 124px;
+        height: 124px;
+        width: 124px;
+        background-size: 100%;
+    }
+    .player-photo{
+        background: #14332e;
+    }
+    .player-photo img {
+        display: block;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding-left: 128px;
+        height: 128px;
+        width: 128px;
+        background: url(/img/tshirt-dark.png) no-repeat;
+        background-size: 100%;
+    }
+    .player-info, .bomb-position div, .bomb-player-name div, .bomb-scored div, .bomb-team div {
+        background: var(--main-sf-color);
+    }
+    .player-card-logo-team img {
+        display: block;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding-left: 24px;
+        background-size: 100%;
+    }
+    .review-team1 img, .review-team2 img {
+        display: block;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding-left: 72px;
+        background-size: 100%;
+    }
+    @media screen and (max-width: 667px) {
+        .player-photo img {
+            padding-left: 96px;
+            height: 96px;
+            width: 96px;
+        }
 }
