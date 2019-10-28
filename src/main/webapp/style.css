@@ -1318,18 +1318,23 @@ input[invalid-input] {
         }
     }
     .bomb-full {
+        background-color: var(--main-bg-color);
         background-image: url(img/foot44-dark.jpg);
     }
     .table-full {
+        background-color: var(--main-bg-color);
         background-image: url(img/foot22-dark.jpg);
     }
     .matches-full {
+        background-color: var(--main-bg-color);
         background-image: url(img/foot77-dark.jpg);
     }
-    .results-full {
+    .results-full, .team-results-full {
+        background-color: var(--main-bg-color);
         background-image: url(img/foot66-dark.jpg);
     }
     .main-head {
+        background-color: var(--main-bg-color);
         background: url(img/mainphoto-dark.jpg);
         background-position: center;
         background-size: cover;
