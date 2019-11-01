@@ -109,6 +109,7 @@
 			</div>
 		</div>
 		<div class="match-video" th:if="${game.videoUrl != null}">
+			<p>Відео матчу</p>
 			<iframe width="500" height="281" th:attr="src=${game.videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
 	</div>
