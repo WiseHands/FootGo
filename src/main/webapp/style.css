@@ -642,6 +642,11 @@ input[invalid-input] {
     border-radius: 10px;
     margin: 0 auto;
 }
+.tour-number  {
+    display: flex;
+    margin: 0 auto;
+    font-size: 1.8rem;
+}
 .review-match {
     display: flex;
     justify-content: center;
@@ -741,7 +746,7 @@ input[invalid-input] {
     font-size: 0.8rem;
 }
 .match-video {
-    padding-top: 20px;
+    padding-top: 30px;
 }
 .match-video iframe {
     display: flex;
@@ -750,6 +755,7 @@ input[invalid-input] {
 }
 .match-video p {
     text-align: center;
+    font-size: 1.8rem;
 }
 .team-players {
     margin: 0 auto;
