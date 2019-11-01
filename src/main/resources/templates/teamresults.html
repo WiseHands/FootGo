@@ -47,8 +47,8 @@
                     <p th:text="${team.teamName}"></p>
                     <p>Місце в чемпіонаті - <span th:text="${position}">8</span></p>
                 </div>
-                <h3>Ігри</h3>
             </div>
+            <h3>Ігри</h3>
             <div class="results-all-tour">
                 <div th:each="game : ${gameList}" class="results-container">
                     <div class="res-teams">
