@@ -77,7 +77,7 @@ public class HttpRequestsController {
         return "results";
     }
 
-    @GetMapping({"/results/{teamId}"})
+    @GetMapping({"/team/{teamId}"})
     public String results(Model model, @PathVariable("teamId") Long teamId) {
         Team team = teamRepository.findById(teamId).get();
 
