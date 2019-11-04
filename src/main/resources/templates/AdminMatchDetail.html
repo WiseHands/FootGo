@@ -66,7 +66,7 @@
                 <div class="team1-goal">
                     <div th:each="goal : ${game.teamAGoals}">
                         <p><img src="../../../img/soccer-ball.png">
-                            <span th:text="${goal.player.firstName + goal.player.lastName}"></span>,
+                            <span th:text="${goal.player.firstName + goal.player.lastName}" th:attr="onclick=${'editTeam1(' + game.id + ', ' + goal.id + ', true)'}"></span>,
                             <span th:text="${' ' + goal.time}"></span>
                             <span class="delete-goal" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', true)'}">-</span>
                         </p>
@@ -76,7 +76,7 @@
                 <div class="team2-goal">
                     <div th:each="goal : ${game.teamBGoals}">
                         <p><img src="../../../img/soccer-ball.png">
-                            <span th:text="${goal.player.firstName + goal.player.lastName}"></span>,
+                            <span th:text="${goal.player.firstName + goal.player.lastName}" th:attr="onclick=${'editTeam2(' + game.id + ', ' + goal.id + ', false)'}"></span>,
                             <span th:text="${' ' + goal.time}"></span>
                             <span class="delete-goal" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', false)'}">-</span>
                         </p>
@@ -119,11 +119,67 @@
                         </div>
                         <div class="goal-second">
                             <p>Секунда голу у відео</p>
-                            <input type="text" name="minute" id="goalSec">
+                            <input type="text" name="seconds" id="goalSec">
                         </div>
                     </div>
                     <div class="goal-add">
                         <input onclick="addGoalBtnClicked()" id="savebutton" class="main-input-button" type="button" value="Додати">
+                    </div>
+                </div>
+            </div>
+
+            <div id="editDataTeam1" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>Час голу</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="goal-minute">
+                            <p>Хвилина</p>
+                            <input type="text" name="minute" id="goalMinute1">
+                        </div>
+                        <div class="goal-author">
+                            <p>Автор</p>
+                            <select id="playerSelect1">
+                            </select>
+                        </div>
+                        <div class="goal-second">
+                            <p>Секунда голу у відео</p>
+                                <input value="" type="text" name="seconds" id="addGoalSec1">
+                        </div>
+                    </div>
+                    <div class="goal-add">
+                        <input onclick="saveGoalBtnClicked()" id="savetimebutton1" class="main-input-button" type="button" value="Зберегти">
+                    </div>
+                </div>
+            </div>
+
+            <div id="editDataTeam2" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>Час голу</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="goal-minute">
+                            <p>Хвилина</p>
+                            <input type="text" name="minute" id="goalMinute2">
+                        </div>
+                        <div class="goal-author">
+                            <p>Автор</p>
+                            <select id="playerSelect2">
+                            </select>
+                        </div>
+                        <div class="goal-second">
+                            <p>Секунда голу у відео</p>
+                                <input value="" type="text" name="seconds" id="addGoalSec2">
+                        </div>
+                    </div>
+                    <div class="goal-add">
+                        <input onclick="saveGoalBtnClicked()" id="savetimebutton2" class="main-input-button" type="button" value="Зберегти">
                     </div>
                 </div>
             </div>

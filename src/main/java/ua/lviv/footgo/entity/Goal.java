@@ -16,6 +16,9 @@ public class Goal {
     @Column
     private Integer time;
 
+    @Column
+    private Integer videoSeconds;
+
     @ManyToOne
     @JoinColumn
     @JsonIgnore
@@ -37,6 +40,14 @@ public class Goal {
 
     public void setTime(Integer time) {
         this.time = time;
+    }
+
+    public Integer getVideoSeconds() {
+        return videoSeconds;
+    }
+
+    public void setVideoSeconds(Integer videoSeconds) {
+        this.videoSeconds = videoSeconds;
     }
 
     public Game getGame() {

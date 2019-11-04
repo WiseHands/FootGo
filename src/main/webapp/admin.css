@@ -509,7 +509,7 @@ span.delete-goal {
     cursor: pointer;
     color: red;
     padding-left: 5px;
-    display: flex;
+    display: table;
 }
 
 span.clear-technical-defeat {
@@ -520,7 +520,7 @@ span.clear-technical-defeat {
     font-weight: 600;
 }
 
-.modal-goal span:hover {
+.modal-goal span:hover, .tour-team1 span:hover, .tour-team2 span:hover {
     color: #FF6A4F;
     cursor: pointer;
 }
