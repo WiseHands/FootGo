@@ -134,14 +134,16 @@ function addGoalBtnClicked(event) {
         console.log(data);
     })
 }
-function saveGoalBtnClicked(event) {
-    let saveTime = document.getElementById("savetimebutton1");
-    let playerSelect = document.getElementById("playerSelect");
-    console.log('saveGoalBtnClicked', playerSelect.value, saveTime.value);
-    let params = '?playerId=' + playerSelect.value + '&goalMinute=' + saveTime.value + "&homeTeamGoal=" + state.homeTeamGoal;
-    let apiUrl = '/api/game/' + id + '/goal/' + params;
+function saveGoalBtnClickedTeamA(event) {
+    state.homeTeamGoal = true;
+    let goalMinute = document.getElementById("goalMinute1");
+    let goalVideoSec = document.getElementById("addGoalSec1");
+    let playerSelect = document.getElementById("playerSelect1");
+    console.log('saveGoalBtnClickedTeamA', playerSelect.value, goalMinute.value);
+    let params = '?playerId=' + playerSelect.value + '&goalMinute=' + goalMinute.value + '&goalVideoSec=' + goalVideoSec.value + "&homeTeamGoal=" + state.homeTeamGoal;
+    let apiUrl = '/api/goal/' + window.goalId + params;
     fetch(apiUrl, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         }
@@ -149,6 +151,32 @@ function saveGoalBtnClicked(event) {
         console.log(response);
         if(response.ok) {
             document.getElementById('editDataTeam1').style.display = "none";
+            location.pathname = location.pathname;
+        } else {
+            alert('Error');
+        }
+        return  response.json();
+    }).then(function(data) {
+        console.log(data);
+    })
+}
+
+function saveGoalBtnClickedTeamB(event) {
+    state.homeTeamGoal = false;
+    let goalMinute = document.getElementById("goalMinute2");
+    let goalVideoSec = document.getElementById("addGoalSec2");
+    let playerSelect = document.getElementById("playerSelect2");
+    console.log('saveGoalBtnClickedTeamB', playerSelect.value, goalMinute.value);
+    let params = '?playerId=' + playerSelect.value + '&goalMinute=' + goalMinute.value + '&goalVideoSec=' + goalVideoSec.value + "&homeTeamGoal=" + state.homeTeamGoal;
+    let apiUrl = '/api/goal/' + window.goalId + params;
+    fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+    }).then(function(response) {
+        console.log(response);
+        if(response.ok) {
             document.getElementById('editDataTeam2').style.display = "none";
             location.pathname = location.pathname;
         } else {
@@ -205,19 +233,64 @@ function clearTechnicalDefeat(gameId) {
     })
 }
 function editTeam1(gameId, goalId, homeTeamGoal) {
+    window.goalId = goalId;
+    let playerSelect = document.getElementById("playerSelect1");
+    playerSelect.innerHTML = '';
+    for(index in window.gameData.firstTeam.players) {
+       let player = window.gameData.firstTeam.players[index];
+       let opt = document.createElement("option");
+       opt.value = player.id;
+       opt.innerHTML = player.firstName + ' ' + player.lastName;
+       playerSelect.appendChild(opt);
+    }
     for(index in window.gameData.teamAGoals) {
-       let teamA = window.gameData.teamAGoals[index];
-       let gameTime = teamA.time;
-       console.log('showGoal', goalId + ' gameTime', gameTime);
+       let goal = window.gameData.teamAGoals[index];
+
+       if(goalId === goal.id) {
+           let goalTime = goal.time;
+           let videoSeconds = goal.videoSeconds
+           let playerName = goal.player.id;
+           console.log('goalId', goalId + ' goalTime', goalTime + ' videoSeconds', videoSeconds + ' playerName', playerName);
+
+           let setGoalMinute = document.getElementById("goalMinute1");
+           setGoalMinute.value = goalTime;
+
+           let setGoalSeconds = document.getElementById("addGoalSec1");
+           setGoalSeconds.value = videoSeconds;
+
+           playerSelect.value = playerName;
+       }
     }
     editDataTeam1.style.display = "block";
 }
 
 function editTeam2(gameId, goalId, homeTeamGoal) {
+    let playerSelect = document.getElementById("playerSelect2");
+    playerSelect.innerHTML = '';
+    for(index in window.gameData.secondTeam.players) {
+       let player = window.gameData.secondTeam.players[index];
+       let opt = document.createElement("option");
+       opt.value = player.id;
+       opt.innerHTML = player.firstName + ' ' + player.lastName;
+       playerSelect.appendChild(opt);
+    }
     for(index in window.gameData.teamBGoals) {
-       let teamB = window.gameData.teamBGoals[index];
-       let gameTime = teamB.time;
-       console.log('showGoal', goalId + ' gameTime', gameTime);
+       let goal = window.gameData.teamBGoals[index];
+
+       if(goalId === goal.id) {
+           let videoSeconds = goal.videoSeconds
+           let goalTime = goal.time;
+           let playerName = goal.player.id;
+           console.log('goalId', goalId + ' goalTime', goalTime + ' videoSeconds', videoSeconds);
+
+           let setGoalMinute = document.getElementById("goalMinute2");
+           setGoalMinute.value = goalTime;
+
+           let setGoalSeconds = document.getElementById("addGoalSec2");
+           setGoalSeconds.value = videoSeconds;
+
+           playerSelect.value = playerName;
+       }
     }
     editDataTeam2.style.display = "block";
 }
