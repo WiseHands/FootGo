@@ -733,6 +733,9 @@ input[type="file"] {
 #descriptionText {
     padding: 2rem;
     margin-bottom: 0.5rem;
+    width: 90%;
+    min-width: 40%;
+    max-width: 100%;
 }
 @media screen and (max-width: 667px) {
 
