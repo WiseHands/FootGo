@@ -3,6 +3,8 @@
     padding: 0;
 }
 .main-container {
+    display: flex;
+    flex-direction: column;
     max-width: 900px;
     margin: 0 auto;
 }
@@ -270,7 +272,6 @@ body p {
     margin: 10px auto;
 
 }
-
 .admin-players {
     display: flex;
     flex-wrap: wrap;
@@ -347,14 +348,65 @@ input[type=text], input[type=tel], input[type=email], select {
     font-size: 2rem;
     font-weight: 600;
 }
+.admin-review-match {
+    display: flex;
+    justify-content: center;
+}
 .tour-match {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 15px;
+    width: 600px;
+    padding: 15px 0;
     font-size: 1.3rem;
-    max-width: 700px;
-    margin: 0 auto;
+}
+.admin-review-match {
+    display: flex;
+    justify-content: center;
+}
+.admin-review-head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    padding: 20px 0;
+}
+.admin-review-head p {
+    text-align: center;
+}
+
+.admin-review-team1, .admin-review-team2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+}
+.admin-review-team1 a, .admin-review-team2 a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.admin-review-team1 img, .admin-review-team2 img {
+    width: 72px;
+    height: 72px;
+    padding-bottom: 10px;
+
+}
+.admin-review-team1 p, .admin-review-team2 p {
+    text-align: center;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 175px;
+}
+.admin-review-score {
+    width: 150px;
+    padding: 20px 0;
+}
+.admin-review-score p {
+    font-size: 3rem;
+    font-weight: 600;
 }
 .tour-team1-details, .tour-team2-details {
     width: 40%;
@@ -382,8 +434,8 @@ input[type=text], input[type=tel], input[type=email], select {
     display: inline-block;
 }
 .tour-score {
-    /*width: 60px;*/
-    padding: 0 15px;
+    width: 100px;
+    padding: 0 0;
     font-size: 1.5rem;
 }
 .tour-team2 span, .tour-team2-details span {
@@ -738,5 +790,21 @@ input[type="file"] {
     max-width: 100%;
 }
 @media screen and (max-width: 667px) {
-
+    .admin-review-team1, .admin-review-team2 {
+        width: 100px;
+    }
+    .tour-match {
+        width: 320px;
+    }
+    .admin-review-team1 img, .admin-review-team2 img {
+        width: 96px;
+        height: 96px;
+    }
+    .admin-review-team1 p, .admin-review-team2 p {
+        font-size: 1.3rem;
+        width: 120px;
+    }
+    .admin-review-score p {
+        font-size: 1.6rem;
+    }
 }
