@@ -22,7 +22,7 @@ public class Game {
     @Column
     private String videoUrl;
 
-    @Column
+    @Column(columnDefinition="TEXT")
     private String descriptionText;
 
     @Column
