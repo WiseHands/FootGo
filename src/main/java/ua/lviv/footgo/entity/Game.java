@@ -11,7 +11,6 @@ import java.util.*;
 @Entity
 public class Game {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -21,7 +20,10 @@ public class Game {
     private String gameTime;
 
     @Column
-    private  String videoUrl;
+    private String videoUrl;
+
+    @Column
+    private String descriptionText;
 
     @Column
     private Boolean isTeamAHasTechnicalDefeat;
@@ -124,6 +126,14 @@ public class Game {
 
     public void setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
+    }
+
+    public String getDescriptionText() {
+        return descriptionText;
+    }
+
+    public void setDescriptionText(String descriptionText) {
+        this.descriptionText = descriptionText;
     }
 
     public String getLocation() {

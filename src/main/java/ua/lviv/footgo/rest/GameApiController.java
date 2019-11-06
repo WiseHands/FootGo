@@ -115,6 +115,13 @@ public class GameApiController {
         gameRepository.save(game);
     }
 
+    @PutMapping(value = "/{gameId}/setdesctext", consumes = "application/json", produces = "application/json")
+    public void setDescriptionText(@PathVariable Long gameId, @RequestParam String descText) {
+        Game game = gameRepository.findById(gameId).get();
+        game.setDescriptionText(descText);
+        gameRepository.save(game);
+    }
+
     @PutMapping(value = "/{gameId}/technicaldefeat/{teamId}", consumes = "application/json", produces = "application/json")
     public void setTeamATechnicalDefeat(@PathVariable Long gameId, @PathVariable Long teamId) {
         Game game = gameRepository.findById(gameId).get();

@@ -557,11 +557,11 @@ span.clear-technical-defeat {
 }
 
 /*messages*/
-#success, #successDel, #successChange {
+#success, #successDel, #successChange, #textSuccess {
     display: none;
     text-align: center;
 }
-#error, #errorDel, #errorChange {
+#error, #errorDel, #errorChange, #textError {
 	display: none;
 	text-align: center;
 }
@@ -723,6 +723,17 @@ input[type="file"] {
     border-radius: 10px;
 }
 
+.description-text {
+    text-align: center;
+    font-size: 1.5rem !important;
+    font-weight: 600;
+    padding-bottom: 1rem;
+}
+
+#descriptionText {
+    padding: 2rem;
+    margin-bottom: 0.5rem;
+}
 @media screen and (max-width: 667px) {
 
 }

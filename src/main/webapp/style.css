@@ -866,7 +866,7 @@ input[invalid-input] {
     padding-bottom: 5px;
 }
 .player-card-info p:nth-child(2n+2) {
-    font-size: 1.3 rem;
+    font-size: 1.3rem;
     font-weight: 600;
 }
 .player-card-info span {
@@ -1099,8 +1099,8 @@ input[invalid-input] {
     }
 
     .review-team1 img, .review-team2 img {
-        width: 96px;
-        height: 96px;
+        width: 72px;
+        height: 72px;
     }
     .review-team1 p, .review-team2 p {
         font-size: 1.3rem;
@@ -1169,6 +1169,13 @@ input[invalid-input] {
       display: none;
   }
 }
+.description-text {
+    margin: 0 auto;
+    text-align: center;
+    padding: 1rem;
+    width: 60%;
+}
+
 /*Dark-mode*/
 @media (prefers-color-scheme: dark) {
 :root {
@@ -1353,4 +1360,5 @@ input[invalid-input] {
         background-position: center;
         background-size: cover;
     }
+/*Dark-mode end*/
 }
