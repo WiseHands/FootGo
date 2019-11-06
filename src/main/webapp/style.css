@@ -654,6 +654,7 @@ input[invalid-input] {
 .review-head {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 500px;
     padding: 20px 0;
 }
@@ -693,7 +694,6 @@ input[invalid-input] {
     font-size: 3rem;
     font-weight: 600;
 }
-
 .details-match {
     display: flex;
     font-size: 1.3rem;
