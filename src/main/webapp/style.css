@@ -1110,7 +1110,7 @@ input[invalid-input] {
         font-size: 1.6rem;
     }
     .results-container {
-        width: 90%;
+        width: 90% !important;
         padding: 5px;
         margin: 7px 0;
     }
@@ -1171,7 +1171,7 @@ input[invalid-input] {
 }
 .description-text {
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
     padding: 1rem;
     width: 60%;
 }

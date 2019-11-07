@@ -1,7 +1,8 @@
 function putDescTextById() {
     let desctext = document.getElementById('descriptionText').value;
+    let desctext_res = encodeURI(desctext);
 
-    let params = '?descText=' + desctext;
+    let params = '?descText=' + desctext_res;
     let apiUrl = '/api/game/' + id + '/setdesctext' + params;
 
     fetch(apiUrl, {
