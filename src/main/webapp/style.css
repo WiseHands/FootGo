@@ -654,7 +654,6 @@ input[invalid-input] {
 .review-head {
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 500px;
     padding: 20px 0;
 }
