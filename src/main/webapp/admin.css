@@ -514,7 +514,7 @@ span.delete-goal {
 span.clear-technical-defeat {
     cursor: pointer;
     color: black;
-    padding-left: inherit;
+    padding-left: 5%;
     display: flex;
     font-weight: 600;
 }
@@ -715,7 +715,7 @@ input[type="file"] {
     display: flex;
     width: fit-content;
     margin: 0 auto;
-    padding: 5px;
+    padding: 10px;
     background: orangered;
     color: white;
     font-size: 1.3rem;
