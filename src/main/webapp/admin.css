@@ -715,7 +715,7 @@ input[type="file"] {
     display: flex;
     width: fit-content;
     margin: 0 auto;
-    padding: 10px;
+    padding: 5px;
     background: orangered;
     color: white;
     font-size: 1.3rem;
