@@ -28,9 +28,15 @@
                     <input type="tel" id="captain_phone" name="captainPhone" pattern="[0-9]{10}" placeholder="номер телефону 093 ..." required>
                     <input type="email" id="captain_email" name="captainEmail" placeholder="введіть email" required>
                 </div>
+                <p class="admin-title-row">Додаткові бали</p>
+                <div class="admin-capitan">
+                    <input type="text" id="bonus-points" name="bonusPoints" placeholder="Бонусні бали" required="">
+                </div>
                 <div class="slogan-button">
                     <input class="main-input-button" type="button" value="Зберегти" onclick="putTeamAndCaptainById()">
                 </div>
+                <div id="success" class="player-bg"><p>Дані успішно збережено!</p></div>
+                <div id="error" class="player-bg"><p>Помилка при збереженні! Зв'яжіться з з адміністраторами footgo.league@gmail.com </p></div>
                 <p class="admin-title-row">Гравці</p>
                 <div class="slogan-button">
                     <input class="main-input-button main-input-button-player" type="button" value="Додати гравця" onclick="addNewPlayer()">

@@ -23,6 +23,16 @@ public class Team {
     @JoinColumn
     private Captain captain;
 
+    private int additionalPoints;
+
+    public int getAdditionalPoints() {
+        return additionalPoints;
+    }
+
+    public void setAdditionalPoints(int additionalPoints) {
+        this.additionalPoints = additionalPoints;
+    }
+
     public Captain getCaptain() {
         return captain;
     }

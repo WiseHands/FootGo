@@ -3,8 +3,9 @@ function putTeamAndCaptainById(data) {
         let name = document.getElementById('captain_name').value;
         let phone = document.getElementById('captain_phone').value;
         let email = document.getElementById('captain_email').value;
+        let ad_points = document.getElementById('bonus-points').value;
 
-    let params = '?name=' + t_name + '&captainName=' + name + '&captainPhone=' + phone + "&captainEmail=" + email;
+    let params = '?name=' + t_name + '&captainName=' + name + '&captainPhone=' + phone + "&captainEmail=" + email + "&additionalPoints=" + ad_points;
 
     let apiUrl = '/team/' + id + params;
     fetch(apiUrl, {
@@ -14,10 +15,14 @@ function putTeamAndCaptainById(data) {
         body: data
       }
     }).then(function(response){
-        console.log(response)
+        console.log(response);
+        if(response.ok) {
+        	document.getElementById('success').style.display = 'block';
+        } else {
+            document.getElementById('error').style.display = 'block';
+        }
         return  response.json();
     }).then(function(data) {
-
         console.log(data);
     })
 

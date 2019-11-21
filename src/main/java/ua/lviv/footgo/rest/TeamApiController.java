@@ -33,12 +33,13 @@ public class TeamApiController {
     }
 
     @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
-    public Team update(@PathVariable Long id, @RequestParam String name, String captainName, String captainPhone, String captainEmail) {
+    public Team update(@PathVariable Long id, @RequestParam String name, String captainName, String captainPhone, String captainEmail, Integer additionalPoints) {
         Team team = teamRepository.findById(id).get();
         team.setTeamName(name);
         team.getCaptain().setCaptainName(captainName);
         team.getCaptain().setCaptainEmail(captainEmail);
         team.getCaptain().setCaptainPhone(captainPhone);
+        team.setAdditionalPoints(additionalPoints);
         teamRepository.save(team);
         return team;
     }

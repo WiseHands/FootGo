@@ -18,6 +18,7 @@ fetch(apiUrl, {
     document.querySelector('input[name="captainName"]').value = data.captain.captainName;
     document.querySelector('input[type=tel]').value = data.captain.captainPhone;
     document.querySelector('input[type=email]').value = data.captain.captainEmail;
+    document.getElementById('bonus-points').value = data.additionalPoints;
     console.log(data);
 });
 function addNewPlayer() {

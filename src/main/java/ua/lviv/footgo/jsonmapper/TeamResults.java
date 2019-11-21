@@ -23,6 +23,10 @@ public class TeamResults {
         public int compare(TeamResults a, TeamResults b)
         {
             if(a.points == b.points) {
+                if(a.team.getAdditionalPoints() != 0 || b.getTeam().getAdditionalPoints() != 0) {
+                    return b.getTeam().getAdditionalPoints() - a.getTeam().getAdditionalPoints();
+                }
+
                 int aDiff = a.numberOfGoalsScored - a.numberOfGoalsMissed;
                 int bDiff = b.numberOfGoalsScored - b.numberOfGoalsMissed;
                 return bDiff - aDiff;
