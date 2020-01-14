@@ -288,7 +288,7 @@ body p {
 }
 .plogo {
     font-size: 1em !important;
-    margin-bottom: 0.3em;
+    margin-bottom: 0.5em;
 }
 input[type=text], input[type=tel], input[type=email], select {
     padding: 15px;
@@ -559,6 +559,7 @@ span.clear-technical-defeat {
 #success, #successDel, #successChange, #textSuccess {
     display: none;
     text-align: center;
+    margin-bottom: 2em;
 }
 #error, #errorDel, #errorChange, #textError {
 	display: none;
@@ -668,7 +669,7 @@ span.clear-technical-defeat {
 }
 
 /*input for file upload*/
-.admin-file-upload {
+.admin-file-upload, .admin-logo-upload {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -680,6 +681,7 @@ input[type="file"] {
     top: 0;
     bottom: 0;
     width: 100%;
+    cursor: pointer;
 }
 
 .fileUpload {
@@ -700,6 +702,7 @@ input[type="file"] {
     position: relative;
     height: 4em;
     width: 15em;
+    margin: 0px 5px 0px 5px;
 }
 
 .fileUpload.dragover {
@@ -709,6 +712,11 @@ input[type="file"] {
 .admin-file-upload img {
     width: 200px;
     border-radius: 50%;
+}
+
+.admin-logo-upload img {
+    max-width: 100px;
+    margin-left: 6px;
 }
 
 .team-defeat {

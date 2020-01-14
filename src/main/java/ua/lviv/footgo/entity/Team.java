@@ -16,6 +16,12 @@ public class Team {
     @Column(name = "name")
     private String teamName;
 
+    @Column
+    private String logoImageUrl;
+
+    @Column
+    private String logoImageUrlDark;
+
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
     private List<Player> players;
 
@@ -31,6 +37,22 @@ public class Team {
 
     public void setAdditionalPoints(int additionalPoints) {
         this.additionalPoints = additionalPoints;
+    }
+
+    public String getLogoImageUrl() {
+        return logoImageUrl;
+    }
+
+    public void setLogoImageUrl(String logoImageUrl) {
+        this.logoImageUrl = logoImageUrl;
+    }
+
+    public String getLogoImageUrlDark() {
+        return logoImageUrlDark;
+    }
+
+    public void setLogoImageUrlDark(String logoImageUrlDark) {
+        this.logoImageUrlDark = logoImageUrlDark;
     }
 
     public Captain getCaptain() {

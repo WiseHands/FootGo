@@ -24,7 +24,7 @@ fetch(apiUrl, {
 
     let img = document.getElementById('image');
     if(img.getAttribute('src') == "null") {
-        img.src = 'https://www.w3schools.com/css/img_avatar.png';
+        img.src = '/img/img_avatar.png';
     }
     
     console.log(data);

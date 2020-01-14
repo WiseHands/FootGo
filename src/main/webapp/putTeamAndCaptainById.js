@@ -4,8 +4,10 @@ function putTeamAndCaptainById(data) {
         let phone = document.getElementById('captain_phone').value;
         let email = document.getElementById('captain_email').value;
         let ad_points = document.getElementById('bonus-points').value;
+        let logoImageUrl = document.getElementById('imageUrl').value;
+        let logoImageUrlDark = document.getElementById('imageUrlDark').value;
 
-    let params = '?name=' + t_name + '&captainName=' + name + '&captainPhone=' + phone + "&captainEmail=" + email + "&additionalPoints=" + ad_points;
+    let params = '?name=' + t_name + '&captainName=' + name + '&captainPhone=' + phone + "&captainEmail=" + email + "&additionalPoints=" + ad_points + "&logoImageUrl=" + logoImageUrl + "&logoImageUrlDark=" + logoImageUrlDark;
 
     let apiUrl = '/team/' + id + params;
     fetch(apiUrl, {

@@ -1,23 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
     let fileInput = document.querySelector('input[type=file]');
     let filenameContainer = document.querySelector('#filename');
-    let dropzone = document.querySelector('#fileUpload');
+    let dropZone = document.querySelector('#fileUpload');
 
     fileInput.addEventListener('change', function() {
       	filenameContainer.innerText = fileInput.value.split('\\').pop();
     });
 
     fileInput.addEventListener('dragenter', function() {
-    	dropzone.classList.add('dragover');
+    	dropZone.classList.add('dragover');
     });
 
     fileInput.addEventListener('dragleave', function() {
-      	dropzone.classList.remove('dragover');
+      	dropZone.classList.remove('dragover');
     });
 
     let img = document.getElementById('image');
     if(img.getAttribute('src') == "" || null) {
-        img.src = 'https://www.w3schools.com/css/img_avatar.png';
+        img.src = '/img/img_avatar.png';
     }
 
     fileInput.onchange = function() {

@@ -19,6 +19,21 @@ fetch(apiUrl, {
     document.querySelector('input[type=tel]').value = data.captain.captainPhone;
     document.querySelector('input[type=email]').value = data.captain.captainEmail;
     document.getElementById('bonus-points').value = data.additionalPoints;
+    document.getElementById('imageUrl').value = data.logoImageUrl;
+    document.getElementById("logo").src = data.logoImageUrl;
+    document.getElementById('imageUrlDark').value = data.logoImageUrlDark;
+    document.getElementById("logoDark").src = data.logoImageUrlDark;
+
+    let logo = document.getElementById('logo');
+    if(logo.getAttribute('src') == "null") {
+        img.src = '/img/placeholder.png';
+    }
+
+    let logoDark = document.getElementById('logoDark');
+    if(logoDark.getAttribute('src') == "null") {
+        img.src = '/img/placeholder.png';
+    }
+
     console.log(data);
 });
 function addNewPlayer() {
