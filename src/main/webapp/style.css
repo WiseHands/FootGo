@@ -550,6 +550,9 @@ input[type=submit] {
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: normal;
+    margin: 0 5px 0 5px;
+
 }
 .results-block p:last-child {
     font-size: 1rem;
