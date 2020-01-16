@@ -63,21 +63,24 @@
 
                 <div class="table-firstplace">
                     <a th:attr="href=${'/team/' + firstPlace.team.id}">
-                        <img th:attr="src=${'/logo/logo' + firstPlace.team.id + '.png'}, class=${'team' + firstPlace.team.id}">
+                        <img th:attr="src=${firstPlace.team.logoImageUrl}, class=${'light' + ' ' + 'team' + firstPlace.team.id}">
+                        <img th:attr="src=${firstPlace.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + firstPlace.team.id}">
                         <p th:text="${firstPlace.teamName}"></p>
                     </a>
                 </div>
 
                 <div class="table-secondplace">
                     <a th:attr="href=${'/team/' + secondPlace.team.id}">
-                        <img th:attr="src=${'/logo/logo' + secondPlace.team.id + '.png'}, class=${'team' + secondPlace.team.id}">
+                        <img th:attr="src=${secondPlace.team.logoImageUrl}, class=${'light' + ' ' + 'team' + secondPlace.team.id}">
+                        <img th:attr="src=${secondPlace.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + secondPlace.team.id}">
                         <p th:text="${secondPlace.teamName}"></p>
                     </a>
                 </div>
 
                 <div class="table-thirdplace">
                     <a th:attr="href=${'/team/' + thirdPlace.team.id}">
-                        <img th:attr="src=${'/logo/logo' + thirdPlace.team.id + '.png'}, class=${'team' + thirdPlace.team.id}">
+                        <img th:attr="src=${thirdPlace.team.logoImageUrl}, class=${'light' + ' ' + 'team' + thirdPlace.team.id}">
+                        <img th:attr="src=${thirdPlace.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + thirdPlace.team.id}">
                         <p th:text="${thirdPlace.teamName}"></p>
                     </a>
                 </div>
@@ -85,7 +88,8 @@
 
             <div th:each="item : ${teamList}">
                 <a th:attr="href=${'/team/' + item.team.id}">
-                    <img th:attr="src=${'/logo/logo' + item.team.id + '.png'}, class=${'team' + item.team.id}">
+                    <img th:attr="src=${item.team.logoImageUrl}, class=${'light' + ' ' + 'team' + item.team.id}">
+                    <img th:attr="src=${item.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + item.team.id}">
                     <p th:text="${item.teamName}"></p>
                 </a>
             </div>

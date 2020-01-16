@@ -26,12 +26,12 @@ fetch(apiUrl, {
 
     let logo = document.getElementById('logo');
     if(logo.getAttribute('src') == "null") {
-        img.src = '/img/placeholder.png';
+        logo.src = '/img/placeholder.png';
     }
 
     let logoDark = document.getElementById('logoDark');
     if(logoDark.getAttribute('src') == "null") {
-        img.src = '/img/placeholder.png';
+        logoDark.src = '/img/placeholder.png';
     }
 
     console.log(data);
