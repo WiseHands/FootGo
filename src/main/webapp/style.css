@@ -1219,52 +1219,10 @@ input[invalid-input] {
   .light {
       display: none !important;
   }
-  .team1 {
-      /*background: url(/logo/logo1-dark.png) no-repeat;
-      background-size: 90%;*/
-  }
-  .team2 {
-      /*background: url(/logo/logo2-dark.png) no-repeat;
-      background-size: 75%;*/
-  }
-  .team3 {
-      /*background: url(/logo/logo3-dark.png) no-repeat;
-      background-size: 85%;*/
-  }
-  .team4 {
-      /*background: url(/logo/logo4-dark.png) no-repeat;
-      background-size: 70%;*/
-  }
-  .team5 {
-      /*background: url(/logo/logo5-dark.png) no-repeat;
-      background-size: 90%;*/
-  }
-  .team6 {
-      /*background: url(/logo/logo6-dark.png) no-repeat;
-      background-size: 90%;*/
-  }
-  .team7 {
-      /*background: url(/logo/logo7-dark.png) no-repeat;
-      background-size: 90%;*/
-  }
-  .team8 {
-      /*background: url(/logo/logo8-dark.png) no-repeat;
-      background-size: 90%;*/
-  }
-  .team9 {
-      /*background: url(/logo/logo9-dark.png) no-repeat;
-      background-size: 90%;*/
-  }
-  .team10 {
-      /*background: url(/logo/logo10-dark.png) no-repeat;
-      background-size: 85%;*/
-  }
   .main-head-teamlogo img {
       display: block;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      /*padding-left: 90px;
-      height: 90px;*/
   }
   .main-where iframe {
       filter: contrast(100%) brightness(30%);
@@ -1277,8 +1235,6 @@ input[invalid-input] {
       display: block;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-/*      padding-left: 27px;
-      height: 27px;*/
   }
   .table-title, .bomb-title {
       background: rgba(39, 42, 48, 0.7);
@@ -1290,21 +1246,14 @@ input[invalid-input] {
         display: block;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
-/*        padding-left: 27px;
-        height: 27px;*/
     }
     .table-secondplace img {
-/*        background: url(/logo/logo2.png) no-repeat;
-        background-size: 75%;*/
     }
     .logo-team-bg img {
         display: block;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
-        /*padding-left: 124px;
-        height: 124px;
-        width: 124px;
-        background-size: 100%;*/
+        width: 50%;
     }
     .player-photo{
         background: #14332e;
@@ -1365,5 +1314,5 @@ input[invalid-input] {
         background-position: center;
         background-size: cover;
     }
-/*Dark-mode end*/
 }
+/*Dark-mode end*/

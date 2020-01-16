@@ -43,7 +43,6 @@
         <div class="results-bg">
             <div class="results-block">
                 <div class="logo-team-bg">
-                    <!--<img th:attr="src=${'/logo/logo' + team.id + '.png'}, class=${'team' + team.id}">-->
                     <img th:attr="src=${team.logoImageUrl}, class=${'light' + ' ' + 'team' + team.id}">
                     <img th:attr="src=${team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + team.id}">
                     <p th:text="${team.teamName}"></p>
@@ -55,7 +54,6 @@
                 <div th:each="game : ${gameList}" class="results-container">
                     <div class="res-teams">
                         <a th:attr="href=${'/team/' + game.firstTeam.id}">
-                            <!--<img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}, class=${'team' + game.firstTeam.id}">-->
                             <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
                             <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
                             <p th:text="${game.firstTeam.teamName}">
@@ -63,7 +61,6 @@
                             </p>
                         </a>
                         <a th:attr="href=${'/team/' + game.secondTeam.id}">
-                            <!--<img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}, class=${'team' + game.secondTeam.id}">-->
                             <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
                             <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
                             <p th:text="${game.secondTeam.teamName}">
@@ -152,6 +149,7 @@
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39722519-3"></script>
+<script src="/imgPlaceholderSetScript.js" type="text/javascript"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}

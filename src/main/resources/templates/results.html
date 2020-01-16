@@ -45,7 +45,6 @@
                 <div class="results-container" th:each="game : ${tour.gameList}">
                     <div class="res-teams">
                         <a th:attr="href=${'/team/' + game.firstTeam.id}">
-                            <!--<img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}, class=${'team' + game.firstTeam.id}">-->
                             <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
                             <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + game.firstTeam.id}">
                             <p th:text="${game.firstTeam.teamName}">
@@ -53,7 +52,6 @@
                             </p>
                         </a>
                         <a th:attr="href=${'/team/' + game.secondTeam.id}">
-                            <!--<img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}, class=${'team' + game.secondTeam.id}">-->
                             <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
                             <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + game.secondTeam.id}">
                             <p th:text="${game.secondTeam.teamName}">
