@@ -3,10 +3,8 @@ package ua.lviv.footgo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ua.lviv.footgo.entity.Game;
-import ua.lviv.footgo.entity.Goal;
-import ua.lviv.footgo.entity.Player;
-import ua.lviv.footgo.entity.Team;
+import ua.lviv.footgo.entity.*;
+import ua.lviv.footgo.repository.CardRepository;
 import ua.lviv.footgo.repository.GameRepository;
 import ua.lviv.footgo.repository.GoalRepository;
 import ua.lviv.footgo.repository.TeamRepository;
@@ -28,6 +26,9 @@ public class GameApiController {
 
     @Autowired
     GoalRepository goalRepository;
+
+    @Autowired
+    CardRepository cardRepository;
 
     @DeleteMapping(value = "/clear", consumes = "application/json", produces = "application/json")
     public void clear() {
@@ -92,6 +93,36 @@ public class GameApiController {
         }
         gameRepository.save(game);
         goalRepository.delete(goal);
+    }
+
+    @PostMapping(value = "/{id}/card", consumes = "application/json", produces = "application/json")
+    public Card addCard(@PathVariable Long id, @RequestParam Player playerId, @RequestParam Card.CardType cardType, @RequestParam boolean homeTeamCard) {
+        Game game = gameRepository.findById(id).get();
+        Card card= new Card();
+        card.setPlayer(playerId);
+        card.setCard(cardType);
+        card.setGame(game);
+        if (homeTeamCard) {
+            game.addCardForFirstTeamPlayer(card);
+        } else {
+            game.addCardForSecondTeamPlayer(card);
+        }
+        cardRepository.save(card);
+        gameRepository.save(game);
+        return card;
+    }
+
+    @DeleteMapping(value = "/{gameId}/card/{cardId}", consumes = "application/json", produces = "application/json")
+    public void deleteCard(@PathVariable Long cardId, @PathVariable Long gameId, @RequestParam Boolean isHomeTeamCard) {
+        Game game = gameRepository.findById(gameId).get();
+        Card card = cardRepository.findById(cardId).get();
+        if (isHomeTeamCard) {
+            game.removeCardForFirstTeam(card);
+        } else {
+            game.removeCardForSecondTeam(card);
+        }
+        gameRepository.save(game);
+        cardRepository.delete(card);
     }
 
     @PostMapping(value = "/{gameId}/completed/{isCompleted}", consumes = "application/json", produces = "application/json")

@@ -309,7 +309,7 @@ input[type=text], input[type=tel], input[type=email], select {
     border-radius: 10px;
     cursor: pointer;
 }
-.main-input-button:hover {
+.main-input-button:hover:enabled, .save-video-button:hover:enabled {
     background-color: #285294;
     border-radius: 10px;
 }
@@ -379,6 +379,14 @@ input[type=text], input[type=tel], input[type=email], select {
     margin-left: 10px;
     cursor: pointer;
     display: inline-block;
+    border-radius: 50%;
+    background-color: #4e73ad;
+    width: 25px;
+    text-align: center;
+    color: white;
+}
+.tour-team1 span:hover {
+    background-color: #285294;
 }
 .tour-score {
     /*width: 60px;*/
@@ -388,6 +396,15 @@ input[type=text], input[type=tel], input[type=email], select {
 .tour-team2 span, .tour-team2-details span {
     margin-right: 10px;
     cursor: pointer;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #4e73ad;
+    width: 25px;
+    text-align: center;
+    color: white;
+}
+.tour-team2 span:hover{
+    background-color: #285294;
 }
 /*modal*/
 #myBtn {
@@ -460,16 +477,23 @@ input[type=text], input[type=tel], input[type=email], select {
     font-size: 1.3rem;
     text-align: center;
 }
+#switchModal .modal-body {
+    font-size: 1em;
+    padding: 2px 45px;
+}
 .modal-body, .modal-body-goal {
     padding: 2px 16px;
     font-size: 1.2rem;
 }
 
 /*modal end*/
-.goal-minute, .goal-author, .goal-second {
+.goal-minute, .goal-author, .goal-second, .card-type {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.card-type {
+    margin: 15px 0 15px 0;
 }
 .modal-body p {
     width: 50%;
@@ -489,6 +513,7 @@ input[type=text], input[type=tel], input[type=email], select {
     display: flex;
     width: fit-content;
     margin: 0 auto;
+    padding-top: 15px;
 }
 .modal-goal h3 {
     font-size: 1.3rem;
@@ -519,7 +544,7 @@ span.clear-technical-defeat {
     font-weight: 600;
 }
 
-.modal-goal span:hover, .tour-team1 span:hover, .tour-team2 span:hover {
+.modal-goal span:hover {
     color: #FF6A4F;
     cursor: pointer;
 }
@@ -743,6 +768,20 @@ input[type="file"] {
     width: 90%;
     min-width: 40%;
     max-width: 100%;
+}
+.card {
+  display: inline-block;
+  width: 0.7em;
+  height: 1em;
+  background-size: 100% 100%;
+  transform: rotateZ(25deg);
+  margin-right: 5px;
+}
+.yellow-card {
+  background-image: url(img/yellow_card.svg);
+}
+.red-card {
+  background-image: url(img/red_card.svg);
 }
 @media screen and (max-width: 667px) {
 }

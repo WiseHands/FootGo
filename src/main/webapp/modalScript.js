@@ -3,30 +3,55 @@ let state = {};
 // Get the modal
 let modal = document.getElementById("myModal");
 
-
+let switchModal = document.getElementById("switchModal");
 
 // Get the <span> element that closes the modal
 let span = document.getElementsByClassName("close")[0];
 
 let plusHomeTeamGoal = document.getElementById("plusHomeTeamGoal");
-plusHomeTeamGoal.onclick = function() {
-	state.homeTeamGoal = true;
-    modal.style.display = "block";
-    let playerSelect = document.getElementById("playerSelect");
-    playerSelect.innerHTML = '';
-    for(index in window.gameData.firstTeam.players) {
-       let player = window.gameData.firstTeam.players[index];
-       let opt = document.createElement("option");
-       opt.value = player.id;
-       opt.innerHTML = player.firstName + ' ' + player.lastName;
-       playerSelect.appendChild(opt);
+plusHomeTeamGoal.onclick =  function() {
+    switchModal.style.display = "block";
+    let goalHomeTeam = document.getElementById("goals");
+    goalHomeTeam.onclick = function() {
+        switchModal.style.display = "none";
+    	state.homeTeamGoal = true;
+        modal.style.display = "block";
+        let playerSelect = document.getElementById("playerSelect");
+        playerSelect.innerHTML = '';
+        for(index in window.gameData.firstTeam.players) {
+           let player = window.gameData.firstTeam.players[index];
+           let opt = document.createElement("option");
+           opt.value = player.id;
+           opt.innerHTML = player.firstName + ' ' + player.lastName;
+           playerSelect.appendChild(opt);
+        }
     }
+    let cardHomeTeam = document.getElementById("cards");
+        cardHomeTeam.onclick = function() {
+            switchModal.style.display = "none";
+        	state.homeTeamGoal = true;
+            cardsModal.style.display = "block";
+            let cardPlayerSelect = document.getElementById("cardPlayerSelect");
+            cardPlayerSelect.innerHTML = '';
+            for(index in window.gameData.firstTeam.players) {
+               let player = window.gameData.firstTeam.players[index];
+               let opt = document.createElement("option");
+               opt.value = player.id;
+               opt.innerHTML = player.firstName + ' ' + player.lastName;
+               cardPlayerSelect.appendChild(opt);
+            }
+        }
 }
+
 let plusGuestTeamGoal = document.getElementById("plusGuestTeamGoal");
-plusGuestTeamGoal.onclick = function() {
-	state.homeTeamGoal = false;
-    modal.style.display = "block";
-    let playerSelect = document.getElementById("playerSelect");
+plusGuestTeamGoal.onclick =  function() {
+    switchModal.style.display = "block";
+    let goalGuestTeam = document.getElementById("goals");
+    goalGuestTeam.onclick = function() {
+        switchModal.style.display = "none";
+    	state.homeTeamGoal = false;
+        modal.style.display = "block";
+        let playerSelect = document.getElementById("playerSelect");
         playerSelect.innerHTML = '';
         for(index in window.gameData.secondTeam.players) {
            let player = window.gameData.secondTeam.players[index];
@@ -35,22 +60,36 @@ plusGuestTeamGoal.onclick = function() {
            opt.innerHTML = player.firstName + ' ' + player.lastName;
            playerSelect.appendChild(opt);
         }
+    }
+        let cardGuestTeam = document.getElementById("cards");
+            cardGuestTeam.onclick = function() {
+                switchModal.style.display = "none";
+            	state.homeTeamGoal = false;
+                cardsModal.style.display = "block";
+                let cardPlayerSelect = document.getElementById("cardPlayerSelect");
+                cardPlayerSelect.innerHTML = '';
+                for(index in window.gameData.secondTeam.players) {
+                   let player = window.gameData.secondTeam.players[index];
+                   let opt = document.createElement("option");
+                   opt.value = player.id;
+                   opt.innerHTML = player.firstName + ' ' + player.lastName;
+                   cardPlayerSelect.appendChild(opt);
+                }
+            }
 }
+
 let span1 = document.getElementsByClassName("close")[1];
-/*let addVideoTime1 = document.querySelector(".team1-goal span");
-addVideoTime1.onclick = function() {
-    addTime1.style.display = "block";
-}*/
 
-let span11 = document.getElementsByClassName("close")[2];
-/*let addVideoTime2 = document.querySelector(".team2-goal span");
-addVideoTime2.onclick = function() {
-    addTime2.style.display = "block";
-}*/
+let modalEditDataTeam1 = document.querySelector("#editDataTeam1 .close");
 
-let span3 = document.getElementsByClassName("close")[3];
+let modalEditDataTeam2 = document.querySelector("#editDataTeam2 .close");
+
+let modalDefeatTeam = document.querySelector("#tDefeatModal .close");
 
 let technicalDefeat = document.getElementById("technicalDefeat");
+
+let modalCards = document.querySelector("#cardsModal .close");
+
 technicalDefeat.onclick = function() {
     tDefeatModal.style.display = "block";
     let teamSelect = document.getElementById("teamSelect");
@@ -71,14 +110,20 @@ technicalDefeat.onclick = function() {
 span.onclick = function() {
     modal.style.display = "none";
 }
-span1.onclick = function() {
+modalEditDataTeam1.onclick = function() {
     editDataTeam1.style.display = "none";
 }
-span11.onclick = function() {
+modalEditDataTeam2.onclick = function() {
     editDataTeam2.style.display = "none";
 }
-span3.onclick = function() {
+span1.onclick = function() {
+    switchModal.style.display = "none";
+}
+modalDefeatTeam.onclick = function() {
     tDefeatModal.style.display = "none";
+}
+modalCards.onclick = function() {
+    cardsModal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -91,13 +136,7 @@ window.onclick = function(event) {
 //modal2
 let goalModal = document.getElementById("goalModal");
 
-/*var gbtn = document.getElementById("goalBtn");
-
-goalBtn.onclick = function() {
-    myModal.style.display = "block";
-}*/
-
-let span2 = document.getElementsByClassName("close")/*[1]*/;
+let span2 = document.getElementsByClassName("close");
 
 span2.onclick = function() {
     goalModal.style.display = "none";
@@ -107,12 +146,28 @@ window.onclick = function(event) {
         goalModal.style.display = "none";
     }
 }
+
+/*let radios = document.querySelectorAll("input[name=Card]");
+  for(radio in radios) {
+  console.log(radio);
+    radio.onclick = function() {
+        document.getElementById("saveCardButton").disabled = false;
+    }
+}*/
+
+let radioYellow = document.getElementById("yellowCard");
+radioYellow.onclick = function() {
+    document.getElementById("saveCardButton").disabled = false;
+}
+let radioRed = document.getElementById("redCard");
+radioRed.onclick = function() {
+    document.getElementById("saveCardButton").disabled = false;
+}
 function addGoalBtnClicked(event) {
     let goalMinute = document.getElementById("goalMinute");
     let goalVideoSec = document.getElementById("goalSec");
     let playerSelect = document.getElementById("playerSelect");
     console.log('addGoalBtnClicked', playerSelect.value, goalMinute.value);
-//    POST /games/4/goal?playerId=2&minute=33&homeTeamGoal=true;
     let params = '?playerId=' + playerSelect.value + '&goalMinute=' + goalMinute.value + '&goalVideoSec=' + goalVideoSec.value + "&homeTeamGoal=" + state.homeTeamGoal;
     let apiUrl = '/api/game/' + id + '/goal/' + params;
     fetch(apiUrl, {
@@ -180,6 +235,47 @@ function saveGoalBtnClickedTeamB(event) {
             document.getElementById('editDataTeam2').style.display = "none";
             location.pathname = location.pathname;
         } else {
+            alert('Error');
+        }
+        return  response.json();
+    }).then(function(data) {
+        console.log(data);
+    })
+}
+    let card = {};
+    let radios = document.querySelectorAll('input[type=radio][name="Card"]');
+
+    function changeHandler(event) {
+       if ( this.value === 'YELLOW' ) {
+         card = this.value;
+         console.log(card);
+       } else if ( this.value === 'RED' ) {
+         card = this.value;
+         console.log(card);
+       }
+    }
+
+    Array.prototype.forEach.call(radios, function(radio) {
+       radio.addEventListener('change', changeHandler);
+    });
+
+function addCardToPlayer(event) {
+    let playerSelect = document.getElementById("cardPlayerSelect");
+    console.log('addCardToPlayer', playerSelect.value, yellowCard.checked, redCard.checked);
+    let params = '?playerId=' + playerSelect.value + '&cardType=' + card + '&homeTeamCard=' + state.homeTeamGoal;
+    let apiUrl = '/api/game/' + id + '/card/' + params;
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+    }).then(function(response) {
+        console.log(response);
+        if(response.ok) {
+            document.getElementById('cardsModal').style.display = "none";
+            location.pathname = location.pathname;
+        } else {
+            document.getElementById('cardsModal').style.display = "none";
             alert('Error');
         }
         return  response.json();
@@ -265,6 +361,7 @@ function editTeam1(gameId, goalId, homeTeamGoal) {
 }
 
 function editTeam2(gameId, goalId, homeTeamGoal) {
+    window.goalId = goalId;
     let playerSelect = document.getElementById("playerSelect2");
     playerSelect.innerHTML = '';
     for(index in window.gameData.secondTeam.players) {
@@ -278,10 +375,10 @@ function editTeam2(gameId, goalId, homeTeamGoal) {
        let goal = window.gameData.teamBGoals[index];
 
        if(goalId === goal.id) {
-           let videoSeconds = goal.videoSeconds
            let goalTime = goal.time;
+           let videoSeconds = goal.videoSeconds
            let playerName = goal.player.id;
-           console.log('goalId', goalId + ' goalTime', goalTime + ' videoSeconds', videoSeconds);
+           console.log('goalId', goalId + ' goalTime', goalTime + ' videoSeconds', videoSeconds+ ' playerName', playerName);
 
            let setGoalMinute = document.getElementById("goalMinute2");
            setGoalMinute.value = goalTime;
@@ -315,8 +412,27 @@ function deleteGoal(gameId, goalId, homeTeamGoal) {
     })
 }
 
+function deleteCard(gameId, cardId, homeTeamCard) {
+    console.log('deleteCard', cardId)
+    let apiUrl = '/api/game/' + gameId + '/card/' + cardId + '?isHomeTeamCard=' + homeTeamCard;
+    fetch(apiUrl, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+    }).then(function(response) {
+        console.log(response);
+        if(response.ok) {
+            location.pathname = location.pathname;
+        } else {
+            alert('Error');
+        }
+        return  response.json();
+    }).then(function(data) {
+    })
+}
+
 let checkbox = document.querySelector("input[name=match-over]");
-console.log(checkbox);
 
 checkbox.addEventListener( 'change', function(checked) {
     if(this.checked) {

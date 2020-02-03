@@ -25,6 +25,8 @@
                 <input type="text" id="gameDateTime" onchange="setGameDateTime()">
             </div>
 
+            <p class="admin-tour-title">Голи</p>
+
             <div class="tour-match">
                 <div class="tour-team1">
                     <p th:text="${game.firstTeam.teamName}">Команда 1</p>
@@ -85,6 +87,32 @@
                 </div>
             </div>
 
+            <p class="admin-tour-title">Картки</p>
+
+            <div class="modal-goal">
+                <div class="team1-goal">
+                    <div th:each="card : ${game.teamACards}">
+                        <p>
+                            <span th:if="${card.isYellow()}" class="yellow-card card"></span>
+                            <span th:if="${card.isRed()}" class="red-card card"></span>
+                            <span th:text="${card.player.firstName + card.player.lastName}" th:attr="onclick=${'editCardTeamOne(' + game.id + ', ' + card.id + ', true)'}"></span>
+                            <span class="delete-goal" th:attr="onclick=${'deleteCard(' + game.id + ', ' + card.id + ', true)'}">-</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="team2-goal">
+                    <div th:each="card : ${game.teamBCards}">
+                        <p>
+                            <span th:if="${card.isYellow()}" class="yellow-card card"></span>
+                            <span th:if="${card.isRed()}" class="red-card card"></span>
+                            <span th:text="${card.player.firstName + card.player.lastName}" th:attr="onclick=${'editCardTeamTwo(' + game.id + ', ' + card.id + ', false)'}"></span>
+                            <span class="delete-goal" th:attr="onclick=${'deleteCard(' + game.id + ', ' + card.id + ', false)'}">-</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <div class="add-video-link">
                 <input id="technicalDefeat" class="save-video-button" type="button" value="Зарахувати технічну поразку">
                 <p class="description-text">Опис матчу</p>
@@ -131,6 +159,45 @@
                     </div>
                     <div class="goal-add">
                         <input onclick="addGoalBtnClicked()" id="savebutton" class="main-input-button" type="button" value="Додати">
+                    </div>
+                </div>
+            </div>
+
+            <div id="switchModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <input id="goals" class="main-input-button" type="button" value="Голи">
+                        <input id="cards" class="main-input-button" type="button" value="Картки">
+                    </div>
+                </div>
+            </div>
+
+            <div id="cardsModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>Картка</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-type">
+                            <input type="radio" name="Card" id="yellowCard" value="YELLOW">
+                            <label for="yellowCard">Жовта</label>
+                            <input type="radio" name="Card" id="redCard" value="RED">
+                            <label for="redCard">Червона</label>
+                        </div>
+                        <div class="goal-author">
+                            <p>Гравець</p>
+                            <select id="cardPlayerSelect">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="goal-add">
+                        <input onclick="addCardToPlayer()" id="saveCardButton" class="main-input-button" type="button" value="Додати" disabled>
                     </div>
                 </div>
             </div>

@@ -46,6 +46,12 @@ public class Game {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Goal> teamBGoals;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Card> teamACards;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Card> teamBCards;
+
     @ManyToOne
     @JoinColumn
     @JsonIgnore
@@ -200,6 +206,28 @@ public class Game {
 
     public void removeGoalForSecondTeam(Goal goal) {
         this.teamBGoals.remove(goal);
+    }
+
+    public void addCardForFirstTeamPlayer(Card card) {
+        if(this.teamACards == null) {
+            this.teamACards = new ArrayList<>();
+        }
+        this.teamACards.add(card);
+    }
+
+    public void addCardForSecondTeamPlayer(Card card) {
+        if(this.teamBCards == null) {
+            this.teamBCards = new ArrayList<>();
+        }
+        this.teamBCards.add(card);
+    }
+
+    public void removeCardForFirstTeam(Card card) {
+        this.teamACards.remove(card);
+    }
+
+    public void removeCardForSecondTeam(Card card) {
+        this.teamBCards.remove(card);
     }
 
     public Tour getTour() {
