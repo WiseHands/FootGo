@@ -25,11 +25,14 @@ public class CardApiController {
     CardRepository cardRepository;
 
     @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
-    public void editCard(@PathVariable Long id, @RequestParam Long playerId, @RequestParam Card.CardType cardType) {
+    public void editCard(@PathVariable Long id, @RequestParam Long playerId, @RequestParam Integer cardMinute, @RequestParam Card.CardType cardType) {
         Card card = cardRepository.findById(id).get();
         if (playerId != null) {
             Player player = playerRepository.findById(playerId).get();
             card.setPlayer(player);
+        }
+        if (cardMinute != null) {
+            card.setTime(cardMinute);
         }
         if (cardType != null) {
             card.setCard(cardType);

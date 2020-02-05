@@ -96,11 +96,12 @@ public class GameApiController {
     }
 
     @PostMapping(value = "/{id}/card", consumes = "application/json", produces = "application/json")
-    public Card addCard(@PathVariable Long id, @RequestParam Player playerId, @RequestParam Card.CardType cardType, @RequestParam boolean homeTeamCard) {
+    public Card addCard(@PathVariable Long id, @RequestParam Player playerId, @RequestParam int cardMinute, @RequestParam Card.CardType cardType, @RequestParam boolean homeTeamCard) {
         Game game = gameRepository.findById(id).get();
         Card card= new Card();
         card.setPlayer(playerId);
         card.setCard(cardType);
+        card.setTime(cardMinute);
         card.setGame(game);
         if (homeTeamCard) {
             game.addCardForFirstTeamPlayer(card);

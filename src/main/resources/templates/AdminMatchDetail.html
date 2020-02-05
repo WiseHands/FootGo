@@ -95,7 +95,8 @@
                         <p>
                             <span th:if="${card.isYellow()}" class="yellow-card card"></span>
                             <span th:if="${card.isRed()}" class="red-card card"></span>
-                            <span th:text="${card.player.firstName + card.player.lastName}" th:attr="onclick=${'editCardTeamOne(' + game.id + ', ' + card.id + ', true)'}"></span>
+                            <span th:text="${card.player.firstName + card.player.lastName}" th:attr="onclick=${'editCardTeamOne(' + game.id + ', ' + card.id + ', true)'}"></span>,
+                            <span th:text="${' ' + card.time}"></span>
                             <span class="delete-goal" th:attr="onclick=${'deleteCard(' + game.id + ', ' + card.id + ', true)'}">-</span>
                         </p>
                     </div>
@@ -106,7 +107,8 @@
                         <p>
                             <span th:if="${card.isYellow()}" class="yellow-card card"></span>
                             <span th:if="${card.isRed()}" class="red-card card"></span>
-                            <span th:text="${card.player.firstName + card.player.lastName}" th:attr="onclick=${'editCardTeamTwo(' + game.id + ', ' + card.id + ', false)'}"></span>
+                            <span th:text="${card.player.firstName + card.player.lastName}" th:attr="onclick=${'editCardTeamTwo(' + game.id + ', ' + card.id + ', false)'}"></span>,
+                            <span th:text="${' ' + card.time}"></span>
                             <span class="delete-goal" th:attr="onclick=${'deleteCard(' + game.id + ', ' + card.id + ', false)'}">-</span>
                         </p>
                     </div>
@@ -194,6 +196,10 @@
                             <p>Гравець</p>
                             <select id="cardPlayerSelect">
                             </select>
+                        </div>
+                        <div class="goal-minute">
+                            <p>Хвилина</p>
+                            <input type="text" name="minute" id="cardMinute">
                         </div>
                     </div>
                     <div class="goal-add">

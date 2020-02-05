@@ -260,9 +260,10 @@ function saveGoalBtnClickedTeamB(event) {
     });
 
 function addCardToPlayer(event) {
+    let cardMinute = document.getElementById("cardMinute");
     let playerSelect = document.getElementById("cardPlayerSelect");
     console.log('addCardToPlayer', playerSelect.value, yellowCard.checked, redCard.checked);
-    let params = '?playerId=' + playerSelect.value + '&cardType=' + card + '&homeTeamCard=' + state.homeTeamGoal;
+    let params = '?playerId=' + playerSelect.value + '&cardMinute=' + cardMinute.value + '&cardType=' + card + '&homeTeamCard=' + state.homeTeamGoal;
     let apiUrl = '/api/game/' + id + '/card/' + params;
     fetch(apiUrl, {
         method: 'POST',

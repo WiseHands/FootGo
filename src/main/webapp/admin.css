@@ -511,8 +511,8 @@ input[type=text], input[type=tel], input[type=email], select {
 }
 .modal-goal {
     display: flex;
-    width: fit-content;
-    margin: 0 auto;
+/*    width: 420px;
+    margin: 0 auto;*/
     padding-top: 15px;
 }
 .modal-goal h3 {
@@ -550,6 +550,7 @@ span.clear-technical-defeat {
 }
 .team1-goal, .team2-goal {
     width: fit-content;
+    margin: 0 auto;
 }
 .team1-goal {
     text-align: right;

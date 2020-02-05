@@ -17,6 +17,9 @@ public class Card {
     @Column(name = "id")
     private Long id;
 
+    @Column
+    private Integer time;
+
     @Enumerated
     private CardType cardType;
 
@@ -32,6 +35,14 @@ public class Card {
 
     public Long getId() {
         return id;
+    }
+
+    public Integer getTime() {
+        return time;
+    }
+
+    public void setTime(Integer time) {
+        this.time = time;
     }
 
     public CardType getCard() {

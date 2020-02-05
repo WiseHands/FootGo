@@ -1177,6 +1177,31 @@ input[invalid-input] {
     padding: 1rem;
     width: 60%;
 }
+.cards {
+    padding: 20px 0 20px 0;
+}
+.card-team-one {
+  display: inline-block;
+  width: 0.7em;
+  height: 1em;
+  background-size: 100% 100%;
+  transform: rotateZ(25deg);
+  margin-left: 10px;
+}
+.card-team-two {
+  display: inline-block;
+  width: 0.7em;
+  height: 1em;
+  background-size: 100% 100%;
+  transform: rotateZ(25deg);
+  margin-right: 10px;
+}
+.yellow-card {
+  background-image: url(img/yellow_card.svg);
+}
+.red-card {
+  background-image: url(img/red_card.svg);
+}
 
 .dark {
     display: none;
