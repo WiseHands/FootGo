@@ -490,7 +490,7 @@ input[type=text], input[type=tel], input[type=email], select {
 .goal-minute, .goal-author, .goal-second, .card-type {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .card-type {
     margin: 15px 0 15px 0;
@@ -749,7 +749,8 @@ input[type="file"] {
     display: flex;
     width: fit-content;
     margin: 0 auto;
-    padding: 10px;
+    padding: 5px 10px 5px 10px;
+    margin-top: 10px;
     background: orangered;
     color: white;
     font-size: 1.3rem;
@@ -783,6 +784,59 @@ input[type="file"] {
 }
 .red-card {
   background-image: url(img/red_card.svg);
+}
+.text-input-error {
+  text-align: center;
+  color: red;
+}
+/* Cards checkboxes */
+/* The container */
+.container {
+  margin-bottom: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+  margin-left: 12px;
+}
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+/* When the radio button is checked, add a background */
+.container input:checked ~ .checkmark {
+  background-color: #0ca38a;
+}
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+ 	left: 9px;
+ 	width: 8px;
+ 	height: 8px;
+ 	border-radius: 100%;
+ 	background: white;
 }
 @media screen and (max-width: 667px) {
 }

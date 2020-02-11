@@ -2,6 +2,8 @@
 package ua.lviv.footgo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.entity.*;
 import ua.lviv.footgo.repository.CardRepository;
@@ -9,6 +11,7 @@ import ua.lviv.footgo.repository.GameRepository;
 import ua.lviv.footgo.repository.GoalRepository;
 import ua.lviv.footgo.repository.TeamRepository;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -96,21 +99,65 @@ public class GameApiController {
     }
 
     @PostMapping(value = "/{id}/card", consumes = "application/json", produces = "application/json")
-    public Card addCard(@PathVariable Long id, @RequestParam Player playerId, @RequestParam int cardMinute, @RequestParam Card.CardType cardType, @RequestParam boolean homeTeamCard) {
+    public ResponseEntity<String> addCard(@PathVariable Long id, @RequestParam Player player, @RequestParam int cardMinute, @RequestParam Card.CardType cardType, @RequestParam boolean homeTeamCard) {
         Game game = gameRepository.findById(id).get();
-        Card card= new Card();
-        card.setPlayer(playerId);
-        card.setCard(cardType);
-        card.setTime(cardMinute);
-        card.setGame(game);
-        if (homeTeamCard) {
-            game.addCardForFirstTeamPlayer(card);
+        boolean canAdd = checkIfCardCanBeAdded(game, cardType, player, homeTeamCard);
+        if (canAdd) {
+            Card card = new Card();
+            card.setPlayer(player);
+            card.setCard(cardType);
+            card.setTime(cardMinute);
+            card.setGame(game);
+            if (homeTeamCard) {
+                game.addCardForFirstTeamPlayer(card);
+            } else {
+                game.addCardForSecondTeamPlayer(card);
+            }
+            cardRepository.save(card);
+            gameRepository.save(game);
+            return ResponseEntity.ok().body("");
         } else {
-            game.addCardForSecondTeamPlayer(card);
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .body("too many cards");
         }
-        cardRepository.save(card);
-        gameRepository.save(game);
-        return card;
+    }
+    private boolean checkIfCardCanBeAdded(Game game, Card.CardType cardType, Player player, boolean homeTeamCard) {
+        if (cardType.equals(Card.CardType.YELLOW)) {
+            List<Card> cardList = new ArrayList<Card>();
+            if (homeTeamCard) {
+                cardList = game.getTeamACards();
+            } else {
+                cardList = game.getTeamBCards();
+            }
+
+            int howManyYellowCardsPlayerHas = 0;
+            for (Card card : cardList) {
+                if (card.getPlayer().getId().equals(player.getId())) {
+                   howManyYellowCardsPlayerHas += 1;
+                }
+            }
+
+            return howManyYellowCardsPlayerHas < 2;
+        }
+        else if (cardType.equals(Card.CardType.RED)) {
+            List<Card> cardList = new ArrayList<Card>();
+            if (homeTeamCard) {
+                cardList = game.getTeamACards();
+            } else {
+                cardList = game.getTeamBCards();
+            }
+
+            int howManyRedCardsPlayerHas = 0;
+            for (Card card : cardList) {
+                if (card.getPlayer().getId().equals(player.getId())) {
+                    howManyRedCardsPlayerHas += 1;
+                }
+            }
+
+            return howManyRedCardsPlayerHas < 1;
+        }
+        return true;
     }
 
     @DeleteMapping(value = "/{gameId}/card/{cardId}", consumes = "application/json", produces = "application/json")
@@ -172,6 +219,5 @@ public class GameApiController {
         game.clearTechnicalDefeat();
         gameRepository.save(game);
     }
-
 
 }

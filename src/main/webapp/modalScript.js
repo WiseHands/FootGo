@@ -10,6 +10,7 @@ let span = document.getElementsByClassName("close")[0];
 
 let plusHomeTeamGoal = document.getElementById("plusHomeTeamGoal");
 plusHomeTeamGoal.onclick =  function() {
+
     switchModal.style.display = "block";
     let goalHomeTeam = document.getElementById("goals");
     goalHomeTeam.onclick = function() {
@@ -27,20 +28,20 @@ plusHomeTeamGoal.onclick =  function() {
         }
     }
     let cardHomeTeam = document.getElementById("cards");
-        cardHomeTeam.onclick = function() {
-            switchModal.style.display = "none";
-        	state.homeTeamGoal = true;
-            cardsModal.style.display = "block";
-            let cardPlayerSelect = document.getElementById("cardPlayerSelect");
-            cardPlayerSelect.innerHTML = '';
-            for(index in window.gameData.firstTeam.players) {
-               let player = window.gameData.firstTeam.players[index];
-               let opt = document.createElement("option");
-               opt.value = player.id;
-               opt.innerHTML = player.firstName + ' ' + player.lastName;
-               cardPlayerSelect.appendChild(opt);
-            }
+    cardHomeTeam.onclick = function() {
+        switchModal.style.display = "none";
+    	state.homeTeamGoal = true;
+        cardsModal.style.display = "block";
+        let cardPlayerSelect = document.getElementById("cardPlayerSelect");
+        cardPlayerSelect.innerHTML = '';
+        for(index in window.gameData.firstTeam.players) {
+           let player = window.gameData.firstTeam.players[index];
+           let opt = document.createElement("option");
+           opt.value = player.id;
+           opt.innerHTML = player.firstName + ' ' + player.lastName;
+           cardPlayerSelect.appendChild(opt);
         }
+    }
 }
 
 let plusGuestTeamGoal = document.getElementById("plusGuestTeamGoal");
@@ -61,21 +62,21 @@ plusGuestTeamGoal.onclick =  function() {
            playerSelect.appendChild(opt);
         }
     }
-        let cardGuestTeam = document.getElementById("cards");
-            cardGuestTeam.onclick = function() {
-                switchModal.style.display = "none";
-            	state.homeTeamGoal = false;
-                cardsModal.style.display = "block";
-                let cardPlayerSelect = document.getElementById("cardPlayerSelect");
-                cardPlayerSelect.innerHTML = '';
-                for(index in window.gameData.secondTeam.players) {
-                   let player = window.gameData.secondTeam.players[index];
-                   let opt = document.createElement("option");
-                   opt.value = player.id;
-                   opt.innerHTML = player.firstName + ' ' + player.lastName;
-                   cardPlayerSelect.appendChild(opt);
-                }
-            }
+    let cardGuestTeam = document.getElementById("cards");
+    cardGuestTeam.onclick = function() {
+        switchModal.style.display = "none";
+     	state.homeTeamGoal = false;
+        cardsModal.style.display = "block";
+        let cardPlayerSelect = document.getElementById("cardPlayerSelect");
+        cardPlayerSelect.innerHTML = '';
+        for(index in window.gameData.secondTeam.players) {
+           let player = window.gameData.secondTeam.players[index];
+           let opt = document.createElement("option");
+           opt.value = player.id;
+           opt.innerHTML = player.firstName + ' ' + player.lastName;
+           cardPlayerSelect.appendChild(opt);
+        }
+    }
 }
 
 let span1 = document.getElementsByClassName("close")[1];
@@ -147,14 +148,6 @@ window.onclick = function(event) {
     }
 }
 
-/*let radios = document.querySelectorAll("input[name=Card]");
-  for(radio in radios) {
-  console.log(radio);
-    radio.onclick = function() {
-        document.getElementById("saveCardButton").disabled = false;
-    }
-}*/
-
 let radioYellow = document.getElementById("yellowCard");
 radioYellow.onclick = function() {
     document.getElementById("saveCardButton").disabled = false;
@@ -163,84 +156,128 @@ let radioRed = document.getElementById("redCard");
 radioRed.onclick = function() {
     document.getElementById("saveCardButton").disabled = false;
 }
+function isNumber(evt) {
+    var iKeyCode = (evt.which) ? evt.which : evt.keyCode
+       if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57)) {
+           return false;
+       }
+    return true;
+}
+const checkEmpty = document.getElementById("cardMinute");
+checkEmpty.addEventListener('input', function () {
+  if (checkEmpty.value &&
+    checkEmpty.value.length > 0 &&
+    checkEmpty.value.trim().length > 0) {
+    console.log('value is:    '+checkEmpty.value);}
+  else {
+    console.log('No value');
+  }
+});
 function addGoalBtnClicked(event) {
-    let goalMinute = document.getElementById("goalMinute");
-    let goalVideoSec = document.getElementById("goalSec");
-    let playerSelect = document.getElementById("playerSelect");
-    console.log('addGoalBtnClicked', playerSelect.value, goalMinute.value);
-    let params = '?playerId=' + playerSelect.value + '&goalMinute=' + goalMinute.value + '&goalVideoSec=' + goalVideoSec.value + "&homeTeamGoal=" + state.homeTeamGoal;
-    let apiUrl = '/api/game/' + id + '/goal/' + params;
-    fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-    }).then(function(response) {
-        console.log(response);
-        if(response.ok) {
-            document.getElementById('myModal').style.display = "none";
-            location.pathname = location.pathname;
-        } else {
-            document.getElementById('myModal').style.display = "none";
-            alert('Error');
-        }
-        return  response.json();
-    }).then(function(data) {
-        console.log(data);
-    })
+   const checkEmptyMinute = document.getElementById("goalMinute");
+   const checkEmptySeconds = document.getElementById("goalSec");
+   if (checkEmptyMinute.value == "" && checkEmptyMinute.value.length == 0 || checkEmptySeconds.value == "" && checkEmptySeconds.value.length == 0) {
+       document.getElementById('showInputAddGoalError').style.display = "block";
+       document.getElementById('goalMinute').style.cssText = "border-color: #fc2c2c; border-style: solid; border-width: thin";
+       document.getElementById('goalSec').style.cssText = "border-color: #fc2c2c; border-style: solid; border-width: thin";
+       return false;
+   } else {
+       let goalMinute = document.getElementById("goalMinute");
+       let goalVideoSec = document.getElementById("goalSec");
+       let playerSelect = document.getElementById("playerSelect");
+       console.log('addGoalBtnClicked', playerSelect.value, goalMinute.value);
+       let params = '?playerId=' + playerSelect.value + '&goalMinute=' + goalMinute.value + '&goalVideoSec=' + goalVideoSec.value + "&homeTeamGoal=" + state.homeTeamGoal;
+       let apiUrl = '/api/game/' + id + '/goal/' + params;
+       fetch(apiUrl, {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+           }
+       }).then(function(response) {
+           console.log(response);
+           if(response.ok) {
+               document.getElementById('myModal').style.display = "none";
+               location.pathname = location.pathname;
+           } else {
+               document.getElementById('myModal').style.display = "none";
+               alert('Error');
+           }
+           return  response.json();
+       }).then(function(data) {
+           console.log(data);
+       })
+   }
 }
 function saveGoalBtnClickedTeamA(event) {
-    state.homeTeamGoal = true;
-    let goalMinute = document.getElementById("goalMinute1");
-    let goalVideoSec = document.getElementById("addGoalSec1");
-    let playerSelect = document.getElementById("playerSelect1");
-    console.log('saveGoalBtnClickedTeamA', playerSelect.value, goalMinute.value);
-    let params = '?playerId=' + playerSelect.value + '&goalMinute=' + goalMinute.value + '&goalVideoSec=' + goalVideoSec.value + "&homeTeamGoal=" + state.homeTeamGoal;
-    let apiUrl = '/api/goal/' + window.goalId + params;
-    fetch(apiUrl, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-    }).then(function(response) {
-        console.log(response);
-        if(response.ok) {
-            document.getElementById('editDataTeam1').style.display = "none";
-            location.pathname = location.pathname;
-        } else {
-            alert('Error');
-        }
-        return  response.json();
-    }).then(function(data) {
-        console.log(data);
-    })
+   const checkEmptyMinute = document.getElementById("goalMinute1");
+   const checkEmptySeconds = document.getElementById("addGoalSec1");
+   if (checkEmptyMinute.value == "" && checkEmptyMinute.value.length == 0 || checkEmptySeconds.value == "" && checkEmptySeconds.value.length == 0) {
+       document.getElementById('showInputEditGoalTeamOneError').style.display = "block";
+       document.getElementById('goalMinute1').style.cssText = "border-color: #fc2c2c; border-style: solid; border-width: thin";
+       document.getElementById('addGoalSec1').style.cssText = "border-color: #fc2c2c; border-style: solid; border-width: thin";
+       return false;
+   } else {
+       state.homeTeamGoal = true;
+       let goalMinute = document.getElementById("goalMinute1");
+       let goalVideoSec = document.getElementById("addGoalSec1");
+       let playerSelect = document.getElementById("playerSelect1");
+       console.log('saveGoalBtnClickedTeamA', playerSelect.value, goalMinute.value);
+       let params = '?playerId=' + playerSelect.value + '&goalMinute=' + goalMinute.value + '&goalVideoSec=' + goalVideoSec.value + "&homeTeamGoal=" + state.homeTeamGoal;
+       let apiUrl = '/api/goal/' + window.goalId + params;
+       fetch(apiUrl, {
+           method: 'PUT',
+           headers: {
+             'Content-Type': 'application/json',
+            }
+       }).then(function(response) {
+           console.log(response);
+           if(response.ok) {
+               document.getElementById('editDataTeam1').style.display = "none";
+               location.pathname = location.pathname;
+           } else {
+               alert('Error');
+           }
+           return  response.json();
+       }).then(function(data) {
+           console.log(data);
+       })
+   }
 }
 
 function saveGoalBtnClickedTeamB(event) {
-    state.homeTeamGoal = false;
-    let goalMinute = document.getElementById("goalMinute2");
-    let goalVideoSec = document.getElementById("addGoalSec2");
-    let playerSelect = document.getElementById("playerSelect2");
-    console.log('saveGoalBtnClickedTeamB', playerSelect.value, goalMinute.value);
-    let params = '?playerId=' + playerSelect.value + '&goalMinute=' + goalMinute.value + '&goalVideoSec=' + goalVideoSec.value + "&homeTeamGoal=" + state.homeTeamGoal;
-    let apiUrl = '/api/goal/' + window.goalId + params;
-    fetch(apiUrl, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-    }).then(function(response) {
-        console.log(response);
-        if(response.ok) {
-            document.getElementById('editDataTeam2').style.display = "none";
-            location.pathname = location.pathname;
-        } else {
-            alert('Error');
-        }
-        return  response.json();
-    }).then(function(data) {
-        console.log(data);
-    })
+   const checkEmptyMinute = document.getElementById("goalMinute2");
+   const checkEmptySeconds = document.getElementById("addGoalSec2");
+   if (checkEmptyMinute.value == "" && checkEmptyMinute.value.length == 0 || checkEmptySeconds.value == "" && checkEmptySeconds.value.length == 0) {
+       document.getElementById('showInputEditGoalTeamTwoError').style.display = "block";
+       document.getElementById('goalMinute2').style.cssText = "border-color: #fc2c2c; border-style: solid; border-width: thin";
+       document.getElementById('addGoalSec2').style.cssText = "border-color: #fc2c2c; border-style: solid; border-width: thin";
+       return false;
+   } else {
+       state.homeTeamGoal = false;
+       let goalMinute = document.getElementById("goalMinute2");
+       let goalVideoSec = document.getElementById("addGoalSec2");
+       let playerSelect = document.getElementById("playerSelect2");
+       console.log('saveGoalBtnClickedTeamB', playerSelect.value, goalMinute.value);
+       let params = '?playerId=' + playerSelect.value + '&goalMinute=' + goalMinute.value + '&goalVideoSec=' + goalVideoSec.value + "&homeTeamGoal=" + state.homeTeamGoal;
+       let apiUrl = '/api/goal/' + window.goalId + params;
+       fetch(apiUrl, {
+           method: 'PUT',
+           headers: {
+             'Content-Type': 'application/json',
+           }
+       }).then(function(response) {
+           console.log(response);
+           if(response.ok) {
+               document.getElementById('editDataTeam2').style.display = "none";
+               location.pathname = location.pathname;
+           } else {
+               alert('Error');
+           }
+           return  response.json();
+       }).then(function(data) {
+           console.log(data);
+       })
+   }
 }
     let card = {};
     let radios = document.querySelectorAll('input[type=radio][name="Card"]');
@@ -260,29 +297,37 @@ function saveGoalBtnClickedTeamB(event) {
     });
 
 function addCardToPlayer(event) {
-    let cardMinute = document.getElementById("cardMinute");
-    let playerSelect = document.getElementById("cardPlayerSelect");
-    console.log('addCardToPlayer', playerSelect.value, yellowCard.checked, redCard.checked);
-    let params = '?playerId=' + playerSelect.value + '&cardMinute=' + cardMinute.value + '&cardType=' + card + '&homeTeamCard=' + state.homeTeamGoal;
-    let apiUrl = '/api/game/' + id + '/card/' + params;
-    fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-    }).then(function(response) {
-        console.log(response);
-        if(response.ok) {
-            document.getElementById('cardsModal').style.display = "none";
-            location.pathname = location.pathname;
-        } else {
-            document.getElementById('cardsModal').style.display = "none";
-            alert('Error');
-        }
-        return  response.json();
-    }).then(function(data) {
-        console.log(data);
-    })
+   const checkEmpty = document.getElementById("cardMinute");
+   if (checkEmpty.value == "" && checkEmpty.value.length == 0) {
+       document.getElementById('showInputAddCardError').style.display = "block";
+       document.getElementById('cardMinute').style.cssText = "border-color: #fc2c2c; border-style: solid; border-width: thin";
+       return false;
+   } else {
+       let cardMinute = document.getElementById("cardMinute");
+       let playerSelect = document.getElementById("cardPlayerSelect");
+       console.log('addCardToPlayer', playerSelect.value, yellowCard.checked, redCard.checked);
+       let params = '?player=' + playerSelect.value + '&cardMinute=' + cardMinute.value + '&cardType=' + card + '&homeTeamCard=' + state.homeTeamGoal;
+       let apiUrl = '/api/game/' + id + '/card/' + params;
+       fetch(apiUrl, {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+           }
+       }).then(function(response) {
+           console.log(response);
+           if(response.ok) {
+               document.getElementById('cardsModal').style.display = "none";
+               location.pathname = location.pathname;
+           }
+           if(response.status === 403) {
+               document.getElementById('cardsModal').style.display = "none";
+               alert('Максимальна кількість карток для гравця');
+           }
+           return  response.json();
+       }).then(function(data) {
+           console.log(data);
+       })
+   }
 }
 
 let tdbutton = document.getElementById("tdSaveButton");

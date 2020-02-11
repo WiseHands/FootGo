@@ -46,15 +46,19 @@
 		<div class="tour-number">
 			<p>Тур <span th:text="${game.tour.tourNumber}"></span></p>
 		</div>
+		<div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
+			<p>Голи</p>
+		</div>
 		<div class="review-match">
 			<div class="review-head">
 				<div class="review-team1">
 					<a th:attr="href=${'/team/' + game.firstTeam.id}">
-						<img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'} , class=${'team' + game.firstTeam.id}">
+						<img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
+						<img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
 						<p th:text="${game.firstTeam.teamName}">Команда 1</p>
 					</a>
 				</div>
-				<div class="review-score">
+				<div th:if="${game.isNoTechnicalDefeat() == true}" class="review-score">
 					<p>
 						<span th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</span>
 						<span th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</span>
@@ -70,7 +74,8 @@
 				</div>
 				<div class="review-team2">
 					<a th:attr="href=${'/team/' + game.secondTeam.id}">
-						<img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}, class=${'team' + game.secondTeam.id}">
+						<img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
+						<img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
 						<p th:text="${game.secondTeam.teamName}">Команда 2</p>
 					</a>
 				</div>
@@ -92,7 +97,7 @@
 							<a th:attr="href=${'/player/' + goal.player.id}">
 								<span th:text="${goal.player.firstName + ' ' + goal.player.lastName}" class="player-name">Ім'я Прізвище</span>
 							</a>
-								<span th:text="${' (' + goal.time + '&lsquo;)'}" class="minute">(22')</span>
+								<span th:text="${' (' + goal.time + '&lsquo;)'}" class="minute"></span>
 
 						</p>
 						<img src="/img/soccer-ball.png">
@@ -106,29 +111,29 @@
 						<a th:attr="href=${'/player/' + goal.player.id}">
 							<span th:text="${goal.player.firstName + ' ' + goal.player.lastName}">Ім'я Прізвище</span>
 						</a>
-						<span th:text="${' (' + goal.time + '&lsquo;)'}" class="minute">(22')</span>
+						<span th:text="${' (' + goal.time + '&lsquo;)'}" class="minute"></span>
 					</p>
 				</div>
 			</div>
 		</div>
-		<div class="tour-number cards">
+		<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamACards)} OR ${not #lists.isEmpty(game.teamBCards)}" class="tour-number cards">
 			<p>Картки</p>
 		</div>
-		<div class="details-match">
-			<div class="details-team1">
+		<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-match">
+			<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamACards)}" class="details-team1">
 				<div class="team1-goals" th:each="card : ${game.teamACards}">
 					<p>
 						<a th:attr="href=${'/player/' + card.player.id}">
 							<span th:text="${card.player.firstName + ' ' + card.player.lastName}" class="player-name">Ім'я Прізвище</span>
 						</a>
-						<span th:text="${' (' + card.time + '&lsquo;)'}" class="minute">(22')</span>
+						<span th:text="${' (' + card.time + '&lsquo;)'}" class="minute"></span>
 					</p>
 					<span th:if="${card.isYellow()}" class="yellow-card card-team-one"></span>
 					<span th:if="${card.isRed()}" class="red-card card-team-one"></span>
 					</a>
 				</div>
 			</div>
-			<div class="details-team2">
+			<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamBCards)}" class="details-team2">
 				<div class="team2-goals" th:each="card : ${game.teamBCards}">
 					<span th:if="${card.isYellow()}" class="yellow-card card-team-two"></span>
 					<span th:if="${card.isRed()}" class="red-card card-team-two"></span>
@@ -136,7 +141,7 @@
 						<a th:attr="href=${'/player/' + card.player.id}">
 							<span th:text="${card.player.firstName + ' ' + card.player.lastName}" class="player-name">Ім'я Прізвище</span>
 						</a>
-						<span th:text="${' (' + card.time + '&lsquo;)'}" class="minute">(22')</span>
+						<span th:text="${' (' + card.time + '&lsquo;)'}" class="minute"></span>
 					</p>
 					</a>
 				</div>
@@ -146,7 +151,7 @@
 			<p>Відео матчу</p>
 			<iframe width="500" height="281" th:attr="src=${game.videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
-		<div class="match-video" th:if="${game.descriptionText != ''}">
+		<div class="match-video" th:if="${game.descriptionText != null} AND ${game.descriptionText != ''}">
 			<p>Опис матчу</p>
 			<div class="results-container description-text">
 				<span th:text="${game.descriptionText}">
@@ -162,6 +167,7 @@
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39722519-3"></script>
+<script src="/imgPlaceholderSetScript.js" type="text/javascript"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}

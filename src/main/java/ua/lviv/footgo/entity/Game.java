@@ -46,6 +46,14 @@ public class Game {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Goal> teamBGoals;
 
+    public List<Card> getTeamACards() {
+        return teamACards;
+    }
+
+    public List<Card> getTeamBCards() {
+        return teamBCards;
+    }
+
     @OneToMany(cascade = CascadeType.ALL)
     public List<Card> teamACards;
 

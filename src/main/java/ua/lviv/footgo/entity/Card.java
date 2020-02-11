@@ -72,7 +72,7 @@ public class Card {
     public boolean isRed() {
         return this.cardType.equals(CardType.RED);
     }
-    public  boolean isYellow() {
+    public boolean isYellow() {
         return this.cardType.equals(CardType.YELLOW);
     }
 

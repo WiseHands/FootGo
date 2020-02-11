@@ -95,7 +95,7 @@
                         <p>
                             <span th:if="${card.isYellow()}" class="yellow-card card"></span>
                             <span th:if="${card.isRed()}" class="red-card card"></span>
-                            <span th:text="${card.player.firstName + card.player.lastName}" th:attr="onclick=${'editCardTeamOne(' + game.id + ', ' + card.id + ', true)'}"></span>,
+                            <span id="teamAPlayerName" th:text="${card.player.firstName + card.player.lastName}"></span>,
                             <span th:text="${' ' + card.time}"></span>
                             <span class="delete-goal" th:attr="onclick=${'deleteCard(' + game.id + ', ' + card.id + ', true)'}">-</span>
                         </p>
@@ -107,7 +107,7 @@
                         <p>
                             <span th:if="${card.isYellow()}" class="yellow-card card"></span>
                             <span th:if="${card.isRed()}" class="red-card card"></span>
-                            <span th:text="${card.player.firstName + card.player.lastName}" th:attr="onclick=${'editCardTeamTwo(' + game.id + ', ' + card.id + ', false)'}"></span>,
+                            <span id="teamBPlayerName" th:text="${card.player.firstName + card.player.lastName}"></span>,
                             <span th:text="${' ' + card.time}"></span>
                             <span class="delete-goal" th:attr="onclick=${'deleteCard(' + game.id + ', ' + card.id + ', false)'}">-</span>
                         </p>
@@ -159,6 +159,7 @@
                             <input type="text" name="seconds" id="goalSec">
                         </div>
                     </div>
+                    <div id="showInputAddGoalError" class="text-input-error" style="display:none"><p>Заповніть будь ласка обов'язкові поля</p></div>
                     <div class="goal-add">
                         <input onclick="addGoalBtnClicked()" id="savebutton" class="main-input-button" type="button" value="Додати">
                     </div>
@@ -187,10 +188,14 @@
                     </div>
                     <div class="modal-body">
                         <div class="card-type">
-                            <input type="radio" name="Card" id="yellowCard" value="YELLOW">
-                            <label for="yellowCard">Жовта</label>
-                            <input type="radio" name="Card" id="redCard" value="RED">
-                            <label for="redCard">Червона</label>
+                            <label class="container" for="yellowCard">Жовта
+                                <input type="radio" name="Card" id="yellowCard" value="YELLOW">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container" for="redCard">Червона
+                                <input type="radio" name="Card" id="redCard" value="RED">
+                                <span class="checkmark"></span>
+                            </label>
                         </div>
                         <div class="goal-author">
                             <p>Гравець</p>
@@ -199,11 +204,12 @@
                         </div>
                         <div class="goal-minute">
                             <p>Хвилина</p>
-                            <input type="text" name="minute" id="cardMinute">
+                            <input type="text" name="minute" id="cardMinute" required onkeypress="javascript:return isNumber(event)">
                         </div>
                     </div>
+                    <div id="showInputAddCardError" class="text-input-error" style="display:none"><p>Заповніть будь ласка обов'язкові поля</p></div>
                     <div class="goal-add">
-                        <input onclick="addCardToPlayer()" id="saveCardButton" class="main-input-button" type="button" value="Додати" disabled>
+                        <input onclick="addCardToPlayer()" id="saveCardButton" class="main-input-button" type="button" value="Додати" disabled >
                     </div>
                 </div>
             </div>
@@ -230,6 +236,7 @@
                                 <input value="" type="text" name="seconds" id="addGoalSec1">
                         </div>
                     </div>
+                    <div id="showInputEditGoalTeamOneError" class="text-input-error" style="display:none"><p>Заповніть будь ласка обов'язкові поля</p></div>
                     <div class="goal-add">
                         <input onclick="saveGoalBtnClickedTeamA()" id="savetimebutton1" class="main-input-button" type="button" value="Зберегти">
                     </div>
@@ -258,6 +265,7 @@
                                 <input value="" type="text" name="seconds" id="addGoalSec2">
                         </div>
                     </div>
+                    <div id="showInputEditGoalTeamTwoError" class="text-input-error" style="display:none"><p>Заповніть будь ласка обов'язкові поля</p></div>
                     <div class="goal-add">
                         <input onclick="saveGoalBtnClickedTeamB()" id="savetimebutton2" class="main-input-button" type="button" value="Зберегти">
                     </div>
