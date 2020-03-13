@@ -38,6 +38,7 @@ a, a:hover {
 }
 .header-text {
     display: flex;
+    align-items: center;
 }
 .header-text p {
     color: #fff;
@@ -48,6 +49,39 @@ a, a:hover {
 .header-text p:hover {
     color: #868686;
 }
+
+
+.dropbtn {
+    background-color: #000;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+.season-list {
+    position: relative;
+    display: inline-block;
+}
+.prev-seasons {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.prev-seasons a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.season-list:hover .prev-seasons {display: block;}
+
+.season-list:hover .dropbtn {background-color: #868686;}
+
+
 .main-block {
     max-width: 900px;
     margin: 0 auto;

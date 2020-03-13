@@ -146,7 +146,7 @@
 							<goal>repackage</goal>
 						</goals>
 						<configuration>
-							<classifier>spring-boot</classifier>
+<!--							<classifier>spring-boot</classifier>-->
 							<mainClass>
 								ua.lviv.footgo.FootGoApplication
 							</mainClass>
