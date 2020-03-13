@@ -55,7 +55,7 @@ a, a:hover {
     background-color: #000;
     color: white;
     padding: 16px;
-    font-size: 16px;
+    font-size: 1.2rem;
     border: none;
 }
 .season-list {
@@ -75,6 +75,7 @@ a, a:hover {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    font-size: 1.2rem;
 }
 
 .season-list:hover .prev-seasons {display: block;}
