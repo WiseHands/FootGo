@@ -1,3 +1,4 @@
+
 package ua.lviv.footgo;
 
 import org.springframework.boot.SpringApplication;

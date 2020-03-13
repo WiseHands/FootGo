@@ -840,3 +840,15 @@ input[type="file"] {
 }
 @media screen and (max-width: 667px) {
 }
+.season-block {
+    text-align: center;
+}
+.new-season {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 1rem;
+}
+.new-season h1 {
+    padding: 1rem 0;
+}

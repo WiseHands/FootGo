@@ -202,5 +202,12 @@ public class HttpRequestsController {
         model.addAttribute("league", leagueList.get(0));
         return "player";
     }
-
+    @GetMapping(value = "/admin/seasons")
+    public String seasonAll(Model model) {
+        return "AdminSeasons";
+    }
+    @GetMapping(value = "/admin/seasons/new")
+    public String seasonAdd(Model model) {
+        return "AdminSeasonsCreate";
+    }
 }
