@@ -218,4 +218,16 @@ public class HttpRequestsController {
     public String cupList(Model model) {
         return "AdminCupList";
     }
+    @GetMapping(value = "/admin/league")
+    public String league(Model model) {
+        return "AdminLeague";
+    }
+    @GetMapping(value = "/admin/cup")
+    public String cup(Model model) {
+        return "AdminCup";
+    }
+    @GetMapping(value = "/admin/league/new")
+    public String leagueNew(Model model) {
+        return "AdminLeagueNew";
+    }
 }
