@@ -230,4 +230,8 @@ public class HttpRequestsController {
     public String leagueNew(Model model) {
         return "AdminLeagueNew";
     }
+    @GetMapping(value = "/admin/cup/new")
+    public String cupNew(Model model) {
+        return "AdminCupNew";
+    }
 }
