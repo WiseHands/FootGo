@@ -137,9 +137,9 @@ public class HttpRequestsController {
         return "game";
     }
 
-    @GetMapping({"/admin"})
-    public String submission(Model model) {
-        return "Admin";
+    @GetMapping({"/admin/season"})
+    public String seasonList(Model model) {
+        return "AdminSeason";
     }
 
     @GetMapping({"/admin/tour"})
@@ -202,12 +202,20 @@ public class HttpRequestsController {
         model.addAttribute("league", leagueList.get(0));
         return "player";
     }
-    @GetMapping(value = "/admin/seasons")
-    public String seasonAll(Model model) {
-        return "AdminSeasons";
+    @GetMapping(value = "/admin")
+    public String admin(Model model) {
+        return "AdminSeasonList";
     }
     @GetMapping(value = "/admin/seasons/new")
     public String seasonAdd(Model model) {
         return "AdminSeasonsCreate";
+    }
+    @GetMapping(value = "/admin/leaguelist")
+    public String leagueList(Model model) {
+        return "AdminLeagueList";
+    }
+    @GetMapping(value = "/admin/cuplist")
+    public String cupList(Model model) {
+        return "AdminCupList";
     }
 }
