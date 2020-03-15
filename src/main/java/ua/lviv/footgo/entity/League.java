@@ -28,4 +28,11 @@ public class League {
     }
 
 
+    public List<Team> getTeamList() {
+        return teamList;
+    }
+
+    public void setTeamList(List<Team> teamList) {
+        this.teamList = teamList;
+    }
 }

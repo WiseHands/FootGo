@@ -20,6 +20,9 @@ public class OnApplicationStart {
     @Autowired
     LeagueManagementRepository leagueManagementRepository;
 
+    @Autowired
+    TeamRepository teamRepository;
+
 
     @PostConstruct
     public void bootstapApp() {
@@ -29,7 +32,11 @@ public class OnApplicationStart {
         }
         List<League> leagueList = (List<League>)leagueManagementRepository.findAll();
         if(leagueList.size() == 0) {
-            resultsGenerator._createLeagueStatusIfDoesntExist();
+            List<Team> teamList = (List<Team>)teamRepository.findAll();
+            League league = resultsGenerator._movePreviousToursIntoLeague(teamList);
+            resultsGenerator._movePreviousLeagueIntoSeason(league, teamList);
+
+
         }
     }
 

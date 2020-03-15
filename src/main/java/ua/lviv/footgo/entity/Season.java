@@ -31,6 +31,38 @@ public class Season {
 
 
 
+    public List<TeamSignUpRequest> getTeamSubmissionList() {
+        return teamSubmissionList;
+    }
+
+    public void setTeamSubmissionList(List<TeamSignUpRequest> teamSubmissionList) {
+        this.teamSubmissionList = teamSubmissionList;
+    }
+
+    public List<Team> getTeamList() {
+        return teamList;
+    }
+
+    public void setTeamList(List<Team> teamList) {
+        this.teamList = teamList;
+    }
+
+    public List<League> getLeagueList() {
+        return leagueList;
+    }
+
+    public void setLeagueList(List<League> leagueList) {
+        this.leagueList = leagueList;
+    }
+
+    public List<Cup> getCupList() {
+        return cupList;
+    }
+
+    public void setCupList(List<Cup> cupList) {
+        this.cupList = cupList;
+    }
+
     public boolean getIsSubmissionOpened() {
         return submissionsOpened;
     }
@@ -39,4 +71,7 @@ public class Season {
         this.submissionsOpened = show;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

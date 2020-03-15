@@ -16,8 +16,7 @@ public class LeagueManagementController {
     public void markOpened(@PathVariable boolean submissionsOpened) {
         List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         League league = leagueList.get(0);
-        league.setIsSubmissionOpened(submissionsOpened);
-
+        //TODO season level call
         leagueManagementRepository.save(league);
     }
 

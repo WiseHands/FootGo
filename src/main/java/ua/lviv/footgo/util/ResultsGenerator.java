@@ -7,6 +7,7 @@ import ua.lviv.footgo.entity.*;
 import ua.lviv.footgo.repository.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -40,6 +41,9 @@ public class ResultsGenerator {
 
     @Autowired
     private  LeagueManagementRepository leagueManagementRepository;
+
+    @Autowired
+    private  SeasonRepository seasonRepository;
 
     private Faker faker = new Faker();
 
@@ -272,16 +276,30 @@ public class ResultsGenerator {
         }
     }
 
-    public League _createLeagueStatusIfDoesntExist() {
+    public League _movePreviousToursIntoLeague(List<Team> teamList) {
         League league = new League();
-        league.setIsSubmissionOpened(true);
         List<Tour> tourList = (List<Tour>) tourRepository.findAll();
         for(Tour tour : tourList) {
             tour.setLeague(league);
         }
-        leagueManagementRepository.save(league);
+        league.setTeamList(teamList);
+        league = leagueManagementRepository.save(league);
 
         return league;
+    }
+
+    public Season _movePreviousLeagueIntoSeason(League league, List<Team> teamList) {
+        Season season = new Season();
+        season.setName("Осінь 2019");
+
+        List<League> leagueList = new ArrayList<League>();
+        leagueList.add(league);
+
+        season.setLeagueList(leagueList);
+        season.setTeamList(teamList);
+        season = seasonRepository.save(season);
+
+        return season;
     }
 
 
