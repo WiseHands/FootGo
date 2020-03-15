@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class League {
+public class Cup {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +26,5 @@ public class League {
     public Long getId() {
         return id;
     }
-
 
 }
