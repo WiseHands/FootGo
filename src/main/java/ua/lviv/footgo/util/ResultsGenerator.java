@@ -302,5 +302,34 @@ public class ResultsGenerator {
         return season;
     }
 
+     public void createSeason() {
+        Season season = new Season();
+        season.setName("Весна 2020");
+
+         for (int i = 0; i < 15; i++) {
+             Team team = createTeam();
+             for (int p = 0; p < 11; p++) {
+                 Player player = createPlayer();
+                 team.addPlayer(player);
+             }
+             season.addTeam(team);
+         }
+         seasonRepository.save(season);
+     }
+
+     private Team createTeam() {
+        Team team = new Team();
+        team.setTeamName(faker.name().lastName());
+
+        return team;
+     }
+
+     private  Player createPlayer() {
+        Player player = new Player();
+        player.setFirstName(faker.name().firstName());
+        player.setLastName(faker.name().lastName());
+
+        return player;
+     }
 
 }

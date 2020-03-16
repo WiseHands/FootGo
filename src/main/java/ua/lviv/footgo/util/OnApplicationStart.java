@@ -33,11 +33,13 @@ public class OnApplicationStart {
         List<League> leagueList = (List<League>)leagueManagementRepository.findAll();
         if(leagueList.size() == 0) {
             List<Team> teamList = (List<Team>)teamRepository.findAll();
-            League league = resultsGenerator._movePreviousToursIntoLeague(teamList);
-            resultsGenerator._movePreviousLeagueIntoSeason(league, teamList);
+            //League league = resultsGenerator._movePreviousToursIntoLeague(teamList);
+            //resultsGenerator._movePreviousLeagueIntoSeason(league, teamList);
 
 
         }
+
+        resultsGenerator.createSeason();
     }
 
 }

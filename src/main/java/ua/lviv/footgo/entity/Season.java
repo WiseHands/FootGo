@@ -1,6 +1,7 @@
 package ua.lviv.footgo.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "season")
@@ -73,5 +74,12 @@ public class Season {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void addTeam(Team team) {
+        if(this.teamList == null) {
+            this.teamList = new ArrayList<>();
+        }
+        this.teamList.add(team);
     }
 }
