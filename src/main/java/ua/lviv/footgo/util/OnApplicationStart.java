@@ -23,6 +23,8 @@ public class OnApplicationStart {
     @Autowired
     TeamRepository teamRepository;
 
+    @Autowired
+    SeasonRepository seasonRepository;
 
     @PostConstruct
     public void bootstapApp() {
@@ -36,10 +38,11 @@ public class OnApplicationStart {
             //League league = resultsGenerator._movePreviousToursIntoLeague(teamList);
             //resultsGenerator._movePreviousLeagueIntoSeason(league, teamList);
 
-
         }
-
-        resultsGenerator.createSeason();
+        List<Season> seasonList = (List<Season>)seasonRepository.findAll();
+        if(seasonList.size() == 0) {
+            resultsGenerator.createSeason();
+        }
     }
 
 }

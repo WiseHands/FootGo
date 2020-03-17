@@ -1,5 +1,6 @@
 package ua.lviv.footgo.repository;
 
+import ua.lviv.footgo.entity.Season;
 import ua.lviv.footgo.entity.Team;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

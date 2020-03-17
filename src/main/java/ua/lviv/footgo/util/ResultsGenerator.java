@@ -304,10 +304,12 @@ public class ResultsGenerator {
 
      public void createSeason() {
         Season season = new Season();
-        season.setName("Весна 2020");
+        season.setName("Spring 2020");
 
          for (int i = 0; i < 15; i++) {
              Team team = createTeam();
+             Captain captain = createCaptain();
+             team.setCaptain(captain);
              for (int p = 0; p < 11; p++) {
                  Player player = createPlayer();
                  team.addPlayer(player);
@@ -330,6 +332,15 @@ public class ResultsGenerator {
         player.setLastName(faker.name().lastName());
 
         return player;
+     }
+
+     private  Captain createCaptain() {
+        Captain captain = new Captain();
+        captain.setCaptainName(faker.name().name());
+        captain.setCaptainPhone(faker.phoneNumber().phoneNumber());
+        captain.setCaptainEmail(captain.getCaptainName() + "@gmail.com");
+
+        return  captain;
      }
 
 }

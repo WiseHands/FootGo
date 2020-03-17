@@ -1,10 +1,7 @@
 package ua.lviv.footgo.routing;
 
 import org.springframework.web.bind.annotation.*;
-import ua.lviv.footgo.entity.Game;
-import ua.lviv.footgo.entity.League;
-import ua.lviv.footgo.entity.Player;
-import ua.lviv.footgo.entity.Team;
+import ua.lviv.footgo.entity.*;
 import ua.lviv.footgo.jsonmapper.PlayerGoals;
 import ua.lviv.footgo.jsonmapper.TeamResults;
 import ua.lviv.footgo.repository.*;
@@ -18,6 +15,7 @@ import ua.lviv.footgo.service.TopScorerService;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -50,7 +48,10 @@ public class HttpRequestsController {
     @Autowired
     LeagueManagementRepository leagueManagementRepository;
 
-    @GetMapping({"/"})
+    @Autowired
+    SeasonRepository seasonRepository;
+
+/*    @GetMapping({"/"})
     public String footgo(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("name", name);
         List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
@@ -58,6 +59,14 @@ public class HttpRequestsController {
         List allTeams = (List) teamRepository.findAll();
         model.addAttribute("teamList", allTeams);
         return "footgo";
+    }*/
+
+    @GetMapping({"/"})
+    public String footgo(Model model, @RequestParam(value = "name", required = false) String name) {
+        model.addAttribute("name", name);
+        List<Season> seasonList = (List<Season>) seasonRepository.findAll();
+        model.addAttribute("season", seasonList.get(0));
+        return "seasons";
     }
 
     @GetMapping({"/signup"})
@@ -137,8 +146,8 @@ public class HttpRequestsController {
         return "game";
     }
 
-    @GetMapping({"/admin/season"})
-    public String seasonList(Model model) {
+    @GetMapping({"/admin/season/{id}"})
+    public String seasonList(Model model, @PathVariable("id") Long id) {
         return "AdminSeason";
     }
 
@@ -171,9 +180,10 @@ public class HttpRequestsController {
         return "AdminMatchDetail";
     }
 
-    @GetMapping({"/admin/team"})
-    public String teamList(Model model) {
-        model.addAttribute("teamList", teamRepository.findAll());
+    @GetMapping({"/admin/season/{id}/team"})
+    public String teamList(Model model, @PathVariable("id") Long id) {
+        Season season = seasonRepository.findById(id).get();
+        model.addAttribute("season", season);
         return "AdminSubmissionTeamList";
     }
 
@@ -204,8 +214,11 @@ public class HttpRequestsController {
     }
     @GetMapping(value = "/admin")
     public String admin(Model model) {
+        List<Season> seasonList = (List<Season>) seasonRepository.findAll();
+        model.addAttribute("seasonList", seasonList);
         return "AdminSeasonList";
     }
+
     @GetMapping(value = "/admin/seasons/new")
     public String seasonAdd(Model model) {
         return "AdminSeasonsCreate";

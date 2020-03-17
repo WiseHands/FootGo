@@ -30,7 +30,13 @@ public class Season {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Cup> cupList;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public List<TeamSignUpRequest> getTeamSubmissionList() {
         return teamSubmissionList;
@@ -74,6 +80,10 @@ public class Season {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void addTeam(Team team) {

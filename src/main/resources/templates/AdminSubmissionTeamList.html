@@ -17,8 +17,8 @@
             <div class="requests">
                 <p>Команди</p>
                 <div class="all-requests">
-                    <div th:each="item : ${teamList}">
-                        <a th:attr="href=${'/admin/team/edit?uuid=' + item.id}" class="link-style">
+                    <div th:each="item : ${season.teamList}">
+                        <a th:attr="href=${'/admin/season/' + season.id + '/team/edit?uuid=' + item.id}" class="link-style">
                             <div class="request-block">
                                 <h3 th:text="${item.teamName}"></h3>
                                 <p th:text="${item.captain.captainName}"></p>
