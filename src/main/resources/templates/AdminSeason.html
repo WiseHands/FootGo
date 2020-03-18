@@ -21,7 +21,7 @@
             </ul>
             <div class="requests">
                 <div class="all-requests">
-                    <a class="link-style" href="/admin/submission">
+                    <a th:href="'/admin/season/' + ${id} + '/submission'" class="link-style">
                         <div class="request-block">
                             <h3>Заявки</h3>
                         </div>
@@ -36,12 +36,12 @@
 <!--                            <h3>Тури</h3>-->
 <!--                        </div>-->
 <!--                    </a>-->
-                    <a class="link-style" href="/admin/leaguelist">
+                    <a th:href="'/admin/season/' + ${id} + '/leaguelist'" class="link-style">
                         <div class="request-block">
                             <h3>Ліга</h3>
                         </div>
                     </a>
-                    <a class="link-style" href="/admin/cuplist">
+                    <a th:href="'/admin/season/' + ${id} + '/cuplist'" class="link-style">
                         <div class="request-block">
                             <h3>Кубок</h3>
                         </div>

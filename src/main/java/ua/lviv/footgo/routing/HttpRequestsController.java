@@ -163,14 +163,14 @@ public class HttpRequestsController {
         return "AdminTourDetails";
     }
 
-    @GetMapping({"/admin/submission"})
-    public String submission(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+    @GetMapping({"/admin/season/{id}/submission"})
+    public String submission(Model model, @PathVariable("id") Long id, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("submissions", teamSignUpRepository.findAll());
         return "AdminSubmissionProgress";
     }
 
-    @GetMapping(value = "/admin/submission/edit")
-    public String submissionEdit(Model model, @RequestParam long uuid) {
+    @GetMapping(value = "/admin/season/{id}/submission/edit")
+    public String submissionEdit(Model model, @PathVariable("id") Long id, @RequestParam long uuid) {
         return "AdminSubmissionEntryEdit";
     }
 
@@ -187,8 +187,8 @@ public class HttpRequestsController {
         return "AdminSubmissionTeamList";
     }
 
-    @GetMapping(value = "/admin/team/edit")
-    public String teamEdit(Model model, @RequestParam long uuid) {
+    @GetMapping(value = "/admin/season/{id}/team/edit")
+    public String teamEdit(Model model, @PathVariable("id") Long id, @RequestParam long uuid) {
         model.addAttribute("team", teamRepository.findById(uuid).get());
         return "AdminSubmissionTeamEntryEdit";
     }
@@ -223,12 +223,12 @@ public class HttpRequestsController {
     public String seasonAdd(Model model) {
         return "AdminSeasonsCreate";
     }
-    @GetMapping(value = "/admin/leaguelist")
-    public String leagueList(Model model) {
+    @GetMapping(value = "/admin/season/{id}/leaguelist")
+    public String leagueList(Model model, @PathVariable("id") Long id) {
         return "AdminLeagueList";
     }
-    @GetMapping(value = "/admin/cuplist")
-    public String cupList(Model model) {
+    @GetMapping(value = "/admin/season/{id}/cuplist")
+    public String cupList(Model model, @PathVariable("id") Long id) {
         return "AdminCupList";
     }
     @GetMapping(value = "/admin/league")

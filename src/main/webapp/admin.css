@@ -317,7 +317,7 @@ input[type=text], input[type=tel], input[type=email], select {
     background-color: #0ca38a;
 }
 .main-input-button-player:hover {
-    background-color: #057764;
+    background-color: #057764 !important;
 }
 .main-input-button-all {
    margin: 1em auto;
