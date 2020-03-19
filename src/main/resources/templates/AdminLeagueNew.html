@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../../../admin.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/submissionLeague.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -24,20 +25,18 @@
     </ul>
     <div class="new-season all-requests">
         <h1>Назва ліги</h1>
-        <input type="text" id="seasonName" name="seasonName" placeholder="Назва ліги" required>
+        <input type="text" id="leagueName" name="seasonName" placeholder="Назва ліги" required>
     </div>
     <div class="season-block all-requests">
         <div th:each="item : ${season.teamList}">
             <div class="request-block">
                 <h3 th:text="${item.teamName}"></h3>
                 <p th:text="${item.captain.captainName}"></p>
-                <input type="checkbox">
+                <input th:attr="value=${item.id}" type="checkbox">
             </div>
         </div>
     </div>
-
-    <input class="main-input-button" type="button" value="Створити" onclick="">
-
+    <input class="main-input-button" type="button" value="Створити" onclick="submissionData()">
 </div>
 </body>
 </html>
