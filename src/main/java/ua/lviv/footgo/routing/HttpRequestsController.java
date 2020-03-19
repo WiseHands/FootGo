@@ -239,8 +239,10 @@ public class HttpRequestsController {
     public String cup(Model model) {
         return "AdminCup";
     }
-    @GetMapping(value = "/admin/league/new")
-    public String leagueNew(Model model) {
+    @GetMapping(value = "/admin/season/{id}/league/new")
+    public String leagueNew(Model model, @PathVariable("id") Long id) {
+        Season season = seasonRepository.findById(id).get();
+        model.addAttribute("season", season);
         return "AdminLeagueNew";
     }
     @GetMapping(value = "/admin/cup/new")

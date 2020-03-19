@@ -22,7 +22,7 @@
         <li><a href="">Ліги</a></li>
     </ul>
     <div class="season-block all-requests">
-        <a class="link-style" href="/admin/league/new">
+        <a th:href="'/admin/season/' + ${id} + '/league/new'" class="link-style">
             <div class="request-block add-season">
                 <i class="fa fa-plus" style="font-size: 36px"></i>
             </div>

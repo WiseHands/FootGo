@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Admin | FootGo League</title>
-    <link rel="stylesheet" href="../../../admin.css">
+    <link rel="stylesheet" href="../../../../admin.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -27,11 +27,13 @@
         <input type="text" id="seasonName" name="seasonName" placeholder="Назва ліги" required>
     </div>
     <div class="season-block all-requests">
+        <div th:each="item : ${season.teamList}">
             <div class="request-block">
-                <h3>Назва команди</h3>
-                <p>Капітан</p>
+                <h3 th:text="${item.teamName}"></h3>
+                <p th:text="${item.captain.captainName}"></p>
                 <input type="checkbox">
             </div>
+        </div>
     </div>
 
     <input class="main-input-button" type="button" value="Створити" onclick="">
