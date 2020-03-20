@@ -92,4 +92,11 @@ public class Season {
         }
         this.teamList.add(team);
     }
+
+    public void addLeague(League league) {
+        if(this.leagueList == null) {
+            this.leagueList = new ArrayList<>();
+        }
+        this.leagueList.add(league);
+    }
 }

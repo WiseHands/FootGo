@@ -18,8 +18,8 @@
     </div>
     <ul class="menu-breadcrumb">
         <li><a href="/">Сезон</a></li>
-        <li><a href="">Весна 2020</a></li>
-        <li><a href="">Ліги</a></li>
+        <li><a th:href="'/admin/season/' + ${id}">Весна 2020</a></li>
+        <li><a th:href="'/admin/season/' + ${id} + '/leaguelist'">Ліги</a></li>
     </ul>
     <div class="season-block all-requests">
         <a th:href="'/admin/season/' + ${id} + '/league/new'" class="link-style">

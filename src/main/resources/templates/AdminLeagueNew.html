@@ -19,9 +19,9 @@
     </div>
     <ul class="menu-breadcrumb">
         <li><a href="/">Сезон</a></li>
-        <li><a href="">Весна 2020</a></li>
-        <li><a href="">Ліги</a></li>
-        <li><a href="">Створити</a></li>
+        <li><a th:href="'/admin/season/' + ${season.id}" th:text="${season.name}"></a></li>
+        <li><a th:href="'/admin/season/' + ${season.id} + '/leaguelist'">Ліги</a></li>
+        <li><a th:href="'/admin/season/' + ${season.id} + '/league/new'">Створити</a></li>
     </ul>
     <div class="new-season all-requests">
         <h1>Назва ліги</h1>
@@ -35,8 +35,9 @@
                 <input th:attr="value=${item.id}" type="checkbox">
             </div>
         </div>
+        <input class="main-input-button" type="button" value="Створити" onclick="submissionData()">
     </div>
-    <input class="main-input-button" type="button" value="Створити" onclick="submissionData()">
+
 </div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package ua.lviv.footgo.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,7 +18,15 @@ public class League {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Tour> tours;
 
+    private String name;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public List<Tour> getTours() {
         return tours;
@@ -34,5 +43,12 @@ public class League {
 
     public void setTeamList(List<Team> teamList) {
         this.teamList = teamList;
+    }
+
+    public void addTeam(Team team) {
+        if(this.teamList == null) {
+            teamList = new ArrayList<Team>();
+        }
+        teamList.add(team);
     }
 }
