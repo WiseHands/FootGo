@@ -17,7 +17,6 @@
             <ul class="menu-breadcrumb">
                 <li><a href="/">Сезон</a></li>
                 <li><a th:href="'/admin/season/' + ${season.id}" th:text="${season.name}"></a></li>
-                <li><a th:href="'/admin/season/' + ${season.id} + '/leaguelist'">Ліги</a></li>
                 <li><a th:href="'/admin/season/' + ${season.id} + '/team'">Команди</a></li>
             </ul>
             <div class="requests">
