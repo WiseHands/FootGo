@@ -26,6 +26,7 @@
     <div class="new-season all-requests">
         <h1>Назва ліги</h1>
         <input type="text" id="leagueName" name="seasonName" placeholder="Назва ліги" required>
+        <div id="showInputAddLeagueNameError" class="text-input-error" style="display:none"><p>Заповніть будь ласка обов'язкові поля</p></div>
     </div>
     <div class="season-block all-requests">
         <div th:each="item : ${season.teamList}">

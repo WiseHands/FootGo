@@ -680,7 +680,6 @@ span.clear-technical-defeat {
     text-align: center;
     font-weight: bold;
 }
-
 /*time picker*/
 .time-picker{
     display: flex;
@@ -694,13 +693,11 @@ span.clear-technical-defeat {
 .label-time-picker{
     padding-right: 5px;
 }
-
 /*input for file upload*/
 .admin-file-upload, .admin-logo-upload {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
 input[type="file"] {
     position: absolute;
     left: 0;
@@ -723,7 +720,6 @@ input[type="file"] {
     border: 3px dotted #bebebe;
     border-radius: 10px;
 }
-
 .fileUploadLabel {
     display: inline-block;
     position: relative;
@@ -731,21 +727,17 @@ input[type="file"] {
     width: 15em;
     margin: 0px 5px 10px 5px;
 }
-
 .fileUpload.dragover {
     background-color: #aaa;
 }
-
 .admin-file-upload img {
     width: 200px;
     border-radius: 50%;
 }
-
 .admin-logo-upload img {
     max-width: 100px;
     margin-left: 6px;
 }
-
 .team-defeat {
     display: flex;
     width: fit-content;
@@ -757,14 +749,12 @@ input[type="file"] {
     font-size: 1.3rem;
     border-radius: 10px;
 }
-
 .description-text {
     text-align: center;
     font-size: 1.5rem !important;
     font-weight: 600;
     padding-bottom: 1rem;
 }
-
 #descriptionText {
     padding: 2rem;
     margin-bottom: 0.5rem;
@@ -858,24 +848,25 @@ ul.menu-breadcrumb {
     margin-bottom: 0;
     list-style: none;
 }
-
 ul.menu-breadcrumb li {
     display: inline;
     font-size: 18px;
 }
-
 ul.menu-breadcrumb li + li:before {
     padding: 8px;
     color: black;
     content: "/\00a0";
 }
-
 ul.menu-breadcrumb li a {
     color: #000;
     text-decoration: none;
 }
-
 ul.menu-breadcrumb li a:hover {
     color: #000;
     text-decoration: underline;
+}
+.league-name-error {
+    border-color: #fc2c2c !important;
+    border-style: solid !important;
+    border-width: thin !important;
 }
