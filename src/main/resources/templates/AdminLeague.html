@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Admin | FootGo League</title>
-    <link rel="stylesheet" href="../../../admin.css">
+    <link rel="stylesheet" href="../../../../admin.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -18,13 +18,13 @@
     </div>
     <ul class="menu-breadcrumb">
         <li><a href="/">Сезон</a></li>
-        <li><a href="">Весна 2020</a></li>
-        <li><a href="">Ліги</a></li>
-        <li><a href="">Ліга 1</a></li>
+        <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
+        <li><a th:href="'/admin/season/' + ${id} + '/leaguelist'">Ліги</a></li>
+        <li><a th:href="'/admin/season/' + ${id} + '/leaguelist/' + ${league.id}" th:text="${league.name}"></a></li>
     </ul>
     <div class="requests">
         <div class="all-requests">
-            <a class="link-style" href="/admin/team">
+            <a th:href="'/admin/season/' + ${id} + '/leaguelist/' + ${league.id} + '/team'" class="link-style" href="/admin/team">
                 <div class="request-block">
                     <h3>Команди</h3>
                 </div>

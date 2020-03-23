@@ -235,9 +235,21 @@ public class HttpRequestsController {
     public String cupList(Model model, @PathVariable("id") Long id) {
         return "AdminCupList";
     }
-    @GetMapping(value = "/admin/league")
-    public String league(Model model) {
+    @GetMapping(value = "/admin/season/{id}/leaguelist/{leagueId}")
+    public String league(Model model, @PathVariable("id") Long id, @PathVariable("leagueId") Long leagueId) {
+        Season season = seasonRepository.findById(id).get();
+        model.addAttribute("season", season);
+        League league = leagueManagementRepository.findById(leagueId).get();
+        model.addAttribute("league", league);
         return "AdminLeague";
+    }
+    @GetMapping({"/admin/season/{id}/leaguelist/{leagueId}/team"})
+    public String teamLeagueList(Model model, @PathVariable("id") Long id, @PathVariable("leagueId") Long leagueId) {
+        Season season = seasonRepository.findById(id).get();
+        model.addAttribute("season", season);
+        League league = leagueManagementRepository.findById(leagueId).get();
+        model.addAttribute("league", league);
+        return "AdminSubmissionLeagueTeamList";
     }
     @GetMapping(value = "/admin/cup")
     public String cup(Model model) {
