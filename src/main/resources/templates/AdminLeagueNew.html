@@ -26,19 +26,20 @@
     <div class="new-season all-requests">
         <h1>Назва ліги</h1>
         <input type="text" id="leagueName" name="seasonName" placeholder="Назва ліги" required>
-        <div id="showInputAddLeagueNameError" class="text-input-error" style="display:none"><p>Заповніть будь ласка обов'язкові поля</p></div>
+        <div id="showInputAddLeagueNameError" class="text-input-error" style="display:none"><p>Заповніть будь ласка
+            обов'язкові поля</p></div>
     </div>
     <div class="season-block all-requests">
         <div th:each="item : ${season.teamList}">
-            <div class="request-block">
+            <label class="request-block">
                 <h3 th:text="${item.teamName}"></h3>
                 <p th:text="${item.captain.captainName}"></p>
                 <input th:attr="value=${item.id}" type="checkbox">
-            </div>
+                <span class="checkbox-mark"></span>
+            </label>
         </div>
         <input class="main-input-button" type="button" value="Створити" onclick="submissionData()">
     </div>
-
 </div>
 </body>
 </html>

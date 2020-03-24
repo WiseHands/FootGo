@@ -194,6 +194,7 @@ body p {
     justify-content: space-around;
 }
 .request-block {
+    display: block;
     width: 230px;
     padding: 24px 16px;
     margin: 10px 0;
@@ -203,6 +204,9 @@ body p {
                 0px 1px 1px 0px rgba(0,0,0,0.14),
                 0px 2px 1px -1px rgba(0,0,0,0.12);
     cursor: pointer;
+}
+.request-block i {
+    font-size: 2em;
 }
 .request-block h3 {
     font-size: 1.5rem;
@@ -595,10 +599,6 @@ span.clear-technical-defeat {
 
 /*admin checkbox*/
 .toggle {
-    /*position: relative;
-    display: block;
-    width: 40px;
-    height: 20px;*/
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     transform: translate3d(0, 0, 0);
@@ -828,6 +828,54 @@ input[type="file"] {
  	height: 8px;
  	border-radius: 100%;
  	background: white;
+}
+/* Custom checkbox style */
+/* Hide the browser's default checkbox */
+.request-block input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* Create a custom checkbox */
+.checkbox-mark {
+  display: block;
+  position: relative;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  margin: 0 auto;
+  top: .5em;
+}
+/* On mouse-over, add a grey background color */
+.request-block:hover input ~ .checkbox-mark {
+  background-color: #ccc;
+}
+/* When the checkbox is checked, add a blue background */
+.request-block input:checked ~ .checkbox-mark {
+  background-color: #0ca38a;
+}
+/* Create the checkbox-mark/indicator (hidden when not checked) */
+.checkbox-mark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the checkbox-mark when checked */
+.request-block input:checked ~ .checkbox-mark:after {
+  display: block;
+}
+
+/* Style the checkbox-mark/indicator */
+.request-block .checkbox-mark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
 }
 @media screen and (max-width: 667px) {
 }

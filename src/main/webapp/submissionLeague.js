@@ -32,7 +32,7 @@ function submissionData(event) {
         }).then(function(response) {
             console.log(response);
             if(response.ok) {
-                location.pathname = location.pathname;
+                location.pathname = '/admin/season/' + seasonId + '/leaguelist';
             }
             else {
                 alert('Помилка при створенні ліги');
@@ -42,5 +42,4 @@ function submissionData(event) {
             console.log(data);
         })
     }
-
 }
