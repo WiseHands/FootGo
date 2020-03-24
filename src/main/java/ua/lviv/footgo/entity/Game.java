@@ -122,6 +122,7 @@ public class Game {
         this.isTeamAHasTechnicalDefeat = false;
     }
 
+    @JsonIgnore
     public boolean isADraw() {
         return teamAGoals.size() == teamBGoals.size();
     }

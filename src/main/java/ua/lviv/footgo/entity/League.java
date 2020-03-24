@@ -51,4 +51,11 @@ public class League {
         }
         teamList.add(team);
     }
+
+    public void addTour(Tour tour) {
+        if(this.tours == null) {
+            tours = new ArrayList<Tour>();
+        }
+        tours.add(tour);
+    }
 }

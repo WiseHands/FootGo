@@ -244,7 +244,7 @@ public class HttpRequestsController {
         return "AdminLeague";
     }
     @GetMapping({"/admin/season/{id}/leaguelist/{leagueId}/team"})
-    public String teamLeagueList(Model model, @PathVariable("id") Long id, @PathVariable("leagueId") Long leagueId) {
+    public String leagueTeamList(Model model, @PathVariable("id") Long id, @PathVariable("leagueId") Long leagueId) {
         Season season = seasonRepository.findById(id).get();
         model.addAttribute("season", season);
         League league = leagueManagementRepository.findById(leagueId).get();
