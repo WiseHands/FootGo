@@ -3,7 +3,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <title>Тури | FootGo</title>
-        <link rel="stylesheet" href="../../../admin.css">
+        <link rel="stylesheet" href="../../../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
         <script src="/submissionAll.js" type="text/javascript"></script>
     </head>
@@ -14,11 +14,18 @@
                     <a href="/admin"><img class="admin-img" src="/img/footgo-dark-icon.png" alt="logo"></a>
                 </div>
             </div>
+            <ul class="menu-breadcrumb">
+                <li><a href="/admin">Сезон</a></li>
+                <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
+                <li><a th:href="'/admin/season/' + ${id} + '/leaguelist'">Ліги</a></li>
+                <li><a th:href="'/admin/season/' + ${id} + '/leaguelist/' + ${league.id}" th:text="${league.name}"></a></li>
+                <li><a th:href="'/admin/season/' + ${id} + '/leaguelist/' + ${league.id} + '/tour'">Тури</a></li>
+            </ul>
             <div class="requests">
                 <p>Тури</p>
                 <div class="all-requests">
-                    <div th:each="item : ${tourList}">
-                        <a th:attr="href=${'/admin/tour/details?uuid=' + item.id}" class="link-style">
+                    <div th:each="item : ${league.tours}">
+                        <a th:href="'/admin/season/' + ${id} + '/leaguelist/' + ${league.id} + '/tour/details?uuid=' + ${item.id}" class="link-style">
                             <div class="request-block">
                                 <h3 th:text="${item.tourNumber}"></h3>
                             </div>

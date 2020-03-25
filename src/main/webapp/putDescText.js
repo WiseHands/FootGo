@@ -3,7 +3,7 @@ function putDescTextById() {
     let desctext_res = encodeURI(desctext);
 
     let params = '?descText=' + desctext_res;
-    let apiUrl = '/api/game/' + id + '/setdesctext' + params;
+    let apiUrl = '/api/game/' + gameId + '/setdesctext' + params;
 
     fetch(apiUrl, {
       method: 'PUT',

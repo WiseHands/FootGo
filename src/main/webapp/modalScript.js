@@ -187,7 +187,7 @@ function addGoalBtnClicked(event) {
        let playerSelect = document.getElementById("playerSelect");
        console.log('addGoalBtnClicked', playerSelect.value, goalMinute.value);
        let params = '?playerId=' + playerSelect.value + '&goalMinute=' + goalMinute.value + '&goalVideoSec=' + goalVideoSec.value + "&homeTeamGoal=" + state.homeTeamGoal;
-       let apiUrl = '/api/game/' + id + '/goal/' + params;
+       let apiUrl = '/api/game/' + gameId + '/goal/' + params;
        fetch(apiUrl, {
            method: 'POST',
            headers: {
@@ -307,7 +307,7 @@ function addCardToPlayer(event) {
        let playerSelect = document.getElementById("cardPlayerSelect");
        console.log('addCardToPlayer', playerSelect.value, yellowCard.checked, redCard.checked);
        let params = '?player=' + playerSelect.value + '&cardMinute=' + cardMinute.value + '&cardType=' + card + '&homeTeamCard=' + state.homeTeamGoal;
-       let apiUrl = '/api/game/' + id + '/card/' + params;
+       let apiUrl = '/api/game/' + gameId + '/card/' + params;
        fetch(apiUrl, {
            method: 'POST',
            headers: {
@@ -335,7 +335,7 @@ let tdbutton = document.getElementById("tdSaveButton");
 tdbutton.addEventListener( 'click', function(clicked) {
     let teamSelect = document.getElementById("teamSelect");
     console.log('addTeamTechDefeat', teamSelect.value);
-    let apiUrl = '/api/game/' + id + '/technicaldefeat/' + teamSelect.value;
+    let apiUrl = '/api/game/' + gameId + '/technicaldefeat/' + teamSelect.value;
     fetch(apiUrl, {
         method: 'PUT',
         headers: {
@@ -487,7 +487,7 @@ checkbox.addEventListener( 'change', function(checked) {
         console.log('unchecked');
     }
 
-    let apiUrl = '/api/game/' + id + '/completed/' + this.checked;
+    let apiUrl = '/api/game/' + gameId + '/completed/' + this.checked;
         fetch(apiUrl, {
             method: 'POST',
             headers: {

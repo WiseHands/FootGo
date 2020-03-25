@@ -148,23 +148,37 @@ public class HttpRequestsController {
 
     @GetMapping({"/admin/season/{id}"})
     public String seasonList(Model model, @PathVariable("id") Long id) {
+        Season season = seasonRepository.findById(id).get();
+        model.addAttribute("season", season);
         return "AdminSeason";
     }
 
-    @GetMapping({"/admin/tour"})
-    public String tourList(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-        model.addAttribute("tourList", tourRepository.findAll());
+    @GetMapping({"/admin/season/{id}/leaguelist/{leagueId}/tour"})
+    public String tourList(Model model, @PathVariable("leagueId") Long leagueId, @PathVariable("id") Long id, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+        Season season = seasonRepository.findById(id).get();
+        model.addAttribute("season", season);
+        League league = leagueManagementRepository.findById(leagueId).get();
+        model.addAttribute("league", league);
+        /*model.addAttribute("tourList", tourRepository.findAll());*/
         return "AdminTourList";
     }
 
-    @GetMapping({"/admin/tour/details"})
-    public String tourDetails(Model model, @RequestParam long uuid) {
+    @GetMapping({"/admin/season/{id}/leaguelist/{leagueId}/tour/details"})
+    public String tourDetails(Model model, @PathVariable("id") Long id, @PathVariable("leagueId") Long leagueId, @RequestParam long uuid) {
+        Season season = seasonRepository.findById(id).get();
+        model.addAttribute("season", season);
+        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        model.addAttribute("leagueList", leagueList);
+        League league = leagueManagementRepository.findById(leagueId).get();
+        model.addAttribute("league", league);
         model.addAttribute("tour", tourRepository.findById(uuid).get());
         return "AdminTourDetails";
     }
 
     @GetMapping({"/admin/season/{id}/submission"})
     public String submission(Model model, @PathVariable("id") Long id, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+        Season season = seasonRepository.findById(id).get();
+        model.addAttribute("season", season);
         model.addAttribute("submissions", teamSignUpRepository.findAll());
         return "AdminSubmissionProgress";
     }
@@ -174,9 +188,13 @@ public class HttpRequestsController {
         return "AdminSubmissionEntryEdit";
     }
 
-    @GetMapping(value = "/admin/match/edit")
-    public String matchesReview(Model model, @RequestParam long uuid) {
-        model.addAttribute("game", gameRepository.findById(uuid).get());
+    @GetMapping(value = "/admin/season/{id}/leaguelist/{leagueId}/game/{gameId}")
+    public String matchesReview(Model model, @PathVariable("id") Long id, @PathVariable("leagueId") Long leagueId, @PathVariable("gameId") Long gameId) {
+        Season season = seasonRepository.findById(id).get();
+        model.addAttribute("season", season);
+        League league = leagueManagementRepository.findById(leagueId).get();
+        model.addAttribute("league", league);
+        model.addAttribute("game", gameRepository.findById(gameId).get());
         return "AdminMatchDetail";
     }
 
@@ -189,6 +207,8 @@ public class HttpRequestsController {
 
     @GetMapping(value = "/admin/season/{id}/team/edit")
     public String teamEdit(Model model, @PathVariable("id") Long id, @RequestParam long uuid) {
+        Season season = seasonRepository.findById(id).get();
+        model.addAttribute("season", season);
         model.addAttribute("team", teamRepository.findById(uuid).get());
         return "AdminSubmissionTeamEntryEdit";
     }

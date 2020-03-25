@@ -17,16 +17,20 @@
             </div>
         </div>
         <div class="season-block all-requests">
-            <a class="link-style" href="/admin/seasons/new">
-                <div class="request-block add-season">
-                    <i class="fa fa-plus"></i>
-                </div>
-            </a>
-            <a th:href="'/admin/season/' + ${season.id}" th:each="season : ${seasonList}" class="link-style">
-                <div class="request-block">
-                    <h3 th:text="${season.name}"></h3>
-                </div>
-            </a>
+            <div>
+                <a class="link-style" href="/admin/seasons/new">
+                    <div class="request-block add-season" title="Створити новий сезон">
+                        <i class="fa fa-plus"></i>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a th:href="'/admin/season/' + ${season.id}" th:each="season : ${seasonList}" class="link-style">
+                    <div class="request-block">
+                        <h3 th:text="${season.name}"></h3>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 

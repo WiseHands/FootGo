@@ -15,7 +15,7 @@
                 </div>
             </div>
             <ul class="menu-breadcrumb">
-                <li><a href="/">Сезон</a></li>
+                <li><a href="/admin">Сезон</a></li>
                 <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
                 <li><a th:href="'/admin/season/' + ${id} + '/leaguelist'">Ліги</a></li>
                 <li><a th:href="'/admin/season/' + ${id} + '/leaguelist/' + ${league.id}" th:text="${league.name}"></a></li>

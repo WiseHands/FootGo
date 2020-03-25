@@ -18,7 +18,7 @@
         </div>
     </div>
     <ul class="menu-breadcrumb">
-        <li><a href="/">Сезон</a></li>
+        <li><a href="/admin">Сезон</a></li>
         <li><a th:href="'/admin/season/' + ${season.id}" th:text="${season.name}"></a></li>
         <li><a th:href="'/admin/season/' + ${season.id} + '/leaguelist'">Ліги</a></li>
         <li><a th:href="'/admin/season/' + ${season.id} + '/league/new'">Створити</a></li>
@@ -38,8 +38,8 @@
                 <span class="checkbox-mark"></span>
             </label>
         </div>
-        <input class="main-input-button" type="button" value="Створити" onclick="submissionData()">
     </div>
+    <input class="main-input-button" type="button" value="Створити" onclick="submissionData()">
 </div>
 </body>
 </html>

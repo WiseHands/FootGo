@@ -17,23 +17,28 @@
         </div>
     </div>
     <ul class="menu-breadcrumb">
-        <li><a href="/">Сезон</a></li>
+        <li><a href="/admin">Сезон</a></li>
         <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
         <li><a th:href="'/admin/season/' + ${id} + '/leaguelist'">Ліги</a></li>
         <li><a th:href="'/admin/season/' + ${id} + '/leaguelist/' + ${league.id}" th:text="${league.name}"></a></li>
     </ul>
     <div class="requests">
         <div class="all-requests">
-            <a th:href="'/admin/season/' + ${id} + '/leaguelist/' + ${league.id} + '/team'" class="link-style" href="/admin/team">
-                <div class="request-block">
-                    <h3>Команди</h3>
-                </div>
-            </a>
-            <a class="link-style" href="/admin/tour">
-                <div class="request-block">
-                    <h3>Тури</h3>
-                </div>
-            </a>
+            <div>
+                <a th:href="'/admin/season/' + ${id} + '/leaguelist/' + ${league.id} + '/team'" class="link-style"
+                   href="/admin/team">
+                    <div class="request-block">
+                        <h3>Команди</h3>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a th:href="'/admin/season/' + ${id} + '/leaguelist/' + ${league.id} + '/tour'" class="link-style">
+                    <div class="request-block">
+                        <h3>Тури</h3>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 </div>

@@ -2,7 +2,7 @@ function putVideoUrlById() {
     let videourl = document.getElementById('videoLink').value;
 
     let params = '?videoUrl=' + videourl;
-    let apiUrl = '/api/game/' + id + '/setvideourl' + params;
+    let apiUrl = '/api/game/' + gameId + '/setvideourl' + params;
 
     fetch(apiUrl, {
       method: 'PUT',
@@ -19,6 +19,5 @@ function putVideoUrlById() {
         console.log(response)
     })
     .then(function(data) {
-        console.log(data);
     })
 }

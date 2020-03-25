@@ -17,7 +17,7 @@
         </div>
     </div>
     <ul class="menu-breadcrumb">
-        <li><a href="/">Сезон</a></li>
+        <li><a href="/admin">Сезон</a></li>
         <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
         <li><a th:href="'/admin/season/' + ${id} + '/leaguelist'">Ліги</a></li>
     </ul>
@@ -25,7 +25,7 @@
         <div class="season-block all-requests">
             <div>
                 <a th:href="'/admin/season/' + ${id} + '/league/new'" class="link-style">
-                    <div class="request-block add-season">
+                    <div class="request-block add-season" title="Створити нову лігу">
                         <i class="fa fa-plus"></i>
                     </div>
                 </a>

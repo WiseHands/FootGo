@@ -16,36 +16,44 @@
                 </div>
             </div>
             <ul class="menu-breadcrumb">
-                <li><a href="/">Сезон</a></li>
-                <li><a th:href="'/admin/season/' + ${id}">Весна 2020</a></li>
+                <li><a href="/admin">Сезон</a></li>
+                <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
             </ul>
             <div class="requests">
                 <div class="all-requests">
-                    <a th:href="'/admin/season/' + ${id} + '/submission'" class="link-style">
-                        <div class="request-block">
-                            <h3>Заявки</h3>
-                        </div>
-                    </a>
-                    <a th:href="'/admin/season/' + ${id} + '/team'" class="link-style">
-                        <div class="request-block">
-                            <h3>Команди</h3>
-                        </div>
-                    </a>
+                    <div>
+                        <a th:href="'/admin/season/' + ${id} + '/submission'" class="link-style">
+                            <div class="request-block">
+                                <h3>Заявки</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <a th:href="'/admin/season/' + ${id} + '/team'" class="link-style">
+                            <div class="request-block">
+                                <h3>Команди</h3>
+                            </div>
+                        </a>
+                    </div>
 <!--                    <a class="link-style" href="/admin/tour">-->
 <!--                        <div class="request-block">-->
 <!--                            <h3>Тури</h3>-->
 <!--                        </div>-->
 <!--                    </a>-->
-                    <a th:href="'/admin/season/' + ${id} + '/leaguelist'" class="link-style">
-                        <div class="request-block">
-                            <h3>Ліга</h3>
-                        </div>
-                    </a>
-                    <a th:href="'/admin/season/' + ${id} + '/cuplist'" class="link-style">
-                        <div class="request-block">
-                            <h3>Кубок</h3>
-                        </div>
-                    </a>
+                    <div>
+                        <a th:href="'/admin/season/' + ${id} + '/leaguelist'" class="link-style">
+                            <div class="request-block">
+                                <h3>Ліга</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <a th:href="'/admin/season/' + ${id} + '/cuplist'" class="link-style">
+                            <div class="request-block">
+                                <h3>Кубок</h3>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

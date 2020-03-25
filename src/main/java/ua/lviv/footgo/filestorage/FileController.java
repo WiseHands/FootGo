@@ -31,13 +31,13 @@ public class FileController {
         DBFile dbFile = DBFileStorageService.storeFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .scheme("https")
+                .scheme("http")
                 .path("/downloadFile/")
                 .path(dbFile.getId())
                 .toUriString();
 
         String fileViewUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .scheme("https")
+                .scheme("http")
                 .path("/viewFile/")
                 .path(dbFile.getId())
                 .toUriString();

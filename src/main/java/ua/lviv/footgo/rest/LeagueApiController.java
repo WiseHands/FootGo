@@ -109,7 +109,7 @@ public class LeagueApiController {
                     _createGame(teamList.get(0), teamList.get(7), tour);
                     _createGame(teamList.get(1), teamList.get(6), tour);
                     _createGame(teamList.get(2), teamList.get(5), tour);
-                    _createGame(teamList.get(3), teamList.get(3), tour);
+                    _createGame(teamList.get(3), teamList.get(4), tour);
 
                     league.addTour(tour);
                     break;

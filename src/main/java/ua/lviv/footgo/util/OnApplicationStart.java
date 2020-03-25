@@ -30,7 +30,7 @@ public class OnApplicationStart {
     public void bootstapApp() {
         List<Tour> tourList = (List<Tour>) tourRepository.findAll();
         if(tourList.size() == 0) {
-            resultsGenerator._createLeague();
+/*            resultsGenerator._createLeague();*/
         }
         List<League> leagueList = (List<League>)leagueManagementRepository.findAll();
         if(leagueList.size() == 0) {
