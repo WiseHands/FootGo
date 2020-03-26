@@ -336,21 +336,21 @@ input[type=text], input[type=tel], input[type=email], select {
    display: none;
 }
 .main-input-button-all:hover {
-   background-color: #026402;
+   background-color: #026402 !important;
 }
 .main-input-button-display {
    margin: auto;
    background-color: #008000;
 }
 .main-input-button-display:hover {
-   background-color: #026402;
+   background-color: #026402 !important;
 }
 .main-input-button-del {
    text-align: left;
    background-color: #ff4500;
 }
 .main-input-button-del:hover {
-   background-color: #b63403;
+   background-color: #b63403 !important;
 }
 .admin-tour-title {
     text-align: center;

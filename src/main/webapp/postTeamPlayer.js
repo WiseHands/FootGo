@@ -44,5 +44,5 @@ const teamUuid = searchParams.get('teamUuid');
 
 }
 function returnToTeamsPage() {
-    location.href = '/admin/team';
+    location.href = '/admin/season/' + seasonId + '/team';
 }

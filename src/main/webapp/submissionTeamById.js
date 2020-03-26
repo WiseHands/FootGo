@@ -25,17 +25,17 @@ fetch(apiUrl, {
     document.getElementById("logoDark").src = data.logoImageUrlDark;
 
     let logo = document.getElementById('logo');
-    if(logo.getAttribute('src') == "null") {
+    if(logo.getAttribute('src') == "" || null) {
         logo.src = '/img/placeholder.png';
     }
 
     let logoDark = document.getElementById('logoDark');
-    if(logoDark.getAttribute('src') == "null") {
+    if(logoDark.getAttribute('src') == "" || null) {
         logoDark.src = '/img/placeholder.png';
     }
 
     console.log(data);
 });
 function addNewPlayer() {
-    location.href = '/admin/team/player/add?teamUuid=' + id;
+    location.href = '/admin/season/' + seasonId + '/team/player/add?teamUuid=' + id;
 }

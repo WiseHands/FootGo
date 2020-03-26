@@ -305,7 +305,7 @@
 
         const id = searchParams.get('uuid');
 
-        let apiUrl = '/api/game/' + /*[[${gameId}]]*/;
+        let apiUrl = '/api/game/' + gameId;
         fetch(apiUrl, {
           method: 'GET',
           headers: {

@@ -213,14 +213,18 @@ public class HttpRequestsController {
         return "AdminSubmissionTeamEntryEdit";
     }
 
-    @GetMapping(value = "/admin/player/edit")
-    public String playerEdit(Model model, @RequestParam long uuid) {
+    @GetMapping(value = "/admin/season/{id}/team/player/edit")
+    public String playerEdit(Model model, @PathVariable("id") Long id, @RequestParam long uuid) {
+        Season season = seasonRepository.findById(id).get();
+        model.addAttribute("season", season);
         model.addAttribute("player", teamRepository.findById(uuid));
         return "AdminSubmissionPlayerEntryEdit";
     }
 
-    @GetMapping(value = "/admin/team/player/add")
-    public String playerAdd(Model model) {
+    @GetMapping(value = "/admin/season/{id}/team/player/add")
+    public String playerAdd(Model model, @PathVariable("id") Long id) {
+        Season season = seasonRepository.findById(id).get();
+        model.addAttribute("season", season);
         return "AdminTeamPlayerEntryAdd";
     }
 
