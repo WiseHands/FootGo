@@ -20,6 +20,7 @@
                 <li><a href="/admin">Сезон</a></li>
                 <li><a th:href="'/admin/season/' + ${season.id}" th:text="${season.name}"></a></li>
                 <li><a th:href="'/admin/season/' + ${season.id} + '/team'">Команди</a></li>
+                <li><a th:href="'/admin/season/' + ${season.id} + '/team/edit?uuid=' + ${team.id}" th:text="${team.teamName}"></a></li>
             </ul>
             <div class="team-request">
                 <h3>Редагування Команди</h3>
