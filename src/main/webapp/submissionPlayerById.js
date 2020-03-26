@@ -23,7 +23,7 @@ fetch(apiUrl, {
     document.getElementById("image").src = data.imageUrl;
 
     let img = document.getElementById('image');
-    if(img.getAttribute('src') == "" || null) {
+    if(img.getAttribute('src') == "" || null || "null") {
         img.src = '/img/img_avatar.png';
     }
     
