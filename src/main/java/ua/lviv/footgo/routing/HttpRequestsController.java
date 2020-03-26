@@ -251,6 +251,13 @@ public class HttpRequestsController {
         model.addAttribute("leagueList", leagueList);
         return "AdminLeagueList";
     }
+
+    @GetMapping(value = "/admin/season/{id}/team/new")
+    public String teamCreate(Model model, @PathVariable("id") Long id) {
+        Season season = seasonRepository.findById(id).get();
+        model.addAttribute("season", season);
+        return "AdminTeamCreate";
+    }
     @GetMapping(value = "/admin/season/{id}/cuplist")
     public String cupList(Model model, @PathVariable("id") Long id) {
         return "AdminCupList";

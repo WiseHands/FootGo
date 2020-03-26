@@ -314,6 +314,12 @@ input[type=text], input[type=tel], input[type=email], select {
     border-radius: 10px;
     cursor: pointer;
 }
+.league-create {
+    margin: 0 auto;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
 .main-input-button:hover:enabled, .save-video-button:hover:enabled {
     background-color: #285294;
     border-radius: 10px;
@@ -913,8 +919,14 @@ ul.menu-breadcrumb li a:hover {
     color: #000;
     text-decoration: underline;
 }
-.league-name-error {
+.team-league-name-error {
     border-color: #fc2c2c !important;
     border-style: solid !important;
     border-width: thin !important;
+}
+.add-team {
+    display: flex;
+    min-height: 75px;
+    align-items: center;
+    justify-content: center;
 }

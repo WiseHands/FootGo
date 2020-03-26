@@ -2,13 +2,10 @@ package ua.lviv.footgo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ua.lviv.footgo.entity.Captain;
 import ua.lviv.footgo.entity.Player;
 import ua.lviv.footgo.entity.Team;
-import ua.lviv.footgo.entity.TeamSignUpRequest;
 import ua.lviv.footgo.repository.CaptainRepository;
 import ua.lviv.footgo.repository.TeamRepository;
-import ua.lviv.footgo.repository.TeamSignUpRepository;
 
 import java.util.List;
 

@@ -4,6 +4,7 @@
         <meta name="viewport" content="width=device-width">
         <title>Заявки на участь | FootGo</title>
         <link rel="stylesheet" href="../../../admin.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
         <script src="/submissionAll.js" type="text/javascript"></script>
     </head>
@@ -22,6 +23,13 @@
             <div class="requests">
                 <p>Команди</p>
                 <div class="all-requests">
+                    <div>
+                        <a th:href="'/admin/season/' + ${id} + '/team/new'" class="link-style">
+                            <div class="request-block add-team" title="Створити нову команду">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                        </a>
+                    </div>
                     <div th:each="item : ${season.teamList}">
                         <a th:href="'/admin/season/' + ${season.id} + '/team/edit?uuid=' + ${item.id}" class="link-style">
                             <div class="request-block">
