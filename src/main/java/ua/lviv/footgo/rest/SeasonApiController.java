@@ -1,19 +1,19 @@
 package ua.lviv.footgo.rest;
 
-import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
-import ua.lviv.footgo.entity.Captain;
-import ua.lviv.footgo.entity.Player;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.entity.Season;
-import ua.lviv.footgo.entity.Team;
 import ua.lviv.footgo.repository.SeasonRepository;
 
+@RestController
+@RequestMapping(path = "/api/seasons")
 public class SeasonApiController {
 
     @Autowired
     private SeasonRepository seasonRepository;
 
-    private Faker faker = new Faker();
+/*    private Faker faker = new Faker();
 
     private Team createTeam() {
         Team team = new Team();
@@ -35,12 +35,15 @@ public class SeasonApiController {
         player.setLastName(faker.name().lastName());
 
         return player;
-    }
-    public void createSeason() {
+    }*/
+    @PostMapping(value = "/new", consumes = "application/json", produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
+    public Season createSeason(@RequestParam String seasonName) {
         Season season = new Season();
-        season.setName("Spring 2020");
+        season.setName(seasonName);
 
-        for (int i = 0; i < 16; i++) {
+/*        for (int i = 0; i < 16; i++) {
             Team team = createTeam();
             Captain captain = createCaptain();
             team.setCaptain(captain);
@@ -49,7 +52,9 @@ public class SeasonApiController {
                 team.addPlayer(player);
             }
             season.addTeam(team);
-        }
+        }*/
         seasonRepository.save(season);
+
+        return season;
     }
 }

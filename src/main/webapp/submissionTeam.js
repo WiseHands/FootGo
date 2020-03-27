@@ -10,9 +10,9 @@ function submissionData(event) {
     const checkEmptyTeamName = document.getElementById("teamName");
     const checkEmptyCaptainName = document.getElementById("captainName");
     if (checkEmptyTeamName.value == "" && checkEmptyTeamName.value.length == 0 && checkEmptyCaptainName.value == "" && checkEmptyCaptainName.value.length == 0) {
-        document.getElementById('showInputAddTeamNameError').style.display = "block";
-        checkEmptyTeamName.classList.add("team-league-name-error");
-        checkEmptyCaptainName.classList.add("team-league-name-error");
+        document.getElementById('requiredFieldsError').style.display = "block";
+        checkEmptyTeamName.classList.add("required-fields");
+        checkEmptyCaptainName.classList.add("required-fields");
         return false;
     }
     if(teamName && captainName) {

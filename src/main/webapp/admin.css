@@ -919,7 +919,7 @@ ul.menu-breadcrumb li a:hover {
     color: #000;
     text-decoration: underline;
 }
-.team-league-name-error {
+.required-fields {
     border-color: #fc2c2c !important;
     border-style: solid !important;
     border-width: thin !important;

@@ -9,7 +9,7 @@ function submissionData(event) {
     const checkEmpty = document.getElementById("leagueName");
     if (checkEmpty.value == "" && checkEmpty.value.length == 0) {
         document.getElementById('showInputAddLeagueNameError').style.display = "block";
-        checkEmpty.classList.add("team-league-name-error");
+        checkEmpty.classList.add("required-fields");
         return false;
     }
     if(leagueName) {
