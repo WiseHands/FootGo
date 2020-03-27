@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Admin | FootGo League</title>
-    <link rel="stylesheet" href="../../../admin.css">
+    <link rel="stylesheet" href="../../../../../admin.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -18,8 +18,8 @@
     </div>
     <ul class="menu-breadcrumb">
         <li><a href="/admin">Сезон</a></li>
-        <li><a href="">Весна 2020</a></li>
-        <li><a href="">Кубок</a></li>
+        <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
+        <li><a th:href="'/admin/season/' + ${id} + '/cuplist'">Кубок</a></li>
         <li><a href="">Кубок Весна 2020</a></li>
     </ul>
     <div class="requests">

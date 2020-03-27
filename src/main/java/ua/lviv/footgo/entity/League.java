@@ -36,7 +36,6 @@ public class League {
         return id;
     }
 
-
     public List<Team> getTeamList() {
         return teamList;
     }

@@ -1,6 +1,7 @@
 package ua.lviv.footgo.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,13 +12,29 @@ public class Cup {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Team> teamList;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Tour> tours;
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+    public List<Team> getTeamList() {
+        return teamList;
+    }
+
+    public void setTeamList(List<Team> teamList) {
+        this.teamList = teamList;
+    }
 
     public List<Tour> getTours() {
         return tours;
@@ -25,6 +42,20 @@ public class Cup {
 
     public Long getId() {
         return id;
+    }
+
+    public void addTeam(Team team) {
+        if(this.teamList == null) {
+            teamList = new ArrayList<Team>();
+        }
+        teamList.add(team);
+    }
+
+    public void addTour(Tour tour) {
+        if(this.tours == null) {
+            tours = new ArrayList<Tour>();
+        }
+        tours.add(tour);
     }
 
 }

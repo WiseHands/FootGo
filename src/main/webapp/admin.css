@@ -314,7 +314,7 @@ input[type=text], input[type=tel], input[type=email], select {
     border-radius: 10px;
     cursor: pointer;
 }
-.league-create {
+.button-create {
     margin: 0 auto;
     display: block;
     margin-top: 10px;

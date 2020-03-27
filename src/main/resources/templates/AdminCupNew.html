@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Admin | FootGo League</title>
-    <link rel="stylesheet" href="../../../admin.css">
+    <link rel="stylesheet" href="../../../../../admin.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/submissionCup.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -18,23 +19,28 @@
     </div>
     <ul class="menu-breadcrumb">
         <li><a href="/admin">Сезон</a></li>
-        <li><a href="">Весна 2020</a></li>
-        <li><a href="">Кубок</a></li>
-        <li><a href="">Створити</a></li>
+        <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
+        <li><a th:href="'/admin/season/' + ${id} + '/cuplist'">Кубок</a></li>
+        <li><a th:href="'/admin/season/' + ${id} + '/cuplist/new'">Створити кубок</a></li>
     </ul>
     <div class="new-season all-requests">
-        <h1>Назва кубку</h1>
-        <input type="text" id="seasonName" name="seasonName" placeholder="Назва кубку" required>
+        <h1>Назва кубка</h1>
+        <input type="text" id="cupName" name="cupName" placeholder="Назва кубку" required>
+        <div id="showInputAddCupNameError" class="text-input-error" style="display:none"><p>Заповніть будь ласка
+            обов'язкові поля</p></div>
     </div>
     <div class="season-block all-requests">
-        <div class="request-block">
-            <h3>Назва команди</h3>
-            <p>Капітан</p>
-            <input type="checkbox">
+        <div th:each="item : ${season.teamList}">
+            <label class="request-block">
+                <h3 th:text="${item.teamName}"></h3>
+                <p th:text="${item.captain.captainName}"></p>
+                <input th:attr="value=${item.id}" type="checkbox">
+                <span class="checkbox-mark"></span>
+            </label>
         </div>
     </div>
 
-    <input class="main-input-button" type="button" value="Створити" onclick="">
+    <input class="main-input-button button-create" type="button" value="Створити" onclick="">
 
 </div>
 </body>

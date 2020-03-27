@@ -18,21 +18,21 @@
     </div>
     <ul class="menu-breadcrumb">
         <li><a href="/admin">Сезон</a></li>
-        <li><a th:href="'/admin/season/' + ${id}">Весна 2020</a></li>
+        <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
         <li><a th:href="'/admin/season/' + ${id} + '/cuplist'">Кубок</a></li>
     </ul>
     <div class="season-block all-requests">
         <div>
-            <a class="link-style" href="/admin/cup/new">
+            <a th:href="'/admin/season/' + ${id} + '/cuplist/new'" class="link-style">
                 <div class="request-block add-season">
                     <i class="fa fa-plus"></i>
                 </div>
             </a>
         </div>
         <div>
-            <a class="link-style" href="/admin/cup">
+            <a th:href="'/admin/season/' + ${id} + '/cuplist/cup'" class="link-style">
                 <div class="request-block">
-                    <h3>Кубок</h3>
+                    <h3>Кубок Весна 2020</h3>
                 </div>
             </a>
         </div>
