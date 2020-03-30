@@ -29,10 +29,10 @@
                 </div>
             </a>
         </div>
-        <div>
-            <a th:href="'/admin/season/' + ${id} + '/cuplist/cup'" class="link-style">
+        <div th:each="item : ${cupList}">
+            <a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${item.id}" class="link-style">
                 <div class="request-block">
-                    <h3>Кубок Весна 2020</h3>
+                    <h3 th:text="${item.name}"></h3>
                 </div>
             </a>
         </div>

@@ -99,4 +99,10 @@ public class Season {
         }
         this.leagueList.add(league);
     }
+    public void addCup(Cup cup) {
+        if(this.cupList == null) {
+            this.cupList = new ArrayList<>();
+        }
+        this.cupList.add(cup);
+    }
 }

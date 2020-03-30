@@ -29,7 +29,7 @@ public class CupApiController {
     @Autowired
     TourRepository tourRepository;
 
-    public static class LeagueCreateRequestBody {
+    public static class CupCreateRequestBody {
 
         private String name;
         private List<Long> teamList;
@@ -50,12 +50,12 @@ public class CupApiController {
             this.teamList = teamList;
         }
 
-        public LeagueCreateRequestBody() {
+        public CupCreateRequestBody() {
 
         }
 
     }
-    public static final Integer NUMBER_OF_TOURS = 7;
+    public static final Integer NUMBER_OF_TOURS = 4;
     public static final String GAME_TIME = "2019-09-20T09:00:00.000Z";
 
     public Tour _createTour(Integer tourNumber) {
@@ -71,7 +71,6 @@ public class CupApiController {
 
     public void _createGame(Team homeTeam, Team guestTeam, Tour tour) {
         Game game = new Game();
-        Random random = new Random();
 
         game.setFirstTeam(homeTeam);
         game.setSecondTeam(guestTeam);
@@ -81,17 +80,17 @@ public class CupApiController {
     @PostMapping(value = "/{seasonId}/cup", consumes = "application/json", produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    public League create(@PathVariable Long seasonId, @RequestBody LeagueCreateRequestBody body) {
+    public Cup create(@PathVariable Long seasonId, @RequestBody CupCreateRequestBody body) {
         Season season = seasonRepository.findById(seasonId).get();
-        League league = new League();
-        league.setName(body.name);
+        Cup cup = new Cup();
+        cup.setName(body.name);
         System.out.println(body.name);
 
         List<Team> teamList = new ArrayList<>();
 
         for(Long teamId : body.teamList) {
             Team team = teamRepository.findById(teamId).get();
-            league.addTeam(team);
+            cup.addTeam(team);
 
             teamList.add(team);
 
@@ -104,81 +103,50 @@ public class CupApiController {
                 case 0:
                     Tour tour = _createTour(i+1);
 
-                    _createGame(teamList.get(0), teamList.get(7), tour);
-                    _createGame(teamList.get(1), teamList.get(6), tour);
-                    _createGame(teamList.get(2), teamList.get(5), tour);
-                    _createGame(teamList.get(3), teamList.get(4), tour);
+                    _createGame(teamList.get(0), teamList.get(15), tour);
+                    _createGame(teamList.get(1), teamList.get(14), tour);
+                    _createGame(teamList.get(2), teamList.get(13), tour);
+                    _createGame(teamList.get(3), teamList.get(12), tour);
+                    _createGame(teamList.get(4), teamList.get(11), tour);
+                    _createGame(teamList.get(5), teamList.get(10), tour);
+                    _createGame(teamList.get(6), teamList.get(9), tour);
+                    _createGame(teamList.get(7), teamList.get(8), tour);
 
-                    league.addTour(tour);
+                    cup.addTour(tour);
                     break;
                 case 1:
                     tour = _createTour(i+1);
 
-                    _createGame(teamList.get(7), teamList.get(4), tour);
-                    _createGame(teamList.get(5), teamList.get(4), tour);
-                    _createGame(teamList.get(6), teamList.get(2), tour);
-                    _createGame(teamList.get(0), teamList.get(1), tour);
+                    _createGame(null, null, tour);
+                    _createGame(null, null, tour);
+                    _createGame(null, null, tour);
+                    _createGame(null, null, tour);
 
-                    league.addTour(tour);
+                    cup.addTour(tour);
                     break;
                 case 2:
                     tour = _createTour(i+1);
 
-                    _createGame(teamList.get(1), teamList.get(7), tour);
-                    _createGame(teamList.get(2), teamList.get(0), tour);
-                    _createGame(teamList.get(3), teamList.get(6), tour);
-                    _createGame(teamList.get(4), teamList.get(5), tour);
+                    _createGame(null, null, tour);
+                    _createGame(null, null, tour);
 
-                    league.addTour(tour);
+                    cup.addTour(tour);
                     break;
                 case 3:
                     tour = _createTour(i+1);
 
+                    _createGame(null, null, tour);
 
-                    _createGame(teamList.get(7), teamList.get(5), tour);
-                    _createGame(teamList.get(6), teamList.get(4), tour);
-                    _createGame(teamList.get(0), teamList.get(3), tour);
-                    _createGame(teamList.get(1), teamList.get(2), tour);
-
-                    league.addTour(tour);
+                    cup.addTour(tour);
                     break;
-                case 4:
-                    tour = _createTour(i+1);
 
-                    _createGame(teamList.get(2), teamList.get(7), tour);
-                    _createGame(teamList.get(3), teamList.get(1), tour);
-                    _createGame(teamList.get(4), teamList.get(0), tour);
-                    _createGame(teamList.get(5), teamList.get(6), tour);
-
-                    league.addTour(tour);
-                    break;
-                case 5:
-                    tour = _createTour(i+1);
-
-                    _createGame(teamList.get(7), teamList.get(6), tour);
-                    _createGame(teamList.get(0), teamList.get(5), tour);
-                    _createGame(teamList.get(1), teamList.get(4), tour);
-                    _createGame(teamList.get(2), teamList.get(3), tour);
-
-                    league.addTour(tour);
-                    break;
-                case 6:
-                    tour = _createTour(i+1);
-
-                    _createGame(teamList.get(3), teamList.get(7), tour);
-                    _createGame(teamList.get(4), teamList.get(2), tour);
-                    _createGame(teamList.get(5), teamList.get(1), tour);
-                    _createGame(teamList.get(6), teamList.get(0), tour);
-
-                    league.addTour(tour);
-                    break;
             }
         }
 
-        league = leagueRepository.save(league);
-        season.addLeague(league);
+        cup = cupRepository.save(cup);
+        season.addCup(cup);
         seasonRepository.save(season);
-        return league;
+        return cup;
 
     }
 }

@@ -20,19 +20,20 @@
         <li><a href="/admin">Сезон</a></li>
         <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
         <li><a th:href="'/admin/season/' + ${id} + '/cuplist'">Кубок</a></li>
-        <li><a href="">Кубок Весна 2020</a></li>
+        <li><a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id}" th:text="${cup.name}"></a></li>
     </ul>
     <div class="requests">
         <div class="all-requests">
             <div>
-                <a class="link-style" href="/admin/team">
+                <a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/team'" class="link-style"
+                   href="/admin/team">
                     <div class="request-block">
                         <h3>Команди</h3>
                     </div>
                 </a>
             </div>
             <div>
-                <a class="link-style" href="/admin/tour">
+                <a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/tour'" class="link-style">
                     <div class="request-block">
                         <h3>Тури</h3>
                     </div>
