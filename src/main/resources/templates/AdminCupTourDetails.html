@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Admin Page</title>
+        <link rel="stylesheet" href="../../../../../../admin.css">
+        <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
+        <style>
+            a {
+                color: black;
+            }
+            a:link {
+              text-decoration: none;
+            }
+
+            a:visited {
+              text-decoration: none;
+            }
+
+            a:hover {
+              text-decoration: none;
+            }
+
+            a:active {
+              text-decoration: none;
+            }
+            a:hover, a:active {
+               color: #0ca38a
+            }
+        </style>
+
+    </head>
+    <body>
+    <div class="main-container">
+        <div class="admin-main">
+            <div class="admin-logo">
+                <a href="/admin"><img class="admin-img" src="/img/footgo-dark-icon.png" alt="logo"></a>
+            </div>
+        </div>
+        <ul class="menu-breadcrumb">
+            <li><a href="/admin">Сезон</a></li>
+            <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
+            <li><a th:href="'/admin/season/' + ${id} + '/cuplist'">Ліги</a></li>
+            <li><a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id}" th:text="${cup.name}"></a></li>
+            <li><a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/tour'">Тури</a></li>
+            <li><a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/tour/details?uuid=' + ${tour.id}" th:text="'Тур ' + ${tour.tourNumber}"></a></li>
+        </ul>
+        <p class="admin-tour-title" th:text="${'Тур ' + tour.tourNumber}"></p>
+
+        <a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/game/' + ${game.id}" th:each="game : ${tour.gameList}">
+            <div class="tour-match">
+                <div class="tour-team1-details">
+                    <p th:if="${game.firstTeam != null}" th:text="${game.firstTeam.teamName}"></p>
+                    <p th:if="${game.firstTeam == null}">Команда 1</p>
+                </div>
+                <div class="tour-score">
+                    <span id="goalBtn">
+                        <p>
+                            <span th:text="${game.teamAGoals.size()}">0</span> : <span th:text="${game.teamBGoals.size()}">0</span>
+                        </p>
+                    </span>
+                </div>
+                <div class="tour-team2-details">
+                    <p th:if="${game.secondTeam != null}" th:text="${game.secondTeam.teamName}"></p>
+                    <p th:if="${game.secondTeam == null}">Команда 2</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    </body>
+</html>
