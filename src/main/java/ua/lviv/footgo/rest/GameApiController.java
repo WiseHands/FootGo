@@ -220,4 +220,16 @@ public class GameApiController {
         gameRepository.save(game);
     }
 
+    @PostMapping(value = "/{gameId}/setTourTeam", consumes = "application/json", produces = "application/json")
+    public void setTourTeam(@PathVariable Long gameId, @RequestParam Team teamId, @RequestParam boolean homeTeamCheck) {
+        Game game = gameRepository.findById(gameId).get();
+
+        if (homeTeamCheck) {
+            game.setFirstTeam(teamId);
+        } else {
+            game.setSecondTeam(teamId);
+        }
+        gameRepository.save(game);
+    }
+
 }

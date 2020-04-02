@@ -18,7 +18,7 @@
             <ul class="menu-breadcrumb">
                 <li><a href="/admin">Сезон</a></li>
                 <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
-                <li><a th:href="'/admin/season/' + ${id} + '/cuplist'">Ліги</a></li>
+                <li><a th:href="'/admin/season/' + ${id} + '/cuplist'">Кубки</a></li>
                 <li><a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id}" th:text="${cup.name}"></a></li>
                 <li><a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/tour'">Тури</a></li>
                 <li><a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/game/' + ${game.id}" th:text="'Тур ' + ${game.tour.tourNumber}"></a></li>

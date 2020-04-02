@@ -367,7 +367,7 @@ input[type=text], input[type=tel], input[type=email], select {
     margin: 0 auto;
 }
 .tour-team1-details, .tour-team2-details {
-    width: 40%;
+    /*width: 40%;*/
 }
 .tour-team1 {
     justify-content: flex-end;
@@ -396,7 +396,7 @@ input[type=text], input[type=tel], input[type=email], select {
     text-align: center;
     color: white;
 }
-.tour-team1 span:hover {
+.tour-team1 span:hover, .tour-team2 span:hover, .tour-team1-details span:hover, .tour-team2-details span:hover {
     background-color: #285294;
 }
 .tour-score {
@@ -413,9 +413,6 @@ input[type=text], input[type=tel], input[type=email], select {
     width: 25px;
     text-align: center;
     color: white;
-}
-.tour-team2 span:hover{
-    background-color: #285294;
 }
 /*modal*/
 #myBtn {
@@ -516,7 +513,7 @@ input[type=text], input[type=tel], input[type=email], select {
 .goal-second p {
     white-space: normal;
 }
-.goal-add {
+.goal-add, .team-add {
     display: flex;
     justify-content: center;
 }
