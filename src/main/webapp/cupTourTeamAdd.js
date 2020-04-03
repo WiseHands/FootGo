@@ -11,13 +11,17 @@ addGuestTeamButtons.forEach(addGuestTeamButton => addGuestTeamButton.addEventLis
 
 function displayAddHomeTeam(addHomeTeamButton) {
     return function() {
+        gameId = event.target.getAttribute("gameId");
         selectTeamModal.style.display = "block";
+        state.homeTeamCheck = true;
     }
 };
 
 function displayAddGuestTeam(addGuestTeamButton) {
     return function() {
+        gameId = event.target.getAttribute("gameId");
         selectTeamModal.style.display = "block";
+        state.homeTeamCheck = false;
     }
 };
 
@@ -34,66 +38,27 @@ window.onclick = function(event) {
     }
 }
 
-function addGoalBtnClicked(event) {
-   const checkEmptyMinute = document.getElementById("goalMinute");
-   const checkEmptySeconds = document.getElementById("goalSec");
-       let goalMinute = document.getElementById("goalMinute");
-       let goalVideoSec = document.getElementById("goalSec");
-       let playerSelect = document.getElementById("playerSelect");
-       console.log('addGoalBtnClicked', playerSelect.value, goalMinute.value);
-       let params = '?playerId=' + playerSelect.value + '&goalMinute=' + goalMinute.value + '&goalVideoSec=' + goalVideoSec.value + "&homeTeamGoal=" + state.homeTeamGoal;
-       let apiUrl = '/api/game/' + gameId + '/goal/' + params;
-       fetch(apiUrl, {
-           method: 'POST',
-           headers: {
-             'Content-Type': 'application/json',
-           }
-       }).then(function(response) {
-           console.log(response);
-           if(response.ok) {
-               document.getElementById('myModal').style.display = "none";
-               location.pathname = location.pathname;
-           } else {
-               document.getElementById('myModal').style.display = "none";
-               alert('Error');
-           }
-           return  response.json();
-       }).then(function(data) {
-           console.log(data);
-       })
-
-function saveGoalBtnClickedTeamA(event) {
-   const checkEmptyMinute = document.getElementById("goalMinute1");
-   const checkEmptySeconds = document.getElementById("addGoalSec1");
-   if (checkEmptyMinute.value == "" && checkEmptyMinute.value.length == 0 || checkEmptySeconds.value == "" && checkEmptySeconds.value.length == 0) {
-       document.getElementById('showInputEditGoalTeamOneError').style.display = "block";
-       document.getElementById('goalMinute1').style.cssText = "border-color: #fc2c2c; border-style: solid; border-width: thin";
-       document.getElementById('addGoalSec1').style.cssText = "border-color: #fc2c2c; border-style: solid; border-width: thin";
-       return false;
-   } else {
-       state.homeTeamGoal = true;
-       let goalMinute = document.getElementById("goalMinute1");
-       let goalVideoSec = document.getElementById("addGoalSec1");
-       let playerSelect = document.getElementById("playerSelect1");
-       console.log('saveGoalBtnClickedTeamA', playerSelect.value, goalMinute.value);
-       let params = '?playerId=' + playerSelect.value + '&goalMinute=' + goalMinute.value + '&goalVideoSec=' + goalVideoSec.value + "&homeTeamGoal=" + state.homeTeamGoal;
-       let apiUrl = '/api/goal/' + window.goalId + params;
-       fetch(apiUrl, {
-           method: 'PUT',
-           headers: {
-             'Content-Type': 'application/json',
-            }
-       }).then(function(response) {
-           console.log(response);
-           if(response.ok) {
-               document.getElementById('editDataTeam1').style.display = "none";
-               location.pathname = location.pathname;
-           } else {
-               alert('Error');
-           }
-           return  response.json();
-       }).then(function(data) {
-           console.log(data);
-       })
-   }
+function addTeamBtnClicked(event) {
+   let teamSelect = document.getElementById("teamSelect");
+   console.log('addTeamBtnClicked', teamSelect.value);
+   let params = '?gameId=' + gameId + '&teamId=' + teamSelect.value + "&homeTeamCheck=" + state.homeTeamCheck;
+   let apiUrl = '/api/game/setCupTourTeam/' + params;
+   fetch(apiUrl, {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+       }
+   }).then(function(response) {
+       console.log(response);
+       if(response.ok) {
+           document.getElementById('selectTeamModal').style.display = "none";
+           location.pathname = location.pathname;
+       } else {
+           document.getElementById('selectTeamModal').style.display = "none";
+           alert('Помилка при збереженні команди');
+       }
+       return  response.json();
+   }).then(function(data) {
+       console.log(data);
+   })
 }

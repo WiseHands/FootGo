@@ -5,6 +5,7 @@
         <title>Admin Page</title>
         <link rel="stylesheet" href="../../../../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
+        <script src="https://kit.fontawesome.com/9983a3a0dd.js" crossorigin="anonymous"></script>
         <style>
             a {
                 color: black;
@@ -56,22 +57,25 @@
                     <div class="goal-author">
                         <p>Команда</p>
                         <select id="teamSelect">
-                            <option th:each="item : ${cup.teamList}" th:value="${item.teamName}" th:text="${item.teamName}">
+                            <option th:each="item : ${cup.teamList}" th:value="${item.id}" th:text="${item.teamName}">
                             </option>
                         </select>
                     </div>
                 </div>
                 <div id="showInputAddTeamError" class="text-input-error" style="display:none"><p>Заповніть будь ласка обов'язкові поля</p></div>
                 <div class="team-add">
-                    <input onclick="addGoalBtnClicked()" id="savebutton" class="main-input-button" type="button" value="Додати">
+                    <input onclick="addTeamBtnClicked()" id="saveButton" class="main-input-button" type="button" value="Додати">
                 </div>
             </div>
         </div>
-
-        <a th:if="${game.firstTeam != null && game.secondTeam != null}" th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/game/' + ${game.id}" th:each="game : ${tour.gameList}">
-            <div class="tour-match">
+        <div id="cupTourGames">
+            <div class="tour-match" th:each="game : ${tour.gameList}">
                 <div class="tour-team1-details">
-                    <p th:if="${game.firstTeam != null}" th:text="${game.firstTeam.teamName}"></p>
+                    <span th:attr="gameId=${game.id}" th:if="${game.firstTeam == null}" id="addHomeTeam">+</span>
+                    <a th:if="${game.firstTeam != null}" th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/game/' + ${game.id}">
+                        <p th:text="${game.firstTeam.teamName}"></p>
+                    </a>
+                    <span th:attr="gameId=${game.id}" th:if="${game.firstTeam != null}" id="addHomeTeam" class="far fa-edit" title="Редагувати команду"></span>
                 </div>
                 <div class="tour-score">
                     <span id="goalBtn">
@@ -81,27 +85,14 @@
                     </span>
                 </div>
                 <div class="tour-team2-details">
-                    <p th:if="${game.secondTeam != null}" th:text="${game.secondTeam.teamName}"></p>
+                    <span th:attr="gameId=${game.id}" th:if="${game.secondTeam == null}" id="addGuestTeam">+</span>
+                    <span th:attr="gameId=${game.id}" th:if="${game.secondTeam != null}" id="addGuestTeam" class="far fa-edit" title="Редагувати команду"></span>
+                    <a th:if="${game.secondTeam != null}" th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/game/' + ${game.id}">
+                        <p th:text="${game.secondTeam.teamName}"></p>
+                    </a>
                 </div>
             </div>
-        </a>
-        <a th:if="${game.firstTeam == null && game.secondTeam == null}" th:each="game : ${tour.gameList}">
-            <div class="tour-match">
-                <div class="tour-team1-details">
-                    <span th:if="${game.firstTeam == null}" id="addHomeTeam">+</span>
-                </div>
-                <div class="tour-score">
-                    <span id="goalBtn">
-                        <p>
-                            <span th:text="${game.teamAGoals.size()}">0</span> : <span th:text="${game.teamBGoals.size()}">0</span>
-                        </p>
-                    </span>
-                </div>
-                <div class="tour-team2-details">
-                    <span th:if="${game.secondTeam == null}" id="addGuestTeam">+</span>
-                </div>
-            </div>
-        </a>
+        </div>
     </div>
     <script src="/cupTourTeamAdd.js" type="text/javascript"></script>
     </body>
