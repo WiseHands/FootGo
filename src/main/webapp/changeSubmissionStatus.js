@@ -5,7 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const id = searchParams.get('uuid');
 */
-    let apiUrl = '/league/submissions';
+    const path = location.toString();
+    let url = new URL(path).pathname;
+    let regex = /\d+/g;
+    let seasonId = url.match(regex);
+
+    let apiUrl = '/season/' + seasonId + '/submissions';
     fetch(apiUrl, {
         method: 'GET',
         headers: {
@@ -29,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('unchecked');
         }
 
-        let apiUrl = '/league/submissions/' + this.checked;
+        let apiUrl = '/season/' + seasonId + '/submissions/' + this.checked;
         fetch(apiUrl, {
             method: 'PUT',
             headers: {

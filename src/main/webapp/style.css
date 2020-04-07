@@ -52,8 +52,7 @@ a, a:hover {
 
 
 .dropbtn {
-    background-color: #000;
-    color: white;
+    cursor: pointer;
     padding: 16px;
     font-size: 1.2rem;
     border: none;
@@ -63,15 +62,15 @@ a, a:hover {
     display: inline-block;
 }
 .prev-seasons {
+    background-color: #0D0B20;
     display: none;
     position: absolute;
-    background-color: #fff;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 .prev-seasons a {
-    color: black;
+    color: #fff;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -87,7 +86,7 @@ a, a:hover {
     max-width: 900px;
     margin: 0 auto;
 }
-.main-text, .main-where-when {
+.main-text, .main-where-when, .main-league {
     display: flex;
     padding-top: 10px;
     margin-bottom: 50px;
@@ -108,7 +107,7 @@ a, a:hover {
     padding: 10px 0 0 10px;
     line-height: 1.4;
 }
-.main-about-team-match {
+.main-about-team-match, .main-about-league {
     display: flex;
     justify-content: space-around;
     padding-top: 10px;
@@ -199,7 +198,14 @@ a, a:hover {
     border-radius: 5px;
     box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
 }
+.main-head-title .main-head-logo {
+    height: 200px;
+    width: 200px;
+    background-image: url(img/footgo-dark-icon.png);
+    background-size: cover;
+}
 .main-head-teamlogo {
+    flex-flow: wrap;
     display: flex;
     padding-bottom: 5px;
 }
@@ -1239,6 +1245,10 @@ input[invalid-input] {
 .red-card {
   background-image: url(img/red_card.svg);
 }
+.dropbtn {
+  background-color: #0D0B20;
+  color: #fff;
+}
 
 .dark {
     display: none;
@@ -1254,7 +1264,10 @@ input[invalid-input] {
       background: var(--main-sf-color);
       color: var(--main-text-color);
   }
-  header, .main-photo {
+  .main-head-title .main-head-logo {
+      background-image: url(img/footgo-light-icon.png);
+  }
+  header, .main-photo, .prev-seasons, .dropbtn {
       background: var(--main-bg-color);
   }
   .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .mathces-bg {
@@ -1264,7 +1277,7 @@ input[invalid-input] {
   .main-when ul span {
       background: rgba(255,255,255,0.4);
   }
-  .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3, .bomb-head p {
+  .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3, .bomb-head p, .season-list, .dropbtn {
       color: var(--main-text-color);
   }
   .main-about-team img {
@@ -1275,7 +1288,6 @@ input[invalid-input] {
   }
   .main-about-team img, .main-about-match img {
       display: block;
-      -moz-box-sizing: border-box;
       box-sizing: border-box;
       background-size: 100%;
       padding-left: 72px;
@@ -1286,7 +1298,6 @@ input[invalid-input] {
   }
   .main-head-teamlogo img {
       display: block;
-      -moz-box-sizing: border-box;
       box-sizing: border-box;
   }
   .main-where iframe {
@@ -1298,7 +1309,6 @@ input[invalid-input] {
   }
   .res-teams img {
       display: block;
-      -moz-box-sizing: border-box;
       box-sizing: border-box;
   }
   .table-title, .bomb-title {
@@ -1309,14 +1319,12 @@ input[invalid-input] {
   }
     .table-team-name img {
         display: block;
-        -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
     .table-secondplace img {
     }
     .logo-team-bg img {
         display: block;
-        -moz-box-sizing: border-box;
         box-sizing: border-box;
         width: 50%;
     }
@@ -1325,7 +1333,6 @@ input[invalid-input] {
     }
     .player-photo img {
         display: block;
-        -moz-box-sizing: border-box;
         box-sizing: border-box;
         padding-left: 128px;
         height: 128px;
@@ -1338,14 +1345,12 @@ input[invalid-input] {
     }
     .player-card-logo-team img {
         display: block;
-        -moz-box-sizing: border-box;
         box-sizing: border-box;
         padding-left: 24px;
         background-size: 100%;
     }
     .review-team1 img, .review-team2 img {
         display: block;
-        -moz-box-sizing: border-box;
         box-sizing: border-box;
         background-size: 100%;
     }
@@ -1378,5 +1383,6 @@ input[invalid-input] {
         background-position: center;
         background-size: cover;
     }
+
 }
 /*Dark-mode end*/

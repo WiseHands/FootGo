@@ -66,9 +66,13 @@ public class HttpRequestsController {
     @GetMapping({"/"})
     public String footgo(Model model, @RequestParam(value = "name", required = false) String name) {
         model.addAttribute("name", name);
+        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        model.addAttribute("league", leagueList.get(0));
         List<Season> seasonList = (List<Season>) seasonRepository.findAll();
         model.addAttribute("season", seasonList.get(0));
-        return "seasons";
+        List allTeams = (List) teamRepository.findAll();
+        model.addAttribute("teamList", allTeams);
+        return "footgo";
     }
     @GetMapping({"/signup"})
     public String signup(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
@@ -234,7 +238,8 @@ public class HttpRequestsController {
     public String leagueList(Model model, @PathVariable("id") Long id) {
         Season season = seasonRepository.findById(id).get();
         model.addAttribute("season", season);
-        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        List<League> leagueList = season.getLeagueList();
+        //List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         model.addAttribute("leagueList", leagueList);
         return "AdminLeagueList";
     }

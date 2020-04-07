@@ -24,12 +24,14 @@
                 </a>
             </div>
             <div class="header-text">
-                <a href="/signup" th:if="${league.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
+                <a href="/signup" th:if="${season.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
                 <a href="/results"><p>Результати</p></a>
                 <a href="/gametable"><p>Таблиця</p></a>
                 <a href="/bombardier"><p>Бомбардири</p></a>
                 <div class="season-list">
-                    <button class="dropbtn">Сезон 2020</button>
+                    <button class="dropbtn">Сезон 2020
+                        <i class="fa fa-caret-down"></i>
+                    </button>
                         <div class="prev-seasons">
                             <a href="">Осінь 2019</a>
                         </div>
@@ -39,26 +41,54 @@
 
     </div>
     <div id="myLinks">
-        <div th:if="${league.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
+        <div th:if="${season.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
         <div><a class="link-item" href="/results">Результати</a></div>
         <div><a class="link-item" href="/gametable">Таблиця</a></div>
         <div><a class="link-item" href="/bombardier">Бомбардири</a></div>
+        <div class="season-list">
+            <button class="dropbtn">Сезон 2020</button>
+            <div class="prev-seasons">
+                <a href="">Осінь 2019</a>
+            </div>
+        </div>
     </div>
 </header>
     <div class="main-head">
         <div class="main-head-title">
+            <div class="main-head-logo" alt="wiselogo"></div>
             <h1>Аматорський турнір з футболу</h1>
-            <div class="main-head-teamlogo">
+            <h1 th:text="${season.name}"></h1>
+<!--            <div class="main-head-teamlogo">
                 <div th:each="item : ${teamList}" class="main-head-eachteam">
                     <a th:attr="href=${'/team/' + item.id}">
                         <img th:attr="src=${item.logoImageUrl}, class=${'light' + ' ' + 'team' + item.id}">
                         <img th:attr="src=${item.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + item.id}">
                     </a>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
     <div class="main-block">
+
+        <div class="main-league">
+            <div th:each="item : ${league}" class="main-about">
+                <h1 th:text="${item.name}"></h1>
+                <div class="main-about-league">
+                    <div class="main-about-team">
+                        <img src="/img/team-icon.png">
+                        <p>10 команд</p>
+                    </div>
+                    <div class="main-about-match">
+                        <img src="/img/soccer-ball.png">
+                        <p>45 матчів</p>
+                    </div>
+                </div>
+            </div>
+            <div class="main-video">
+                <h1>Ліга 2</h1>
+                <iframe src="https://www.youtube.com/embed/re-1-nt0tdY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+            </div>
+        </div>
 
         <div class="main-text">
             <div class="main-about">
@@ -74,9 +104,9 @@
                         <p>45 матчів</p>
                     </div>
                 </div>
-                <div class="slogan-button">
+<!--                <div class="slogan-button">
                     <input class="main-input-button" type="button" value="Результати" onclick="location.href='/results'">
-                </div>
+                </div>-->
             </div>
             <div class="main-video">
                 <h1>Footgo League Promo</h1>
