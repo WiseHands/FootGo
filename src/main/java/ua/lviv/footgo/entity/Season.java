@@ -18,9 +18,6 @@ public class Season {
     @Column
     private boolean submissionsOpened;
 
-/*    @Column
-    private boolean isActive;*/
-
     @OneToMany(cascade = CascadeType.ALL)
     private List<TeamSignUpRequest> teamSubmissionList;
 
@@ -80,14 +77,6 @@ public class Season {
     public void setIsSubmissionOpened(boolean show) {
         this.submissionsOpened = show;
     }
-
-/*    public boolean getIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(boolean show) {
-        this.isActive = show;
-    }*/
 
     public void setName(String name) {
         this.name = name;

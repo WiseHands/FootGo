@@ -8,9 +8,8 @@ function submissionData(event) {
         return false;
     }
     if(seasonName) {
-
         let params = '?seasonName=' + seasonName;
-        let apiUrl = '/api/seasons/new' + params;
+        let apiUrl = '/api/tournament/' + tournamentId + '/seasons/new' + params;
         fetch(apiUrl, {
             method: 'POST',
             headers: {
@@ -19,10 +18,10 @@ function submissionData(event) {
         }).then(function(response) {
             console.log(response);
             if(response.ok) {
-                location.pathname = '/admin';
+                location.pathname = '/admin/tournament/' + tournamentId + '/seasons';
             }
             else {
-                alert('Помилка при створенні езону');
+                alert('Помилка при створенні сезону');
             }
             return  response.json();
         }).then(function(data) {

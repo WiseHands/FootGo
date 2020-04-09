@@ -10,6 +10,7 @@ import ua.lviv.footgo.repository.SeasonRepository;
 @RequestMapping(path = "/season")
 public class SeasonManagementController {
     @Autowired SeasonRepository seasonRepository;
+
     @PutMapping(value = "/{seasonId}/submissions/{submissionsOpened}", consumes = "application/json", produces = "application/json")
     public void markOpened(@PathVariable Long seasonId, @PathVariable boolean submissionsOpened) {
         Season season = seasonRepository.findById(seasonId).get();

@@ -17,19 +17,19 @@
             </div>
         </div>
         <div class="requests">
-            <p>Сезони</p>
+            <p>Турніри</p>
             <div class="season-block all-requests">
                 <div>
-                    <a th:href="'/admin/tournament/' + ${tournament.id} + '/seasons/new'" class="link-style">
-                        <div class="request-block add-season" title="Створити новий сезон">
+                    <a class="link-style" href="/admin/tournaments/new">
+                        <div class="request-block add-season" title="Створити новий турнір">
                             <i class="fa fa-plus"></i>
                         </div>
                     </a>
                 </div>
-                <div th:each="season : ${seasonList}">
-                    <a th:href="'/admin/tournament/' + ${tournament.id} + '/season/' + ${season.id}" class="link-style">
+                <div th:each="tournament : ${tournamentList}">
+                    <a th:href="'/admin/tournament/' + ${tournament.id}" class="link-style">
                         <div class="request-block">
-                            <h3 th:text="${season.name}"></h3>
+                            <h3 th:text="${tournament.name}"></h3>
                         </div>
                     </a>
                 </div>

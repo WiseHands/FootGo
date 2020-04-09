@@ -906,6 +906,11 @@ input[type="file"] {
     text-align: center;
     padding: 0 1rem;
 }
+.new-season textarea {
+    padding: 14px 0 0 14px;
+    max-width: 100%;
+    min-width: 100%;
+}
 .new-season h1 {
     padding: 1rem 0;
 }

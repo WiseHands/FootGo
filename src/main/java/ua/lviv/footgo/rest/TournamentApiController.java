@@ -10,25 +10,20 @@ import ua.lviv.footgo.repository.TournamentRepository;
 
 @RestController
 @RequestMapping(path = "/api/tournament")
-public class SeasonApiController {
-
-    @Autowired
-    private SeasonRepository seasonRepository;
+public class TournamentApiController {
 
     @Autowired
     private TournamentRepository tournamentRepository;
 
-    @PostMapping(value = "/{tournamentId}/seasons/new", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/new", consumes = "application/json", produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    public Season createSeason(@PathVariable Long tournamentId, @RequestParam String seasonName) {
-        Tournament tournament = tournamentRepository.findById(tournamentId).get();
-        Season season = new Season();
-        season.setName(seasonName);
-        tournament.addSeason(season);
+    public Tournament createTournament(@RequestParam String tournamentName, @RequestParam String tournamentDescription) {
+        Tournament tournament = new Tournament();
+        tournament.setName(tournamentName);
+        tournament.setDescription(tournamentDescription);
         tournamentRepository.save(tournament);
-        seasonRepository.save(season);
 
-        return season;
+        return tournament;
     }
 }

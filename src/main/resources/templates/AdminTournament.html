@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Admin | FootGo League</title>
+        <link rel="stylesheet" href="../../../admin.css">
+        <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="admin-main">
+                <div class="admin-logo">
+                    <a href="/admin"><img class="admin-img" src="/img/footgo-dark-icon.png" alt="logo"></a>
+                </div>
+            </div>
+            <ul class="menu-breadcrumb">
+                <li><a href="/admin">Турнір</a></li>
+                <li><a th:href="'/admin/tournament/' + ${id}" th:text="${tournament.name}"></a></li>
+            </ul>
+            <div class="requests">
+                <p>Турнір</p>
+                <div class="all-requests">
+                    <div>
+                        <a th:href="'/admin/tournament/' + ${id} + '/seasons'" class="link-style">
+                            <div class="request-block">
+                                <h3>Сезони</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -3,7 +3,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <title>Admin | FootGo League</title>
-        <link rel="stylesheet" href="../../../admin.css">
+        <link rel="stylesheet" href="../../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -16,20 +16,20 @@
                 </div>
             </div>
             <ul class="menu-breadcrumb">
-                <li><a href="/admin">Сезон</a></li>
-                <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournament.id} + '/seasons'">Сезон</a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournament.id} + '/season/' + ${season.id}" th:text="${season.name}"></a></li>
             </ul>
             <div class="requests">
                 <div class="all-requests">
                     <div>
-                        <a th:href="'/admin/season/' + ${id} + '/submission'" class="link-style">
+                        <a th:href="'/admin/tournament/' + ${tournament.id} + '/season/' + ${season.id} + '/submission'" class="link-style">
                             <div class="request-block">
                                 <h3>Заявки</h3>
                             </div>
                         </a>
                     </div>
                     <div>
-                        <a th:href="'/admin/season/' + ${id} + '/team'" class="link-style">
+                        <a th:href="'/admin/tournament/' + ${tournament.id} + '/season/' + ${season.id} + '/team'" class="link-style">
                             <div class="request-block">
                                 <h3>Команди</h3>
                             </div>
@@ -41,14 +41,14 @@
 <!--                        </div>-->
 <!--                    </a>-->
                     <div>
-                        <a th:href="'/admin/season/' + ${id} + '/leaguelist'" class="link-style">
+                        <a th:href="'/admin/tournament/' + ${tournament.id} + '/season/' + ${season.id} + '/leaguelist'" class="link-style">
                             <div class="request-block">
                                 <h3>Ліга</h3>
                             </div>
                         </a>
                     </div>
                     <div>
-                        <a th:href="'/admin/season/' + ${id} + '/cuplist'" class="link-style">
+                        <a th:href="'/admin/tournament/' + ${tournament.id} +'/season/' + ${season.id} + '/cuplist'" class="link-style">
                             <div class="request-block">
                                 <h3>Кубок</h3>
                             </div>
