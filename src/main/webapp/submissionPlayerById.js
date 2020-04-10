@@ -30,5 +30,5 @@ fetch(apiUrl, {
     console.log(data);
 });
 function returnToTeamsPage() {
-    location.href = '/admin/season/' + seasonId + '/team';
+    location.href = '/admin/tournament/' + tournamentId + '/season/' + seasonId + '/team';
 }

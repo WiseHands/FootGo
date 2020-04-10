@@ -37,5 +37,5 @@ fetch(apiUrl, {
     console.log(data);
 });
 function addNewPlayer() {
-    location.href = '/admin/season/' + seasonId + '/team/player/add?teamUuid=' + id;
+    location.href = '/admin/tournament/' + tournamentId + '/season/' + seasonId + '/team/player/add?teamUuid=' + id;
 }

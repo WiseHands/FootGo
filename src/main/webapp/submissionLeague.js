@@ -1,7 +1,7 @@
-const path = location.toString();
+/*const path = location.toString();
 let url = new URL(path).pathname;
 let regex = /\d+/g;
-let seasonId = url.match(regex);
+let seasonId = url.match(regex);*/
 
 function submissionData(event) {
     let leagueName = document.getElementById('leagueName').value;
@@ -32,7 +32,7 @@ function submissionData(event) {
         }).then(function(response) {
             console.log(response);
             if(response.ok) {
-                location.pathname = '/admin/season/' + seasonId + '/leaguelist';
+                location.pathname = '/admin/tournament/' + tournamentId + '/season/' + seasonId + '/leaguelist';
             }
             else {
                 alert('Помилка при створенні ліги');

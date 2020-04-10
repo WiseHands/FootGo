@@ -20,6 +20,7 @@ function putTeamAndCaptainById(data) {
         console.log(response);
         if(response.ok) {
         	document.getElementById('success').style.display = 'block';
+        	location.pathname = location.pathname;
         } else {
             document.getElementById('error').style.display = 'block';
         }

@@ -193,6 +193,28 @@ body p {
     flex-wrap: wrap;
     justify-content: space-around;
 }
+.tournament {
+    flex-direction: column;
+}
+.description-text, .seasons {
+    margin: 0 auto;
+}
+.tournament p {
+    white-space: inherit;
+    padding-top: 5%;
+}
+.tournament-name input {
+   width: 100%;
+}
+.tournament-name p, .tournament-description p {
+   padding-bottom: 0.5em;
+}
+.description-text .request-block {
+    cursor: text;
+}
+.request-block a {
+    cursor: pointer;
+}
 .request-block {
     display: block;
     width: 230px;
@@ -528,7 +550,7 @@ input[type=text], input[type=tel], input[type=email], select {
 .goal-second p {
     white-space: normal;
 }
-.goal-add, .team-add {
+.goal-add, .team-add, .tournament-edit {
     display: flex;
     justify-content: center;
 }
@@ -904,12 +926,13 @@ input[type="file"] {
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 0 1rem;
+    padding: 0 1em 0 1em;
+    flex-wrap: nowrap;
 }
-.new-season textarea {
-    padding: 14px 0 0 14px;
+.new-season textarea, .tournament-description textarea {
     max-width: 100%;
     min-width: 100%;
+    border-radius: 5px;
 }
 .new-season h1 {
     padding: 1rem 0;

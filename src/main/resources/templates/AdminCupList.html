@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Admin | FootGo League</title>
-    <link rel="stylesheet" href="../../../admin.css">
+    <link rel="stylesheet" href="../../../../../admin.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -17,20 +17,22 @@
         </div>
     </div>
     <ul class="menu-breadcrumb">
-        <li><a href="/admin">Сезон</a></li>
-        <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
-        <li><a th:href="'/admin/season/' + ${id} + '/cuplist'">Кубок</a></li>
+        <li><a href="/admin">Турніри</a></li>
+        <li><a th:href="'/admin/tournament/' + ${tournamentId}" th:text="${tournament.name}"></a></li>
+        <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/seasons'" th:text="Сезони"></a></li>
+        <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId}" th:text="${season.name}"></a></li>
+        <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist'">Кубок</a></li>
     </ul>
     <div class="season-block all-requests">
         <div>
-            <a th:href="'/admin/season/' + ${id} + '/cuplist/new'" class="link-style">
+            <a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist/new'" class="link-style">
                 <div class="request-block add-season">
                     <i class="fa fa-plus"></i>
                 </div>
             </a>
         </div>
         <div th:each="item : ${cupList}">
-            <a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${item.id}" class="link-style">
+            <a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist/' + ${item.id}" class="link-style">
                 <div class="request-block">
                     <h3 th:text="${item.name}"></h3>
                 </div>

@@ -4,12 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let searchParams = new URLSearchParams(url.search);
 
     const id = searchParams.get('uuid');
-*/
+
     const path = location.toString();
     let url = new URL(path).pathname;
     let regex = /\d+/g;
     let seasonId = url.match(regex);
-
+*/
     let apiUrl = '/season/' + seasonId + '/submissions';
     fetch(apiUrl, {
         method: 'GET',

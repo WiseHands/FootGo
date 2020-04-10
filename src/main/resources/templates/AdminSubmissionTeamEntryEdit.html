@@ -3,9 +3,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <title>Admin Page</title>
-        <link rel="stylesheet" href="../../../../admin.css">
+        <link rel="stylesheet" href="../../../../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
-        <script th:inline="javascript">let seasonId = /*[[${season.id}]]*/;</script>
+        <script th:inline="javascript">let seasonId = /*[[${seasonId}]]*/;</script>
+        <script th:inline="javascript">let tournamentId = /*[[${tournamentId}]]*/;</script>
         <script src="/submissionTeamById.js" type="text/javascript"></script>
         <script src="/putTeamAndCaptainById.js" type="text/javascript"></script>
         <script src="/logoUploadScript.js" type="text/javascript"></script>
@@ -18,10 +19,12 @@
                 </div>
             </div>
             <ul class="menu-breadcrumb">
-                <li><a href="/admin">Сезон</a></li>
-                <li><a th:href="'/admin/season/' + ${season.id}" th:text="${season.name}"></a></li>
-                <li><a th:href="'/admin/season/' + ${season.id} + '/team'">Команди</a></li>
-                <li><a th:href="'/admin/season/' + ${season.id} + '/team/edit?uuid=' + ${team.id}" th:text="${team.teamName}"></a></li>
+                <li><a href="/admin">Турніри</a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournamentId}" th:text="${tournament.name}"></a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/seasons'" th:text="Сезони"></a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId}" th:text="${season.name}"></a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/team'">Команди</a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/team/edit?uuid=' + ${team.id}" th:text="${team.teamName}"></a></li>
             </ul>
             <div class="team-request">
                 <h3>Редагування Команди</h3>
@@ -71,7 +74,7 @@
                 </div>
                 <div class="all-requests">
                     <div th:each="item : ${team.players}">
-                        <a th:href="'/admin/season/' + ${season.id} + '/team/player/edit?uuid=' + ${item.id}" class="link-style">
+                        <a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/team/player/edit?uuid=' + ${item.id}" class="link-style">
                             <div class="request-block">
                                 <h3 th:text="${item.firstName}"></h3>
                             </div>

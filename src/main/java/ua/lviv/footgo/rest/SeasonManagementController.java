@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.entity.Season;
 import ua.lviv.footgo.repository.SeasonRepository;
 
-
 @RestController
 @RequestMapping(path = "/season")
 public class SeasonManagementController {
