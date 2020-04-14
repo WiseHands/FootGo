@@ -18,7 +18,7 @@
             <ul class="menu-breadcrumb">
                 <li><a href="/admin">Турніри</a></li>
                 <li><a th:href="'/admin/tournament/' + ${tournament.id}" th:text="${tournament.name}"></a></li>
-                <li><a th:href="'/admin/tournament/' + ${tournament.id} + '/seasons'" th:text="Сезони"></a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournament.id} + '/seasons'">Всі сезони</a></li>
                 <li><a th:href="'/admin/tournament/' + ${tournament.id} + '/season/' + ${season.id}" th:text="${season.name}"></a></li>
             </ul>
             <div class="requests">

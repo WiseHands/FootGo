@@ -22,7 +22,7 @@
     <ul class="menu-breadcrumb">
         <li><a href="/admin">Турніри</a></li>
         <li><a th:href="'/admin/tournament/' + ${tournamentId}" th:text="${tournament.name}"></a></li>
-        <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/seasons'" th:text="Сезони"></a></li>
+        <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/seasons'">Всі сезони</a></li>
         <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId}" th:text="${season.name}"></a></li>
         <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/team'">Команди</a></li>
         <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/team/new'">Створити команду</a></li>

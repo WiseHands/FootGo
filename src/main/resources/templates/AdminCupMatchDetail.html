@@ -3,7 +3,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <title>Admin Page</title>
-        <link rel="stylesheet" href="../../../../../../admin.css">
+        <link rel="stylesheet" href="../../../../../../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -16,12 +16,14 @@
                 </div>
             </div>
             <ul class="menu-breadcrumb">
-                <li><a href="/admin">Сезон</a></li>
-                <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
-                <li><a th:href="'/admin/season/' + ${id} + '/cuplist'">Кубки</a></li>
-                <li><a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id}" th:text="${cup.name}"></a></li>
-                <li><a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/tour'">Тури</a></li>
-                <li><a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/game/' + ${game.id}" th:text="'Тур ' + ${game.tour.tourNumber}"></a></li>
+                <li><a href="/admin">Турніри</a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournamentId}" th:text="${tournament.name}"></a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/seasons'">Всі сезони</a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId}" th:text="${season.name}"></a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist'">Кубки</a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist/' + ${cup.id}" th:text="${cup.name}"></a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist/' + ${cup.id} + '/tour'">Тури</a></li>
+                <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist/' + ${cup.id} + '/game/' + ${game.id}" th:text="'Тур ' + ${game.tour.tourNumber}"></a></li>
             </ul>
             <p class="admin-tour-title" th:text="${'Тур ' + game.tour.tourNumber }">Тур 1</p>
             <div class="time-picker">

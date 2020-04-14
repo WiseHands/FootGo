@@ -3,7 +3,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <title>Admin Page</title>
-        <link rel="stylesheet" href="../../../../../../admin.css">
+        <link rel="stylesheet" href="../../../../../../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
         <script src="https://kit.fontawesome.com/9983a3a0dd.js" crossorigin="anonymous"></script>
         <style>
@@ -38,12 +38,14 @@
             </div>
         </div>
         <ul class="menu-breadcrumb">
-            <li><a href="/admin">Сезон</a></li>
-            <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
-            <li><a th:href="'/admin/season/' + ${id} + '/cuplist'">Кубки</a></li>
-            <li><a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id}" th:text="${cup.name}"></a></li>
-            <li><a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/tour'">Тури</a></li>
-            <li><a th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/tour/details?uuid=' + ${tour.id}" th:text="'Тур ' + ${tour.tourNumber}"></a></li>
+            <li><a href="/admin">Турніри</a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId}" th:text="${tournament.name}"></a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/seasons'">Всі сезони</a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId}" th:text="${season.name}"></a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist'">Кубки</a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist/' + ${cup.id}" th:text="${cup.name}"></a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist/' + ${cup.id} + '/tour'">Тури</a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist/' + ${cup.id} + '/tour/details?uuid=' + ${tour.id}" th:text="'Тур ' + ${tour.tourNumber}"></a></li>
         </ul>
         <p class="admin-tour-title" th:text="${'Тур ' + tour.tourNumber}"></p>
 
@@ -72,7 +74,7 @@
             <div class="tour-match" th:each="game : ${tour.gameList}">
                 <div class="tour-team1-details">
                     <span th:attr="gameId=${game.id}" th:if="${game.firstTeam == null}" id="addHomeTeam">+</span>
-                    <a th:if="${game.firstTeam != null}" th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/game/' + ${game.id}">
+                    <a th:if="${game.firstTeam != null}" th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist/' + ${cup.id} + '/game/' + ${game.id}">
                         <p th:text="${game.firstTeam.teamName}"></p>
                     </a>
                     <span th:attr="gameId=${game.id}" th:if="${game.firstTeam != null}" id="addHomeTeam" class="far fa-edit" title="Редагувати команду"></span>
@@ -87,7 +89,7 @@
                 <div class="tour-team2-details">
                     <span th:attr="gameId=${game.id}" th:if="${game.secondTeam == null}" id="addGuestTeam">+</span>
                     <span th:attr="gameId=${game.id}" th:if="${game.secondTeam != null}" id="addGuestTeam" class="far fa-edit" title="Редагувати команду"></span>
-                    <a th:if="${game.secondTeam != null}" th:href="'/admin/season/' + ${id} + '/cuplist/' + ${cup.id} + '/game/' + ${game.id}">
+                    <a th:if="${game.secondTeam != null}" th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist/' + ${cup.id} + '/game/' + ${game.id}">
                         <p th:text="${game.secondTeam.teamName}"></p>
                     </a>
                 </div>

@@ -227,6 +227,7 @@ body p {
                 0px 2px 1px -1px rgba(0,0,0,0.12);
     cursor: pointer;
 }
+
 .request-block i {
     font-size: 2em;
 }
@@ -243,6 +244,13 @@ body p {
     line-height: 1.5;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.mark-active {
+    display: inline-block;
+    cursor: pointer;
+}
+.mark-active p {
+    padding-bottom: 5%;
 }
 @media screen and (max-width: 800px) {
     .admin-bar {
@@ -662,9 +670,10 @@ span.clear-technical-defeat {
     width: 20px;
     height: 20px;
     display: block;
-    background: white;
+    background: #fff;
     border-radius: 10px;
-    box-shadow: rgba(54, 221, 193, 0.47);
+    /*box-shadow: rgba(54, 221, 193, 0.47);*/
+    box-shadow: 0 0 10px rgba(54, 221, 193, 0.75);
     transition: all 0.2s ease;
 }
 .toggle span:before {
@@ -886,7 +895,6 @@ input[type="file"] {
   width: 25px;
   background-color: #eee;
   margin: 0 auto;
-  top: .5em;
 }
 /* On mouse-over, add a grey background color */
 .request-block:hover input ~ .checkbox-mark {

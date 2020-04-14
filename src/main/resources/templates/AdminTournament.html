@@ -33,9 +33,16 @@
                         </div>
                     </div>
                     <div class="seasons">
+                        <a th:href="'/admin/tournament/' + ${id} + '/seasons/active'" class="link-style">
+                            <div class="request-block">
+                                <h3>Активні Сезони</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="seasons">
                         <a th:href="'/admin/tournament/' + ${id} + '/seasons'" class="link-style">
                             <div class="request-block">
-                                <h3>Сезони</h3>
+                                <h3>Всі Сезони</h3>
                             </div>
                         </a>
                     </div>

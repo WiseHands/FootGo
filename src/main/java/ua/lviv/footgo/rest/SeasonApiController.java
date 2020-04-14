@@ -27,7 +27,6 @@ public class SeasonApiController {
         season.setName(seasonName);
         tournament.addSeason(season);
         tournamentRepository.save(tournament);
-        seasonRepository.save(season);
 
         return season;
     }

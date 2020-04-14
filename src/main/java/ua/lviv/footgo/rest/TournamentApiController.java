@@ -27,4 +27,16 @@ public class TournamentApiController {
         return tournament;
     }
 
+    @PostMapping(value = "/set_active_season", consumes = "application/json", produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
+    public Tournament setActiveSeason(@RequestParam Long tournamentId, @RequestParam Season activeSeason) {
+        Tournament tournament = tournamentRepository.findById(tournamentId).get();
+        tournament.setActiveSeason(activeSeason);
+
+        tournamentRepository.save(tournament);
+
+        return tournament;
+    }
+
 }

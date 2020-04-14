@@ -3,21 +3,29 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <title>Admin Page</title>
-        <link rel="stylesheet" href="../../../../../admin.css">
+        <link rel="stylesheet" href="../../../../../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
         <script th:inline="javascript">let seasonId = /*[[${season.id}]]*/;</script>
+        <script th:inline="javascript">let tournamentId = /*[[${tournament.id}]]*/;</script>
         <script src="/submissionPlayerById.js" type="text/javascript"></script>
         <script src="/putPlayerById.js" type="text/javascript"></script>
         <script src="/teamDeletePlayerById.js" type="text/javascript"></script>
         <script src="/fileUploadScript.js" type="text/javascript"></script>
     </head>
     <body>
+    <div class="main-container">
         <div class="admin-main">
             <div class="admin-logo">
                 <a href="/admin"><img class="admin-img" src="/img/footgo-dark-icon.png" alt="logo"></a>
             </div>
         </div>
-
+        <ul class="menu-breadcrumb">
+            <li><a href="/admin">Турніри</a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId}" th:text="${tournament.name}"></a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/seasons'">Всі сезони</a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId}" th:text="${season.name}"></a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/team'">Команди</a></li>
+        </ul>
         <div id="hideifsuccess" class="team-request">
             <p class="admin-title-row">Гравець</p>
             <div class="admin-file-upload">
@@ -62,5 +70,6 @@
         <div class="slogan-button">
             <input id="success-button" class="main-input-button main-input-button-all" type="button" value="Всі команди" onclick="returnToTeamsPage()">
         </div>
+    </div>
     </body>
 </html>

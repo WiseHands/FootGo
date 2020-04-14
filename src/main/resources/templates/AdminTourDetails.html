@@ -3,7 +3,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <title>Admin Page</title>
-        <link rel="stylesheet" href="../../../../../../admin.css">
+        <link rel="stylesheet" href="../../../../../../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
         <style>
             a {
@@ -38,16 +38,18 @@
             </div>
         </div>
         <ul class="menu-breadcrumb">
-            <li><a href="/admin">Сезон</a></li>
-            <li><a th:href="'/admin/season/' + ${id}" th:text="${season.name}"></a></li>
-            <li><a th:href="'/admin/season/' + ${id} + '/leaguelist'">Ліги</a></li>
-            <li><a th:href="'/admin/season/' + ${id} + '/leaguelist/' + ${league.id}" th:text="${league.name}"></a></li>
-            <li><a th:href="'/admin/season/' + ${id} + '/leaguelist/' + ${league.id} + '/tour'">Тури</a></li>
-            <li><a th:href="'/admin/season/' + ${id} + '/leaguelist/' + ${league.id} + '/tour/details?uuid=' + ${tour.id}" th:text="'Тур ' + ${tour.id}"></a></li>
+            <li><a href="/admin">Турніри</a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId}" th:text="${tournament.name}"></a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/seasons'">Всі сезони</a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId}" th:text="${season.name}"></a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/leaguelist'">Ліги</a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/leaguelist/' + ${league.id}" th:text="${league.name}"></a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/leaguelist/' + ${league.id} + '/tour'">Тури</a></li>
+            <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/leaguelist/' + ${league.id} + '/tour/details?uuid=' + ${tour.id}" th:text="'Тур ' + ${tour.tourNumber}"></a></li>
         </ul>
         <p class="admin-tour-title" th:text="${'Тур ' + tour.tourNumber}"></p>
 
-        <a th:href="'/admin/season/' + ${id} + '/leaguelist/' + ${league.id} + '/game/' + ${game.id}" th:each="game : ${tour.gameList}">
+        <a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/leaguelist/' + ${league.id} + '/game/' + ${game.id}" th:each="game : ${tour.gameList}">
             <div class="tour-match">
                 <div class="tour-team1-details">
                     <p th:text="${game.firstTeam.teamName}"></p>

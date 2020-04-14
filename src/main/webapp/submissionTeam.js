@@ -9,7 +9,7 @@ function submissionData(event) {
 
     const checkEmptyTeamName = document.getElementById("teamName");
     const checkEmptyCaptainName = document.getElementById("captainName");
-    if (checkEmptyTeamName.value == "" && checkEmptyTeamName.value.length == 0 && checkEmptyCaptainName.value == "" && checkEmptyCaptainName.value.length == 0) {
+    if (checkEmptyTeamName.value == "" && checkEmptyTeamName.value.length == 0 || checkEmptyCaptainName.value == "" && checkEmptyCaptainName.value.length == 0) {
         document.getElementById('requiredFieldsError').style.display = "block";
         checkEmptyTeamName.classList.add("required-fields");
         checkEmptyCaptainName.classList.add("required-fields");
