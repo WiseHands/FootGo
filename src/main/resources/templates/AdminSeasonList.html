@@ -38,7 +38,7 @@
                             <h3 th:text="${season.name}"></h3>
                             <label class="mark-active">
                                 <p>Активний сезон</p>
-                                <input type="checkbox" id="setActive" value="1">
+                                <input th:value="${season.id}" type="checkbox" id="setActive" value="1">
                                 <span class="checkbox-mark" title="Позначити активним"></span>
                             </label>
                         </div>

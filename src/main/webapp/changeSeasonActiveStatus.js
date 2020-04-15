@@ -1,34 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    let apiUrl = '/api/tournament/get_active_season?tournamentId=' + tournamentId;
-    fetch(apiUrl, {
+    let checkboxes = document.querySelectorAll("#setActive");
+
+    let apiGetActiveSeasonUrl = '/api/tournament/get_active_season?tournamentId=' + tournamentId;
+    fetch(apiGetActiveSeasonUrl, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         }
     }).then(function(response){
         console.log(response)
+        return response.json();
     }).then(function(data) {
-        if(data.activeSeasonId) {
-            document.getElementById('setActive').checked = true;
+        if(data) {
+            for(let i = 0 ; i < checkboxes.length ; i++){
+                if(data == checkboxes[i].value && !checkboxes[i].checked){
+                    checkboxes[i].checked = true;
+                }
+            }
         } else {
-            document.getElementById('setActive').checked = false;
         }
         console.log(data);
     });
 
-    let checkbox = document.querySelector("input[name=request-over]");
-    console.log(checkbox);
+    //checkboxes.forEach(checkbox => checkbox.addEventListener("change", setActiveSeason(checkbox)));
 
-/*    checkbox.addEventListener( 'change', function(checked) {
-        if(this.checked) {
-            console.log('checked');
-        } else {
-            console.log('unchecked');
+    for(let i = 0 ; i < checkboxes.length ; i++){
+        checkboxes[i].addEventListener("change", checkUncheck, false);
+    }
+
+    function checkUncheck(){
+        for(let i = 0 ; i < checkboxes.length ; i++){
+            if(this.value !== checkboxes[i].value && checkboxes[i].checked){
+                checkboxes[i].checked = false;
+            }
         }
 
-        let apiUrl = '/season/' + seasonId + '/submissions/' + this.checked;
-        fetch(apiUrl, {
+        let seasonId = this.value;
+        let apiSetSeasonUrl = '/api/tournament/set_active_season/?tournamentId=' + tournamentId + '&seasonId=' + seasonId;
+        fetch(apiSetSeasonUrl, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -40,5 +50,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Error');
             }
         })
-    })*/
+    }
+
+/*    function setActiveSeason(checkbox) {
+        return function() {
+        //checkboxes.forEach(checkbox => if(this.value !== checkbox.value && checkbox.checked) {checkbox.checked = false});
+            if(this.checked) {
+                console.log('checked');
+                console.log(checkbox);
+            } else {
+                console.log('unchecked');
+            }
+            let seasonId = checkbox.value;
+
+            let apiUrl = '/api/tournament/set_active_season/?tournamentId=' + tournamentId + '&seasonId=' + seasonId;
+            fetch(apiUrl, {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json',
+                }
+            }).then(function(response) {
+                console.log(response);
+                if(response.ok) {
+                } else {
+                    alert('Error');
+                }
+            })
+        }
+    };*/
+
 })
