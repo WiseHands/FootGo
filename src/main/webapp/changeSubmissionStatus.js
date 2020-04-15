@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     let checkbox = document.querySelector("input[name=request-over]");
-    console.log(checkbox);
 
     checkbox.addEventListener( 'change', function(checked) {
         if(this.checked) {

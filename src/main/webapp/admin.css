@@ -720,12 +720,16 @@ span.clear-technical-defeat {
     font-size: 1.3rem;
 }
 .label-check-center {
-    position: absolute;
-    left: calc(50% - 20px);
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+/*    position: absolute;
+    left: calc(50% - 20px);*/
 }
 .label-check-text {
-    margin-top: 2em;
+/*    margin-top: 2em;*/
     margin-bottom: 1em;
+    margin-right: 1em;
     text-align: center;
     font-weight: bold;
 }
