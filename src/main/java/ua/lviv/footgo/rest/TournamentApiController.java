@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.entity.Season;
 import ua.lviv.footgo.entity.Tournament;
-import ua.lviv.footgo.repository.SeasonRepository;
 import ua.lviv.footgo.repository.TournamentRepository;
 
 @RestController
@@ -27,16 +26,25 @@ public class TournamentApiController {
         return tournament;
     }
 
-    @PostMapping(value = "/set_active_season", consumes = "application/json", produces = "application/json")
+    @PutMapping(value = "/set_active_season", consumes = "application/json", produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    public Tournament setActiveSeason(@RequestParam Long tournamentId, @RequestParam Season activeSeason) {
+    public Tournament setActiveSeason(@RequestParam Long tournamentId, @RequestParam Season activeSeasonId) {
         Tournament tournament = tournamentRepository.findById(tournamentId).get();
-        tournament.setActiveSeason(activeSeason);
+        tournament.setActiveSeason(activeSeasonId);
 
         tournamentRepository.save(tournament);
 
         return tournament;
+    }
+
+    @GetMapping(value = "/get_active_season", consumes = "application/json", produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
+    public Season getActiveSeason(@RequestParam Long tournamentId) {
+        Tournament tournament = tournamentRepository.findById(tournamentId).get();
+
+        return tournament.getActiveSeason();
     }
 
 }
