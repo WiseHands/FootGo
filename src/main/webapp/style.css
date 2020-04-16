@@ -86,12 +86,12 @@ a, a:hover {
     max-width: 900px;
     margin: 0 auto;
 }
-.main-text, .main-where-when, .main-league {
+.main-text, .main-where-when, .main-league, .main-cup {
     display: flex;
     padding-top: 10px;
     margin-bottom: 50px;
 }
-.main-where, .main-when, .main-about, .main-video {
+.main-where, .main-when, .main-about, .main-video, .request-block {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -111,9 +111,11 @@ a, a:hover {
     display: flex;
     justify-content: space-around;
     padding-top: 10px;
+    height: 100%;
 }
 .main-about-team, .main-about-match {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
 }
@@ -140,6 +142,15 @@ a, a:hover {
 }
 .main-when, .main-video {
     margin-left: 20px;
+}
+.main-league .main-about:not(:last-child), .main-cup .main-about:not(:last-child) {
+    margin-right: 20px;
+}
+.main-league .main-about, .main-cup .main-about {
+    padding-bottom: 10px;
+}
+.request-block:hover, .request-block:focus {
+    box-shadow: 0 1px 3px 1px rgba(60, 64, 67, 0.2), 0 2px 8px 4px rgba(60, 64, 67, 0.1);
 }
 .main-when ul {
     list-style-type: none;
@@ -255,7 +266,21 @@ a, a:hover {
     background-color: #347e36;
     border-radius: 10px;
 }
-
+.main-team-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.request-block {
+    display: block;
+    width: 75px;
+    padding: 20px 10px;
+    margin: 5px 5px;
+}
+.request-block p {
+    padding: 0;
+    text-align: center;
+}
 .registration-photo {
     background: url("img/foot33.jpg");
     background-position: center;
@@ -960,7 +985,7 @@ input[invalid-input] {
     .main-where-when, .main-text {
         flex-direction: column;
     }
-    .main-where, .main-when, .main-about, .main-video {
+    .main-where, .main-when, .main-about, .main-video, .main-league, .main-cup {
         width: 95%;
         margin: 10px auto;
     }
@@ -1259,6 +1284,8 @@ input[invalid-input] {
   --main-bg-color: #121212;
   --main-text-color: #e1e1e1;
   --main-sf-color: #1d1d1d;
+  --main-on-button-color: #bb86fc;
+  --main-text-on-button-color: #000000;
 }
   .main-head-title {
       background: var(--main-sf-color);
@@ -1273,6 +1300,13 @@ input[invalid-input] {
   .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .mathces-bg {
       background: var(--main-sf-color);
       color: var(--main-text-color);
+  }
+  .request-block {
+      background: var(--main-on-button-color);
+      color: var(--main-text-on-button-color);
+  }
+  .request-block:hover {
+      color:#464646 ;
   }
   .main-when ul span {
       background: rgba(255,255,255,0.4);

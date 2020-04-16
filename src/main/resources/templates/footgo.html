@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="hamburger.css">
     <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="/social.js" type="text/javascript"></script>
 </head>
 <body class="main-photo">
 <header>
@@ -69,26 +70,6 @@
         </div>
     </div>
     <div class="main-block">
-
-        <div class="main-league">
-            <div th:each="item : ${league}" class="main-about">
-                <h1 th:text="${item.name}"></h1>
-                <div class="main-about-league">
-                    <div class="main-about-team">
-                        <img src="/img/team-icon.png">
-                        <p>10 команд</p>
-                    </div>
-                    <div class="main-about-match">
-                        <img src="/img/soccer-ball.png">
-                        <p>45 матчів</p>
-                    </div>
-                </div>
-            </div>
-            <div class="main-video">
-                <h1>Ліга 2</h1>
-                <iframe src="https://www.youtube.com/embed/re-1-nt0tdY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-            </div>
-        </div>
 
         <div class="main-text">
             <div class="main-about">
@@ -174,6 +155,46 @@
                 <li>Нд</li>
             </ul>
             <p>Ігри проводяться раз в тиждень, середу або четвер о 19:45 або 20:45</p>
+        </div>
+    </div>
+    <div class="main-league">
+        <div th:each="league : ${leagueList}" class="main-about">
+            <h1 th:text="${league.name}"></h1>
+            <div class="main-about-league">
+                <div class="main-team-list">
+                    <!--                        <img src="/img/team-icon.png">-->
+                    <div th:each="team : ${league.teamList}">
+                        <a th:href="'/team/' + ${team.id}" class="link-style">
+                            <div class="request-block">
+                                <p th:text="${team.teamName}"></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-cup">
+        <div th:each="cup : ${cupList}" class="main-about">
+            <h1 th:text="${cup.name}"></h1>
+            <div class="main-about-league">
+                <div class="main-team-list">
+                    <!--                        <img src="/img/team-icon.png">-->
+                    <div th:each="team : ${cup.teamList}">
+                        <a th:href="'/cup/' + ${team.id}" class="link-style">
+                            <div class="request-block">
+                                <p th:text="${team.teamName}"></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-about">
+            <h1>Instagram</h1>
+            <div id="instagram" class="instagram">
+                https://www.instagram.com/p/B9PdeKFFfSy
+            </div>
         </div>
     </div>
 </div>

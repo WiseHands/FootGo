@@ -69,12 +69,16 @@ public class HttpRequestsController {
     @GetMapping({"/"})
     public String footgo(Model model, @RequestParam(value = "name", required = false) String name) {
         model.addAttribute("name", name);
-        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
-        model.addAttribute("league", leagueList.get(0));
-        List<Season> seasonList = (List<Season>) seasonRepository.findAll();
-        model.addAttribute("season", seasonList.get(0));
-        List allTeams = (List) teamRepository.findAll();
-        model.addAttribute("teamList", allTeams);
+        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
+        Tournament tournament = tournaments.get(0);
+        model.addAttribute("tournament", tournament);
+        Season season = tournament.getActiveSeason();
+        model.addAttribute("season", season);
+        List<League> leagueList = season.getLeagueList();
+        model.addAttribute("leagueList", leagueList);
+        List<Cup> cupList = season.getCupList();
+        model.addAttribute("cupList", cupList);
+
         return "footgo";
     }
     @GetMapping({"/signup"})
@@ -101,7 +105,6 @@ public class HttpRequestsController {
         List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         model.addAttribute("league", leagueList.get(0));
 
-
         List<TeamResults> results = resultService.getResults(true);
         Integer position = 1;
         for(int i=0; i<results.size(); i++) {
@@ -112,7 +115,6 @@ public class HttpRequestsController {
             }
         }
         model.addAttribute("position", position);
-
 
         return "teamresults";
     }
@@ -384,7 +386,8 @@ public class HttpRequestsController {
         model.addAttribute("tournament", tournament);
         Season season = seasonRepository.findById(seasonId).get();
         model.addAttribute("season", season);
-        List<Cup> cupList = (List<Cup>) cupManagementRepository.findAll();
+        //List<Cup> cupList = (List<Cup>) cupManagementRepository.findAll();
+        List<Cup> cupList = season.getCupList();
         model.addAttribute("cupList", cupList);
         Cup cup = cupManagementRepository.findById(cupId).get();
         model.addAttribute("cup", cup);
@@ -397,7 +400,8 @@ public class HttpRequestsController {
         model.addAttribute("tournament", tournament);
         Season season = seasonRepository.findById(seasonId).get();
         model.addAttribute("season", season);
-        List<Cup> cupList = (List<Cup>) cupManagementRepository.findAll();
+        //List<Cup> cupList = (List<Cup>) cupManagementRepository.findAll();
+        List<Cup> cupList = season.getCupList();
         model.addAttribute("cupList", cupList);
         return "AdminCupList";
     }
