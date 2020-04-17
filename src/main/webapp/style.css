@@ -272,14 +272,15 @@ a, a:hover {
     justify-content: center;
 }
 .request-block {
-    display: block;
     width: 75px;
     padding: 20px 10px;
     margin: 5px 5px;
 }
 .request-block p {
     padding: 0;
-    text-align: center;
+    text-align: left;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
 }
 .registration-photo {
     background: url("img/foot33.jpg");
@@ -832,10 +833,15 @@ input[invalid-input] {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding-top: 10px
 }
 .all-players p {
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.results-container .no-players {
+    width: 100%;
+    text-align: center;
 }
 .team-results-full h3 {
     font-size: 1.5rem;

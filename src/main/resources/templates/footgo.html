@@ -158,12 +158,14 @@
     </div>
     <div class="main-league">
         <div th:each="league : ${leagueList}" class="main-about">
-            <h1 th:text="${league.name}"></h1>
+            <a th:href="'/league/' + ${league.id}">
+                <h1 th:text="${league.name}"></h1>
+            </a>
             <div class="main-about-league">
                 <div class="main-team-list">
                     <!--                        <img src="/img/team-icon.png">-->
                     <div th:each="team : ${league.teamList}">
-                        <a th:href="'/team/' + ${team.id}" class="link-style">
+                        <a th:href="'/league/' + ${league.id} + '/team/' + ${team.id}" class="link-style">
                             <div class="request-block">
                                 <p th:text="${team.teamName}"></p>
                             </div>
@@ -180,7 +182,7 @@
                 <div class="main-team-list">
                     <!--                        <img src="/img/team-icon.png">-->
                     <div th:each="team : ${cup.teamList}">
-                        <a th:href="'/cup/' + ${team.id}" class="link-style">
+                        <a th:href="'/cup/' + ${cup.id} + '/team/' + ${team.id}" class="link-style">
                             <div class="request-block">
                                 <p th:text="${team.teamName}"></p>
                             </div>
