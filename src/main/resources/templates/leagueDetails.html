@@ -36,112 +36,148 @@
         <div><a class="link-item" href="/bombardier">Бомбардири</a></div>
     </div>
 </header>
-<div>
-    <div class="results">
-        <div class="results-bg">
+<div class="main-league-container">
+    <div class="bomb-head">
+        <p th:text="${season.name} + ' | ' + ${league.name}"></p>
+    </div>
+    <div class="main-container">
+        <div class="results vs-container">
             <div class="results-block">
-                <div class="logo-team-bg">
-                    <img th:attr="src=${team.logoImageUrl}, class=${'light' + ' ' + 'team' + team.id}">
-                    <img th:attr="src=${team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + team.id}">
-                    <p th:text="${team.teamName}"></p>
-                    <p>Місце в чемпіонаті - <span th:text="${position}">8</span></p>
+                <p>Найближчі ігри</p>
+                <div class="logo-team-bg league-team-bg">
+                    <p>Team 1</p>
+                    <p>VS</p>
+                    <p>Team 2</p>
                 </div>
-            </div>
-            <h3>Ігри</h3>
-            <div class="results-all-tour">
-                <div th:each="game : ${gameList}" class="results-container">
-                    <div class="res-teams">
-                        <a th:attr="href=${'/league/' + league.id + '/team/' + game.firstTeam.id}">
-                            <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
-                            <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
-                            <p th:text="${game.firstTeam.teamName}">
-                                game.firstTeam.teamName
-                            </p>
-                        </a>
-                        <a th:attr="href=${'/league/' + league.id + '/team/' + game.secondTeam.id}">
-                            <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
-                            <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
-                            <p th:text="${game.secondTeam.teamName}">
-                                game.secondTeam.teamName
-                            </p>
-                        </a>
-                    </div>
-                    <div class="res-score">
-                        <a th:attr="href=${'/game/' + game.id}">
-                            <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</p>
-                            <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</p>
-                            <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</p>
-                            <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</p>
-                            <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</p>
-                            <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</p>
-                        </a>
-                    </div>
-                    <div class="res-date">
-                        <p th:text="${game.formatDate()}"></p>
-                        <p th:text="${game.formatTime()}"></p>
-                    </div>
-                </div>
-                    <!--<div class="results-date">-->
-                        <!--<p th:text="${game.formatDate() + '  ' + game.formatTime()}">-->
-                            <!--game.gameTime-->
-                        <!--</p>-->
-                    <!--</div>-->
-                    <!--<div class="results-team1">-->
-                        <!--<p th:text="${game.firstTeam.teamName}">-->
-                            <!--game.firstTeam.teamName-->
-                        <!--</p>-->
-                        <!--<img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}">-->
-                    <!--</div>-->
-                    <!--<div class="results-score"><p>-->
-                        <!--<span th:text="${game.teamAGoals.size()}">game.teamAGoals.size()</span>-->
-                        <!--:-->
-                        <!--<span th:text="${game.teamBGoals.size()}">game.teamBGoals.size()</span></p>-->
-                    <!--</div>-->
-                    <!--<div class="results-team2">-->
-                        <!--<img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}">-->
-                        <!--<p th:text="${game.secondTeam.teamName}">-->
-                            <!--game.secondTeam.teamName-->
-                        <!--</p>-->
-                    <!--</div>-->
-                </div>
-        </div>
-        </div>
-
-        </div>
-    </div>
-
-    <div class="team-players">
-        <h3>Гравці</h3>
-        <div class="all-players">
-            <div th:each="item : ${team.players}">
-                    <a th:attr="href=${'/player/' + item.id}">
-                        <div class="player-card">
-                            <div class="player-photo">
-                                <img src="/img/tshirt.png">
-                                <span th:if="${item.isTwoDigits() == false}" class="player-1digit">
-                                    <span th:text="${item.formatNumber()}"></span>
-                                </span>
-                                <span th:if="${item.isTwoDigits() == true}" class="player-2digit">
-                                    <span th:text="${item.formatNumber()}"></span>
-                                </span>
-                            </div>
-                            <div class="player-info">
-                                <div class="player-logo">
-                                    <img th:if="${item.getImageUrl() != null}" th:attr="src=${item.getImageUrl()}">
-                                    <img th:if="${item.getImageUrl() == null}" src="/img/img_avatar.png">
-                                </div>
-                                <div class="player-score-name">
-                                    <h4 th:text="${item.getPlayerFirstName()}"></h4>
-                                    <h4 th:text="${item.getPlayerLastName()}"></h4>
-                                </div>
-                             </div>
-                        </div>
-                    </a>
+                <input class="reg-input-button all-games-button" type="submit" onclick="allGames()"
+                       value="Всі ігри">
             </div>
         </div>
-    </div>
+        <div>
+            <p class="table-header">Таблиця чемпіонату</p>
+            <div class="table league">
+                <div class="table-position auto">
+                    <div class="table-title">№</div>
+                    <div class="table-firstplace">1</div>
+                    <div class="table-secondplace">2</div>
+                    <div class="table-thirdplace">3</div>
+                    <div>4</div>
+                </div>
+                <div class="table-team-name full">
+                    <div class="table-title">Команда</div>
 
+                    <div class="table-firstplace">
+                        <a href="/team/4">
+                            <img src="https://footgo-league.com/viewFile/83ec7888-3085-43f1-af06-7818607e8090"
+                                 class="light team4">
+                            <img src="https://footgo-league.com/viewFile/8df6c44d-1589-43b2-8ef6-6a2fbdb90fac"
+                                 class="dark team4">
+                            <p>ФК Феміда Львів</p>
+                        </a>
+                    </div>
+
+                    <div class="table-secondplace">
+                        <a href="/team/1">
+                            <img src="https://footgo-league.com/viewFile/bdaf684d-55f4-41ce-97ad-61b70f2f8e78"
+                                 class="light team1">
+                            <img src="https://footgo-league.com/viewFile/16218b1e-24ee-4a82-99de-972d7bb7d703"
+                                 class="dark team1">
+                            <p>ФК Сокіл</p>
+                        </a>
+                    </div>
+
+                    <div class="table-thirdplace">
+                        <a href="/team/5">
+                            <img src="https://footgo-league.com/viewFile/21fdb2dd-034f-455b-aa55-5559ec5c28c5"
+                                 class="light team5">
+                            <img src="https://footgo-league.com/viewFile/b8f75a40-1338-4f26-a155-e6d476ab09da"
+                                 class="dark team5">
+                            <p>Прометей 2.0</p>
+                        </a>
+                    </div>
+
+
+                    <div>
+                        <a href="/team/7">
+                            <img src="https://footgo-league.com/viewFile/59cb059f-da59-4923-b8eb-ea8d00701eb1"
+                                 class="light team7">
+                            <img src="https://footgo-league.com/viewFile/55c51bbc-b56a-4416-a271-78fe27a81b01"
+                                 class="dark team7">
+                            <p>ФК Батяри</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="table-games table-offset ">
+                    <div class="table-title">І</div>
+                    <div class="table-firstplace">9</div>
+                    <div class="table-secondplace">9</div>
+                    <div class="table-thirdplace">9</div>
+                    <div>
+                        <p>9</p>
+                    </div>
+                </div>
+                <div class="table-points table-offset">
+                    <div class="table-title">О</div>
+                    <div class="table-firstplace">21</div>
+                    <div class="table-secondplace">21</div>
+                    <div class="table-thirdplace">21</div>
+                    <div>
+                        <p>20</p>
+                    </div>
+                </div>
+            </div>
+            <p class="table-header">Кращі бомбардири</p>
+            <div class="bomb league">
+                <div class="bomb-position auto">
+                    <div class="bomb-title">№</div>
+                    <div>
+                        <p>1</p>
+                    </div>
+                    <div>
+                        <p>2</p>
+                    </div>
+                </div>
+                <div class="bomb-player-name">
+                    <div class="bomb-title">Футболіст</div>
+                    <div>
+                        <a href="/player/108">
+                            <p>Саган Василь</p>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="/player/102">
+                            <p>Лещишин Лесик</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="bomb-scored auto">
+                    <div class="bomb-title">М'ячів</div>
+                    <div>
+                        <p>10</p>
+                    </div>
+                    <div>
+                        <p>8</p>
+                    </div>
+                </div>
+                <div class="bomb-team auto">
+                    <div class="bomb-title">Команда</div>
+                    <div>
+                        <a href="/team/5">
+                            <p>Прометей 2.0</p>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="/team/5">
+                            <p>Прометей 2.0</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 <script src="/signUpScript.js"></script>
 <script src="/hamburger.js"></script>
 

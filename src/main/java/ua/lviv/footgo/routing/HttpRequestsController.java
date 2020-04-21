@@ -103,7 +103,6 @@ public class HttpRequestsController {
         model.addAttribute("tournament", tournament);
         Season season = tournament.getActiveSeason();
         model.addAttribute("season", season);
-
         League league = leagueManagementRepository.findById(leagueId).get();
         model.addAttribute("league", league);
 
