@@ -97,16 +97,18 @@
                     <div class="table-secondplace">2</div>
                     <div class="table-thirdplace">3</div>
                     <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                    <div>7</div>
+                    <div>8</div>
                 </div>
                 <div class="table-team-name full">
                     <div class="table-title">Команда</div>
 
                     <div class="table-firstplace">
-                        <a href="/team/4">
-                            <img src="https://footgo-league.com/viewFile/83ec7888-3085-43f1-af06-7818607e8090"
-                                 class="light team4">
-                            <img src="https://footgo-league.com/viewFile/8df6c44d-1589-43b2-8ef6-6a2fbdb90fac"
-                                 class="dark team4">
+                        <a th:attr="href=${'/league/' + league.id + '/team/' + firstPlace.team.id}">
+                            <img th:attr="src=${firstPlace.team.logoImageUrl}, class=${'light' + ' ' + 'team' + firstPlace.team.id}">
+                            <img th:attr="src=${firstPlace.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + firstPlace.team.id}">
                             <p>ФК Феміда Львів</p>
                         </a>
                     </div>
