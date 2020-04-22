@@ -42,15 +42,50 @@
     </div>
     <div class="main-container">
         <div class="results vs-container">
-            <div class="results-block">
-                <p>Найближчі ігри</p>
+            <div th:each="tour : ${tourList}" class="results-block">
+                <!--<p>Найближчі ігри</p>-->
+<!--                <div>
+                    <p th:text="'Тур ' + ${tour.tourNumber}"></p>
+                </div>
                 <div class="logo-team-bg league-team-bg">
                     <p>Team 1</p>
                     <p>VS</p>
                     <p>Team 2</p>
+                </div>-->
+                <!--<input class="reg-input-button all-games-button" type="submit" onclick="allGames()"
+                       value="Всі ігри">-->
+
+
+                <div class="results-container" th:each="game : ${tour.gameList}">
+                    <div class="res-teams">
+                        <a th:attr="href=${'/league/' + league.id + '/team/' + game.firstTeam.id}">
+                            <p th:text="${game.firstTeam.teamName}">
+                                game.firstTeam.teamName
+                            </p>
+                        </a>
+                        <a th:attr="href=${'/league/' + league.id + '/team/' + game.secondTeam.id}">
+                            <p th:text="${game.secondTeam.teamName}">
+                                game.secondTeam.teamName
+                            </p>
+                        </a>
+                    </div>
+                    <div class="res-score">
+                        <a th:attr="href=${'/league/' + league.id + '/game/' + game.id}">
+                            <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</p>
+                            <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</p>
+                            <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</p>
+                            <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</p>
+                            <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</p>
+                            <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</p>
+                        </a>
+                    </div>
+                    <div class="res-date">
+                        <p th:text="${game.formatDate()}"></p>
+                        <p th:text="${game.formatTime()}"></p>
+                    </div>
                 </div>
-                <input class="reg-input-button all-games-button" type="submit" onclick="allGames()"
-                       value="Всі ігри">
+
+
             </div>
         </div>
         <div>

@@ -105,6 +105,9 @@ public class HttpRequestsController {
         model.addAttribute("season", season);
         League league = leagueManagementRepository.findById(leagueId).get();
         model.addAttribute("league", league);
+        /*Tour tour = (Tour) league.getTours();*/
+        List<Tour> tourList = league.getTours();
+        model.addAttribute("tourList", tourList);
 
         return "leagueDetails";
     }
