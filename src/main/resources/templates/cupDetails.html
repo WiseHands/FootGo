@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title th:text="${'Ліга ' + league.name + ' | FootGo League'}"></title>
+    <title th:text="${'Кубок ' + cup.name + ' | FootGo League'}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/style.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
@@ -38,7 +38,7 @@
 </header>
 <div class="main-league-container">
     <div class="bomb-head">
-        <p th:text="${season.name} + ' | ' + ${league.name}"></p>
+        <p th:text="${season.name} + ' | ' + ${cup.name}"></p>
     </div>
     <div class="main-container">
         <div class="results vs-container">
@@ -57,19 +57,19 @@
 
                 <div class="results-container league-results-container" th:each="game : ${tour.gameList}">
                     <div class="res-teams">
-                        <a th:attr="href=${'/league/' + leagueId + '/team/' + game.firstTeam.id}">
+                        <a th:attr="href=${'/cup/' + cupId + '/team/' + game.firstTeam.id}">
                             <p th:text="${game.firstTeam.teamName}">
                                 game.firstTeam.teamName
                             </p>
                         </a>
-                        <a th:attr="href=${'/league/' + leagueId + '/team/' + game.secondTeam.id}">
+                        <a th:attr="href=${'/cup/' + cupId + '/team/' + game.secondTeam.id}">
                             <p th:text="${game.secondTeam.teamName}">
                                 game.secondTeam.teamName
                             </p>
                         </a>
                     </div>
                     <div class="res-score">
-                        <a th:attr="href=${'/league/' + leagueId + '/game/' + game.id}">
+                        <a th:attr="href=${'/cup/' + cupId + '/game/' + game.id}">
                             <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</p>
                             <p th:if="${game.isTeamAHasTechnicalDefeat() == true}"></p>
                             <p th:if="${game.isTeamBHasTechnicalDefeat() == true}"></p>
@@ -87,61 +87,6 @@
             </div>
         </div>
         <div>
-            <p class="table-header">Таблиця чемпіонату</p>
-            <div class="table league">
-                <div class="table-position auto">
-                    <div class="table-title">№</div>
-                    <div th:each="result,i : ${resultList}" th:text="${i.count}"></div>
-                </div>
-                <div class="table-team-name full">
-                    <div class="table-title">Команда</div>
-
-<!--                    <div class="table-firstplace">-->
-<!--                        <a th:attr="href=${'/league/' + leagueId + '/team/' + firstPlace.team.id}">-->
-<!--                            <img th:attr="src=${firstPlace.team.logoImageUrl}, class=${'light' + ' ' + 'team' + firstPlace.team.id}">-->
-<!--                            <img th:attr="src=${firstPlace.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + firstPlace.team.id}">-->
-<!--                            <p th:text="${firstPlace.team.teamName}"></p>-->
-<!--                        </a>-->
-<!--                    </div>-->
-
-<!--                    <div class="table-secondplace">-->
-<!--                        <a th:attr="href=${'/league/' + leagueId + '/team/' + secondPlace.team.id}">-->
-<!--                            <img th:attr="src=${secondPlace.team.logoImageUrl}, class=${'light' + ' ' + 'team' + secondPlace.team.id}">-->
-<!--                            <img th:attr="src=${secondPlace.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + secondPlace.team.id}">-->
-<!--                            <p th:text="${secondPlace.team.teamName}"></p>-->
-<!--                        </a>-->
-<!--                    </div>-->
-
-<!--                    <div class="table-thirdplace">-->
-<!--                        <a th:attr="href=${'/league/' + leagueId + '/team/' + thirdPlace.team.id}">-->
-<!--                            <img th:attr="src=${thirdPlace.team.logoImageUrl}, class=${'light' + ' ' + 'team' + thirdPlace.team.id}">-->
-<!--                            <img th:attr="src=${thirdPlace.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + thirdPlace.team.id}">-->
-<!--                            <p th:text="${thirdPlace.team.teamName}"></p>-->
-<!--                        </a>-->
-<!--                    </div>-->
-
-                    <div th:each="result : ${resultList}">
-                        <a th:attr="href=${'/league/' + leagueId + '/team/' + result.team.id}">
-                            <img th:attr="src=${result.team.logoImageUrl}, class=${'light' + ' ' + 'team' + result.team.id}">
-                            <img th:attr="src=${result.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + result.team.id}">
-                            <p th:text="${result.teamName}"></p>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="table-games table-offset ">
-                    <div class="table-title">І</div>
-                    <div th:each="result : ${resultList}">
-                        <p th:text="${result.numberOfGames}"></p>
-                    </div>
-                </div>
-                <div class="table-points table-offset">
-                    <div class="table-title">О</div>
-                    <div th:each="result : ${resultList}">
-                        <p th:text="${result.points}"></p>
-                    </div>
-                </div>
-            </div>
             <p class="table-header">Кращі бомбардири</p>
             <div class="bomb league">
                 <div class="bomb-position auto">

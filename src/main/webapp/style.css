@@ -995,7 +995,13 @@ input[invalid-input] {
 .league-team-bg p:last-child {
     font-size: 2rem;
 }
+.league-results-container {
+    margin: 7px auto;
+}
 @media screen and (max-width: 900px) {
+    .league-results-container {
+        margin: 7px auto !important;
+    }
     .main-head {
         display: none;
     }
@@ -1402,9 +1408,12 @@ input[invalid-input] {
   .table-title, .bomb-title {
       background: rgba(39, 42, 48, 0.7);
   }
-  .table-position div:nth-of-type(n+5), .table-team-name div:nth-of-type(n+5), .table-games div:nth-of-type(n+5), .table-wins div:nth-of-type(n+5), .table-draws div:nth-of-type(n+5), .table-defeats div:nth-of-type(n+5), .table-goals div:nth-of-type(n+5), .table-points div:nth-of-type(n+5) {
+/*  .table-position div:nth-of-type(n+5), .table-team-name div:nth-of-type(n+5), .table-games div:nth-of-type(n+5), .table-wins div:nth-of-type(n+5), .table-draws div:nth-of-type(n+5), .table-defeats div:nth-of-type(n+5), .table-goals div:nth-of-type(n+5), .table-points div:nth-of-type(n+5) {
       background: rgba(13, 13, 13, 0.7);
-  }
+  }*/
+    .table-position div:nth-of-type(n), .table-team-name div:nth-of-type(n), .table-games div:nth-of-type(n), .table-wins div:nth-of-type(n), .table-draws div:nth-of-type(n), .table-defeats div:nth-of-type(n), .table-goals div:nth-of-type(n), .table-points div:nth-of-type(n) {
+        background: rgba(13, 13, 13, 0.7);
+    }
     .table-team-name img {
         display: block;
         box-sizing: border-box;

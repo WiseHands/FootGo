@@ -109,10 +109,13 @@ public class HttpRequestsController {
         List<Tour> tourList = league.getTours();
         model.addAttribute("tourList", tourList);
 
-        List<TeamResults> results = resultService.getResults(true);
-        model.addAttribute("firstPlace", results.get(0));
+        List<TeamResults> results = resultService.getResultsByLeague(true, leagueId);
+/*        model.addAttribute("firstPlace", results.get(0));
         model.addAttribute("secondPlace", results.get(1));
-        model.addAttribute("thirdPlace", results.get(2));
+        model.addAttribute("thirdPlace", results.get(2));*/
+        model.addAttribute("resultList", results);
+        List<PlayerGoals> playerGoals = topScorerService.getResults();
+        model.addAttribute("playerGoals", playerGoals);
 
         return "leagueDetails";
     }
@@ -152,6 +155,23 @@ public class HttpRequestsController {
         model.addAttribute("position", position);
 
         return "leagueTeamResults";
+    }
+    @GetMapping({"/cup/{cupId}"})
+    public String cupDetails(Model model,@PathVariable("cupId") Long cupId) {
+        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
+        Tournament tournament = tournaments.get(0);
+        model.addAttribute("tournament", tournament);
+        Season season = tournament.getActiveSeason();
+        model.addAttribute("season", season);
+        Cup cup = cupManagementRepository.findById(cupId).get();
+        model.addAttribute("cup", cup);
+        List<Tour> tourList = cup.getTours();
+        model.addAttribute("tourList", tourList);
+
+        List<PlayerGoals> playerGoals = topScorerService.getResults();
+        model.addAttribute("playerGoals", playerGoals);
+
+        return "cupDetails";
     }
     @GetMapping({"/cup/{cupId}/team/{teamId}"})
     public String cupResults(Model model, @PathVariable("cupId") Long cupId, @PathVariable("teamId") Long teamId) {
