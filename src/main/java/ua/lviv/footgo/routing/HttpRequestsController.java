@@ -109,6 +109,11 @@ public class HttpRequestsController {
         List<Tour> tourList = league.getTours();
         model.addAttribute("tourList", tourList);
 
+        List<TeamResults> results = resultService.getResults(true);
+        model.addAttribute("firstPlace", results.get(0));
+        model.addAttribute("secondPlace", results.get(1));
+        model.addAttribute("thirdPlace", results.get(2));
+
         return "leagueDetails";
     }
     @GetMapping({"/league/{leagueId}/team/{teamId}"})
