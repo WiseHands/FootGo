@@ -227,12 +227,14 @@ public class HttpRequestsController {
         model.addAttribute("league", leagueList.get(0));
         return "bombardier";
     }
-    @GetMapping({"/game/{id}"})
-    public String gameDetails(Model model, @PathVariable("id") Long id) {
-        Game game = gameRepository.findById(id).get();
+    @GetMapping({"/league/{leagueId}/game/{gameId}"})
+    public String gameDetails(Model model, @PathVariable("leagueId") Long leagueId, @PathVariable("gameId") Long gameId) {
+        Game game = gameRepository.findById(gameId).get();
         model.addAttribute("game", game);
-        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
-        model.addAttribute("league", leagueList.get(0));
+        League league = leagueManagementRepository.findById(leagueId).get();
+        model.addAttribute("league", league);
+        //List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        //model.addAttribute("league", leagueList.get(0));
         return "game";
     }
     @GetMapping({"/admin/tournament/{tournamentId}/season/{seasonId}"})
