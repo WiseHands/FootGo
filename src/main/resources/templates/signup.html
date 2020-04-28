@@ -23,27 +23,21 @@
                 </a>
             </div>
             <div class="header-text">
-                <a href="/signup" th:if="${league.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
-                <a href="/results"><p>Результати</p></a>
-                <a href="/gametable"><p>Таблиця</p></a>
-                <a href="/bombardier"><p>Бомбардири</p></a>
+                <a href="/signup" th:if="${season.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
             </div>
         </div>
     </div>
     <div id="myLinks">
-        <div th:if="${league.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup"><p>Реєстрація</p></a></div>
-        <div><a class="link-item" href="/results"><p>Результати</p></a></div>
-        <div><a class="link-item" href="/gametable"><p>Таблиця</p></a></div>
-        <div><a class="link-item" href="/bombardier"><p>Бомбардири</p></a></div>
+        <div th:if="${season.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup"><p>Реєстрація</p></a></div>
     </div>
 </header>
 <div>
  <div class="registration-form">
-         <div class="reg-end" th:if="${league.getIsSubmissionOpened() == true}">
+         <div class="reg-end" th:if="${season.getIsSubmissionOpened() == true}">
             <p>Реєстрацію завершено</p>
              <p>Дякуємо за участь!</p>
          </div>
-     <form name="signUpForm" th:if="${league.getIsSubmissionOpened() == false}">
+     <form name="signUpForm" th:if="${season.getIsSubmissionOpened() == false}">
             <div id="hideifsuccess_0" class="team-capitan">
                 <div class="team-name">
                     <p>Назва команди</p>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title th:text="${'Профіль гравця ' + player.firstName + ' ' + player.lastName + ' | Команда ' + player.team.teamName }">Профіль гравця </title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/hamburger.css">
+    <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
+</head>
+<body class="matches-full">
+
+<header>
+	<div class="header-full">
+		<div class="header-first-block">
+			<div>
+				<a href="/"><img class="header-img" src="/img/footgo-light-icon.png" alt="wiselogo"></a>
+			</div>
+			<div class="header-null">
+				<a href="javascript:void(0)" class="icon" onclick="myFunction()">
+					<i class="hamburger fa fa-bars"></i>
+				</a>
+			</div>
+			<div class="header-text">
+				<a href="/signup" th:if="${season.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
+			</div>
+		</div>
+		<div class="header-second-block">        </div>
+	</div>
+	<div id="myLinks">
+		<div th:if="${season.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
+	</div>
+</header>
+
+
+
+
+<div class="player-card-main">
+	<div class="player-card-photo">
+		<img th:if="${!#strings.isEmpty(player.getImageUrl())}" th:attr="src=${player.getImageUrl()}">
+		<img th:if="${player.getImageUrl() == null || player.getImageUrl() == ''}" src="/img/img_avatar.png">
+	</div>
+	<div class="player-card-info">
+		<p th:text="${player.lastName + ' ' + player.firstName}"></p>
+		<!--<p>Дата народження</p>-->
+		<!--<p>01.01.1900</p>-->
+		<p>Команда</p>
+		<div class="player-card-logo-team">
+			<a th:attr="href=${'/cup/' + cupId + '/team/' + player.team.id}">
+				<img th:attr="src=${'/logo/logo' + player.team.id + '.png'}, class=${'team' + player.team.id}">
+				<p th:text="${player.team.teamName}"></p>
+			</a>
+		</div>
+		<!--<p>Забито голів:<span>15</span></p>-->
+		<!--<div class="player-card-logo-team-score">-->
+			<!--<a th:attr="href=${'/team/' + player.team.id}">-->
+				<!--<img th:attr="src=${'/logo/logo' + player.team.id + '.png'}">-->
+				<!--<p th:text="${player.team.teamName}"></p>-->
+			<!--</a>-->
+			<!--<p>3 голи</p>-->
+		<!--</div>-->
+	</div>
+</div>
+
+
+<script src="/signUpScript.js"></script>
+<script src="/hamburger.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39722519-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-39722519-3');
+</script>
+
+</body>
+</html>

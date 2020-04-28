@@ -153,7 +153,7 @@
                 <div class="bomb-player-name">
                     <div class="bomb-title">Футболіст</div>
                     <div th:each="playerGoal : ${playerGoals}">
-                        <a th:attr="href=${'/player/' + playerGoal.player.id}">
+                        <a th:attr="href=${'/league/' + leagueId + '/player/' + playerGoal.player.id}">
                             <p th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}"></p>
                         </a>
                     </div>
@@ -167,7 +167,7 @@
                 <div class="bomb-team auto">
                     <div class="bomb-title">Команда</div>
                     <div th:each="playerGoal : ${playerGoals}">
-                        <a th:attr="href=${'/team/' + playerGoal.player.team.id}">
+                        <a th:attr="href=${'/league/' + leagueId + '/team/' + playerGoal.player.team.id}">
                             <p th:text="${playerGoal.player.team.teamName}"></p>
                         </a>
                     </div>

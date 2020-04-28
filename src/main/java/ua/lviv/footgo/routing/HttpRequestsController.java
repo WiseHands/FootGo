@@ -84,8 +84,13 @@ public class HttpRequestsController {
     @GetMapping({"/signup"})
     public String signup(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("name", name);
-        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
-        model.addAttribute("league", leagueList.get(0));
+        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
+        Tournament tournament = tournaments.get(0);
+        model.addAttribute("tournament", tournament);
+        Season season = tournament.getActiveSeason();
+        model.addAttribute("season", season);
+/*        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        model.addAttribute("league", leagueList.get(0));*/
         return "signup";
     }
     @GetMapping({"/results"})
@@ -228,14 +233,30 @@ public class HttpRequestsController {
         return "bombardier";
     }
     @GetMapping({"/league/{leagueId}/game/{gameId}"})
-    public String gameDetails(Model model, @PathVariable("leagueId") Long leagueId, @PathVariable("gameId") Long gameId) {
+    public String gameLeagueDetails(Model model, @PathVariable("leagueId") Long leagueId, @PathVariable("gameId") Long gameId) {
+        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
+        Tournament tournament = tournaments.get(0);
+        Season season = tournament.getActiveSeason();
+        model.addAttribute("season", season);
         Game game = gameRepository.findById(gameId).get();
         model.addAttribute("game", game);
         League league = leagueManagementRepository.findById(leagueId).get();
         model.addAttribute("league", league);
         //List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         //model.addAttribute("league", leagueList.get(0));
-        return "game";
+        return "gameLeague";
+    }
+    @GetMapping({"/cup/{cupId}/game/{gameId}"})
+    public String gameCupDetails(Model model, @PathVariable("cupId") Long cupId, @PathVariable("gameId") Long gameId) {
+        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
+        Tournament tournament = tournaments.get(0);
+        Season season = tournament.getActiveSeason();
+        model.addAttribute("season", season);
+        Game game = gameRepository.findById(gameId).get();
+        model.addAttribute("game", game);
+        Cup cup = cupManagementRepository.findById(cupId).get();
+        model.addAttribute("cup", cup);
+        return "gameCup";
     }
     @GetMapping({"/admin/tournament/{tournamentId}/season/{seasonId}"})
     public String seasonList(Model model, @PathVariable("tournamentId") Long tournamentId, @PathVariable("seasonId") Long seasonId) {
@@ -251,8 +272,10 @@ public class HttpRequestsController {
         model.addAttribute("tournament", tournament);
         Season season = seasonRepository.findById(seasonId).get();
         model.addAttribute("season", season);
-        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        List<League> leagueList = season.getLeagueList();
         model.addAttribute("leagueList", leagueList);
+/*        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();dfhdfghf
+        model.addAttribute("leagueList", leagueList);*/
         League league = leagueManagementRepository.findById(leagueId).get();
         model.addAttribute("league", league);
         model.addAttribute("tour", tourRepository.findById(uuid).get());
@@ -327,14 +350,31 @@ public class HttpRequestsController {
         model.addAttribute("season", season);
         return "AdminTeamPlayerEntryAdd";
     }
-    @GetMapping({"/player/{id}"})
-    public String playersDetails(Model model, @PathVariable("id") Long id) {
-        Player player = playerRepository.findById(id).get();
+    @GetMapping({"/league/{leagueId}/player/{playerId}"})
+    public String playersLeagueDetails(Model model, @PathVariable("leagueId") Long leagueId, @PathVariable("playerId") Long playerId) {
+        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
+        Tournament tournament = tournaments.get(0);
+        Season season = tournament.getActiveSeason();
+        model.addAttribute("season", season);
+        Player player = playerRepository.findById(playerId).get();
         model.addAttribute("player", player);
-        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
-        model.addAttribute("league", leagueList.get(0));
-        return "player";
+/*        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        model.addAttribute("league", leagueList.get(0));*/
+        return "playerLeague";
     }
+    @GetMapping({"/cup/{cupId}/player/{playerId}"})
+    public String playersCupDetails(Model model, @PathVariable("cupId") Long cupId, @PathVariable("playerId") Long playerId) {
+        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
+        Tournament tournament = tournaments.get(0);
+        Season season = tournament.getActiveSeason();
+        model.addAttribute("season", season);
+        Player player = playerRepository.findById(playerId).get();
+        model.addAttribute("player", player);
+/*        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        model.addAttribute("league", leagueList.get(0));*/
+        return "playerCup";
+    }
+
 /*    @GetMapping(value = "/admin/seasons")
     public String seasons(Model model) {
         List<Season> seasonList = (List<Season>) seasonRepository.findAll();

@@ -58,6 +58,8 @@
                 <div class="results-container league-results-container" th:each="game : ${tour.gameList}">
                     <div class="res-teams">
                         <a th:if="${!#strings.isEmpty(game.firstTeam)}" th:attr="href=${'/cup/' + cupId + '/team/' + game.firstTeam.id}">
+                            <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
+                            <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
                             <p th:text="${game.firstTeam.teamName}">
                                 game.firstTeam.teamName
                             </p>
@@ -66,6 +68,8 @@
                             <p>TBD</p>
                         </a>
                         <a th:if="${!#strings.isEmpty(game.secondTeam)}" th:attr="href=${'/cup/' + cupId + '/team/' + game.secondTeam.id}">
+                            <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
+                            <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
                             <p th:text="${game.secondTeam.teamName}">
                                 game.secondTeam.teamName
                             </p>
@@ -75,11 +79,13 @@
                         </a>
                     </div>
                     <div class="res-score">
-                        <a th:attr="href=${'/cup/' + cupId + '/game/' + game.id}">
+                        <a th:if="${!#strings.isEmpty(game.firstTeam) and !#strings.isEmpty(game.secondTeam)}" th:attr="href=${'/cup/' + cupId + '/game/' + game.id}">
                             <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</p>
+                            <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">TBD</p>
                             <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</p>
                             <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</p>
                             <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</p>
+                            <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() == ''}">TBD</p>
                             <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</p>
                             <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</p>
                         </a>
@@ -104,7 +110,7 @@
                 <div class="bomb-player-name">
                     <div class="bomb-title">Футболіст</div>
                     <div th:each="playerGoal : ${playerGoals}">
-                        <a th:attr="href=${'/player/' + playerGoal.player.id}">
+                        <a th:attr="href=${'/cup/' + cupId + '/player/' + playerGoal.player.id}">
                             <p th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}"></p>
                         </a>
                     </div>
@@ -118,7 +124,7 @@
                 <div class="bomb-team auto">
                     <div class="bomb-title">Команда</div>
                     <div th:each="playerGoal : ${playerGoals}">
-                        <a th:attr="href=${'/team/' + playerGoal.player.team.id}">
+                        <a th:attr="href=${'/cup/' + cupId + '/team/' + playerGoal.player.team.id}">
                             <p th:text="${playerGoal.player.team.teamName}"></p>
                         </a>
                     </div>
