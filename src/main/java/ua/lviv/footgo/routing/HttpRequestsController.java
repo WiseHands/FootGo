@@ -121,6 +121,10 @@ public class HttpRequestsController {
         model.addAttribute("resultList", results);
         List<PlayerGoals> playerGoals = topScorerService.getResults();
         model.addAttribute("playerGoals", playerGoals);
+        //TODO: near game by date
+        List<Game> games = (List<Game>) gameRepository.findAll();
+        Game game = games.get(0);
+        model.addAttribute("game", game);
 
         return "leagueDetails";
     }

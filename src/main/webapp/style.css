@@ -209,6 +209,13 @@ a, a:hover {
     border-radius: 5px;
     box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
 }
+.league-page {
+    max-width: 450px;
+}
+.league-main-head {
+    height: 30vh;
+    margin-bottom: 5vh;
+}
 .main-head-title .main-head-logo {
     height: 200px;
     width: 200px;
@@ -514,10 +521,6 @@ input[type=submit] {
 .bomb-team {
     width: 33%;
 }
-.league {
-    justify-content: normal;
-    margin: 10px 10px auto;
-}
 .results-full {
     background: url("img/foot66.jpg");
     background-attachment: fixed;
@@ -527,7 +530,7 @@ input[type=submit] {
     height: 100%;
 }
 .team-results-full {
-    background: url("img/foot66.jpg");
+/*    background: url("img/foot66.jpg");*/
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -629,18 +632,23 @@ input[type=submit] {
     background-color: #fff;
     border-radius: 5px;
 }
-.main-league-container {
-    display: flex;
-    flex-direction: column;
-}
 .main-container {
     display: flex;
+    width: 1150px;
+    margin: 0 auto;
+    position: relative;
+}
+.score-tables {
+    width: 30%;
+    padding: 0 15px;
+    min-height: 1px;
+    position: relative;
 }
 .vs-container {
     width: 70%;
-    max-width: inherit;
-    margin: inherit;
     padding: inherit;
+    min-height: 1px;
+    position: relative;
 }
 .results-block p, .table-header {
     text-align: center;
@@ -751,6 +759,7 @@ input[invalid-input] {
     padding: 10px;
     border-radius: 10px;
     margin: 0 auto;
+    width: fit-content;
 }
 .tour-number  {
     display: flex;
@@ -1051,6 +1060,27 @@ input[invalid-input] {
     .main-where, .main-when, .main-about, .main-video, .main-league, .main-cup {
         width: 95%;
         margin: 10px auto;
+    }
+}
+@media screen and (max-width: 1160px) {
+    .main-container {
+        width: 100%;
+        flex-direction: column;
+    }
+    .vs-container, .score-tables {
+        width: 100%;
+    }
+    .score-tables {
+        padding: 0;
+    }
+
+}
+@media screen and (max-width: 979px) {
+    .vs-container, .score-tables {
+        width: 100%;
+    }
+    .score-tables {
+        padding: 0;
     }
 }
 @media screen and (max-width: 720px) {
@@ -1493,7 +1523,7 @@ input[invalid-input] {
     }
     .results-full, .team-results-full {
         background-color: var(--main-bg-color);
-        background-image: url(img/foot66-dark.jpg);
+/*        background-image: url(img/foot66-dark.jpg);*/
     }
     .main-head {
         background-color: var(--main-bg-color);
