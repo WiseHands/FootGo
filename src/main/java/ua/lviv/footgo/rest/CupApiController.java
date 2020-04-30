@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.entity.*;
 import ua.lviv.footgo.repository.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.sql.Timestamp;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+import java.util.*;
 
 @RestController
 @RequestMapping(path = "/api/season")
@@ -56,7 +57,8 @@ public class CupApiController {
 
     }
     public static final Integer NUMBER_OF_TOURS = 4;
-    public static final String GAME_TIME = "2019-09-20T09:00:00.000Z";
+    //public static final String GAME_TIME = "2019-09-20T09:00:00.000Z";
+    public static final OffsetDateTime GAME_TIME = OffsetDateTime.of(2019, 9, 19, 0, 0, 0, 0, ZoneOffset.ofHours(+2));
 
     public Tour _createTour(Integer tourNumber) {
         Tour tour = new Tour();

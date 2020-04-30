@@ -11,6 +11,7 @@ import ua.lviv.footgo.repository.GameRepository;
 import ua.lviv.footgo.repository.GoalRepository;
 import ua.lviv.footgo.repository.TeamRepository;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -181,7 +182,7 @@ public class GameApiController {
     }
 
     @PostMapping(value = "/{gameId}/setgametime/{timeGame}", consumes = "application/json", produces = "application/json")
-    public void setGameTime(@PathVariable Long gameId, @PathVariable String timeGame) {
+    public void setGameTime(@PathVariable Long gameId, @PathVariable OffsetDateTime timeGame) {
         Game game = gameRepository.findById(gameId).get();
         game.setGameTime(timeGame);
         gameRepository.save(game);

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import ua.lviv.footgo.entity.*;
 import ua.lviv.footgo.repository.*;
 
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +20,8 @@ public class ResultsGenerator {
     public static final Integer NUMBER_OF_PLAYERS_IN_TEAM = 25;
     public static final Integer NUMBER_OF_TOURS = 9;
     public static final Integer NUMBER_OF_GAMES_IN_TOUR = 5;
-    public static final String GAME_TIME = "2019-09-20T09:00:00.000Z";
+    //public static final String GAME_TIME = "2019-09-20T09:00:00.000Z";
+    public static final OffsetDateTime GAME_TIME = OffsetDateTime.of(2019, 9, 19, 0, 0, 0, 0, ZoneOffset.ofHours(+2));;
 
 
     @Autowired

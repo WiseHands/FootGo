@@ -12,6 +12,8 @@ import ua.lviv.footgo.repository.GoalRepository;
 import ua.lviv.footgo.repository.TeamRepository;
 
 import java.text.ParseException;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +23,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 public class GameUnitTests {
 
-	public static final String TIME = "1920 010203";
+	//public static final String TIME = "1920 010203";
+	public static final OffsetDateTime TIME = OffsetDateTime.of(1920, 1, 2, 3, 0, 0, 0, ZoneOffset.ofHours(+2));;
 	public static final String LOCATION = "FC SOKIL";
 
     private static final String TEAM_A_NAME = "ToniTeamA";
@@ -641,7 +644,8 @@ public class GameUnitTests {
     @Test
     public void convertTime() throws ParseException {
 	    Game game = new Game();
-	    String time = "2019-09-11T02:00:00.000Z";
+	    //String time = "2019-09-11T02:00:00.000Z";
+	    OffsetDateTime time = OffsetDateTime.of(2019, 9, 19, 0, 0, 0, 0, ZoneOffset.ofHours(+2));;
 	    game.setGameTime(time);
 
         assertThat(game.formatTime()).isEqualTo("Saturday, Jan 28");

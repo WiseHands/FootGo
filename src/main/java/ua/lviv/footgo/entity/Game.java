@@ -3,9 +3,8 @@ package ua.lviv.footgo.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.OffsetDateTime;
 import java.util.*;
 
 @Entity
@@ -17,7 +16,7 @@ public class Game {
     private Long id;
 
     @Column
-    private String gameTime;
+    private OffsetDateTime gameTime;
 
     @Column
     private String videoUrl;
@@ -127,11 +126,11 @@ public class Game {
         return teamAGoals.size() == teamBGoals.size();
     }
 
-    public String getGameTime() {
+    public OffsetDateTime getGameTime() {
         return gameTime;
     }
 
-    public void setGameTime(String gameTime) {
+    public void setGameTime(OffsetDateTime gameTime) {
         this.gameTime = gameTime;
     }
 
@@ -256,12 +255,12 @@ public class Game {
     }
 
     public String formatTime() throws ParseException {
-        String time = this.gameTime;
+        OffsetDateTime time = this.gameTime;
         if(this.gameTime == null) {
             return "";
         }
 
-        // set UTC zone in date
+/*        // set UTC zone in date
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
         dateFormat.parse(time);
         TimeZone timeZone = TimeZone.getTimeZone("UTC");
@@ -273,18 +272,18 @@ public class Game {
         String[] hoursTime = hours[3].split(":");
         // get and reformat date
 
-        String newDate = hoursTime[0] + ":" + hoursTime[1];
+        String newDate = hoursTime[0] + ":" + hoursTime[1];*/
 
-        return newDate;
+        return time.getHour() + ":" + time.getMinute();
     }
 
     public String formatDate() throws ParseException {
-        String time = this.gameTime;
+        OffsetDateTime time = this.gameTime;
         if(this.gameTime == null) {
             return "TBD";
         }
 
-        // set UTC zone in date
+/*        // set UTC zone in date
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
         dateFormat.parse(time);
         TimeZone timeZone = TimeZone.getTimeZone("UTC");
@@ -296,9 +295,9 @@ public class Game {
         SimpleDateFormat format1 = new SimpleDateFormat("EEEE, MMM d");
         String[] formatDate = format1.format(date).split(", ");
         String month = formatDate[1].substring(0, 1).toUpperCase() + formatDate[1].substring(1);
-        String newDate = month;
+        String newDate = month;*/
 
-        return newDate;
+        return time.getMonth() + " " + time.getDayOfMonth();
     }
 
     public String formatGoalsForTeamA() {

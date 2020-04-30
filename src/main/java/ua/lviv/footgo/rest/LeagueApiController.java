@@ -9,6 +9,8 @@ import ua.lviv.footgo.repository.SeasonRepository;
 import ua.lviv.footgo.repository.TeamRepository;
 import ua.lviv.footgo.repository.TourRepository;
 
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -56,7 +58,8 @@ public class LeagueApiController {
 
     }
     public static final Integer NUMBER_OF_TOURS = 7;
-    public static final String GAME_TIME = "2019-09-20T09:00:00.000Z";
+    //public static final String GAME_TIME = "2019-09-20T09:00:00.000Z";
+    public static final OffsetDateTime GAME_TIME = OffsetDateTime.of(2019, 9, 19, 0, 0, 0, 0, ZoneOffset.ofHours(+2));;
 
     public Tour _createTour(Integer tourNumber) {
         Tour tour = new Tour();
