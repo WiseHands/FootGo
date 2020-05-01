@@ -638,7 +638,7 @@ span.clear-technical-defeat {
 #success, #successDel, #successChange, #textSuccess {
     display: none;
     text-align: center;
-    margin-bottom: 2em;
+/*    margin-bottom: 2em;*/
 }
 #error, #errorDel, #errorChange, #textError {
 	display: none;

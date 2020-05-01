@@ -12,9 +12,12 @@ import ua.lviv.footgo.repository.GoalRepository;
 import ua.lviv.footgo.repository.TeamRepository;
 
 import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -182,9 +185,11 @@ public class GameApiController {
     }
 
     @PostMapping(value = "/{gameId}/setgametime/{timeGame}", consumes = "application/json", produces = "application/json")
-    public void setGameTime(@PathVariable Long gameId, @PathVariable OffsetDateTime timeGame) {
+    public void setGameTime(@PathVariable Long gameId, @PathVariable String timeGame) {
         Game game = gameRepository.findById(gameId).get();
-        game.setGameTime(timeGame);
+        DateTimeFormatter format = DateTimeFormatter.ISO_DATE_TIME;
+        OffsetDateTime offsetDateTime = ZonedDateTime.parse(timeGame, format).toOffsetDateTime();
+        game.setGameTime(offsetDateTime);
         gameRepository.save(game);
     }
 

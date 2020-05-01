@@ -360,7 +360,7 @@
             let date = new Date(gameTime);
             console.log("utc time ", date.toISOString());
 
-            let urls = '/api/game/' + id + '/setgametime/' + date.toISOString();
+            let urls = '/api/game/' + gameId + '/setgametime/' + date.toISOString();
             fetch(urls, {
                 method: 'POST',
                 headers: {
