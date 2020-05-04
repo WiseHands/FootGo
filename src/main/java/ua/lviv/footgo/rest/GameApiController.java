@@ -1,6 +1,7 @@
 
 package ua.lviv.footgo.rest;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,13 +12,12 @@ import ua.lviv.footgo.repository.GameRepository;
 import ua.lviv.footgo.repository.GoalRepository;
 import ua.lviv.footgo.repository.TeamRepository;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -236,6 +236,12 @@ public class GameApiController {
             game.setSecondTeam(teamId);
         }
         gameRepository.save(game);
+    }
+
+    @GetMapping(value = "/getAllByTime", consumes = "application/json", produces = "application/json")
+    public List<Game> getGamesByTime() {
+        List<Game> games = gameRepository.fetchGameAfterTimeStamp(OffsetDateTime.now());
+        return games;
     }
 
 }

@@ -12,6 +12,7 @@ import ua.lviv.footgo.service.GameFinder;
 import ua.lviv.footgo.service.ResultService;
 import ua.lviv.footgo.service.TopScorerService;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -123,7 +124,9 @@ public class HttpRequestsController {
         model.addAttribute("playerGoals", playerGoals);
         //TODO: near game by date
         List<Game> games = (List<Game>) gameRepository.findAll();
+        //List<Game> games = gameRepository.fetchGameAfterTimeStamp(OffsetDateTime.now());
         Game game = games.get(0);
+
         model.addAttribute("game", game);
 
         return "leagueDetails";
