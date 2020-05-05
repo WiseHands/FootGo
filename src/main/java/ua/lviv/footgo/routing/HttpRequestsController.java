@@ -13,10 +13,10 @@ import ua.lviv.footgo.service.ResultService;
 import ua.lviv.footgo.service.TopScorerService;
 
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -115,6 +115,24 @@ public class HttpRequestsController {
         List<Tour> tourList = league.getTours();
         model.addAttribute("tourList", tourList);
 
+
+        List<Game> gameList = new ArrayList<Game>();
+        List<Game> finalGameList = gameList;
+        tourList.forEach(tour -> {
+            List<Game> _gameList = tour.getGameList();
+            finalGameList.addAll(_gameList);
+        });
+
+        gameList = gameList.stream().filter(g -> g.getGameTime().isAfter(OffsetDateTime.now())).collect(Collectors.toList());
+        gameList.sort(Comparator.comparing(Game::getGameTime));
+        gameList.forEach(game -> {
+            System.out.println(game.getGameTime());
+        });
+
+        Tour _tour = gameList.get(0).getTour();
+        _tour.getGameList().sort(Comparator.comparing(Game::getGameTime));
+        model.addAttribute("nearestTour", _tour);
+
         List<TeamResults> results = resultService.getResultsByLeague(true, leagueId);
 /*        model.addAttribute("firstPlace", results.get(0));
         model.addAttribute("secondPlace", results.get(1));
@@ -122,10 +140,9 @@ public class HttpRequestsController {
         model.addAttribute("resultList", results);
         List<PlayerGoals> playerGoals = topScorerService.getResults();
         model.addAttribute("playerGoals", playerGoals);
-        //TODO: near game by date
         List<Game> games = (List<Game>) gameRepository.findAll();
-        //List<Game> games = gameRepository.fetchGameAfterTimeStamp(OffsetDateTime.now());
         Game game = games.get(0);
+        //List<Game> games = gameRepository.fetchGameAfterTimeStamp(OffsetDateTime.now());
 
         model.addAttribute("game", game);
 

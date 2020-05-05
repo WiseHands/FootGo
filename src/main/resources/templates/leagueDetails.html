@@ -101,6 +101,44 @@
 
             </div>
         </div>
+        <div th:each="tour : ${nearestTour}" class="results-block">
+            <div class="results-container league-results-container" th:each="game : ${tour.gameList}">
+                <div class="res-teams">
+                    <a th:attr="href=${'/league/' + leagueId + '/team/' + game.firstTeam.id}">
+                        <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
+                        <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
+                        <p th:text="${game.firstTeam.teamName}">
+                            game.firstTeam.teamName
+                        </p>
+                    </a>
+                    <a th:attr="href=${'/league/' + leagueId + '/team/' + game.secondTeam.id}">
+                        <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
+                        <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
+                        <p th:text="${game.secondTeam.teamName}">
+                            game.secondTeam.teamName
+                        </p>
+                    </a>
+                </div>
+                <div class="res-score">
+                    <a th:attr="href=${'/league/' + leagueId + '/game/' + game.id}">
+                        <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() != ''}"
+                           th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</p>
+                        <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">TBD</p>
+                        <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</p>
+                        <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</p>
+                        <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() != ''}"
+                           th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</p>
+                        <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() == ''}">TBD</p>
+                        <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</p>
+                        <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</p>
+                    </a>
+                </div>
+                <div class="res-date">
+                    <p th:text="${game.formatDate()}"></p>
+                    <p th:text="${game.formatTime()}"></p>
+                </div>
+            </div>
+        </div>
 <!--        <div th:each="tour : ${tourList}" class="results-block">
             &lt;!&ndash;<p>Найближчі ігри</p>&ndash;&gt;
             <div>
