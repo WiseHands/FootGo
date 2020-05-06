@@ -39,69 +39,53 @@
 </div>
 <div class="main-container">
     <div class="results vs-container">
-        <div class="mathces-bg">
-            <div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
-                <p>Матчі</p>
-            </div>
-            <div class="review-match">
-                <div class="review-head">
-                    <div class="review-team1">
-                        <a th:attr="href=${'/league/' + leagueId + '/team/' + game.firstTeam.id}">
-                            <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
-                            <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
-                            <p th:text="${game.firstTeam.teamName}">Команда 1</p>
-                        </a>
-                    </div>
-                    <div th:if="${game.isNoTechnicalDefeat() == true}" th:classappend="${game.formatGoalsForTeamA() == ''}?tbd" class="review-score">
-                        <p>
-                            :
-                        </p>
-                    </div>
-                    <div class="review-team2">
-                        <a th:attr="href=${'/league/' + leagueId + '/team/' + game.secondTeam.id}">
-                            <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
-                            <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
-                            <p th:text="${game.secondTeam.teamName}">Команда 2</p>
-                        </a>
-                    </div>
+        <div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
+            <p>Матчі</p>
+        </div>
+        <div th:each="tour : ${nearestTour}" class="desktop">
+            <div th:each="game : ${tour.gameList}" class="matches-bg">
+                <div class="match-res-date">
+                    <p th:text="${game.formatDate()} + ', ' + ${game.formatTime()}"></p>
                 </div>
-            </div>
-            <div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamACards)} OR ${not #lists.isEmpty(game.teamBCards)}" class="tour-number cards">
-                <p>Картки</p>
-            </div>
-            <div th:if="${game.isNoTechnicalDefeat() == true}" class="details-match">
-
-                <div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamACards)}" class="details-team1">
-                    <div class="team1-goals" th:each="card : ${game.teamACards}">
-                        <p>
-                            <a th:attr="href=${'/league/' + leagueId + '/player/' + card.player.id}">
-                                <span th:text="${card.player.firstName + ' ' + card.player.lastName}" class="player-name">Ім'я Прізвище</span>
+                <div class="review-match">
+                    <div class="review-head">
+                        <div class="review-team1">
+                            <a th:attr="href=${'/league/' + leagueId + '/team/' + game.firstTeam.id}">
+                                <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
+                                <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
+                                <p th:text="${game.firstTeam.teamName}">Команда 1</p>
                             </a>
-                            <span th:text="${' (' + card.time + '&lsquo;)'}" class="minute"></span>
-                        </p>
-                        <span th:if="${card.isYellow()}" class="yellow-card card-team-one"></span>
-                        <span th:if="${card.isRed()}" class="red-card card-team-one"></span>
-                        </a>
-                    </div>
-                </div>
-
-                <div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamBCards)}" class="details-team2">
-                    <div class="team2-goals" th:each="card : ${game.teamBCards}">
-                        <span th:if="${card.isYellow()}" class="yellow-card card-team-two"></span>
-                        <span th:if="${card.isRed()}" class="red-card card-team-two"></span>
-                        <p>
-                            <a th:attr="href=${'/league/' + leagueId + '/player/' + card.player.id}">
-                                <span th:text="${card.player.firstName + ' ' + card.player.lastName}" class="player-name">Ім'я Прізвище</span>
+                        </div>
+                        <div th:if="${game.isNoTechnicalDefeat() == true}"
+                             th:classappend="${game.formatGoalsForTeamA() == ''}?tbd" class="review-score">
+                            <a th:attr="href=${'/league/' + leagueId + '/game/' + game.id}">
+                                <p>
+                                <span th:if="${game.isNoTechnicalDefeat() == true}"
+                                      th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</span>
+                                    <span th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">TBD</span>
+                                    <span th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</span>
+                                    <span th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</span>
+                                    :
+                                    <span th:if="${game.isNoTechnicalDefeat() == true}"
+                                          th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</span>
+                                    <span th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() == ''}">TBD</span>
+                                    <span th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</span>
+                                    <span th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</span>
+                                </p>
                             </a>
-                            <span th:text="${' (' + card.time + '&lsquo;)'}" class="minute"></span>
-                        </p>
-                        </a>
+                        </div>
+                        <div class="review-team2">
+                            <a th:attr="href=${'/league/' + leagueId + '/team/' + game.secondTeam.id}">
+                                <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
+                                <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
+                                <p th:text="${game.secondTeam.teamName}">Команда 2</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
-        <div th:each="tour : ${nearestTour}" class="results-block">
+        <div th:each="tour : ${nearestTour}" class="res-tour-allmatch mobile">
             <div class="results-container league-results-container" th:each="game : ${tour.gameList}">
                 <div class="res-teams">
                     <a th:attr="href=${'/league/' + leagueId + '/team/' + game.firstTeam.id}">
@@ -223,7 +207,6 @@
                 <!--                            <p th:text="${thirdPlace.team.teamName}"></p>-->
                 <!--                        </a>-->
                 <!--                    </div>-->
-
                 <div th:each="result : ${resultList}">
                     <a th:attr="href=${'/league/' + leagueId + '/team/' + result.team.id}">
                         <img th:attr="src=${result.team.logoImageUrl}, class=${'light' + ' ' + 'team' + result.team.id}">

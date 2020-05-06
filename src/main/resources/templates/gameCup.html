@@ -35,8 +35,8 @@
 
 
 <div>
-	<div class="mathces-null"></div>
-	<div class="mathces-bg">
+	<div class="matches-null"></div>
+	<div class="matches-bg">
 		<div class="tour-number">
 			<p>Тур <span th:text="${game.tour.tourNumber}"></span></p>
 		</div>
@@ -93,7 +93,7 @@
 							<a th:attr="href=${'/cup/' + cupId + '/player/' + goal.player.id}">
 								<span th:text="${goal.player.firstName + ' ' + goal.player.lastName}" class="player-name">Ім'я Прізвище</span>
 							</a>
-								<span th:text="${' (' + goal.time + '&lsquo;)'}" class="minute"></span>
+								<span th:text="${' (' + goal.time + '')'}" class="minute"></span>
 
 						</p>
 						<img src="/img/soccer-ball.png">
@@ -107,7 +107,7 @@
 						<a th:attr="href=${'/cup/' + cupId + '/player/' + goal.player.id}">
 							<span th:text="${goal.player.firstName + ' ' + goal.player.lastName}">Ім'я Прізвище</span>
 						</a>
-						<span th:text="${' (' + goal.time + '&lsquo;)'}" class="minute"></span>
+						<span th:text="${' (' + goal.time + '')'}" class="minute"></span>
 					</p>
 				</div>
 			</div>
@@ -122,7 +122,7 @@
 						<a th:attr="href=${'/cup/' + cupId + '/player/' + card.player.id}">
 							<span th:text="${card.player.firstName + ' ' + card.player.lastName}" class="player-name">Ім'я Прізвище</span>
 						</a>
-						<span th:text="${' (' + card.time + '&lsquo;)'}" class="minute"></span>
+						<span th:text="${' (' + card.time + '')'}" class="minute"></span>
 					</p>
 					<span th:if="${card.isYellow()}" class="yellow-card card-team-one"></span>
 					<span th:if="${card.isRed()}" class="red-card card-team-one"></span>
@@ -137,7 +137,7 @@
 						<a th:attr="href=${'/cup/' + cupId + '/player/' + card.player.id}">
 							<span th:text="${card.player.firstName + ' ' + card.player.lastName}" class="player-name">Ім'я Прізвище</span>
 						</a>
-						<span th:text="${' (' + card.time + '&lsquo;)'}" class="minute"></span>
+						<span th:text="${' (' + card.time + '')'}" class="minute"></span>
 					</p>
 					</a>
 				</div>

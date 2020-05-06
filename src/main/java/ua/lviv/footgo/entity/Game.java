@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.text.ParseException;
 import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Entity
@@ -274,7 +275,10 @@ public class Game {
 
         String newDate = hoursTime[0] + ":" + hoursTime[1];*/
 
-        return time.getHour() + ":" + time.getMinute();
+        //return time.getHour() + ":" + time.getMinute();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("mm");
+        String minute = time.format(formatter);
+        return time.getHour() + ":" + minute;
     }
 
     public String formatDate() throws ParseException {
@@ -297,7 +301,10 @@ public class Game {
         String month = formatDate[1].substring(0, 1).toUpperCase() + formatDate[1].substring(1);
         String newDate = month;*/
 
-        return time.getMonth() + " " + time.getDayOfMonth();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM");
+        String month = time.format(formatter);
+
+        return month + " " + time.getDayOfMonth();
     }
 
     public String formatGoalsForTeamA() {

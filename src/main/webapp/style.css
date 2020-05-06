@@ -236,7 +236,7 @@ a, a:hover {
     height: 85px;
 }
 .main-head h1 {
-    padding: 10px 0 20px 0;
+    padding: 20px 0 20px 0;
 }
 .main-about iframe {
     margin: 0 auto;
@@ -423,7 +423,8 @@ input[type=submit] {
     line-height: 2.3;
     text-align: center;
     font-size: 1.1em;
-    font-weight: 600;
+/*    font-weight: 600;*/
+    margin-bottom: 20px;
 }
 
 .table-position, .bomb-position {
@@ -595,18 +596,15 @@ input[type=submit] {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.league-results-container p {
-    font-size: inherit !important;
-    padding-left: unset !important;
-    margin: 0 !important;
-}
 .res-score {
     width: 10%;
 }
 .res-date {
     width: 30%;
 }
-
+.mobile {
+    display: none;
+}
 .results-bg {
     border-radius: 10px;
 }
@@ -639,10 +637,7 @@ input[type=submit] {
     position: relative;
 }
 .score-tables {
-    width: 30%;
     padding: 0 15px;
-    min-height: 1px;
-    position: relative;
 }
 .vs-container {
     width: 70%;
@@ -723,8 +718,9 @@ input[type=submit] {
     padding: 0 5px;
 }
 .table-header {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     font-weight: 600;
+    padding-bottom: 20px;
 }
 .tbd p {
     font-size: 1.8rem !important;
@@ -748,10 +744,10 @@ input[invalid-input] {
 .matches-full p {
     white-space: normal;
 }
-.mathces-null {
+.matches-null {
     height: 2vh;
 }
-.mathces-bg {
+.matches-bg {
     display: flex;
     flex-direction: column;
     max-width: 800px;
@@ -760,11 +756,20 @@ input[invalid-input] {
     border-radius: 10px;
     margin: 0 auto;
     width: fit-content;
+    margin-bottom: 20px;
+}
+.match-res-date {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 600;
 }
 .tour-number  {
     display: flex;
     margin: 0 auto;
     font-size: 1.8rem;
+    font-weight: 600;
+    padding-bottom: 35px;
 }
 .review-match {
     display: flex;
@@ -804,7 +809,7 @@ input[invalid-input] {
 
 .review-score {
     width: 150px;
-    padding: 20px 0;
+    padding: 34px 0;
 }
 .review-score p {
     font-size: 3rem;
@@ -1047,7 +1052,7 @@ input[invalid-input] {
     .registration-photo {
         height: 100vh;
     }
-    .mathces-bg {
+    .matches-bg {
         width: 95%;
     }
 
@@ -1073,7 +1078,9 @@ input[invalid-input] {
     .score-tables {
         padding: 0;
     }
-
+    .table {
+        max-width: 530px
+    }
 }
 @media screen and (max-width: 979px) {
     .vs-container, .score-tables {
@@ -1272,7 +1279,7 @@ input[invalid-input] {
     .review-head {
         width: 320px;
     }
-    .mathces-bg {
+    .matches-bg {
         width: 90%  ;
     }
 
@@ -1338,6 +1345,12 @@ input[invalid-input] {
     .player-score-name h4 {
         max-width: 107px;
     }
+    .desktop {
+        display: none;
+    }
+    .mobile {
+        display: flex;
+    }
 }
 .center-text {
     text-align: center;
@@ -1357,7 +1370,10 @@ input[invalid-input] {
     padding: 20px 0 20px 0;
 }
 .goals {
-    padding: 35px 0 0 0;
+    padding-bottom: 20px;
+}
+.goals p {
+    margin: 0 auto;
 }
 .card-team-one {
   display: inline-block;
@@ -1408,7 +1424,7 @@ input[invalid-input] {
   header, .main-photo, .prev-seasons, .dropbtn {
       background: var(--main-bg-color);
   }
-  .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .mathces-bg {
+  .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg {
       background: var(--main-sf-color);
       color: var(--main-text-color);
   }
@@ -1422,7 +1438,7 @@ input[invalid-input] {
   .main-when ul span {
       background: rgba(255,255,255,0.4);
   }
-  .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3, .bomb-head p, .season-list, .dropbtn, .table-header {
+  .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3, .bomb-head p, .season-list, .dropbtn, .table-header, .goals p {
       color: var(--main-text-color);
   }
   .main-about-team img {
