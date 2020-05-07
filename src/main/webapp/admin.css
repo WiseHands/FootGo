@@ -711,7 +711,7 @@ span.clear-technical-defeat {
 }
 .add-video-link p {
     font-size: 0.8rem;
-    padding-left: 10px;
+/*    padding-left: 10px;*/
 }
 .add-video-link input[type=text] {
     width: 360px;
@@ -723,6 +723,7 @@ span.clear-technical-defeat {
     display: inline-flex;
     width: 100%;
     justify-content: center;
+    padding-top: 20px;
 /*    position: absolute;
     left: calc(50% - 20px);*/
 }

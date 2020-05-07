@@ -85,6 +85,7 @@
                 </div>
             </div>
         </div>
+
         <div th:each="tour : ${nearestTour}" class="res-tour-allmatch mobile">
             <div class="results-container league-results-container" th:each="game : ${tour.gameList}">
                 <div class="res-teams">
@@ -122,6 +123,11 @@
                     <p th:text="${game.formatTime()}"></p>
                 </div>
             </div>
+        </div>
+        <div class="button-container">
+            <a th:href="'/league/' + ${leagueId} + '/results'">
+                <input class="reg-input-button match-all-button" type="button" value="ПЕРЕГЛЯНУТИ ВСІ"/>
+            </a>
         </div>
 <!--        <div th:each="tour : ${tourList}" class="results-block">
             &lt;!&ndash;<p>Найближчі ігри</p>&ndash;&gt;
@@ -229,7 +235,12 @@
                 </div>
             </div>
         </div>
-        <p class="table-header">Кращі бомбардири</p>
+        <div class="button-container">
+            <a th:href="'/league/' + ${leagueId} + '/gametable'">
+                <input class="reg-input-button match-all-button table-button" type="button" value="ПЕРЕГЛЯНУТИ ВСІ"/>
+            </a>
+        </div>
+        <p class="table-header">Найкращі бомбардири</p>
         <div class="bomb league">
             <div class="bomb-position auto">
                 <div class="bomb-title">№</div>
@@ -259,6 +270,11 @@
                     </a>
                 </div>
             </div>
+        </div>
+        <div class="button-container">
+            <a th:href="'/league/' + ${leagueId} + '/bombardier'">
+                <input class="reg-input-button match-all-button table-button" type="button" value="ПЕРЕГЛЯНУТИ ВСІ"/>
+            </a>
         </div>
     </div>
 </div>

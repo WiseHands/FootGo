@@ -124,7 +124,10 @@ a, a:hover {
 }
 .main-about p {
     font-size: 1rem;
-    padding: 10px 0 5px 10px;
+    padding: 10px 0 5px 0;
+}
+.main-description {
+    padding: 10px 0 0 10px !important;
 }
 .main-where p {
     font-size: 0.9rem;
@@ -199,6 +202,30 @@ a, a:hover {
     width: 100%;
     padding-top: 20vh;
 }
+.results-background {
+    background: url(img/foot66.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+    width: 100%;
+    padding-top: 20vh;
+}
+.gametable-background {
+    background: url(img/foot22.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+    width: 100%;
+    padding-top: 20vh;
+}
+.bombardier-background {
+    background: url(img/foot44.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+    width: 100%;
+    padding-top: 20vh;
+}
 .main-head-title {
     max-width: 900px;
     margin: 0 auto;
@@ -215,6 +242,9 @@ a, a:hover {
 .league-main-head {
     height: 30vh;
     margin-bottom: 5vh;
+}
+.main-head-results {
+    height: 30vh;
 }
 .main-head-title .main-head-logo {
     height: 200px;
@@ -241,6 +271,7 @@ a, a:hover {
 .main-about iframe {
     margin: 0 auto;
     padding: 10px 0;
+    height: 580px;
 }
 .main-about h1, .main-video h1 {
     font-size: 1.5rem;
@@ -398,7 +429,7 @@ input[type=submit] {
     margin: 0 auto !important;
 }
 .table-full {
-    background: url("img/foot22.jpg");
+/*    background: url("img/foot22.jpg");*/
     background-position: center;
     background-size: cover;
     height: 100vh;
@@ -484,7 +515,7 @@ input[type=submit] {
 }
 
 .bomb-full {
-    background-image: url("img/foot44.jpg");
+/*    background-image: url("img/foot44.jpg");*/
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -523,7 +554,7 @@ input[type=submit] {
     width: 33%;
 }
 .results-full {
-    background: url("img/foot66.jpg");
+/*    background: url("img/foot66.jpg");*/
     background-attachment: fixed;
     background-position: center;
     background-size: contain;
@@ -770,6 +801,21 @@ input[invalid-input] {
     font-size: 1.8rem;
     font-weight: 600;
     padding-bottom: 35px;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.match-all-button {
+    padding: 7px 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
+}
+.table-button {
+    font-size: 1em;
 }
 .review-match {
     display: flex;
@@ -1527,11 +1573,11 @@ input[invalid-input] {
     }
     .bomb-full {
         background-color: var(--main-bg-color);
-        background-image: url(img/foot44-dark.jpg);
+/*        background-image: url(img/foot44-dark.jpg);*/
     }
     .table-full {
         background-color: var(--main-bg-color);
-        background-image: url(img/foot22-dark.jpg);
+/*        background-image: url(img/foot22-dark.jpg);*/
     }
     .matches-full {
         background-color: var(--main-bg-color);
@@ -1547,6 +1593,20 @@ input[invalid-input] {
         background-position: center;
         background-size: cover;
     }
-
+    .results-background {
+        background: url(img/foot66-dark.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+    .gametable-background {
+        background: url(img/foot22-dark.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+    .bombardier-background {
+        background: url(img/foot44-dark.jpg);
+        background-position: center;
+        background-size: cover;
+    }
 }
 /*Dark-mode end*/

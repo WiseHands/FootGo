@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Таблиця</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="hamburger.css">
-    <link rel="shortcut icon" href="img/footgo-dark-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../hamburger.css">
+    <link rel="shortcut icon" href="../../img/footgo-dark-icon.png" type="image/x-icon">
 
 
 </head>
@@ -17,7 +17,7 @@
     <div class="header-full">
         <div class="header-first-block">
             <div class="header-icon">
-                <a href="/"><img class="header-img" src="img/footgo-light-icon.png" alt="wiselogo"></a>
+                <a href="/"><img class="header-img" src="../../img/footgo-light-icon.png" alt="wiselogo"></a>
             </div>
             <div class="header-null">
                 <a href="javascript:void(0)" class="icon" onclick="myFunction()">
@@ -25,69 +25,70 @@
                 </a>
             </div>
             <div class="header-text">
-                <a href="/signup" th:if="${league.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
+                <a href="/"><p th:text="${season.name}"></p></a>
+                <a th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a>
+<!--                <a href="/signup" th:if="${league.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
                 <a href="/results"><p>Результати</p></a>
                 <a href="/gametable"><p>Таблиця</p></a>
-                <a href="/bombardier"><p>Бомбардири</p></a>
+                <a href="/bombardier"><p>Бомбардири</p></a>-->
             </div>
         </div>
     </div>
     <div id="myLinks">
-        <div th:if="${league.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
+        <a href="/"><p th:text="${season.name}"></p></a>
+        <a th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a>
+<!--        <div th:if="${league.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
         <div><a class="link-item" href="/results">Результати</a></div>
         <div><a class="link-item" href="/gametable">Таблиця</a></div>
-        <div><a class="link-item" href="/bombardier">Бомбардири</a></div>
+        <div><a class="link-item" href="/bombardier">Бомбардири</a></div>-->
     </div>
 </header>
 
-<div>
-<div class="table-head">
-    <p>Таблиця чемпіонату</p>
+<div class="main-head main-head-results gametable-background">
+    <div class="main-head-title league-page">
+        <h1 th:text="${league.name}"></h1>
+    </div>
 </div>
+
+<div>
+    <div class="table-head">
+        <p>Таблиця чемпіонату</p>
+    </div>
     <div class="table">
         <div class="table-position">
             <div class="table-title">№</div>
-            <div class="table-firstplace">1</div>
-            <div class="table-secondplace">2</div>
-            <div class="table-thirdplace">3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>7</div>
-            <div>8</div>
-            <div>9</div>
-            <div>10</div>
+            <div th:each="result,i : ${resultList}" th:text="${i.count}"></div>
         </div>
         <div class="table-team-name">
             <div class="table-title">Команда</div>
 
-                <div class="table-firstplace">
-                    <a th:attr="href=${'/team/' + firstPlace.team.id}">
-                        <img th:attr="src=${firstPlace.team.logoImageUrl}, class=${'light' + ' ' + 'team' + firstPlace.team.id}">
-                        <img th:attr="src=${firstPlace.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + firstPlace.team.id}">
-                        <p th:text="${firstPlace.teamName}"></p>
-                    </a>
-                </div>
+            <!--                <div class="table-firstplace">
+                                <a th:attr="href=${'/team/' + firstPlace.team.id}">
+                                    <img th:attr="src=${firstPlace.team.logoImageUrl}, class=${'light' + ' ' + 'team' + firstPlace.team.id}">
+                                    <img th:attr="src=${firstPlace.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + firstPlace.team.id}">
+                                    <p th:text="${firstPlace.teamName}"></p>
+                                </a>
+                            </div>
 
-                <div class="table-secondplace">
-                    <a th:attr="href=${'/team/' + secondPlace.team.id}">
-                        <img th:attr="src=${secondPlace.team.logoImageUrl}, class=${'light' + ' ' + 'team' + secondPlace.team.id}">
-                        <img th:attr="src=${secondPlace.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + secondPlace.team.id}">
-                        <p th:text="${secondPlace.teamName}"></p>
-                    </a>
-                </div>
+                            <div class="table-secondplace">
+                                <a th:attr="href=${'/team/' + secondPlace.team.id}">
+                                    <img th:attr="src=${secondPlace.team.logoImageUrl}, class=${'light' + ' ' + 'team' + secondPlace.team.id}">
+                                    <img th:attr="src=${secondPlace.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + secondPlace.team.id}">
+                                    <p th:text="${secondPlace.teamName}"></p>
+                                </a>
+                            </div>
 
-                <div class="table-thirdplace">
-                    <a th:attr="href=${'/team/' + thirdPlace.team.id}">
-                        <img th:attr="src=${thirdPlace.team.logoImageUrl}, class=${'light' + ' ' + 'team' + thirdPlace.team.id}">
-                        <img th:attr="src=${thirdPlace.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + thirdPlace.team.id}">
-                        <p th:text="${thirdPlace.teamName}"></p>
-                    </a>
-                </div>
+                            <div class="table-thirdplace">
+                                <a th:attr="href=${'/team/' + thirdPlace.team.id}">
+                                    <img th:attr="src=${thirdPlace.team.logoImageUrl}, class=${'light' + ' ' + 'team' + thirdPlace.team.id}">
+                                    <img th:attr="src=${thirdPlace.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + thirdPlace.team.id}">
+                                    <p th:text="${thirdPlace.teamName}"></p>
+                                </a>
+                            </div>-->
 
 
-            <div th:each="item : ${teamList}">
-                <a th:attr="href=${'/team/' + item.team.id}">
+            <div th:each="item : ${resultList}">
+                <a th:attr="href=${'/league/' + leagueId + '/team/' + item.team.id}">
                     <img th:attr="src=${item.team.logoImageUrl}, class=${'light' + ' ' + 'team' + item.team.id}">
                     <img th:attr="src=${item.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + item.team.id}">
                     <p th:text="${item.teamName}"></p>
@@ -97,63 +98,63 @@
 
         <div class="table-games table-offset ">
             <div class="table-title">І</div>
-            <div class="table-firstplace" th:text="${firstPlace.numberOfGames}"></div>
-            <div class="table-secondplace" th:text="${secondPlace.numberOfGames}"></div>
-            <div class="table-thirdplace" th:text="${thirdPlace.numberOfGames}"></div>
-            <div th:each="item : ${teamList}">
+            <!--            <div class="table-firstplace" th:text="${firstPlace.numberOfGames}"></div>
+                        <div class="table-secondplace" th:text="${secondPlace.numberOfGames}"></div>
+                        <div class="table-thirdplace" th:text="${thirdPlace.numberOfGames}"></div>-->
+            <div th:each="item : ${resultList}">
                 <p th:text="${item.numberOfGames}"></p>
             </div>
         </div>
         <div class="table-wins table-offset">
             <div class="table-title">В</div>
-            <div class="table-firstplace" th:text="${firstPlace.numberOfWins}"></div>
-            <div class="table-secondplace" th:text="${secondPlace.numberOfWins}"></div>
-            <div class="table-thirdplace" th:text="${thirdPlace.numberOfWins}"></div>
-            <div th:each="item : ${teamList}">
+            <!--            <div class="table-firstplace" th:text="${firstPlace.numberOfWins}"></div>
+                        <div class="table-secondplace" th:text="${secondPlace.numberOfWins}"></div>
+                        <div class="table-thirdplace" th:text="${thirdPlace.numberOfWins}"></div>-->
+            <div th:each="item : ${resultList}">
                 <p th:text="${item.numberOfWins}"></p>
             </div>
         </div>
         <div class="table-draws table-offset">
             <div class="table-title">Н</div>
-            <div class="table-firstplace" th:text="${firstPlace.numberOfDraws}"></div>
-            <div class="table-secondplace" th:text="${secondPlace.numberOfDraws}"></div>
-            <div class="table-thirdplace" th:text="${thirdPlace.numberOfDraws}"></div>
-            <div th:each="item : ${teamList}">
+            <!--            <div class="table-firstplace" th:text="${firstPlace.numberOfDraws}"></div>
+                        <div class="table-secondplace" th:text="${secondPlace.numberOfDraws}"></div>
+                        <div class="table-thirdplace" th:text="${thirdPlace.numberOfDraws}"></div>-->
+            <div th:each="item : ${resultList}">
                 <p th:text="${item.numberOfDraws}"></p>
             </div>
         </div>
         <div class="table-defeats table-offset">
             <div class="table-title">П</div>
-            <div class="table-firstplace" th:text="${firstPlace.numberOfLoses}"></div>
-            <div class="table-secondplace" th:text="${secondPlace.numberOfLoses}"></div>
-            <div class="table-thirdplace" th:text="${thirdPlace.numberOfLoses}"></div>
-            <div th:each="item : ${teamList}">
+            <!--            <div class="table-firstplace" th:text="${firstPlace.numberOfLoses}"></div>
+                        <div class="table-secondplace" th:text="${secondPlace.numberOfLoses}"></div>
+                        <div class="table-thirdplace" th:text="${thirdPlace.numberOfLoses}"></div>-->
+            <div th:each="item : ${resultList}">
                 <p th:text="${item.numberOfLoses}"></p>
             </div>
         </div>
         <div class="table-goals">
             <div class="table-title">З-П</div>
-            <div class="table-firstplace" th:text="${firstPlace.numberOfGoalsScored + ' - ' + firstPlace.numberOfGoalsMissed}"></div>
-            <div class="table-secondplace" th:text="${secondPlace.numberOfGoalsScored + ' - ' + secondPlace.numberOfGoalsMissed}"></div>
-            <div class="table-thirdplace" th:text="${thirdPlace.numberOfGoalsScored + ' - ' + thirdPlace.numberOfGoalsMissed}"></div>
-            <div th:each="item : ${teamList}">
+            <!--            <div class="table-firstplace" th:text="${firstPlace.numberOfGoalsScored + ' - ' + firstPlace.numberOfGoalsMissed}"></div>
+                        <div class="table-secondplace" th:text="${secondPlace.numberOfGoalsScored + ' - ' + secondPlace.numberOfGoalsMissed}"></div>
+                        <div class="table-thirdplace" th:text="${thirdPlace.numberOfGoalsScored + ' - ' + thirdPlace.numberOfGoalsMissed}"></div>-->
+            <div th:each="item : ${resultList}">
                 <p th:text="${item.numberOfGoalsScored + ' - ' + item.numberOfGoalsMissed}"></p>
             </div>
         </div>
         <div class="table-points table-offset">
             <div class="table-title">О</div>
-            <div class="table-firstplace" th:text="${firstPlace.points}"></div>
-            <div class="table-secondplace" th:text="${secondPlace.points}"></div>
-            <div class="table-thirdplace" th:text="${thirdPlace.points}"></div>
-            <div th:each="item : ${teamList}">
+            <!--            <div class="table-firstplace" th:text="${firstPlace.points}"></div>
+                        <div class="table-secondplace" th:text="${secondPlace.points}"></div>
+                        <div class="table-thirdplace" th:text="${thirdPlace.points}"></div>-->
+            <div th:each="item : ${resultList}">
                 <p th:text="${item.points}"></p>
             </div>
         </div>
     </div>
 </div>
 
-<script src="signUpScript.js"></script>
-<script src="hamburger.js"></script>
+<script src="../../signUpScript.js"></script>
+<script src="../../hamburger.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39722519-3"></script>
