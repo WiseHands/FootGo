@@ -24,14 +24,24 @@
                 </a>
             </div>
             <div class="header-text">
-                <a href="/signup" th:if="${season.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
+                <a href="/"><p th:text="${season.name}"></p></a>
+                <a th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a>
+                <a th:href="'/league/' + ${league.id} + '/team/' + ${team.id}"><p th:text="${team.teamName}"></p></a>
             </div>
         </div>
     </div>
     <div id="myLinks">
         <div th:if="${season.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
+        <div><a href="/"><p th:text="${season.name}"></p></a></div>
+        <div><a th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a></div>
+        <div><a th:href="'/league/' + ${league.id} + '/team/' + ${team.id}"><p th:text="${team.teamName}"></p></a></div>
     </div>
 </header>
+<div class="main-head league-main-head league-team-background">
+    <div class="main-head-title league-page">
+        <h1 th:text="${league.name}"></h1>
+    </div>
+</div>
 <div>
     <div class="results">
         <div class="results-bg">

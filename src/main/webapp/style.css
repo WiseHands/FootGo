@@ -226,6 +226,14 @@ a, a:hover {
     width: 100%;
     padding-top: 20vh;
 }
+.league-team-background {
+    background: url(img/foot66.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+    width: 100%;
+    padding-top: 20vh;
+}
 .main-head-title {
     max-width: 900px;
     margin: 0 auto;
@@ -1614,6 +1622,11 @@ input[invalid-input] {
     }
     .bombardier-background {
         background: url(img/foot44-dark.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+    .league-team-background {
+        background: url(img/foot66-dark.jpg);
         background-position: center;
         background-size: cover;
     }
