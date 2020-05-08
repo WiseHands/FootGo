@@ -132,19 +132,18 @@ public class HttpRequestsController {
             finalGameList.addAll(_gameList);
         });
 
-        gameList = gameList.stream().filter(g -> g.getGameTime().isAfter(OffsetDateTime.now())).collect(Collectors.toList());
+        OffsetDateTime sevenDaysBeforeNow = OffsetDateTime.now().minusDays(7);
+        OffsetDateTime sevenDaysAfterNow = OffsetDateTime.now().plusDays(7);
+
+        gameList = gameList.stream().filter(g ->
+                g.getGameTime().isAfter(sevenDaysBeforeNow) && g.getGameTime().isBefore(sevenDaysAfterNow)
+        ).collect(Collectors.toList());
+
         gameList.sort(Comparator.comparing(Game::getGameTime));
         gameList.forEach(game -> {
             System.out.println(game.getGameTime());
         });
-        if (gameList.size() == 0) {
-            tourList = new ArrayList<>();
-            model.addAttribute("nearestTour", tourList);
-        } else {
-            Tour _tour = gameList.get(0).getTour();
-            _tour.getGameList().sort(Comparator.comparing(Game::getGameTime));
-            model.addAttribute("nearestTour", _tour);
-        }
+        model.addAttribute("gameList", gameList);
 
         List<TeamResults> results = resultService.getResultsByLeague(true, leagueId);
 /*        model.addAttribute("firstPlace", results.get(0));
@@ -155,7 +154,6 @@ public class HttpRequestsController {
         model.addAttribute("playerGoals", playerGoals);
         List<Game> games = (List<Game>) gameRepository.findAll();
         Game game = games.get(0);
-        //List<Game> games = gameRepository.fetchGameAfterTimeStamp(OffsetDateTime.now());
         model.addAttribute("game", game);
 
         return "leagueDetails";

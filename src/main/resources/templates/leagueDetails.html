@@ -42,7 +42,7 @@
         <div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
             <p>Матчі</p>
         </div>
-        <div th:if="${#lists.isEmpty(nearestTour)}" class="matches-bg">
+        <div th:if="${#lists.isEmpty(gameList)}" class="matches-bg">
             <div class="review-match">
                 <div class="review-head">
                     <div class="review-score-empty">
@@ -51,8 +51,8 @@
                 </div>
             </div>
         </div>
-        <div th:if="${not #lists.isEmpty(nearestTour)}" th:each="tour : ${nearestTour}" class="desktop">
-            <div th:each="game : ${tour.gameList}" class="matches-bg">
+        <div th:if="${not #lists.isEmpty(gameList)}" class="desktop">
+            <div th:each="game : ${gameList}" class="matches-bg">
                 <div class="match-res-date">
                     <p th:text="${game.formatDate()} + ', ' + ${game.formatTime()}"></p>
                 </div>
@@ -95,8 +95,8 @@
             </div>
         </div>
 
-        <div th:if="${not #lists.isEmpty(nearestTour)}" th:each="tour : ${nearestTour}" class="res-tour-allmatch mobile">
-            <div class="results-container league-results-container" th:each="game : ${tour.gameList}">
+        <div th:if="${not #lists.isEmpty(gameList)}" class="res-tour-allmatch mobile">
+            <div class="results-container league-results-container" th:each="game : ${gameList}">
                 <div class="res-teams">
                     <a th:attr="href=${'/league/' + leagueId + '/team/' + game.firstTeam.id}">
                         <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
