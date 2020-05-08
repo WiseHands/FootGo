@@ -241,7 +241,7 @@ a, a:hover {
 }
 .league-main-head {
     height: 30vh;
-    margin-bottom: 5vh;
+    margin-bottom: 2vh;
 }
 .main-head-results {
     height: 30vh;
@@ -445,6 +445,7 @@ input[type=submit] {
     font-size: 2.2em;
     font-weight: 700;
     color: #fff;
+    margin: 10px 0 10px 0;
 }
 .table, .bomb {
     display: flex;
@@ -531,6 +532,7 @@ input[type=submit] {
     font-size: 2.2em;
     padding-bottom: 10px;
     font-weight: 700;
+    margin: 10px 0 10px 0;
 }
 .bomb-position div, .bomb-player-name div, .bomb-scored div, .bomb-team div  {
     background-color: rgba(220, 216, 216,0.7);
