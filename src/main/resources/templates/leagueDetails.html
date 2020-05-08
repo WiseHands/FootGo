@@ -42,7 +42,7 @@
         <div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
             <p>Матчі</p>
         </div>
-        <div th:each="tour : ${nearestTour}" class="desktop">
+        <div th:if="${not #lists.isEmpty(nearestTour)}" th:each="tour : ${nearestTour}" class="desktop">
             <div th:each="game : ${tour.gameList}" class="matches-bg">
                 <div class="match-res-date">
                     <p th:text="${game.formatDate()} + ', ' + ${game.formatTime()}"></p>
@@ -86,7 +86,7 @@
             </div>
         </div>
 
-        <div th:each="tour : ${nearestTour}" class="res-tour-allmatch mobile">
+        <div th:if="${not #lists.isEmpty(nearestTour)}" th:each="tour : ${nearestTour}" class="res-tour-allmatch mobile">
             <div class="results-container league-results-container" th:each="game : ${tour.gameList}">
                 <div class="res-teams">
                     <a th:attr="href=${'/league/' + leagueId + '/team/' + game.firstTeam.id}">

@@ -138,13 +138,13 @@ public class HttpRequestsController {
             System.out.println(game.getGameTime());
         });
         if (gameList.size() == 0) {
-            gameList = new ArrayList<>();
+            tourList = new ArrayList<>();
+            model.addAttribute("nearestTour", tourList);
         } else {
             Tour _tour = gameList.get(0).getTour();
             _tour.getGameList().sort(Comparator.comparing(Game::getGameTime));
             model.addAttribute("nearestTour", _tour);
         }
-        model.addAttribute("nearestTour", tourList);
 
         List<TeamResults> results = resultService.getResultsByLeague(true, leagueId);
 /*        model.addAttribute("firstPlace", results.get(0));
