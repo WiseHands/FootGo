@@ -808,7 +808,7 @@ input[invalid-input] {
     margin-top: 20px;
 }
 .match-all-button {
-    padding: 7px 15px;
+    padding: 10px 15px;
     margin-bottom: 20px;
     text-align: center;
     margin-top: auto;
@@ -860,6 +860,13 @@ input[invalid-input] {
 .review-score p {
     font-size: 3rem;
     font-weight: 600;
+}
+.review-score-empty {
+    padding: 34px 0;
+}
+.review-score-empty span {
+    font-size: 1.8em;
+    font-weight: 400;
 }
 .details-match {
     display: flex;
