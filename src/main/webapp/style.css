@@ -1569,7 +1569,7 @@ input[invalid-input] {
 /*  .table-position div:nth-of-type(n+5), .table-team-name div:nth-of-type(n+5), .table-games div:nth-of-type(n+5), .table-wins div:nth-of-type(n+5), .table-draws div:nth-of-type(n+5), .table-defeats div:nth-of-type(n+5), .table-goals div:nth-of-type(n+5), .table-points div:nth-of-type(n+5) {
       background: rgba(13, 13, 13, 0.7);
   }*/
-    .table-position div:nth-of-type(n), .table-team-name div:nth-of-type(n), .table-games div:nth-of-type(n), .table-wins div:nth-of-type(n), .table-draws div:nth-of-type(n), .table-defeats div:nth-of-type(n), .table-goals div:nth-of-type(n), .table-points div:nth-of-type(n) {
+    .table-position div:nth-of-type(n+2), .table-team-name div:nth-of-type(n+2), .table-games div:nth-of-type(n+2), .table-wins div:nth-of-type(n+2), .table-draws div:nth-of-type(n+2), .table-defeats div:nth-of-type(n+2), .table-goals div:nth-of-type(n+2), .table-points div:nth-of-type(n+2), .bomb-position div:nth-of-type(n+2), .bomb-player-name div:nth-of-type(n+2), .bomb-scored div:nth-of-type(n+2), .bomb-team div:nth-of-type(n+2) {
         background: rgba(13, 13, 13, 0.7);
     }
     .table-team-name img {
@@ -1595,7 +1595,7 @@ input[invalid-input] {
         background: url(/img/tshirt-dark.png) no-repeat;
         background-size: 100%;
     }
-    .player-info, .bomb-position div, .bomb-player-name div, .bomb-scored div, .bomb-team div {
+    .player-info, .bomb-position div, .bomb-player-name div, .bomb-scored div, .bomb-team div, .table-title {
         background: var(--main-sf-color);
     }
     .player-card-logo-team img {
