@@ -524,16 +524,14 @@ input[type=submit] {
 .table-thirdplace, .bomb-thirdplace {
     background-color: rgba(234, 106, 118,0.7);
 }
-.table-position div:nth-of-type(n+5), .table-team-name div:nth-of-type(n+5),.table-games div:nth-of-type(n+5),
-.table-wins div:nth-of-type(n+5),.table-draws div:nth-of-type(n+5), .table-defeats div:nth-of-type(n+5), .table-goals div:nth-of-type(n+5), .table-points div:nth-of-type(n+5)
+.table-position div:nth-of-type(n+2), .table-team-name div:nth-of-type(n+2),.table-games div:nth-of-type(n+2),
+.table-wins div:nth-of-type(n+2),.table-draws div:nth-of-type(n+2), .table-defeats div:nth-of-type(n+2), .table-goals div:nth-of-type(n+2), .table-points div:nth-of-type(n+2)
 {
     background-color: rgba(220, 216, 216,0.7);
 }
-
 .table div, .bomb div {
     margin: 1px;
 }
-
 .bomb-full {
 /*    background-image: url("img/foot44.jpg");*/
     background: #f7f7f5;
@@ -554,7 +552,7 @@ input[type=submit] {
     font-weight: 700;
     margin: 10px 0 10px 0;
 }
-.bomb-position div, .bomb-player-name div, .bomb-scored div, .bomb-team div  {
+.bomb-position div:nth-of-type(n+2), .bomb-player-name div:nth-of-type(n+2), .bomb-scored div:nth-of-type(n+2), .bomb-team div:nth-of-type(n+2)  {
     background-color: rgba(220, 216, 216,0.7);
 }
 .bomb-player-name {
@@ -791,6 +789,7 @@ input[invalid-input] {
 /*match review*/
 .matches-full {
     /*background: url("img/foot77.jpg");*/
+    background: #f7f7f5;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -978,9 +977,9 @@ input[invalid-input] {
 .team-results-full h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #fff;
+/*    color: #fff;*/
     text-align: center;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+/*    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
 }
 .player-card {
     display: flex;
@@ -1053,6 +1052,7 @@ input[invalid-input] {
     background: #fff;
     margin-top: 15px;
     border-radius: 10px;
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
 }
 .player-card-photo {
     margin: 20px;
