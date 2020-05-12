@@ -25,29 +25,21 @@
 
             <div class="header-text">
                 <a href="/"><p th:text="${season.name}"></p></a>
-                <a th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a>
-                <a th:href="'/league/' + ${league.id} + '/bombardier'"><p>Найкращі бомбардири</p></a>
-<!--                <a href="/signup" th:if="${league.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
-                <a href="/results"><p>Результати</p></a>
-                <a href="/gametable"><p>Таблиця</p></a>
-                <a href="/bombardier"><p>Бомбардири</p></a>-->
+                <a th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a>
+                <a th:href="'/cup/' + ${cup.id} + '/bombardier'"><p>Найкращі бомбардири</p></a>
             </div>
         </div>
     </div>
     <div id="myLinks">
         <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
-        <div><a class="link-item" th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a></div>
-        <div><a class="link-item" th:href="'/league/' + ${league.id} + '/bombardier'"><p>Найкращі бомбардири</p></a></div>
-<!--        <div th:if="${league.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
-        <div><a class="link-item" href="/results">Результати</a></div>
-        <div><a class="link-item" href="/gametable">Таблиця</a></div>
-        <div><a class="link-item" href="/bombardier">Бомбардири</a></div>-->
+        <div><a class="link-item" th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a></div>
+        <div><a class="link-item" th:href="'/cup/' + ${cup.id} + '/bombardier'"><p>Найкращі бомбардири</p></a></div>
     </div>
 </header>
 
 <div class="main-head main-head-results bombardier-background">
     <div class="main-head-title league-page">
-        <h1 th:text="${league.name}"></h1>
+        <h1 th:text="${cup.name}"></h1>
     </div>
 </div>
 
@@ -66,7 +58,7 @@
         <div class="bomb-player-name">
             <div class="bomb-title">Футболіст</div>
             <div th:each="playerGoal : ${playerGoals}">
-                <a th:attr="href=${'/league/' + leagueId + '/player/' + playerGoal.player.id}">
+                <a th:attr="href=${'/cup/' + cupId + '/player/' + playerGoal.player.id}">
                     <p th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}">не заявлена</p>
                 </a>
             </div>
@@ -82,7 +74,7 @@
         <div class="bomb-team">
             <div class="bomb-title">Команда</div>
             <div th:each="playerGoal : ${playerGoals}">
-                <a th:attr="href=${'/league/' + leagueId + '/team/' + playerGoal.player.team.id}">
+                <a th:attr="href=${'/cup/' + cupId + '/team/' + playerGoal.player.team.id}">
                     <p th:text="${playerGoal.player.team.teamName}"></p>
                 </a>
             </div>

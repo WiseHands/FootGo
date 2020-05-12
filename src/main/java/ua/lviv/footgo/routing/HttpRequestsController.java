@@ -112,6 +112,21 @@ public class HttpRequestsController {
         model.addAttribute("league", leagueList.get(0));*/
         return "results";
     }
+    @GetMapping({"/cup/{cupId}/results"})
+    public String cupResults(Model model, @PathVariable("cupId") Long cupId, @RequestParam(value = "name", required = false) String name) {
+        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
+        Tournament tournament = tournaments.get(0);
+        model.addAttribute("tournament", tournament);
+        Season season = tournament.getActiveSeason();
+        model.addAttribute("season", season);
+        Cup cup = cupManagementRepository.findById(cupId).get();
+        model.addAttribute("cup", cup);
+        model.addAttribute("cupId", cupId);
+        List<Tour> tourList = cup.getTours();
+        model.addAttribute("tourList", tourList);
+
+        return "cupResults";
+    }
     @GetMapping({"/league/{leagueId}"})
     public String leagueDetails(Model model, @PathVariable("leagueId") Long leagueId) {
         List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
@@ -210,6 +225,32 @@ public class HttpRequestsController {
         List<PlayerGoals> playerGoals = topScorerService.getResults();
         model.addAttribute("playerGoals", playerGoals);
 
+        List<Game> gameList = new ArrayList<Game>();
+        List<Game> finalGameList = gameList;
+        tourList.forEach(tour -> {
+            List<Game> _gameList = tour.getGameList();
+            finalGameList.addAll(_gameList);
+        });
+
+        OffsetDateTime sevenDaysBeforeNow = OffsetDateTime.now().minusDays(7);
+        OffsetDateTime sevenDaysAfterNow = OffsetDateTime.now().plusDays(7);
+
+        gameList = gameList.stream().filter(g ->
+                g.getGameTime().isAfter(sevenDaysBeforeNow) && g.getGameTime().isBefore(sevenDaysAfterNow)
+        ).collect(Collectors.toList());
+
+        gameList.sort(Comparator.comparing(Game::getGameTime));
+        gameList.forEach(game -> {
+            System.out.println(game.getGameTime());
+        });
+        model.addAttribute("gameList", gameList);
+
+        List<TeamResults> results = resultService.getResultsByCup(true, cupId);
+        model.addAttribute("resultList", results);
+        List<Game> games = (List<Game>) gameRepository.findAll();
+        Game game = games.get(0);
+        model.addAttribute("game", game);
+
         return "cupDetails";
     }
     @GetMapping({"/cup/{cupId}/team/{teamId}"})
@@ -287,6 +328,21 @@ public class HttpRequestsController {
         List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         model.addAttribute("league", leagueList.get(0));*/
         return "bombardier";
+    }
+    @GetMapping({"/cup/{cupId}/bombardier"})
+    public String cupBombardier(Model model, @PathVariable("cupId") Long cupId, @RequestParam(value = "name", required = false) String name) {
+        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
+        Tournament tournament = tournaments.get(0);
+        model.addAttribute("tournament", tournament);
+        Season season = tournament.getActiveSeason();
+        model.addAttribute("season", season);
+        Cup cup = cupManagementRepository.findById(cupId).get();
+        model.addAttribute("cup", cup);
+
+        List<PlayerGoals> playerGoals = topScorerService.getResults();
+        model.addAttribute("playerGoals", playerGoals);
+
+        return "cupBombardier";
     }
     @GetMapping({"/league/{leagueId}/game/{gameId}"})
     public String gameLeagueDetails(Model model, @PathVariable("leagueId") Long leagueId, @PathVariable("gameId") Long gameId) {
@@ -416,6 +472,8 @@ public class HttpRequestsController {
         model.addAttribute("player", player);
 /*        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         model.addAttribute("league", leagueList.get(0));*/
+        League league = leagueManagementRepository.findById(leagueId).get();
+        model.addAttribute("league", league);
         return "playerLeague";
     }
     @GetMapping({"/cup/{cupId}/player/{playerId}"})
@@ -428,6 +486,8 @@ public class HttpRequestsController {
         model.addAttribute("player", player);
 /*        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         model.addAttribute("league", leagueList.get(0));*/
+        Cup cup = cupManagementRepository.findById(cupId).get();
+        model.addAttribute("cup", cup);
         return "playerCup";
     }
 

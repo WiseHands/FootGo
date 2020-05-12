@@ -173,7 +173,7 @@
             </div>
         </div>
     </div>
-    <div class="main-cup">
+    <div th:if="${!#lists.isEmpty(cupList)}" class="main-cup">
         <div th:each="cup : ${cupList}" class="main-about">
             <a th:href="'/cup/' + ${cup.id}">
                 <h1 th:text="${cup.name}"></h1>

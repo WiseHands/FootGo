@@ -23,19 +23,24 @@
 				</a>
 			</div>
 			<div class="header-text">
-				<a href="/signup" th:if="${season.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
+				<a href="/"><p th:text="${season.name}"></p></a>
+				<a th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a>
+				<a th:href="'/cup/' + ${cup.id} + '/player/' + ${player.id}"><p>Гравець</p></a>
 			</div>
 		</div>
-		<div class="header-second-block">        </div>
+		<div class="header-second-block"></div>
 	</div>
 	<div id="myLinks">
-		<div th:if="${season.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
+		<div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
+		<div><a class="link-item" th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a></div>
+		<div><a class="link-item" th:href="'/cup/' + ${cup.id} + '/player/' + ${player.id}"><p>Гравець</p></a></div>
 	</div>
 </header>
-
-
-
-
+<div class="main-head main-head-results player-background">
+	<div class="main-head-title league-page">
+		<h1 th:text="${cup.name}"></h1>
+	</div>
+</div>
 <div class="player-card-main">
 	<div class="player-card-photo">
 		<img th:if="${!#strings.isEmpty(player.getImageUrl())}" th:attr="src=${player.getImageUrl()}">
@@ -45,7 +50,7 @@
 		<p th:text="${player.lastName + ' ' + player.firstName}"></p>
 		<!--<p>Дата народження</p>-->
 		<!--<p>01.01.1900</p>-->
-		<p>Команда</p>
+		<p>Команда:</p>
 		<div class="player-card-logo-team">
 			<a th:attr="href=${'/cup/' + cupId + '/team/' + player.team.id}">
 				<img th:attr="src=${'/logo/logo' + player.team.id + '.png'}, class=${'team' + player.team.id}">

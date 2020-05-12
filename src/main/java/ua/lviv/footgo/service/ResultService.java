@@ -2,10 +2,12 @@ package ua.lviv.footgo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ua.lviv.footgo.entity.Cup;
 import ua.lviv.footgo.entity.Game;
 import ua.lviv.footgo.entity.League;
 import ua.lviv.footgo.entity.Team;
 import ua.lviv.footgo.jsonmapper.TeamResults;
+import ua.lviv.footgo.repository.CupManagementRepository;
 import ua.lviv.footgo.repository.GameRepository;
 import ua.lviv.footgo.repository.LeagueManagementRepository;
 import ua.lviv.footgo.repository.TeamRepository;
@@ -28,6 +30,9 @@ public class ResultService {
 
     @Autowired
     LeagueManagementRepository leagueManagementRepository;
+
+    @Autowired
+    CupManagementRepository cupManagementRepository;
 
     public List<TeamResults> getResults(boolean forCompletedGamesOnly) {
         List<Team> teamList = (List<Team>) teamRepository.findAll();
@@ -60,6 +65,35 @@ public class ResultService {
     public List<TeamResults> getResultsByLeague(boolean forCompletedGamesOnly, Long leagueId) {
         League league = leagueManagementRepository.findById(leagueId).get();
         List<Team> teamList = league.getTeamList();
+
+        List<TeamResults> teamResultsList = new ArrayList<>();
+        for(Team team: teamList) {
+            TeamResults teamResults = new TeamResults();
+            teamResults.setTeam(team);
+
+
+            List<Game> gameList;
+            if(forCompletedGamesOnly) {
+                gameList = gameFinder.findAllCompletedGamesForTeam(team);
+            } else {
+                gameList = gameFinder.findAllGamesForTeam(team);
+            }
+
+            for(Game game: gameList) {
+                _calculateResultForTeamInGame(game, team, teamResults);
+            }
+
+            teamResultsList.add(teamResults);
+        }
+
+        System.out.println(teamResultsList);
+        Collections.sort(teamResultsList, new TeamResults.TeamResultsComparator());
+        return teamResultsList;
+    }
+
+    public List<TeamResults> getResultsByCup(boolean forCompletedGamesOnly, Long cupId) {
+        Cup cup = cupManagementRepository.findById(cupId).get();
+        List<Team> teamList = cup.getTeamList();
 
         List<TeamResults> teamResultsList = new ArrayList<>();
         for(Team team: teamList) {

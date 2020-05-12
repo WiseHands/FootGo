@@ -22,114 +22,195 @@
                 </a>
             </div>
             <div class="header-text">
-                <a href="/signup" th:if="${season.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
+                <a href="/"><p th:text="${season.name}"></p></a>
+                <a th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a>
             </div>
         </div>
     </div>
     <div id="myLinks">
-        <div th:if="${season.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
-        <div class="season-list">
-            <button class="dropbtn">Сезон 2020</button>
-            <div class="prev-seasons">
-                <a href="">Осінь 2019</a>
-            </div>
-        </div>
+        <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
+        <div><a class="link-item" th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a></div>
     </div>
 </header>
-<div class="main-league-container">
-    <div class="bomb-head">
-        <p th:text="${season.name} + ' | ' + ${cup.name}"></p>
+<div class="main-head league-main-head">
+    <div class="main-head-title league-page">
+        <h1 th:text="${cup.name}"></h1>
     </div>
-    <div class="main-container">
-        <div class="results vs-container">
-            <div th:each="tour : ${tourList}" class="results-block">
-                <!--<p>Найближчі ігри</p>-->
-                <div>
-                    <p th:text="'Тур ' + ${tour.tourNumber}"></p>
-                </div>
-<!--                <div class="logo-team-bg league-team-bg">
-                    <p>Team 1</p>
-                    <p>VS</p>
-                    <p>Team 2</p>
-                </div>-->
-                <!--<input class="reg-input-button all-games-button" type="submit" onclick="allGames()"
-                       value="Всі ігри">-->
+</div>
 
-                <div class="results-container league-results-container" th:each="game : ${tour.gameList}">
-                    <div class="res-teams">
-                        <a th:if="${!#strings.isEmpty(game.firstTeam)}" th:attr="href=${'/cup/' + cupId + '/team/' + game.firstTeam.id}">
-                            <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
-                            <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
-                            <p th:text="${game.firstTeam.teamName}">
-                                game.firstTeam.teamName
-                            </p>
-                        </a>
-                        <a th:if="${#strings.isEmpty(game.firstTeam)}">
-                            <p>TBD</p>
-                        </a>
-                        <a th:if="${!#strings.isEmpty(game.secondTeam)}" th:attr="href=${'/cup/' + cupId + '/team/' + game.secondTeam.id}">
-                            <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
-                            <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
-                            <p th:text="${game.secondTeam.teamName}">
-                                game.secondTeam.teamName
-                            </p>
-                        </a>
-                        <a th:if="${#strings.isEmpty(game.secondTeam)}">
-                            <p>TBD</p>
-                        </a>
-                    </div>
-                    <div class="res-score">
-                        <a th:if="${!#strings.isEmpty(game.firstTeam) and !#strings.isEmpty(game.secondTeam)}" th:attr="href=${'/cup/' + cupId + '/game/' + game.id}">
-                            <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</p>
-                            <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">TBD</p>
-                            <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</p>
-                            <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</p>
-                            <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</p>
-                            <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() == ''}">TBD</p>
-                            <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</p>
-                            <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</p>
-                        </a>
-                    </div>
-                    <div class="res-date">
-                        <p th:text="${game.formatDate()}"></p>
-                        <p th:text="${game.formatTime()}"></p>
+<div class="main-container">
+    <div class="results vs-container">
+        <div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
+            <p>Матчі</p>
+        </div>
+        <div th:if="${#lists.isEmpty(gameList)}" class="matches-bg">
+            <div class="review-match">
+                <div class="review-head">
+                    <div class="review-score-empty">
+                        <span>Немає найближчих матчів</span>
                     </div>
                 </div>
-
             </div>
         </div>
-        <div>
-            <p class="table-header">Найкращі бомбардири</p>
-            <div class="bomb league">
-                <div class="bomb-position auto">
-                    <div class="bomb-title">№</div>
-                    <div th:each="playerGoal, iter : ${playerGoals}">
-                        <p th:text="${playerGoal.formatPosition(iter.index)}"></p>
-                    </div>
+        <div th:if="${not #lists.isEmpty(gameList)}" class="desktop">
+            <div th:each="game : ${gameList}" class="matches-bg">
+                <div class="match-res-date">
+                    <p th:text="${game.formatDate()} + ', ' + ${game.formatTime()}"></p>
                 </div>
-                <div class="bomb-player-name">
-                    <div class="bomb-title">Футболіст</div>
-                    <div th:each="playerGoal : ${playerGoals}">
-                        <a th:attr="href=${'/cup/' + cupId + '/player/' + playerGoal.player.id}">
-                            <p th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}"></p>
-                        </a>
-                    </div>
-                </div>
-                <div class="bomb-scored auto">
-                    <div class="bomb-title">М'ячів</div>
-                    <div th:each="playerGoal : ${playerGoals}">
-                        <p th:text="${playerGoal.goalList.size()}"></p>
-                    </div>
-                </div>
-                <div class="bomb-team auto">
-                    <div class="bomb-title">Команда</div>
-                    <div th:each="playerGoal : ${playerGoals}">
-                        <a th:attr="href=${'/cup/' + cupId + '/team/' + playerGoal.player.team.id}">
-                            <p th:text="${playerGoal.player.team.teamName}"></p>
-                        </a>
+                <div class="review-match">
+                    <div class="review-head">
+                        <div class="review-team1">
+                            <a th:attr="href=${'/cup/' + cupId + '/team/' + game.firstTeam.id}">
+                                <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
+                                <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
+                                <p th:text="${game.firstTeam.teamName}">Команда 1</p>
+                            </a>
+                        </div>
+                        <div th:if="${game.isNoTechnicalDefeat() == true}"
+                             th:classappend="${game.formatGoalsForTeamA() == ''}?tbd" class="review-score">
+                            <a th:attr="href=${'/cup/' + cupId + '/game/' + game.id}">
+                                <p>
+                                <span th:if="${game.isNoTechnicalDefeat() == true}"
+                                      th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</span>
+                                    <span th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">TBD</span>
+                                    <span th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</span>
+                                    <span th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</span>
+                                    :
+                                    <span th:if="${game.isNoTechnicalDefeat() == true}"
+                                          th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</span>
+                                    <span th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() == ''}">TBD</span>
+                                    <span th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</span>
+                                    <span th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</span>
+                                </p>
+                            </a>
+                        </div>
+                        <div class="review-team2">
+                            <a th:attr="href=${'/cup/' + cupId + '/team/' + game.secondTeam.id}">
+                                <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
+                                <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
+                                <p th:text="${game.secondTeam.teamName}">Команда 2</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div th:if="${not #lists.isEmpty(gameList)}" class="res-tour-allmatch mobile">
+            <div class="results-container league-results-container" th:each="game : ${gameList}">
+                <div class="res-teams">
+                    <a th:attr="href=${'/cup/' + cupId + '/team/' + game.firstTeam.id}">
+                        <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
+                        <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
+                        <p th:text="${game.firstTeam.teamName}">
+                            game.firstTeam.teamName
+                        </p>
+                    </a>
+                    <a th:attr="href=${'/cup/' + cupId + '/team/' + game.secondTeam.id}">
+                        <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
+                        <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
+                        <p th:text="${game.secondTeam.teamName}">
+                            game.secondTeam.teamName
+                        </p>
+                    </a>
+                </div>
+                <div class="res-score">
+                    <a th:attr="href=${'/cup/' + cupId + '/game/' + game.id}">
+                        <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() != ''}"
+                           th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</p>
+                        <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">TBD</p>
+                        <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</p>
+                        <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</p>
+                        <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() != ''}"
+                           th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</p>
+                        <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() == ''}">TBD</p>
+                        <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</p>
+                        <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</p>
+                    </a>
+                </div>
+                <div class="res-date">
+                    <p th:text="${game.formatDate()}"></p>
+                    <p th:text="${game.formatTime()}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <a th:href="'/cup/' + ${cupId} + '/results'">
+                <input class="reg-input-button match-all-button" type="button" value="ПЕРЕГЛЯНУТИ ВСІ"/>
+            </a>
+        </div>
+    </div>
+    <div class="score-tables">
+<!--        <p class="table-header">Таблиця чемпіонату</p>
+        <div class="table">
+            <div class="table-position auto">
+                <div class="table-title">№</div>
+                <div th:each="result,i : ${resultList}" th:text="${i.count}"></div>
+            </div>
+            <div class="table-team-name full">
+                <div class="table-title">Команда</div>
+                <div th:each="result : ${resultList}">
+                    <a th:attr="href=${'/cup/' + cupId + '/team/' + result.team.id}">
+                        <img th:attr="src=${result.team.logoImageUrl}, class=${'light' + ' ' + 'team' + result.team.id}">
+                        <img th:attr="src=${result.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + result.team.id}">
+                        <p th:text="${result.teamName}"></p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="table-games table-offset ">
+                <div class="table-title">І</div>
+                <div th:each="result : ${resultList}">
+                    <p th:text="${result.numberOfGames}"></p>
+                </div>
+            </div>
+            <div class="table-points table-offset">
+                <div class="table-title">О</div>
+                <div th:each="result : ${resultList}">
+                    <p th:text="${result.points}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <a th:href="'/cup/' + ${cupId} + '/gametable'">
+                <input class="reg-input-button match-all-button table-button" type="button" value="ПЕРЕГЛЯНУТИ ВСІ"/>
+            </a>
+        </div>-->
+        <p class="table-header">Найкращі бомбардири</p>
+        <div class="bomb league">
+            <div class="bomb-position auto">
+                <div class="bomb-title">№</div>
+                <div th:each="playerGoal, iter : ${playerGoals}">
+                    <p th:text="${playerGoal.formatPosition(iter.index)}"></p>
+                </div>
+            </div>
+            <div class="bomb-player-name">
+                <div class="bomb-title">Футболіст</div>
+                <div th:each="playerGoal : ${playerGoals}">
+                    <a th:attr="href=${'/cup/' + cupId + '/player/' + playerGoal.player.id}">
+                        <p th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}"></p>
+                    </a>
+                </div>
+            </div>
+            <div class="bomb-scored auto">
+                <div class="bomb-title">М'ячів</div>
+                <div th:each="playerGoal : ${playerGoals}">
+                    <p th:text="${playerGoal.goalList.size()}"></p>
+                </div>
+            </div>
+            <div class="bomb-team auto">
+                <div class="bomb-title">Команда</div>
+                <div th:each="playerGoal : ${playerGoals}">
+                    <a th:attr="href=${'/cup/' + cupId + '/team/' + playerGoal.player.team.id}">
+                        <p th:text="${playerGoal.player.team.teamName}"></p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <a th:href="'/cup/' + ${cupId} + '/bombardier'">
+                <input class="reg-input-button match-all-button table-button" type="button" value="ПЕРЕГЛЯНУТИ ВСІ"/>
+            </a>
         </div>
     </div>
 </div>

@@ -213,6 +213,14 @@ a, a:hover {
     width: 100%;
     padding-top: 20vh;
 }
+.player-background {
+    background: url(img/foot77.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+    width: 100%;
+    padding-top: 20vh;
+}
 .gametable-background {
     background: url(img/foot22.jpg);
     background-position: center;
@@ -598,11 +606,11 @@ input[type=submit] {
 }
 .res-tour-title {
     text-align: center;
-    color: #FFF;
+    color: #000;
     font-size: 1.2rem;
     font-weight: 600;
     padding-top: 10px;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
 }
 .res-tour-allmatch {
     display: flex;
@@ -782,7 +790,7 @@ input[invalid-input] {
 
 /*match review*/
 .matches-full {
-    background: url("img/foot77.jpg");
+    /*background: url("img/foot77.jpg");*/
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -947,6 +955,7 @@ input[invalid-input] {
 .match-video p {
     text-align: center;
     font-size: 1.8rem;
+    margin-bottom: 1rem;
 }
 .team-players {
     margin: 0 auto;
@@ -1043,13 +1052,19 @@ input[invalid-input] {
     margin: 0 auto;
     background: #fff;
     margin-top: 15px;
+    border-radius: 10px;
+}
+.player-card-photo {
+    margin: 20px;
 }
 .player-card-photo img {
-    width: 200px;
+    max-width: 200px;
+    width: 100%;
 }
 .player-card-info {
     padding-left: 10px;
     line-height: 1.6;
+    padding: 10px 10px;
 }
 .player-card-info p {
     white-space: nowrap;
@@ -1064,6 +1079,7 @@ input[invalid-input] {
 .player-card-info p:nth-child(2n+2) {
     font-size: 1.3rem;
     font-weight: 600;
+    margin-bottom: 20px;
 }
 .player-card-info span {
     padding-left: 3px;
@@ -1075,8 +1091,8 @@ input[invalid-input] {
     padding-left: 3px;
 }
 .player-card-logo-team img {
-    width: 24px;
-    height: 24px;
+/*    width: 24px;*/
+    height: 35px;
 }
 .player-card-logo-team-score {
     display: flex;
@@ -1362,7 +1378,8 @@ input[invalid-input] {
         width: 120px;
     }
     .review-score p {
-        font-size: 1.6rem;
+        /*font-size: 1.6rem;*/
+        font-size: 1rem !important;
     }
     .results-container {
         width: 90% !important;
@@ -1408,6 +1425,7 @@ input[invalid-input] {
     }
     .player-card-photo {
         margin: 0 auto;
+        margin-top: 20px;
     }
     .player-card-info p:first-child {
         text-align: center;
@@ -1538,6 +1556,9 @@ input[invalid-input] {
       background: var(--main-sf-color);
       color: var(--main-text-color);
   }
+  .description-text {
+      background: #272c34;
+  }
   .res-teams img {
       display: block;
       box-sizing: border-box;
@@ -1580,7 +1601,7 @@ input[invalid-input] {
     .player-card-logo-team img {
         display: block;
         box-sizing: border-box;
-        padding-left: 24px;
+        /*padding-left: 24px;*/
         background-size: 100%;
     }
     .review-team1 img, .review-team2 img {
@@ -1605,7 +1626,7 @@ input[invalid-input] {
     }
     .matches-full {
         background-color: var(--main-bg-color);
-        background-image: url(img/foot77-dark.jpg);
+/*        background-image: url(img/foot77-dark.jpg);*/
     }
     .results-full, .team-results-full {
         background-color: var(--main-bg-color);
@@ -1619,6 +1640,11 @@ input[invalid-input] {
     }
     .results-background {
         background: url(img/foot66-dark.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+    .player-background {
+        background: url(img/foot77-dark.jpg);
         background-position: center;
         background-size: cover;
     }

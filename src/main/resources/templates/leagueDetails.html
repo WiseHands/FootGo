@@ -28,8 +28,8 @@
         </div>
     </div>
     <div id="myLinks">
-        <a href="/"><p th:text="${season.name}"></p></a>
-        <a th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a>
+        <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
+        <div><a class="link-item" th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a></div>
     </div>
 </header>
 <div class="main-head league-main-head">

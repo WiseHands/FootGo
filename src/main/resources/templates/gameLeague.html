@@ -10,7 +10,6 @@
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
 </head>
 <body class="matches-full">
-
 <header>
 	<div class="header-full">
 		<div class="header-first-block">
@@ -23,17 +22,24 @@
 				</a>
 			</div>
 			<div class="header-text">
-				<a href="/signup" th:if="${season.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
+				<a href="/"><p th:text="${season.name}"></p></a>
+				<a th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a>
+				<a th:href="'/league/' + ${league.id} + '/game/' + ${gameId}"><p>Матч</p></a>
 			</div>
 		</div>
 		<div class="header-second-block">  </div>
 	</div>
 	<div id="myLinks">
-		<div th:if="${season.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
+		<div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
+		<div><a class="link-item" th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a></div>
+		<div><a class="link-item" th:href="'/league/' + ${league.id} + '/game/' + ${gameId}"><p>Матч</p></a></div>
 	</div>
 </header>
-
-
+<div class="main-head main-head-results player-background">
+	<div class="main-head-title league-page">
+		<h1 th:text="${league.name}"></h1>
+	</div>
+</div>
 <div>
 	<div class="matches-null"></div>
 	<div class="matches-bg">
