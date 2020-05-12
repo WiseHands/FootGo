@@ -91,13 +91,16 @@ a, a:hover {
     padding-top: 10px;
     margin-bottom: 50px;
 }
-.main-where, .main-when, .main-about, .main-video, .request-block {
+.main-where, .main-when, .main-about, .main-video, .request-block, .matches-bg, .logo-team-bg {
     display: flex;
     flex-direction: column;
     width: 50%;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
+}
+.instagram-iframe {
+    margin-bottom: 20px;
 }
 .main-video {
     justify-content: space-between;
@@ -276,7 +279,7 @@ a, a:hover {
 .main-head h1 {
     padding: 20px 0 20px 0;
 }
-.main-about iframe {
+iframe {
     margin: 0 auto;
     padding: 10px 0;
     height: 580px;
@@ -525,6 +528,7 @@ input[type=submit] {
 
 .bomb-full {
 /*    background-image: url("img/foot44.jpg");*/
+    background: #f7f7f5;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -565,6 +569,7 @@ input[type=submit] {
 }
 .results-full {
 /*    background: url("img/foot66.jpg");*/
+    background: #f7f7f5;
     background-attachment: fixed;
     background-position: center;
     background-size: contain;
@@ -573,6 +578,7 @@ input[type=submit] {
 }
 .team-results-full {
 /*    background: url("img/foot66.jpg");*/
+    background: #f7f7f5;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -615,6 +621,7 @@ input[type=submit] {
     padding: 15px;
     border-radius: 5px;
     margin: 0 7px 7px 0;
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
 }
 .res-title {
     color: #FFF;
