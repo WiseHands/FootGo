@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="/style.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/hamburger.css">
-
-
 </head>
 <body class="team-results-full">
 <header>
@@ -73,12 +71,16 @@
                     </div>
                     <div class="res-score">
                         <a th:attr="href=${'/cup/' + cup.id + '/game/' + game.id}">
-                            <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</p>
-                            <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">TBD</p>
+                            <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">
+                                game.teamAGoals.size()</p>
+                            <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">
+                                TBD</p>
                             <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</p>
                             <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</p>
-                            <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</p>
-                            <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() == ''}">TBD</p>
+                            <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamB()}">
+                                game.teamBGoals.size()</p>
+                            <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() == ''}">
+                                TBD</p>
                             <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</p>
                             <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</p>
                         </a>
@@ -88,35 +90,32 @@
                         <p th:text="${game.formatTime()}"></p>
                     </div>
                 </div>
-                    <!--<div class="results-date">-->
-                        <!--<p th:text="${game.formatDate() + '  ' + game.formatTime()}">-->
-                            <!--game.gameTime-->
-                        <!--</p>-->
-                    <!--</div>-->
-                    <!--<div class="results-team1">-->
-                        <!--<p th:text="${game.firstTeam.teamName}">-->
-                            <!--game.firstTeam.teamName-->
-                        <!--</p>-->
-                        <!--<img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}">-->
-                    <!--</div>-->
-                    <!--<div class="results-score"><p>-->
-                        <!--<span th:text="${game.teamAGoals.size()}">game.teamAGoals.size()</span>-->
-                        <!--:-->
-                        <!--<span th:text="${game.teamBGoals.size()}">game.teamBGoals.size()</span></p>-->
-                    <!--</div>-->
-                    <!--<div class="results-team2">-->
-                        <!--<img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}">-->
-                        <!--<p th:text="${game.secondTeam.teamName}">-->
-                            <!--game.secondTeam.teamName-->
-                        <!--</p>-->
-                    <!--</div>-->
-                </div>
-        </div>
-        </div>
-
+                <!--<div class="results-date">-->
+                <!--<p th:text="${game.formatDate() + '  ' + game.formatTime()}">-->
+                <!--game.gameTime-->
+                <!--</p>-->
+                <!--</div>-->
+                <!--<div class="results-team1">-->
+                <!--<p th:text="${game.firstTeam.teamName}">-->
+                <!--game.firstTeam.teamName-->
+                <!--</p>-->
+                <!--<img th:attr="src=${'/logo/logo' + game.firstTeam.id + '.png'}">-->
+                <!--</div>-->
+                <!--<div class="results-score"><p>-->
+                <!--<span th:text="${game.teamAGoals.size()}">game.teamAGoals.size()</span>-->
+                <!--:-->
+                <!--<span th:text="${game.teamBGoals.size()}">game.teamBGoals.size()</span></p>-->
+                <!--</div>-->
+                <!--<div class="results-team2">-->
+                <!--<img th:attr="src=${'/logo/logo' + game.secondTeam.id + '.png'}">-->
+                <!--<p th:text="${game.secondTeam.teamName}">-->
+                <!--game.secondTeam.teamName-->
+                <!--</p>-->
+                <!--</div>-->
+            </div>
         </div>
     </div>
-
+</div>
     <div class="team-players">
         <h3>Гравці</h3>
         <div class="all-players">
@@ -124,33 +123,33 @@
                 <p class="no-players">Немає гравців</p>
             </div>
             <div th:each="item : ${team.players}">
-                    <a th:attr="href=${'/cup/' + cup.id + '/player/' + item.id}">
-                        <div class="player-card">
-                            <div class="player-photo">
-                                <img src="/img/tshirt.png">
-                                <span th:if="${item.isTwoDigits() == false}" class="player-1digit">
+                <a th:attr="href=${'/cup/' + cup.id + '/player/' + item.id}">
+                    <div class="player-card">
+                        <div class="player-photo">
+                            <img src="/img/tshirt.png">
+                            <span th:if="${item.isTwoDigits() == false}" class="player-1digit">
                                     <span th:text="${item.formatNumber()}"></span>
                                 </span>
-                                <span th:if="${item.isTwoDigits() == true}" class="player-2digit">
+                            <span th:if="${item.isTwoDigits() == true}" class="player-2digit">
                                     <span th:text="${item.formatNumber()}"></span>
                                 </span>
-                            </div>
-                            <div class="player-info">
-                                <div class="player-logo">
-                                    <img th:if="${item.getImageUrl() != ''}" th:attr="src=${item.getImageUrl()}">
-                                    <img th:if="${item.getImageUrl() == null OR item.getImageUrl() == ''}" src="/img/img_avatar.png">
-                                </div>
-                                <div class="player-score-name">
-                                    <h4 th:text="${item.getPlayerFirstName()}"></h4>
-                                    <h4 th:text="${item.getPlayerLastName()}"></h4>
-                                </div>
-                             </div>
                         </div>
-                    </a>
+                        <div class="player-info">
+                            <div class="player-logo">
+                                <img th:if="${item.getImageUrl() != ''}" th:attr="src=${item.getImageUrl()}">
+                                <img th:if="${item.getImageUrl() == null OR item.getImageUrl() == ''}"
+                                     src="/img/img_avatar.png">
+                            </div>
+                            <div class="player-score-name">
+                                <h4 th:text="${item.getPlayerFirstName()}"></h4>
+                                <h4 th:text="${item.getPlayerLastName()}"></h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
-
 </div>
 <script src="/signUpScript.js"></script>
 <script src="/hamburger.js"></script>
@@ -165,7 +164,6 @@
 
   gtag('config', 'UA-39722519-3');
 </script>
-
 
 </body>
 </html>
