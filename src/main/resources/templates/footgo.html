@@ -24,7 +24,7 @@
                 </a>
             </div>
             <div class="header-text">
-                <a href="/signup" th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
+                <a href="/signup" th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><p>Зареєструватись</p></a>
                 <div class="season-list">
                     <button class="dropbtn">Сезон 2020
                         <i class="fa fa-caret-down"></i>
@@ -38,7 +38,7 @@
 
     </div>
     <div id="myLinks">
-        <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
+        <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Зареєструватись</a></div>
         <div class="season-list">
             <button class="dropbtn">Сезон 2020</button>
             <div class="prev-seasons">
@@ -47,25 +47,40 @@
         </div>
     </div>
 </header>
-    <div class="main-head">
-        <div class="main-head-title">
-            <div class="main-head-logo" alt="wiselogo"></div>
-            <h1>Аматорський турнір з футболу</h1>
-            <h1 th:if="${not #lists.isEmpty(season)}" th:text="${season.name}"></h1>
-            <h1 th:if="${#lists.isEmpty(tournament)}" class="empty-text-error">Не створено жодного турніру</h1>
-            <h1 th:if="${#lists.isEmpty(season)}" class="empty-text-error">Немає активних сезонів</h1>
-<!--            <div class="main-head-teamlogo">
-                <div th:each="item : ${teamList}" class="main-head-eachteam">
-                    <a th:attr="href=${'/team/' + item.id}">
-                        <img th:attr="src=${item.logoImageUrl}, class=${'light' + ' ' + 'team' + item.id}">
-                        <img th:attr="src=${item.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + item.id}">
-                    </a>
-                </div>
-            </div>-->
+<div class="main-head">
+    <div class="main-head-title">
+        <div class="main-head-logo" alt="wiselogo"></div>
+        <h1>Аматорський турнір з футболу</h1>
+        <h1 th:if="${not #lists.isEmpty(season)}" th:text="${season.name}"></h1>
+        <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}" class="button-container">
+            <a href="/signup">
+                <input class="reg-input-button match-all-button" type="button" value="ЗАРЕЄСТРУВАТИСЬ"/>
+            </a>
         </div>
+        <h1 th:if="${#lists.isEmpty(tournament)}" class="empty-text-error">Не створено жодного турніру</h1>
+        <h1 th:if="${#lists.isEmpty(season)}" class="empty-text-error">Немає активних сезонів</h1>
+        <!--            <div class="main-head-teamlogo">
+                        <div th:each="item : ${teamList}" class="main-head-eachteam">
+                            <a th:attr="href=${'/team/' + item.id}">
+                                <img th:attr="src=${item.logoImageUrl}, class=${'light' + ' ' + 'team' + item.id}">
+                                <img th:attr="src=${item.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + item.id}">
+                            </a>
+                        </div>
+                    </div>-->
     </div>
+</div>
+<div class="main-head-title mobile-head">
+    <div class="main-head-logo" alt="wiselogo"></div>
+    <h1 th:if="${not #lists.isEmpty(season)}" th:text="${season.name}"></h1>
+    <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}" class="button-container">
+        <a href="/signup">
+            <input class="reg-input-button match-all-button" type="button" value="ЗАРЕЄСТРУВАТИСЬ"/>
+        </a>
+    </div>
+    <h1 th:if="${#lists.isEmpty(tournament)}" class="empty-text-error">Не створено жодного турніру</h1>
+    <h1 th:if="${#lists.isEmpty(season)}" class="empty-text-error">Немає активних сезонів</h1>
+</div>
 <div class="main-block">
-
     <div class="main-text">
         <div class="main-about">
             <h1>Аматорський турнір з футболу</h1>
@@ -155,7 +170,7 @@
             <p>Ігри проводяться раз в тиждень, середу або четвер о 19:45 або 20:45</p>
         </div>
     </div>
-    <div class="main-league">
+    <div th:if="${not #lists.isEmpty(leagueList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" class="main-league">
         <div th:each="league : ${leagueList}" class="main-about">
             <a th:href="'/league/' + ${league.id}">
                 <h1 th:text="${league.name}"></h1>
@@ -174,7 +189,7 @@
             </div>
         </div>
     </div>
-    <div th:if="${!#lists.isEmpty(cupList)}" class="main-cup">
+    <div th:if="${not #lists.isEmpty(cupList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" class="main-cup">
         <div th:each="cup : ${cupList}" class="main-about">
             <a th:href="'/cup/' + ${cup.id}">
                 <h1 th:text="${cup.name}"></h1>

@@ -17,6 +17,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
+import static java.util.Objects.isNull;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -75,11 +76,13 @@ public class HttpRequestsController {
             Tournament tournament = tournaments.get(0);
             model.addAttribute("tournament", tournament);
             Season season = tournament.getActiveSeason();
-            model.addAttribute("season", season);
-            List<League> leagueList = season.getLeagueList();
-            model.addAttribute("leagueList", leagueList);
-            List<Cup> cupList = season.getCupList();
-            model.addAttribute("cupList", cupList);
+            if (!isNull(season)) {
+                model.addAttribute("season", season);
+                List<League> leagueList = season.getLeagueList();
+                model.addAttribute("leagueList", leagueList);
+                List<Cup> cupList = season.getCupList();
+                model.addAttribute("cupList", cupList);
+            }
         }
         return "footgo";
     }
