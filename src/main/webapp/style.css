@@ -477,7 +477,9 @@ input[type=submit] {
 /*    font-weight: 600;*/
     margin-bottom: 20px;
 }
-
+.empty-text-error {
+    color: red;
+}
 .table-position, .bomb-position {
     width: 5%;
 }

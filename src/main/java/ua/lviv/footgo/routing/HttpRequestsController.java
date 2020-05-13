@@ -71,15 +71,16 @@ public class HttpRequestsController {
     public String footgo(Model model, @RequestParam(value = "name", required = false) String name) {
         model.addAttribute("name", name);
         List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
-        Tournament tournament = tournaments.get(0);
-        model.addAttribute("tournament", tournament);
-        Season season = tournament.getActiveSeason();
-        model.addAttribute("season", season);
-        List<League> leagueList = season.getLeagueList();
-        model.addAttribute("leagueList", leagueList);
-        List<Cup> cupList = season.getCupList();
-        model.addAttribute("cupList", cupList);
-
+        if (!tournaments.isEmpty()) {
+            Tournament tournament = tournaments.get(0);
+            model.addAttribute("tournament", tournament);
+            Season season = tournament.getActiveSeason();
+            model.addAttribute("season", season);
+            List<League> leagueList = season.getLeagueList();
+            model.addAttribute("leagueList", leagueList);
+            List<Cup> cupList = season.getCupList();
+            model.addAttribute("cupList", cupList);
+        }
         return "footgo";
     }
     @GetMapping({"/signup"})
