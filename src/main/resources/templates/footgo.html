@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>Foot&Go - аматорський турнір з футболу 8 на 8 у м.Львів</title>
+    <title>Foot&Go - аматорський турнір з футболу 8 на 8 у Львові</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="img/footgo-dark-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
@@ -26,11 +26,14 @@
             <div class="header-text">
                 <a href="/signup" th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><p>Зареєструватись</p></a>
                 <div class="season-list">
-                    <button class="dropbtn">Сезон 2020
+                    <button th:text="${season.name}" class="dropbtn">
                         <i class="fa fa-caret-down"></i>
                     </button>
+                        <div th:each="pastSeason : ${seasonList}" class="prev-seasons">
+                            <a th:href="'/'" th:text="${pastSeason.name}"></a>
+                        </div>
                         <div class="prev-seasons">
-                            <a href="">Осінь 2019</a>
+                            <a href="https://2019.footgo-league.com">Осінь 2019</a>
                         </div>
                 </div>
             </div>

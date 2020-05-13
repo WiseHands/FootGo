@@ -83,6 +83,9 @@ public class HttpRequestsController {
                 List<Cup> cupList = season.getCupList();
                 model.addAttribute("cupList", cupList);
             }
+            //List<Season> seasonList = tournament.getSeasonList();
+/*            List<Season> seasonList = seasonRepository.getSeasonsExceptActive(season.getId());
+            model.addAttribute("seasonList", seasonList);*/
         }
         return "footgo";
     }

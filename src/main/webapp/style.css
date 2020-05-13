@@ -298,6 +298,8 @@ a, a:hover {
 iframe {
     margin: 0 auto;
     padding: 10px 0;
+}
+.instagram-iframe iframe {
     height: 580px;
 }
 .main-about h1, .main-video h1 {
@@ -963,6 +965,7 @@ input[invalid-input] {
 }
 .match-video {
     padding-top: 30px;
+    padding-bottom: 30px;
 }
 .match-video iframe {
     display: flex;
@@ -1485,6 +1488,9 @@ input[invalid-input] {
     text-align: left;
     padding: 1rem;
     width: 60%;
+}
+.description-text span {
+    word-break: break-all;
 }
 .cards {
     padding: 20px 0 20px 0;
