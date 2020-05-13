@@ -946,12 +946,13 @@ input[type="file"] {
     max-width: 100%;
     min-width: 100%;
     border-radius: 5px;
+    margin-bottom: 15px;
 }
 .new-season h1 {
     padding: 1rem 0;
 }
 ul.menu-breadcrumb {
-    padding: 0 16px 10px 0;
+    padding: 0 16px 10px 16px;
     margin-bottom: 0;
     list-style: none;
 }
