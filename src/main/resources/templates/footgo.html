@@ -26,13 +26,11 @@
             <div class="header-text">
                 <a href="/signup" th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><p>Зареєструватись</p></a>
                 <div class="season-list">
-                    <button th:text="${season.name}" class="dropbtn">
+                    <button th:if="${not #lists.isEmpty(season)}" th:text="${season.name}" class="dropbtn">
                         <i class="fa fa-caret-down"></i>
                     </button>
-                        <div th:each="pastSeason : ${seasonList}" class="prev-seasons">
-                            <a th:href="'/'" th:text="${pastSeason.name}"></a>
-                        </div>
-                        <div class="prev-seasons">
+                        <div th:each="season : ${seasonList}" class="prev-seasons">
+                            <a href="/" th:text="${season.name}"></a>
                             <a href="https://2019.footgo-league.com">Осінь 2019</a>
                         </div>
                 </div>
@@ -43,9 +41,10 @@
     <div id="myLinks">
         <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Зареєструватись</a></div>
         <div class="season-list">
-            <button class="dropbtn">Сезон 2020</button>
-            <div class="prev-seasons">
-                <a href="">Осінь 2019</a>
+            <button th:if="${not #lists.isEmpty(season)}" th:text="${season.name}" class="dropbtn"></button>
+            <div th:each="season : ${seasonList}" class="prev-seasons">
+                <a href="/" th:text="${season.name}"></a>
+                <a href="https://2019.footgo-league.com">Осінь 2019</a>
             </div>
         </div>
     </div>
@@ -215,13 +214,18 @@
         <a href="https://www.instagram.com/footgo.league" target="_blank">
             <h1>Instagram</h1>
         </a>
-        <iframe src="https://www.instagram.com/p/B9PdeKFFfSy/embed " width="93%" height="90%" frameborder="0"
-                scrolling="yes" allowtransparency="true"></iframe>
+        <div class="instagram-widget">
+            <script src="https://apps.elfsight.com/p/platform.js"></script>
+            <div class="elfsight-app-7577577c-ea5f-42a6-ad8c-5a943c890bcb"></div>
+        </div>
+<!--        <iframe src="https://www.instagram.com/p/B9PdeKFFfSy/embed " width="93%" height="90%" frameborder="0"
+                scrolling="yes" allowtransparency="true"></iframe>-->
     </div>
 </div>
 
 <script src="signUpScript.js"></script>
 <script src="hamburger.js"></script>
+<script src="widget.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39722519-3"></script>

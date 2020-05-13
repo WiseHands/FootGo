@@ -101,6 +101,7 @@ a, a:hover {
 }
 .instagram-iframe {
     margin-bottom: 20px;
+    width: 100%;
 }
 .main-video {
     justify-content: space-between;
@@ -1142,6 +1143,9 @@ input[invalid-input] {
 }
 .mobile-head {
     display: none;
+}
+.instagram-widget {
+    margin-top: 1em;
 }
 @media screen and (max-width: 900px) {
     .league-results-container {
