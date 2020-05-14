@@ -29,14 +29,12 @@
                     <button th:if="${not #lists.isEmpty(season)}" th:text="${season.name}" class="dropbtn">
                         <i class="fa fa-caret-down"></i>
                     </button>
-                        <div th:each="season : ${seasonList}" class="prev-seasons">
-                            <a href="/" th:text="${season.name}"></a>
-                            <a href="https://2019.footgo-league.com">Осінь 2019</a>
-                        </div>
+                    <div th:if="${not #lists.isEmpty(seasonList)}" class="prev-seasons">
+                        <a th:each="season : ${seasonList}" href="/" th:text="${season.name}"></a>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
     <div id="myLinks">
         <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Зареєструватись</a></div>
@@ -44,7 +42,6 @@
             <button th:if="${not #lists.isEmpty(season)}" th:text="${season.name}" class="dropbtn"></button>
             <div th:each="season : ${seasonList}" class="prev-seasons">
                 <a href="/" th:text="${season.name}"></a>
-                <a href="https://2019.footgo-league.com">Осінь 2019</a>
             </div>
         </div>
     </div>
@@ -215,13 +212,15 @@
             <h1>Instagram</h1>
         </a>
         <div class="instagram-widget">
-            <script src="https://apps.elfsight.com/p/platform.js"></script>
+            <script src="platform.js"></script>
             <div class="elfsight-app-7577577c-ea5f-42a6-ad8c-5a943c890bcb"></div>
         </div>
 <!--        <iframe src="https://www.instagram.com/p/B9PdeKFFfSy/embed " width="93%" height="90%" frameborder="0"
                 scrolling="yes" allowtransparency="true"></iframe>-->
     </div>
 </div>
+
+<div th:replace="fragments/footer :: footer"></div>
 
 <script src="signUpScript.js"></script>
 <script src="hamburger.js"></script>

@@ -1147,6 +1147,68 @@ input[invalid-input] {
 .instagram-widget {
     margin-top: 1em;
 }
+footer {
+/*    min-height: 200px;*/
+    background-color: #f2f2f2;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 2rem 1rem;
+}
+.landing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+}
+.footer-item {
+    font-weight: 400;
+    line-height: 2;
+}
+.footer-logo {
+    padding-bottom: 1rem;
+}
+.footer-logo a, .footer-powered a {
+    display: flex;
+    align-items: center;
+}
+.footer-logo img {
+    width: 36px;
+    height: 36px;
+    margin-right: 0.5rem;
+}
+.footer-powered {
+    display: flex;
+}
+.footer-powered img {
+    width: 36px;
+    margin-right: 0.5rem;
+}
+.footer-logo p {
+    font-size: 1.4rem;
+}
+.footer-bottom {
+    margin-top: 1rem;
+    padding: 2rem 1rem;
+    border-top: 1px solid #d4d4d4;
+    color: #6E6E6E;
+}
+.landing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+}
+.footer-address a, .footer-phone a, .footer-social {
+    display: flex;
+    align-items: center;
+}
+.footer-social {
+    width: 150px;
+    justify-content: space-around;
+}
 @media screen and (max-width: 900px) {
     .league-results-container {
         margin: 7px auto !important;
@@ -1184,7 +1246,7 @@ input[invalid-input] {
     .main-where-when, .main-text {
         flex-direction: column;
     }
-    .main-where, .main-when, .main-about, .main-video, .main-league, .main-cup {
+    .main-where, .main-when, .main-about, .main-video {
         width: 95%;
         margin: 10px auto;
     }
@@ -1557,7 +1619,7 @@ input[invalid-input] {
   header, .main-photo, .prev-seasons, .dropbtn, .registration-photo {
       background: var(--main-bg-color);
   }
-  .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan {
+  .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom {
       background: var(--main-sf-color);
       color: var(--main-text-color);
   }
@@ -1717,6 +1779,9 @@ input[invalid-input] {
     .empty-text-error {
         color: #cf6679;
         text-align: center;
+    }
+    footer {
+        background-color: var(--main-sf-color);
     }
 }
 /*Dark-mode end*/
