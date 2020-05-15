@@ -41,7 +41,7 @@
 		<h1 th:text="${cup.name}"></h1>
 	</div>
 </div>
-<div>
+<div class="matches-container">
 	<div class="matches-null"></div>
 	<div class="matches-bg">
 		<div class="tour-number">
@@ -160,7 +160,7 @@
 			<p>Відео матчу</p>
 			<iframe width="500" height="281" th:attr="src=${game.videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
-		<div class="match-video" th:if="${game.descriptionText != null} AND ${game.descriptionText != ''}">
+		<div class="match-video video-description" th:if="${game.descriptionText != null} AND ${game.descriptionText != ''}">
 			<p>Опис матчу</p>
 			<div class="results-container description-text">
 				<span th:text="${game.descriptionText}">

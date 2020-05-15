@@ -16,7 +16,7 @@ header   {
     display: flex;
     justify-content: space-between;
     max-width: 900px;
-    height: 100%;
+/*    height: 100%;*/
     margin: 0 auto;
 }
 .header-first-block {
@@ -88,8 +88,7 @@ a, a:hover {
 }
 .main-text, .main-where-when, .main-league, .main-cup {
     display: flex;
-    padding-top: 10px;
-    margin-bottom: 50px;
+    padding-top: 20px;
 }
 .main-where, .main-when, .main-about, .main-video, .request-block, .matches-bg, .logo-team-bg {
     display: flex;
@@ -100,6 +99,7 @@ a, a:hover {
     box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
 }
 .instagram-iframe {
+    margin-top: 20px;
     margin-bottom: 20px;
     width: 100%;
 }
@@ -111,11 +111,16 @@ a, a:hover {
     padding: 10px 0 0 10px;
     line-height: 1.4;
 }
-.main-about-team-match, .main-about-league {
+.main-about-team-match {
     display: flex;
     justify-content: space-around;
     padding-top: 10px;
     height: 100%;
+}
+.main-about-league {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
 }
 .main-about-team, .main-about-match {
     display: flex;
@@ -196,7 +201,7 @@ a, a:hover {
     /*background-position: center;*/
     /*background-size: cover;*/
     background-color: #f7f7f5;
-    height: 100vh ;
+/*    height: 100vh ;*/
 }
 .main-head {
     background: url("img/mainphoto.jpg");
@@ -204,7 +209,7 @@ a, a:hover {
     background-size: cover;
     height: 50vh;
     width: 100%;
-    padding-top: 20vh;
+    padding-top: 15vh;
 }
 .results-background {
     background: url(img/foot66.jpg);
@@ -212,7 +217,7 @@ a, a:hover {
     background-size: cover;
     height: 50vh;
     width: 100%;
-    padding-top: 20vh;
+/*    padding-top: 20vh;*/
 }
 .player-background {
     background: url(img/foot77.jpg);
@@ -220,7 +225,7 @@ a, a:hover {
     background-size: cover;
     height: 50vh;
     width: 100%;
-    padding-top: 20vh;
+/*    padding-top: 20vh;*/
 }
 .gametable-background {
     background: url(img/foot22.jpg);
@@ -228,7 +233,7 @@ a, a:hover {
     background-size: cover;
     height: 50vh;
     width: 100%;
-    padding-top: 20vh;
+    padding-top: 15vh;
 }
 .bombardier-background {
     background: url(img/foot44.jpg);
@@ -236,7 +241,7 @@ a, a:hover {
     background-size: cover;
     height: 50vh;
     width: 100%;
-    padding-top: 20vh;
+/*    padding-top: 20vh;*/
 }
 .league-team-background {
     background: url(img/foot66.jpg);
@@ -244,7 +249,7 @@ a, a:hover {
     background-size: cover;
     height: 50vh;
     width: 100%;
-    padding-top: 20vh;
+/*    padding-top: 20vh;*/
 }
 .signup-background {
     background: url(img/foot33.jpg);
@@ -267,12 +272,9 @@ a, a:hover {
 .league-page {
     max-width: 450px;
 }
-.league-main-head {
-    height: 30vh;
-    margin-bottom: 2vh;
-}
-.main-head-results {
-    height: 30vh;
+.league-main-head, .main-head-results {
+    height: 0;
+    padding-bottom: 20%;
 }
 .main-head-title .main-head-logo {
     height: 200px;
@@ -466,6 +468,7 @@ input[type=submit] {
 }
 .table-full {
 /*    background: url("img/foot22.jpg");*/
+    background: #f7f7f5;
     background-position: center;
     background-size: cover;
     height: 100vh;
@@ -480,8 +483,15 @@ input[type=submit] {
 .table-head p {
     font-size: 2.2em;
     font-weight: 700;
-    color: #fff;
+/*    color: #fff;*/
     margin: 10px 0 10px 0;
+}
+body{
+  display:flex;
+  flex-direction:column;
+}
+footer{
+  margin-top:auto;
 }
 .table, .bomb {
     display: flex;
@@ -493,9 +503,6 @@ input[type=submit] {
     font-size: 1.1em;
 /*    font-weight: 600;*/
     margin-bottom: 20px;
-}
-.bomb {
-    min-height: 25vh;
 }
 .empty-text-error {
     color: #b00020;
@@ -596,6 +603,9 @@ input[type=submit] {
 .bomb-team {
     width: 33%;
 }
+.bomb-container {
+    min-height: 34vh;
+}
 .results-full {
 /*    background: url("img/foot66.jpg");*/
     background: #f7f7f5;
@@ -604,6 +614,7 @@ input[type=submit] {
     background-size: contain;
     opacity: 1;
     height: 100%;
+    padding-bottom: 20px;
 }
 .team-results-full {
 /*    background: url("img/foot66.jpg");*/
@@ -637,7 +648,7 @@ input[type=submit] {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 0 auto;
+/*    margin: 0 auto;*/
     line-height: 2;
     text-align: center;
     padding-top: 10px;
@@ -714,12 +725,11 @@ input[type=submit] {
     position: relative;
 }
 .score-tables {
-    padding: 0 15px;
+    padding: 15px 0 10px 0;
     width: 30%;
 }
 .vs-container {
     width: 70%;
-    padding: inherit;
     min-height: 1px;
     position: relative;
 }
@@ -736,7 +746,7 @@ input[type=submit] {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
-    margin: 10px 0 0 0;
+    margin: 10px 0 10px 0;
 }
 .results-block p:last-child {
     font-size: 1rem;
@@ -811,6 +821,9 @@ input[invalid-input] {
 }
 
 /*match review*/
+.matches-container {
+    padding-bottom: 20px;
+}
 .matches-full {
     /*background: url("img/foot77.jpg");*/
     background: #f7f7f5;
@@ -969,7 +982,6 @@ input[invalid-input] {
 }
 .match-video {
     padding-top: 30px;
-    padding-bottom: 30px;
 }
 .match-video iframe {
     display: flex;
@@ -984,6 +996,7 @@ input[invalid-input] {
 .team-players {
     margin: 0 auto;
     max-width: 800px;
+    margin-bottom: 20px;
 }
 .all-players {
     display: flex;
@@ -1072,11 +1085,12 @@ input[invalid-input] {
 }
 .player-card-main {
     display: flex;
+    width: 850px;
     max-width: 850px;
     margin: 0 auto;
     background: #fff;
     margin-top: 20px;
-    margin-bottom: 52px;
+    margin-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
 }
@@ -1153,7 +1167,7 @@ input[invalid-input] {
 }
 footer {
 /*    min-height: 200px;*/
-    background-color: #f2f2f2;
+    background-color: #ffffff;
 }
 .footer-container {
     display: flex;
@@ -1162,7 +1176,7 @@ footer {
     padding: 2rem 1rem;
 }
 .landing-container {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
     overflow: hidden;
     display: flex;
@@ -1199,12 +1213,6 @@ footer {
     border-top: 1px solid #d4d4d4;
     color: #6E6E6E;
 }
-.landing-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    overflow: hidden;
-    display: flex;
-}
 .footer-address a, .footer-phone a, .footer-social {
     display: flex;
     align-items: center;
@@ -1212,6 +1220,90 @@ footer {
 .footer-social {
     width: 150px;
     justify-content: space-around;
+}
+.center-text {
+    text-align: center;
+}
+@media (prefers-color-scheme: light) {
+  #map {
+      display: none;
+  }
+}
+.description-text {
+    margin: 0 auto !important;
+    text-align: left;
+    padding: 1rem;
+    width: 60%;
+}
+.description-text span {
+    word-break: break-all;
+}
+.cards {
+    padding: 20px 0 20px 0;
+}
+.goals {
+    padding-bottom: 20px;
+}
+.goals p {
+    margin: 0 auto;
+}
+.card-team-one {
+  display: inline-block;
+  width: 0.7em;
+  height: 1em;
+  background-size: 100% 100%;
+  transform: rotateZ(25deg);
+  margin-left: 10px;
+}
+.card-team-two {
+  display: inline-block;
+  width: 0.7em;
+  height: 1em;
+  background-size: 100% 100%;
+  transform: rotateZ(25deg);
+  margin-right: 10px;
+}
+.yellow-card {
+  background-image: url(img/yellow_card.svg);
+}
+.red-card {
+  background-image: url(img/red_card.svg);
+}
+.dropbtn {
+  background-color: #0D0B20;
+  color: #fff;
+}
+.dark {
+    display: none;
+}
+.video-description {
+    padding-bottom: 25px;
+}
+@media screen and (max-width: 1160px) {
+    .main-container {
+        width: 100%;
+        flex-direction: column;
+    }
+    .table-button {
+        font-size: 1.5em;
+    }
+    .vs-container, .score-tables {
+        width: 100%;
+    }
+    .score-tables {
+        padding: 0;
+    }
+    .table {
+        max-width: 530px
+    }
+}
+@media screen and (max-width: 979px) {
+    .vs-container, .score-tables {
+        width: 100%;
+    }
+    .score-tables {
+        padding: 0;
+    }
 }
 @media screen and (max-width: 900px) {
     .league-results-container {
@@ -1224,6 +1316,7 @@ footer {
         display: flex;
         width: 95%;
         margin-top: 1em;
+        margin-bottom: 1em;
     }
     .mobile-head h1 {
         padding-bottom: 10px;
@@ -1257,31 +1350,14 @@ footer {
     .main-about-team-match, .main-about-league {
         padding-bottom: 10px;
     }
-}
-@media screen and (max-width: 1160px) {
-    .main-container {
-        width: 100%;
+    .main-league {
         flex-direction: column;
     }
-    .table-button {
-        font-size: 1.5em;
-    }
-    .vs-container, .score-tables {
-        width: 100%;
-    }
-    .score-tables {
+    .main-text, .main-where-when, .main-league, .main-cup {
         padding: 0;
     }
-    .table {
-        max-width: 530px
-    }
-}
-@media screen and (max-width: 979px) {
-    .vs-container, .score-tables {
-        width: 100%;
-    }
-    .score-tables {
-        padding: 0;
+    .main-league .main-about:not(:last-child), .main-cup .main-about:not(:last-child) {
+        margin-right: auto;
     }
 }
 @media screen and (max-width: 720px) {
@@ -1386,11 +1462,9 @@ footer {
         flex-grow: 1;
         display: block;
             }
-
     /*burger-menu*/
 
     /*burger-icon*/
-
     .dropdown {
         display: none;
     }
@@ -1482,8 +1556,7 @@ footer {
         width: 120px;
     }
     .review-score p {
-        /*font-size: 1.6rem;*/
-        font-size: 1rem !important;
+        font-size: 1.6rem;
     }
     .results-container {
         width: 90% !important;
@@ -1543,63 +1616,22 @@ footer {
     .mobile {
         display: flex;
     }
-
-}
-.center-text {
-    text-align: center;
-}
-@media (prefers-color-scheme: light) {
-  #map {
-      display: none;
-  }
-}
-.description-text {
-    margin: 0 auto;
-    text-align: left;
-    padding: 1rem;
-    width: 60%;
-}
-.description-text span {
-    word-break: break-all;
-}
-.cards {
-    padding: 20px 0 20px 0;
-}
-.goals {
-    padding-bottom: 20px;
-}
-.goals p {
-    margin: 0 auto;
-}
-.card-team-one {
-  display: inline-block;
-  width: 0.7em;
-  height: 1em;
-  background-size: 100% 100%;
-  transform: rotateZ(25deg);
-  margin-left: 10px;
-}
-.card-team-two {
-  display: inline-block;
-  width: 0.7em;
-  height: 1em;
-  background-size: 100% 100%;
-  transform: rotateZ(25deg);
-  margin-right: 10px;
-}
-.yellow-card {
-  background-image: url(img/yellow_card.svg);
-}
-.red-card {
-  background-image: url(img/red_card.svg);
-}
-.dropbtn {
-  background-color: #0D0B20;
-  color: #fff;
-}
-
-.dark {
-    display: none;
+    .footer-powered, .footer-social {
+        margin: 0 auto;
+    }
+    .logo-team-bg {
+        width: 50%;
+    }
+    .match-video iframe {
+        height: auto;
+        width: auto;
+    }
+    .team-players {
+        margin: 0 0 20px;
+    }
+    .tbd p {
+        font-size: 1rem !important;
+    }
 }
 /*Dark-mode*/
 @media (prefers-color-scheme: dark) {
@@ -1613,17 +1645,13 @@ footer {
   --main-text-on-button-color-inactive: #dab1fe;
   --main-input-field: #3d3d463d;
 }
-  .main-head-title {
-      background: var(--main-sf-color);
-      color: var(--main-text-color);
-  }
   .main-head-title .main-head-logo {
       background-image: url(img/footgo-light-icon.png);
   }
   header, .main-photo, .prev-seasons, .dropbtn, .registration-photo {
       background: var(--main-bg-color);
   }
-  .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom {
+  .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom {
       background: var(--main-sf-color);
       color: var(--main-text-color);
   }
@@ -1638,7 +1666,7 @@ footer {
   .main-when ul span {
       background: rgba(255,255,255,0.4);
   }
-  .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3, .bomb-head p, .season-list, .dropbtn, .table-header, .goals p {
+  .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3, .bomb-head p, .season-list, .dropbtn, .table-header, .goals p, .table-head p {
       color: var(--main-text-color);
   }
   .main-about-team img {

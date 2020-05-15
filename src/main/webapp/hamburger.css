@@ -59,6 +59,5 @@
 .hamburger {
     font-size: 45px;
     color: white;
-    padding-left: 10px;
-    padding-top: 6px;
+    padding: 10px;
 }

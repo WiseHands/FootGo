@@ -40,8 +40,8 @@
         <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Зареєструватись</a></div>
         <div class="season-list">
             <button th:if="${not #lists.isEmpty(season)}" th:text="${season.name}" class="dropbtn"></button>
-            <div th:each="season : ${seasonList}" class="prev-seasons">
-                <a href="/" th:text="${season.name}"></a>
+            <div th:if="${not #lists.isEmpty(seasonList)}" class="prev-seasons">
+                <a th:each="season : ${seasonList}" href="/" th:text="${season.name}"></a>
             </div>
         </div>
     </div>
@@ -169,8 +169,8 @@
             <p>Ігри проводяться раз в тиждень, середу або четвер о 19:45 або 20:45</p>
         </div>
     </div>
-    <div th:if="${not #lists.isEmpty(leagueList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" class="main-league">
-        <div th:each="league : ${leagueList}" class="main-about">
+    <div class="main-league">
+        <div th:if="${not #lists.isEmpty(leagueList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" th:each="league : ${leagueList}" class="main-about">
             <a th:href="'/league/' + ${league.id}">
                 <h1 th:text="${league.name}"></h1>
             </a>
@@ -187,9 +187,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div th:if="${not #lists.isEmpty(cupList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" class="main-cup">
-        <div th:each="cup : ${cupList}" class="main-about">
+
+        <div th:if="${not #lists.isEmpty(cupList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" th:each="cup : ${cupList}" class="main-about">
             <a th:href="'/cup/' + ${cup.id}">
                 <h1 th:text="${cup.name}"></h1>
             </a>
@@ -206,6 +205,9 @@
                 </div>
             </div>
         </div>
+<!--    </div>
+    <div class="main-cup">-->
+
     </div>
     <div class="main-about instagram-iframe">
         <a href="https://www.instagram.com/footgo.league" target="_blank">
