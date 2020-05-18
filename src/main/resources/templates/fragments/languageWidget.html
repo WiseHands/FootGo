@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div th:fragment="languageWidget" class="header-second-block">
+    <div class="lang-switcher">
+        <button th:text="${#locale}" class="dropbtn"></button>
+        <div class="lang-list">
+            <a href="/?lang=en">English</a>
+            <a href="/?lang=uk">Українська</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

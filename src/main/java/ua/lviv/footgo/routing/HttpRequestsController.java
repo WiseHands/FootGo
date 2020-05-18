@@ -1,25 +1,26 @@
 package ua.lviv.footgo.routing;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import ua.lviv.footgo.entity.*;
 import ua.lviv.footgo.jsonmapper.PlayerGoals;
 import ua.lviv.footgo.jsonmapper.TeamResults;
 import ua.lviv.footgo.repository.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import ua.lviv.footgo.service.GameFinder;
 import ua.lviv.footgo.service.ResultService;
 import ua.lviv.footgo.service.TopScorerService;
 
 import java.time.OffsetDateTime;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
-import static java.util.Objects.isNull;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static java.util.Objects.isNull;
 
 @Controller
 public class HttpRequestsController {

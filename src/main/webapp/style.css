@@ -57,11 +57,11 @@ a, a:hover {
     font-size: 1.2rem;
     border: none;
 }
-.season-list {
+.season-list, lang-switcher {
     position: relative;
     display: inline-block;
 }
-.prev-seasons {
+.prev-seasons, .lang-list {
     background-color: #0D0B20;
     display: none;
     position: absolute;
@@ -69,7 +69,7 @@ a, a:hover {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-.prev-seasons a {
+.prev-seasons a, .lang-list a {
     color: #fff;
     padding: 12px 16px;
     text-decoration: none;
@@ -81,6 +81,9 @@ a, a:hover {
 
 .season-list:hover .dropbtn {background-color: #868686;}
 
+.lang-switcher:hover .lang-list {display: block;}
+
+.lang-switcher:hover .dropbtn {background-color: #868686;}
 
 .main-block {
     width: 100%;
@@ -1649,7 +1652,7 @@ footer {
   .main-head-title .main-head-logo {
       background-image: url(img/footgo-light-icon.png);
   }
-  header, .main-photo, .prev-seasons, .dropbtn, .registration-photo {
+  header, .main-photo, .prev-seasons, .dropbtn, .registration-photo, .lang-list {
       background: var(--main-bg-color);
   }
   .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom {

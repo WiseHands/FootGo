@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>Foot&Go - аматорський турнір з футболу 8 на 8 у Львові</title>
+    <title th:text="#{title}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="img/footgo-dark-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
@@ -24,27 +24,28 @@
                 </a>
             </div>
             <div class="header-text">
-                <a href="/signup" th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><p>Зареєструватись</p></a>
+                <a href="/signup" th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><p th:text="#{signup}"></p></a>
                 <div th:if="${not #lists.isEmpty(season)}" class="season-list">
                     <button th:text="${season.name}" class="dropbtn">
                     </button>
                     <div class="prev-seasons">
                         <a th:each="season : ${seasonList}" href="/" th:text="${season.name}"></a>
-                        <a href="https://2019.footgo-league.com">Осінь 2019</a>
+                        <a th:text="#{autumn2019}" href="https://2019.footgo-league.com"></a>
                     </div>
                 </div>
                 <div th:if="${#lists.isEmpty(season)}" class="season-list">
-                    <button class="dropbtn">Минулі сезони
+                    <button th:text="#{seasonListEmpty}" class="dropbtn">
                     </button>
                     <div class="prev-seasons">
-                        <a href="https://2019.footgo-league.com">Осінь 2019</a>
+                        <a th:text="#{autumn2019}" href="https://2019.footgo-league.com"></a>
                     </div>
                 </div>
             </div>
         </div>
+        <div th:replace="fragments/languageWidget :: languageWidget"></div>
     </div>
     <div id="myLinks">
-        <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Зареєструватись</a></div>
+        <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><a th:text="#{signup}" class="link-item" href="/signup"></a></div>
         <div class="season-list">
             <button th:if="${not #lists.isEmpty(season)}" th:text="${season.name}" class="dropbtn"></button>
             <div th:if="${not #lists.isEmpty(seasonList)}" class="prev-seasons">
@@ -56,15 +57,15 @@
 <div class="main-head">
     <div class="main-head-title">
         <div class="main-head-logo" alt="wiselogo"></div>
-        <h1>Аматорський турнір з футболу</h1>
+        <h1 th:text="#{mainHeaderTitle}"></h1>
         <h1 th:if="${not #lists.isEmpty(season)}" th:text="${season.name}"></h1>
         <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}" class="button-container">
             <a href="/signup">
-                <input class="reg-input-button match-all-button" type="button" value="ЗАРЕЄСТРУВАТИСЬ"/>
+                <input th:value="#{signupButton}" class="reg-input-button match-all-button" type="button" value=""/>
             </a>
         </div>
-        <h1 th:if="${#lists.isEmpty(tournament)}" class="empty-text-error">Не створено жодного турніру</h1>
-        <h1 th:if="${#lists.isEmpty(season)}" class="empty-text-error">Немає активних сезонів</h1>
+        <h1 th:text="#{tournamentIsEmpty}" th:if="${#lists.isEmpty(tournament)}" class="empty-text-error"></h1>
+        <h1 th:text="#{seasonIsEmpty}" th:if="${#lists.isEmpty(season)}" class="empty-text-error"></h1>
         <!--            <div class="main-head-teamlogo">
                         <div th:each="item : ${teamList}" class="main-head-eachteam">
                             <a th:attr="href=${'/team/' + item.id}">
@@ -80,25 +81,25 @@
     <h1 th:if="${not #lists.isEmpty(season)}" th:text="${season.name}"></h1>
     <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}" class="button-container">
         <a href="/signup">
-            <input class="reg-input-button match-all-button" type="button" value="ЗАРЕЄСТРУВАТИСЬ"/>
+            <input th:value="#{signupButton}" class="reg-input-button match-all-button" type="button" value=""/>
         </a>
     </div>
-    <h1 th:if="${#lists.isEmpty(tournament)}" class="empty-text-error">Не створено жодного турніру</h1>
-    <h1 th:if="${#lists.isEmpty(season)}" class="empty-text-error">Немає активних сезонів</h1>
+    <h1 th:text="#{tournamentIsEmpty}" th:if="${#lists.isEmpty(tournament)}" class="empty-text-error"></h1>
+    <h1 th:text="#{seasonIsEmpty}" th:if="${#lists.isEmpty(season)}" class="empty-text-error"></h1>
 </div>
 <div class="main-block">
     <div class="main-text">
         <div class="main-about">
-            <h1>Аматорський турнір з футболу</h1>
-            <p class="main-description">Новий формат гри 8 на 8</p>
+            <h1 th:text="#{mainHeaderTitle}"></h1>
+            <p th:text="#{mainDescription}" class="main-description"></p>
             <div class="main-about-team-match">
                 <div class="main-about-match">
                     <img src="/img/soccer-ball.png">
-                    <p>2 ліги</p>
+                    <p th:text="#{mainAboutMatch}"></p>
                 </div>
                 <div class="main-about-team">
                     <img src="/img/team-icon.png">
-                    <p>16 команд</p>
+                    <p th:text="#{mainAboutTeam}"></p>
                 </div>
             </div>
             <!--                <div class="slogan-button">
@@ -106,74 +107,76 @@
                             </div>-->
         </div>
         <div class="main-video">
-            <h1>Footgo League Promo</h1>
+            <h1 th:text="#{youtubePromo}"></h1>
             <iframe src="https://www.youtube.com/embed/re-1-nt0tdY" frameborder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+                    allowfullscreen>
+            </iframe>
         </div>
     </div>
 
     <div class="main-where-when">
         <div class="main-where">
-            <h1>Місце проведення</h1>
-            <p>Львів, вул. Патона 1, стадіон "Сокіл"</p>
+            <h1 th:text="#{venue}"></h1>
+            <p th:text="#{venueData}"></p>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3362.3723090122853!2d23.956577636589127!3d49.82196466835055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ae7416a9b3179%3A0x5be70be9b04dfcfe!2z0KTQmiDCq9Cb0YzQstGW0LLCuw!5e0!3m2!1suk!2sua!4v1570803328905!5m2!1suk!2sua"
-                    frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                    frameborder="0" style="border:0;" allowfullscreen="">
+            </iframe>
         </div>
 
         <div class="main-when">
-            <h1>Час проведення</h1>
+            <h1 th:text="#{mainWhen}"></h1>
             <div class="main-when-gametime">
-                <p class="main-when-time">19:45</p>
-                <p>або</p>
-                <p class="main-when-time">20:45</p>
+                <p th:text="#{mainWhenimeFirst}" class="main-when-time"></p>
+                <p th:text="#{mainWhenimeOr}"></p>
+                <p th:text="#{mainWhenimeSecond}" class="main-when-time"></p>
             </div>
             <ul>
-                <li>Пн</li>
-                <li>Вт</li>
-                <li>Ср</li>
-                <li><span>Чт</span></li>
-                <li>Пт</li>
-                <li>Сб</li>
-                <li>Нд</li>
+                <li th:text="#{mo}"></li>
+                <li th:text="#{tu}"></li>
+                <li th:text="#{we}"></li>
+                <li><span th:text="#{th}"></span></li>
+                <li th:text="#{fr}"></li>
+                <li th:text="#{sa}"></li>
+                <li th:text="#{su}"></li>
             </ul>
             <ul>
-                <li>Пн</li>
-                <li>Вт</li>
-                <li>Ср</li>
-                <li><span>Чт</span></li>
-                <li>Пт</li>
-                <li>Сб</li>
-                <li>Нд</li>
+                <li th:text="#{mo}"></li>
+                <li th:text="#{tu}"></li>
+                <li th:text="#{we}"></li>
+                <li><span th:text="#{th}"></span></li>
+                <li th:text="#{fr}"></li>
+                <li th:text="#{sa}"></li>
+                <li th:text="#{su}"></li>
             </ul>
             <ul>
-                <li>Пн</li>
-                <li>Вт</li>
-                <li>Ср</li>
-                <li><span>Чт</span></li>
-                <li>Пт</li>
-                <li>Сб</li>
-                <li>Нд</li>
+                <li th:text="#{mo}"></li>
+                <li th:text="#{tu}"></li>
+                <li th:text="#{we}"></li>
+                <li><span th:text="#{th}"></span></li>
+                <li th:text="#{fr}"></li>
+                <li th:text="#{sa}"></li>
+                <li th:text="#{su}"></li>
             </ul>
             <ul>
-                <li>Пн</li>
-                <li>Вт</li>
-                <li>Ср</li>
-                <li><span>Чт</span></li>
-                <li>Пт</li>
-                <li>Сб</li>
-                <li>Нд</li>
+                <li th:text="#{mo}"></li>
+                <li th:text="#{tu}"></li>
+                <li th:text="#{we}"></li>
+                <li><span th:text="#{th}"></span></li>
+                <li th:text="#{fr}"></li>
+                <li th:text="#{sa}"></li>
+                <li th:text="#{su}"></li>
             </ul>
             <ul>
-                <li>Пн</li>
-                <li>Вт</li>
-                <li><span>Ср</span></li>
-                <li>Чт</li>
-                <li>Пт</li>
-                <li>Сб</li>
-                <li>Нд</li>
+                <li th:text="#{mo}">Пн</li>
+                <li th:text="#{tu}">Вт</li>
+                <li><span th:text="#{we}">Ср</span></li>
+                <li th:text="#{th}">Чт</li>
+                <li th:text="#{fr}">Пт</li>
+                <li th:text="#{sa}">Сб</li>
+                <li th:text="#{su}">Нд</li>
             </ul>
-            <p>Ігри проводяться раз в тиждень, середу або четвер о 19:45 або 20:45</p>
+            <p th:text="#{venueDescription}"></p>
         </div>
     </div>
     <div class="main-league">
