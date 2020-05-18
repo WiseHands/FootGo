@@ -23,14 +23,14 @@
                 </a>
             </div>
             <div class="header-text">
+                <p>Реєстрація</p>
                 <a href="/"><p th:text="${season.name}"></p></a>
-                <a th:if="${season.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
             </div>
         </div>
     </div>
     <div id="myLinks">
+        <div><a class="link-item"><p>Реєстрація</p></a></div>
         <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
-        <div th:if="${season.getIsSubmissionOpened() == false}"><a class="link-item"><p>Реєстрація</p></a></div>
     </div>
 </header>
 <div class="main-head main-head-results signup-background">

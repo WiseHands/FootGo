@@ -27,10 +27,10 @@
                 <a href="/signup" th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><p>Зареєструватись</p></a>
                 <div class="season-list">
                     <button th:if="${not #lists.isEmpty(season)}" th:text="${season.name}" class="dropbtn">
-                        <i class="fa fa-caret-down"></i>
                     </button>
-                    <div th:if="${not #lists.isEmpty(seasonList)}" class="prev-seasons">
+                    <div class="prev-seasons">
                         <a th:each="season : ${seasonList}" href="/" th:text="${season.name}"></a>
+                        <a href="https://2019.footgo-league.com">Сезон 2019</a>
                     </div>
                 </div>
             </div>
