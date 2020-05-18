@@ -81,9 +81,17 @@ a, a:hover {
 
 .season-list:hover .dropbtn {background-color: #868686;}
 
-.lang-switcher:hover .lang-list {display: block;}
+.lang-switcher {
+    margin-right: 10px;
+}
 
-.lang-switcher:hover .dropbtn {background-color: #868686;}
+.lang-switcher:hover .lang-list {
+    display: block;
+}
+
+.lang-switcher:hover .dropbtn {
+    background-color: #868686;
+}
 
 .main-block {
     width: 100%;
