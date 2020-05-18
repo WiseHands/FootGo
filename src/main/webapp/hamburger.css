@@ -48,7 +48,7 @@
     display: block;
     height: 2em;
     color: white;
-    padding-left: 10px;
+    padding: 10px 0 0 10px;
     font-size: 20px;
 }
 .link-item a, a:hover {

@@ -36,7 +36,7 @@ a, a:hover {
 .header-null {
     display: none;
 }
-.header-text {
+.header-text, .header-icon, .header-second-block {
     display: flex;
     align-items: center;
 }
@@ -1300,6 +1300,7 @@ footer {
     .table {
         max-width: 530px
     }
+    .lang-switcher:hover .lang-list {right:0;}
 }
 @media screen and (max-width: 979px) {
     .vs-container, .score-tables {
