@@ -81,10 +81,6 @@ a, a:hover {
 
 .season-list:hover .dropbtn {background-color: #868686;}
 
-.lang-switcher {
-    margin-right: 10px;
-}
-
 .lang-switcher:hover .lang-list {
     display: block;
 }
@@ -1316,6 +1312,9 @@ footer {
     }
     .score-tables {
         padding: 0;
+    }
+    .lang-switcher {
+        margin-right: 10px;
     }
 }
 @media screen and (max-width: 900px) {
