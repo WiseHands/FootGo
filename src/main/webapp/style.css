@@ -1328,7 +1328,7 @@ footer {
         display: flex;
         width: 95%;
         margin-top: 1em;
-        margin-bottom: 1em;
+        margin-bottom: 10px;
     }
     .mobile-head h1 {
         padding-bottom: 10px;
