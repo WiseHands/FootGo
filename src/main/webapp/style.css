@@ -889,7 +889,7 @@ input[invalid-input] {
 }
 .review-head {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 500px;
     padding: 20px 0;
 }
@@ -1298,7 +1298,7 @@ footer {
     .score-tables {
         padding: 0;
     }
-    .table {
+    .table, .bomb {
         max-width: 530px
     }
     .lang-switcher:hover .lang-list {right:0;}

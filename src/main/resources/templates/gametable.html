@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Таблиця</title>
+    <title th:text="#{championshipTable}"></title>
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../../hamburger.css">
     <link rel="shortcut icon" href="../../img/footgo-dark-icon.png" type="image/x-icon">
-
-
 </head>
 <body class="table-full">
-
 <header>
     <div class="header-full">
         <div class="header-first-block">
@@ -27,18 +24,19 @@
             <div class="header-text">
                 <a href="/"><p th:text="${season.name}"></p></a>
                 <a th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a>
-                <a th:href="'/league/' + ${league.id} + '/gametable'"><p>Таблиця чемпіонату</p></a>
+                <a th:href="'/league/' + ${league.id} + '/gametable'"><p th:text="#{championshipTable}"></p></a>
 <!--                <a href="/signup" th:if="${league.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
                 <a href="/results"><p>Результати</p></a>
                 <a href="/gametable"><p>Таблиця</p></a>
                 <a href="/bombardier"><p>Бомбардири</p></a>-->
             </div>
         </div>
+        <div th:replace="fragments/languageWidget :: languageWidget"></div>
     </div>
     <div id="myLinks">
         <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
         <div><a class="link-item" th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a></div>
-        <div><a class="link-item" th:href="'/league/' + ${league.id} + '/gametable'"><p>Таблиця чемпіонату</p></a></div>
+        <div><a class="link-item" th:href="'/league/' + ${league.id} + '/gametable'"><p th:text="#{championshipTable}"></p></a></div>
 <!--        <div th:if="${league.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
         <div><a class="link-item" href="/results">Результати</a></div>
         <div><a class="link-item" href="/gametable">Таблиця</a></div>
@@ -54,7 +52,7 @@
 
 <div>
     <div class="table-head">
-        <p>Таблиця чемпіонату</p>
+        <p th:text="#{championshipTable}"></p>
     </div>
     <div class="table">
         <div class="table-position">
@@ -62,7 +60,7 @@
             <div th:each="result,i : ${resultList}" th:text="${i.count}"></div>
         </div>
         <div class="table-team-name">
-            <div class="table-title">Команда</div>
+            <div th:text="#{team}" class="table-title"></div>
 
             <!--                <div class="table-firstplace">
                                 <a th:attr="href=${'/team/' + firstPlace.team.id}">
@@ -161,6 +159,7 @@
 <script src="../../hamburger.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39722519-3"></script>
+<script src="/imgPlaceholderSetScript.js" type="text/javascript"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
