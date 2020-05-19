@@ -26,6 +26,7 @@
                 <a th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a>
             </div>
         </div>
+        <div th:replace="fragments/languageWidget :: languageWidget"></div>
     </div>
     <div id="myLinks">
         <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
@@ -40,13 +41,13 @@
 <div class="main-container">
     <div class="results vs-container">
         <div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
-            <p>Матчі</p>
+            <p th:text="#{matches}"></p>
         </div>
         <div th:if="${#lists.isEmpty(gameList)}" class="matches-bg">
             <div class="review-match">
                 <div class="review-head">
                     <div class="review-score-empty">
-                        <span>Немає найближчих матчів</span>
+                        <span th:text="#{noUpcomingMatches}"></span>
                     </div>
                 </div>
             </div>
@@ -62,7 +63,7 @@
                             <a th:attr="href=${'/league/' + leagueId + '/team/' + game.firstTeam.id}">
                                 <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
                                 <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
-                                <p th:text="${game.firstTeam.teamName}">Команда 1</p>
+                                <p th:text="${game.firstTeam.teamName}">Team 1</p>
                             </a>
                         </div>
                         <div th:if="${game.isNoTechnicalDefeat() == true}"
@@ -87,7 +88,7 @@
                             <a th:attr="href=${'/league/' + leagueId + '/team/' + game.secondTeam.id}">
                                 <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
                                 <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
-                                <p th:text="${game.secondTeam.teamName}">Команда 2</p>
+                                <p th:text="${game.secondTeam.teamName}">Team 2</p>
                             </a>
                         </div>
                     </div>
@@ -135,7 +136,7 @@
         </div>
         <div class="button-container">
             <a th:href="'/league/' + ${leagueId} + '/results'">
-                <input class="reg-input-button match-all-button" type="button" value="ПЕРЕГЛЯНУТИ ВСІ"/>
+                <input th:value="#{showAllButton}" class="reg-input-button match-all-button" type="button" value=""/>
             </a>
         </div>
 <!--        <div th:each="tour : ${tourList}" class="results-block">
@@ -190,15 +191,14 @@
         </div>-->
     </div>
     <div class="score-tables">
-        <p class="table-header">Таблиця чемпіонату</p>
+        <p th:text="#{championshipTable}" class="table-header"></p>
         <div class="table">
             <div class="table-position auto">
                 <div class="table-title">№</div>
                 <div th:each="result,i : ${resultList}" th:text="${i.count}"></div>
             </div>
             <div class="table-team-name full">
-                <div class="table-title">Команда</div>
-
+                <div th:text="#{team}" class="table-title"></div>
                 <!--                    <div class="table-firstplace">-->
                 <!--                        <a th:attr="href=${'/league/' + leagueId + '/team/' + firstPlace.team.id}">-->
                 <!--                            <img th:attr="src=${firstPlace.team.logoImageUrl}, class=${'light' + ' ' + 'team' + firstPlace.team.id}">-->
@@ -246,10 +246,10 @@
         </div>
         <div class="button-container">
             <a th:href="'/league/' + ${leagueId} + '/gametable'">
-                <input class="reg-input-button match-all-button table-button" type="button" value="ПЕРЕГЛЯНУТИ ВСІ"/>
+                <input th:value="#{showAllButton}" class="reg-input-button match-all-button table-button" type="button" value=""/>
             </a>
         </div>
-        <p class="table-header">Найкращі бомбардири</p>
+        <p th:text="#{bestScorers}" class="table-header"></p>
         <div class="bomb league">
             <div class="bomb-position auto">
                 <div class="bomb-title">№</div>
@@ -257,8 +257,8 @@
                     <p th:text="${playerGoal.formatPosition(iter.index)}"></p>
                 </div>
             </div>
-            <div class="bomb-player-name">
-                <div class="bomb-title">Футболіст</div>
+            <div class="bomb-player-name full">
+                <div th:text="#{footballPlayer}" class="bomb-title"></div>
                 <div th:each="playerGoal : ${playerGoals}">
                     <a th:attr="href=${'/league/' + leagueId + '/player/' + playerGoal.player.id}">
                         <p th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}"></p>
@@ -266,13 +266,13 @@
                 </div>
             </div>
             <div class="bomb-scored auto">
-                <div class="bomb-title">М'ячів</div>
+                <div th:text="#{playerGoalsCount}" class="bomb-title"></div>
                 <div th:each="playerGoal : ${playerGoals}">
                     <p th:text="${playerGoal.goalList.size()}"></p>
                 </div>
             </div>
             <div class="bomb-team auto">
-                <div class="bomb-title">Команда</div>
+                <div th:text="#{team}" class="bomb-title"></div>
                 <div th:each="playerGoal : ${playerGoals}">
                     <a th:attr="href=${'/league/' + leagueId + '/team/' + playerGoal.player.team.id}">
                         <p th:text="${playerGoal.player.team.teamName}"></p>
@@ -282,7 +282,7 @@
         </div>
         <div class="button-container">
             <a th:href="'/league/' + ${leagueId} + '/bombardier'">
-                <input class="reg-input-button match-all-button table-button" type="button" value="ПЕРЕГЛЯНУТИ ВСІ"/>
+                <input th:value="#{showAllButton}" class="reg-input-button match-all-button table-button" type="button" value=""/>
             </a>
         </div>
     </div>

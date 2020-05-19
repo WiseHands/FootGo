@@ -509,8 +509,8 @@ footer{
     line-height: 2.3;
     text-align: center;
     font-size: 1.1em;
-/*    font-weight: 600;*/
-    margin-bottom: 20px;
+/*    font-weight: 600;
+    margin-bottom: 20px;*/
 }
 .empty-text-error {
     color: #b00020;
@@ -829,9 +829,6 @@ input[invalid-input] {
 }
 
 /*match review*/
-.matches-container {
-    padding-bottom: 20px;
-}
 .matches-full {
     /*background: url("img/foot77.jpg");*/
     background: #f7f7f5;

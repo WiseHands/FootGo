@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>Реєстрація</title>
+    <title th:text="#{registration}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="img/footgo-dark-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="hamburger.css">
-
 </head>
 <body class="registration-photo">
 <header>
@@ -23,13 +22,14 @@
                 </a>
             </div>
             <div class="header-text">
-                <p>Реєстрація</p>
+                <p th:text="#{registration}"></p>
                 <a href="/"><p th:text="${season.name}"></p></a>
             </div>
         </div>
+        <div th:replace="fragments/languageWidget :: languageWidget"></div>
     </div>
     <div id="myLinks">
-        <div><a class="link-item"><p>Реєстрація</p></a></div>
+        <div><a class="link-item"><p th:text="#{registration}"></p></a></div>
         <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
     </div>
 </header>
@@ -41,26 +41,26 @@
 <div>
  <div class="registration-form">
          <div class="reg-end" th:if="${season.getIsSubmissionOpened() == true}">
-            <p>Реєстрацію завершено</p>
-             <p>Дякуємо за участь!</p>
+            <p th:text="#{registrationComplete}"></p>
+             <p th:text="#{thankYouForParticipation}"></p>
          </div>
      <form name="signUpForm" th:if="${season.getIsSubmissionOpened() == false}">
             <div id="hideifsuccess_0" class="team-captain">
                 <div class="team-name">
-                    <p>Назва команди</p>
-                    <input type="text" name="teamName" placeholder="Назва команди" required>
+                    <p th:text="#{teamName}"></p>
+                    <input th:placeholder="#{teamName}" type="text" name="teamName" required>
                 </div>
                 <div class="capitan">
-                    <p>Капітан команди</p>
-                    <input type="text" name="captainName" placeholder="Прізвище, ім'я" required>
-                    <input type="tel" name="captainPhone" pattern="[0-9]{10}" placeholder="номер телефону 093 ..." required>
-                    <input type="email" name="captainEmail" placeholder="Введіть email" required>
+                    <p th:text="#{teamCaptain}"></p>
+                    <input th:placeholder="#{placeholderCaptainName}" type="text" name="captainName" required>
+                    <input th:placeholder="#{placeholderCaptainPhone}" type="tel" name="captainPhone" pattern="[0-9]{10}" required>
+                    <input th:placeholder="#{placeholderCaptainEmail}" type="email" name="captainEmail" required>
                 </div>
             </div>
-            <div id="success" class="player-bg"><p>Запит успішно надіслано!</p></div>
-            <div id="error" class="player-bg"><p>Помилка при надсиланні запиту! Зв'яжіться з з адміністраторами footgo.league@gmail.com </p></div>
+            <div id="success" class="player-bg"><p th:text="#{requestSuccessful}"></p></div>
+            <div id="error" class="player-bg"><p th:text="#{requestError}"></p></div>
 
-        <input class="reg-input-button" type="submit" onclick="submitform()" value="Зареєструватися">
+        <input th:value="#{signupButton}" class="reg-input-button" type="submit" onclick="submitform()" value="">
      </form>
  </div>
 </div>
@@ -77,6 +77,7 @@
   gtag('js', new Date());
 
   gtag('config', 'UA-39722519-3');
+
 </script>
 </body>
 </html>

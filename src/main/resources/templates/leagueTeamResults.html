@@ -29,9 +29,9 @@
                 <a th:href="'/league/' + ${league.id} + '/team/' + ${team.id}"><p th:text="${team.teamName}"></p></a>
             </div>
         </div>
+        <div th:replace="fragments/languageWidget :: languageWidget"></div>
     </div>
     <div id="myLinks">
-        <div th:if="${season.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
         <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
         <div><a class="link-item" th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a></div>
         <div><a class="link-item" th:href="'/league/' + ${league.id} + '/team/' + ${team.id}"><p th:text="${team.teamName}"></p></a></div>
@@ -50,10 +50,10 @@
                     <img th:attr="src=${team.logoImageUrl}, class=${'light' + ' ' + 'team' + team.id}">
                     <img th:attr="src=${team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + team.id}">
                     <p th:text="${team.teamName}"></p>
-                    <p>Місце в чемпіонаті - <span th:text="${position}">8</span></p>
+                    <p><span th:text="#{championshipPlace} + ' - ' + ${position}">8</span></p>
                 </div>
             </div>
-            <h3>Ігри</h3>
+            <h3 th:text="#{games}"></h3>
             <div class="results-all-tour">
                 <div th:each="game : ${gameList}" class="results-container">
                     <div class="res-teams">
@@ -119,10 +119,10 @@
     </div>
 
     <div class="team-players">
-        <h3>Гравці</h3>
+        <h3 th:text="#{players}"></h3>
         <div class="all-players">
             <div th:if="${team.players.empty}" class="results-container">
-                <p class="no-players">Немає гравців</p>
+                <p th:text="#{noPlayers}" class="no-players"></p>
             </div>
             <div th:each="item : ${team.players}" class="player">
                     <a th:attr="href=${'/league/' + league.id + '/player/' + item.id}">
