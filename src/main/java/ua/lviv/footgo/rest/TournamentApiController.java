@@ -17,9 +17,10 @@ public class TournamentApiController {
     @PostMapping(value = "/new", consumes = "application/json", produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    public Tournament createTournament(@RequestParam String tournamentName, @RequestParam String tournamentDescription) {
+    public Tournament createTournament(@RequestParam String tournamentName, @RequestParam String tournamentNameEn, @RequestParam String tournamentDescription) {
         Tournament tournament = new Tournament();
         tournament.setName(tournamentName);
+        tournament.setNameEn(tournamentNameEn);
         tournament.setDescription(tournamentDescription);
         tournamentRepository.save(tournament);
 

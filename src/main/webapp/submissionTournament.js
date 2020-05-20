@@ -1,16 +1,19 @@
 function submissionData(event) {
     const tournamentName = document.getElementById('tournamentName').value;
+    const tournamentNameEn = document.getElementById('tournamentNameEn').value;
     const tournamentDescription = document.getElementById("tournamentDescription").value;
     const checkEmptyTournamentName = document.getElementById("tournamentName");
+    const checkEmptyTournamentNameEn = document.getElementById("tournamentNameEn");
 
-    if (checkEmptyTournamentName.value == "" && checkEmptyTournamentName.value.length == 0) {
+    if (checkEmptyTournamentName.value == "" && checkEmptyTournamentName.value.length == 0 || checkEmptyTournamentNameEn.value == "" && checkEmptyTournamentNameEn.value.length == 0) {
         document.getElementById('requiredFieldsError').style.display = "block";
         checkEmptyTournamentName.classList.add("required-fields");
+        checkEmptyTournamentNameEn.classList.add("required-fields");
         return false;
     }
-    if(tournamentName) {
+    if(tournamentName && tournamentNameEn) {
 
-        let params = '?tournamentName=' + tournamentName + '&tournamentDescription=' + tournamentDescription;
+        let params = '?tournamentName=' + tournamentName + '&tournamentNameEn=' + tournamentNameEn + '&tournamentDescription=' + tournamentDescription;
         let apiUrl = '/api/tournament/new' + params;
         fetch(apiUrl, {
             method: 'POST',

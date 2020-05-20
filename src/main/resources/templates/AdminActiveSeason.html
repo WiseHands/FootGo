@@ -24,6 +24,9 @@
         <div class="requests">
             <p>Сезони</p>
             <div class="season-block all-requests">
+                <div th:if="${#lists.isEmpty(activeSeason)}">
+                    <h3>Не вибрано активного сезону</h3>
+                </div>
                 <div th:each="season : ${activeSeason}">
                     <a th:href="'/admin/tournament/' + ${tournament.id} + '/season/' + ${season.id}" class="link-style">
                         <div class="request-block">
