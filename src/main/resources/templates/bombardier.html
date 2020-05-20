@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>Бомбардири</title>
+    <title th:text="#{bestScorers}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../style.css">
     <link rel="shortcut icon" href="../../img/footgo-dark-icon.png" type="image/x-icon">
@@ -64,7 +64,7 @@
             </div>
         </div>
         <div class="bomb-player-name">
-            <div th:text="#{footballPlayer}" class="bomb-title">Футболіст</div>
+            <div th:text="#{footballPlayer}" class="bomb-title"></div>
             <div th:each="playerGoal : ${playerGoals}">
                 <a th:attr="href=${'/league/' + leagueId + '/player/' + playerGoal.player.id}">
                     <p th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}"></p>
@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="bomb-scored">
-            <div th:text="#{playerGoalsCount}" class="bomb-title">М'ячів</div>
+            <div th:text="#{playerGoalsCount}" class="bomb-title"></div>
             <div th:each="playerGoal : ${playerGoals}">
                 <p th:text="${playerGoal.goalList.size()}">
                     0
@@ -80,7 +80,7 @@
             </div>
         </div>
         <div class="bomb-team">
-            <div th:text="#{team}" class="bomb-title">Команда</div>
+            <div th:text="#{team}" class="bomb-title"></div>
             <div th:each="playerGoal : ${playerGoals}">
                 <a th:attr="href=${'/league/' + leagueId + '/team/' + playerGoal.player.team.id}">
                     <p th:text="${playerGoal.player.team.teamName}"></p>

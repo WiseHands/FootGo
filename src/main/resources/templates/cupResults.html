@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>Результати</title>
+    <title th:text="#{results}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../style.css">
     <link rel="shortcut icon" href="../../img/footgo-dark-icon.png" type="image/x-icon">
@@ -24,14 +24,15 @@
             <div class="header-text">
                 <a href="/"><p th:text="${season.name}"></p></a>
                 <a th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a>
-                <a th:href="'/cup/' + ${cup.id} + '/results'"><p>Тури</p></a>
+                <a th:href="'/cup/' + ${cup.id} + '/results'"><p th:text="#{results}"></p></a>
             </div>
         </div>
+        <div th:replace="fragments/languageWidget :: languageWidget"></div>
     </div>
     <div id="myLinks">
         <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
         <div><a class="link-item" th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a></div>
-        <div><a class="link-item" th:href="'/cup/' + ${cup.id} + '/results'"><p>Тури</p></a></div>
+        <div><a class="link-item" th:href="'/cup/' + ${cup.id} + '/results'"><p th:text="#{results}"></p></a></div>
     </div>
 </header>
 <div class="main-head main-head-results results-background">
@@ -41,7 +42,7 @@
 </div>
 <div class="results-full">
     <div th:if="${!#lists.isEmpty(tour.gameList)}" th:each="tour : ${tourList}" class="res-tour">
-        <p class="res-tour-title" th:text="${'Тур ' + tour.tourNumber}"></p>
+        <p class="res-tour-title" th:text="#{tour} + ' ' + ${tour.tourNumber}"></p>
         <div class="res-tour-allmatch">
             <div class="results-container" th:each="game : ${tour.gameList}">
                 <div class="res-teams">

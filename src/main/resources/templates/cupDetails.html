@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title th:text="${'Кубок ' + cup.name + ' | FootGo League'}"></title>
+    <title th:text="#{cup} + ' ' + ${cup.name + ' | FootGo League'}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/style.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
@@ -26,6 +26,7 @@
                 <a th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a>
             </div>
         </div>
+        <div th:replace="fragments/languageWidget :: languageWidget"></div>
     </div>
     <div id="myLinks">
         <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
@@ -41,13 +42,13 @@
 <div class="main-container">
     <div class="results vs-container">
         <div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
-            <p>Матчі</p>
+            <p th:text="#{matches}"></p>
         </div>
         <div th:if="${#lists.isEmpty(gameList)}" class="matches-bg">
             <div class="review-match">
                 <div class="review-head">
                     <div class="review-score-empty">
-                        <span>Немає найближчих матчів</span>
+                        <span th:text="#{noUpcomingMatches}"></span>
                     </div>
                 </div>
             </div>
@@ -63,7 +64,7 @@
                             <a th:attr="href=${'/cup/' + cupId + '/team/' + game.firstTeam.id}">
                                 <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
                                 <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
-                                <p th:text="${game.firstTeam.teamName}">Команда 1</p>
+                                <p th:text="${game.firstTeam.teamName}">Team 1</p>
                             </a>
                         </div>
                         <div th:if="${game.isNoTechnicalDefeat() == true}"
@@ -88,10 +89,17 @@
                             <a th:attr="href=${'/cup/' + cupId + '/team/' + game.secondTeam.id}">
                                 <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
                                 <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
-                                <p th:text="${game.secondTeam.teamName}">Команда 2</p>
+                                <p th:text="${game.secondTeam.teamName}">Team 2</p>
                             </a>
                         </div>
                     </div>
+                </div>
+                <div class="center-text" th:if="${game.isTeamAHasTechnicalDefeat() == true}">
+                    <span th:text="#{teamTechnicalDefeat} + ' ' + ${game.firstTeam.teamName}" class="empty-text-error">Team 1</span>
+                </div>
+
+                <div class="center-text" th:if="${game.isTeamBHasTechnicalDefeat() == true}">
+                    <span th:text="#{teamTechnicalDefeat} + ' ' + ${game.secondTeam.teamName}" class="empty-text-error">Team 2</span>
                 </div>
             </div>
         </div>
@@ -136,7 +144,7 @@
         </div>
         <div class="button-container">
             <a th:href="'/cup/' + ${cupId} + '/results'">
-                <input class="reg-input-button match-all-button" type="button" value="ПЕРЕГЛЯНУТИ ВСІ"/>
+                <input th:value="#{showAllButton}" class="reg-input-button match-all-button" type="button" value=""/>
             </a>
         </div>
     </div>
@@ -176,7 +184,7 @@
                 <input class="reg-input-button match-all-button table-button" type="button" value="ПЕРЕГЛЯНУТИ ВСІ"/>
             </a>
         </div>-->
-        <p class="table-header">Найкращі бомбардири</p>
+        <p th:text="#{championshipTable}" class="table-header"></p>
         <div class="bomb league">
             <div class="bomb-position auto">
                 <div class="bomb-title">№</div>
@@ -184,8 +192,8 @@
                     <p th:text="${playerGoal.formatPosition(iter.index)}"></p>
                 </div>
             </div>
-            <div class="bomb-player-name">
-                <div class="bomb-title">Футболіст</div>
+            <div class="bomb-player-name full">
+                <div th:text="#{footballPlayer}" class="bomb-title"></div>
                 <div th:each="playerGoal : ${playerGoals}">
                     <a th:attr="href=${'/cup/' + cupId + '/player/' + playerGoal.player.id}">
                         <p th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}"></p>
@@ -193,13 +201,13 @@
                 </div>
             </div>
             <div class="bomb-scored auto">
-                <div class="bomb-title">М'ячів</div>
+                <div th:text="#{playerGoalsCount}" class="bomb-title"></div>
                 <div th:each="playerGoal : ${playerGoals}">
                     <p th:text="${playerGoal.goalList.size()}"></p>
                 </div>
             </div>
             <div class="bomb-team auto">
-                <div class="bomb-title">Команда</div>
+                <div th:text="#{team}" class="bomb-title"></div>
                 <div th:each="playerGoal : ${playerGoals}">
                     <a th:attr="href=${'/cup/' + cupId + '/team/' + playerGoal.player.team.id}">
                         <p th:text="${playerGoal.player.team.teamName}"></p>
@@ -209,7 +217,7 @@
         </div>
         <div class="button-container">
             <a th:href="'/cup/' + ${cupId} + '/bombardier'">
-                <input class="reg-input-button match-all-button table-button" type="button" value="ПЕРЕГЛЯНУТИ ВСІ"/>
+                <input th:value="#{showAllButton}" class="reg-input-button match-all-button table-button" type="button" value=""/>
             </a>
         </div>
     </div>

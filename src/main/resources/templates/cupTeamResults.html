@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title th:text="${'Команда ' + team.teamName + ' | FootGo League'}"></title>
+    <title th:text="#{team} + ' ' + ${team.teamName + ' | FootGo League'}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/style.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
@@ -27,6 +27,7 @@
                 <a th:href="'/cup/' + ${cup.id} + '/team/' + ${team.id}"><p th:text="${team.teamName}"></p></a>
             </div>
         </div>
+        <div th:replace="fragments/languageWidget :: languageWidget"></div>
     </div>
     <div id="myLinks">
         <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
@@ -47,10 +48,10 @@
                     <img th:attr="src=${team.logoImageUrl}, class=${'light' + ' ' + 'team' + team.id}">
                     <img th:attr="src=${team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + team.id}">
                     <p th:text="${team.teamName}"></p>
-                    <p>Місце в чемпіонаті - <span th:text="${position}">8</span></p>
+                    <p><span tth:text="#{championshipPlace} + ' - ' + ${position}"></span></p>
                 </div>
             </div>
-            <h3>Ігри</h3>
+            <h3 th:text="#{games}"></h3>
             <div class="results-all-tour">
                 <div th:each="game : ${gameList}" class="results-container">
                     <div class="res-teams">
@@ -117,10 +118,10 @@
     </div>
 </div>
     <div class="team-players">
-        <h3>Гравці</h3>
+        <h3 th:text="#{players}"></h3>
         <div class="all-players">
             <div th:if="${team.players.empty}" class="results-container">
-                <p class="no-players">Немає гравців</p>
+                <p th:text="#{noPlayers}" class="no-players"></p>
             </div>
             <div th:each="item : ${team.players}">
                 <a th:attr="href=${'/cup/' + cup.id + '/player/' + item.id}">

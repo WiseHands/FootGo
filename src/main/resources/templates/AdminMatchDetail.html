@@ -92,7 +92,7 @@
                 </div>
             </div>
 
-            <p class="admin-tour-title">Картки</p>
+            <p th:if="${!#lists.isEmpty(game.teamACards)} OR ${!#lists.isEmpty(game.teamBCards)}" class="admin-tour-title">Картки</p>
 
             <div class="modal-goal">
                 <div class="team1-goal">

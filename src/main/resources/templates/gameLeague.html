@@ -32,7 +32,7 @@
 	<div id="myLinks">
 		<div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
 		<div><a class="link-item" th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a></div>
-		<div><a class="link-item" th:href="'/league/' + ${league.id} + '/game/' + ${gameId}"><p>Матч</p></a></div>
+		<div><a class="link-item" th:href="'/league/' + ${league.id} + '/game/' + ${gameId}"><p th:text="#{match}"></p></a></div>
 	</div>
 </header>
 <div class="main-head main-head-results player-background">
@@ -118,7 +118,7 @@
 			</div>
 		</div>
 		<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamACards)} OR ${not #lists.isEmpty(game.teamBCards)}" class="tour-number cards">
-			<p>Картки</p>
+			<p th:text="#{cards}"></p>
 		</div>
 		<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-match">
 			<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamACards)}" class="details-team1">

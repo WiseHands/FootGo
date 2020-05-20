@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>Бомбардири</title>
+    <title th:text="#{bestScorers}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../style.css">
     <link rel="shortcut icon" href="../../img/footgo-dark-icon.png" type="image/x-icon">
@@ -26,14 +26,15 @@
             <div class="header-text">
                 <a href="/"><p th:text="${season.name}"></p></a>
                 <a th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a>
-                <a th:href="'/cup/' + ${cup.id} + '/bombardier'"><p>Найкращі бомбардири</p></a>
+                <a th:href="'/cup/' + ${cup.id} + '/bombardier'"><p th:text="#{bestScorers}"></p></a>
             </div>
         </div>
+        <div th:replace="fragments/languageWidget :: languageWidget"></div>
     </div>
     <div id="myLinks">
         <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
         <div><a class="link-item" th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a></div>
-        <div><a class="link-item" th:href="'/cup/' + ${cup.id} + '/bombardier'"><p>Найкращі бомбардири</p></a></div>
+        <div><a class="link-item" th:href="'/cup/' + ${cup.id} + '/bombardier'"><p th:text="#{bestScorers}"></p></a></div>
     </div>
 </header>
 
@@ -45,26 +46,26 @@
 
 <div class="bomb-container">
     <div class="bomb-head">
-        <p>Найкращі бомбардири</p>
+        <p th:text="#{bestScorers}"></p>
     </div>
 
     <div class="bomb">
         <div class="bomb-position">
             <div class="bomb-title">№</div>
             <div th:each="playerGoal, iter : ${playerGoals}">
-                <p th:text="${playerGoal.formatPosition(iter.index)}">не заявлена</p>
+                <p th:text="${playerGoal.formatPosition(iter.index)}"></p>
             </div>
         </div>
         <div class="bomb-player-name">
-            <div class="bomb-title">Футболіст</div>
+            <div th:text="#{footballPlayer}" class="bomb-title"></div>
             <div th:each="playerGoal : ${playerGoals}">
                 <a th:attr="href=${'/cup/' + cupId + '/player/' + playerGoal.player.id}">
-                    <p th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}">не заявлена</p>
+                    <p th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}"></p>
                 </a>
             </div>
         </div>
         <div class="bomb-scored">
-            <div class="bomb-title">М'ячів</div>
+            <div th:text="#{playerGoalsCount}" class="bomb-title"></div>
             <div th:each="playerGoal : ${playerGoals}">
                 <p th:text="${playerGoal.goalList.size()}">
                     0
@@ -72,7 +73,7 @@
             </div>
         </div>
         <div class="bomb-team">
-            <div class="bomb-title">Команда</div>
+            <div th:text="#{team}" class="bomb-title"></div>
             <div th:each="playerGoal : ${playerGoals}">
                 <a th:attr="href=${'/cup/' + cupId + '/team/' + playerGoal.player.team.id}">
                     <p th:text="${playerGoal.player.team.teamName}"></p>

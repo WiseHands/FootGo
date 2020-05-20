@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<title th:text="${'Профіль гравця ' + player.firstName + ' ' + player.lastName + ' | Команда ' + player.team.teamName }">Профіль гравця </title>
+	<title th:text="#{playerProfile} + ' ' + ${player.firstName + ' ' + player.lastName} + ' | ' + #{team} + ' ' + ${player.team.teamName }">Профіль гравця </title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/hamburger.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
@@ -25,15 +25,15 @@
 			<div class="header-text">
 				<a href="/"><p th:text="${season.name}"></p></a>
 				<a th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a>
-				<a th:href="'/cup/' + ${cup.id} + '/player/' + ${player.id}"><p>Гравець</p></a>
+				<a th:href="'/cup/' + ${cup.id} + '/player/' + ${player.id}"><p th:text="#{player}"></p></a>
 			</div>
 		</div>
-		<div class="header-second-block"></div>
+		<div th:replace="fragments/languageWidget :: languageWidget"></div>
 	</div>
 	<div id="myLinks">
 		<div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
 		<div><a class="link-item" th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a></div>
-		<div><a class="link-item" th:href="'/cup/' + ${cup.id} + '/player/' + ${player.id}"><p>Гравець</p></a></div>
+		<div><a class="link-item" th:href="'/cup/' + ${cup.id} + '/player/' + ${player.id}"><p th:text="#{player}"></p></a></div>
 	</div>
 </header>
 <div class="main-head main-head-results player-background">
@@ -50,7 +50,7 @@
 		<p th:text="${player.lastName + ' ' + player.firstName}"></p>
 		<!--<p>Дата народження</p>-->
 		<!--<p>01.01.1900</p>-->
-		<p>Команда:</p>
+		<p th:text="#{team} + ':'"></p>
 		<div class="player-card-logo-team">
 			<a th:attr="href=${'/cup/' + cupId + '/team/' + player.team.id}">
 				<img th:attr="src=${'/logo/logo' + player.team.id + '.png'}, class=${'team' + player.team.id}">
