@@ -202,6 +202,10 @@ body p {
 .tournament p {
     white-space: inherit;
     padding-top: 5%;
+    padding-bottom: 0;
+}
+.text-bold {
+    font-weight: 600 !important;
 }
 .tournament-name input {
    width: 100%;

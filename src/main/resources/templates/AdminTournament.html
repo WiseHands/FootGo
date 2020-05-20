@@ -29,7 +29,10 @@
                             <a id="descriptionTextEdit" class="link-style" title="Редагувати опис турніру">
                                 <span class="far fa-edit"></span>
                             </a>
+                            <p class="text-bold">Опис турніру:</p>
                             <p th:text="${tournament.description}"></p>
+                            <p class="text-bold">Опис турніру (English):</p>
+                            <p th:text="${tournament.descriptionEn}"></p>
                         </div>
                     </div>
                     <div class="seasons">
@@ -63,6 +66,7 @@
                         <div class="tournament-description">
                             <p>Опис турніру</p>
                             <textarea th:text="${tournament.description}" rows="5" cols="24" id="tournamentDescription" name="tournamentDescription" placeholder="Опис турніру" required=""></textarea>
+                            <textarea th:text="${tournament.descriptionEn}" rows="5" cols="24" id="tournamentDescriptionEn" name="tournamentDescriptionEn" placeholder="Опис турніру (English)" required=""></textarea>
                         </div>
                     </div>
                     <div id="requiredFieldsError" class="text-input-error" style="display:none"><p>Заповніть будь ласка обов'язкові поля</p></div>

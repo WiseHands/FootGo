@@ -2,6 +2,7 @@ function submissionData(event) {
     const tournamentName = document.getElementById('tournamentName').value;
     const tournamentNameEn = document.getElementById('tournamentNameEn').value;
     const tournamentDescription = document.getElementById("tournamentDescription").value;
+    const tournamentDescriptionEn = document.getElementById("tournamentDescriptionEn").value;
     const checkEmptyTournamentName = document.getElementById("tournamentName");
     const checkEmptyTournamentNameEn = document.getElementById("tournamentNameEn");
 
@@ -13,7 +14,7 @@ function submissionData(event) {
     }
     if(tournamentName && tournamentNameEn) {
 
-        let params = '?tournamentName=' + tournamentName + '&tournamentNameEn=' + tournamentNameEn + '&tournamentDescription=' + tournamentDescription;
+        let params = '?tournamentName=' + tournamentName + '&tournamentNameEn=' + tournamentNameEn + '&tournamentDescription=' + tournamentDescription + '&tournamentDescriptionEn=' + tournamentDescriptionEn;
         let apiUrl = '/api/tournament/new' + params;
         fetch(apiUrl, {
             method: 'POST',

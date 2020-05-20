@@ -21,6 +21,9 @@ public class Tournament {
     @Lob
     private String description;
 
+    @Lob
+    private String description_en;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Season> seasonList;
 
@@ -57,6 +60,14 @@ public class Tournament {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDescriptionEn() {
+        return description_en;
+    }
+
+    public void setDescriptionEn(String description_en) {
+        this.description_en = description_en;
     }
 
     public List<Season> getSeasonList() {

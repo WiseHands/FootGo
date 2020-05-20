@@ -16,11 +16,12 @@ public class TournamentManagementController {
     @PutMapping(value = "/{tournamentId}/edit", consumes = "application/json", produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    public Tournament editTournament(@PathVariable Long tournamentId, @RequestParam String tournamentName, @RequestParam String tournamentNameEn, @RequestParam String tournamentDescription) {
+    public Tournament editTournament(@PathVariable Long tournamentId, @RequestParam String tournamentName, @RequestParam String tournamentNameEn, @RequestParam String tournamentDescription, @RequestParam String tournamentDescriptionEn) {
         Tournament tournament = tournamentRepository.findById(tournamentId).get();
         tournament.setName(tournamentName);
         tournament.setNameEn(tournamentNameEn);
         tournament.setDescription(tournamentDescription);
+        tournament.setDescriptionEn(tournamentDescriptionEn);
         tournamentRepository.save(tournament);
 
         return tournament;
