@@ -474,6 +474,9 @@ input[type=submit] {
 .all-games-button {
     margin: 0 auto !important;
 }
+.table-container {
+    margin-bottom: 3rem;
+}
 .table-full {
 /*    background: url("img/foot22.jpg");*/
     background: #f7f7f5;

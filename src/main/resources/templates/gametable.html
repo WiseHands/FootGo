@@ -50,7 +50,7 @@
     </div>
 </div>
 
-<div>
+<div class="table-container">
     <div class="table-head">
         <p th:text="#{championshipTable}"></p>
     </div>
@@ -97,7 +97,7 @@
         </div>
 
         <div class="table-games table-offset ">
-            <div class="table-title">І</div>
+            <div th:text="#{playedGames}" class="table-title"></div>
             <!--            <div class="table-firstplace" th:text="${firstPlace.numberOfGames}"></div>
                         <div class="table-secondplace" th:text="${secondPlace.numberOfGames}"></div>
                         <div class="table-thirdplace" th:text="${thirdPlace.numberOfGames}"></div>-->
@@ -106,7 +106,7 @@
             </div>
         </div>
         <div class="table-wins table-offset">
-            <div class="table-title">В</div>
+            <div th:text="#{matchesWon}" class="table-title"></div>
             <!--            <div class="table-firstplace" th:text="${firstPlace.numberOfWins}"></div>
                         <div class="table-secondplace" th:text="${secondPlace.numberOfWins}"></div>
                         <div class="table-thirdplace" th:text="${thirdPlace.numberOfWins}"></div>-->
@@ -115,7 +115,7 @@
             </div>
         </div>
         <div class="table-draws table-offset">
-            <div class="table-title">Н</div>
+            <div th:text="#{matchesDraw}" class="table-title"></div>
             <!--            <div class="table-firstplace" th:text="${firstPlace.numberOfDraws}"></div>
                         <div class="table-secondplace" th:text="${secondPlace.numberOfDraws}"></div>
                         <div class="table-thirdplace" th:text="${thirdPlace.numberOfDraws}"></div>-->
@@ -124,7 +124,7 @@
             </div>
         </div>
         <div class="table-defeats table-offset">
-            <div class="table-title">П</div>
+            <div th:text="#{matchesLoss}" class="table-title"></div>
             <!--            <div class="table-firstplace" th:text="${firstPlace.numberOfLoses}"></div>
                         <div class="table-secondplace" th:text="${secondPlace.numberOfLoses}"></div>
                         <div class="table-thirdplace" th:text="${thirdPlace.numberOfLoses}"></div>-->
@@ -133,7 +133,7 @@
             </div>
         </div>
         <div class="table-goals">
-            <div class="table-title">З-П</div>
+            <div th:text="#{gfga}" class="table-title"></div>
             <!--            <div class="table-firstplace" th:text="${firstPlace.numberOfGoalsScored + ' - ' + firstPlace.numberOfGoalsMissed}"></div>
                         <div class="table-secondplace" th:text="${secondPlace.numberOfGoalsScored + ' - ' + secondPlace.numberOfGoalsMissed}"></div>
                         <div class="table-thirdplace" th:text="${thirdPlace.numberOfGoalsScored + ' - ' + thirdPlace.numberOfGoalsMissed}"></div>-->
@@ -142,7 +142,7 @@
             </div>
         </div>
         <div class="table-points table-offset">
-            <div class="table-title">О</div>
+            <div th:text="#{points}" class="table-title"></div>
             <!--            <div class="table-firstplace" th:text="${firstPlace.points}"></div>
                         <div class="table-secondplace" th:text="${secondPlace.points}"></div>
                         <div class="table-thirdplace" th:text="${thirdPlace.points}"></div>-->

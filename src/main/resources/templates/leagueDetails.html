@@ -239,13 +239,13 @@
             </div>
 
             <div class="table-games table-offset ">
-                <div class="table-title">І</div>
+                <div th:text="#{playedGames}" class="table-title"></div>
                 <div th:each="result : ${resultList}">
                     <p th:text="${result.numberOfGames}"></p>
                 </div>
             </div>
             <div class="table-points table-offset">
-                <div class="table-title">О</div>
+                <div th:text="#{points}" class="table-title"></div>
                 <div th:each="result : ${resultList}">
                     <p th:text="${result.points}"></p>
                 </div>
