@@ -25,20 +25,14 @@ public class SeasonApiController {
     @PostMapping(value = "/{tournamentId}/seasons/new", consumes = "application/json", produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    public Season createSeason(@PathVariable Long tournamentId, @RequestParam String seasonName) {
+    public Season createSeason(@PathVariable Long tournamentId, @RequestParam String seasonName, @RequestParam String seasonNameEn) {
         Tournament tournament = tournamentRepository.findById(tournamentId).get();
         Season season = new Season();
         season.setName(seasonName);
+        season.setNameEn(seasonNameEn);
         tournament.addSeason(season);
         tournamentRepository.save(tournament);
 
         return season;
     }
-/*    @GetMapping(value = "/getSeasonsExceptActive", consumes = "application/json", produces = "application/json")
-    public List<Season> getSeasonsExceptActive() {
-        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
-        Tournament tournament = tournaments.get(0);
-        Season season = tournament.getActiveSeason();
-        return seasonRepository.getSeasonsExceptActive(season.getId());
-    }*/
 }

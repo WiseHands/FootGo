@@ -15,6 +15,9 @@ public class Season {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "name_en")
+    private String name_en;
+
     @Column
     private boolean submissionsOpened;
 
@@ -84,6 +87,14 @@ public class Season {
 
     public String getName() {
         return name;
+    }
+
+    public void setNameEn(String name_en) {
+        this.name_en = name_en;
+    }
+
+    public String getNameEn() {
+        return name_en;
     }
 
     public void addTeam(Team team) {
