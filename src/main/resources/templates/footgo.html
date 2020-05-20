@@ -47,10 +47,17 @@
     </div>
     <div id="myLinks">
         <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><a th:text="#{signup}" class="link-item" href="/signup"></a></div>
-        <div class="season-list">
+        <div th:if="${!#lists.isEmpty(season)}" class="season-list">
             <button th:if="${not #lists.isEmpty(season)}" th:text="${season.name}" class="dropbtn"></button>
             <div th:if="${not #lists.isEmpty(seasonList)}" class="prev-seasons">
                 <a th:each="season : ${seasonList}" href="/" th:text="${season.name}"></a>
+            </div>
+        </div>
+        <div th:if="${#lists.isEmpty(season)}" class="season-list">
+            <button th:text="#{seasonListEmpty}" class="dropbtn">
+            </button>
+            <div class="prev-seasons">
+                <a th:text="#{autumn2019}" href="https://2019.footgo-league.com"></a>
             </div>
         </div>
     </div>
