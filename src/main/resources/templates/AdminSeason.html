@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="../../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script th:inline="javascript">let seasonId = /*[[${season.id}]]*/;</script>
         <script src="/putSeasonById.js" type="text/javascript"></script>
     </head>
     <body>
@@ -23,8 +24,8 @@
             </ul>
             <div class="requests">
                 <div class="all-requests">
-                    <div class="request-block">
-                        <a id="seasonEdit" class="link-style" title="Редагувати сезон">
+                    <div id="seasonEdit" class="request-block">
+                        <a class="link-style" title="Редагувати сезон">
                             <h3>Редагувати</h3>
                         </a>
                     </div>
@@ -67,18 +68,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <span id="closeButton" class="close">&times;</span>
-                        <h2>Редагування турніру</h2>
+                        <h2>Редагування сезону</h2>
                     </div>
                     <div class="modal-body">
-                        <div class="tournament-name">
-                            <p>Назва турніру</p>
-                            <input th:value="${tournament.name}" type="text" id="tournamentName" name="tournamentName" placeholder="Назва турніру" required="">
-                            <input th:value="${tournament.nameEn}" type="text" id="tournamentNameEn" name="tournamentNameEn" placeholder="Назва турніру (English)" required="">
-                        </div>
-                        <div class="tournament-description">
-                            <p>Опис турніру</p>
-                            <textarea th:text="${tournament.description}" rows="5" cols="24" id="tournamentDescription" name="tournamentDescription" placeholder="Опис турніру" required=""></textarea>
-                            <textarea th:text="${tournament.descriptionEn}" rows="5" cols="24" id="tournamentDescriptionEn" name="tournamentDescriptionEn" placeholder="Опис турніру (English)" required=""></textarea>
+                        <div class="season-name">
+                            <p>Назва сезону</p>
+                            <input th:value="${season.name}" type="text" id="seasonName" name="tournamentName" placeholder="Назва сезону" required="">
+                            <input th:value="${season.nameEn}" type="text" id="seasonNameEn" name="tournamentNameEn" placeholder="Назва сезону (English)" required="">
                         </div>
                     </div>
                     <div id="requiredFieldsError" class="text-input-error" style="display:none"><p>Заповніть будь ласка обов'язкові поля</p></div>

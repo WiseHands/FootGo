@@ -1,45 +1,43 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    const tournamentEditModal = document.getElementById("tournamentEditModal");
-    const descriptionTextEdit = document.getElementById("descriptionTextEdit");
+    const seasonEditModal = document.getElementById("seasonEditModal");
+    const seasonEdit = document.getElementById("seasonEdit");
 
-    descriptionTextEdit.onclick =  function() {
-        tournamentEditModal.style.display = "block";
+    seasonEdit.onclick =  function() {
+        seasonEditModal.style.display = "block";
     }
 
     const closeButton = document.getElementById("closeButton");
 
     // When the user clicks on <span> (x), close the modal
     closeButton.onclick = function() {
-    tournamentEditModal.style.display = "none";
+    seasonEditModal.style.display = "none";
     }
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-        if (event.target == tournamentEditModal) {
-            tournamentEditModal.style.display = "none";
+        if (event.target == seasonEditModal) {
+            seasonEditModal.style.display = "none";
         }
     }
 
 });
 
 function submissionData(event) {
-    const tournamentName = document.getElementById('tournamentName').value;
-    const tournamentNameEn = document.getElementById('tournamentNameEn').value;
-    const tournamentDescription = document.getElementById("tournamentDescription").value;
-    const tournamentDescriptionEn = document.getElementById("tournamentDescriptionEn").value;
-    const checkEmptyTournamentName = document.getElementById("tournamentName");
-    const checkEmptyTournamentNameEn = document.getElementById("tournamentNameEn");
+    const seasonName = document.getElementById('seasonName').value;
+    const seasonNameEn = document.getElementById('seasonNameEn').value;
+    const checkEmptySeasonName = document.getElementById("seasonName");
+    const checkEmptySeasonNameEn = document.getElementById("seasonNameEn");
 
-    if (checkEmptyTournamentName.value == "" && checkEmptyTournamentName.value.length == 0 || checkEmptyTournamentNameEn.value == "" && checkEmptyTournamentNameEn.value.length == 0) {
+    if (checkEmptySeasonName.value == "" && checkEmptySeasonName.value.length == 0 || checkEmptySeasonNameEn.value == "" && checkEmptySeasontNameEn.value.length == 0) {
         document.getElementById('requiredFieldsError').style.display = "block";
-        checkEmptyTournamentName.classList.add("required-fields");
-        checkEmptyTournamentNameEn.classList.add("required-fields");
+        checkEmptySeasonName.classList.add("required-fields");
+        checkEmptySeasonNameEn.classList.add("required-fields");
         return false;
     }
-    if(tournamentName && tournamentNameEn) {
+    if(seasonName && seasonNameEn) {
 
-        let params = '?&tournamentName=' + tournamentName + '&tournamentNameEn=' + tournamentNameEn + '&tournamentDescription=' + tournamentDescription + '&tournamentDescriptionEn=' + tournamentDescriptionEn;
-        let apiUrl = '/tournament/' + tournamentId + '/edit' + params;
+        let params = '?&seasonName=' + seasonName + '&seasonNameEn=' + seasonNameEn;
+        let apiUrl = '/season/' + seasonId + '/edit' + params;
         fetch(apiUrl, {
             method: 'PUT',
             headers: {
@@ -51,7 +49,7 @@ function submissionData(event) {
                 location.pathname = location.pathname;
             }
             else {
-                alert('Помилка при збереженні турніру');
+                alert('Помилка при збереженні сезону');
             }
             return  response.json();
         }).then(function(data) {

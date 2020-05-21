@@ -207,11 +207,14 @@ body p {
 .text-bold {
     font-weight: 600 !important;
 }
-.tournament-name input {
-   width: 100%;
+.tournament-name input, .season-name input {
+    width: 100%;
 }
-.tournament-name p, .tournament-description p {
-   padding-bottom: 0.5em;
+.tournament-name p, .tournament-description p, .season-name p {
+    padding-bottom: 0.5em;
+}
+#seasonEditModal .modal-header {
+    padding: 10px 5px 0 0;
 }
 .description-text .request-block {
     cursor: text;
