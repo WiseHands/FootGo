@@ -20,12 +20,22 @@ public class League {
 
     private String name;
 
+    private String nameEn;
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getNameEn() {
+        return nameEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
 
     public List<Tour> getTours() {

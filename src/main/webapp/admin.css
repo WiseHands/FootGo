@@ -207,10 +207,10 @@ body p {
 .text-bold {
     font-weight: 600 !important;
 }
-.tournament-name input, .season-name input {
+.tournament-name input, .season-name input, .league-name input, .cup-name input {
     width: 100%;
 }
-.tournament-name p, .tournament-description p, .season-name p {
+.tournament-name p, .tournament-description p, .season-name p, .league-name p, .cup-name p {
     padding-bottom: 0.5em;
 }
 #seasonEditModal .modal-header {
@@ -565,7 +565,7 @@ input[type=text], input[type=tel], input[type=email], select {
 .goal-second p {
     white-space: normal;
 }
-.goal-add, .team-add, .tournament-edit {
+.goal-add, .team-add, .tournament-edit, .season-edit, .league-edit, .cup-edit {
     display: flex;
     justify-content: center;
 }

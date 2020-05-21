@@ -34,6 +34,9 @@ public class LeagueApiController {
     public static class LeagueCreateRequestBody {
 
         private String name;
+
+        private String nameEn;
+
         private List<Long> teamList;
 
         public String getName() {
@@ -42,6 +45,14 @@ public class LeagueApiController {
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        public String getNameEn() {
+            return nameEn;
+        }
+
+        public void setNameEn(String nameEn) {
+            this.nameEn = nameEn;
         }
 
         public List<Long> getTeamList() {
@@ -90,7 +101,9 @@ public class LeagueApiController {
         Season season = seasonRepository.findById(seasonId).get();
         League league = new League();
         league.setName(body.name);
+        league.setNameEn(body.nameEn);
         System.out.println(body.name);
+        System.out.println(body.nameEn);
 
         List<Team> teamList = new ArrayList<>();
 

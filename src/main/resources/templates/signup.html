@@ -23,19 +23,22 @@
             </div>
             <div class="header-text">
                 <p th:text="#{registration}"></p>
-                <a href="/"><p th:text="${season.name}"></p></a>
+                <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" href="/"><p th:text="${season.nameEn}"></p></a>
+                <a th:if="${#locale.language == 'uk'}" href="/"><p th:text="${season.name}"></p></a>
             </div>
         </div>
         <div th:replace="fragments/languageWidget :: languageWidget"></div>
     </div>
     <div id="myLinks">
         <div><a class="link-item"><p th:text="#{registration}"></p></a></div>
-        <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
+        <div th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}"><a class="link-item" href="/"><p th:text="${season.nameEn}"></p></a></div>
+        <div th:if="${#locale.language == 'uk'}"><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
     </div>
 </header>
 <div class="main-head main-head-results signup-background">
     <div class="main-head-title league-page">
-        <h1 th:text="${season.name}"></h1>
+        <h1 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></h1>
+        <h1 th:if="${#locale.language == 'uk'}" th:text="${season.name}"></h1>
     </div>
 </div>
 <div>

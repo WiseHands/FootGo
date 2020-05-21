@@ -5,21 +5,23 @@ let seasonId = url.match(regex);*/
 
 function submissionData(event) {
     let leagueName = document.getElementById('leagueName').value;
+    let leagueNameEn = document.getElementById('leagueNameEn').value;
 
-    const checkEmpty = document.getElementById("leagueName");
-    if (checkEmpty.value == "" && checkEmpty.value.length == 0) {
+    const checkEmptyLeagueName = document.getElementById("leagueName");
+    const checkEmptyLeagueNameEn = document.getElementById("leagueNameEn");
+    if (checkEmptyLeagueName.value == "" && checkEmptyLeagueName.value.length == 0 || checkEmptyLeagueNameEn.value == "" && checkEmptyLeagueNameEn.value.length == 0) {
         document.getElementById('showInputAddLeagueNameError').style.display = "block";
         checkEmpty.classList.add("required-fields");
         return false;
     }
-    if (leagueName) {
+    if (leagueName && leagueNameEn) {
         function getCheckedValues() {
             return Array.from(document.querySelectorAll('input[type="checkbox"]'))
             .filter((checkbox) => checkbox.checked)
             .map((checkbox) => checkbox.value);
         }
 
-        let leagueDataJsonObj = {"name" : leagueName, "teamList" : getCheckedValues()};
+        let leagueDataJsonObj = {"name" : leagueName, "name_en" : leagueNameEn, "teamList" : getCheckedValues()};
         let jsonLeagueInString = JSON.stringify(leagueDataJsonObj);
 
         let apiUrl = '/api/season/' + seasonId + '/league';
