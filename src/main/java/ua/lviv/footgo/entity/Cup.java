@@ -15,6 +15,9 @@ public class Cup {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "name_en")
+    private String nameEn;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Team> teamList;
 
@@ -27,6 +30,14 @@ public class Cup {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getNameEn() {
+        return nameEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
     public List<Team> getTeamList() {
         return teamList;

@@ -25,7 +25,8 @@
         <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/leaguelist'">Ліги</a></li>
         <li>
             <a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/leaguelist/' + ${league.id}"
-               th:text="${league.name}"></a></li>
+               th:text="${league.name}"></a>
+        </li>
     </ul>
     <div class="requests">
         <div class="all-requests">

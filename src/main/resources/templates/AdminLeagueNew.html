@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
@@ -31,8 +30,8 @@
         <h1>Назва ліги</h1>
         <input type="text" id="leagueName" name="leagueName" placeholder="Назва ліги" required>
         <input type="text" id="leagueNameEn" name="leagueNameEn" placeholder="Назва ліги (English)" required>
-        <div id="showInputAddLeagueNameError" class="text-input-error" style="display:none"><p>Заповніть будь ласка
-            обов'язкові поля</p></div>
+        <div id="showInputAddLeagueNameError" class="text-input-error" style="display:none">
+            <p>Заповніть будь ласка обов'язкові поля</p></div>
     </div>
     <div class="season-block all-requests">
         <div th:each="item : ${season.teamList}">
@@ -44,7 +43,9 @@
             </label>
         </div>
     </div>
+
     <input class="main-input-button button-create" type="button" value="Створити" onclick="submissionData()">
+
 </div>
 </body>
 </html>

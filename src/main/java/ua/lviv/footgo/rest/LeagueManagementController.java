@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.entity.League;
-import ua.lviv.footgo.entity.Tournament;
 import ua.lviv.footgo.repository.LeagueManagementRepository;
-import ua.lviv.footgo.repository.TournamentRepository;
 
 @RestController
 @RequestMapping(path = "/leaguelist")

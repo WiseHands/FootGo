@@ -5,21 +5,23 @@ let seasonId = url.match(regex);*/
 
 function submissionData(event) {
     let cupName = document.getElementById('cupName').value;
+    let cupNameEn = document.getElementById('cupNameEn').value;
 
-    const checkEmpty = document.getElementById("cupName");
-    if (checkEmpty.value == "" && checkEmpty.value.length == 0) {
+    const checkEmptyCupName = document.getElementById("cupName");
+    const checkEmptyCupNameEn = document.getElementById("cupNameEn");
+    if (checkEmptyCupName.value == "" && checkEmptyCupName.value.length == 0 || checkEmptyCupNameEn.value == "" && checkEmptyCupNameEn.value.length == 0) {
         document.getElementById('showInputAddCupNameError').style.display = "block";
         checkEmpty.classList.add("required-fields");
         return false;
     }
-    if (cupName) {
+    if (checkEmptyCupName && checkEmptyCupNameEn) {
         function getCheckedValues() {
             return Array.from(document.querySelectorAll('input[type="checkbox"]'))
             .filter((checkbox) => checkbox.checked)
             .map((checkbox) => checkbox.value);
         }
 
-        let cupDataJsonObj = {"name" : cupName, "teamList" : getCheckedValues()};
+        let cupDataJsonObj = {"name" : cupName, "nameEn" : cupNameEn, "teamList" : getCheckedValues()};
         let jsonCupInString = JSON.stringify(cupDataJsonObj);
 
         let apiUrl = '/api/season/' + seasonId + '/cup';

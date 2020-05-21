@@ -33,6 +33,9 @@ public class CupApiController {
     public static class CupCreateRequestBody {
 
         private String name;
+
+        private String nameEn;
+
         private List<Long> teamList;
 
         public String getName() {
@@ -41,6 +44,14 @@ public class CupApiController {
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        public String getNameEn() {
+            return nameEn;
+        }
+
+        public void setNameEn(String nameEn) {
+            this.nameEn = nameEn;
         }
 
         public List<Long> getTeamList() {
@@ -86,7 +97,9 @@ public class CupApiController {
         Season season = seasonRepository.findById(seasonId).get();
         Cup cup = new Cup();
         cup.setName(body.name);
+        cup.setNameEn(body.nameEn);
         System.out.println(body.name);
+        System.out.println(body.nameEn);
 
         List<Team> teamList = new ArrayList<>();
 
