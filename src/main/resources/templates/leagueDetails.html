@@ -2,7 +2,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title th:text="#{league} + ' ' + ${league.name + ' | FootGo League'}"></title>
+    <title th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="#{league} + ' ' + ${league.nameEn + ' | FootGo League'}"></title>
+    <title th:if="${#locale.language == 'uk'}" th:text="#{league} + ' ' + ${league.name + ' | FootGo League'}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/style.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
@@ -21,20 +22,31 @@
                 </a>
             </div>
             <div class="header-text">
-                <a href="/"><p th:text="${season.name}"></p></a>
-                <a th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a>
+                <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" href="/"><p th:text="${season.nameEn}"></p></a>
+                <a th:if="${#locale.language == 'uk'}" href="/"><p th:text="${season.name}"></p></a>
+                <a th:href="'/league/' + ${league.id}">
+                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></p>
+                    <p th:if="${#locale.language == 'uk'}" th:text="${league.name}"></p>
+                </a>
             </div>
         </div>
         <div th:replace="fragments/languageWidget :: languageWidget"></div>
     </div>
     <div id="myLinks">
-        <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
-        <div><a class="link-item" th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a></div>
+        <div><a class="link-item" href="/">
+            <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
+            <p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
+        </a></div>
+        <div><a class="link-item" th:href="'/league/' + ${league.id}">
+            <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></p>
+            <p th:if="${#locale.language == 'uk'}" th:text="${league.name}"></p>
+        </a></div>
     </div>
 </header>
 <div class="main-head league-main-head">
     <div class="main-head-title league-page">
-        <h1 th:text="${league.name}"></h1>
+        <h1 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></h1>
+        <h1 th:if="${#locale.language == 'uk'}" th:text="${league.name}"></h1>
     </div>
 </div>
 <div class="main-container">

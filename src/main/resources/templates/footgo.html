@@ -2,7 +2,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title th:if="${!#lists.isEmpty(tournament)}" th:text="${tournament.name} + ' - ' + #{title}"></title>
+    <title th:if="${!#lists.isEmpty(tournament)} AND ${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${tournament.nameEn} + ' - ' + #{title}"></title>
+    <title th:if="${!#lists.isEmpty(tournament)} AND ${#locale.language == 'uk'}" th:text="${tournament.name} + ' - ' + #{title}"></title>
     <title th:if="${#lists.isEmpty(tournament)}" th:text="#{title}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="img/footgo-dark-icon.png" type="image/x-icon">
@@ -199,11 +200,11 @@
     <div class="main-league">
         <div th:if="${not #lists.isEmpty(leagueList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" th:each="league : ${leagueList}" class="main-about">
             <a th:href="'/league/' + ${league.id}">
-                <h1 th:text="${league.name}"></h1>
+                <h1 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></h1>
+                <h1 th:if="${#locale.language == 'uk'}" th:text="${league.name}"></h1>
             </a>
             <div class="main-about-league">
                 <div class="main-team-list">
-                    <!--                        <img src="/img/team-icon.png">-->
                     <div th:each="team : ${league.teamList}">
                         <a th:href="'/league/' + ${league.id} + '/team/' + ${team.id}" class="link-style">
                             <div class="request-block">
@@ -217,7 +218,8 @@
 
         <div th:if="${not #lists.isEmpty(cupList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" th:each="cup : ${cupList}" class="main-about">
             <a th:href="'/cup/' + ${cup.id}">
-                <h1 th:text="${cup.name}"></h1>
+                <h1 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></h1>
+                <h1 th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></h1>
             </a>
             <div class="main-about-league">
                 <div class="main-team-list">

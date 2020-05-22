@@ -804,7 +804,7 @@ input[type="file"] {
     width: fit-content;
     margin: 0 auto;
     padding: 5px 10px 5px 10px;
-    margin-top: 10px;
+    margin-top: 15px;
     background: orangered;
     color: white;
     font-size: 1.3rem;
@@ -954,6 +954,7 @@ input[type="file"] {
     min-width: 100%;
     border-radius: 5px;
     margin-bottom: 15px;
+    padding: 15px;
 }
 .new-season h1 {
     padding: 1rem 0;

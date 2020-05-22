@@ -21,22 +21,39 @@
                 </a>
             </div>
             <div class="header-text">
-                <a href="/"><p th:text="${season.name}"></p></a>
-                <a th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a>
+                <a href="/">
+                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
+                    <p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
+                </a>
+                <a th:href="'/league/' + ${league.id}">
+                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></p>
+                    <p th:if="${#locale.language == 'uk'}" th:text="${league.name}"></p>
+                </a>
                 <a th:href="'/league/' + ${league.id} + '/team/' + ${team.id}"><p th:text="${team.teamName}"></p></a>
             </div>
         </div>
         <div th:replace="fragments/languageWidget :: languageWidget"></div>
     </div>
     <div id="myLinks">
-        <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
-        <div><a class="link-item" th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a></div>
+        <div>
+            <a class="link-item" href="/">
+                <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
+                <p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
+            </a>
+        </div>
+        <div>
+            <a class="link-item" th:href="'/league/' + ${league.id}">
+                <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></p>
+                <p th:if="${#locale.language == 'uk'}" th:text="${league.name}"></p>
+            </a>
+        </div>
         <div><a class="link-item" th:href="'/league/' + ${league.id} + '/team/' + ${team.id}"><p th:text="${team.teamName}"></p></a></div>
     </div>
 </header>
 <div class="main-head league-main-head league-team-background">
     <div class="main-head-title league-page">
-        <h1 th:text="${league.name}"></h1>
+        <h1 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></h1>
+        <h1 th:if="${#locale.language == 'uk'}" th:text="${league.name}"></h1>
     </div>
 </div>
 <div>

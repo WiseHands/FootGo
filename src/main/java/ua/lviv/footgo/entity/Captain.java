@@ -1,6 +1,7 @@
 package ua.lviv.footgo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import ua.lviv.footgo.util.Transliterator;
 
 import javax.persistence.*;
 
@@ -20,7 +21,6 @@ public class Captain {
 
     @Column(name = "email")
     private String captainEmail;
-
 
     @JoinColumn
     @JsonIgnore
@@ -55,7 +55,6 @@ public class Captain {
         return id;
     }
 
-
     public String getCaptainName() {
         return captainName;
     }
@@ -64,6 +63,7 @@ public class Captain {
         this.captainName = captainName;
     }
 
-
-
+    public String getCaptainNameTransliterated() {
+        return Transliterator.transliterate(this.captainName);
+    }
 }

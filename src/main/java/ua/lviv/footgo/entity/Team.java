@@ -1,5 +1,7 @@
 package ua.lviv.footgo.entity;
 
+import ua.lviv.footgo.util.Transliterator;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,5 +96,8 @@ public class Team {
         this.players.add(player);
     }
 
+    public String getTeamNameTransliterated() {
+        return Transliterator.transliterate(this.teamName);
+    }
 
 }

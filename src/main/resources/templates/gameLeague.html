@@ -21,22 +21,39 @@
 				</a>
 			</div>
 			<div class="header-text">
-				<a href="/"><p th:text="${season.name}"></p></a>
-				<a th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a>
+				<a href="/">
+					<p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
+					<p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
+				</a>
+				<a th:href="'/league/' + ${league.id}">
+					<p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></p>
+					<p th:if="${#locale.language == 'uk'}" th:text="${league.name}"></p>
+				</a>
 				<a th:href="'/league/' + ${league.id} + '/game/' + ${gameId}"><p th:text="#{match}"></p></a>
 			</div>
 		</div>
 		<div th:replace="fragments/languageWidget :: languageWidget"></div>
 	</div>
 	<div id="myLinks">
-		<div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
-		<div><a class="link-item" th:href="'/league/' + ${league.id}"><p th:text="${league.name}"></p></a></div>
+		<div>
+			<a class="link-item" href="/">
+				<p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
+				<p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
+			</a>
+		</div>
+		<div>
+			<a class="link-item" th:href="'/league/' + ${league.id}">
+				<p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></p>
+				<p th:if="${#locale.language == 'uk'}" th:text="${league.name}"></p>
+			</a>
+		</div>
 		<div><a class="link-item" th:href="'/league/' + ${league.id} + '/game/' + ${gameId}"><p th:text="#{match}"></p></a></div>
 	</div>
 </header>
 <div class="main-head main-head-results player-background">
 	<div class="main-head-title league-page">
-		<h1 th:text="${league.name}"></h1>
+		<h1 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></h1>
+		<h1 th:if="${#locale.language == 'uk'}" th:text="${league.name}"></h1>
 	</div>
 </div>
 <div class="matches-container">
@@ -83,11 +100,11 @@
 			</div>
 		</div>
 
-		<div class="center-text" th:if="${game.isTeamAHasTechnicalDefeat() == true}">
+		<div class="center-text empty-text-error" th:if="${game.isTeamAHasTechnicalDefeat() == true}">
 			<span th:text="#{teamTechnicalDefeat} + ' ' + ${game.firstTeam.teamName}">Team 1</span>
 		</div>
 
-		<div class="center-text" th:if="${game.isTeamBHasTechnicalDefeat() == true}">
+		<div class="center-text empty-text-error" th:if="${game.isTeamBHasTechnicalDefeat() == true}">
 			<span th:text="#{teamTechnicalDefeat} + ' ' + ${game.secondTeam.teamName}">Team 2</span>
 		</div>
 
