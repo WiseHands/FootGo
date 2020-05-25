@@ -63,7 +63,8 @@
 		<img th:if="${player.getImageUrl() == null || player.getImageUrl() == ''}" src="/img/img_avatar.png">
 	</div>
 	<div class="player-card-info">
-		<p th:text="${player.lastName + ' ' + player.firstName}"></p>
+		<p th:if="${#locale.language == 'uk'}" th:text="${player.lastName + ' ' + player.firstName}"></p>
+		<p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerLastNameTransliterated + ' ' + playerFirstNameTransliterated}"></p>
 		<!--<p>Дата народження</p>-->
 		<!--<p>01.01.1900</p>-->
 		<p th:text="#{team} + ':'"></p>
@@ -71,7 +72,8 @@
 			<a th:attr="href=${'/league/' + leagueId + '/team/' + player.team.id}">
 				<img th:attr="src=${player.team.logoImageUrl}, class=${'light' + ' ' + 'team' + player.team.id}">
 				<img th:attr="src=${player.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + player.team.id}">
-				<p th:text="${player.team.teamName}"></p>
+				<p th:if="${#locale.language == 'uk'}" th:text="${player.team.teamName}"></p>
+				<p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${teamNameTransliterated}"></p>
 			</a>
 		</div>
 		<!--<p>Забито голів:<span>15</span></p>-->

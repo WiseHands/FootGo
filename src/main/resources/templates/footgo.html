@@ -207,8 +207,11 @@
                 <div class="main-team-list">
                     <div th:each="team : ${league.teamList}">
                         <a th:href="'/league/' + ${league.id} + '/team/' + ${team.id}" class="link-style">
-                            <div class="request-block">
+                            <div th:if="${#locale.language == 'uk'}" th:title="${team.teamName}" class="request-block">
                                 <p th:text="${team.teamName}"></p>
+                            </div>
+                            <div th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:title="${team.getTeamNameTransliterated()}" class="request-block">
+                                <p th:text="${team.getTeamNameTransliterated()}"></p>
                             </div>
                         </a>
                     </div>
@@ -226,8 +229,11 @@
                     <!--                        <img src="/img/team-icon.png">-->
                     <div th:each="team : ${cup.teamList}">
                         <a th:href="'/cup/' + ${cup.id} + '/team/' + ${team.id}" class="link-style">
-                            <div class="request-block">
+                            <div th:if="${#locale.language == 'uk'}" th:title="${team.teamName}" class="request-block">
                                 <p th:text="${team.teamName}"></p>
+                            </div>
+                            <div th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:title="${team.getTeamNameTransliterated()}" class="request-block">
+                                <p th:text="${team.getTeamNameTransliterated()}"></p>
                             </div>
                         </a>
                     </div>

@@ -73,16 +73,14 @@
                     <a th:attr="href=${'/league/' + leagueId + '/team/' + game.firstTeam.id}">
                         <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
                         <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + game.firstTeam.id}">
-                        <p th:text="${game.firstTeam.teamName}">
-                            game.firstTeam.teamName
-                        </p>
+                        <p th:if="${#locale.language == 'uk'}" th:text="${game.firstTeam.teamName}">game.firstTeam.teamName</p>
+                        <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${game.firstTeam.getTeamNameTransliterated()}"></p>
                     </a>
                     <a th:attr="href=${'/league/' + leagueId + '/team/' + game.secondTeam.id}">
                         <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
                         <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + game.secondTeam.id}">
-                        <p th:text="${game.secondTeam.teamName}">
-                            game.secondTeam.teamName
-                        </p>
+                        <p th:if="${#locale.language == 'uk'}" th:text="${game.secondTeam.teamName}">game.secondTeam.teamName</p>
+                        <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${game.secondTeam.getTeamNameTransliterated()}"></p>
                     </a>
                 </div>
                 <div class="res-score">

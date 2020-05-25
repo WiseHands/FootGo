@@ -8,7 +8,8 @@
         <button th:text="${#locale.language}" class="dropbtn"></button>
         <div class="lang-list">
             <a href="?lang=en">English</a>
-            <a href="?lang=uk">Українська</a>
+            <a th:if="${#locale.language == 'uk'}" href="?lang=uk">Українська</a>
+            <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" href="?lang=uk">Ukrainian</a>
         </div>
     </div>
 </div>

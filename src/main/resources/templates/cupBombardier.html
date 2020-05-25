@@ -76,7 +76,8 @@
             <div th:text="#{footballPlayer}" class="bomb-title"></div>
             <div th:each="playerGoal : ${playerGoals}">
                 <a th:attr="href=${'/cup/' + cupId + '/player/' + playerGoal.player.id}">
-                    <p th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}"></p>
+                    <p th:if="${#locale.language == 'uk'}" th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}"></p>
+                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerGoal.player.getPlayerLastNameTransliterated() + ' ' + playerGoal.player.getPlayerFirstNameTransliterated()}"></p>
                 </a>
             </div>
         </div>
@@ -92,7 +93,8 @@
             <div th:text="#{team}" class="bomb-title"></div>
             <div th:each="playerGoal : ${playerGoals}">
                 <a th:attr="href=${'/cup/' + cupId + '/team/' + playerGoal.player.team.id}">
-                    <p th:text="${playerGoal.player.team.teamName}"></p>
+                    <p th:if="${#locale.language == 'uk'}" th:text="${playerGoal.player.team.teamName}"></p>
+                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerGoal.player.team.getTeamNameTransliterated()}"></p>
                 </a>
             </div>
         </div>

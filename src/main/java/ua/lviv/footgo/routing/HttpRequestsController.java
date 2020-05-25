@@ -480,6 +480,9 @@ public class HttpRequestsController {
         model.addAttribute("season", season);
         Player player = playerRepository.findById(playerId).get();
         model.addAttribute("player", player);
+        model.addAttribute("playerFirstNameTransliterated", player.getPlayerFirstNameTransliterated());
+        model.addAttribute("playerLastNameTransliterated", player.getPlayerLastNameTransliterated());
+        model.addAttribute("teamNameTransliterated", player.getTeam().getTeamNameTransliterated());
 /*        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         model.addAttribute("league", leagueList.get(0));*/
         League league = leagueManagementRepository.findById(leagueId).get();
@@ -494,6 +497,9 @@ public class HttpRequestsController {
         model.addAttribute("season", season);
         Player player = playerRepository.findById(playerId).get();
         model.addAttribute("player", player);
+        model.addAttribute("playerFirstNameTransliterated", player.getPlayerFirstNameTransliterated());
+        model.addAttribute("playerLastNameTransliterated", player.getPlayerLastNameTransliterated());
+        model.addAttribute("teamNameTransliterated", player.getTeam().getTeamNameTransliterated());
 /*        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         model.addAttribute("league", leagueList.get(0));*/
         Cup cup = cupManagementRepository.findById(cupId).get();
