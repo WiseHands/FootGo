@@ -21,22 +21,39 @@
                 </a>
             </div>
             <div class="header-text">
-                <a href="/"><p th:text="${season.name}"></p></a>
-                <a th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a>
+                <a href="/">
+                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
+                    <p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
+                </a>
+                <a th:href="'/cup/' + ${cup.id}">
+                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></p>
+                    <p th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></p>
+                </a>
                 <a th:href="'/cup/' + ${cup.id} + '/results'"><p th:text="#{results}"></p></a>
             </div>
         </div>
         <div th:replace="fragments/languageWidget :: languageWidget"></div>
     </div>
     <div id="myLinks">
-        <div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
-        <div><a class="link-item" th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a></div>
+        <div>
+            <a class="link-item" href="/">
+                <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
+                <p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
+            </a>
+        </div>
+        <div>
+            <a class="link-item" th:href="'/cup/' + ${cup.id}">
+                <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></p>
+                <p th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></p>
+            </a>
+        </div>
         <div><a class="link-item" th:href="'/cup/' + ${cup.id} + '/results'"><p th:text="#{results}"></p></a></div>
     </div>
 </header>
 <div class="main-head main-head-results results-background">
     <div class="main-head-title league-page">
-        <h1 th:text="${cup.name}"></h1>
+        <h1 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></h1>
+        <h1 th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></h1>
     </div>
 </div>
 <div class="results-full">

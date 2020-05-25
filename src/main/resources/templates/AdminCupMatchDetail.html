@@ -7,6 +7,7 @@
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://kit.fontawesome.com/9983a3a0dd.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div class="main-container">
@@ -81,7 +82,7 @@
                         <p><img src="../../../../../../../../img/soccer-ball.png">
                             <span th:text="${goal.player.firstName + goal.player.lastName}" th:attr="onclick=${'editTeam1(' + game.id + ', ' + goal.id + ', true)'}"></span>,
                             <span th:text="${' ' + goal.time}"></span>
-                            <span class="delete-goal" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', true)'}">-</span>
+                            <i class="delete-goal fas fa-user-minus" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', true)'}"></i>
                         </p>
                     </div>
                 </div>
@@ -91,7 +92,7 @@
                         <p><img src="../../../../../../../../img/soccer-ball.png">
                             <span th:text="${goal.player.firstName + goal.player.lastName}" th:attr="onclick=${'editTeam2(' + game.id + ', ' + goal.id + ', false)'}"></span>,
                             <span th:text="${' ' + goal.time}"></span>
-                            <span class="delete-goal" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', false)'}">-</span>
+                            <i class="delete-goal fas fa-user-minus" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', false)'}"></i>
                         </p>
                     </div>
                 </div>
@@ -107,7 +108,7 @@
                             <span th:if="${card.isRed()}" class="red-card card"></span>
                             <span id="teamAPlayerName" th:text="${card.player.firstName + card.player.lastName}"></span>,
                             <span th:text="${' ' + card.time}"></span>
-                            <span class="delete-goal" th:attr="onclick=${'deleteCard(' + game.id + ', ' + card.id + ', true)'}">-</span>
+                            <i class="delete-goal fas fa-user-minus" th:attr="onclick=${'deleteCard(' + game.id + ', ' + card.id + ', true)'}"></i>
                         </p>
                     </div>
                 </div>
@@ -119,7 +120,7 @@
                             <span th:if="${card.isRed()}" class="red-card card"></span>
                             <span id="teamBPlayerName" th:text="${card.player.firstName + card.player.lastName}"></span>,
                             <span th:text="${' ' + card.time}"></span>
-                            <span class="delete-goal" th:attr="onclick=${'deleteCard(' + game.id + ', ' + card.id + ', false)'}">-</span>
+                            <i class="delete-goal fas fa-user-minus" th:attr="onclick=${'deleteCard(' + game.id + ', ' + card.id + ', false)'}"></i>
                         </p>
                     </div>
                 </div>

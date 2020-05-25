@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/hamburger.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
+	<script src="/imgPlaceholderSetScript.js" type="text/javascript"></script>
 </head>
 <body class="matches-full">
 <header>
@@ -68,7 +69,8 @@
 		<p th:text="#{team} + ':'"></p>
 		<div class="player-card-logo-team">
 			<a th:attr="href=${'/league/' + leagueId + '/team/' + player.team.id}">
-				<img th:attr="src=${'/logo/logo' + player.team.id + '.png'}, class=${'team' + player.team.id}">
+				<img th:attr="src=${player.team.logoImageUrl}, class=${'light' + ' ' + 'team' + player.team.id}">
+				<img th:attr="src=${player.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + player.team.id}">
 				<p th:text="${player.team.teamName}"></p>
 			</a>
 		</div>

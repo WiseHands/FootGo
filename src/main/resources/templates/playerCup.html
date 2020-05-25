@@ -3,13 +3,13 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<title th:text="#{playerProfile} + ' ' + ${player.firstName + ' ' + player.lastName} + ' | ' + #{team} + ' ' + ${player.team.teamName }">Профіль гравця </title>
+	<title th:text="#{playerProfile} + ' ' + ${player.firstName + ' ' + player.lastName} + ' | ' + #{team} + ' ' + ${player.team.teamName }"></title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/hamburger.css">
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
+	<script src="/imgPlaceholderSetScript.js" type="text/javascript"></script>
 </head>
 <body class="matches-full">
-
 <header>
 	<div class="header-full">
 		<div class="header-first-block">
@@ -22,22 +22,39 @@
 				</a>
 			</div>
 			<div class="header-text">
-				<a href="/"><p th:text="${season.name}"></p></a>
-				<a th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a>
+				<a href="/">
+					<p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
+					<p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
+				</a>
+				<a th:href="'/cup/' + ${cup.id}">
+					<p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></p>
+					<p th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></p>
+				</a>
 				<a th:href="'/cup/' + ${cup.id} + '/player/' + ${player.id}"><p th:text="#{player}"></p></a>
 			</div>
 		</div>
 		<div th:replace="fragments/languageWidget :: languageWidget"></div>
 	</div>
 	<div id="myLinks">
-		<div><a class="link-item" href="/"><p th:text="${season.name}"></p></a></div>
-		<div><a class="link-item" th:href="'/cup/' + ${cup.id}"><p th:text="${cup.name}"></p></a></div>
+		<div>
+			<a class="link-item" href="/">
+				<p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
+				<p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
+			</a>
+		</div>
+		<div>
+			<a class="link-item" th:href="'/cup/' + ${cup.id}">
+				<p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></p>
+				<p th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></p>
+			</a>
+		</div>
 		<div><a class="link-item" th:href="'/cup/' + ${cup.id} + '/player/' + ${player.id}"><p th:text="#{player}"></p></a></div>
 	</div>
 </header>
 <div class="main-head main-head-results player-background">
 	<div class="main-head-title league-page">
-		<h1 th:text="${cup.name}"></h1>
+		<h1 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></h1>
+		<h1 th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></h1>
 	</div>
 </div>
 <div class="player-card-main">
@@ -52,7 +69,8 @@
 		<p th:text="#{team} + ':'"></p>
 		<div class="player-card-logo-team">
 			<a th:attr="href=${'/cup/' + cupId + '/team/' + player.team.id}">
-				<img th:attr="src=${'/logo/logo' + player.team.id + '.png'}, class=${'team' + player.team.id}">
+				<img th:attr="src=${player.team.logoImageUrl}, class=${'light' + ' ' + 'team' + player.team.id}">
+				<img th:attr="src=${player.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + player.team.id}">
 				<p th:text="${player.team.teamName}"></p>
 			</a>
 		</div>

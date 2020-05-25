@@ -588,12 +588,12 @@ input[type=text], input[type=tel], input[type=email], select {
     height: 16px;
     padding-right: 5px;
 }
-span.delete-goal {
-    font-size: 2rem;
+i.delete-goal {
+/*    font-size: 2rem;*/
     cursor: pointer;
-    color: red;
+    color: orangered;
     padding-left: 5px;
-    display: table;
+/*    display: table;*/
 }
 
 span.clear-technical-defeat {
@@ -604,6 +604,10 @@ span.clear-technical-defeat {
     font-weight: 600;
 }
 
+.modal-goal i:hover {
+    color: #FF6A4F;
+    cursor: pointer;
+}
 .modal-goal span:hover {
     color: #FF6A4F;
     cursor: pointer;
