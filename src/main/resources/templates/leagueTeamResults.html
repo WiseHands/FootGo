@@ -141,29 +141,32 @@
                 <p th:text="#{noPlayers}" class="no-players"></p>
             </div>
             <div th:each="item : ${team.players}" class="player">
-                    <a th:attr="href=${'/league/' + league.id + '/player/' + item.id}">
-                        <div class="player-card">
-                            <div class="player-photo">
-                                <img src="/img/tshirt.png">
-                                <span th:if="${item.isTwoDigits() == false}" class="player-1digit">
+                <a th:attr="href=${'/league/' + league.id + '/player/' + item.id}">
+                    <div class="player-card">
+                        <div class="player-photo">
+                            <img src="/img/tshirt.png">
+                            <span th:if="${item.isTwoDigits() == false}" class="player-1digit">
                                     <span th:text="${item.formatNumber()}"></span>
                                 </span>
-                                <span th:if="${item.isTwoDigits() == true}" class="player-2digit">
+                            <span th:if="${item.isTwoDigits() == true}" class="player-2digit">
                                     <span th:text="${item.formatNumber()}"></span>
                                 </span>
-                            </div>
-                            <div class="player-info">
-                                <div class="player-logo">
-                                    <img th:if="${item.getImageUrl() != ''}" th:attr="src=${item.getImageUrl()}">
-                                    <img th:if="${item.getImageUrl() == null OR item.getImageUrl() == ''}" src="/img/img_avatar.png">
-                                </div>
-                                <div class="player-score-name">
-                                    <h4 th:text="${item.getPlayerFirstName()}"></h4>
-                                    <h4 th:text="${item.getPlayerLastName()}"></h4>
-                                </div>
-                             </div>
                         </div>
-                    </a>
+                        <div class="player-info">
+                            <div class="player-logo">
+                                <img th:if="${item.getImageUrl() != ''}" th:attr="src=${item.getImageUrl()}">
+                                <img th:if="${item.getImageUrl() == null OR item.getImageUrl() == ''}"
+                                     src="/img/img_avatar.png">
+                            </div>
+                            <div class="player-score-name">
+                                <h4 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${item.getPlayerFirstNameTransliterated()}"></h4>
+                                <h4 th:if="${#locale.language == 'uk'}" th:text="${item.getPlayerFirstName()}"></h4>
+                                <h4 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${item.getPlayerLastNameTransliterated()}"></h4>
+                                <h4 th:if="${#locale.language == 'uk'}" th:text="${item.getPlayerLastName()}"></h4>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

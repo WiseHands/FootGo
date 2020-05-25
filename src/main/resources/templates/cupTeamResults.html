@@ -165,8 +165,10 @@
                                      src="/img/img_avatar.png">
                             </div>
                             <div class="player-score-name">
-                                <h4 th:text="${item.getPlayerFirstName()}"></h4>
-                                <h4 th:text="${item.getPlayerLastName()}"></h4>
+                                <h4 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${item.getPlayerFirstNameTransliterated()}"></h4>
+                                <h4 th:if="${#locale.language == 'uk'}" th:text="${item.getPlayerFirstName()}"></h4>
+                                <h4 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${item.getPlayerLastNameTransliterated()}"></h4>
+                                <h4 th:if="${#locale.language == 'uk'}" th:text="${item.getPlayerLastName()}"></h4>
                             </div>
                         </div>
                     </div>
