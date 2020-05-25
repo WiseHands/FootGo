@@ -1770,6 +1770,7 @@ footer {
         background: var(--main-sf-color);
     }
     input[type=text], input[type=tel], input[type=email] {
+        color: var(--main-text-color);
         background: var(--main-input-field);
         border:1px solid var(--main-sf-color);
     }
