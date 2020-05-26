@@ -1234,9 +1234,12 @@ footer {
     border-top: 1px solid #d4d4d4;
     color: #6E6E6E;
 }
-.footer-address a, .footer-phone a, .footer-social {
+.footer-address a, .footer-phone a, .footer-social, .footer-shop, .footer-shop a {
     display: flex;
     align-items: center;
+}
+.footer-shop p {
+    padding-left: 1rem;
 }
 .footer-social {
     width: 150px;
