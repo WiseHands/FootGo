@@ -1654,7 +1654,7 @@ footer {
     .mobile {
         display: flex;
     }
-    .footer-powered, .footer-social {
+    .footer-powered, .footer-social, .footer-shop {
         margin: 0 auto;
     }
     .logo-team-bg {
