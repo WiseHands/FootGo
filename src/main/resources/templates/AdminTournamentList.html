@@ -10,7 +10,11 @@
 
 <body>
     <p>Welcome admin!</p>
-    <a th:href="@{/admin_logout}">Logout</a>
+    <form th:action="@{/admin_logout}" method=post>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input value="Logout" type="submit">
+    </form>
+<!--    <a th:href="@{/admin_logout}">Logout</a>-->
     <a th:href="@{/}">Back to main page</a>
     <div class="main-container">
         <div class="admin-main">
