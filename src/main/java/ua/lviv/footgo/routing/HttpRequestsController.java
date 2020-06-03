@@ -513,10 +513,12 @@ public class HttpRequestsController {
         model.addAttribute("seasonList", seasonList);
         return "AdminSeasonList";
     }*/
+
     @GetMapping("/login")
     public String getAdminLoginPage() {
         return "login";
     }
+
     @GetMapping(value = "/admin")
     public String admin(Model model) {
         List<Tournament> tournamentList = (List<Tournament>) tournamentRepository.findAll();
