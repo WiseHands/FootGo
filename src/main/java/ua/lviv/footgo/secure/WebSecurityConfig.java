@@ -1,10 +1,6 @@
 package ua.lviv.footgo.secure;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,17 +10,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.validation.Validator;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
-import org.springframework.web.context.request.RequestContextListener;
-import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.config.annotation.*;
-import org.springframework.web.servlet.i18n.CookieLocaleResolver;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import ua.lviv.footgo.validation.EmailValidator;
-import ua.lviv.footgo.validation.PasswordMatchesValidator;
-
-import java.util.Locale;
 
 @Configuration
 @EnableWebSecurity
@@ -74,10 +59,9 @@ public class WebSecurityConfig {
 
                     .and()
                     .exceptionHandling()
-                    .accessDeniedPage("/403");
-/*
+                    .accessDeniedPage("/403")
                     .and()
-                    .csrf().disable();*/
+                    .csrf().disable();
         }
     }
 }

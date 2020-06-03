@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Admin login</title>
@@ -19,9 +19,6 @@
         </tr>
         <tr>
             <td>
-                <input  type="hidden"
-                        th:name="${_csrf.parameterName}"
-                        th:value="${_csrf.token}"/>
                 <input name="submit" type="submit" value="submit"/>
             </td>
         </tr>

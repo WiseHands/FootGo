@@ -1,6 +1,5 @@
 package ua.lviv.footgo.controller;
 
-import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
