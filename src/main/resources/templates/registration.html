@@ -10,17 +10,20 @@
 
     <form method="POST" th:object="${userForm}">
         <h2>Create your account</h2>
-            <div class="form-group">
-                <input type="text" th:field="*{username}" class="form-control" placeholder="Username" autofocus="true"/>
-            </div>
+        <div>
+            <input type="text" th:field="*{username}" class="form-control" placeholder="Username" autofocus="autofocus"/>
+            <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+        </div>
 
-            <div>
-                <input type="password" th:field="*{password}" placeholder="Password"/>
-            </div>
+        <div>
+            <input type="password" th:field="*{password}" placeholder="Password"/>
+            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        </div>
 
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <input type="password" th:field="*{passwordConfirm}" placeholder="Confirm your password"/>
-            </div>
+        <div>
+            <input type="password" th:field="*{passwordConfirm}" placeholder="Confirm your password"/>
+            <div th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></div>
+        </div>
 
         <button type="submit">Submit</button>
     </form>

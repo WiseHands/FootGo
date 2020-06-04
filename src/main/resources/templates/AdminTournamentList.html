@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <body>
+
     <p>Welcome admin!</p>
     <form th:action="@{/admin_logout}" method=post>
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input value="Logout" type="submit">
     </form>
-<!--    <a th:href="@{/admin_logout}">Logout</a>-->
+    <a th:href="@{/admin_logout}">Logout</a>
     <a th:href="@{/}">Back to main page</a>
+
     <div class="main-container">
         <div class="admin-main">
             <div class="admin-logo">

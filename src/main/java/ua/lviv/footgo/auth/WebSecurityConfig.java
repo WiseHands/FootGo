@@ -42,7 +42,7 @@ public class WebSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Configuration
+/*    @Configuration
     @Order(1)
     public class AdminLoginConfigurationAdapter extends WebSecurityConfigurerAdapter {
         public AdminLoginConfigurationAdapter() {
@@ -81,10 +81,10 @@ public class WebSecurityConfig {
                     .and()
                     .csrf().disable();
         }
-    }
+    }*/
 
     @Configuration
-    @Order(2)
+/*    @Order(2)*/
     public class UserRegistrationConfigurationAdapter extends WebSecurityConfigurerAdapter {
         public UserRegistrationConfigurationAdapter() {
             super();
@@ -106,15 +106,15 @@ public class WebSecurityConfig {
         protected void configure(HttpSecurity http) throws Exception {
             http.authorizeRequests()
                     .antMatchers("/resources/**", "/registration").permitAll()
-                    .anyRequest()
-                    .authenticated()
+/*                    .anyRequest()
+                    .authenticated()*/
 
                     .and()
                     .formLogin()
-                    .loginPage("/userLogin")
+                    .loginPage("/user_login")
 /*                    .loginProcessingUrl("/user_login")
-                    .failureUrl("/userLogin?error=loginError")
-                    .defaultSuccessUrl("/")*/
+                    .failureUrl("/userLogin?error=loginError")*/
+                    .defaultSuccessUrl("/welcome")
                     .permitAll()
 
                     .and()
@@ -124,9 +124,9 @@ public class WebSecurityConfig {
                     .deleteCookies("JSESSIONID")*/
                     .permitAll()
 
-                    .and()
+/*                    .and()
                     .exceptionHandling()
-                    .accessDeniedPage("/403")
+                    .accessDeniedPage("/403")*/
 
                     .and()
                     .csrf().disable();

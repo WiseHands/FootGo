@@ -514,10 +514,10 @@ public class HttpRequestsController {
         return "AdminSeasonList";
     }*/
 
-    @GetMapping("/login")
+/*    @GetMapping("/login")
     public String getAdminLoginPage() {
         return "login";
-    }
+    }*/
 
     @GetMapping(value = "/admin")
     public String admin(Model model) {
