@@ -111,7 +111,7 @@ public class WebSecurityConfig {
 
                     .and()
                     .formLogin()
-                    .loginPage("/user_login")
+                    .loginPage("/login")
 /*                    .loginProcessingUrl("/user_login")
                     .failureUrl("/userLogin?error=loginError")*/
                     .defaultSuccessUrl("/welcome")

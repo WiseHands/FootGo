@@ -11,10 +11,20 @@ import java.util.HashSet;
 
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    public void UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    public User findByConfirmationToken(String confirmationToken) {
+        return userRepository.findByConfirmationToken(confirmationToken);
+    }
     @Autowired
     private RoleRepository roleRepository;
+
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -26,7 +36,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 }
