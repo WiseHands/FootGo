@@ -3,6 +3,7 @@ package ua.lviv.footgo.auth.web;
 import java.util.Map;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -45,10 +46,11 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model, HttpServletRequest request) {
-        userValidator.validate(userForm, bindingResult);
+    public String registration(@ModelAttribute("userForm") @Valid User userForm, BindingResult bindingResult, Model model, HttpServletRequest request) {
+        //userValidator.validate(userForm, bindingResult);
 
         User userExists = userService.findByEmail(userForm.getEmail());
+        System.out.println(userExists);
 
         if (userExists != null) {
             model.addAttribute("alreadyRegisteredMessage", "Oops!  There is already a user registered with the email provided.");
@@ -57,10 +59,12 @@ public class UserController {
         }
 
         if (bindingResult.hasErrors()) {
+            System.out.println("Errors " + bindingResult.hasErrors());
             return "registration";
         } else {
             userForm.setEnabled(false);
             userForm.setConfirmationToken(UUID.randomUUID().toString());
+
             userService.save(userForm);
 
             String appUrl = request.getScheme() + "://" + request.getServerName();
@@ -75,9 +79,9 @@ public class UserController {
             model.addAttribute("confirmationMessage", "A confirmation e-mail has been sent to " + userForm.getEmail());
         }
 
-        userService.save(userForm);
+/*        userService.save(userForm);*/
 
-        securityService.autoLogin(userForm.getEmail(), userForm.getPasswordConfirm());
+        /*securityService.autoLogin(userForm.getEmail(), userForm.getPasswordConfirm());*/
 
         return "redirect:/welcome";
     }
@@ -135,7 +139,7 @@ public class UserController {
     @GetMapping("/login")
     public String userLogin(Model model, String error, String logout) {
         if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+            model.addAttribute("error", "Your email and password is invalid.");
 
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");

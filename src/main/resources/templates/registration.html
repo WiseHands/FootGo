@@ -11,8 +11,16 @@
     <form method="POST" th:object="${userForm}">
         <h2>Create your account</h2>
         <div>
-            <input type="text" th:field="*{username}" class="form-control" placeholder="Username" autofocus="autofocus"/>
-            <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+            <input type="text" th:field="*{email}" class="form-control" placeholder="Email" autofocus="autofocus"/>
+            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        </div>
+
+        <div>
+            <input type="text" th:field="*{firstName}" class="form-control" placeholder="First Name" autofocus="autofocus"/>
+        </div>
+
+        <div>
+            <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name" autofocus="autofocus"/>
         </div>
 
         <div>
