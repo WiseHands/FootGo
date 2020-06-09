@@ -1,0 +1,50 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="favicon.ico"/>
+
+    <title>User Registration with Spring Boot</title>
+
+</head>
+
+<body class="gray-bg">
+
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+
+        <hr/>
+        <h4>Please confirm your registration</h4>
+
+        <div th:if="${successMessage}" th:text=${successMessage}></div>
+
+        <div th:if="${errorMessage}" th:text=${errorMessage}></div>
+
+        <div th:if="${invalidToken}" th:text=${invalidToken}></div>
+
+        <form th:if="!${invalidToken}" id="passwordForm" action="#"
+              th:object="${setPassword}" th:action="@{/confirm}" method="post">
+
+            <input type="hidden" name="token" th:value=${confirmationToken}>
+
+<!--            <div>
+                <input name="password" type="password" id="password" placeholder="Password" required/>
+                <span aria-hidden="true"></span>
+            </div>
+
+            <div>
+                <input type="password" id="signup-password-confirm" placeholder="Confirm Password"
+                       name="ConfirmPassword"/>
+            </div>-->
+
+            <button type="submit">Confirm</button>
+
+        </form>
+
+
+    </div>
+</div>
+
+</body>
+</html>

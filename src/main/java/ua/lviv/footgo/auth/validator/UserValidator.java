@@ -22,21 +22,20 @@ public class UserValidator implements Validator {
     public void validate(Object o, Errors errors) {
         User user = (User) o;
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "NotEmpty");
-        if (user.getFirstName().length() < 6 || user.getFirstName().length() > 32) {
-            errors.rejectValue("firstName", "Size.userForm.firstName");
-        }
-        if (user.getLastName().length() < 6 || user.getLastName().length() > 32) {
-            errors.rejectValue("lastName", "Size.userForm.lastName");
-        }
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
         if (userService.findByEmail(user.getEmail()) != null) {
             errors.rejectValue("email", "Duplicate.userForm.email");
+        }
+        if (user.getFirstName().length() < 2 || user.getFirstName().length() > 32) {
+            errors.rejectValue("firstName", "Size.userForm.firstName");
+        }
+        if (user.getLastName().length() < 2 || user.getLastName().length() > 32) {
+            errors.rejectValue("lastName", "Size.userForm.lastName");
         }
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
         if (user.getPassword().length() < 6 || user.getPassword().length() > 32) {
             errors.rejectValue("password", "Size.userForm.password");
         }
-
         if (!user.getPasswordConfirm().equals(user.getPassword())) {
             errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
         }

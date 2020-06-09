@@ -8,8 +8,11 @@
 
 <div>
 
-    <form method="POST" th:object="${userForm}">
+    <form action="#" method="POST" th:object="${userForm}" th:action="@{/registration}">
         <h2>Create your account</h2>
+
+        <div th:if="${confirmationMessage}" th:text=${confirmationMessage}></div>
+
         <div>
             <input type="text" th:field="*{email}" class="form-control" placeholder="Email" autofocus="autofocus"/>
             <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
@@ -17,10 +20,12 @@
 
         <div>
             <input type="text" th:field="*{firstName}" class="form-control" placeholder="First Name" autofocus="autofocus"/>
+            <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
         </div>
 
         <div>
             <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name" autofocus="autofocus"/>
+            <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
         </div>
 
         <div>

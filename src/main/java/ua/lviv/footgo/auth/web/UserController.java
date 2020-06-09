@@ -46,8 +46,9 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("userForm") @Valid User userForm, BindingResult bindingResult, Model model, HttpServletRequest request) {
-        //userValidator.validate(userForm, bindingResult);
+    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model, HttpServletRequest request) {
+        userValidator.validate(userForm, bindingResult);
+        System.out.println("UserForm " + userForm.getEmail() + userForm.getFirstName() + userForm.getLastName() + userForm.getPassword() + userForm.getPasswordConfirm());
 
         User userExists = userService.findByEmail(userForm.getEmail());
         System.out.println(userExists);
@@ -81,7 +82,7 @@ public class UserController {
 
 /*        userService.save(userForm);*/
 
-        /*securityService.autoLogin(userForm.getEmail(), userForm.getPasswordConfirm());*/
+        securityService.autoLogin(userForm.getEmail(), userForm.getPasswordConfirm());
 
         return "redirect:/welcome";
     }
@@ -106,11 +107,11 @@ public class UserController {
 
         modelAndView.setViewName("confirm");
 
-        Zxcvbn passwordCheck = new Zxcvbn();
+        //Zxcvbn passwordCheck = new Zxcvbn();
 
-        Strength strength = passwordCheck.measure((CharSequence) requestParams.get("password"));
+        //Strength strength = passwordCheck.measure((CharSequence) requestParams.get("password"));
 
-        if (strength.getScore() < 3) {
+/*        if (strength.getScore() < 3) {
             bindingResult.reject("password");
 
             redirect.addFlashAttribute("errorMessage", "Your password is too weak.  Choose a stronger one.");
@@ -118,21 +119,25 @@ public class UserController {
             modelAndView.setViewName("redirect:confirm?token=" + requestParams.get("token"));
             System.out.println(requestParams.get("token"));
             return modelAndView;
-        }
+        }*/
 
         // Find the user associated with the reset token
         User user = userService.findByConfirmationToken((String) requestParams.get("token"));
 
+        if (user.getEnabled()) {
+            modelAndView.addObject("successMessage", "Already confirmed!");
+            return modelAndView;
+        }
+
         // Set new password
-        user.setPassword(bCryptPasswordEncoder.encode((CharSequence) requestParams.get("password")));
+        //user.setPassword(bCryptPasswordEncoder.encode((CharSequence) requestParams.get("password")));
 
         // Set user to enabled
         user.setEnabled(true);
-
         // Save user
         userService.save(user);
 
-        modelAndView.addObject("successMessage", "Your password has been set!");
+        modelAndView.addObject("successMessage", "Successfully confirmed!");
         return modelAndView;
     }
 
