@@ -12,135 +12,68 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import ua.lviv.footgo.auth.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig {
-
-/*    @Bean
-    public UserDetailsService userDetailsService() throws Exception {
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-
-        manager.createUser(User
-                .withUsername("admin")
-                .password(bCryptPasswordEncoder().encode("admin"))
-                .roles("ADMIN")
-                .build());
-
-        manager.createUser(User
-                .withUsername("user")
-                .password(bCryptPasswordEncoder().encode("user"))
-                .roles("USER")
-                .build());
-
-        return manager;
-    }*/
-
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    UserDetailsServiceImpl userDetailsServiceImpl;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-/*    @Configuration
-    @Order(1)
-    public class AdminLoginConfigurationAdapter extends WebSecurityConfigurerAdapter {
-        public AdminLoginConfigurationAdapter() {
-            super();
-        }
 
-        @Override
-        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.inMemoryAuthentication()
-                    .withUser("admin")
-                    .password(bCryptPasswordEncoder().encode("admin"))
-                    .roles("ADMIN");
-        }
-
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests()
-                    .antMatchers("/admin/**")
-                    .hasRole("ADMIN")
-                    .and()
-                    .formLogin()
-                    .loginPage("/login")
-                    .loginProcessingUrl("/admin_login")
-                    .failureUrl("/login?error=loginError")
-                    .defaultSuccessUrl("/admin")
-
-                    .and()
-                    .logout()
-                    .logoutUrl("/admin_logout")
-                    .logoutSuccessUrl("/admin")
-                    .deleteCookies("JSESSIONID")
-
-                    .and()
-                    .exceptionHandling()
-                    .accessDeniedPage("/403")
-                    .and()
-                    .csrf().disable();
-        }
-    }*/
-
-    @Configuration
-/*    @Order(2)*/
-    public class UserRegistrationConfigurationAdapter extends WebSecurityConfigurerAdapter {
-        public UserRegistrationConfigurationAdapter() {
-            super();
-        }
-
-/*        @Override
-        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.inMemoryAuthentication()
-                    .withUser("user")
-                    .password(bCryptPasswordEncoder().encode("user"))
-                    .roles("USER");
-        }*/
-
-        @Qualifier("userDetailsServiceImpl")
+/*        @Qualifier("userDetailsServiceImpl")
         @Autowired
-        private UserDetailsService userDetailsService;
+        private UserDetailsService userDetailsService;*/
 
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests()
-                    .antMatchers("/resources/**", "/registration").permitAll()
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers("/registration").not().fullyAuthenticated()
 /*                    .anyRequest()
                     .authenticated()*/
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/user/**").hasRole("USER")
+                .antMatchers("/resources/**", "/**").permitAll()
+                .anyRequest().authenticated()
 
-                    .and()
-                    .formLogin()
-                    .loginPage("/login")
+                .and()
+                .formLogin()
+                .loginPage("/login")
 /*                    .loginProcessingUrl("/user_login")
                     .failureUrl("/userLogin?error=loginError")*/
-                    .defaultSuccessUrl("/welcome")
-                    .permitAll()
+                .defaultSuccessUrl("/welcome")
+                .permitAll()
 
-                    .and()
-                    .logout()
+                .and()
+                .logout()
 /*                    .logoutUrl("/user_logout")
                     .logoutSuccessUrl("/protectedLinks")
                     .deleteCookies("JSESSIONID")*/
-                    .permitAll()
+                .permitAll()
+                .logoutSuccessUrl("/login")
 
 /*                    .and()
                     .exceptionHandling()
                     .accessDeniedPage("/403")*/
 
-                    .and()
-                    .csrf().disable();
-        }
+                .and()
+                .csrf().disable();
+    }
 
-        @Bean
-        public AuthenticationManager customAuthenticationManager() throws Exception {
-            return authenticationManager();
-        }
+    @Bean
+    public AuthenticationManager customAuthenticationManager() throws Exception {
+        return authenticationManager();
+    }
 
-        @Autowired
-        public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-            auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
-        }
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(bCryptPasswordEncoder());
     }
 
 }
