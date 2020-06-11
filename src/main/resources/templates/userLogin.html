@@ -5,15 +5,20 @@
 </head>
 <body>
 
+<div sec:authorize="isAuthenticated()">
+    <script th:inline="javascript">
+    window.location.href = '/';
+</script>
+</div>
+
 <div>
     <form method="POST" th:action="@{/login}" class="form-signin">
         <h2 class="form-heading">Log in</h2>
-
         <div>
             <br>
             <span th:text="${message}"></span>
             <br>
-            <input name="email" type="text" placeholder="Email" autofocus="autofocus"/>
+            <input name="username" type="text" placeholder="Email" autofocus="autofocus"/>
             <input name="password" type="password" placeholder="Password"/>
             <br>
             <span th:text="${error}"></span>

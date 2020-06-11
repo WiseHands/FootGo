@@ -2,10 +2,12 @@ package ua.lviv.footgo.auth.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
+import javax.validation.constraints.Email;
 
 @Entity
 @Table(name = "user")
@@ -20,6 +22,7 @@ public class User implements UserDetails {
     @Column(name = "last_name")
     private String lastName;
 
+    @Email(message = "Email should be valid")
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 

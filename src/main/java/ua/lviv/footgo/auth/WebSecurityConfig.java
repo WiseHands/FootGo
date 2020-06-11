@@ -25,7 +25,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-
 /*        @Qualifier("userDetailsServiceImpl")
         @Autowired
         private UserDetailsService userDetailsService;*/
@@ -39,6 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .authenticated()*/
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/**").hasRole("USER")
+                .antMatchers("/welcome/**").authenticated()
                 .antMatchers("/resources/**", "/**").permitAll()
                 .anyRequest().authenticated()
 

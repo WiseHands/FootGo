@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ua.lviv.footgo.auth.model.User;
+import ua.lviv.footgo.auth.repository.UserRepository;
 import ua.lviv.footgo.auth.service.EmailService;
 import ua.lviv.footgo.auth.service.SecurityService;
 import ua.lviv.footgo.auth.service.UserService;
@@ -24,10 +25,13 @@ import com.nulabinc.zxcvbn.Zxcvbn;
 
 @Controller
 public class UserController {
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    //private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private SecurityService securityService;
@@ -46,7 +50,7 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model, HttpServletRequest request) {
+    public String registration(@ModelAttribute("userForm") @Valid User userForm, BindingResult bindingResult, Model model, HttpServletRequest request) {
         userValidator.validate(userForm, bindingResult);
         System.out.println("UserForm " + userForm.getEmail() + userForm.getFirstName() + userForm.getLastName() + userForm.getPassword() + userForm.getPasswordConfirm());
 
@@ -131,11 +135,12 @@ public class UserController {
 
         // Set new password
         //user.setPassword(bCryptPasswordEncoder.encode((CharSequence) requestParams.get("password")));
+        //user.setPassword(user.getPassword());
 
         // Set user to enabled
         user.setEnabled(true);
         // Save user
-        userService.save(user);
+        userRepository.save(user);
 
         modelAndView.addObject("successMessage", "Successfully confirmed!");
         return modelAndView;
@@ -143,6 +148,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String userLogin(Model model, String error, String logout) {
+
         if (error != null)
             model.addAttribute("error", "Your email and password is invalid.");
 

@@ -38,7 +38,7 @@
                        name="ConfirmPassword"/>
             </div>-->
 
-            <button type="submit">Confirm</button>
+            <button th:if="!${successMessage}" type="submit">Confirm</button>
 
         </form>
 

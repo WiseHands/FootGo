@@ -33,7 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     //@Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email);
-        if (user == null) {
+        if (user == null || !user.getEnabled()) {
             throw new UsernameNotFoundException("User with " + email + " not found" );
         }
 
@@ -53,7 +53,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         return userRepository.findAll();
     }
 
-    public boolean saveUser(User user) {
+    public boolean save(User user) {
         User userFromDB = userRepository.findByEmail(user.getEmail());
 
         if (userFromDB != null) {
