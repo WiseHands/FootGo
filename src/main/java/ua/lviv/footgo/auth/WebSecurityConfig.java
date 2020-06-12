@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/welcome/**").authenticated()
-                .antMatchers("/resources/**", "/**").permitAll()
+                .antMatchers("/**", "/resources/**", "/forgot", "/reset").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
@@ -47,8 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
 /*                    .loginProcessingUrl("/user_login")
                     .failureUrl("/userLogin?error=loginError")*/
-                .defaultSuccessUrl("/welcome")
-                .permitAll()
+                .defaultSuccessUrl("/welcome").permitAll()
 
                 .and()
                 .logout()

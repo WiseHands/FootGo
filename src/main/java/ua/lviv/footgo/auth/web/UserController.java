@@ -1,12 +1,14 @@
 package ua.lviv.footgo.auth.web;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ua.lviv.footgo.auth.model.User;
@@ -25,7 +27,7 @@ import com.nulabinc.zxcvbn.Zxcvbn;
 
 @Controller
 public class UserController {
-    //private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private UserService userService;
@@ -161,5 +163,105 @@ public class UserController {
     @GetMapping({"/welcome"})
     public String welcome(Model model) {
         return "welcome";
+    }
+
+    @GetMapping(value = "/forgot")
+    public ModelAndView displayForgotPasswordPage() {
+        return new ModelAndView("forgotPassword");
+    }
+
+    @PostMapping(value = "/forgot")
+    public ModelAndView processForgotPasswordForm(ModelAndView modelAndView, @RequestParam("email") String userEmail, HttpServletRequest request) {
+
+        // Lookup user in database by e-mail
+        Optional<User> optional = Optional.ofNullable(userService.findByEmail(userEmail));
+
+        if (!optional.isPresent()) {
+            modelAndView.addObject("errorMessage", "We didn't find an account for that e-mail address.");
+        } else {
+
+            // Generate random 36-character string token for reset password
+            User user = optional.get();
+            user.setResetToken(UUID.randomUUID().toString());
+
+            // Save token to database
+            userService.save(user);
+
+            String appUrl = request.getScheme() + "://" + request.getServerName();
+
+            // Email message
+            SimpleMailMessage passwordResetEmail = new SimpleMailMessage();
+            passwordResetEmail.setFrom("support@demo.com");
+            passwordResetEmail.setTo(user.getEmail());
+            passwordResetEmail.setSubject("Password Reset Request");
+            passwordResetEmail.setText("To reset your password, click the link below:\n" + appUrl
+                    + "/reset?token=" + user.getResetToken());
+
+            emailService.sendEmail(passwordResetEmail);
+
+            // Add success message to view
+            modelAndView.addObject("successMessage", "A password reset link has been sent to " + userEmail);
+        }
+
+        modelAndView.setViewName("forgotPassword");
+        return modelAndView;
+
+    }
+
+    @GetMapping(value = "/reset")
+    public ModelAndView displayResetPasswordPage(ModelAndView modelAndView, @RequestParam("token") String token) {
+
+        Optional<User> user = userService.findUserByResetToken(token);
+
+        if (user.isPresent()) { // Token found in DB
+            modelAndView.addObject("resetToken", token);
+        } else { // Token not found in DB
+            modelAndView.addObject("errorMessage", "Oops!  This is an invalid password reset link.");
+        }
+
+        modelAndView.setViewName("resetPassword");
+        return modelAndView;
+    }
+
+    @PostMapping(value = "/reset")
+    public ModelAndView setNewPassword(ModelAndView modelAndView, @RequestParam Map<String, String> requestParams, RedirectAttributes redirect) {
+
+        // Find the user associated with the reset token
+        Optional<User> user = userService.findUserByResetToken(requestParams.get("token"));
+        System.out.println("USER " + user);
+
+        // This should always be non-null but we check just in case
+        if (user.isPresent()) {
+
+            User resetUser = user.get();
+
+            // Set new password
+            resetUser.setPassword(bCryptPasswordEncoder.encode(requestParams.get("password")));
+
+            // Set the reset token to null so it cannot be used again
+            resetUser.setResetToken(null);
+
+            // Save user
+            userService.save(resetUser);
+
+            // In order to set a model attribute on a redirect, we must use
+            // RedirectAttributes
+            redirect.addFlashAttribute("successMessage", "You have successfully reset your password.  You may now login.");
+
+            modelAndView.setViewName("redirect:login");
+            return modelAndView;
+
+        } else {
+            modelAndView.addObject("errorMessage", "Oops!  This is an invalid password reset link.");
+            modelAndView.setViewName("resetPassword");
+        }
+
+        return modelAndView;
+    }
+
+    // Going to reset page without a token redirects to login page
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ModelAndView handleMissingParams(MissingServletRequestParameterException ex) {
+        return new ModelAndView("redirect:login");
     }
 }

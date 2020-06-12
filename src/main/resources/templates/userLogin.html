@@ -13,7 +13,7 @@
 
 <div>
     <form method="POST" th:action="@{/login}" class="form-signin">
-        <h2 class="form-heading">Log in</h2>
+        <h2 class="form-heading">Sign in</h2>
         <div>
             <br>
             <span th:text="${message}"></span>
@@ -23,8 +23,9 @@
             <br>
             <span th:text="${error}"></span>
             <br>
-            <button type="submit">Log In</button>
-            <h4 class="text-center"><a th:href="@{/registration}">Create an account</a></h4>
+            <button type="submit">Next</button>
+            <h4 class="text-center"><a th:href="@{/forgot}">Forgot email?</a></h4>
+            <h4 class="text-center"><a th:href="@{/registration}">Create account</a></h4>
         </div>
     </form>
 </div>
