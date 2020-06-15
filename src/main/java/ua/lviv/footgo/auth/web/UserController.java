@@ -16,6 +16,7 @@ import ua.lviv.footgo.auth.repository.UserRepository;
 import ua.lviv.footgo.auth.service.EmailService;
 import ua.lviv.footgo.auth.service.SecurityService;
 import ua.lviv.footgo.auth.service.UserService;
+import ua.lviv.footgo.auth.validator.UserForgotPasswordValidator;
 import ua.lviv.footgo.auth.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,7 @@ import com.nulabinc.zxcvbn.Zxcvbn;
 
 @Controller
 public class UserController {
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    //private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private UserService userService;
@@ -40,6 +41,9 @@ public class UserController {
 
     @Autowired
     private UserValidator userValidator;
+
+    @Autowired
+    private UserForgotPasswordValidator userForgotPasswordValidator;
 
     @Autowired
     private EmailService emailService;
@@ -172,7 +176,6 @@ public class UserController {
 
     @PostMapping(value = "/forgot")
     public ModelAndView processForgotPasswordForm(ModelAndView modelAndView, @RequestParam("email") String userEmail, HttpServletRequest request) {
-
         // Lookup user in database by e-mail
         Optional<User> optional = Optional.ofNullable(userService.findByEmail(userEmail));
 
@@ -209,7 +212,8 @@ public class UserController {
     }
 
     @GetMapping(value = "/reset")
-    public ModelAndView displayResetPasswordPage(ModelAndView modelAndView, @RequestParam("token") String token) {
+    public ModelAndView displayResetPasswordPage(@ModelAttribute("userForm") @Valid User userForm, BindingResult bindingResult, ModelAndView modelAndView, @RequestParam("token") String token) {
+        userForgotPasswordValidator.validate(userForm, bindingResult);
 
         Optional<User> user = userService.findUserByResetToken(token);
 
@@ -224,11 +228,11 @@ public class UserController {
     }
 
     @PostMapping(value = "/reset")
-    public ModelAndView setNewPassword(ModelAndView modelAndView, @RequestParam Map<String, String> requestParams, RedirectAttributes redirect) {
+    public ModelAndView setNewPassword(@ModelAttribute("userForm") @Valid User userForm, BindingResult bindingResult, ModelAndView modelAndView, @RequestParam Map<String, String> requestParams, RedirectAttributes redirect) {
+        userForgotPasswordValidator.validate(userForm, bindingResult);
 
         // Find the user associated with the reset token
         Optional<User> user = userService.findUserByResetToken(requestParams.get("token"));
-        System.out.println("USER " + user);
 
         // This should always be non-null but we check just in case
         if (user.isPresent()) {
@@ -236,7 +240,7 @@ public class UserController {
             User resetUser = user.get();
 
             // Set new password
-            resetUser.setPassword(bCryptPasswordEncoder.encode(requestParams.get("password")));
+            resetUser.setPassword(requestParams.get("password"));
 
             // Set the reset token to null so it cannot be used again
             resetUser.setResetToken(null);

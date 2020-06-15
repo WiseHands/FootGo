@@ -19,8 +19,8 @@ public class UserValidator implements Validator {
     }
 
     @Override
-    public void validate(Object o, Errors errors) {
-        User user = (User) o;
+    public void validate(Object object, Errors errors) {
+        User user = (User) object;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
 
