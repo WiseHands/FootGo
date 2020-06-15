@@ -212,8 +212,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/reset")
-    public ModelAndView displayResetPasswordPage(@ModelAttribute("userForm") @Valid User userForm, BindingResult bindingResult, ModelAndView modelAndView, @RequestParam("token") String token) {
-        userForgotPasswordValidator.validate(userForm, bindingResult);
+    public ModelAndView displayResetPasswordPage(ModelAndView modelAndView, @RequestParam("token") String token) {
 
         Optional<User> user = userService.findUserByResetToken(token);
 
@@ -222,6 +221,7 @@ public class UserController {
         } else { // Token not found in DB
             modelAndView.addObject("errorMessage", "Oops!  This is an invalid password reset link.");
         }
+        modelAndView.addObject("userForm", new User());
 
         modelAndView.setViewName("resetPassword");
         return modelAndView;
