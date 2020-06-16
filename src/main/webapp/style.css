@@ -379,7 +379,7 @@ iframe {
     height: 100vh;
 }
 
-.registration-form {
+.registration-form, .login-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -389,6 +389,23 @@ iframe {
     font-size: 1.2em;
     text-align: center;
 }
+.login-form {
+    margin-top: 64px;
+    background: #ffff;
+}
+.login-form-typography-h5 {
+    font-size: 1.5rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.334;
+    letter-spacing: 0em;
+}
+.form-container {
+    margin-top: 16px;
+}
+.login-form-typography-root {
+    margin: 0;
+}
 .reg-end {
     margin: 0 auto;
 }
@@ -396,7 +413,7 @@ iframe {
     color: #fff;
     font-size: 3rem;
 }
-input[type=text], input[type=tel], input[type=email] {
+input[type=text], input[type=tel], input[type=email], input[type=password] {
     padding: 15px;
     margin: 5px 0 10px 0;
     display: inline-block;
@@ -454,7 +471,7 @@ input[type=text], input[type=tel], input[type=email] {
     display: flex;
     justify-content: space-around;
 }
-input[type=text], input[type=tel], input[type=email] {
+input[type=text], input[type=tel], input[type=email], input[type=password] {
     width: 80%;
 }
 input[type=submit] {
@@ -473,7 +490,7 @@ input[type=submit] {
     font-size: 1.5em;
     color: #fff;
     padding: 7px 30px;
-    margin-top: 50px;
+/*    margin-top: 50px;*/
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -481,6 +498,79 @@ input[type=submit] {
 .reg-input-button:hover {
     background-color: #347e36;
     border-radius: 10px;
+}
+.button-full-width {
+    width: 100%;
+}
+.button-login {
+    margin: 24px 0px 16px;
+}
+.button-contained-primary {
+    background-color: #1976d2;
+    color: #ffff;
+    cursor: pointer;
+}
+.button-contained-primary:hover {
+    background-color: rgb(17, 82, 147);
+}
+.button-root {
+    border: 0;
+    padding: 6px 16px;
+    font-size: 0.875rem;
+    min-width: 64px;
+    box-sizing: border-box;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.75;
+    border-radius: 4px;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+}
+.button-root-login {
+    width: 80%;
+}
+.labels-login-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+.button-grid-xs-true {
+    flex-grow: 1;
+    max-width: 100%;
+    flex-basis: 0;
+    text-align: left;
+}
+.button-grid-second {
+    max-width: 55%;
+}
+.button-underline-hover {
+    text-decoration: none;
+}
+.button-underline-hover:hover {
+    text-decoration: underline;
+}
+.button-typography-color-primary {
+    color: #1976d2;
+}
+.button-typography-body2 {
+    font-size: 0.875rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+}
+.button-grid-item {
+    margin: 0;
+    box-sizing: border-box;
+}
+.login-page {
+    background: #f7f7f5;
+}
+.login-error {
+    margin-top: 20px;
 }
 .all-games-button {
     margin: 0 auto !important;
@@ -526,7 +616,7 @@ footer{
 /*    font-weight: 600;
     margin-bottom: 20px;*/
 }
-.empty-text-error {
+.empty-text-error, .login-error {
     color: #b00020;
     text-align: center;
 }
@@ -1686,10 +1776,10 @@ footer {
   .main-head-title .main-head-logo {
       background-image: url(img/footgo-light-icon.png);
   }
-  header, .main-photo, .prev-seasons, .dropbtn, .registration-photo, .lang-list {
+  header, .main-photo, .prev-seasons, .dropbtn, .registration-photo, .lang-list, .login-page {
       background: var(--main-bg-color);
   }
-  .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom {
+  .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom, .login-form {
       background: var(--main-sf-color);
       color: var(--main-text-color);
   }
@@ -1772,7 +1862,7 @@ footer {
     .player-info, .bomb-position div, .bomb-player-name div, .bomb-scored div, .bomb-team div, .table-title {
         background: var(--main-sf-color);
     }
-    input[type=text], input[type=tel], input[type=email] {
+    input[type=text], input[type=tel], input[type=email], input[type=password] {
         color: var(--main-text-color);
         background: var(--main-input-field);
         border:1px solid var(--main-sf-color);
@@ -1847,12 +1937,22 @@ footer {
         background-position: center;
         background-size: cover;
     }
-    .empty-text-error {
+    .empty-text-error, .login-error {
         color: #cf6679;
         text-align: center;
     }
     footer {
         background-color: var(--main-sf-color);
+    }
+    .button-contained-primary {
+        color: rgba(0, 0, 0, 0.87);
+        background-color: #90caf9;
+    }
+    .button-contained-primary:hover {
+        background-color: rgb(100, 141, 174);
+    }
+    .button-typography-color-primary {
+        color: #90caf9;
     }
 }
 /*Dark-mode end*/
