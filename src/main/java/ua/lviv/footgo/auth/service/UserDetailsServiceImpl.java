@@ -1,5 +1,6 @@
 package ua.lviv.footgo.auth.service;
 
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import ua.lviv.footgo.auth.model.Role;
 import ua.lviv.footgo.auth.model.User;
@@ -33,9 +34,16 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     //@Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email);
-        if (user == null || !user.getEnabled()) {
+
+        if (user == null) {
             throw new UsernameNotFoundException("User with " + email + " not found" );
+        } else if (!user.getEnabled()) {
+            throw new DisabledException("Your account is not confirmed. Please check your e-mail " + email + " and click on confirmation link");
         }
+
+/*        if (!user.getEnabled()) {
+            throw new UsernameNotFoundException("Your account is not confirmed. Please check your e-mail " + email + " and click on confirmation link");
+        }*/
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         for (Role role : user.getRoles()){

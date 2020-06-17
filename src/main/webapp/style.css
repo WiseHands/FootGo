@@ -378,8 +378,7 @@ iframe {
     background-size: cover;
     height: 100vh;
 }
-
-.registration-form, .login-form {
+.registration-form, .user-registration-form, .login-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -389,9 +388,16 @@ iframe {
     font-size: 1.2em;
     text-align: center;
 }
-.login-form {
-    margin-top: 64px;
+.player-bg p {
+    white-space: normal;
+}
+.login-form, .user-registration-form {
+    margin-top: 2em;
     background: #ffff;
+}
+.user-registration-form {
+    width: 100%;
+    max-width: 25em;
 }
 .login-form-typography-h5 {
     font-size: 1.5rem;
@@ -569,8 +575,26 @@ input[type=submit] {
 .login-page {
     background: #f7f7f5;
 }
-.login-error {
-    margin-top: 20px;
+.login-error, .forgot-error {
+    padding-top: 20px;
+    white-space: normal;
+    max-width: 20em;
+    margin: 0 auto;
+}
+.registration-error {
+    white-space: normal;
+    font-size: 10pt;
+}
+.forgot-error, .forgot-success {
+    white-space: normal;
+    padding-top: 20px;
+    margin: 0 auto;
+    max-width: 20em;
+}
+.forgot-description {
+    white-space: normal;
+    margin: 20px;
+    max-width: 20em;
 }
 .all-games-button {
     margin: 0 auto !important;
@@ -616,8 +640,12 @@ footer{
 /*    font-weight: 600;
     margin-bottom: 20px;*/
 }
-.empty-text-error, .login-error {
+.empty-text-error, .login-error, .forgot-error, .registration-error {
     color: #b00020;
+    text-align: center;
+}
+.forgot-success {
+    color: #018786;
     text-align: center;
 }
 .table-position, .bomb-position {
@@ -1498,6 +1526,13 @@ footer {
     }
 }
 @media screen and (max-width: 667px) {
+    .login-form {
+        margin-right: 1em;
+        margin-left: 1em;
+    }
+    .forgot-description {
+        max-width: none;
+    }
     .auto {
         width: auto !important;
     }
@@ -1761,6 +1796,13 @@ footer {
         font-size: 1rem !important;
     }
 }
+@media (min-width: 600px) {
+    .MuiGrid-grid-sm-6 {
+        flex-grow: 0;
+        max-width: 50%;
+        flex-basis: 50%;
+    }
+}
 /*Dark-mode*/
 @media (prefers-color-scheme: dark) {
 :root {
@@ -1776,10 +1818,10 @@ footer {
   .main-head-title .main-head-logo {
       background-image: url(img/footgo-light-icon.png);
   }
-  header, .main-photo, .prev-seasons, .dropbtn, .registration-photo, .lang-list, .login-page {
+  header, .main-photo, .prev-seasons, .dropbtn, .registration-photo, .lang-list, .login-page, .registration-page {
       background: var(--main-bg-color);
   }
-  .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom, .login-form {
+  .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom, .login-form, .user-registration-form {
       background: var(--main-sf-color);
       color: var(--main-text-color);
   }
@@ -1937,8 +1979,12 @@ footer {
         background-position: center;
         background-size: cover;
     }
-    .empty-text-error, .login-error {
+    .empty-text-error, .login-error, .forgot-error, .registration-error {
         color: #cf6679;
+        text-align: center;
+    }
+    .forgot-success {
+        color: #03dac6;
         text-align: center;
     }
     footer {

@@ -64,7 +64,7 @@ public class UserController {
         System.out.println(userExists);
 
         if (userExists != null) {
-            model.addAttribute("alreadyRegisteredMessage", "Oops!  There is already a user registered with the email provided.");
+            model.addAttribute("alreadyRegisteredMessage", "Oops!  There is already a user registered with the email provided");
             bindingResult.reject("email");
             return "registration";
         }
@@ -103,7 +103,7 @@ public class UserController {
         User user = userService.findByConfirmationToken(token);
 
         if (user == null) { // No token found in DB
-            modelAndView.addObject("invalidToken", "Oops!  This is an invalid confirmation link.");
+            modelAndView.addObject("invalidToken", "Oops!  This is an invalid confirmation link");
         } else { // Token found
             modelAndView.addObject("confirmationToken", user.getConfirmationToken());
         }
@@ -156,10 +156,10 @@ public class UserController {
     public String userLogin(Model model, String error, String logout) {
 
         if (error != null)
-            model.addAttribute("error", "Your email and password is invalid.");
+            model.addAttribute("error", "Your email and password is invalid");
 
         if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
+            model.addAttribute("message", "You have been logged out successfully");
 
         return "userLogin";
     }
@@ -180,7 +180,7 @@ public class UserController {
         Optional<User> optional = Optional.ofNullable(userService.findByEmail(userEmail));
 
         if (!optional.isPresent()) {
-            modelAndView.addObject("errorMessage", "We didn't find an account for that e-mail address.");
+            modelAndView.addObject("errorMessage", "We didn't find an account for that e-mail address");
         } else {
 
             // Generate random 36-character string token for reset password
@@ -219,7 +219,7 @@ public class UserController {
         if (user.isPresent()) { // Token found in DB
             modelAndView.addObject("resetToken", token);
         } else { // Token not found in DB
-            modelAndView.addObject("errorMessage", "Oops!  This is an invalid password reset link.");
+            modelAndView.addObject("errorMessage", "Oops!  This is an invalid password reset link");
         }
         modelAndView.addObject("userForm", new User());
 
@@ -250,13 +250,13 @@ public class UserController {
 
             // In order to set a model attribute on a redirect, we must use
             // RedirectAttributes
-            redirect.addFlashAttribute("successMessage", "You have successfully reset your password.  You may now login.");
+            redirect.addFlashAttribute("successMessage", "You have successfully reset your password.  You may now login");
 
             modelAndView.setViewName("redirect:login");
             return modelAndView;
 
         } else {
-            modelAndView.addObject("errorMessage", "Oops!  This is an invalid password reset link.");
+            modelAndView.addObject("errorMessage", "Oops!  This is an invalid password reset link");
             modelAndView.setViewName("resetPassword");
         }
 

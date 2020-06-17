@@ -1,3 +1,4 @@
+<!--
 <html>
 <head>
     <meta charset="utf-8">
@@ -41,6 +42,54 @@
         <button type="submit">Submit</button>
     </form>
 
+</div>
+
+</body>
+</html>-->
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title th:text="#{createAccount}"></title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/footgo-dark-icon.png" type="image/x-icon">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900' rel='stylesheet' type='text/css'>
+</head>
+<body class="registration-page">
+
+<div sec:authorize="isAuthenticated()">
+    <script th:inline="javascript">
+    window.location.href = '/';
+    </script>
+</div>
+
+<div class="user-registration-form">
+    <form method="POST" th:object="${userForm}" th:action="@{/registration}" class="form-signin">
+        <h1 th:text="#{createYourAccount}" class="login-form-typography-h5 login-form-typography-root"></h1>
+        <div th:if="${confirmationMessage}" th:text=${confirmationMessage}></div>
+        <div class="form-container">
+            <input th:field="*{email}" type="email" placeholder="Email" autofocus="autofocus"/>
+            <p class="registration-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            <input type="text" th:field="*{firstName}" placeholder="First Name"/>
+            <p class="registration-error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+            <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name"/>
+            <p class="registration-error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+            <input th:field="*{password}" type="password" placeholder="Password"/>
+            <p class="registration-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+            <input type="password" th:field="*{passwordConfirm}" placeholder="Confirm your password"/>
+            <p class="registration-error" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></p>
+            <button th:text="#{signUpButton}" class="button-full-width button-login button-contained-primary button-root button-base-root button-root-login" type="submit"></button>
+            <div class="labels-login-container">
+                <div class="button-grid-item button-grid-xs-true">
+                    <a th:text="#{signInInstead}" th:href="@{/login}" class="button-underline-hover button-typography-body2 button-typography-color-primary"></a>
+                </div>
+            </div>
+        </div>
+        <p th:if="${message}" th:text="${message}"></p>
+        <p class="login-error" th:if="${error}" th:text="#{loginError}"></p>
+        <!--<p class="login-error" th:if="${param.error}">Login failed!</p>-->
+    </form>
 </div>
 
 </body>
