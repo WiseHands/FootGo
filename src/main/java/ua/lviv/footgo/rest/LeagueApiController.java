@@ -70,7 +70,7 @@ public class LeagueApiController {
     }
     public static final Integer NUMBER_OF_TOURS = 7;
     //public static final String GAME_TIME = "2019-09-20T09:00:00.000Z";
-    public static final OffsetDateTime GAME_TIME = OffsetDateTime.of(2019, 9, 19, 0, 0, 0, 0, ZoneOffset.ofHours(+2));;
+    public static final OffsetDateTime GAME_TIME = OffsetDateTime.of(2019, 9, 19, 0, 0, 0, 0, ZoneOffset.ofHours(+2));
 
     public Tour _createTour(Integer tourNumber) {
         Tour tour = new Tour();
