@@ -19,6 +19,7 @@ public class UserForgotPasswordValidator implements Validator {
         User user = (User) object;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
+
         if (user.getPassword().length() < 6 || user.getPassword().length() > 32) {
             errors.rejectValue("password", "Size.userForm.password");
         }

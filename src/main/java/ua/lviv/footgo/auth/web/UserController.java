@@ -203,7 +203,7 @@ public class UserController {
             emailService.sendEmail(passwordResetEmail);
 
             // Add success message to view
-            modelAndView.addObject("successMessage", "A password reset link has been sent to " + userEmail);
+            modelAndView.addObject("successMessage", userEmail);
         }
 
         modelAndView.setViewName("forgotPassword");
@@ -233,6 +233,13 @@ public class UserController {
 
         // Find the user associated with the reset token
         Optional<User> user = userService.findUserByResetToken(requestParams.get("token"));
+
+        if (bindingResult.hasErrors()) {
+            System.out.println("Errors " + bindingResult.hasErrors());
+
+            modelAndView.setViewName("resetPassword");
+            return modelAndView;
+        }
 
         // This should always be non-null but we check just in case
         if (user.isPresent()) {
