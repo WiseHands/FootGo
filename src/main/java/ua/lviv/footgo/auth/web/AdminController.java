@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.lviv.footgo.auth.service.UserDetailsServiceImpl;
 import ua.lviv.footgo.auth.service.UserService;
-
+//Admin page for users management controller
 @Controller
 public class AdminController {
     @Autowired

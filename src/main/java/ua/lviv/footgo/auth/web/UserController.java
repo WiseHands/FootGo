@@ -136,6 +136,7 @@ public class UserController {
 
         if (user.getEnabled()) {
             modelAndView.addObject("successMessage", "Already confirmed!");
+
             return modelAndView;
         }
 
@@ -148,7 +149,8 @@ public class UserController {
         // Save user
         userRepository.save(user);
 
-        modelAndView.addObject("successMessage", "Successfully confirmed!");
+        //modelAndView.addObject("successMessage", "Successfully confirmed!");
+        modelAndView.setViewName("redirect:login");
         return modelAndView;
     }
 
