@@ -1,19 +1,16 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<!--<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="icon" href="favicon.ico"/>
-
     <title>User Registration with Spring Boot</title>
-
 </head>
 
 <body class="gray-bg">
 
 <div class="middle-box text-center loginscreen animated fadeInDown">
     <div>
-
         <hr/>
         <h4>Please confirm your registration</h4>
 
@@ -25,10 +22,9 @@
 
         <form th:if="!${invalidToken}" id="passwordForm" action="#"
               th:object="${setPassword}" th:action="@{/confirm}" method="post">
-
             <input type="hidden" name="token" th:value=${confirmationToken}>
 
-<!--            <div>
+&lt;!&ndash;            <div>
                 <input name="password" type="password" id="password" placeholder="Password" required/>
                 <span aria-hidden="true"></span>
             </div>
@@ -36,13 +32,51 @@
             <div>
                 <input type="password" id="signup-password-confirm" placeholder="Confirm Password"
                        name="ConfirmPassword"/>
-            </div>-->
+            </div>&ndash;&gt;
 
             <button th:if="!${successMessage}" type="submit">Confirm</button>
-
         </form>
+    </div>
+</div>
 
+</body>
+</html>-->
 
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title th:text="#{accountConfirmation}"></title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/footgo-dark-icon.png" type="image/x-icon">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900' rel='stylesheet' type='text/css'>
+</head>
+<body class="login-page">
+
+<div sec:authorize="isAuthenticated()">
+    <script th:inline="javascript">
+    window.location.href = '/';
+    </script>
+</div>
+
+<div class="login-form reset-password-form">
+    <form method="POST" th:if="!${invalidToken}" action="#" th:action="@{/confirm}" class="form-signin">
+        <h1 th:text="#{accountConfirmation}" class="login-form-typography-h5 login-form-typography-root"></h1>
+        <p class="reset-description" th:text="#{pleaseConfirmYourRegistration}"></p>
+        <div class="form-container">
+            <input type="hidden" name="token" th:value=${confirmationToken}>
+            <button th:if="!${successMessage}" th:text="#{confirmButton}" class="button-full-width button-login button-contained-primary button-root button-base-root button-root-login" type="submit"></button>
+
+        </div>
+        <p class="forgot-success reset-success" th:if="${successMessage}" th:text=#{alreadyConfirmedSuccessMessage}></p>
+        <!--<p class="forgot-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>-->
+    </form>
+    <p class="forgot-error reset-error" th:if="${errorMessage}" th:text=${errorMessage}></p>
+    <p class="forgot-error reset-error" th:if="${invalidToken}" th:text=#{invalidConfirmationLink}></p>
+    <div class="labels-login-container">
+        <div class="button-grid-item button-grid-xs-true">
+            <a th:text="#{back}" th:href="@{/login}" class="button-underline-hover button-typography-body2 button-typography-color-primary"></a>
+        </div>
     </div>
 </div>
 

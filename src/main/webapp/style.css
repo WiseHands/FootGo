@@ -36,7 +36,7 @@ a, a:hover {
 .header-null {
     display: none;
 }
-.header-text, .header-icon, .header-second-block {
+.header-text, .header-icon, .header-second-block, .header-sign-in-block, .header-right-block {
     display: flex;
     align-items: center;
 }
@@ -60,7 +60,7 @@ a, a:hover {
     position: relative;
     display: inline-block;
 }
-.prev-seasons, .lang-list {
+.prev-seasons, .lang-list, .sign-in-list {
     background-color: #0D0B20;
     display: none;
     position: absolute;
@@ -68,7 +68,7 @@ a, a:hover {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-.prev-seasons a, .lang-list a {
+.prev-seasons a, .lang-list a, .sign-in-list a {
     color: #fff;
     padding: 12px 16px;
     text-decoration: none;
@@ -83,8 +83,13 @@ a, a:hover {
 .lang-switcher:hover .lang-list {
     display: block;
 }
-
-.lang-switcher:hover .dropbtn {
+.sign-in:hover .sign-in-list {
+    display: block;
+}
+.sign-in {
+    margin-right: 2px;
+}
+.lang-switcher:hover .dropbtn, .sign-in:hover .dropbtn {
     background-color: #868686;
 }
 
@@ -395,7 +400,7 @@ iframe {
     margin-top: 2em;
     background: #ffff;
 }
-.user-registration-form {
+.user-registration-form, .reset-password-form {
     width: 100%;
     max-width: 25em;
 }
@@ -592,9 +597,19 @@ input[type=submit] {
     margin: 0 auto;
     max-width: 20em;
 }
+.reset-error, .reset-success {
+    padding: 0;
+    margin-bottom: 20px;
+}
 .forgot-description {
     white-space: normal;
     margin: 20px;
+    max-width: 20em;
+}
+.reset-description {
+    white-space: normal;
+    margin: auto;
+    padding-top: 20px;
     max-width: 20em;
 }
 .all-games-button {
@@ -1439,7 +1454,7 @@ footer {
     .table, .bomb {
         max-width: 530px
     }
-    .lang-switcher:hover .lang-list {right:0;}
+    .lang-switcher:hover .lang-list, .sign-in:hover .sign-in-list {right:0;}
 }
 @media screen and (max-width: 979px) {
     .vs-container, .score-tables {
@@ -1819,7 +1834,7 @@ footer {
   .main-head-title .main-head-logo {
       background-image: url(img/footgo-light-icon.png);
   }
-  header, .main-photo, .prev-seasons, .dropbtn, .registration-photo, .lang-list, .login-page, .registration-page {
+  header, .main-photo, .prev-seasons, .dropbtn, .registration-photo, .lang-list, .login-page, .registration-page, .sign-in-list {
       background: var(--main-bg-color);
   }
   .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom, .login-form, .user-registration-form {

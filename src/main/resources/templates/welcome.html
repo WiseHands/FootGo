@@ -7,7 +7,7 @@
 <div class="container">
     <div th:if="${!#lists.isEmpty(#authentication) OR #authentication.principal.username != null}">
         <form id="logoutForm" method="POST" th:action="@{/logout}"></form>
-        <h2 th:text="'Welcome ' + ${#authentication.principal.username}"></h2>
+        <h2 th:text="'Welcome ' + ${#authentication.principal.username} + ' (' + ${firstName} + ' ' + ${lastName} + ')'"></h2>
         <a href="#" onclick="document.forms['logoutForm'].submit()">Logout</a>
     </div>
 </div>

@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.servlet.ModelAndView;
@@ -168,6 +171,17 @@ public class UserController {
 
     @GetMapping({"/welcome"})
     public String welcome(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String currentUser = authentication.getAuthorities().toString();
+            model.addAttribute("currentUser", currentUser);
+        }
+        User user = userRepository.findByEmail(authentication.getName());
+        String firstName = user.getFirstName();
+        String lastName = user.getLastName();
+
+        model.addAttribute("firstName", firstName);
+        model.addAttribute("lastName", lastName);
         return "welcome";
     }
 

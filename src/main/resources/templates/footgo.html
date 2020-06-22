@@ -46,7 +46,10 @@
                 </div>
             </div>
         </div>
-        <div th:replace="fragments/languageWidget :: languageWidget"></div>
+        <div class="header-right-block">
+            <div th:replace="fragments/signInWidget :: signInWidget"></div>
+            <div th:replace="fragments/languageWidget :: languageWidget"></div>
+        </div>
     </div>
     <div id="myLinks">
         <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><a th:text="#{signup}" class="link-item" href="/signup"></a></div>

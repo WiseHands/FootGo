@@ -32,12 +32,9 @@
             </div>
         </div>
         <p th:if="${message}" th:text="${message}"></p>
-        <!--<p class="login-error" th:if="${param.error}" th:text="#{loginError}"></p>-->
         <p class="login-error" th:if="${param.error != null AND session['SPRING_SECURITY_LAST_EXCEPTION'].message == 'Bad credentials'}" th:text="#{badCredentialsLogin}"></p>
         <p class="login-error" th:if="${param.error != null AND session['SPRING_SECURITY_LAST_EXCEPTION'].message != 'Bad credentials'}" th:text="#{accountDisabled}"></p>
-        <!--<p class="login-error" th:if="${param.auth == bad_credentials}" th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"></p>-->
         <!--<p class="login-error" th:if="${error}" th:text="#{loginError}"></p>-->
-        <!--<p class="login-error" th:if="${param.error}">Login failed!</p>-->
     </form>
 </div>
 
