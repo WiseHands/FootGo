@@ -1,14 +1,15 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Create an account</title>
+    <title>User profile</title>
 </head>
 <body>
 <div class="container">
     <div th:if="${!#lists.isEmpty(#authentication) OR #authentication.principal.username != null}">
-        <form id="logoutForm" method="POST" th:action="@{/logout}"></form>
+<!--        <form id="logoutForm" method="POST" th:action="@{/logout}"></form>-->
         <h2 th:text="'Welcome ' + ${#authentication.principal.username} + ' (' + ${firstName} + ' ' + ${lastName} + ')'"></h2>
-        <a href="#" onclick="document.forms['logoutForm'].submit()">Logout</a>
+        <h3 th:text="'Account created date ' + ${#dates.format(createdOn, 'dd-MM-yyyy, HH:mm')}"></h3>
+<!--        <a href="#" onclick="document.forms['logoutForm'].submit()">Logout</a>-->
     </div>
 </div>
 </body>

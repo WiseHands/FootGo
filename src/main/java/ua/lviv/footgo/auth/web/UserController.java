@@ -1,5 +1,6 @@
 package ua.lviv.footgo.auth.web;
 
+import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -169,8 +170,8 @@ public class UserController {
         return "userLogin";
     }
 
-    @GetMapping({"/welcome"})
-    public String welcome(Model model) {
+    @GetMapping({"/profile"})
+    public String profile(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             String currentUser = authentication.getAuthorities().toString();
@@ -179,10 +180,12 @@ public class UserController {
         User user = userRepository.findByEmail(authentication.getName());
         String firstName = user.getFirstName();
         String lastName = user.getLastName();
+        Date createdOn = user.getCreatedOn();
 
         model.addAttribute("firstName", firstName);
         model.addAttribute("lastName", lastName);
-        return "welcome";
+        model.addAttribute("createdOn", createdOn);
+        return "profile";
     }
 
     @GetMapping(value = "/forgot")

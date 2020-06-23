@@ -12,7 +12,7 @@
         </div>
         <div sec:authorize="isAuthenticated()" class="sign-in-list">
             <a th:text="#{adminPage}" sec:authorize="hasRole('ROLE_ADMIN')" href="admin"></a>
-            <a th:text="#{myProfile}" href="/"></a>
+            <a th:text="#{myProfile}" href="profile"></a>
             <form id="logoutForm" th:action="@{/logout}" method="POST"></form>
             <a th:text="#{logout}" href="#" onclick="document.forms['logoutForm'].submit()"></a>
         </div>
