@@ -131,6 +131,7 @@ a, a:hover {
     justify-content: space-around;
     padding-top: 10px;
     height: 100%;
+    max-height: 220px;
 }
 .main-about-league {
     display: flex;
@@ -399,6 +400,11 @@ iframe {
 .login-form, .user-registration-form {
     margin-top: 2em;
     background: #ffff;
+}
+.registration-page {
+    display: flex;
+    flex-direction: inherit;
+    height: fit-content;
 }
 .user-registration-form, .reset-password-form {
     width: 100%;
@@ -1542,7 +1548,7 @@ footer {
     }
 }
 @media screen and (max-width: 667px) {
-    .login-form {
+    .login-form, .user-registration-form {
         margin-right: 1em;
         margin-left: 1em;
     }

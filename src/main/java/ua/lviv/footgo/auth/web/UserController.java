@@ -95,9 +95,9 @@ public class UserController {
 
 /*        userService.save(userForm);*/
 
-        securityService.autoLogin(userForm.getEmail(), userForm.getPasswordConfirm());
+        //securityService.autoLogin(userForm.getEmail(), userForm.getPasswordConfirm());
 
-        return "redirect:/welcome";
+        return "redirect:/login";
     }
 
     @GetMapping(value="/confirm")

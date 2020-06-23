@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Set;
 import javax.validation.constraints.Email;
 
@@ -32,6 +33,12 @@ public class User implements UserDetails {
     private String passwordConfirm;
 
     private boolean enabled;
+
+    @Column(name = "created_on")
+    private Date createdOn;
+
+    @Column(name = "last_login")
+    private Date lastLogin;
 
     @Column(name = "confirmation_token")
     private String confirmationToken;
@@ -77,6 +84,22 @@ public class User implements UserDetails {
 
     public void setUsername(String email) {
         this.email = email;
+    }
+
+    public Date getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
     }
 
     @Override

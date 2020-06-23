@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -41,10 +40,6 @@ public class UserDetailsServiceImpl implements UserDetailsService{
             throw new DisabledException("Your account is not confirmed. Please check your e-mail " + email + " and click on confirmation link");
         }
 
-/*        if (!user.getEnabled()) {
-            throw new UsernameNotFoundException("Your account is not confirmed. Please check your e-mail " + email + " and click on confirmation link");
-        }*/
-
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         for (Role role : user.getRoles()){
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
@@ -61,7 +56,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         return userRepository.findAll();
     }
 
-    public boolean save(User user) {
+/*    public boolean save(User user) {
         User userFromDB = userRepository.findByEmail(user.getEmail());
 
         if (userFromDB != null) {
@@ -72,7 +67,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
-    }
+    }*/
 
     public boolean deleteUser(Long userId) {
         if (userRepository.findById(userId).isPresent()) {
