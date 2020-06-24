@@ -10,12 +10,12 @@
 
 <body>
 
-    <p th:text="'Welcome ' + ${#authentication.principal.username}"></p>
+    <p th:text="${#authentication.principal.username}"></p>
     <form id="logoutForm" th:action="@{/logout}" method="POST">
 <!--        <input value="Logout" type="submit">-->
     </form>
-    <a href="#" onclick="document.forms['logoutForm'].submit()">Logout | </a>
-    <a th:href="@{/}">Back to main page</a>
+    <a href="#" onclick="document.forms['logoutForm'].submit()">Вийти | </a>
+    <a th:href="@{/}">На головну</a>
 
     <div class="main-container">
         <div class="admin-main">

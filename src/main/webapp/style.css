@@ -1261,6 +1261,14 @@ input[invalid-input] {
     max-width: 200px;
     width: 100%;
 }
+.user-card-photo i {
+    font-size: 9rem;
+}
+.user-card-photo {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+}
 .player-card-info {
     padding-left: 10px;
     line-height: 1.6;
