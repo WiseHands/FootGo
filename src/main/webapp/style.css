@@ -172,7 +172,7 @@ a, a:hover {
     margin-left: 20px;
 }
 .main-league .main-about:not(:last-child), .main-cup .main-about:not(:last-child) {
-    margin-bottom: 20px;
+/*    margin-bottom: 20px;*/
 }
 .main-league .main-about:nth-child(2n+1) {
     margin-right: 20px;
@@ -1267,9 +1267,10 @@ input[invalid-input] {
     padding: 10px 10px;
 }
 .player-card-info p {
-    white-space: nowrap;
+/*    white-space: nowrap;*/
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-bottom: 5px;
 }
 .player-card-info p:first-child {
     font-size: 1.5rem;
@@ -1280,6 +1281,22 @@ input[invalid-input] {
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 20px;
+}
+.user-card-info p {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    margin-bottom: 10px !important;
+}
+.user-card-info .title {
+    margin-bottom: 5px !important;
+    font-weight: 600 !important;
+}
+.user-card-info h2 {
+    margin-bottom: 10px;
+}
+.matches-full h1 {
+    padding-top: 0.5em;
+    margin: 0 auto;
 }
 .player-card-info span {
     padding-left: 3px;
@@ -1443,6 +1460,7 @@ footer {
 .video-description {
     padding-bottom: 25px;
 }
+
 @media screen and (max-width: 1160px) {
     .main-container {
         width: 100%;
@@ -1460,7 +1478,10 @@ footer {
     .table, .bomb {
         max-width: 530px
     }
-    .lang-switcher:hover .lang-list, .sign-in:hover .sign-in-list {right:0;}
+    .lang-switcher:hover .lang-list {right:0;}
+}
+@media screen and (max-width: 1025px) {
+    .sign-in:hover .sign-in-list {right:0;}
 }
 @media screen and (max-width: 979px) {
     .vs-container, .score-tables {
@@ -1858,7 +1879,7 @@ footer {
   .main-when ul span {
       background: rgba(255,255,255,0.4);
   }
-  .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3, .bomb-head p, .season-list, .dropbtn, .table-header, .goals p, .table-head p {
+  .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3, .bomb-head p, .season-list, .dropbtn, .table-header, .goals p, .table-head p, .matches-full h1 {
       color: var(--main-text-color);
   }
   .main-about-team img {
@@ -1934,7 +1955,6 @@ footer {
     .player-card-logo-team img {
         display: block;
         box-sizing: border-box;
-        /*padding-left: 24px;*/
         background-size: 100%;
     }
     .review-team1 img, .review-team2 img {
@@ -1949,21 +1969,8 @@ footer {
             width: 96px;
         }
     }
-    .bomb-full {
+    .results-full, .team-results-full, .bomb-full, .table-full, .matches-full {
         background-color: var(--main-bg-color);
-/*        background-image: url(img/foot44-dark.jpg);*/
-    }
-    .table-full {
-        background-color: var(--main-bg-color);
-/*        background-image: url(img/foot22-dark.jpg);*/
-    }
-    .matches-full {
-        background-color: var(--main-bg-color);
-/*        background-image: url(img/foot77-dark.jpg);*/
-    }
-    .results-full, .team-results-full {
-        background-color: var(--main-bg-color);
-/*        background-image: url(img/foot66-dark.jpg);*/
     }
     .main-head {
         background-color: var(--main-bg-color);

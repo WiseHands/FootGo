@@ -32,7 +32,10 @@
                 <a th:href="'/cup/' + ${cup.id} + '/results'"><p th:text="#{results}"></p></a>
             </div>
         </div>
-        <div th:replace="fragments/languageWidget :: languageWidget"></div>
+        <div class="header-right-block">
+            <div th:replace="fragments/signInWidget :: signInWidget"></div>
+            <div th:replace="fragments/languageWidget :: languageWidget"></div>
+        </div>
     </div>
     <div id="myLinks">
         <div>

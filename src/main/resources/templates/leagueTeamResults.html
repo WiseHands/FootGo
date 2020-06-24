@@ -34,7 +34,10 @@
                 <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:href="'/league/' + ${league.id} + '/team/' + ${team.id}"><p th:text="${team.getTeamNameTransliterated()}"></p></a>
             </div>
         </div>
-        <div th:replace="fragments/languageWidget :: languageWidget"></div>
+        <div class="header-right-block">
+            <div th:replace="fragments/signInWidget :: signInWidget"></div>
+            <div th:replace="fragments/languageWidget :: languageWidget"></div>
+        </div>
     </div>
     <div id="myLinks">
         <div>

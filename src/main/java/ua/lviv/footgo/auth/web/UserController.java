@@ -1,9 +1,6 @@
 package ua.lviv.footgo.auth.web;
 
-import java.util.Date;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -29,6 +26,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import com.nulabinc.zxcvbn.Strength;
 import com.nulabinc.zxcvbn.Zxcvbn;
+import ua.lviv.footgo.entity.Season;
+import ua.lviv.footgo.entity.Tournament;
+import ua.lviv.footgo.repository.TournamentRepository;
 
 @Controller
 public class UserController {
@@ -51,6 +51,10 @@ public class UserController {
 
     @Autowired
     private EmailService emailService;
+
+    @Autowired
+    TournamentRepository tournamentRepository;
+
 
     @GetMapping("/registration")
     public String registration(Model model) {
@@ -172,11 +176,18 @@ public class UserController {
 
     @GetMapping({"/profile"})
     public String profile(Model model) {
+        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
+        Tournament tournament = tournaments.get(0);
+        model.addAttribute("tournament", tournament);
+        Season season = tournament.getActiveSeason();
+        model.addAttribute("season", season);
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             String currentUser = authentication.getAuthorities().toString();
             model.addAttribute("currentUser", currentUser);
         }
+
         User user = userRepository.findByEmail(authentication.getName());
         String firstName = user.getFirstName();
         String lastName = user.getLastName();

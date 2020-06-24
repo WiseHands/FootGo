@@ -7,12 +7,12 @@
     <div class="sign-in">
         <button class="dropbtn fas fa-user-circle"></button>
         <div sec:authorize="!isAuthenticated()" class="sign-in-list">
-            <a th:text="#{signIn}" href="login"></a>
-            <a th:text="#{createAccount}" href="registration"></a>
+            <a th:text="#{signIn}" href="/login"></a>
+            <a th:text="#{createAccount}" href="/registration"></a>
         </div>
         <div sec:authorize="isAuthenticated()" class="sign-in-list">
-            <a th:text="#{adminPage}" sec:authorize="hasRole('ROLE_ADMIN')" href="admin"></a>
-            <a th:text="#{myProfile}" href="profile"></a>
+            <a th:text="#{adminPage}" sec:authorize="hasRole('ROLE_ADMIN')" href="/admin"></a>
+            <a th:text="#{myProfile}" href="/profile"></a>
             <form id="logoutForm" th:action="@{/logout}" method="POST"></form>
             <a th:text="#{logout}" href="#" onclick="document.forms['logoutForm'].submit()"></a>
         </div>

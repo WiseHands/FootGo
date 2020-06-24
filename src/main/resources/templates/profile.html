@@ -1,16 +1,75 @@
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>User profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title th:text="#{userProfile} + ' ' + ${#authentication.principal.username}"></title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/hamburger.css">
+    <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
+    <script src="/imgPlaceholderSetScript.js" type="text/javascript"></script>
 </head>
-<body>
-<div class="container">
-    <div th:if="${!#lists.isEmpty(#authentication) OR #authentication.principal.username != null}">
-<!--        <form id="logoutForm" method="POST" th:action="@{/logout}"></form>-->
-        <h2 th:text="'Welcome ' + ${#authentication.principal.username} + ' (' + ${firstName} + ' ' + ${lastName} + ')'"></h2>
-        <h3 th:text="'Account created date ' + ${#dates.format(createdOn, 'dd-MM-yyyy, HH:mm')}"></h3>
-<!--        <a href="#" onclick="document.forms['logoutForm'].submit()">Logout</a>-->
+<body class="matches-full">
+<header>
+    <div class="header-full">
+        <div class="header-first-block">
+            <div>
+                <a href="/"><img class="header-img" src="/img/footgo-light-icon.png" alt="wiselogo"></a>
+            </div>
+            <div class="header-null">
+                <a href="javascript:void(0)" class="icon" onclick="myFunction()">
+                    <i class="hamburger fa fa-bars"></i>
+                </a>
+            </div>
+            <div class="header-text">
+                <a href="/">
+                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
+                    <p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
+                </a>
+              </div>
+        </div>
+        <div class="header-right-block">
+            <div th:replace="fragments/signInWidget :: signInWidget"></div>
+            <div th:replace="fragments/languageWidget :: languageWidget"></div>
+        </div>
+    </div>
+    <div id="myLinks">
+        <div>
+            <a class="link-item" href="/">
+                <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
+                <p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
+            </a>
+        </div>
+    </div>
+</header>
+<h1 th:text="#{personalInfo}"></h1>
+<div class="player-card-main">
+    <div class="player-card-photo">
+        <img src="/img/img_avatar.png">
+    </div>
+    <div class="player-card-info user-card-info">
+        <h2 th:text="#{userProfile}"></h2>
+        <p th:text="#{email}" class="title"></p>
+        <p th:text="${#authentication.principal.username}"></p>
+        <p th:text="#{userName}" class="title"></p>
+        <p th:text="${firstName} + ' ' + ${lastName}"></p>
+        <p th:text="#{accountCreatedDate}" class="title"></p>
+        <p th:text="${#dates.format(createdOn, 'dd-MM-yyyy, HH:mm')}"></p>
     </div>
 </div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<script src="/signUpScript.js"></script>
+<script src="/hamburger.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39722519-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-39722519-3');
+</script>
 </body>
 </html>

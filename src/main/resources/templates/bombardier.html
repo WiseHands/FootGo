@@ -56,7 +56,10 @@
                 <a href="/bombardier"><p>Бомбардири</p></a>-->
             </div>
         </div>
-        <div th:replace="fragments/languageWidget :: languageWidget"></div>
+        <div class="header-right-block">
+            <div th:replace="fragments/signInWidget :: signInWidget"></div>
+            <div th:replace="fragments/languageWidget :: languageWidget"></div>
+        </div>
     </div>
 </header>
 
