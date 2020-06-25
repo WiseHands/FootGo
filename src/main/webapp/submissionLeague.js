@@ -21,7 +21,7 @@ function submissionData(event) {
             .map((checkbox) => checkbox.value);
         }
 
-        let leagueDataJsonObj = {"name" : leagueName, "name_en" : leagueNameEn, "teamList" : getCheckedValues()};
+        let leagueDataJsonObj = {"name" : leagueName, "nameEn" : leagueNameEn, "teamList" : getCheckedValues()};
         let jsonLeagueInString = JSON.stringify(leagueDataJsonObj);
 
         let apiUrl = '/api/season/' + seasonId + '/league';
