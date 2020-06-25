@@ -115,7 +115,7 @@ public class LeagueApiController {
             System.out.println("TEAM NAME " + team.getTeamName());
         }
 
-        if (teamList.size() <= 2 || teamList.size() >= 9 ) {
+        if (teamList.size() <= 2 || teamList.size() >= 17 ) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
@@ -640,6 +640,275 @@ public class LeagueApiController {
                         league.addTour(tour);
                         break;
                 }
+            }
+        }
+
+        if (teamList.size() == 11) {
+            int NUMBER_OF_TOURS = 11;
+            for (int i = 0; i < NUMBER_OF_TOURS; i++) {
+
+                switch (i) {
+                    case 0:
+                        Tour tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(1), teamList.get(10), tour);
+                        _createGame(teamList.get(2), teamList.get(9), tour);
+                        _createGame(teamList.get(3), teamList.get(8), tour);
+                        _createGame(teamList.get(4), teamList.get(7), tour);
+                        _createGame(teamList.get(5), teamList.get(6), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 1:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(7), teamList.get(5), tour);
+                        _createGame(teamList.get(8), teamList.get(4), tour);
+                        _createGame(teamList.get(9), teamList.get(3), tour);
+                        _createGame(teamList.get(10), teamList.get(2), tour);
+                        _createGame(teamList.get(0), teamList.get(1), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 2:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(2), teamList.get(0), tour);
+                        _createGame(teamList.get(3), teamList.get(10), tour);
+                        _createGame(teamList.get(4), teamList.get(9), tour);
+                        _createGame(teamList.get(5), teamList.get(8), tour);
+                        _createGame(teamList.get(6), teamList.get(7), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 3:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(8), teamList.get(6), tour);
+                        _createGame(teamList.get(9), teamList.get(5), tour);
+                        _createGame(teamList.get(10), teamList.get(4), tour);
+                        _createGame(teamList.get(0), teamList.get(3), tour);
+                        _createGame(teamList.get(1), teamList.get(2), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 4:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(3), teamList.get(1), tour);
+                        _createGame(teamList.get(4), teamList.get(0), tour);
+                        _createGame(teamList.get(5), teamList.get(10), tour);
+                        _createGame(teamList.get(6), teamList.get(9), tour);
+                        _createGame(teamList.get(7), teamList.get(8), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 5:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(9), teamList.get(7), tour);
+                        _createGame(teamList.get(10), teamList.get(6), tour);
+                        _createGame(teamList.get(0), teamList.get(5), tour);
+                        _createGame(teamList.get(1), teamList.get(4), tour);
+                        _createGame(teamList.get(2), teamList.get(3), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 6:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(4), teamList.get(2), tour);
+                        _createGame(teamList.get(5), teamList.get(1), tour);
+                        _createGame(teamList.get(6), teamList.get(0), tour);
+                        _createGame(teamList.get(7), teamList.get(10), tour);
+                        _createGame(teamList.get(8), teamList.get(9), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 7:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(10), teamList.get(8), tour);
+                        _createGame(teamList.get(0), teamList.get(7), tour);
+                        _createGame(teamList.get(1), teamList.get(6), tour);
+                        _createGame(teamList.get(2), teamList.get(5), tour);
+                        _createGame(teamList.get(3), teamList.get(4), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 8:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(5), teamList.get(3), tour);
+                        _createGame(teamList.get(6), teamList.get(2), tour);
+                        _createGame(teamList.get(7), teamList.get(1), tour);
+                        _createGame(teamList.get(8), teamList.get(0), tour);
+                        _createGame(teamList.get(9), teamList.get(10), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 9:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(0), teamList.get(9), tour);
+                        _createGame(teamList.get(1), teamList.get(8), tour);
+                        _createGame(teamList.get(2), teamList.get(7), tour);
+                        _createGame(teamList.get(3), teamList.get(6), tour);
+                        _createGame(teamList.get(4), teamList.get(5), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 10:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(6), teamList.get(4), tour);
+                        _createGame(teamList.get(7), teamList.get(3), tour);
+                        _createGame(teamList.get(8), teamList.get(2), tour);
+                        _createGame(teamList.get(9), teamList.get(1), tour);
+                        _createGame(teamList.get(10), teamList.get(0), tour);
+
+                        league.addTour(tour);
+                        break;                }
+            }
+        }
+
+        if (teamList.size() == 12) {
+            int NUMBER_OF_TOURS = 11;
+            for (int i = 0; i < NUMBER_OF_TOURS; i++) {
+
+                switch (i) {
+                    case 0:
+                        Tour tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(0), teamList.get(11), tour);
+                        _createGame(teamList.get(1), teamList.get(10), tour);
+                        _createGame(teamList.get(2), teamList.get(9), tour);
+                        _createGame(teamList.get(3), teamList.get(8), tour);
+                        _createGame(teamList.get(4), teamList.get(7), tour);
+                        _createGame(teamList.get(5), teamList.get(6), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 1:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(11), teamList.get(6), tour);
+                        _createGame(teamList.get(7), teamList.get(5), tour);
+                        _createGame(teamList.get(8), teamList.get(4), tour);
+                        _createGame(teamList.get(9), teamList.get(3), tour);
+                        _createGame(teamList.get(10), teamList.get(2), tour);
+                        _createGame(teamList.get(0), teamList.get(1), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 2:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(1), teamList.get(11), tour);
+                        _createGame(teamList.get(2), teamList.get(0), tour);
+                        _createGame(teamList.get(3), teamList.get(10), tour);
+                        _createGame(teamList.get(4), teamList.get(9), tour);
+                        _createGame(teamList.get(5), teamList.get(8), tour);
+                        _createGame(teamList.get(6), teamList.get(7), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 3:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(11), teamList.get(7), tour);
+                        _createGame(teamList.get(8), teamList.get(6), tour);
+                        _createGame(teamList.get(9), teamList.get(5), tour);
+                        _createGame(teamList.get(10), teamList.get(4), tour);
+                        _createGame(teamList.get(0), teamList.get(3), tour);
+                        _createGame(teamList.get(1), teamList.get(2), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 4:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(2), teamList.get(11), tour);
+                        _createGame(teamList.get(3), teamList.get(1), tour);
+                        _createGame(teamList.get(4), teamList.get(0), tour);
+                        _createGame(teamList.get(5), teamList.get(10), tour);
+                        _createGame(teamList.get(6), teamList.get(9), tour);
+                        _createGame(teamList.get(7), teamList.get(8), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 5:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(11), teamList.get(8), tour);
+                        _createGame(teamList.get(9), teamList.get(7), tour);
+                        _createGame(teamList.get(10), teamList.get(6), tour);
+                        _createGame(teamList.get(0), teamList.get(5), tour);
+                        _createGame(teamList.get(1), teamList.get(4), tour);
+                        _createGame(teamList.get(2), teamList.get(3), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 6:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(3), teamList.get(11), tour);
+                        _createGame(teamList.get(4), teamList.get(2), tour);
+                        _createGame(teamList.get(5), teamList.get(1), tour);
+                        _createGame(teamList.get(6), teamList.get(0), tour);
+                        _createGame(teamList.get(7), teamList.get(10), tour);
+                        _createGame(teamList.get(8), teamList.get(9), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 7:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(11), teamList.get(9), tour);
+                        _createGame(teamList.get(10), teamList.get(8), tour);
+                        _createGame(teamList.get(0), teamList.get(7), tour);
+                        _createGame(teamList.get(1), teamList.get(6), tour);
+                        _createGame(teamList.get(2), teamList.get(5), tour);
+                        _createGame(teamList.get(3), teamList.get(4), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 8:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(4), teamList.get(11), tour);
+                        _createGame(teamList.get(5), teamList.get(3), tour);
+                        _createGame(teamList.get(6), teamList.get(2), tour);
+                        _createGame(teamList.get(7), teamList.get(1), tour);
+                        _createGame(teamList.get(8), teamList.get(0), tour);
+                        _createGame(teamList.get(9), teamList.get(10), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 9:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(11), teamList.get(10), tour);
+                        _createGame(teamList.get(0), teamList.get(9), tour);
+                        _createGame(teamList.get(1), teamList.get(8), tour);
+                        _createGame(teamList.get(2), teamList.get(7), tour);
+                        _createGame(teamList.get(3), teamList.get(6), tour);
+                        _createGame(teamList.get(4), teamList.get(5), tour);
+
+                        league.addTour(tour);
+                        break;
+                    case 10:
+                        tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(5), teamList.get(11), tour);
+                        _createGame(teamList.get(6), teamList.get(4), tour);
+                        _createGame(teamList.get(7), teamList.get(3), tour);
+                        _createGame(teamList.get(8), teamList.get(2), tour);
+                        _createGame(teamList.get(9), teamList.get(1), tour);
+                        _createGame(teamList.get(10), teamList.get(0), tour);
+
+                        league.addTour(tour);
+                        break;                }
             }
         }
 
