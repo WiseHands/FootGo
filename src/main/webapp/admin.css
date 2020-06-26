@@ -238,6 +238,9 @@ body p {
 .request-block i {
     font-size: 2em;
 }
+.request-block p {
+    white-space: break-spaces;
+}
 .request-block h3 {
     font-size: 1.5rem;
     font-weight: 400;
@@ -258,6 +261,18 @@ body p {
 }
 .mark-active p {
     padding-bottom: 5%;
+}
+.league-info, .cup-info {
+    margin: 0 auto;
+    width: 310px;
+}
+.league-info .request-block, .cup-info .request-block {
+    width: auto;
+    text-align: left;
+    font-size: .8em;
+}
+.league-info i, .cup-info i {
+    margin-bottom: .3em;
 }
 @media screen and (max-width: 800px) {
     .admin-bar {
@@ -332,6 +347,11 @@ body p {
     font-size: 1em !important;
     margin-bottom: 0.5em;
 }
+/*input validation*/
+input[invalid-input] {
+    border: 1px solid #ed002c !important;
+    border-radius: 5px;
+}
 input[type=text], input[type=tel], input[type=email], select {
     padding: 15px;
     margin: 5px 0 10px 0;
@@ -339,6 +359,7 @@ input[type=text], input[type=tel], input[type=email], select {
     border: none;
     border-radius: 5px;
     background: #fff;
+    border: 1px solid #00000080;
 }
 .main-input-button, .save-video-button {
     color: #fff;
@@ -942,6 +963,10 @@ input[type="file"] {
   transform: rotate(45deg);
 }
 @media screen and (max-width: 667px) {
+    .league-info, .cup-info {
+        margin: 0 auto;
+        width: auto;
+    }
 }
 .season-block {
     text-align: center;

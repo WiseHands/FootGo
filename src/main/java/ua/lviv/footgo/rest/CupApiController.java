@@ -3,6 +3,7 @@ package ua.lviv.footgo.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import ua.lviv.footgo.entity.*;
 import ua.lviv.footgo.repository.*;
 
@@ -112,49 +113,184 @@ public class CupApiController {
             System.out.println(team.getTeamName());
         }
 
-        for(int i=0; i<NUMBER_OF_TOURS; i++) {
+        if (teamList.size() <= 3 || teamList.size() >= 33 ) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
 
-            switch (i) {
-                case 0:
-                    Tour tour = _createTour(i+1);
+        if (teamList.size() == 4) {
+            int NUMBER_OF_TOURS = 2;
+            for (int i = 0; i < NUMBER_OF_TOURS; i++) {
 
-                    _createGame(teamList.get(0), teamList.get(15), tour);
-                    _createGame(teamList.get(1), teamList.get(14), tour);
-                    _createGame(teamList.get(2), teamList.get(13), tour);
-                    _createGame(teamList.get(3), teamList.get(12), tour);
-                    _createGame(teamList.get(4), teamList.get(11), tour);
-                    _createGame(teamList.get(5), teamList.get(10), tour);
-                    _createGame(teamList.get(6), teamList.get(9), tour);
-                    _createGame(teamList.get(7), teamList.get(8), tour);
+                switch (i) {
+                    case 0:
+                        Tour tour = _createTour(i + 1);
 
-                    cup.addTour(tour);
-                    break;
-                case 1:
-                    tour = _createTour(i+1);
+                        _createGame(teamList.get(0), teamList.get(3), tour);
+                        _createGame(teamList.get(1), teamList.get(2), tour);
 
-                    _createGame(null, null, tour);
-                    _createGame(null, null, tour);
-                    _createGame(null, null, tour);
-                    _createGame(null, null, tour);
+                        cup.addTour(tour);
+                        break;
+                    case 1:
+                        tour = _createTour(i + 1);
 
-                    cup.addTour(tour);
-                    break;
-                case 2:
-                    tour = _createTour(i+1);
+                        _createGame(null, null, tour);
 
-                    _createGame(null, null, tour);
-                    _createGame(null, null, tour);
+                        cup.addTour(tour);
+                        break;
+                }
+            }
+        }
 
-                    cup.addTour(tour);
-                    break;
-                case 3:
-                    tour = _createTour(i+1);
+        if (teamList.size() == 8) {
+            int NUMBER_OF_TOURS = 3;
+            for (int i = 0; i < NUMBER_OF_TOURS; i++) {
 
-                    _createGame(null, null, tour);
+                switch (i) {
+                    case 0:
+                        Tour tour = _createTour(i + 1);
 
-                    cup.addTour(tour);
-                    break;
+                        _createGame(teamList.get(0), teamList.get(7), tour);
+                        _createGame(teamList.get(1), teamList.get(6), tour);
+                        _createGame(teamList.get(2), teamList.get(5), tour);
+                        _createGame(teamList.get(3), teamList.get(4), tour);
 
+                        cup.addTour(tour);
+                        break;
+                    case 1:
+                        tour = _createTour(i + 1);
+
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+
+                        cup.addTour(tour);
+                        break;
+                    case 2:
+                        tour = _createTour(i + 1);
+
+                        _createGame(null, null, tour);
+
+                        cup.addTour(tour);
+                        break;
+                }
+            }
+        }
+
+        if (teamList.size() == 16) {
+            int NUMBER_OF_TOURS = 4;
+            for (int i = 0; i < NUMBER_OF_TOURS; i++) {
+
+                switch (i) {
+                    case 0:
+                        Tour tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(0), teamList.get(15), tour);
+                        _createGame(teamList.get(1), teamList.get(14), tour);
+                        _createGame(teamList.get(2), teamList.get(13), tour);
+                        _createGame(teamList.get(3), teamList.get(12), tour);
+                        _createGame(teamList.get(4), teamList.get(11), tour);
+                        _createGame(teamList.get(5), teamList.get(10), tour);
+                        _createGame(teamList.get(6), teamList.get(9), tour);
+                        _createGame(teamList.get(7), teamList.get(8), tour);
+
+                        cup.addTour(tour);
+                        break;
+                    case 1:
+                        tour = _createTour(i + 1);
+
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+
+                        cup.addTour(tour);
+                        break;
+                    case 2:
+                        tour = _createTour(i + 1);
+
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+
+                        cup.addTour(tour);
+                        break;
+                    case 3:
+                        tour = _createTour(i + 1);
+
+                        _createGame(null, null, tour);
+
+                        cup.addTour(tour);
+                        break;
+
+                }
+            }
+        }
+
+        if (teamList.size() == 32) {
+            int NUMBER_OF_TOURS = 5;
+            for (int i = 0; i < NUMBER_OF_TOURS; i++) {
+
+                switch (i) {
+                    case 0:
+                        Tour tour = _createTour(i + 1);
+
+                        _createGame(teamList.get(0), teamList.get(31), tour);
+                        _createGame(teamList.get(1), teamList.get(30), tour);
+                        _createGame(teamList.get(2), teamList.get(29), tour);
+                        _createGame(teamList.get(3), teamList.get(28), tour);
+                        _createGame(teamList.get(4), teamList.get(27), tour);
+                        _createGame(teamList.get(5), teamList.get(26), tour);
+                        _createGame(teamList.get(6), teamList.get(25), tour);
+                        _createGame(teamList.get(7), teamList.get(24), tour);
+                        _createGame(teamList.get(8), teamList.get(23), tour);
+                        _createGame(teamList.get(9), teamList.get(22), tour);
+                        _createGame(teamList.get(10), teamList.get(21), tour);
+                        _createGame(teamList.get(11), teamList.get(20), tour);
+                        _createGame(teamList.get(12), teamList.get(19), tour);
+                        _createGame(teamList.get(13), teamList.get(18), tour);
+                        _createGame(teamList.get(14), teamList.get(17), tour);
+                        _createGame(teamList.get(15), teamList.get(16), tour);
+
+                        cup.addTour(tour);
+                        break;
+                    case 1:
+                        tour = _createTour(i + 1);
+
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+
+                        cup.addTour(tour);
+                        break;
+                    case 2:
+                        tour = _createTour(i + 1);
+
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+
+                        cup.addTour(tour);
+                        break;
+                    case 3:
+                        tour = _createTour(i + 1);
+
+                        _createGame(null, null, tour);
+                        _createGame(null, null, tour);
+
+                        cup.addTour(tour);
+                        break;
+                    case 4:
+                        tour = _createTour(i + 1);
+
+                        _createGame(null, null, tour);
+
+                        cup.addTour(tour);
+                        break;
+                }
             }
         }
 

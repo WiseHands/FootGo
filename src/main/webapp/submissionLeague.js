@@ -4,24 +4,44 @@ let regex = /\d+/g;
 let seasonId = url.match(regex);*/
 
 function submissionData(event) {
-    let leagueName = document.getElementById('leagueName').value;
-    let leagueNameEn = document.getElementById('leagueNameEn').value;
+
+    let leagueNameInput = document.getElementById("leagueName");
+    let leagueNameEnInput = document.getElementById("leagueNameEn");
+    let leagueName = leagueNameInput.value;
+    let leagueNameEn = leagueNameEnInput.value;
+
+    if (!leagueName){
+        leagueNameInput.setAttribute('invalid-input', true);
+    } else {
+        leagueNameInput.removeAttribute('invalid-input');
+    }
+
+    if (!leagueNameEn){
+        leagueNameEnInput.setAttribute('invalid-input', true);
+    } else {
+        leagueNameEnInput.removeAttribute('invalid-input');
+    }
+
+    let leagueNameValue = document.getElementById('leagueName').value;
+    let leagueNameEnValue = document.getElementById('leagueNameEn').value;
 
     const checkEmptyLeagueName = document.getElementById("leagueName");
     const checkEmptyLeagueNameEn = document.getElementById("leagueNameEn");
     if (checkEmptyLeagueName.value == "" && checkEmptyLeagueName.value.length == 0 || checkEmptyLeagueNameEn.value == "" && checkEmptyLeagueNameEn.value.length == 0) {
         document.getElementById('showInputAddLeagueNameError').style.display = "block";
-        checkEmpty.classList.add("required-fields");
+
         return false;
+    } else {
+        document.getElementById('showInputAddLeagueNameError').style.display = "none";
     }
-    if (leagueName && leagueNameEn) {
+    if (leagueNameValue && leagueNameEnValue) {
         function getCheckedValues() {
             return Array.from(document.querySelectorAll('input[type="checkbox"]'))
             .filter((checkbox) => checkbox.checked)
             .map((checkbox) => checkbox.value);
         }
 
-        let leagueDataJsonObj = {"name" : leagueName, "nameEn" : leagueNameEn, "teamList" : getCheckedValues()};
+        let leagueDataJsonObj = {"name" : leagueNameValue, "nameEn" : leagueNameEnValue, "teamList" : getCheckedValues()};
         let jsonLeagueInString = JSON.stringify(leagueDataJsonObj);
 
         let apiUrl = '/api/season/' + seasonId + '/league';

@@ -7,11 +7,26 @@ function submissionData(event) {
     let cupName = document.getElementById('cupName').value;
     let cupNameEn = document.getElementById('cupNameEn').value;
 
+    let cupNameInput = document.getElementById('cupName');
+    let cupNameEnInput = document.getElementById('cupNameEn');
+
+        if (!cupName){
+            cupNameInput.setAttribute('invalid-input', true);
+        } else {
+            cupNameInput.removeAttribute('invalid-input');
+        }
+
+        if (!cupNameEn){
+            cupNameEnInput.setAttribute('invalid-input', true);
+        } else {
+            cupNameEnInput.removeAttribute('invalid-input');
+        }
+
     const checkEmptyCupName = document.getElementById("cupName");
     const checkEmptyCupNameEn = document.getElementById("cupNameEn");
     if (checkEmptyCupName.value == "" && checkEmptyCupName.value.length == 0 || checkEmptyCupNameEn.value == "" && checkEmptyCupNameEn.value.length == 0) {
         document.getElementById('showInputAddCupNameError').style.display = "block";
-        checkEmpty.classList.add("required-fields");
+
         return false;
     }
     if (checkEmptyCupName && checkEmptyCupNameEn) {
