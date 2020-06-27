@@ -30,6 +30,8 @@ import ua.lviv.footgo.entity.Season;
 import ua.lviv.footgo.entity.Tournament;
 import ua.lviv.footgo.repository.TournamentRepository;
 
+import static java.util.Objects.isNull;
+
 @Controller
 public class UserController {
     //private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -177,10 +179,14 @@ public class UserController {
     @GetMapping({"/profile"})
     public String profile(Model model) {
         List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
-        Tournament tournament = tournaments.get(0);
-        model.addAttribute("tournament", tournament);
-        Season season = tournament.getActiveSeason();
-        model.addAttribute("season", season);
+        if (!tournaments.isEmpty()) {
+            Tournament tournament = tournaments.get(0);
+            model.addAttribute("tournament", tournament);
+            Season season = tournament.getActiveSeason();
+            if (!isNull(season)) {
+                model.addAttribute("season", season);
+            }
+        }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
