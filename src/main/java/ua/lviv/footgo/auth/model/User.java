@@ -11,6 +11,7 @@ import java.util.Set;
 import javax.validation.constraints.Email;
 
 @Entity
+@Table(name = "user")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
