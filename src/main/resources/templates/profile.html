@@ -23,8 +23,9 @@
             </div>
             <div class="header-text">
                 <a href="/">
-                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
-                    <p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
+                    <p th:if="${!#lists.isEmpty(tournament)} AND ${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
+                    <p th:if="${!#lists.isEmpty(tournament)} AND ${#locale.language == 'uk'}" th:text="${season.name}"></p>
+                    <p th:if="${#lists.isEmpty(tournament)}"></p>
                 </a>
               </div>
         </div>
@@ -36,8 +37,9 @@
     <div id="myLinks">
         <div>
             <a class="link-item" href="/">
-                <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
-                <p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
+                <p th:if="${!#lists.isEmpty(tournament)} AND ${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
+                <p th:if="${!#lists.isEmpty(tournament)} AND ${#locale.language == 'uk'}" th:text="${season.name}"></p>
+                <p th:if="${#lists.isEmpty(tournament)}" th:text="#{title}"></p>
             </a>
         </div>
     </div>
