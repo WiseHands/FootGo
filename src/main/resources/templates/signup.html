@@ -53,13 +53,13 @@
             <div id="hideifsuccess_0" class="team-captain">
                 <div class="team-name">
                     <p th:text="#{teamName}"></p>
-                    <input th:placeholder="#{teamName}" type="text" name="teamName" required>
+                    <input th:placeholder="#{teamName}" id="teamName" type="text" name="teamName" onkeydown="teamNameValidation()" required>
                 </div>
                 <div class="capitan">
                     <p th:text="#{teamCaptain}"></p>
-                    <input th:placeholder="#{placeholderCaptainName}" type="text" name="captainName" required>
+                    <input th:placeholder="#{placeholderCaptainName}" id="captainName" type="text" name="captainName" onkeydown="captainNameValidation()" required>
                     <input th:placeholder="#{placeholderCaptainPhone}" type="tel" name="captainPhone" pattern="[0-9]{10}" required>
-                    <input th:placeholder="#{placeholderCaptainEmail}" type="email" name="captainEmail" required>
+                    <input th:placeholder="#{placeholderCaptainEmail}" type="email" name="captainEmail" onkeydown="emailValidation()" required>
                 </div>
             </div>
             <div id="success" class="player-bg">

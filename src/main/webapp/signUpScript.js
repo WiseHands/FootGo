@@ -1,47 +1,76 @@
 // sign up form for team registration
-function validateEmail(email) {
-    var se = /^[\w\.\-_]{1,}@[\w\.\-]{6,}/
-    return se.test(email);
-}
 
-function emailIsValid(element, isValid) {
-    var elementValue = element.value
-        isNotEmpty = (elementValue != '' || elementValue != null)
+function teamNameValidation() {
 
-    if(isValid && isNotEmpty) {
-        if(element.classList.contains('invalid')) {
-            removeClass(element, 'invalid');
-        } else {
-            addClass(element, 'valid');
-        }
+    let teamNameInput = document.getElementById('teamName');
+    let teamName = document.getElementById('teamName').value;
+    let letters = /^[A-Za-zА-Яа-я0-9\s]+$/;
+
+    if (teamName.match(letters)) {
+        teamNameInput.classList.add("valid");
+        teamNameInput.classList.remove("invalid");
+
+        return true;
     } else {
-       if(element.classList.contains('valid')) {
-           removeClass(element, 'valid');
-       } else {
-           addClass(element, 'invalid');
-       }
+        teamNameInput.classList.remove("valid");
+        teamNameInput.classList.add("invalid");
+
+        return false;
+    }
+    if (teamName == "") {
+        teamNameInput.classList.remove("valid");
+        teamNameInput.classList.remove("invalid");
     }
 }
 
-function addClass(element, eleClass) {
-    element.classList.add(eleClass);
+function captainNameValidation() {
+    let captainNameInput = document.getElementById('captainName');
+    let captainName = document.getElementById('captainName').value;
+    let letters = /^[A-Za-zА-Яа-я\s]+$/;
+
+    if (captainName.match(letters)) {
+        captainNameInput.classList.add("valid");
+        captainNameInput.classList.remove("invalid");
+
+        return true;
+    } else {
+        captainNameInput.classList.remove("valid");
+        captainNameInput.classList.add("invalid");
+
+        return false;
+    }
+    if (captainName == "") {
+        captainNameInput.classList.remove("valid");
+        captainNameInput.classList.remove("invalid");
+    }
 }
-function removeClass(element, eleClass) {
-    element.classList.remove(eleClass);
+
+function emailValidation() {
+
+    let emailInput = document.querySelector('[type="email"]');
+    let email = document.querySelector('[type="email"]').value;
+    let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if (email.match(pattern)) {
+        emailInput.classList.add("valid");
+        emailInput.classList.remove("invalid");
+
+        return true;
+    } else {
+        emailInput.classList.remove("valid");
+        emailInput.classList.add("invalid");
+
+        return false;
+    }
+    if (email == "") {
+        emailInput.classList.remove("valid");
+        emailInput.classList.remove("invalid");
+    }
+
 }
-
-var emailInput = document.querySelector('[type="email"]');
-
-emailInput.addEventListener('keyup', function(event) {
-console.log("email input value " + this.value);
-console.log("validateEmail " + validateEmail(this.value));
-var validatedEmail = validateEmail(this.value);
-emailIsValid(this, validatedEmail);
-});
-
-emailIsValid(emailInput, validateEmail(emailInput.value));
 
 function submitform(ev) {
+console.log("EMAIL VALIDATION " + emailValidation() + " CAPTAIN NAME VALIDATION " + captainNameValidation() + " TEAM NAME VALIDATION " + teamNameValidation());
 
     event.preventDefault();
 
@@ -62,24 +91,26 @@ function submitform(ev) {
     }
     var captainPhoneInput = document.signUpForm.captainPhone;
     var captainPhone = captainPhoneInput.value;
+
     var captainEmailInput = document.signUpForm.captainEmail;
     var captainEmail = captainEmailInput.value;
+
     var captainPhoneStripped = captainPhone.replace(/\D/g,'');
     var phoneReg = /^[0-9()-.\s]+$/
 
     if (captainPhone && phoneReg.test(captainPhone) && captainPhoneStripped.length >= 10) {
         captainPhoneInput.removeAttribute('invalid-input');
-        var validationOk = true;
+        var phoneValidationOk = true;
     } else {
         captainPhoneInput.setAttribute('invalid-input', true);
-        var validationOk = false;
+        var phoneValidationOk = false;
     }
 
-/*    if (!captainEmail){
+    if (!captainEmail){
         captainEmailInput.setAttribute('invalid-input', true);
     } else {
         captainEmailInput.removeAttribute('invalid-input');
-    }*/
+    }
 
     var jsonObject = new Object();
     jsonObject.teamName = teamName;
@@ -88,7 +119,7 @@ function submitform(ev) {
     jsonObject.captainEmail = captainEmail;
     var jsonTeamInString = JSON.stringify(jsonObject);
 
-    if (teamName && captainName && captainPhone && validationOk) {
+    if (teamName && captainName && captainPhone && phoneValidationOk && emailValidation() && teamNameValidation() && captainNameValidation()) {
         var url = '/team/signuprequest';
         sendPostRequestSignUp(jsonTeamInString, url);
         document.getElementById('hideifsuccess_0').style.display = 'none';
