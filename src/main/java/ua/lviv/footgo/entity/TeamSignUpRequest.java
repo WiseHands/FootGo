@@ -1,6 +1,8 @@
 package ua.lviv.footgo.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class TeamSignUpRequest {
@@ -9,21 +11,31 @@ public class TeamSignUpRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @NotBlank(message = "teamName is mandatory")
     @Column
     private String teamName;
+
+    @NotBlank(message = "captainName is mandatory")
     @Column
     private String captainName;
+
+    @NotBlank(message = "captainPhone is mandatory")
     @Column
     private String captainPhone;
+
+    @Email(message = "Email should be valid")
     @Column
     private String captainEmail;
+
     @Column
     private String playerList;
+
     @Column
     private String utcDateTime;
+
     @Column
     private String userAgent;
-
 
     public Long getId() {
         return id;

@@ -1468,7 +1468,14 @@ footer {
 .video-description {
     padding-bottom: 25px;
 }
-
+input.valid {
+    border: 1px solid #4caf50 !important;
+    border-radius: 4px;
+}
+input.invalid {
+    border: 1px solid #b61936 !important;
+    border-radius: 4px;
+}
 @media screen and (max-width: 1160px) {
     .main-container {
         width: 100%;

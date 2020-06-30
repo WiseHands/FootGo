@@ -15,6 +15,4 @@ public interface TeamSignUpRepository extends CrudRepository<TeamSignUpRequest, 
     TeamSignUpRequest findByCaptainPhone(String captainPhone);
     TeamSignUpRequest findByCaptainEmail(String captainEmail);
     TeamSignUpRequest findByPlayerList(String playerList);
-
-
 }

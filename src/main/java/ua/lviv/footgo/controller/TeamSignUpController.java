@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import ua.lviv.footgo.entity.TeamSignUpRequest;
 import ua.lviv.footgo.jsonmapper.TeamSignUpRequestJsonBody;
 import ua.lviv.footgo.repository.TeamSignUpRepository;
 import ua.lviv.footgo.util.Mailer;
 
+import javax.validation.Valid;
 import java.time.Clock;
 
 @Controller
@@ -30,8 +33,13 @@ public class TeamSignUpController {
     @Value("${footgo.admin.email}")
     private String footGoAdmin;
 
-    @RequestMapping(value = "/signuprequest", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> addTeamViaJson(@RequestBody TeamSignUpRequestJsonBody teamSignUpRequestJsonBody, @RequestHeader(value="User-Agent") String userAgent) {
+    @PostMapping(value = "/signuprequest", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<String> addTeamViaJson(@ModelAttribute("teamSignUpRequest") @RequestBody @Valid TeamSignUpRequest teamSignUpRequest, BindingResult bindingResult, TeamSignUpRequestJsonBody teamSignUpRequestJsonBody, @RequestHeader(value="User-Agent") String userAgent) {
+
+        if (bindingResult.hasErrors()) {
+            System.out.println("Errors " + bindingResult.hasErrors());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
 
         TeamSignUpRequest team = new TeamSignUpRequest();
         team.setTeamName(teamSignUpRequestJsonBody.getTeamName());
@@ -40,6 +48,7 @@ public class TeamSignUpController {
         team.setCaptainEmail(teamSignUpRequestJsonBody.getCaptainEmail());
         team.setUtcDateTime(Clock.systemUTC().instant().toString());
         team.setUserAgent(userAgent);
+
         teamSignUpRepository.save(team);
 
         String teamName = teamSignUpRequestJsonBody.getTeamName();

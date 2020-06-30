@@ -16,8 +16,6 @@ public class TeamSignUpRequestJsonBody {
         this.captainEmail = captainEmail;
     }
 
-
-
     public String getTeamName() {
         return teamName;
     }
