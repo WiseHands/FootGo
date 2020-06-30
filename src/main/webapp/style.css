@@ -1030,10 +1030,10 @@ input[invalid-input] {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 .match-all-button {
     padding: 10px 15px;
-    margin-bottom: 20px;
     text-align: center;
     margin-top: auto;
     width: 100%;
