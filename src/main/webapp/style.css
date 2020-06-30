@@ -286,6 +286,7 @@ a, a:hover {
 .main-head-title {
     max-width: 900px;
     margin: 0 auto;
+    text-align: center;
     margin-bottom: 10vh;
     display: flex;
     flex-direction: column;
@@ -302,6 +303,7 @@ a, a:hover {
     padding-bottom: 20%;
 }
 .main-head-title .main-head-logo {
+    margin: 0 auto;
     height: 200px;
     width: 200px;
     background-image: url(img/footgo-dark-icon.png);
@@ -501,6 +503,7 @@ input[type=submit] {
 }
 
 .reg-input-button {
+    -webkit-appearance: none;
     width: auto;
     height: auto;
     background-color: #42a444;
@@ -1525,7 +1528,7 @@ input.invalid {
         display: none;
     }
     .mobile-head {
-        display: flex;
+        display: block;
         width: 95%;
         margin-top: 1em;
         margin-bottom: 10px;

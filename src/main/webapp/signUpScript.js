@@ -1,47 +1,47 @@
 // sign up form for team registration
-function submitform(ev) {
+function validateEmail(email) {
+    var se = /^[\w\.\-_]{1,}@[\w\.\-]{6,}/
+    return se.test(email);
+}
 
-    function validateEmail(email) {
-        var se = /^[\w\.\-_]{1,}@[\w\.\-]{6,}/
-        return se.test(email);
-    }
+function emailIsValid(element, isValid) {
+    var elementValue = element.value
+        isNotEmpty = (elementValue != '' || elementValue != null)
 
-    function emailIsValid(element, isValid) {
-        var elementValue = element.value
-            isNotEmpty = (elementValue != '' || elementValue != null)
-
-        if(isValid && isNotEmpty) {
-            if(element.classList.contains('invalid')) {
-                removeClass(element, 'invalid');
-            } else {
-                addClass(element, 'valid');
-            }
+    if(isValid && isNotEmpty) {
+        if(element.classList.contains('invalid')) {
+            removeClass(element, 'invalid');
         } else {
-           if(element.classList.contains('valid')) {
-               removeClass(element, 'valid');
-           } else {
-               addClass(element, 'invalid');
-           }
+            addClass(element, 'valid');
+        }
+    } else {
+       if(element.classList.contains('valid')) {
+           removeClass(element, 'valid');
+       } else {
+           addClass(element, 'invalid');
+       }
     }
 }
 
-    function addClass(element, eleClass) {
-        element.classList.add(eleClass);
-    }
-    function removeClass(element, eleClass) {
-        element.classList.remove(eleClass);
-    }
+function addClass(element, eleClass) {
+    element.classList.add(eleClass);
+}
+function removeClass(element, eleClass) {
+    element.classList.remove(eleClass);
+}
 
-    var emailInput = document.getElementById('captainEmail');
+var emailInput = document.querySelector('[type="email"]');
 
-    emailInput.addEventListener('keyup', function(event) {
-    console.log("email input value " + this.value);
-    console.log("validateEmail " + validateEmail(this.value));
-    var validatedEmail = validateEmail(this.value);
-    emailIsValid(this, validatedEmail);
-    });
+emailInput.addEventListener('keyup', function(event) {
+console.log("email input value " + this.value);
+console.log("validateEmail " + validateEmail(this.value));
+var validatedEmail = validateEmail(this.value);
+emailIsValid(this, validatedEmail);
+});
 
-    emailIsValid(emailInput, validateEmail(emailInput.value));
+emailIsValid(emailInput, validateEmail(emailInput.value));
+
+function submitform(ev) {
 
     event.preventDefault();
 
@@ -62,8 +62,8 @@ function submitform(ev) {
     }
     var captainPhoneInput = document.signUpForm.captainPhone;
     var captainPhone = captainPhoneInput.value;
-/*    var captainEmailInput = document.signUpForm.captainEmail;
-    var captainEmail = captainEmailInput.value;*/
+    var captainEmailInput = document.signUpForm.captainEmail;
+    var captainEmail = captainEmailInput.value;
     var captainPhoneStripped = captainPhone.replace(/\D/g,'');
     var phoneReg = /^[0-9()-.\s]+$/
 

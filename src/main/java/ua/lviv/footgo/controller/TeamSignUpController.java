@@ -34,7 +34,7 @@ public class TeamSignUpController {
     private String footGoAdmin;
 
     @PostMapping(value = "/signuprequest", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> addTeamViaJson(@ModelAttribute("teamSignUpRequest") @RequestBody @Valid TeamSignUpRequest teamSignUpRequest, BindingResult bindingResult, TeamSignUpRequestJsonBody teamSignUpRequestJsonBody, @RequestHeader(value="User-Agent") String userAgent) {
+    public ResponseEntity<String> addTeamViaJson(@RequestBody TeamSignUpRequestJsonBody teamSignUpRequestJsonBody, @RequestHeader(value="User-Agent") String userAgent, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             System.out.println("Errors " + bindingResult.hasErrors());

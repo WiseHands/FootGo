@@ -62,8 +62,12 @@
                     <input th:placeholder="#{placeholderCaptainEmail}" type="email" name="captainEmail" required>
                 </div>
             </div>
-            <div id="success" class="player-bg"><p th:text="#{requestSuccessful}"></p></div>
-            <div id="error" class="player-bg"><p th:text="#{requestError}"></p></div>
+            <div id="success" class="player-bg">
+                <p th:text="#{requestSuccessful}"></p>
+            </div>
+            <div id="error" class="player-bg">
+                <p th:text="#{requestError}"></p>
+            </div>
 
         <input th:value="#{signupButton}" class="reg-input-button" type="submit" onclick="submitform()" value="">
      </form>
