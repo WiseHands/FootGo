@@ -593,6 +593,16 @@ public class HttpRequestsController {
         model.addAttribute("league", league);
         return "AdminSubmissionLeagueTeamList";
     }
+    @GetMapping({"/admin/tournament/{tournamentId}/season/{seasonId}/leaguelist/{leagueId}/team/new"})
+    public String leagueTeamListNewTeam(Model model, @PathVariable("tournamentId") Long tournamentId, @PathVariable("seasonId") Long seasonId, @PathVariable("leagueId") Long leagueId) {
+        Tournament tournament = tournamentRepository.findById(tournamentId).get();
+        model.addAttribute("tournament", tournament);
+        Season season = seasonRepository.findById(seasonId).get();
+        model.addAttribute("season", season);
+        League league = leagueManagementRepository.findById(leagueId).get();
+        model.addAttribute("league", league);
+        return "AdminSubmissionLeagueTeamListNewTeam";
+    }
     @GetMapping({"/admin/tournament/{tournamentId}/season/{seasonId}/leaguelist/{leagueId}/tour"})
     public String leagueTourList(Model model, @PathVariable("tournamentId") Long tournamentId, @PathVariable("seasonId") Long seasonId, @PathVariable("leagueId") Long leagueId, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         Tournament tournament = tournamentRepository.findById(tournamentId).get();

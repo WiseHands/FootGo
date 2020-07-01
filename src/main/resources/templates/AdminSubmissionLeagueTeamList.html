@@ -5,6 +5,7 @@
         <title>Заявки на участь | FootGo</title>
         <link rel="stylesheet" href="../../../../../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
+        <script src="https://kit.fontawesome.com/9983a3a0dd.js" crossorigin="anonymous"></script>
         <script src="/submissionAll.js" type="text/javascript"></script>
     </head>
     <body>
@@ -25,11 +26,19 @@
             </ul>
             <div class="requests">
                 <div class="all-requests">
+                    <div>
+                        <a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/leaguelist/' + ${league.id} + '/team/new'" class="link-style">
+                            <div class="request-block add-team" title="Додати нову команду">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                        </a>
+                    </div>
                     <div th:each="item : ${league.teamList}">
                         <a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/team/edit?uuid=' + ${item.id}" class="link-style">
                             <div class="request-block">
                                 <h3 th:text="${item.teamName}"></h3>
                                 <p th:text="${item.captain.captainName}"></p>
+                                <div class="delete-team-button"><a class="click-button" href="#">ВИДАЛИТИ</a></div>
                             </div>
                         </a>
                     </div>

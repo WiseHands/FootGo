@@ -235,7 +235,21 @@ body p {
     cursor: pointer;
     user-select: none;
 }
-
+.delete-team-button {
+    display: flex;
+    flex-flow: row-reverse;
+    margin: 0 0 0 10px;
+}
+.delete-team-button .click-button {
+    text-decoration: none;
+    padding: .5em;
+    border: 0px solid;
+    border-radius: 4px;
+    color: #6200ee;
+}
+.click-button:hover {
+    background-color: #f9f5fe;
+}
 .request-block i {
     font-size: 2em;
 }
