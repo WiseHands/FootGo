@@ -141,6 +141,10 @@ public class CupApiController {
             }
         }
 
+        if (teamList.size() >= 5 && teamList.size() <= 7 ) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
         if (teamList.size() == 8) {
             int NUMBER_OF_TOURS = 3;
             for (int i = 0; i < NUMBER_OF_TOURS; i++) {
@@ -173,6 +177,10 @@ public class CupApiController {
                         break;
                 }
             }
+        }
+
+        if (teamList.size() >= 9 && teamList.size() <= 15 ) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
         if (teamList.size() == 16) {
@@ -222,6 +230,10 @@ public class CupApiController {
 
                 }
             }
+        }
+
+        if (teamList.size() >= 17 && teamList.size() <= 31 ) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
         if (teamList.size() == 32) {
