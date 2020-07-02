@@ -225,20 +225,22 @@ body p {
 .request-block {
     display: block;
     width: 230px;
-    padding: 24px 16px;
+/*    padding: 24px 16px;*/
+    padding: 16px;
     margin: 10px 0;
     background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2),
-                0px 1px 1px 0px rgba(0,0,0,0.14),
-                0px 2px 1px -1px rgba(0,0,0,0.12);
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     cursor: pointer;
     user-select: none;
+}
+.request-block:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 .delete-team-button {
     display: flex;
     flex-flow: row-reverse;
-    margin: 0 0 0 10px;
 }
 .delete-team-button .click-button {
     text-decoration: none;
@@ -982,6 +984,13 @@ input[type="file"] {
         margin: 0 auto;
         width: auto;
     }
+    ul.menu-breadcrumb {
+        padding: 0 16px 0 16px !important;
+    }
+    ul.menu-breadcrumb li {
+        line-height: 2em;
+    }
+
 }
 .season-block {
     text-align: center;

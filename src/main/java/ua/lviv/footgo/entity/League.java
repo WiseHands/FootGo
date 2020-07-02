@@ -3,6 +3,7 @@ package ua.lviv.footgo.entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class League {
@@ -59,6 +60,12 @@ public class League {
             teamList = new ArrayList<Team>();
         }
         teamList.add(team);
+    }
+    public void removeTeam(Team team) {
+        if(this.teamList == null) {
+            return;
+        }
+        teamList.remove(team);
     }
 
     public void addTour(Tour tour) {

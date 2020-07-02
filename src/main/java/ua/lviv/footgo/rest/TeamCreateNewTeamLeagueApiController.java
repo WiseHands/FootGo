@@ -12,6 +12,8 @@ import ua.lviv.footgo.repository.LeagueManagementRepository;
 import ua.lviv.footgo.repository.SeasonRepository;
 import ua.lviv.footgo.repository.TeamRepository;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping(path = "/api/season")
 public class TeamCreateNewTeamLeagueApiController {
@@ -46,6 +48,17 @@ public class TeamCreateNewTeamLeagueApiController {
         teamRepository.save(team);
         leagueManagementRepository.save(league);
         return team;
+    }
+
+    @DeleteMapping(value = "/{seasonId}/leaguelist/{leagueId}/team", consumes = "application/json", produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
+    public void deleteTeamFromLeague(@PathVariable Long seasonId, @PathVariable Long leagueId, @RequestParam Long teamId) {
+        League league = leagueManagementRepository.findById(leagueId).get();
+        Team team = teamRepository.findById(teamId).get();
+        league.removeTeam(team);
+
+        leagueManagementRepository.save(league);
     }
 
 }
