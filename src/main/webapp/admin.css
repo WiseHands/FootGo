@@ -979,6 +979,10 @@ input[type="file"] {
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
+.select-team {
+    text-align: center;
+    margin: .5em 0;
+}
 @media screen and (max-width: 667px) {
     .league-info, .cup-info {
         margin: 0 auto;
