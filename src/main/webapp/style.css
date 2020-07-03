@@ -114,8 +114,7 @@ a, a:hover {
     box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
 }
 .instagram-iframe {
-    margin-top: 1em;
-    margin-bottom: 20px;
+    margin-bottom: 1em;
     width: 100%;
 }
 .main-video {
@@ -171,8 +170,8 @@ a, a:hover {
 .main-when, .main-video {
     margin-left: 20px;
 }
-.main-league .main-about:not(:last-child), .main-cup .main-about:not(:last-child) {
-/*    margin-bottom: 20px;*/
+.main-league .main-about/*:not(:last-child)*/, .main-cup .main-about/*:not(:last-child)*/ {
+    margin-bottom: 20px;
 }
 .main-league .main-about:nth-child(2n+1) {
     margin-right: 20px;
@@ -182,8 +181,8 @@ a, a:hover {
     max-width: 440px;
 /*    align-self: baseline;*/
 }
-.main-league .main-about:last-child {
-    align-self: baseline;
+.main-league .main-about/*:last-child*/ {
+    /*align-self: baseline;*/
 }
 .request-block:hover, .request-block:focus {
     box-shadow: 0 1px 3px 1px rgba(60, 64, 67, 0.2), 0 2px 8px 4px rgba(60, 64, 67, 0.1);

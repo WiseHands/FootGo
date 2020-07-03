@@ -462,11 +462,12 @@ input[type=text], input[type=tel], input[type=email], select {
     text-align: right;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-right: 5px;
+    padding-right: 10px;
 }
 .tour-team2 p, .tour-team2-details p {
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-left: 10px;
 }
 .tour-team1 span, .tour-team2 span, .tour-team1-details .plus-team, .tour-team2-details .plus-team {
     cursor: pointer;
