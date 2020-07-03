@@ -503,7 +503,9 @@ input[type=text], input[type=tel], input[type=email], select {
     font-size: 1.5rem;
 }
 .game-create-button {
-    margin: 2em 0;
+    padding: 2em 0;
+    width: fit-content;
+    margin: 0 auto;
 }
 .game-create-button .add-game-title {
     margin: 0 auto;
