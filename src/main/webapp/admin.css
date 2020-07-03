@@ -502,6 +502,13 @@ input[type=text], input[type=tel], input[type=email], select {
     padding: 0 20px;
     font-size: 1.5rem;
 }
+.game-create-button {
+    margin: 2em 0;
+}
+.game-create-button .add-game-title {
+    margin: 0 auto;
+    text-align: center;
+}
 /*modal*/
 #myBtn {
     padding: 0px 6px;
