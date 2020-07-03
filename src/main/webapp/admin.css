@@ -468,8 +468,7 @@ input[type=text], input[type=tel], input[type=email], select {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.tour-team1 span, .tour-team1-details span {
-    margin-left: 10px;
+.tour-team1 span, .tour-team2 span, .tour-team1-details .plus-team, .tour-team2-details .plus-team {
     cursor: pointer;
     display: inline-block;
     border-radius: 50%;
@@ -477,6 +476,15 @@ input[type=text], input[type=tel], input[type=email], select {
     width: 25px;
     text-align: center;
     color: white;
+}
+.tour-team2-details a {
+    margin-left: 10px;
+}
+.tour-team1-details a {
+    margin-right: 10px;
+}
+.tour-team1-details .edit-team, .tour-team2-details .edit-team {
+    cursor: pointer;
 }
 .tour-team1 span:hover, .tour-team2 span:hover, .tour-team1-details span:hover, .tour-team2-details span:hover {
     background-color: #285294;
@@ -491,18 +499,8 @@ input[type=text], input[type=tel], input[type=email], select {
 }
 .tour-score {
     /*width: 60px;*/
-    padding: 0 15px;
+    padding: 0 20px;
     font-size: 1.5rem;
-}
-.tour-team2 span, .tour-team2-details span {
-    margin-right: 10px;
-    cursor: pointer;
-    display: inline-block;
-    border-radius: 50%;
-    background-color: #4e73ad;
-    width: 25px;
-    text-align: center;
-    color: white;
 }
 /*modal*/
 #myBtn {

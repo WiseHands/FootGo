@@ -238,6 +238,18 @@ public class GameApiController {
         gameRepository.save(game);
     }
 
+    @PostMapping(value = "/setLeagueTourTeam", consumes = "application/json", produces = "application/json")
+    public void setLeagueTourTeam(@RequestParam Long gameId, @RequestParam Team teamId, @RequestParam boolean homeTeamCheck) {
+        Game game = gameRepository.findById(gameId).get();
+
+        if (homeTeamCheck) {
+            game.setFirstTeam(teamId);
+        } else {
+            game.setSecondTeam(teamId);
+        }
+        gameRepository.save(game);
+    }
+
     @GetMapping(value = "/getAllByTime", consumes = "application/json", produces = "application/json")
     public List<Game> getGamesByTime() {
         List<Game> games = gameRepository.fetchGameAfterTimeStamp(OffsetDateTime.now());

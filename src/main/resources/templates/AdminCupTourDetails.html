@@ -8,20 +8,17 @@
         <script src="https://kit.fontawesome.com/9983a3a0dd.js" crossorigin="anonymous"></script>
         <style>
             a {
-                color: black;
+              color: black;
             }
             a:link {
               text-decoration: none;
             }
-
             a:visited {
               text-decoration: none;
             }
-
             a:hover {
               text-decoration: none;
             }
-
             a:active {
               text-decoration: none;
             }
@@ -73,22 +70,22 @@
         <div id="cupTourGames">
             <div class="tour-match" th:each="game : ${tour.gameList}">
                 <div class="tour-team1-details">
-                    <span th:attr="gameId=${game.id}" th:if="${game.firstTeam == null}" id="addHomeTeam">+</span>
+                    <span class="plus-team" th:attr="gameId=${game.id}" th:if="${game.firstTeam == null}" id="addHomeTeam" title="Додати команду">+</span>
                     <a th:if="${game.firstTeam != null}" th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist/' + ${cup.id} + '/game/' + ${game.id}">
                         <p th:text="${game.firstTeam.teamName}"></p>
                     </a>
-                    <span th:attr="gameId=${game.id}" th:if="${game.firstTeam != null}" id="addHomeTeam" class="far fa-edit" title="Редагувати команду"></span>
+                    <span th:attr="gameId=${game.id}" th:if="${game.firstTeam != null}" id="addHomeTeam" class="far fa-edit edit-team" title="Редагувати команду"></span>
                 </div>
                 <div class="tour-score">
                     <span id="goalBtn">
                         <p>
-                            <span th:text="${game.teamAGoals.size()}">0</span> : <span th:text="${game.teamBGoals.size()}">0</span>
+                            <span th:text="${game.teamAGoals.size()}"></span> : <span th:text="${game.teamBGoals.size()}"></span>
                         </p>
                     </span>
                 </div>
                 <div class="tour-team2-details">
-                    <span th:attr="gameId=${game.id}" th:if="${game.secondTeam == null}" id="addGuestTeam">+</span>
-                    <span th:attr="gameId=${game.id}" th:if="${game.secondTeam != null}" id="addGuestTeam" class="far fa-edit" title="Редагувати команду"></span>
+                    <span class="plus-team" th:attr="gameId=${game.id}" th:if="${game.secondTeam == null}" id="addGuestTeam" title="Додати команду">+</span>
+                    <span th:attr="gameId=${game.id}" th:if="${game.secondTeam != null}" id="addGuestTeam" class="far fa-edit edit-team" title="Редагувати команду"></span>
                     <a th:if="${game.secondTeam != null}" th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/cuplist/' + ${cup.id} + '/game/' + ${game.id}">
                         <p th:text="${game.secondTeam.teamName}"></p>
                     </a>

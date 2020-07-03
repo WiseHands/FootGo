@@ -5,10 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import ua.lviv.footgo.entity.*;
-import ua.lviv.footgo.repository.LeagueManagementRepository;
-import ua.lviv.footgo.repository.SeasonRepository;
-import ua.lviv.footgo.repository.TeamRepository;
-import ua.lviv.footgo.repository.TourRepository;
+import ua.lviv.footgo.repository.*;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -31,6 +28,9 @@ public class LeagueApiController {
 
     @Autowired
     TourRepository tourRepository;
+
+    @Autowired
+    GameRepository gameRepository;
 
     public static class LeagueCreateRequestBody {
 
@@ -1686,4 +1686,35 @@ public class LeagueApiController {
         return league;
 
     }
+
+    @PostMapping(value = "/{seasonId}/leaguelist/{leagueId}/tour/details", consumes = "application/json", produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
+    public void createNewGameInTour(@PathVariable Long seasonId, @PathVariable Long leagueId, @RequestParam Long tourId) {
+        Season season = seasonRepository.findById(seasonId).get();
+        League league = leagueRepository.findById(leagueId).get();
+        Tour tour = tourRepository.findById(tourId).get();
+        _createGame(null, null, tour);
+
+        leagueRepository.save(league);
+    }
+
+    @DeleteMapping(value = "/{seasonId}/leaguelist/{leagueId}/game/{gameId}", consumes = "application/json", produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
+    public void removeGameFromTour(@PathVariable Long seasonId, @PathVariable Long leagueId, @RequestParam Long tourId, @RequestParam Long gameId) {
+        Season season = seasonRepository.findById(seasonId).get();
+        League league = leagueRepository.findById(leagueId).get();
+        Tour tour = tourRepository.findById(tourId).get();
+        Game game = gameRepository.findById(gameId).get();
+        tour.removeGame(game);
+        game.getTeamAGoals().clear();
+        game.getTeamBGoals().clear();
+        game.getTeamACards().clear();
+        game.getTeamBCards().clear();
+        gameRepository.deleteById(gameId);
+
+        leagueRepository.save(league);
+    }
+
 }
