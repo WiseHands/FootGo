@@ -412,8 +412,12 @@ public class HttpRequestsController {
         model.addAttribute("submissions", teamSignUpRepository.findAll());
         return "AdminSubmissionProgress";
     }
-    @GetMapping(value = "/admin/season/{id}/submission/edit")
-    public String submissionEdit(Model model, @PathVariable("id") Long id, @RequestParam long uuid) {
+    @GetMapping(value = "/admin/tournament/{tournamentId}/season/{seasonId}/submission/edit")
+    public String submissionEdit(Model model, @PathVariable("tournamentId") Long tournamentId, @PathVariable("seasonId") Long seasonId, @RequestParam long uuid) {
+        Tournament tournament = tournamentRepository.findById(tournamentId).get();
+        model.addAttribute("tournament", tournament);
+        Season season = seasonRepository.findById(seasonId).get();
+        model.addAttribute("season", season);
         return "AdminSubmissionEntryEdit";
     }
     @GetMapping(value = "/admin/tournament/{tournamentId}/season/{seasonId}/leaguelist/{leagueId}/game/{gameId}")

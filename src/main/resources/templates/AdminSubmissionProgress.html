@@ -27,7 +27,7 @@
             <p>Заявки</p>
                 <div class="all-requests">
                     <div th:each="item : ${submissions}">
-                        <a th:attr="href=${'/admin/submission/edit?uuid=' + item.id}" class="link-style">
+                        <a th:attr="href=${'/admin/tournament/' + tournamentId + '/season/' + seasonId + '/submission/edit?uuid=' + item.id}" class="link-style">
                             <div class="request-block">
                                 <h3 th:text="${item.teamName}"></h3>
                                 <p th:text="${item.captainName}"></p>
