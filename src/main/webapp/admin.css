@@ -1061,3 +1061,8 @@ ul.menu-breadcrumb li a:hover {
     display: flex;
     justify-content: center;
 }
+.remove-tour-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}

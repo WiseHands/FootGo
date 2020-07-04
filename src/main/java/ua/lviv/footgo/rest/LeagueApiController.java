@@ -1717,4 +1717,45 @@ public class LeagueApiController {
         leagueRepository.save(league);
     }
 
+    @PostMapping(value = "/{seasonId}/leaguelist/{leagueId}/tour", consumes = "application/json", produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
+    public void createNewTour(@PathVariable Long seasonId, @PathVariable Long leagueId) {
+        Season season = seasonRepository.findById(seasonId).get();
+        League league = leagueRepository.findById(leagueId).get();
+        int tourList = league.getTours().size();
+        int newTourNumber = tourList+1;
+
+        Tour tour = _createTour(newTourNumber);
+        _createGame(null, null, tour);
+
+        league.addTour(tour);
+        leagueRepository.save(league);
+    }
+
+    @DeleteMapping(value = "/{seasonId}/leaguelist/{leagueId}/tour/details", consumes = "application/json", produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
+    public void removeTourFromLeague(@PathVariable Long seasonId, @PathVariable Long leagueId, @RequestParam Long tourId) {
+        Season season = seasonRepository.findById(seasonId).get();
+        League league = leagueRepository.findById(leagueId).get();
+        Tour tour = tourRepository.findById(tourId).get();
+        List<Game> gameList = gameRepository.findByTourId(tourId);
+
+        for (Game game : gameList) {
+            game.getTeamAGoals().clear();
+            game.getTeamBGoals().clear();
+            game.getTeamACards().clear();
+            game.getTeamBCards().clear();
+            tour.removeGame(game);
+            gameRepository.delete(game);
+        }
+
+        tour.getGameList().clear();
+        league.removeTour(tour);
+
+        tourRepository.deleteById(tourId);
+        leagueRepository.save(league);
+    }
+
 }

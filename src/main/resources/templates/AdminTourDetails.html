@@ -6,10 +6,12 @@
         <link rel="stylesheet" href="../../../../../../../../admin.css">
         <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
         <script src="https://kit.fontawesome.com/9983a3a0dd.js" crossorigin="anonymous"></script>
+        <script th:inline="javascript">let tournamentId = /*[[${tournamentId}]]*/;</script>
         <script th:inline="javascript">let seasonId = /*[[${seasonId}]]*/;</script>
         <script th:inline="javascript">let leagueId = /*[[${leagueId}]]*/;</script>
         <script th:inline="javascript">let tourId = /*[[${tour.id}]]*/;</script>
         <script src="/createNewGameInTour.js" type="text/javascript"></script>
+        <script src="/deleteTourById.js" type="text/javascript"></script>
         <style>
             a {
               color: black;
@@ -101,6 +103,9 @@
                     </a>
                 </div>
             </div>
+        </div>
+        <div class="remove-tour-button">
+            <input class="main-input-button main-input-button-del" type="button" value="Видалити" onclick="deleteTourById()">
         </div>
     </div>
     <script src="/leagueTourTeamAdd.js" type="text/javascript"></script>

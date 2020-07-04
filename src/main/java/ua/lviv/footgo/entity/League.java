@@ -74,4 +74,11 @@ public class League {
         }
         tours.add(tour);
     }
+
+    public void removeTour(Tour tour) {
+        if(this.getTours() == null) {
+            return;
+        }
+        tours.remove(tour);
+    }
 }
