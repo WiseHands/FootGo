@@ -1066,3 +1066,44 @@ ul.menu-breadcrumb li a:hover {
     justify-content: center;
     margin-top: 2em;
 }
+@media (prefers-color-scheme: dark) {
+:root {
+  --main-bg-color: #121212;
+  --main-text-color: #e1e1e1;
+  --main-sf-color: #1d1d1d;
+  --main-on-button-color: #bb86fc;
+  --main-on-button-color-inactive: #3a2d49;
+  --main-text-on-button-color: #000000;
+  --main-text-on-button-color-inactive: #dab1fe;
+  --main-input-field: #3d3d463d;
+  --main-admin-bg-color: #005446;
+}
+
+.request-block {
+    background: var(--main-sf-color);
+    color: var(--main-text-color);
+}
+body, .modal-content {
+    background-color: var(--main-admin-bg-color);
+}
+body p, body a, .requests p, ul.menu-breadcrumb li a, ul.menu-breadcrumb li + li:before, ul.menu-breadcrumb li a:hover, .label-check-text, .all-requests h1, .modal-header h2 {
+    color: var(--main-text-color);
+}
+input[type=text], input[type=tel], input[type=email], select, textarea {
+    background: var(--main-sf-color);
+    color: var(--main-text-color);
+}
+.league-edit input[type=button], .main-input-button, .save-video-button {
+    background-color: var(--main-on-button-color-inactive);
+    color: var(--main-text-on-button-color-inactive);
+}
+.main-input-button:hover:enabled, .save-video-button:hover:enabled {
+    background-color: var(--main-on-button-color);
+    color: #181220;
+}
+.main-input-button-del:hover {
+    background-color: #cf6679 !important;
+    color: #181220;
+}
+
+}
