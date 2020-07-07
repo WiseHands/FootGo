@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.text.ParseException;
 import java.time.OffsetDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -256,10 +259,14 @@ public class Game {
     }
 
     public String formatTime() throws ParseException {
+        ZoneId zone = ZoneId.of("Europe/Kiev");
+
         OffsetDateTime time = this.gameTime;
-        if(this.gameTime == null) {
+        if(time == null) {
             return "";
         }
+
+        ZonedDateTime zonedDateTime = time.atZoneSameInstant(zone);
 
 /*        // set UTC zone in date
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
@@ -277,15 +284,19 @@ public class Game {
 
         //return time.getHour() + ":" + time.getMinute();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("mm");
-        String minute = time.format(formatter);
-        return time.getHour() + ":" + minute;
+        String minute = zonedDateTime.format(formatter);
+        return zonedDateTime.getHour() + ":" + minute;
     }
 
     public String formatDate() throws ParseException {
+        ZoneId zone = ZoneId.of("Europe/Kiev");
+
         OffsetDateTime time = this.gameTime;
-        if(this.gameTime == null) {
+        if(time == null) {
             return "TBD";
         }
+
+        ZonedDateTime zonedDateTime = time.atZoneSameInstant(zone);
 
 /*        // set UTC zone in date
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
@@ -302,9 +313,9 @@ public class Game {
         String newDate = month;*/
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM");
-        String month = time.format(formatter);
+        String month = zonedDateTime.format(formatter);
 
-        return month + " " + time.getDayOfMonth();
+        return month + " " + zonedDateTime.getDayOfMonth();
     }
 
     public String formatGoalsForTeamA() {
