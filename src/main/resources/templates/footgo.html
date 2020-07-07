@@ -44,6 +44,34 @@
                         <a th:text="#{autumn2019}" href="https://2019.footgo-league.com"></a>
                     </div>
                 </div>
+                <div th:if="${!#lists.isEmpty(season)}" class="season-list">
+                    <button th:text="#{leagues}" class="dropbtn"></button>
+                    <div th:if="${not #lists.isEmpty(leagueList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" class="prev-seasons">
+                        <a th:each="league : ${leagueList}" th:href="'/league/' + ${league.id}" th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></a>
+                        <a th:each="league : ${leagueList}" th:href="'/league/' + ${league.id}" th:if="${#locale.language == 'uk'}" th:text="${league.name}"></a>
+                    </div>
+                </div>
+                <div th:if="${!#lists.isEmpty(season)}" class="season-list">
+                    <button th:text="#{cups}" class="dropbtn"></button>
+                    <div th:if="${not #lists.isEmpty(cupList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" class="prev-seasons">
+                        <a th:each="cup : ${cupList}" th:href="'/cup/' + ${cup.id}" th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></a>
+                        <a th:each="cup : ${cupList}" th:href="'/cup/' + ${cup.id}" th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></a>
+                    </div>
+                </div>
+
+<!--                <div th:if="${not #lists.isEmpty(leagueList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" th:each="league : ${leagueList}">
+                    <a th:href="'/league/' + ${league.id}">
+                        <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></p>
+                        <p th:if="${#locale.language == 'uk'}" th:text="${league.name}"></p>
+                    </a>
+                </div>
+                <div th:if="${not #lists.isEmpty(cupList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" th:each="cup : ${cupList}">
+                    <a th:href="'/cup/' + ${cup.id}">
+                        <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></p>
+                        <p th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></p>
+                    </a>
+                </div>-->
+
             </div>
         </div>
         <div class="header-right-block">
@@ -67,6 +95,20 @@
             </button>
             <div class="prev-seasons">
                 <a th:text="#{autumn2019}" href="https://2019.footgo-league.com"></a>
+            </div>
+        </div>
+        <div th:if="${!#lists.isEmpty(season)}" class="season-list">
+            <button th:text="#{leagues}" class="dropbtn"></button>
+            <div th:if="${not #lists.isEmpty(leagueList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" class="prev-seasons">
+                <a th:each="league : ${leagueList}" th:href="'/league/' + ${league.id}" th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></a>
+                <a th:each="league : ${leagueList}" th:href="'/league/' + ${league.id}" th:if="${#locale.language == 'uk'}" th:text="${league.name}"></a>
+            </div>
+        </div>
+        <div th:if="${!#lists.isEmpty(season)}" class="season-list">
+            <button th:text="#{cups}" class="dropbtn"></button>
+            <div th:if="${not #lists.isEmpty(cupList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" class="prev-seasons">
+                <a th:each="cup : ${cupList}" th:href="'/cup/' + ${cup.id}" th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></a>
+                <a th:each="cup : ${cupList}" th:href="'/cup/' + ${cup.id}" th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></a>
             </div>
         </div>
     </div>
