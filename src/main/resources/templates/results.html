@@ -69,7 +69,7 @@
 </div>
 <div class="results-full">
     <div th:each="tour : ${tourList}" class="res-tour">
-        <p class="res-tour-title" th:text="#{tour} + ' ' + ${tour.tourNumber}"></p>
+        <p th:if="${!#lists.isEmpty(game.firstTeam) AND !#lists.isEmpty(game.secondTeam)}" class="res-tour-title" th:text="#{tour} + ' ' + ${tour.tourNumber}" th:each="game : ${tour.gameList}"></p>
         <div class="res-tour-allmatch">
             <div th:if="${!#lists.isEmpty(game.firstTeam) AND !#lists.isEmpty(game.secondTeam)}" class="results-container" th:each="game : ${tour.gameList}">
                 <div class="res-teams">
