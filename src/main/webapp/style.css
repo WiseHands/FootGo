@@ -768,7 +768,7 @@ footer{
     width: 33%;
 }
 .bomb-container {
-    min-height: 34vh;
+    margin-bottom: 2em;
 }
 .results-full {
 /*    background: url("img/foot66.jpg");*/
@@ -1923,7 +1923,7 @@ input.invalid {
       filter: contrast(100%) brightness(40%);
   }
   .description-text {
-      background: #272c34;
+      box-shadow: none;
   }
   .res-teams img {
       display: block;
