@@ -1,7 +1,7 @@
 function deleteGameById(event) {
 
     if(tourId) {
-        let params = '?tourId=' + tourId + '&gameId=' + gameId;
+        let params = '?tourId=' + tourId;
         let apiUrl = '/api/season/' + seasonId + '/leaguelist/' + leagueId + '/game/' + gameId + params;
         fetch(apiUrl, {
             method: 'DELETE',

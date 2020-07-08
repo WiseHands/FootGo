@@ -499,7 +499,7 @@ input[type=text], input[type=tel], input[type=email], select {
     color: #0ca38a !important;
 }
 .tour-score {
-    /*width: 60px;*/
+    width: 65px;
     padding: 0 20px;
     font-size: 1.5rem;
 }
@@ -630,6 +630,9 @@ input[type=text], input[type=tel], input[type=email], select {
 .modal-goal p {
     font-size: 1.2rem;
     padding: 5px 10px;
+    text-align: center;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
 }
 .modal-goal img {
     width: 16px;
@@ -668,7 +671,7 @@ span.clear-technical-defeat {
 /*    text-align: right;
     padding-right: 5px;*/
 }
-.team1-goal div {
+.team1-goal div, .team2-goal div {
     display: flex;
 }
 .link-style {
@@ -1003,6 +1006,13 @@ input[type="file"] {
     }
     ul.menu-breadcrumb li {
         line-height: 2em;
+    }
+    .add-video-link p {
+        width: -webkit-fill-available;
+        padding: 0 10px 0 10px;
+    }
+    .team1-goal div, .team2-goal div {
+        width: 190px;
     }
 
 }

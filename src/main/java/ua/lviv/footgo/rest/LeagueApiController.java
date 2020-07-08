@@ -1702,7 +1702,7 @@ public class LeagueApiController {
     @DeleteMapping(value = "/{seasonId}/leaguelist/{leagueId}/game/{gameId}", consumes = "application/json", produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    public void removeGameFromTour(@PathVariable Long seasonId, @PathVariable Long leagueId, @RequestParam Long tourId, @RequestParam Long gameId) {
+    public void removeGameFromTour(@PathVariable Long seasonId, @PathVariable Long leagueId, @PathVariable Long gameId, @RequestParam Long tourId) {
         Season season = seasonRepository.findById(seasonId).get();
         League league = leagueRepository.findById(leagueId).get();
         Tour tour = tourRepository.findById(tourId).get();
