@@ -616,8 +616,8 @@ input[type=text], input[type=tel], input[type=email], select {
     justify-content: center;
 }
 .modal-goal {
-    display: none;
-/*    width: 420px;
+/*    display: none;
+    width: 420px;
     margin: 0 auto;*/
     padding-top: 15px;
 }
@@ -637,7 +637,7 @@ input[type=text], input[type=tel], input[type=email], select {
 i.delete-goal {
 /*    font-size: 2rem;*/
     cursor: pointer;
-    color: orangered;
+/*    color: orangered;*/
     padding-left: 5px;
 /*    display: table;*/
 }
