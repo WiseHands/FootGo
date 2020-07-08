@@ -789,10 +789,10 @@ footer{
     background-position: center;
     background-size: cover;
     opacity: 1;
-    height: 100vh;
+/*    height: 100vh;*/
 }
 .results {
-    max-width: 820px;
+/*    max-width: 820px;*/
     margin: 0 auto;
     padding: 15px 0 10px 0;
 }
@@ -885,18 +885,16 @@ footer{
     border-radius: 5px;
 }
 .main-container {
-    display: block;
+    display: flex;
     width: 1150px;
     margin: 0 auto;
-    position: relative;
 }
 .score-tables {
     padding: 15px 0 10px 0;
-    width: 30%;
+    width: 35%;
 }
 .vs-container {
-    width: 70%;
-    position: relative;
+/*    width: 70%;*/
 }
 .results-block p, .table-header {
     text-align: center;
@@ -1793,7 +1791,8 @@ input.invalid {
         padding-left: 5px;
     }
     .team-results-full {
-        height: 100vh;
+/*        height: 100vh;*/
+        display: block;
     }
     .details-match img {
         width: 12px;
