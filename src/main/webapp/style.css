@@ -690,7 +690,7 @@ footer{
     padding-left: 5px;
 }
 .table-team-name p {
-    padding-left: 5px;
+    padding-left: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
