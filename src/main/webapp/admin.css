@@ -620,6 +620,8 @@ input[type=text], input[type=tel], input[type=email], select {
     width: 420px;
     margin: 0 auto;*/
     padding-top: 15px;
+    display: flex;
+    justify-content: center;
 }
 .modal-goal h3 {
     font-size: 1.3rem;
@@ -659,12 +661,12 @@ span.clear-technical-defeat {
     cursor: pointer;
 }
 .team1-goal, .team2-goal {
-    width: fit-content;
+/*    width: fit-content;*/
     margin: 0 auto;
 }
 .team1-goal {
-    text-align: right;
-    padding-right: 5px;
+/*    text-align: right;
+    padding-right: 5px;*/
 }
 .team1-goal div {
     display: flex;
