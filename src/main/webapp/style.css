@@ -1359,7 +1359,7 @@ footer {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 2rem 1rem;
+    padding: 1.5rem .5rem;
 }
 .landing-container {
     max-width: 900px;
@@ -1837,6 +1837,9 @@ input.invalid {
     }
     .mobile {
         display: flex;
+    }
+    .footer-social {
+        padding-top: .5em;
     }
     .footer-powered, .footer-social, .footer-shop {
         margin: 0 auto;
