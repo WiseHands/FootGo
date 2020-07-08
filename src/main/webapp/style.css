@@ -116,6 +116,7 @@ a, a:hover {
 .instagram-iframe {
     margin-bottom: 1em;
     width: 100%;
+    display: none;
 }
 .main-video {
     justify-content: space-between;
@@ -884,7 +885,7 @@ footer{
     border-radius: 5px;
 }
 .main-container {
-    display: flex;
+    display: block;
     width: 1150px;
     margin: 0 auto;
     position: relative;
@@ -895,7 +896,6 @@ footer{
 }
 .vs-container {
     width: 70%;
-    min-height: 1px;
     position: relative;
 }
 .results-block p, .table-header {
@@ -1681,10 +1681,10 @@ input.invalid {
         width: 100%;
         flex-direction: row-reverse;
     }
-    .header-null{
+    .header-null {
         flex-grow: 1;
         display: block;
-            }
+    }
     /*burger-menu*/
 
     /*burger-icon*/
@@ -1854,6 +1854,9 @@ input.invalid {
     }
     .tbd p {
         font-size: 1rem !important;
+    }
+    .header-icon {
+        display: none;
     }
 }
 @media (min-width: 600px) {
