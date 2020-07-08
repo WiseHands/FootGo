@@ -3,7 +3,7 @@
     padding: 0;
 }
 body {
-    height: 100%;
+/*    height: 100%;*/
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 body p {
@@ -375,7 +375,7 @@ iframe {
 }
 .request-block p {
     padding: 0;
-    text-align: left;
+    text-align: center;
     overflow: hidden !important;
     text-overflow: ellipsis;
 }
@@ -1673,7 +1673,7 @@ input.invalid {
         transform: rotate(-135deg);
     }
     .main-photo {
-        height: 100vh ;
+/*        height: 100vh ;*/
     }
     .header-first-block {
         width: 100%;
