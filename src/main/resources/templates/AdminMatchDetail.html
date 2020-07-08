@@ -81,7 +81,7 @@
                 <div class="team1-goal">
                     <div th:each="goal : ${game.teamAGoals}">
                         <p><img src="../../../../../../../../img/soccer-ball.png">
-                            <span th:text="${goal.player.firstName + goal.player.lastName}" th:attr="onclick=${'editTeam1(' + game.id + ', ' + goal.id + ', true)'}"></span>,
+                            <span th:text="${goal.player.firstName + ' ' + goal.player.lastName}" th:attr="onclick=${'editTeam1(' + game.id + ', ' + goal.id + ', true)'}"></span>,
                             <span th:text="${' ' + goal.time}"></span>
                             <i class="delete-goal fas fa-user-minus" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', true)'}"></i>
                         </p>
@@ -91,7 +91,7 @@
                 <div class="team2-goal">
                     <div th:each="goal : ${game.teamBGoals}">
                         <p><img src="../../../../../../../../img/soccer-ball.png">
-                            <span th:text="${goal.player.firstName + goal.player.lastName}" th:attr="onclick=${'editTeam2(' + game.id + ', ' + goal.id + ', false)'}"></span>,
+                            <span th:text="${goal.player.firstName + ' ' + goal.player.lastName}" th:attr="onclick=${'editTeam2(' + game.id + ', ' + goal.id + ', false)'}"></span>,
                             <span th:text="${' ' + goal.time}"></span>
                             <i class="delete-goal fas fa-user-minus" th:attr="onclick=${'deleteGoal(' + game.id + ', ' + goal.id + ', false)'}"></i>
                         </p>
@@ -107,7 +107,7 @@
                         <p>
                             <span th:if="${card.isYellow()}" class="yellow-card card"></span>
                             <span th:if="${card.isRed()}" class="red-card card"></span>
-                            <span id="teamAPlayerName" th:text="${card.player.firstName + card.player.lastName}"></span>,
+                            <span id="teamAPlayerName" th:text="${card.player.firstName + ' ' + card.player.lastName}"></span>,
                             <span th:text="${' ' + card.time}"></span>
                             <i class=" fas fa-user-minus" th:attr="onclick=${'deleteCard(' + game.id + ', ' + card.id + ', true)'}"></i>
                         </p>
@@ -119,7 +119,7 @@
                         <p>
                             <span th:if="${card.isYellow()}" class="yellow-card card"></span>
                             <span th:if="${card.isRed()}" class="red-card card"></span>
-                            <span id="teamBPlayerName" th:text="${card.player.firstName + card.player.lastName}"></span>,
+                            <span id="teamBPlayerName" th:text="${card.player.firstName + ' ' + card.player.lastName}"></span>,
                             <span th:text="${' ' + card.time}"></span>
                             <i class="delete-goal fas fa-user-minus" th:attr="onclick=${'deleteCard(' + game.id + ', ' + card.id + ', false)'}"></i>
                         </p>
