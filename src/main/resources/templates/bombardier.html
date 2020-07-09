@@ -78,13 +78,13 @@
     <div class="bomb">
         <div class="bomb-position">
             <div class="bomb-title">№</div>
-            <div th:each="playerGoal, iter : ${playerGoals}">
+            <div th:each="playerGoal, iter : ${playerGoals[0]}">
                 <p th:text="${playerGoal.formatPosition(iter.index)}"></p>
             </div>
         </div>
         <div class="bomb-player-name">
             <div th:text="#{footballPlayer}" class="bomb-title"></div>
-            <div th:each="playerGoal : ${playerGoals}">
+            <div th:each="playerGoal : ${playerGoals[0]}">
                 <a th:attr="href=${'/league/' + leagueId + '/player/' + playerGoal.player.id}">
                     <p th:if="${#locale.language == 'uk'}" th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}"></p>
                     <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerGoal.player.getPlayerLastNameTransliterated() + ' ' + playerGoal.player.getPlayerFirstNameTransliterated()}"></p>
@@ -93,7 +93,7 @@
         </div>
         <div class="bomb-scored">
             <div th:text="#{playerGoalsCount}" class="bomb-title"></div>
-            <div th:each="playerGoal : ${playerGoals}">
+            <div th:each="playerGoal : ${playerGoals[0]}">
                 <p th:text="${playerGoal.goalList.size()}">
                     0
                 </p>
@@ -101,7 +101,7 @@
         </div>
         <div class="bomb-team">
             <div th:text="#{team}" class="bomb-title"></div>
-            <div th:each="playerGoal : ${playerGoals}">
+            <div th:each="playerGoal : ${playerGoals[0]}">
                 <a th:attr="href=${'/league/' + leagueId + '/team/' + playerGoal.player.team.id}">
                     <p th:if="${#locale.language == 'uk'}" th:text="${playerGoal.player.team.teamName}"></p>
                     <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerGoal.player.team.getTeamNameTransliterated()}"></p>
