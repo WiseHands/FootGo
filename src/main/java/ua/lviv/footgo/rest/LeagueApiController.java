@@ -32,6 +32,9 @@ public class LeagueApiController {
     @Autowired
     GameRepository gameRepository;
 
+    @Autowired
+    GoalRepository goalRepository;
+
     public static class LeagueCreateRequestBody {
 
         private String name;
@@ -1705,9 +1708,13 @@ public class LeagueApiController {
     public void removeGameFromTour(@PathVariable Long seasonId, @PathVariable Long leagueId, @PathVariable Long gameId, @RequestParam Long tourId) {
         Season season = seasonRepository.findById(seasonId).get();
         League league = leagueRepository.findById(leagueId).get();
-        Tour tour = tourRepository.findById(tourId).get();
         Game game = gameRepository.findById(gameId).get();
+        Tour tour = tourRepository.findById(tourId).get();
         tour.removeGame(game);
+        List<Goal> goalList = goalRepository.findByGameId(game);
+        for (Goal goal : goalList) {
+
+        }
         game.getTeamAGoals().clear();
         game.getTeamBGoals().clear();
         game.getTeamACards().clear();

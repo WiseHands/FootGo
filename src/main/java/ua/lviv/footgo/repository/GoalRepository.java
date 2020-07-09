@@ -1,5 +1,6 @@
 package ua.lviv.footgo.repository;
 
+import ua.lviv.footgo.entity.Game;
 import ua.lviv.footgo.entity.Goal;
 import org.springframework.data.repository.CrudRepository;
 import ua.lviv.footgo.entity.Player;
@@ -12,6 +13,8 @@ public interface GoalRepository extends CrudRepository<Goal, Long> {
 
     List<Goal> findByPlayer(Player player);
     Goal findByTime (Integer time);
+
+    List<Goal> findByGameId(Game game);
 
     @Transactional
     void deleteAll();
