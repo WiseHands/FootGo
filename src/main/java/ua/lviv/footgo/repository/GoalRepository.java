@@ -14,7 +14,7 @@ public interface GoalRepository extends CrudRepository<Goal, Long> {
     List<Goal> findByPlayer(Player player);
     Goal findByTime (Integer time);
 
-    List<Goal> findByGameId(Game game);
+    List<Goal> findByGameId(Long gameId);
 
     @Transactional
     void deleteAll();

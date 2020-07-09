@@ -10,6 +10,7 @@ import java.util.List;
 public interface CardRepository extends CrudRepository<Card, Long> {
 
     List<Card> findByPlayer(Player player);
+    List<Card> findByGameId(Long gameId);
     Card findByCardType(Card.CardType cardType);
 
     @Transactional
