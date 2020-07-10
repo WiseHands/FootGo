@@ -105,7 +105,7 @@ a, a:hover {
 .main-league {
     flex-wrap: wrap;
 }
-.main-where, .main-when, .main-about, .main-video, .request-block, .matches-bg, .logo-team-bg {
+.main-where, .main-when, .main-about, .main-video, .request-block, .matches-bg, .logo-team-bg, .photo-team-bg {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -826,7 +826,8 @@ footer{
     background-color: #fff;
     padding: 15px;
     border-radius: 5px;
-    margin: 0 7px 7px 0;
+/*    margin: 0 7px 7px 0;*/
+    margin: 0 0 10px 0;
     box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
 }
 .res-title {
@@ -874,6 +875,15 @@ footer{
 .results-block img {
     margin: 0 auto;
     width: inherit;
+}
+.photo-team-bg {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    margin: 10px auto;
+    padding: 5px 0;
+    background-color: #fff;
+    border-radius: 5px;
 }
 .logo-team-bg {
     display: flex;
@@ -1886,7 +1896,7 @@ input.invalid {
   header, .main-photo, .prev-seasons, .dropbtn, .registration-photo, .lang-list, .login-page, .registration-page, .sign-in-list {
       background: var(--main-bg-color);
   }
-  .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom, .login-form, .user-registration-form {
+  .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom, .login-form, .user-registration-form, .photo-team-bg {
       background: var(--main-sf-color);
       color: var(--main-text-color);
   }
@@ -1949,7 +1959,7 @@ input.invalid {
     }
     .table-secondplace img {
     }
-    .logo-team-bg img {
+    .logo-team-bg img, .photo-team-bg img {
         display: block;
         box-sizing: border-box;
         width: 50%;
