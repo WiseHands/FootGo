@@ -331,7 +331,7 @@ public class HttpRequestsController {
         League league = leagueManagementRepository.findById(leagueId).get();
         model.addAttribute("league", league);
 
-        List<PlayerGoals> playerGoals = topScorerService.getResults();
+        List<PlayerGoals> playerGoals = topScorerService.getResultsByLeague(leagueId);
         model.addAttribute("playerGoals", playerGoals);
 
 /*        List<PlayerGoals> playerGoals = topScorerService.getResults();
