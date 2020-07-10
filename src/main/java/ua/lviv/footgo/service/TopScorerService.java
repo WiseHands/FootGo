@@ -61,41 +61,31 @@ public class TopScorerService {
 
     public List<PlayerGoals> getResultsByLeague(Long leagueId) {
         Map<Player, PlayerGoals> playGoalMap = new HashMap<>();
-
+        List<Goal> goalList = (List<Goal>) goalRepository.findAll();
         League league = leagueManagementRepository.findById(leagueId).get();
-        List<Tour> tourList = league.getTours();
-        for (Tour tour : tourList) {
-            List<Game> gameList = tour.getGameList();
-            for (Game game : gameList) {
-                Long gameId = game.getId();
-                List<Goal> goalList = goalRepository.findByGameId(gameId);
-                List<Team> teamList = league.getTeamList();
+        List<Team> teamList = league.getTeamList();
 
-                for (Goal _goal : goalList) {
-                    if (_goal.getGame() == null || !_goal.getGame().isCompleted() || _goal.getGame().isTeamAHasTechnicalDefeat() || _goal.getGame().isTeamBHasTechnicalDefeat()) {
-                        continue;
-                    }
-                    for (Team _team : teamList) {
-                        List<Player> playerList = _team.getPlayers();
-                        for (Player _player : playerList) {
-                            PlayerGoals _playerGoals = playGoalMap.get(_player);
-                            if (_playerGoals == null) {
-                                _playerGoals = new PlayerGoals();
-                                _playerGoals.setPlayer(_goal.getPlayer());
-                                List<Goal> _playerGoalList = new ArrayList<>();
-                                _playerGoalList.add(_goal);
-                                _playerGoals.setGoalList(_playerGoalList);
-                                playGoalMap.put(_player, _playerGoals);
-                            } else {
-                                _playerGoals.addGoal(_goal);
-                            }
-                        }
+        for(Goal _goal : goalList) {
+            if(_goal.getGame() == null || !_goal.getGame().isCompleted() || _goal.getGame().isTeamAHasTechnicalDefeat() || _goal.getGame().isTeamBHasTechnicalDefeat()) {
+                continue;
+            }
+            Player _player = _goal.getPlayer();
+            final PlayerGoals[] _playerGoals = {playGoalMap.get(_player)};
+            teamList.forEach(team -> {
+                if (_player.getTeam().getId().equals(team.getId())) {
+                    if(_playerGoals[0] == null) {
+                        _playerGoals[0] = new PlayerGoals();
+                        _playerGoals[0].setPlayer(_goal.getPlayer());
+                        List<Goal> _playerGoalList = new ArrayList<>();
+                        _playerGoalList.add(_goal);
+                        _playerGoals[0].setGoalList(_playerGoalList);
+                        playGoalMap.put(_player, _playerGoals[0]);
+                    } else {
+                        _playerGoals[0].addGoal(_goal);
                     }
                 }
-            }
+            });
         }
-
-
 
         List<PlayerGoals> playerGoalsList = new ArrayList<>(playGoalMap.values());
 
