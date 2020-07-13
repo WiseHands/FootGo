@@ -3,7 +3,7 @@
 
 Requirements: 
 
-1. MySQL with a schema 'footgo'
+1. MySQL 5 or higher with a schema 'footgo'
 
 2. Java 8 or higher
 
