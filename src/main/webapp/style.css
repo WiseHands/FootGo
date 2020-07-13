@@ -196,7 +196,8 @@ a, a:hover {
     padding: 0 10px;
 }
 .main-when ul li {
-    padding: 5px 10px ;
+    padding: 5px 10px;
+    overflow: hidden;
 }
 .main-when ul span {
     font-size: 1.2rem;
