@@ -42,6 +42,12 @@ public class Game {
     @OneToOne
     private Team secondTeam;
 
+    @OneToOne
+    private GameStats teamAStats;
+
+    @OneToOne
+    private GameStats teamBStats;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Goal> teamAGoals;
 
@@ -255,6 +261,22 @@ public class Game {
 
     public void setCompleted(boolean completed) {
         isCompleted = completed;
+    }
+
+    public GameStats getTeamAStats() {
+        return teamAStats;
+    }
+
+    public void setTeamAStats(GameStats teamAStats) {
+        this.teamAStats = teamAStats;
+    }
+
+    public GameStats getTeamBStats() {
+        return teamBStats;
+    }
+
+    public void setTeamBStats(GameStats teamBStats) {
+        this.teamBStats = teamBStats;
     }
 
     public String formatTime() throws ParseException {
