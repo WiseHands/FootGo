@@ -19,5 +19,5 @@ How to set up locally:
  
  4. Execute 'mvn clean install -Dskip.tests=true' in root repository directory.
  
- 5. Run application mvn spring-boot:run'
+ 5. Run application with 'mvn spring-boot:run'
  
