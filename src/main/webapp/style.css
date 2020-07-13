@@ -1794,11 +1794,8 @@ input.invalid {
         padding: 5px;
         margin: 7px 0;
     }
-    .details-team1 {
-        padding-right: 5px;
-    }
-    .details-team2 {
-        padding-left: 5px;
+    .details-team1, .details-team2 {
+        padding-right: 10px;
     }
     .team-results-full {
 /*        height: 100vh;*/
@@ -1890,6 +1887,9 @@ input.invalid {
   --main-text-on-button-color-inactive: #dab1fe;
   --main-input-field: #3d3d463d;
 }
+  body {
+      background: var(--main-bg-color);
+  }
   .main-head-title .main-head-logo {
       background-image: url(img/footgo-light-icon.png);
   }

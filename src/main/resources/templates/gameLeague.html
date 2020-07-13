@@ -65,9 +65,6 @@
 		<div class="tour-number">
 			<p><span th:text="#{tour} + ' ' + ${game.tour.tourNumber}"></span></p>
 		</div>
-		<div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
-			<p th:text="#{goals}"></p>
-		</div>
 		<div class="review-match">
 			<div class="review-head">
 				<div class="review-team1">
@@ -104,7 +101,9 @@
 				</div>
 			</div>
 		</div>
-
+		<div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
+			<p th:text="#{goals}"></p>
+		</div>
 		<div class="center-text empty-text-error" th:if="${game.isTeamAHasTechnicalDefeat() == true}">
 			<span th:if="${#locale.language == 'uk'}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.firstTeam.teamName}">Team 1</span>
 			<span th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.firstTeam.getTeamNameTransliterated()}">Team 1</span>

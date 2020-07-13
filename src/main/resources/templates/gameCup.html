@@ -9,7 +9,6 @@
     <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
 </head>
 <body class="matches-full">
-
 <header>
 	<div class="header-full">
 		<div class="header-first-block">
@@ -66,9 +65,6 @@
 		<div class="tour-number">
 			<p><span th:text="#{tour} + ' ' + ${game.tour.tourNumber}"></span></p>
 		</div>
-		<div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
-			<p th:text="#{goals}"></p>
-		</div>
 		<div class="review-match">
 			<div class="review-head">
 				<div th:if="${!#lists.isEmpty(game.firstTeam)}" class="review-team1">
@@ -111,17 +107,17 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="center-text" th:if="${game.isTeamAHasTechnicalDefeat() == true}">
+		<div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
+			<p th:text="#{goals}"></p>
+		</div>
+				<div class="center-text" th:if="${game.isTeamAHasTechnicalDefeat() == true}">
 			<span th:if="${#locale.language == 'uk'}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.firstTeam.teamName}">Team 1</span>
 			<span th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.firstTeam.getTeamNameTransliterated()}">Team 1</span>
 		</div>
-
 		<div class="center-text" th:if="${game.isTeamBHasTechnicalDefeat() == true}">
 			<span th:if="${#locale.language == 'uk'}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.secondTeam.teamName}">Team 2</span>
 			<span th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.secondTeam.getTeamNameTransliterated()}">Team 2</span>
 		</div>
-
 		<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-match">
 			<div class="details-team1">
 				<div class="team1-goals" th:each="goal : ${game.teamAGoals}">
@@ -165,7 +161,6 @@
 					</p>
 					<span th:if="${card.isYellow()}" class="yellow-card card-team-one"></span>
 					<span th:if="${card.isRed()}" class="red-card card-team-one"></span>
-					</a>
 				</div>
 			</div>
 			<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamBCards)}" class="details-team2">

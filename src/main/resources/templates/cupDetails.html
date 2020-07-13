@@ -61,9 +61,6 @@
 
 <div class="main-container">
     <div class="results vs-container">
-        <div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
-            <p th:text="#{matches}"></p>
-        </div>
         <div th:if="${#lists.isEmpty(gameList)}" class="matches-bg">
             <div class="review-match">
                 <div class="review-head">
@@ -115,6 +112,9 @@
                             </a>
                         </div>
                     </div>
+                </div>
+                <div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
+                    <p th:text="#{matches}"></p>
                 </div>
                 <div class="center-text" th:if="${game.isTeamAHasTechnicalDefeat() == true}">
                     <span th:text="#{teamTechnicalDefeat} + ' ' + ${game.firstTeam.teamName}" class="empty-text-error">Team 1</span>
