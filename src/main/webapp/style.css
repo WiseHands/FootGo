@@ -1150,6 +1150,33 @@ input[invalid-input] {
 .minute {
     font-size: 0.8rem;
 }
+.match-statistics {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+.match-statistics-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 20px 0;
+}
+.statistics-item {
+    padding: 10px 0;
+}
+.statistics-item-info {
+    display: flex;
+    justify-content: space-between;
+}
+.statistics-item-bar {
+    display: flex;
+    justify-content: space-between;
+}
+.progress-wrap {
+    flex: 0 1 49%;
+    height: 10px;
+    background-color: #eee;
+    margin: 5px 0;
+}
 .match-video {
     padding-top: 30px;
 }

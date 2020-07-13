@@ -171,6 +171,66 @@
 				</div>
 			</div>
 		</div>
+		<div class="match-statistics">
+			<p class="match-statistics-title">Статистика матчу</p>
+			<div class="statistics-item">
+				<div class="statistics-item-info">
+					<span class="item-info-team1">56</span>
+					<span class="item-info-title">Possession </span>
+					<span class="item-info-team2">44</span>
+				</div>
+				<div class="statistics-item-bar">
+					<div class="progress-wrap item-bar-team1">
+						<div class="progress-bar">
+
+						</div>
+					</div>
+					<div class="progress-wrap item-bar-team2">
+						<div class="progress-bar">
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="statistics-item">
+				<div class="statistics-item-info">
+					<span class="item-info-team1">6</span>
+					<span class="item-info-title">Shots on target</span>
+					<span class="item-info-team2">4</span>
+				</div>
+				<div class="statistics-item-bar">
+					<div class="progress-wrap item-bar-team1">
+						<div class="progress-bar">
+
+						</div>
+					</div>
+					<div class="progress-wrap item-bar-team2">
+						<div class="progress-bar">
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="statistics-item">
+				<div class="statistics-item-info">
+					<span class="item-info-team1">14</span>
+					<span class="item-info-title">Shots</span>
+					<span class="item-info-team2">17</span>
+				</div>
+				<div class="statistics-item-bar">
+					<div class="progress-wrap item-bar-team1">
+						<div class="progress-bar">
+
+						</div>
+					</div>
+					<div class="progress-wrap item-bar-team2">
+						<div class="progress-bar">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="match-video" th:if="${!#strings.isEmpty(game.videoUrl)}">
 			<p th:text="#{matchVideo}"></p>
 			<iframe width="500" height="281" th:attr="src=${game.videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
