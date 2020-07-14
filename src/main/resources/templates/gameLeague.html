@@ -181,14 +181,10 @@
 				</div>
 				<div class="statistics-item-bar">
 					<div class="progress-wrap item-bar-team1">
-						<div class="progress-bar">
-
-						</div>
+						<div class="bar-more bar-less" id="team1-bar"></div>
 					</div>
 					<div class="progress-wrap item-bar-team2">
-						<div class="progress-bar">
-
-						</div>
+						<div class="bar-more bar-less" id="team2-bar"></div>
 					</div>
 				</div>
 			</div>
@@ -261,5 +257,9 @@
   gtag('config', 'UA-39722519-3');
 </script>
 
+<script>
+    document.querySelector("#team1-bar").style.width = '10%';
+    document.querySelector("#team2-bar").style.width = '90%';
+</script>
 </body>
 </html>
