@@ -233,7 +233,7 @@ public class HttpRequestsController {
         List<Tour> tourList = cup.getTours();
         model.addAttribute("tourList", tourList);
 
-        List<PlayerGoals> playerGoals = topScorerService.getResults();
+        List<PlayerGoals> playerGoals = topScorerService.getResultsByCup(cupId);
         model.addAttribute("playerGoals", playerGoals);
 
         List<Game> gameList = new ArrayList<Game>();
@@ -350,7 +350,7 @@ public class HttpRequestsController {
         Cup cup = cupManagementRepository.findById(cupId).get();
         model.addAttribute("cup", cup);
 
-        List<PlayerGoals> playerGoals = topScorerService.getResults();
+        List<PlayerGoals> playerGoals = topScorerService.getResultsByCup(cupId);
         model.addAttribute("playerGoals", playerGoals);
 
         return "cupBombardier";

@@ -101,7 +101,7 @@
 
             <p th:if="${!#lists.isEmpty(game.teamACards)} OR ${!#lists.isEmpty(game.teamBCards)}" class="admin-tour-title">Картки</p>
 
-            <div class="modal-goal">
+            <div th:if="${!#lists.isEmpty(game.teamACards)} OR ${!#lists.isEmpty(game.teamBCards)}" class="modal-goal">
                 <div class="team1-goal">
                     <div th:each="card : ${game.teamACards}">
                         <p>
@@ -125,6 +125,33 @@
                         </p>
                     </div>
                 </div>
+            </div>
+
+            <p class="description-text">Статистика матчу</p>
+            <div class="add-stats">
+                <p th:text="${game.firstTeam.teamName}"></p>
+                <p th:text="${game.secondTeam.teamName}"></p>
+            </div>
+            <div class="add-stats">
+                <div class="team1-stats">
+                    <input id="strikesTeamOne" type="number" placeholder="Удари">
+                    <input id="hitsTheTargetTeamOne" type="number" placeholder="Удари в ствір воріт">
+                    <input id="strikesPastTheGateTeamOne" type="number" placeholder="Удари повз ворота">
+                    <input id="freeKicksTeamOne" type="number" placeholder="Штрафні удари">
+                    <input id="foulsTeamOne" type="number" placeholder="Фоли">
+                    <input id="cornerKicksTeamOne" type="number" placeholder="Кутові удари">
+                </div>
+                <div class="team2-stats">
+                    <input id="strikesTeamTwo" type="number" placeholder="Удари">
+                    <input id="hitsTheTargetTeamTwo" type="number" placeholder="Удари в ствір воріт">
+                    <input id="strikesPastTheGateTeamTwo" type="number" placeholder="Удари повз ворота">
+                    <input id="freeKicksTeamTwo" type="number" placeholder="Штрафні удари">
+                    <input id="foulsTeamTwo" type="number" placeholder="Фоли">
+                    <input id="cornerKicksTeamTwo" type="number" placeholder="Кутові удари">
+                </div>
+            </div>
+            <div class="save-stats">
+                <input class="save-video-button" type="button" value="Зберегти" onclick="saveStats()">
             </div>
 
             <div class="add-video-link">

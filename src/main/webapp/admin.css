@@ -369,7 +369,7 @@ input[invalid-input] {
     border: 1px solid #ed002c !important;
     border-radius: 5px;
 }
-input[type=text], input[type=tel], input[type=email], select {
+input[type=text], input[type=tel], input[type=email], input[type=number], select {
     padding: 15px;
     margin: 5px 0 10px 0;
     display: inline-block;
@@ -619,7 +619,7 @@ input[type=text], input[type=tel], input[type=email], select {
 /*    display: none;
     width: 420px;
     margin: 0 auto;*/
-    padding-top: 15px;
+    padding: 15px 0 15px;
     display: flex;
     justify-content: center;
 }
@@ -766,20 +766,28 @@ span.clear-technical-defeat {
     opacity: 0;
     transition: all 0.4s ease;
 }
-.add-video-link {
+.add-video-link, .save-stats {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .add-video-link p {
     font-size: 0.8rem;
-/*    padding-left: 10px;*/
+    padding: 5px 0 5px;
 }
 .add-video-link input[type=text] {
     width: 360px;
 }
 .save-video-button {
     font-size: 1.3rem;
+}
+.add-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0 0;
+}
+.team1-stats, .team2-stats {
+    text-align: center;
 }
 .label-check-center {
     display: inline-flex;
@@ -807,7 +815,7 @@ span.clear-technical-defeat {
 }
 /*input for time-picker*/
 .label-time-picker{
-    padding-right: 5px;
+    padding-right: 15px;
 }
 /*input for file upload*/
 .admin-file-upload, .admin-logo-upload {
@@ -872,7 +880,7 @@ input[type="file"] {
     padding-bottom: 1rem;
 }
 #descriptionText {
-    padding: 2rem;
+    padding: 1rem;
     margin-bottom: 0.5rem;
     width: 90%;
     min-width: 40%;
@@ -1101,10 +1109,10 @@ ul.menu-breadcrumb li a:hover {
 body, .modal-content {
     background-color: var(--main-admin-bg-color);
 }
-body p, body a, .requests p, ul.menu-breadcrumb li a, ul.menu-breadcrumb li + li:before, ul.menu-breadcrumb li a:hover, .label-check-text, .all-requests h1, .modal-header h2, .team-request h3, .tour-score #goalBtn, .select-team {
+body p, body a, .requests p, ul.menu-breadcrumb li a, ul.menu-breadcrumb li + li:before, ul.menu-breadcrumb li a:hover, .label-check-text, .all-requests h1, .modal-header h2, .team-request h3, .tour-score #goalBtn, .container, .select-team {
     color: var(--main-text-color);
 }
-input[type=text], input[type=tel], input[type=email], select, textarea {
+input[type=text], input[type=tel], input[type=email], input[type=number], select, textarea {
     background: var(--main-sf-color);
     color: var(--main-text-color);
 }

@@ -203,6 +203,34 @@ public class Game {
         return id;
     }
 
+    public Tour getTour() {
+        return tour;
+    }
+
+    public void setTour(Tour tour) {
+        this.tour = tour;
+    }
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
+    }
+
+    public GameStats getTeamAStats() {
+        return teamAStats;
+    }
+
+    public void setTeamAStats(GameStats teamAStats) {
+        this.teamAStats = teamAStats;
+    }
+
+    public GameStats getTeamBStats() {
+        return teamBStats;
+    }
+
+    public void setTeamBStats(GameStats teamBStats) {
+        this.teamBStats = teamBStats;
+    }
+
     public void addGoalForFirstTeam(Goal goal) {
         if(this.teamAGoals == null) {
             this.teamAGoals = new ArrayList<>();
@@ -247,36 +275,9 @@ public class Game {
         this.teamBCards.remove(card);
     }
 
-    public Tour getTour() {
-        return tour;
-    }
-
-    public void setTour(Tour tour) {
-        this.tour = tour;
-    }
 
     public boolean isCompleted() {
         return isCompleted;
-    }
-
-    public void setCompleted(boolean completed) {
-        isCompleted = completed;
-    }
-
-    public GameStats getTeamAStats() {
-        return teamAStats;
-    }
-
-    public void setTeamAStats(GameStats teamAStats) {
-        this.teamAStats = teamAStats;
-    }
-
-    public GameStats getTeamBStats() {
-        return teamBStats;
-    }
-
-    public void setTeamBStats(GameStats teamBStats) {
-        this.teamBStats = teamBStats;
     }
 
     public String formatTime() throws ParseException {
