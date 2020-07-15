@@ -23,13 +23,19 @@ public class CupApiController {
     TeamRepository teamRepository;
 
     @Autowired
-    LeagueManagementRepository leagueRepository;
-
-    @Autowired
     CupManagementRepository cupRepository;
 
     @Autowired
     TourRepository tourRepository;
+
+    @Autowired
+    GameRepository gameRepository;
+
+    @Autowired
+    GoalRepository goalRepository;
+
+    @Autowired
+    CardRepository cardRepository;
 
     public static class CupCreateRequestBody {
 
@@ -311,5 +317,36 @@ public class CupApiController {
         seasonRepository.save(season);
         return cup;
 
+    }
+
+    @DeleteMapping(value = "/{seasonId}/cuplist/{cupId}/game/{gameId}", consumes = "application/json", produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
+    public void removeGameFromTour(@PathVariable Long seasonId, @PathVariable Long cupId, @PathVariable Long gameId, @RequestParam Long tourId) {
+        Season season = seasonRepository.findById(seasonId).get();
+        Cup cup = cupRepository.findById(cupId).get();
+        Game game = gameRepository.findById(gameId).get();
+        Tour tour = tourRepository.findById(tourId).get();
+        tour.removeGame(game);
+
+        List<Goal> goalList = goalRepository.findByGameId(gameId);
+        List<Card> cardList = cardRepository.findByGameId(gameId);
+
+        game.getTeamAGoals().clear();
+        game.getTeamBGoals().clear();
+        game.getTeamACards().clear();
+        game.getTeamBCards().clear();
+
+        for (Goal goal : goalList) {
+            goalRepository.delete(goal);
+        }
+
+        for (Card card : cardList) {
+            cardRepository.delete(card);
+        }
+
+        gameRepository.deleteById(gameId);
+
+        cupRepository.save(cup);
     }
 }
