@@ -697,16 +697,11 @@ span.clear-technical-defeat {
 }
 
 /*messages*/
-#success, #successDel, #successChange, #textSuccess {
+#success, #successDel, #successChange, #textSuccess, #statsSuccess, #error, #errorDel, #errorChange, #textError, #statsError {
     display: none;
     text-align: center;
-/*    margin-bottom: 2em;*/
+    margin-bottom: 5px;
 }
-#error, #errorDel, #errorChange, #textError {
-	display: none;
-	text-align: center;
-}
-
 /*admin checkbox*/
 .toggle {
     cursor: pointer;
