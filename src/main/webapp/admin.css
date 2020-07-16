@@ -885,6 +885,8 @@ input[type="file"] {
     width: 90%;
     min-width: 40%;
     max-width: 100%;
+    border: hidden;
+    border-radius: 5px;
 }
 .card {
   display: inline-block;
