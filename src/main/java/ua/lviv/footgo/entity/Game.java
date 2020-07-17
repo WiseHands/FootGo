@@ -42,10 +42,10 @@ public class Game {
     @OneToOne
     private Team secondTeam;
 
-    @OneToOne
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
     private GameStats teamAStats;
 
-    @OneToOne
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
     private GameStats teamBStats;
 
     @OneToMany(cascade = CascadeType.ALL)

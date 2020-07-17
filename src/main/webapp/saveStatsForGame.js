@@ -1,45 +1,40 @@
 function saveStats() {
-    let strikesTeamOne = document.getElementById('strikesTeamOne').value;
-    let hitsTheTargetTeamOne = document.getElementById('hitsTheTargetTeamOne').value;
-    let strikesPastTheGateTeamOne = document.getElementById('strikesPastTheGateTeamOne').value;
-    let freeKicksTeamOne = document.getElementById('freeKicksTeamOne').value;
-    let foulsTeamOne = document.getElementById('foulsTeamOne').value;
-    let cornerKicksTeamOne = document.getElementById('cornerKicksTeamOne').value;
+    let strikesTeamA = document.getElementById('strikesTeamA').value;
+    let hitsTheTargetTeamA = document.getElementById('hitsTheTargetTeamA').value;
+    let strikesPastTheGateTeamA = document.getElementById('strikesPastTheGateTeamA').value;
+    let freeKicksTeamA = document.getElementById('freeKicksTeamA').value;
+    let foulsTeamA = document.getElementById('foulsTeamA').value;
+    let cornerKicksTeamA = document.getElementById('cornerKicksTeamA').value;
 
-    let strikesTeamTwo = document.getElementById('strikesTeamTwo').value;
-    let hitsTheTargetTeamTwo = document.getElementById('hitsTheTargetTeamTwo').value;
-    let strikesPastTheGateTeamTwo = document.getElementById('strikesPastTheGateTeamTwo').value;
-    let freeKicksTeamTwo = document.getElementById('freeKicksTeamTwo').value;
-    let foulsTeamTwo = document.getElementById('foulsTeamTwo').value;
-    let cornerKicksTeamTwo = document.getElementById('cornerKicksTeamTwo').value;
+    let strikesTeamB = document.getElementById('strikesTeamB').value;
+    let hitsTheTargetTeamB = document.getElementById('hitsTheTargetTeamB').value;
+    let strikesPastTheGateTeamB = document.getElementById('strikesPastTheGateTeamB').value;
+    let freeKicksTeamB = document.getElementById('freeKicksTeamB').value;
+    let foulsTeamB = document.getElementById('foulsTeamB').value;
+    let cornerKicksTeamB = document.getElementById('cornerKicksTeamB').value;
 
-    //let teamOne = '?teamOne=' + strikesTeamOne + hitsTheTargetTeamOne + strikesPastTheGateTeamOne + freeKicksTeamOne + foulsTeamOne + cornerKicksTeamOne;
-    //let teamTwo = '&teamTwo=' + strikesTeamTwo + hitsTheTargetTeamTwo + strikesPastTheGateTeamTwo + freeKicksTeamTwo + foulsTeamTwo + cornerKicksTeamTwo;
+    //let teamA = '?strikesTeamA=' + strikesTeamA + '&hitsTheTargetTeamA=' + hitsTheTargetTeamA + '&strikesPastTheGateTeamA=' + strikesPastTheGateTeamA + '&freeKicksTeamA=' + freeKicksTeamA + '&foulsTeamA=' + foulsTeamA + '&cornerKicksTeamA=' + cornerKicksTeamA;
 
-    let statsTeamOneDataJsonObj = {"strikesTeamOne" : strikesTeamOne, "hitsTheTargetTeamOne" : hitsTheTargetTeamOne,
-    "strikesPastTheGateTeamOne" : strikesPastTheGateTeamOne, "freeKicksTeamOne" : freeKicksTeamOne,
-    "foulsTeamOne" : foulsTeamOne, "cornerKicksTeamOne" : cornerKicksTeamOne};
+    let statsTeamADataJsonObj = { "strikesTeamA" : strikesTeamA, "hitsTheTargetTeamA" : hitsTheTargetTeamA, "strikesPastTheGateTeamA" : strikesPastTheGateTeamA, "freeKicksTeamA" : freeKicksTeamA, "foulsTeamA" : foulsTeamA, "cornerKicksTeamA" : cornerKicksTeamA };
+    //let statsTeamBDataJsonObj = {"strikesTeamB" : strikesTeamB, "hitsTheTargetTeamB" : hitsTheTargetTeamB, "strikesPastTheGateTeamB" : strikesPastTheGateTeamB, "freeKicksTeamB" : freeKicksTeamB, "foulsTeamB" : foulsTeamB, "cornerKicksTeamB" : cornerKicksTeamB};
 
-    let statsTeamTwoDataJsonObj = {"strikesTeamTwo" : strikesTeamTwo,
-        "hitsTheTargetTeamTwo" : hitsTheTargetTeamTwo, "strikesPastTheGateTeamTwo" : strikesPastTheGateTeamTwo,
-        "freeKicksTeamTwo" : freeKicksTeamTwo, "foulsTeamTwo" : foulsTeamTwo, "cornerKicksTeamTwo" : cornerKicksTeamTwo};
+    let jsonStatsTeamAInString = JSON.stringify(statsTeamADataJsonObj);
+    //let jsonStatsTeamBInString = JSON.stringify(statsTeamBDataJsonObj);
 
-    let jsonStatsTeamOneInString = JSON.stringify(statsTeamOneDataJsonObj);
-    let jsonStatsTeamTwoInString = JSON.stringify(statsTeamTwoDataJsonObj);
-
-    console.log("LOG " + jsonStatsTeamOneInString + jsonStatsTeamTwoInString);
+    console.log("LOG " + jsonStatsTeamAInString);
 
     let apiUrl = '/api/game/' + gameId + '/setgamestats';
 
     fetch(apiUrl, {
       method: 'PUT',
-      body: jsonStatsTeamOneInString + jsonStatsTeamTwoInString,
+      body: jsonStatsTeamAInString,
       headers: {
         'Content-Type': 'application/json',
       }
     })
     .then(function(response){
         if(response.ok) {
+            //location.pathname = location.pathname;
         	document.getElementById('statsSuccess').style.display = 'block';
         } else {
         	document.getElementById('statsError').style.display = 'block';
