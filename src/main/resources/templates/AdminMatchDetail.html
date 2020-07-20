@@ -135,20 +135,20 @@
             </div>
             <div class="add-stats">
                 <div class="team1-stats">
-                    <input id="strikesTeamA" type="number" placeholder="Удари">
-                    <input id="hitsTheTargetTeamA" type="number" placeholder="Удари в ствір воріт">
-                    <input id="strikesPastTheGateTeamA" type="number" placeholder="Удари повз ворота">
-                    <input id="freeKicksTeamA" type="number" placeholder="Штрафні удари">
-                    <input id="foulsTeamA" type="number" placeholder="Фоли">
-                    <input id="cornerKicksTeamA" type="number" placeholder="Кутові удари">
+                    <input th:value="${game.teamAStats.strikes}" id="strikesTeamA" type="number" placeholder="Удари">
+                    <input th:value="${game.teamAStats.hitsTheTarget}" id="hitsTheTargetTeamA" type="number" placeholder="Удари в ствір воріт">
+                    <input th:value="${game.teamAStats.strikesPastTheGate}" id="strikesPastTheGateTeamA" type="number" placeholder="Удари повз ворота">
+                    <input th:value="${game.teamAStats.freeKicks}" id="freeKicksTeamA" type="number" placeholder="Штрафні удари">
+                    <input th:value="${game.teamAStats.fouls}" id="foulsTeamA" type="number" placeholder="Фоли">
+                    <input th:value="${game.teamAStats.cornerKicks}" id="cornerKicksTeamA" type="number" placeholder="Кутові удари">
                 </div>
                 <div class="team2-stats">
-                    <input id="strikesTeamB" type="number" placeholder="Удари">
-                    <input id="hitsTheTargetTeamB" type="number" placeholder="Удари в ствір воріт">
-                    <input id="strikesPastTheGateTeamB" type="number" placeholder="Удари повз ворота">
-                    <input id="freeKicksTeamB" type="number" placeholder="Штрафні удари">
-                    <input id="foulsTeamB" type="number" placeholder="Фоли">
-                    <input id="cornerKicksTeamB" type="number" placeholder="Кутові удари">
+                    <input th:value="${game.teamBStats.strikes}" id="strikesTeamB" type="number" placeholder="Удари">
+                    <input th:value="${game.teamBStats.hitsTheTarget}" id="hitsTheTargetTeamB" type="number" placeholder="Удари в ствір воріт">
+                    <input th:value="${game.teamBStats.strikesPastTheGate}" id="strikesPastTheGateTeamB" type="number" placeholder="Удари повз ворота">
+                    <input th:value="${game.teamBStats.freeKicks}" id="freeKicksTeamB" type="number" placeholder="Штрафні удари">
+                    <input th:value="${game.teamBStats.fouls}" id="foulsTeamB" type="number" placeholder="Фоли">
+                    <input th:value="${game.teamBStats.cornerKicks}" id="cornerKicksTeamB" type="number" placeholder="Кутові удари">
                 </div>
             </div>
             <div class="save-stats">
