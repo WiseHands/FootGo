@@ -11,22 +11,22 @@ public class GameStats {
     private Long id;
 
     @Column
-    int strikes;
+    private int strikes;
 
     @Column
-    int hitsTheTarget;
+    private int hitsTheTarget;
 
     @Column
-    int strikesPastTheGate;
+    private int strikesPastTheGate;
 
     @Column
-    int freeKicks;
+    private int freeKicks;
 
     @Column
-    int fouls;
+    private int fouls;
 
     @Column
-    int cornerKicks;
+    private int cornerKicks;
 
     public Long getId() {
         return id;

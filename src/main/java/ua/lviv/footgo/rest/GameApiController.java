@@ -256,27 +256,33 @@ public class GameApiController {
         return games;
     }
 
+    public static class GameStatsWrapper{
+        public GameStats getTeamA() {
+            return teamA;
+        }
+
+        public void setTeamA(GameStats teamA) {
+            this.teamA = teamA;
+        }
+
+        public GameStats getTeamB() {
+            return teamB;
+        }
+
+        public void setTeamB(GameStats teamB) {
+            this.teamB = teamB;
+        }
+
+        GameStats teamA;
+        GameStats teamB;
+
+    }
+
     @PutMapping(value = "/{gameId}/setgamestats", consumes = "application/json", produces = "application/json")
-    public void setGameStats(@PathVariable Long gameId, @RequestBody GameStats teamA) {
+    public void setGameStats(@PathVariable Long gameId, @RequestBody GameStatsWrapper gameStatsWrapper) {
         Game game = gameRepository.findById(gameId).get();
-        //GameStats teamAGameStats = game.getTeamAStats();
-        //GameStats teamBGameStats = game.getTeamBStats();
-        game.setTeamAStats(teamA);
-        System.out.println("TEAM A LOG " + teamA.getStrikes());
-
-/*        teamAGameStats.setStrikes(teamA.strikesTeamA);
-        teamAGameStats.setHitsTheTarget(teamA.hitsTheTargetTeamA);
-        teamAGameStats.setStrikesPastTheGate(teamA.strikesPastTheGateTeamA);
-        teamAGameStats.setFreeKicks(teamA.freeKicksTeamA);
-        teamAGameStats.setFouls(teamA.foulsTeamA);
-        teamAGameStats.setCornerKicks(teamA.cornerKicksTeamA);*/
-
-/*        teamBGameStats.setStrikes(teamTwo.get(0));
-        teamBGameStats.setHitsTheTarget(teamTwo.get(1));
-        teamBGameStats.setStrikesPastTheGate(teamTwo.get(2));
-        teamBGameStats.setFreeKicks(teamTwo.get(3));
-        teamBGameStats.setFouls(teamTwo.get(4));
-        teamBGameStats.setCornerKicks(teamTwo.get(5));*/
+        game.setTeamAStats(gameStatsWrapper.teamA);
+        game.setTeamBStats(gameStatsWrapper.teamB);
 
         gameRepository.save(game);
     }
