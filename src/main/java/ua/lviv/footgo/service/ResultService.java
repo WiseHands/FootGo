@@ -71,10 +71,10 @@ public class ResultService {
             TeamResults teamResults = new TeamResults();
             teamResults.setTeam(team);
 
-
             List<Game> gameList;
             if(forCompletedGamesOnly) {
-                gameList = gameFinder.findAllCompletedGamesForTeam(team);
+                //gameList = gameFinder.findAllCompletedGamesForTeam(team);
+                gameList = gameFinder.findAllCompletedGamesForTeamByLeague(leagueId, team);
             } else {
                 gameList = gameFinder.findAllGamesForTeam(team);
             }
