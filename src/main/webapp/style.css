@@ -885,6 +885,7 @@ footer{
     padding: 5px 0;
     background-color: #fff;
     border-radius: 5px;
+    display: none;
 }
 .logo-team-bg {
     display: flex;
@@ -1155,6 +1156,7 @@ input[invalid-input] {
     margin: 0 auto;
     text-align: center;
     width: 100%;
+    display: none;
 }
 .match-statistics-title {
     font-size: 1.8rem;
