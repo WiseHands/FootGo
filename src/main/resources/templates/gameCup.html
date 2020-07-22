@@ -177,6 +177,99 @@
 				</div>
 			</div>
 		</div>
+		<div class="match-statistics">
+			<p th:text="#{matchStatistics}" class="match-statistics-title"></p>
+			<div class="statistics-item">
+				<div class="statistics-item-info">
+					<span th:text="${game.teamAStats?.strikes}" class="item-info-team1"></span>
+					<span th:text="#{strikes}" class="item-info-title"></span>
+					<span th:text="${game.teamBStats?.strikes}" class="item-info-team2"></span>
+				</div>
+				<div class="statistics-item-bar">
+					<div class="progress-wrap item-bar-team1">
+						<div id="strikes-team1-bar"></div>
+					</div>
+					<div class="progress-wrap item-bar-team2">
+						<div id="strikes-team2-bar"></div>
+					</div>
+				</div>
+			</div>
+			<div class="statistics-item">
+				<div class="statistics-item-info">
+					<span th:text="${game.teamAStats?.hitsTheTarget}" class="item-info-team1"></span>
+					<span th:text="#{hitsTheTarget}" class="item-info-title"></span>
+					<span th:text="${game.teamBStats?.hitsTheTarget}" class="item-info-team2"></span>
+				</div>
+				<div class="statistics-item-bar">
+					<div class="progress-wrap item-bar-team1">
+						<div id="hits-the-target-team1-bar"></div>
+					</div>
+					<div class="progress-wrap item-bar-team2">
+						<div id="hits-the-target-team2-bar"></div>
+					</div>
+				</div>
+			</div>
+			<div class="statistics-item">
+				<div class="statistics-item-info">
+					<span th:text="${game.teamAStats?.strikesPastTheGate}" class="item-info-team1"></span>
+					<span th:text="#{strikesPastTheGate}" class="item-info-title"></span>
+					<span th:text="${game.teamBStats?.strikesPastTheGate}" class="item-info-team2"></span>
+				</div>
+				<div class="statistics-item-bar">
+					<div class="progress-wrap item-bar-team1">
+						<div id="strikes-past-the-gate-team1-bar"></div>
+					</div>
+					<div class="progress-wrap item-bar-team2">
+						<div id="strikes-past-the-gate-team2-bar"></div>
+					</div>
+				</div>
+			</div>
+			<div class="statistics-item">
+				<div class="statistics-item-info">
+					<span th:text="${game.teamAStats?.freeKicks}" class="item-info-team1"></span>
+					<span th:text="#{freeKicks}" class="item-info-title"></span>
+					<span th:text="${game.teamBStats?.freeKicks}" class="item-info-team2"></span>
+				</div>
+				<div class="statistics-item-bar">
+					<div class="progress-wrap item-bar-team1">
+						<div id="free-kicks-team1-bar"></div>
+					</div>
+					<div class="progress-wrap item-bar-team2">
+						<div id="free-kicks-team2-bar"></div>
+					</div>
+				</div>
+			</div>
+			<div class="statistics-item">
+				<div class="statistics-item-info">
+					<span th:text="${game.teamAStats?.fouls}" class="item-info-team1"></span>
+					<span th:text="#{fouls}" class="item-info-title"></span>
+					<span th:text="${game.teamBStats?.fouls}" class="item-info-team2"></span>
+				</div>
+				<div class="statistics-item-bar">
+					<div class="progress-wrap item-bar-team1">
+						<div id="fouls-team1-bar"></div>
+					</div>
+					<div class="progress-wrap item-bar-team2">
+						<div id="fouls-team2-bar"></div>
+					</div>
+				</div>
+			</div>
+			<div class="statistics-item">
+				<div class="statistics-item-info">
+					<span th:text="${game.teamAStats?.cornerKicks}" class="item-info-team1"></span>
+					<span th:text="#{cornerKicks}" class="item-info-title"></span>
+					<span th:text="${game.teamBStats?.cornerKicks}" class="item-info-team2"></span>
+				</div>
+				<div class="statistics-item-bar">
+					<div class="progress-wrap item-bar-team1">
+						<div id="corner-kicks-team1-bar"></div>
+					</div>
+					<div class="progress-wrap item-bar-team2">
+						<div id="corner-kicks-team2-bar"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="match-video" th:if="${!#strings.isEmpty(game.videoUrl)}">
 			<p th:text="#{matchVideo}"></p>
 			<iframe width="500" height="281" th:attr="src=${game.videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -206,6 +299,86 @@
 
   gtag('config', 'UA-39722519-3');
 </script>
+<script th:inline="javascript">
 
+const strikesTeamA = document.querySelector("#strikes-team1-bar");
+const strikesTeamB = document.querySelector("#strikes-team2-bar");
+
+const strikesForTeamA = percentageForTeamA([[${game.teamAStats?.strikes}]], [[${game.teamBStats?.strikes}]]);
+const strikesForTeamB = percentageForTeamB([[${game.teamAStats?.strikes}]], [[${game.teamBStats?.strikes}]]);
+calculatePercentage(strikesForTeamA, strikesForTeamB, strikesTeamA, strikesTeamB);
+
+const hitsTheTargetTeamA = document.querySelector("#hits-the-target-team1-bar");
+const hitsTheTargetTeamB = document.querySelector("#hits-the-target-team2-bar");
+
+const hitsTheTargetForTeamA = percentageForTeamA([[${game.teamAStats?.hitsTheTarget}]], [[${game.teamBStats?.hitsTheTarget}]]);
+const hitsTheTargetForTeamB = percentageForTeamB([[${game.teamAStats?.hitsTheTarget}]], [[${game.teamBStats?.hitsTheTarget}]]);
+calculatePercentage(hitsTheTargetForTeamA, hitsTheTargetForTeamB, hitsTheTargetTeamA, hitsTheTargetTeamB);
+
+const strikesPastTheGateTeamA = document.querySelector("#strikes-past-the-gate-team1-bar");
+const strikesPastTheGateTeamB = document.querySelector("#strikes-past-the-gate-team2-bar");
+
+const strikesPastTheGateForTeamA = percentageForTeamA([[${game.teamAStats?.strikesPastTheGate}]], [[${game.teamBStats?.strikesPastTheGate}]]);
+const strikesPastTheGateForTeamB = percentageForTeamB([[${game.teamAStats?.strikesPastTheGate}]], [[${game.teamBStats?.strikesPastTheGate}]]);
+calculatePercentage(strikesPastTheGateForTeamA, strikesPastTheGateForTeamB, strikesPastTheGateTeamA, strikesPastTheGateTeamB);
+
+const freeKicksTeamA = document.querySelector("#free-kicks-team1-bar");
+const freeKicksTeamB = document.querySelector("#free-kicks-team2-bar");
+
+const freeKicksForTeamA = percentageForTeamA([[${game.teamAStats?.freeKicks}]], [[${game.teamBStats?.freeKicks}]]);
+const freeKicksForTeamB = percentageForTeamB([[${game.teamAStats?.freeKicks}]], [[${game.teamBStats?.freeKicks}]]);
+calculatePercentage(freeKicksForTeamA, freeKicksForTeamB, freeKicksTeamA, freeKicksTeamB);
+
+const foulsTeamA = document.querySelector("#fouls-team1-bar");
+const foulsTeamB = document.querySelector("#fouls-team2-bar");
+
+const foulsForTeamA = percentageForTeamA([[${game.teamAStats?.fouls}]], [[${game.teamBStats?.fouls}]]);
+const foulsForTeamB = percentageForTeamB([[${game.teamAStats?.fouls}]], [[${game.teamBStats?.fouls}]]);
+calculatePercentage(foulsForTeamA, foulsForTeamB, foulsTeamA, foulsTeamB);
+
+const cornerKicksTeamA = document.querySelector("#corner-kicks-team1-bar");
+const cornerKicksTeamB = document.querySelector("#corner-kicks-team2-bar");
+
+const cornerKicksForTeamA = percentageForTeamA([[${game.teamAStats?.cornerKicks}]], [[${game.teamBStats?.cornerKicks}]]);
+const cornerKicksForTeamB = percentageForTeamB([[${game.teamAStats?.cornerKicks}]], [[${game.teamBStats?.cornerKicks}]]);
+calculatePercentage(cornerKicksForTeamA, cornerKicksForTeamB, cornerKicksTeamA, cornerKicksTeamB);
+
+function percentageForTeamA(teamAValue, teamBValue) {
+    sum = teamAValue + teamBValue;
+    if (teamAValue < sum) {
+        return Math.round((teamAValue / sum) * 100);
+    }
+}
+
+function percentageForTeamB(teamAValue, teamBValue) {
+    sum = teamAValue + teamBValue;
+    if (teamBValue < sum) {
+        return Math.round((teamBValue / sum) * 100);
+    }
+}
+
+function calculatePercentage(resultForTeamA, resultForTeamB, progressBarForTeamA, progressBarForTeamB) {
+    if (resultForTeamA) {
+        progressBarForTeamA.style.width = resultForTeamA + '%';
+        if (resultForTeamA > resultForTeamB) {
+            progressBarForTeamA.classList.add("bar-more");
+            progressBarForTeamB.classList.add("bar-less");
+        }
+        if (resultForTeamA === resultForTeamB) {
+            progressBarForTeamA.classList.add("bar-less");
+            progressBarForTeamB.classList.add("bar-less");
+        }
+    }
+
+    if (resultForTeamB) {
+        progressBarForTeamB.style.width = resultForTeamB + '%';
+        if (resultForTeamB > resultForTeamA) {
+            progressBarForTeamB.classList.add("bar-more");
+            progressBarForTeamA.classList.add("bar-less");
+        }
+    }
+}
+
+</script>
 </body>
 </html>

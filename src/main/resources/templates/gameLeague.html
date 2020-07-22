@@ -196,10 +196,10 @@
 				</div>
 				<div class="statistics-item-bar">
 					<div class="progress-wrap item-bar-team1">
-						<div class="" id="hits-the-target-team1-bar"></div>
+						<div id="hits-the-target-team1-bar"></div>
 					</div>
 					<div class="progress-wrap item-bar-team2">
-						<div class="" id="hits-the-target-team2-bar"></div>
+						<div id="hits-the-target-team2-bar"></div>
 					</div>
 				</div>
 			</div>
@@ -211,10 +211,10 @@
 				</div>
 				<div class="statistics-item-bar">
 					<div class="progress-wrap item-bar-team1">
-						<div class="" id="strikes-past-the-gate-team1-bar"></div>
+						<div id="strikes-past-the-gate-team1-bar"></div>
 					</div>
 					<div class="progress-wrap item-bar-team2">
-						<div class="" id="strikes-past-the-gate-team2-bar"></div>
+						<div id="strikes-past-the-gate-team2-bar"></div>
 					</div>
 				</div>
 			</div>
@@ -226,10 +226,10 @@
 				</div>
 				<div class="statistics-item-bar">
 					<div class="progress-wrap item-bar-team1">
-						<div class="" id="free-kicks-team1-bar"></div>
+						<div id="free-kicks-team1-bar"></div>
 					</div>
 					<div class="progress-wrap item-bar-team2">
-						<div class="" id="free-kicks-team2-bar"></div>
+						<div id="free-kicks-team2-bar"></div>
 					</div>
 				</div>
 			</div>
@@ -241,10 +241,10 @@
 				</div>
 				<div class="statistics-item-bar">
 					<div class="progress-wrap item-bar-team1">
-						<div class="bar-more bar-less" id="fouls-team1-bar"></div>
+						<div id="fouls-team1-bar"></div>
 					</div>
 					<div class="progress-wrap item-bar-team2">
-						<div class="bar-more bar-less" id="fouls-team2-bar"></div>
+						<div id="fouls-team2-bar"></div>
 					</div>
 				</div>
 			</div>
@@ -256,10 +256,10 @@
 				</div>
 				<div class="statistics-item-bar">
 					<div class="progress-wrap item-bar-team1">
-						<div class="bar-more bar-less" id="corner-kicks-team1-bar"></div>
+						<div id="corner-kicks-team1-bar"></div>
 					</div>
 					<div class="progress-wrap item-bar-team2">
-						<div class="bar-more bar-less" id="corner-kicks-team2-bar"></div>
+						<div id="corner-kicks-team2-bar"></div>
 					</div>
 				</div>
 			</div>
@@ -309,6 +309,34 @@ const hitsTheTargetTeamB = document.querySelector("#hits-the-target-team2-bar");
 const hitsTheTargetForTeamA = percentageForTeamA([[${game.teamAStats?.hitsTheTarget}]], [[${game.teamBStats?.hitsTheTarget}]]);
 const hitsTheTargetForTeamB = percentageForTeamB([[${game.teamAStats?.hitsTheTarget}]], [[${game.teamBStats?.hitsTheTarget}]]);
 calculatePercentage(hitsTheTargetForTeamA, hitsTheTargetForTeamB, hitsTheTargetTeamA, hitsTheTargetTeamB);
+
+const strikesPastTheGateTeamA = document.querySelector("#strikes-past-the-gate-team1-bar");
+const strikesPastTheGateTeamB = document.querySelector("#strikes-past-the-gate-team2-bar");
+
+const strikesPastTheGateForTeamA = percentageForTeamA([[${game.teamAStats?.strikesPastTheGate}]], [[${game.teamBStats?.strikesPastTheGate}]]);
+const strikesPastTheGateForTeamB = percentageForTeamB([[${game.teamAStats?.strikesPastTheGate}]], [[${game.teamBStats?.strikesPastTheGate}]]);
+calculatePercentage(strikesPastTheGateForTeamA, strikesPastTheGateForTeamB, strikesPastTheGateTeamA, strikesPastTheGateTeamB);
+
+const freeKicksTeamA = document.querySelector("#free-kicks-team1-bar");
+const freeKicksTeamB = document.querySelector("#free-kicks-team2-bar");
+
+const freeKicksForTeamA = percentageForTeamA([[${game.teamAStats?.freeKicks}]], [[${game.teamBStats?.freeKicks}]]);
+const freeKicksForTeamB = percentageForTeamB([[${game.teamAStats?.freeKicks}]], [[${game.teamBStats?.freeKicks}]]);
+calculatePercentage(freeKicksForTeamA, freeKicksForTeamB, freeKicksTeamA, freeKicksTeamB);
+
+const foulsTeamA = document.querySelector("#fouls-team1-bar");
+const foulsTeamB = document.querySelector("#fouls-team2-bar");
+
+const foulsForTeamA = percentageForTeamA([[${game.teamAStats?.fouls}]], [[${game.teamBStats?.fouls}]]);
+const foulsForTeamB = percentageForTeamB([[${game.teamAStats?.fouls}]], [[${game.teamBStats?.fouls}]]);
+calculatePercentage(foulsForTeamA, foulsForTeamB, foulsTeamA, foulsTeamB);
+
+const cornerKicksTeamA = document.querySelector("#corner-kicks-team1-bar");
+const cornerKicksTeamB = document.querySelector("#corner-kicks-team2-bar");
+
+const cornerKicksForTeamA = percentageForTeamA([[${game.teamAStats?.cornerKicks}]], [[${game.teamBStats?.cornerKicks}]]);
+const cornerKicksForTeamB = percentageForTeamB([[${game.teamAStats?.cornerKicks}]], [[${game.teamBStats?.cornerKicks}]]);
+calculatePercentage(cornerKicksForTeamA, cornerKicksForTeamB, cornerKicksTeamA, cornerKicksTeamB);
 
 function percentageForTeamA(teamAValue, teamBValue) {
     sum = teamAValue + teamBValue;
