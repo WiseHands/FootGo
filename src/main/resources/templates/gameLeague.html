@@ -311,14 +311,16 @@ const hitsTheTargetForTeamB = percentageForTeamB([[${game.teamAStats?.hitsTheTar
 calculatePercentage(hitsTheTargetForTeamA, hitsTheTargetForTeamB, hitsTheTargetTeamA, hitsTheTargetTeamB);
 
 function percentageForTeamA(teamAValue, teamBValue) {
-    if (teamAValue < teamBValue) {
-        return Math.round((teamAValue / teamBValue) * 100);
+    sum = teamAValue + teamBValue;
+    if (teamAValue < sum) {
+        return Math.round((teamAValue / sum) * 100);
     }
 }
 
 function percentageForTeamB(teamAValue, teamBValue) {
-    if (teamBValue < teamAValue) {
-        return Math.round((teamBValue / teamAValue) * 100);
+    sum = teamAValue + teamBValue;
+    if (teamBValue < sum) {
+        return Math.round((teamBValue / sum) * 100);
     }
 }
 
