@@ -295,49 +295,61 @@
 </script>
 
 <script th:inline="javascript">
-    const strikesTeamA = document.querySelector("#strikes-team1-bar");
-    const strikesTeamB = document.querySelector("#strikes-team2-bar");
 
-    function percentageForTeamA(teamAValue, teamBValue) {
-        if (teamAValue < teamBValue) {
-            return Math.round((teamAValue / teamBValue) * 100);
-        }
+const strikesTeamA = document.querySelector("#strikes-team1-bar");
+const strikesTeamB = document.querySelector("#strikes-team2-bar");
+
+const strikesForTeamA = percentageForTeamA([[${game.teamAStats?.strikes}]], [[${game.teamBStats?.strikes}]]);
+const strikesForTeamB = percentageForTeamB([[${game.teamAStats?.strikes}]], [[${game.teamBStats?.strikes}]]);
+calculatePercentage(strikesForTeamA, strikesForTeamB, strikesTeamA, strikesTeamB);
+
+const hitsTheTargetTeamA = document.querySelector("#hits-the-target-team1-bar");
+const hitsTheTargetTeamB = document.querySelector("#hits-the-target-team2-bar");
+
+const hitsTheTargetForTeamA = percentageForTeamA([[${game.teamAStats?.hitsTheTarget}]], [[${game.teamBStats?.hitsTheTarget}]]);
+const hitsTheTargetForTeamB = percentageForTeamB([[${game.teamAStats?.hitsTheTarget}]], [[${game.teamBStats?.hitsTheTarget}]]);
+calculatePercentage(hitsTheTargetForTeamA, hitsTheTargetForTeamB, hitsTheTargetTeamA, hitsTheTargetTeamB);
+
+function percentageForTeamA(teamAValue, teamBValue) {
+    if (teamAValue < teamBValue) {
+        return Math.round((teamAValue / teamBValue) * 100);
     }
+}
 
-    function percentageForTeamB(teamAValue, teamBValue) {
-        if (teamBValue < teamAValue) {
-            return Math.round((teamBValue / teamAValue) * 100);
-        }
+function percentageForTeamB(teamAValue, teamBValue) {
+    if (teamBValue < teamAValue) {
+        return Math.round((teamBValue / teamAValue) * 100);
     }
+}
 
-    const resultForTeamA = percentageForTeamA([[${game.teamAStats?.strikes}]], [[${game.teamBStats?.strikes}]]);
-    const resultForTeamB = percentageForTeamB([[${game.teamAStats?.strikes}]], [[${game.teamBStats?.strikes}]]);
-
+function calculatePercentage(resultForTeamA, resultForTeamB, progressBarForTeamA, progressBarForTeamB) {
     if (resultForTeamA) {
-        strikesTeamA.style.width = resultForTeamA+'%';
-        strikesTeamA.classList.add("bar-less");
+        progressBarForTeamA.style.width = resultForTeamA + '%';
+        progressBarForTeamA.classList.add("bar-less");
         console.log(resultForTeamA);
     }
 
     if (resultForTeamB) {
-        strikesTeamB.style.width = resultForTeamB+'%';
-        strikesTeamB.classList.add("bar-less");
+        progressBarForTeamB.style.width = resultForTeamB + '%';
+        progressBarForTeamB.classList.add("bar-less");
         console.log(resultForTeamB);
     }
 
     if (resultForTeamA < 100) {
         const resultForTeamB = (100 - resultForTeamA);
-        strikesTeamB.style.width = resultForTeamB+'%';
-        strikesTeamB.classList.add("bar-more");
+        progressBarForTeamB.style.width = resultForTeamB + '%';
+        progressBarForTeamB.classList.add("bar-more");
         console.log(resultForTeamB);
     }
 
     if (resultForTeamB < 100) {
         const resultForTeamA = (100 - resultForTeamB);
-        strikesTeamA.style.width = resultForTeamA+'%';
-        strikesTeamA.classList.add("bar-more");
+        progressBarForTeamA.style.width = resultForTeamA + '%';
+        progressBarForTeamA.classList.add("bar-more");
         console.log(resultForTeamA);
     }
+}
+
 </script>
 </body>
 </html>

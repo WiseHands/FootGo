@@ -1184,12 +1184,12 @@ input[invalid-input] {
     background-color: #eee;
     margin: 5px 0;
 }
-#strikes-team1-bar, #strikes-team2-bar{
+.progress-wrap div{
     height: 10px;
     width: 100%;
     transition: width 1s;
 }
-#strikes-team1-bar {
+.progress-wrap div:first-child {
     width: 0;
 }
 .bar-more {
