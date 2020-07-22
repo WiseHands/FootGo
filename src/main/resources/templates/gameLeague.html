@@ -327,7 +327,8 @@ function percentageForTeamB(teamAValue, teamBValue) {
 function calculatePercentage(resultForTeamA, resultForTeamB, progressBarForTeamA, progressBarForTeamB) {
     if (resultForTeamA) {
         progressBarForTeamA.style.width = resultForTeamA + '%';
-        progressBarForTeamA.classList.add("bar-less");
+        console.log('RESULT ' + resultForTeamA + resultForTeamB)
+        progressBarForTeamA.classList.add("bar-more");
         console.log(resultForTeamA);
     }
 
@@ -340,7 +341,7 @@ function calculatePercentage(resultForTeamA, resultForTeamB, progressBarForTeamA
     if (resultForTeamA < 100) {
         const resultForTeamB = (100 - resultForTeamA);
         progressBarForTeamB.style.width = resultForTeamB + '%';
-        progressBarForTeamB.classList.add("bar-more");
+        progressBarForTeamB.classList.add("bar-less");
         console.log(resultForTeamB);
     }
 
