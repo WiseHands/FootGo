@@ -67,9 +67,6 @@ public class GameFinder {
 
         System.out.println("GAME_LIST " + gameList);
 
-        //List<Game> gameList = (List<Game>) gameRepository.findByFirstTeamAndIsCompleted(team, true);
-        //gameList.addAll((List<Game>) gameRepository.findBySecondTeamAndIsCompleted(team, true));
-
         Collections.sort(gameList, new Comparator<Game>() {
             public int compare(Game o1, Game o2) {
                 return o1.getTour().getTourNumber().compareTo(o2.getTour().getTourNumber());

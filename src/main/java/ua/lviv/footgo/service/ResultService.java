@@ -73,7 +73,6 @@ public class ResultService {
 
             List<Game> gameList;
             if(forCompletedGamesOnly) {
-                //gameList = gameFinder.findAllCompletedGamesForTeam(team);
                 gameList = gameFinder.findAllCompletedGamesForTeamByLeague(leagueId, team);
             } else {
                 gameList = gameFinder.findAllGamesForTeam(team);

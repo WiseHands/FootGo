@@ -6,7 +6,6 @@ import ua.lviv.footgo.entity.Game;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 import ua.lviv.footgo.entity.Team;
-import ua.lviv.footgo.entity.Tour;
 
 import java.time.OffsetDateTime;
 import java.util.List;
