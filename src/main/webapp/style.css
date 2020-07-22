@@ -301,7 +301,7 @@ a, a:hover {
 }
 .league-main-head, .main-head-results {
     height: 0;
-    padding-bottom: 20%;
+    padding-bottom: 250px;
 }
 .main-head-title .main-head-logo {
     margin: 0 auto;
@@ -790,7 +790,7 @@ footer{
     background-position: center;
     background-size: cover;
     opacity: 1;
-/*    height: 100vh;*/
+    height: 100vh;
 }
 .results {
     max-width: 820px;
@@ -1562,6 +1562,7 @@ input.invalid {
     }
     .score-tables {
         padding: 0;
+        min-height: 32vh;
     }
     .lang-switcher {
         margin-right: 10px;
