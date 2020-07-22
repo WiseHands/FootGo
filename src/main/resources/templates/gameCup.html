@@ -150,8 +150,8 @@
 			<p th:text="#{cards}"></p>
 		</div>
 		<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-match">
-			<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamACards)}" class="details-team1">
-				<div class="team1-goals" th:each="card : ${game.teamACards}">
+			<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-team1">
+				<div th:if="${not #lists.isEmpty(game.teamACards)}" class="team1-goals" th:each="card : ${game.teamACards}">
 					<p>
 						<a th:attr="href=${'/cup/' + cupId + '/player/' + card.player.id}">
 							<span th:if="${#locale.language == 'uk'}" th:text="${card.player.firstName + ' ' + card.player.lastName}" class="player-name"></span>

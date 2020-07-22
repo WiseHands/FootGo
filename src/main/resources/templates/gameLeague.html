@@ -144,8 +144,8 @@
 			<p th:text="#{cards}"></p>
 		</div>
 		<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-match">
-			<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamACards)}" class="details-team1">
-				<div class="team1-goals" th:each="card : ${game.teamACards}">
+			<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-team1">
+				<div th:if="${not #lists.isEmpty(game.teamACards)}" class="team1-goals" th:each="card : ${game.teamACards}">
 					<p>
 						<a th:attr="href=${'/league/' + leagueId + '/player/' + card.player.id}">
 							<span th:if="${#locale.language == 'uk'}" th:text="${card.player.firstName + ' ' + card.player.lastName}" class="player-name"></span>
@@ -181,10 +181,10 @@
 				</div>
 				<div class="statistics-item-bar">
 					<div class="progress-wrap item-bar-team1">
-						<div class="bar-more bar-less" id="strikes-team1-bar"></div>
+						<div id="strikes-team1-bar"></div>
 					</div>
 					<div class="progress-wrap item-bar-team2">
-						<div class="bar-more bar-less" id="strikes-team2-bar"></div>
+						<div id="strikes-team2-bar"></div>
 					</div>
 				</div>
 			</div>
@@ -196,10 +196,10 @@
 				</div>
 				<div class="statistics-item-bar">
 					<div class="progress-wrap item-bar-team1">
-						<div class="bar-more bar-less" id="hits-the-target-team1-bar"></div>
+						<div class="" id="hits-the-target-team1-bar"></div>
 					</div>
 					<div class="progress-wrap item-bar-team2">
-						<div class="bar-more bar-less" id="hits-the-target-team2-bar"></div>
+						<div class="" id="hits-the-target-team2-bar"></div>
 					</div>
 				</div>
 			</div>
@@ -211,10 +211,10 @@
 				</div>
 				<div class="statistics-item-bar">
 					<div class="progress-wrap item-bar-team1">
-						<div class="bar-more bar-less" id="strikes-past-the-gate-team1-bar"></div>
+						<div class="" id="strikes-past-the-gate-team1-bar"></div>
 					</div>
 					<div class="progress-wrap item-bar-team2">
-						<div class="bar-more bar-less" id="strikes-past-the-gate-team2-bar"></div>
+						<div class="" id="strikes-past-the-gate-team2-bar"></div>
 					</div>
 				</div>
 			</div>
@@ -226,10 +226,10 @@
 				</div>
 				<div class="statistics-item-bar">
 					<div class="progress-wrap item-bar-team1">
-						<div class="bar-more bar-less" id="free-kicks-team1-bar"></div>
+						<div class="" id="free-kicks-team1-bar"></div>
 					</div>
 					<div class="progress-wrap item-bar-team2">
-						<div class="bar-more bar-less" id="free-kicks-team2-bar"></div>
+						<div class="" id="free-kicks-team2-bar"></div>
 					</div>
 				</div>
 			</div>
@@ -294,9 +294,50 @@
   gtag('config', 'UA-39722519-3');
 </script>
 
-<script>
-    document.querySelector("#strikes-team1-bar").style.width = '10%';
-    document.querySelector("#strikes-team2-bar").style.width = '90%';
+<script th:inline="javascript">
+    const strikesTeamA = document.querySelector("#strikes-team1-bar");
+    const strikesTeamB = document.querySelector("#strikes-team2-bar");
+
+    function percentageForTeamA(teamAValue, teamBValue) {
+        if (teamAValue < teamBValue) {
+            return Math.round((teamAValue / teamBValue) * 100);
+        }
+    }
+
+    function percentageForTeamB(teamAValue, teamBValue) {
+        if (teamBValue < teamAValue) {
+            return Math.round((teamBValue / teamAValue) * 100);
+        }
+    }
+
+    const resultForTeamA = percentageForTeamA([[${game.teamAStats?.strikes}]], [[${game.teamBStats?.strikes}]]);
+    const resultForTeamB = percentageForTeamB([[${game.teamAStats?.strikes}]], [[${game.teamBStats?.strikes}]]);
+
+    if (resultForTeamA) {
+        strikesTeamA.style.width = resultForTeamA+'%';
+        strikesTeamA.classList.add("bar-less");
+        console.log(resultForTeamA);
+    }
+
+    if (resultForTeamB) {
+        strikesTeamB.style.width = resultForTeamB+'%';
+        strikesTeamB.classList.add("bar-less");
+        console.log(resultForTeamB);
+    }
+
+    if (resultForTeamA < 100) {
+        const resultForTeamB = (100 - resultForTeamA);
+        strikesTeamB.style.width = resultForTeamB+'%';
+        strikesTeamB.classList.add("bar-more");
+        console.log(resultForTeamB);
+    }
+
+    if (resultForTeamB < 100) {
+        const resultForTeamA = (100 - resultForTeamB);
+        strikesTeamA.style.width = resultForTeamA+'%';
+        strikesTeamA.classList.add("bar-more");
+        console.log(resultForTeamA);
+    }
 </script>
 </body>
 </html>
