@@ -1156,7 +1156,7 @@ input[invalid-input] {
     margin: 0 auto;
     text-align: center;
     width: 100%;
-    display: none;
+/*    display: none;*/
 }
 .match-statistics-title {
     font-size: 1.8rem;
@@ -1184,12 +1184,12 @@ input[invalid-input] {
     background-color: #eee;
     margin: 5px 0;
 }
-#team1-bar, #team2-bar{
+#strikes-team1-bar, #strikes-team2-bar{
     height: 10px;
     width: 100%;
     transition: width 1s;
 }
-#team1-bar {
+#strikes-team1-bar {
     width: 0;
 }
 .bar-more {

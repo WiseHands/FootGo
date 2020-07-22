@@ -172,57 +172,94 @@
 			</div>
 		</div>
 		<div class="match-statistics">
-			<p class="match-statistics-title">Статистика матчу</p>
+			<p th:text="#{matchStatistics}" class="match-statistics-title"></p>
 			<div class="statistics-item">
 				<div class="statistics-item-info">
-					<span class="item-info-team1">56</span>
-					<span class="item-info-title">Possession </span>
-					<span class="item-info-team2">44</span>
+					<span th:text="${game.teamAStats?.strikes}" class="item-info-team1"></span>
+					<span th:text="#{strikes}" class="item-info-title"></span>
+					<span th:text="${game.teamBStats?.strikes}" class="item-info-team2"></span>
 				</div>
 				<div class="statistics-item-bar">
 					<div class="progress-wrap item-bar-team1">
-						<div class="bar-more bar-less" id="team1-bar"></div>
+						<div class="bar-more bar-less" id="strikes-team1-bar"></div>
 					</div>
 					<div class="progress-wrap item-bar-team2">
-						<div class="bar-more bar-less" id="team2-bar"></div>
+						<div class="bar-more bar-less" id="strikes-team2-bar"></div>
 					</div>
 				</div>
 			</div>
 			<div class="statistics-item">
 				<div class="statistics-item-info">
-					<span class="item-info-team1">6</span>
-					<span class="item-info-title">Shots on target</span>
-					<span class="item-info-team2">4</span>
+					<span th:text="${game.teamAStats?.hitsTheTarget}" class="item-info-team1"></span>
+					<span th:text="#{hitsTheTarget}" class="item-info-title"></span>
+					<span th:text="${game.teamBStats?.hitsTheTarget}" class="item-info-team2"></span>
 				</div>
 				<div class="statistics-item-bar">
 					<div class="progress-wrap item-bar-team1">
-						<div class="progress-bar">
-
-						</div>
+						<div class="bar-more bar-less" id="hits-the-target-team1-bar"></div>
 					</div>
 					<div class="progress-wrap item-bar-team2">
-						<div class="progress-bar">
-
-						</div>
+						<div class="bar-more bar-less" id="hits-the-target-team2-bar"></div>
 					</div>
 				</div>
 			</div>
 			<div class="statistics-item">
 				<div class="statistics-item-info">
-					<span class="item-info-team1">14</span>
-					<span class="item-info-title">Shots</span>
-					<span class="item-info-team2">17</span>
+					<span th:text="${game.teamAStats?.strikesPastTheGate}" class="item-info-team1"></span>
+					<span th:text="#{strikesPastTheGate}" class="item-info-title"></span>
+					<span th:text="${game.teamBStats?.strikesPastTheGate}" class="item-info-team2"></span>
 				</div>
 				<div class="statistics-item-bar">
 					<div class="progress-wrap item-bar-team1">
-						<div class="progress-bar">
-
-						</div>
+						<div class="bar-more bar-less" id="strikes-past-the-gate-team1-bar"></div>
 					</div>
 					<div class="progress-wrap item-bar-team2">
-						<div class="progress-bar">
-
-						</div>
+						<div class="bar-more bar-less" id="strikes-past-the-gate-team2-bar"></div>
+					</div>
+				</div>
+			</div>
+			<div class="statistics-item">
+				<div class="statistics-item-info">
+					<span th:text="${game.teamAStats?.freeKicks}" class="item-info-team1"></span>
+					<span th:text="#{freeKicks}" class="item-info-title"></span>
+					<span th:text="${game.teamBStats?.freeKicks}" class="item-info-team2"></span>
+				</div>
+				<div class="statistics-item-bar">
+					<div class="progress-wrap item-bar-team1">
+						<div class="bar-more bar-less" id="free-kicks-team1-bar"></div>
+					</div>
+					<div class="progress-wrap item-bar-team2">
+						<div class="bar-more bar-less" id="free-kicks-team2-bar"></div>
+					</div>
+				</div>
+			</div>
+			<div class="statistics-item">
+				<div class="statistics-item-info">
+					<span th:text="${game.teamAStats?.fouls}" class="item-info-team1"></span>
+					<span th:text="#{fouls}" class="item-info-title"></span>
+					<span th:text="${game.teamBStats?.fouls}" class="item-info-team2"></span>
+				</div>
+				<div class="statistics-item-bar">
+					<div class="progress-wrap item-bar-team1">
+						<div class="bar-more bar-less" id="fouls-team1-bar"></div>
+					</div>
+					<div class="progress-wrap item-bar-team2">
+						<div class="bar-more bar-less" id="fouls-team2-bar"></div>
+					</div>
+				</div>
+			</div>
+			<div class="statistics-item">
+				<div class="statistics-item-info">
+					<span th:text="${game.teamAStats?.cornerKicks}" class="item-info-team1"></span>
+					<span th:text="#{cornerKicks}" class="item-info-title"></span>
+					<span th:text="${game.teamBStats?.cornerKicks}" class="item-info-team2"></span>
+				</div>
+				<div class="statistics-item-bar">
+					<div class="progress-wrap item-bar-team1">
+						<div class="bar-more bar-less" id="corner-kicks-team1-bar"></div>
+					</div>
+					<div class="progress-wrap item-bar-team2">
+						<div class="bar-more bar-less" id="corner-kicks-team2-bar"></div>
 					</div>
 				</div>
 			</div>
@@ -258,8 +295,8 @@
 </script>
 
 <script>
-    document.querySelector("#team1-bar").style.width = '10%';
-    document.querySelector("#team2-bar").style.width = '90%';
+    document.querySelector("#strikes-team1-bar").style.width = '10%';
+    document.querySelector("#strikes-team2-bar").style.width = '90%';
 </script>
 </body>
 </html>
