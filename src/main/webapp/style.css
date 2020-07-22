@@ -1941,7 +1941,7 @@ input.invalid {
   .main-head-title .main-head-logo {
       background-image: url(img/footgo-light-icon.png);
   }
-  header, .main-photo, .prev-seasons, .dropbtn, .registration-photo, .lang-list, .login-page, .registration-page, .sign-in-list {
+  .main-photo, .prev-seasons, .registration-photo, .login-page, .registration-page {
       background: var(--main-bg-color);
   }
   .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom, .login-form, .user-registration-form, .photo-team-bg {
@@ -2024,7 +2024,7 @@ input.invalid {
         background: url(/img/tshirt-dark.png) no-repeat;
         background-size: 100%;
     }
-    .player-info, .bomb-position div, .bomb-player-name div, .bomb-scored div, .bomb-team div, .table-title {
+    header, footer, .player-info, .bomb-position div, .bomb-player-name div, .bomb-scored div, .bomb-team div, .table-title, .dropbtn, .sign-in-list, .lang-list {
         background: var(--main-sf-color);
     }
     input[type=text], input[type=tel], input[type=email], input[type=password] {
@@ -2095,9 +2095,6 @@ input.invalid {
     .forgot-success {
         color: #03dac6;
         text-align: center;
-    }
-    footer {
-        background-color: var(--main-sf-color);
     }
     .button-contained-primary {
         color: rgba(0, 0, 0, 0.87);
