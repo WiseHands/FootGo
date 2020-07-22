@@ -327,29 +327,22 @@ function percentageForTeamB(teamAValue, teamBValue) {
 function calculatePercentage(resultForTeamA, resultForTeamB, progressBarForTeamA, progressBarForTeamB) {
     if (resultForTeamA) {
         progressBarForTeamA.style.width = resultForTeamA + '%';
-        console.log('RESULT ' + resultForTeamA + resultForTeamB)
-        progressBarForTeamA.classList.add("bar-more");
-        console.log(resultForTeamA);
+        if (resultForTeamA > resultForTeamB) {
+            progressBarForTeamA.classList.add("bar-more");
+            progressBarForTeamB.classList.add("bar-less");
+        }
+        if (resultForTeamA === resultForTeamB) {
+            progressBarForTeamA.classList.add("bar-less");
+            progressBarForTeamB.classList.add("bar-less");
+        }
     }
 
     if (resultForTeamB) {
         progressBarForTeamB.style.width = resultForTeamB + '%';
-        progressBarForTeamB.classList.add("bar-less");
-        console.log(resultForTeamB);
-    }
-
-    if (resultForTeamA < 100) {
-        const resultForTeamB = (100 - resultForTeamA);
-        progressBarForTeamB.style.width = resultForTeamB + '%';
-        progressBarForTeamB.classList.add("bar-less");
-        console.log(resultForTeamB);
-    }
-
-    if (resultForTeamB < 100) {
-        const resultForTeamA = (100 - resultForTeamB);
-        progressBarForTeamA.style.width = resultForTeamA + '%';
-        progressBarForTeamA.classList.add("bar-more");
-        console.log(resultForTeamA);
+        if (resultForTeamB > resultForTeamA) {
+            progressBarForTeamB.classList.add("bar-more");
+            progressBarForTeamA.classList.add("bar-less");
+        }
     }
 }
 
