@@ -499,7 +499,6 @@ input[type=text], input[type=tel], input[type=email], input[type=number], select
     color: #0ca38a !important;
 }
 .tour-score {
-/*    width: 65px;*/
     padding: 0 20px;
     font-size: 1.5rem;
 }
@@ -1025,6 +1024,13 @@ input[type="file"] {
     }
     .top-score {
         width: 65px;
+    }
+    .tour-score {
+        padding: 0 10px;
+        font-size: 0.9rem;
+    }
+    .tour-team1 p, .tour-team2 p {
+        width: 80%;
     }
 
 }

@@ -1738,6 +1738,7 @@ input.invalid {
     .header-first-block {
         width: 100%;
         flex-direction: row-reverse;
+        align-items: center;
     }
     .header-null {
         flex-grow: 1;
