@@ -1193,7 +1193,7 @@ input[invalid-input] {
     width: 0;
 }
 .bar-more {
-    background-color: red;
+    background-color: #f44336;
 }
 .bar-less {
     background-color: #000;
@@ -1478,9 +1478,9 @@ footer {
 }
 .description-text {
     margin: 0 auto !important;
-    text-align: left;
+/*    text-align: left;
     padding: 1rem;
-    width: 60%;
+    width: 60%;*/
 }
 .description-text span {
     word-break: break-word;
@@ -1927,78 +1927,77 @@ input.invalid {
 /*Dark-mode*/
 @media (prefers-color-scheme: dark) {
 :root {
-  --main-bg-color: #121212;
-  --main-text-color: #e1e1e1;
-  --main-sf-color: #1d1d1d;
-  --main-on-button-color: #bb86fc;
-  --main-on-button-color-inactive: #3a2d49;
-  --main-text-on-button-color: #000000;
-  --main-text-on-button-color-inactive: #dab1fe;
-  --main-input-field: #3d3d463d;
+    --main-bg-color: #121212;
+    --main-text-color: #e1e1e1;
+    --main-sf-color: #1d1d1d;
+    --main-on-button-color: #bb86fc;
+    --main-on-button-color-inactive: #3a2d49;
+    --main-text-on-button-color: #000000;
+    --main-text-on-button-color-inactive: #dab1fe;
+    --main-input-field: #3d3d463d;
+    --main-progress-bar-less-color: #9f57e2;
+    --main-progress-bar-more-color: #ff0266;
 }
-  body {
-      background: var(--main-bg-color);
-  }
-  .main-head-title .main-head-logo {
-      background-image: url(img/footgo-light-icon.png);
-  }
-  .main-photo, .prev-seasons, .registration-photo, .login-page, .registration-page {
-      background: var(--main-bg-color);
-  }
-  .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom, .login-form, .user-registration-form, .photo-team-bg {
-      background: var(--main-sf-color);
-      color: var(--main-text-color);
-  }
-  .request-block {
-      background: var(--main-on-button-color-inactive);
-      color: var(--main-text-on-button-color-inactive);
-  }
-  .request-block:hover {
-      background: var(--main-on-button-color);
-      color: #181220;
-  }
-  .main-when ul span {
-      background: rgba(255,255,255,0.4);
-  }
-  .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3, .bomb-head p, .season-list, .dropbtn, .table-header, .goals p, .table-head p, .matches-full h1 {
-      color: var(--main-text-color);
-  }
-  .main-about-team img {
-      background: url(/img/team-icon-dark.png) no-repeat;
-  }
-  .main-about-match img {
-      background: url(/img/soccer-ball-dark.png) no-repeat;
-  }
-  .main-about-team img, .main-about-match img {
-      display: block;
-      box-sizing: border-box;
-      background-size: 100%;
-      padding-left: 72px;
-      height: 72px;
-  }
-  .light {
-      display: none !important;
-  }
-  .main-head-teamlogo img {
-      display: block;
-      box-sizing: border-box;
-  }
-  .main-where iframe, .instagram-iframe iframe {
-      filter: contrast(100%) brightness(40%);
-  }
-  .description-text {
-      box-shadow: none;
-  }
-  .res-teams img {
-      display: block;
-      box-sizing: border-box;
-  }
-  .table-title, .bomb-title {
-      background: rgba(39, 42, 48, 0.7);
-  }
-/*  .table-position div:nth-of-type(n+5), .table-team-name div:nth-of-type(n+5), .table-games div:nth-of-type(n+5), .table-wins div:nth-of-type(n+5), .table-draws div:nth-of-type(n+5), .table-defeats div:nth-of-type(n+5), .table-goals div:nth-of-type(n+5), .table-points div:nth-of-type(n+5) {
-      background: rgba(13, 13, 13, 0.7);
-  }*/
+    body {
+        background: var(--main-bg-color);
+    }
+    .main-head-title .main-head-logo {
+        background-image: url(img/footgo-light-icon.png);
+    }
+    .main-photo, .prev-seasons, .registration-photo, .login-page, .registration-page {
+        background: var(--main-bg-color);
+    }
+    .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom, .login-form, .user-registration-form, .photo-team-bg {
+        background: var(--main-sf-color);
+        color: var(--main-text-color);
+    }
+    .request-block {
+        background: var(--main-on-button-color-inactive);
+        color: var(--main-text-on-button-color-inactive);
+    }
+    .request-block:hover {
+        background: var(--main-on-button-color);
+        color: #181220;
+    }
+    .main-when ul span {
+        background: rgba(255,255,255,0.4);
+    }
+    .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3, .bomb-head p, .season-list, .dropbtn, .table-header, .goals p, .table-head p, .matches-full h1 {
+        color: var(--main-text-color);
+    }
+    .main-about-team img {
+        background: url(/img/team-icon-dark.png) no-repeat;
+    }
+    .main-about-match img {
+        background: url(/img/soccer-ball-dark.png) no-repeat;
+    }
+    .main-about-team img, .main-about-match img {
+        display: block;
+        box-sizing: border-box;
+        background-size: 100%;
+        padding-left: 72px;
+        height: 72px;
+    }
+    .light {
+        display: none !important;
+    }
+    .main-head-teamlogo img {
+        display: block;
+        box-sizing: border-box;
+    }
+    .main-where iframe, .instagram-iframe iframe {
+        filter: contrast(100%) brightness(40%);
+    }
+    .description-text {
+        box-shadow: none;
+    }
+    .res-teams img {
+        display: block;
+        box-sizing: border-box;
+    }
+    .table-title, .bomb-title {
+        background: rgba(39, 42, 48, 0.7);
+    }
     .table-position div:nth-of-type(n+2), .table-team-name div:nth-of-type(n+2), .table-games div:nth-of-type(n+2), .table-wins div:nth-of-type(n+2), .table-draws div:nth-of-type(n+2), .table-defeats div:nth-of-type(n+2), .table-goals div:nth-of-type(n+2), .table-points div:nth-of-type(n+2), .bomb-position div:nth-of-type(n+2), .bomb-player-name div:nth-of-type(n+2), .bomb-scored div:nth-of-type(n+2), .bomb-team div:nth-of-type(n+2) {
         background: rgba(13, 13, 13, 0.7);
     }
@@ -2106,6 +2105,15 @@ input.invalid {
     }
     .button-typography-color-primary {
         color: #90caf9;
+    }
+    .bar-less {
+        background: var(--main-progress-bar-less-color);
+    }
+    .bar-more {
+        background: var(--main-progress-bar-more-color);
+    }
+    .progress-wrap {
+        background: var(--main-text-color);
     }
 }
 /*Dark-mode end*/

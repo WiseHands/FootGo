@@ -299,8 +299,8 @@
 
   gtag('config', 'UA-39722519-3');
 </script>
+<script src="/matchStatistics.js" type="text/javascript"></script>
 <script th:inline="javascript">
-
 const strikesTeamA = document.querySelector("#strikes-team1-bar");
 const strikesTeamB = document.querySelector("#strikes-team2-bar");
 
@@ -342,43 +342,6 @@ const cornerKicksTeamB = document.querySelector("#corner-kicks-team2-bar");
 const cornerKicksForTeamA = percentageForTeamA([[${game.teamAStats?.cornerKicks}]], [[${game.teamBStats?.cornerKicks}]]);
 const cornerKicksForTeamB = percentageForTeamB([[${game.teamAStats?.cornerKicks}]], [[${game.teamBStats?.cornerKicks}]]);
 calculatePercentage(cornerKicksForTeamA, cornerKicksForTeamB, cornerKicksTeamA, cornerKicksTeamB);
-
-function percentageForTeamA(teamAValue, teamBValue) {
-    sum = teamAValue + teamBValue;
-    if (teamAValue < sum) {
-        return Math.round((teamAValue / sum) * 100);
-    }
-}
-
-function percentageForTeamB(teamAValue, teamBValue) {
-    sum = teamAValue + teamBValue;
-    if (teamBValue < sum) {
-        return Math.round((teamBValue / sum) * 100);
-    }
-}
-
-function calculatePercentage(resultForTeamA, resultForTeamB, progressBarForTeamA, progressBarForTeamB) {
-    if (resultForTeamA) {
-        progressBarForTeamA.style.width = resultForTeamA + '%';
-        if (resultForTeamA > resultForTeamB) {
-            progressBarForTeamA.classList.add("bar-more");
-            progressBarForTeamB.classList.add("bar-less");
-        }
-        if (resultForTeamA === resultForTeamB) {
-            progressBarForTeamA.classList.add("bar-less");
-            progressBarForTeamB.classList.add("bar-less");
-        }
-    }
-
-    if (resultForTeamB) {
-        progressBarForTeamB.style.width = resultForTeamB + '%';
-        if (resultForTeamB > resultForTeamA) {
-            progressBarForTeamB.classList.add("bar-more");
-            progressBarForTeamA.classList.add("bar-less");
-        }
-    }
-}
-
 </script>
 </body>
 </html>
