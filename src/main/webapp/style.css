@@ -1484,6 +1484,7 @@ footer {
 }
 .description-text span {
     word-break: break-word;
+    line-height: 1.5rem;
 }
 .cards {
     padding: 20px 0 20px 0;
