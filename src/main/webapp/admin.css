@@ -1027,7 +1027,6 @@ input[type="file"] {
     }
     .tour-score {
         padding: 0 10px;
-        font-size: 0.9rem;
     }
     .tour-team1 p, .tour-team2 p {
         width: 80%;
@@ -1143,6 +1142,9 @@ input[type=text], input[type=tel], input[type=email], input[type=number], select
 }
 .team-defeat {
     background: #cf6679;
+}
+.main-input-button-display:hover, .main-input-button-all:hover {
+    background-color: #057764 !important;
 }
 
 }
