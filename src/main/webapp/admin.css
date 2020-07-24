@@ -1107,44 +1107,42 @@ ul.menu-breadcrumb li a:hover {
   --main-input-field: #3d3d463d;
   --main-admin-bg-color: #005446;
 }
-
-.request-block {
-    background: var(--main-sf-color);
-    color: var(--main-text-color);
-}
-body, .modal-content {
-    background-color: var(--main-admin-bg-color);
-}
-body p, body a, .requests p, ul.menu-breadcrumb li a, ul.menu-breadcrumb li + li:before, ul.menu-breadcrumb li a:hover, .label-check-text, .all-requests h1, .modal-header h2, .team-request h3, .tour-score #goalBtn, .container, .select-team {
-    color: var(--main-text-color);
-}
-input[type=text], input[type=tel], input[type=email], input[type=number], select, textarea {
-    background: var(--main-sf-color);
-    color: var(--main-text-color);
-}
-.league-edit input[type=button], .main-input-button, .save-video-button {
-    background-color: var(--main-on-button-color-inactive);
-    color: var(--main-text-on-button-color-inactive);
-}
-.main-input-button:hover:enabled, .save-video-button:hover:enabled {
-    background-color: var(--main-on-button-color);
-    color: #181220;
-}
-.main-input-button-del:hover {
-    background-color: #cf6679 !important;
-    color: #181220;
-}
-.delete-team-button .click-button {
-    color: #cf6679;
-}
-.delete-team-button .click-button:hover {
-    background-color: #cf667933;
-}
-.team-defeat {
-    background: #cf6679;
-}
-.main-input-button-display:hover, .main-input-button-all:hover {
-    background-color: #057764 !important;
-}
-
+    .request-block {
+        background: var(--main-sf-color);
+        color: var(--main-text-color);
+    }
+    body, .modal-content {
+        background-color: var(--main-admin-bg-color);
+    }
+    body p, body a, .requests p, ul.menu-breadcrumb li a, ul.menu-breadcrumb li + li:before, ul.menu-breadcrumb li a:hover, .label-check-text, .all-requests h1, .modal-header h2, .team-request h3, .tour-score #goalBtn, .container, .select-team {
+        color: var(--main-text-color);
+    }
+    input[type=text], input[type=tel], input[type=email], input[type=number], select, textarea {
+        background: var(--main-sf-color);
+        color: var(--main-text-color);
+    }
+    .league-edit input[type=button], .main-input-button, .save-video-button {
+        background-color: var(--main-on-button-color-inactive);
+        color: var(--main-text-on-button-color-inactive);
+    }
+    .main-input-button:hover:enabled, .save-video-button:hover:enabled {
+        background-color: var(--main-on-button-color);
+        color: #181220;
+    }
+    .main-input-button-del:hover {
+        background-color: #cf6679 !important;
+        color: #181220;
+    }
+    .delete-team-button .click-button {
+        color: #cf6679;
+    }
+    .delete-team-button .click-button:hover {
+        background-color: #cf667933;
+    }
+    .team-defeat {
+        background: #cf6679;
+    }
+    .main-input-button-display:hover, .main-input-button-all:hover {
+        background-color: #057764 !important;
+    }
 }

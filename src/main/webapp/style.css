@@ -779,7 +779,7 @@ footer{
     background-position: center;
     background-size: contain;
     opacity: 1;
-/*    height: 100%;*/
+    min-height: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -790,7 +790,7 @@ footer{
     background-position: center;
     background-size: cover;
     opacity: 1;
-    height: 100vh;
+    height: auto;
 }
 .results {
     max-width: 820px;
@@ -900,13 +900,11 @@ footer{
     display: flex;
     width: 1150px;
     margin: 0 auto;
+    min-height: 100%;
 }
 .score-tables {
     padding: 15px 0 10px 0;
     width: 35%;
-}
-.vs-container {
-/*    width: 70%;*/
 }
 .results-block p, .table-header {
     text-align: center;
@@ -1215,6 +1213,7 @@ input[invalid-input] {
     margin: 0 auto;
     max-width: 800px;
     margin-bottom: 20px;
+    width: 100%;
 }
 .all-players {
     display: flex;

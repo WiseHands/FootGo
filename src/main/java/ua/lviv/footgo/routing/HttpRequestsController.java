@@ -16,6 +16,7 @@ import ua.lviv.footgo.service.TopScorerService;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -202,8 +203,10 @@ public class HttpRequestsController {
         /*List<Team> team = league.getTeamList();*/
 
 /*        Team team = teamRepository.findById(teamId).get();*/
+        List<Game> gameList = gameFinder.findAllGamesForTeam(team);
+        gameList.sort(Comparator.comparing(Game::getGameTime));
 
-        model.addAttribute("gameList", gameFinder.findAllGamesForTeam(team));
+        model.addAttribute("gameList", gameList);
         model.addAttribute("team", team);
         /*List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         model.addAttribute("league", leagueList.get(0));*/
@@ -277,7 +280,10 @@ public class HttpRequestsController {
 
         Team team = teamRepository.findById(teamId).get();
 
-        model.addAttribute("gameList", gameFinder.findAllGamesForTeam(team));
+        List<Game> gameList = gameFinder.findAllGamesForTeam(team);
+        gameList.sort(Comparator.comparing(Game::getGameTime));
+
+        model.addAttribute("gameList", gameList);
         model.addAttribute("team", team);
 /*        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         model.addAttribute("league", leagueList.get(0));*/

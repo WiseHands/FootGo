@@ -101,7 +101,7 @@
 				</div>
 			</div>
 		</div>
-		<div th:if="${game.isNoTechnicalDefeat() == true}" class="tour-number goals">
+		<div th:if="${game.isNoTechnicalDefeat() == true} AND ${!#lists.isEmpty(goals)}" class="tour-number goals">
 			<p th:text="#{goals}"></p>
 		</div>
 		<div class="center-text empty-text-error" th:if="${game.isTeamAHasTechnicalDefeat() == true}">
