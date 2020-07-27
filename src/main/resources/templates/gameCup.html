@@ -107,10 +107,10 @@
 				</div>
 			</div>
 		</div>
-		<div th:if="${game.isNoTechnicalDefeat() == true} AND ${!#lists.isEmpty(goals)}" class="tour-number goals">
+		<div th:if="${game.isNoTechnicalDefeat() == true} AND ${!#lists.isEmpty(game.teamAGoals) || !#lists.isEmpty(game.teamBGoals)}" class="tour-number goals">
 			<p th:text="#{goals}"></p>
 		</div>
-				<div class="center-text" th:if="${game.isTeamAHasTechnicalDefeat() == true}">
+		<div class="center-text" th:if="${game.isTeamAHasTechnicalDefeat() == true}">
 			<span th:if="${#locale.language == 'uk'}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.firstTeam.teamName}">Team 1</span>
 			<span th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.firstTeam.getTeamNameTransliterated()}">Team 1</span>
 		</div>
@@ -275,7 +275,7 @@
 			<iframe width="500" height="281" th:attr="src=${game.videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
 		<div class="match-video video-description" th:if="${game.descriptionText != null} AND ${game.descriptionText != ''}">
-			<p th:text="#{matchDescription}"></p>
+			<p class="match-statistics-title" th:text="#{matchDescription}"></p>
 			<div class="results-container description-text">
 				<span th:text="${game.descriptionText}">
 					game.firstTeam.teamName

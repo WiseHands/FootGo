@@ -823,7 +823,7 @@ footer{
 }
 .results-container {
     display: flex;
-    width: 350px;
+    width: 450px;
     background-color: #fff;
     padding: 15px;
     border-radius: 5px;
@@ -1197,7 +1197,7 @@ input[invalid-input] {
     background-color: #000;
 }
 .match-video {
-    padding-top: 30px;
+    padding-top: 25px;
 }
 .match-video iframe {
     display: flex;
@@ -1207,7 +1207,6 @@ input[invalid-input] {
 .match-video p {
     text-align: center;
     font-size: 1.8rem;
-    margin-bottom: 1rem;
 }
 .team-players {
     margin: 0 auto;
