@@ -211,7 +211,7 @@ public class HttpRequestsController {
         /*List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         model.addAttribute("league", leagueList.get(0));*/
 
-        List<TeamResults> results = resultService.getResults(true);
+        List<TeamResults> results = resultService.getResultsByLeague(true, leagueId);
         Integer position = 1;
         for(int i=0; i<results.size(); i++) {
             TeamResults result = results.get(i);
@@ -288,7 +288,7 @@ public class HttpRequestsController {
 /*        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         model.addAttribute("league", leagueList.get(0));*/
 
-        List<TeamResults> results = resultService.getResults(true);
+        List<TeamResults> results = resultService.getResultsByCup(true, cupId);
         Integer position = 1;
         for(int i=0; i<results.size(); i++) {
             TeamResults result = results.get(i);
