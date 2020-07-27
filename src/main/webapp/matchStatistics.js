@@ -1,13 +1,13 @@
 function percentageForTeamA(teamAValue, teamBValue) {
     sum = teamAValue + teamBValue;
-    if (teamAValue < sum) {
+    if (teamAValue <= sum) {
         return Math.round((teamAValue / sum) * 100);
     }
 }
 
 function percentageForTeamB(teamAValue, teamBValue) {
     sum = teamAValue + teamBValue;
-    if (teamBValue < sum) {
+    if (teamBValue <= sum) {
         return Math.round((teamBValue / sum) * 100);
     }
 }
