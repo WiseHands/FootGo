@@ -1031,7 +1031,7 @@ input[invalid-input] {
     margin: 0 auto;
     font-size: 1.8rem;
     font-weight: 600;
-    padding-bottom: 35px;
+    padding-top: 20px;
 }
 .button-container {
     display: flex;
