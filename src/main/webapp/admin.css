@@ -886,6 +886,9 @@ input[type="file"] {
     border: hidden;
     border-radius: 5px;
 }
+.ck-editor {
+    display: none;
+}
 .ck-editor p {
     color: var(--ck-color-base-text);
 }
