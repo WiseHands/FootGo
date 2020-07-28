@@ -877,7 +877,7 @@ input[type="file"] {
     font-weight: 600;
     padding-bottom: 1rem;
 }
-#descriptionText {
+#descriptionText, .ck-editor {
     padding: 1rem;
     margin-bottom: 0.5rem;
     width: 90%;
@@ -885,6 +885,9 @@ input[type="file"] {
     max-width: 100%;
     border: hidden;
     border-radius: 5px;
+}
+.ck-editor p {
+    color: var(--ck-color-base-text);
 }
 .card {
   display: inline-block;

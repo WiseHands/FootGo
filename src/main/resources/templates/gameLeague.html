@@ -65,6 +65,9 @@
 		<div class="tour-number">
 			<p><span th:text="#{tour} + ' ' + ${game.tour.tourNumber}"></span></p>
 		</div>
+		<div class="date-time">
+			<p th:text="${game.formatDate()} + ', ' + ${game.formatTime()}"></p>
+		</div>
 		<div class="review-match">
 			<div class="review-head">
 				<div class="review-team1">

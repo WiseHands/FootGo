@@ -772,6 +772,11 @@ footer{
 .bomb-container {
     margin-bottom: 2em;
 }
+.date-time {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
 .results-full {
 /*    background: url("img/foot66.jpg");*/
     background: #f7f7f5;
