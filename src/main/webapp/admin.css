@@ -877,7 +877,7 @@ input[type="file"] {
     font-weight: 600;
     padding-bottom: 1rem;
 }
-#descriptionText, .ck-editor {
+#descriptionText {
     padding: 1rem;
     margin-bottom: 0.5rem;
     width: 90%;
@@ -885,12 +885,23 @@ input[type="file"] {
     max-width: 100%;
     border: hidden;
     border-radius: 5px;
+    display: none;
 }
 .ck-editor {
-    display: none;
+    overflow: hidden;
+    max-width: var(--ck-sample-container-width);
 }
 .ck-editor p {
     color: var(--ck-color-base-text);
+}
+ul li {
+    list-style: inside;
+    line-height: 1.6em;
+}
+ol li {
+    list-style: inside;
+    list-style-type: decimal;
+    line-height: 1.6em;
 }
 .card {
   display: inline-block;
