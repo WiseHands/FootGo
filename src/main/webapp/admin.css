@@ -898,6 +898,7 @@ input[type="file"] {
     white-space: normal;
     margin: revert;
     padding: revert;
+    line-height: 1.6em;
 }
 .ck-editor p {
     color: var(--ck-color-base-text);
