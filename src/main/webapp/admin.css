@@ -889,7 +889,15 @@ input[type="file"] {
 }
 .ck-editor {
     overflow: hidden;
-    max-width: var(--ck-sample-container-width);
+    width: 100%;
+    max-width: 800px;
+    min-height: var(--ck-sample-editor-min-height);
+}
+.ck-editor p {
+    font-size: inherit;
+    white-space: normal;
+    margin: revert;
+    padding: revert;
 }
 .ck-editor p {
     color: var(--ck-color-base-text);
