@@ -912,6 +912,10 @@ ol li {
     list-style-type: decimal;
     line-height: 1.6em;
 }
+.input-button {
+    display: flex;
+    justify-content: center;
+}
 .card {
   display: inline-block;
   width: 0.7em;

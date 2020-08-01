@@ -160,8 +160,14 @@
             <div class="add-video-link">
                 <input id="technicalDefeat" class="save-video-button" type="button" value="Зарахувати технічну поразку">
                 <p class="description-text">Опис матчу</p>
-                <div id="editor"></div>
-                <div id="word-count"></div>
+                <form  action="#" th:action="@{/api/game/} + ${gameId} + @{/setdesctext}" method="post" enctype="application/x-www-form-urlencoded">
+                <textarea name="content" id="editor">
+                </textarea>
+                    <p class="input-button">
+                        <input class="save-video-button" type="submit" value="Зберегти">
+                    </p>
+                </form>
+                <!--<div id="editor"></div>-->
                 <textarea rows="10" cols="70" id="descriptionText" name="addDescText" placeholder="Текст опису матчу" required=""></textarea>
                 <input class="save-video-button" type="button" value="Зберегти" onclick="putDescTextById()">
                 <div id="textSuccess" class="player-bg"><p>Текст успішно збережено!</p></div>
@@ -407,7 +413,6 @@
                 console.log("gameTime", data);
             });
         }
-
     </script>
     <script src="/ckeditor5/build/ckeditor.js"></script>
     <script>
