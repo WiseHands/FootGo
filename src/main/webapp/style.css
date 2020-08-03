@@ -1489,7 +1489,7 @@ footer {
     word-break: break-word;
     line-height: 1.5rem;
 }
-.description-text h1 {
+.description-text h1, .description-text h2 {
     padding-top: 0;
     padding-bottom: 10px;
 }

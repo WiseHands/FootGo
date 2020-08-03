@@ -897,7 +897,7 @@ input[type="file"] {
 .ck-editor p {
     font-size: inherit;
     white-space: normal;
-    margin: revert;
+/*    margin: revert;*/
     padding: revert;
     line-height: 1.6em;
 }
