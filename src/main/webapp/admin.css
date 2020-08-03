@@ -767,7 +767,7 @@ span.clear-technical-defeat {
 }
 .add-video-link p {
     font-size: 0.8rem;
-    padding: 5px 0 5px;
+    padding: 0 0 7px;
 }
 .add-video-link input[type=text] {
     width: 360px;
@@ -891,6 +891,7 @@ input[type="file"] {
     overflow: hidden;
     width: 100%;
     max-width: 800px;
+    min-width: 800px;
     min-height: var(--ck-sample-editor-min-height);
 }
 .ck-editor p {

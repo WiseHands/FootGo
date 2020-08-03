@@ -200,10 +200,10 @@ public class GameApiController {
         gameRepository.save(game);
     }
 
-    @PostMapping(value = "/{gameId}/setdesctext", consumes = "application/x-www-form-urlencoded", produces = "application/x-www-form-urlencoded")
-    public void setDescriptionText(@PathVariable Long gameId, @RequestParam String content) {
+    @PutMapping(value = "/{gameId}/setdesctext", consumes = "application/json", produces = "application/json")
+    public void setDescriptionText(@PathVariable Long gameId, @RequestBody String descText) {
         Game game = gameRepository.findById(gameId).get();
-        game.setDescriptionText(content);
+        game.setDescriptionText(descText);
         gameRepository.save(game);
     }
 

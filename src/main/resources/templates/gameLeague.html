@@ -274,9 +274,9 @@
 		<div class="match-video video-description" th:if="${game.descriptionText != null} AND ${game.descriptionText != ''}">
 			<p class="match-statistics-title" th:text="#{matchDescription}"></p>
 			<div class="results-container description-text">
-				<span th:text="${game.descriptionText}">
+				<div th:utext="${game.descriptionText}">
 					game.firstTeam.teamName
-				</span>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -160,15 +160,8 @@
             <div class="add-video-link">
                 <input id="technicalDefeat" class="save-video-button" type="button" value="Зарахувати технічну поразку">
                 <p class="description-text">Опис матчу</p>
-                <form  action="#" th:action="@{/api/game/} + ${gameId} + @{/setdesctext}" method="post" enctype="application/x-www-form-urlencoded">
-                <textarea name="content" id="editor">
-                </textarea>
-                    <p class="input-button">
-                        <input class="save-video-button" type="submit" value="Зберегти">
-                    </p>
-                </form>
-                <!--<div id="editor"></div>-->
-                <textarea rows="10" cols="70" id="descriptionText" name="addDescText" placeholder="Текст опису матчу" required=""></textarea>
+                <textarea name="addDescText" id="editor"></textarea>
+                <!--<textarea rows="10" cols="70" id="descriptionText" name="addDescText" placeholder="Текст опису матчу" required=""></textarea>-->
                 <input class="save-video-button" type="button" value="Зберегти" onclick="putDescTextById()">
                 <div id="textSuccess" class="player-bg"><p>Текст успішно збережено!</p></div>
                 <div id="textError" class="player-bg"><p>Помилка при додаванні тексту! Зв'яжіться з з адміністраторами footgo.league@gmail.com </p></div>
@@ -340,59 +333,8 @@
             </div>
 
         </div>
-
-    <script th:inline="javascript">
-        const path = location.toString();
-        let url = new URL(path);
-        let searchParams = new URLSearchParams(url.search);
-
-        const id = searchParams.get('uuid');
-
-        let apiUrl = '/api/game/' + gameId;
-        fetch(apiUrl, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        }).then(function(response){
-            console.log(response)
-            return  response.json();
-        }).then(function(data) {
-            window.gameData = data;
-            document.getElementById('match-over').checked = data.completed;
-            document.getElementById('videoLink').value = data.videoUrl;
-            document.getElementById('descriptionText').value = data.descriptionText;
-
-            formattingGameTime(data.gameTime);
-            console.log(data);
-        });
-
-        function formattingGameTime(gameTimeISO){
-            let date = new Date(gameTimeISO);
-            console.log("time date from server", date);
-            let year = date.getFullYear();
-            let month = date.getMonth()+1;
-            let day = date.getDate();
-            let minutes = date.getMinutes();
-
-            if (day < 10) {
-                day = '0' + day;
-            }
-            if (month < 10) {
-                month = '0' + month;
-            }
-            if (minutes < 10) {
-                minutes = '0' + minutes;
-            }
-            let gameTime = year + "-" + month + "-" + day + " " +
-                            date.getHours() + ":" + minutes;
-            document.getElementById('gameDateTime').value = gameTime;
-
-        }
-    </script>
     <script src="/modalScript.js"></script>
     <script src="/putVideoUrl.js" type="text/javascript"></script>
-    <script src="/putDescText.js" type="text/javascript"></script>
     <script>
         flatpickr("#gameDateTime", {enableTime: true});
         function setGameDateTime() {
@@ -469,5 +411,56 @@
 				console.error( error );
 			} );
 	</script>
+    <script src="/putDescText.js" type="text/javascript"></script>
+        <script th:inline="javascript">
+        const path = location.toString();
+        let url = new URL(path);
+        let searchParams = new URLSearchParams(url.search);
+
+        const id = searchParams.get('uuid');
+
+        let apiUrl = '/api/game/' + gameId;
+        fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }).then(function(response){
+            console.log(response)
+            return  response.json();
+        }).then(function(data) {
+            window.gameData = data;
+            document.getElementById('match-over').checked = data.completed;
+            document.getElementById('videoLink').value = data.videoUrl;
+            editor.data.set(data.descriptionText);
+            //document.getElementById('editor').value = data.descriptionText;
+
+            formattingGameTime(data.gameTime);
+            console.log(data);
+        });
+
+        function formattingGameTime(gameTimeISO){
+            let date = new Date(gameTimeISO);
+            console.log("time date from server", date);
+            let year = date.getFullYear();
+            let month = date.getMonth()+1;
+            let day = date.getDate();
+            let minutes = date.getMinutes();
+
+            if (day < 10) {
+                day = '0' + day;
+            }
+            if (month < 10) {
+                month = '0' + month;
+            }
+            if (minutes < 10) {
+                minutes = '0' + minutes;
+            }
+            let gameTime = year + "-" + month + "-" + day + " " +
+                            date.getHours() + ":" + minutes;
+            document.getElementById('gameDateTime').value = gameTime;
+
+        }
+    </script>
     </body>
 </html>

@@ -1,14 +1,18 @@
 function putDescTextById() {
-    let desctext = document.getElementById('descriptionText').value;
-    let desctext_res = encodeURI(desctext);
+    //let desctext = document.getElementById('descriptionText').value;
+    let desctext = editor.getData();
+    console.log(desctext);
+    //let desctext_res = encodeURI(desctext);
 
-    let params = '?descText=' + desctext_res;
-    let apiUrl = '/api/game/' + gameId + '/setdesctext' + params;
+    //let params = '?descText=' + desctext_res;
+    let params = desctext;
+    let apiUrl = '/api/game/' + gameId + '/setdesctext'/* + params*/;
 
     fetch(apiUrl, {
       method: 'PUT',
+      body: params,
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       }
     })
     .then(function(response){

@@ -830,7 +830,7 @@ footer{
     display: flex;
     width: 450px;
     background-color: #fff;
-    padding: 15px;
+/*    padding: 15px;*/
     border-radius: 5px;
     margin: 0 7px 7px 0;
 /*    margin: 0 0 10px 0;
@@ -1489,6 +1489,24 @@ footer {
     word-break: break-word;
     line-height: 1.5rem;
 }
+.description-text h1 {
+    padding-top: 0;
+    padding-bottom: 10px;
+}
+.description-text div > ul > li, .description-text div > ol > li {
+    line-height: 1.6em;
+}
+.table table {
+    border-collapse: collapse;
+}
+.table td, .table th {
+    border: 1px solid;
+    min-width: 2em;
+    padding: .4em;
+}
+.description-text div {
+    width: 100%;
+}
 .cards {
     padding: 20px 0 20px 0;
 }
@@ -2119,6 +2137,10 @@ input.invalid {
     }
     .progress-wrap {
         background: var(--main-text-color);
+    }
+    .table tr td, .table tr th {
+        color: var(--main-text-color);
+        border-color: var(--main-text-color);
     }
 }
 /*Dark-mode end*/
