@@ -271,7 +271,7 @@
 			<p th:text="#{matchVideo}"></p>
 			<iframe width="500" height="281" th:attr="src=${game.videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
-		<div class="match-video video-description" th:if="${game.descriptionText != null} AND ${game.descriptionText != ''}">
+		<div class="match-video video-description" th:if="${game.descriptionText != null} AND ${game.descriptionText != ''} AND ${game.descriptionText != ' '}">
 			<p class="match-statistics-title" th:text="#{matchDescription}"></p>
 			<div class="results-container description-text">
 				<div th:utext="${game.descriptionText}">

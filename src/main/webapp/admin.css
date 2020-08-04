@@ -770,7 +770,8 @@ span.clear-technical-defeat {
     padding: 0 0 7px;
 }
 .add-video-link input[type=text] {
-    width: 360px;
+    width: 100%;
+    max-width: 360px;
 }
 .save-video-button {
     font-size: 1.3rem;
@@ -888,11 +889,11 @@ input[type="file"] {
     display: none;
 }
 .ck-editor {
-    overflow: hidden;
-    width: 100%;
-    max-width: 800px;
-    min-width: 800px;
+    width: 100% !important;
+    max-width: 100%;
+    min-width: 300px;
     min-height: var(--ck-sample-editor-min-height);
+    padding: 15px !important;
 }
 .ck-editor p {
     font-size: inherit;

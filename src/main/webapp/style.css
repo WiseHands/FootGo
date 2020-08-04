@@ -1507,6 +1507,10 @@ footer {
 .description-text div {
     width: 100%;
 }
+.description-text p {
+    font-size: inherit;
+    word-break: break-word;
+}
 .cards {
     padding: 20px 0 20px 0;
 }
