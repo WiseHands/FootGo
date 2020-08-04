@@ -1,8 +1,5 @@
 function putDescTextById() {
-    //let desctext = document.getElementById('descriptionText').value;
     let desctext = editor.getData();
-    //let desctext_res = encodeURI(desctext);
-    //let params = '?descText=' + desctext_res;
     let params = desctext;
     if (!params) {
         params = " ";

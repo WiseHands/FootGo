@@ -1510,6 +1510,7 @@ footer {
 .description-text p {
     font-size: inherit;
     word-break: break-word;
+    text-align: inherit;
 }
 .cards {
     padding: 20px 0 20px 0;

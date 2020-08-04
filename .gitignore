@@ -31,3 +31,5 @@ application.properties
 .idea/*
 /.idea/
 classes/*
+/src/main/webapp/ckeditor5/build/
+/src/main/webapp/ckeditor5/node_modules/
