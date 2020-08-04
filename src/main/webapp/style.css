@@ -1511,6 +1511,7 @@ footer {
     font-size: inherit;
     word-break: break-word;
     text-align: inherit;
+    line-height: 2em;
 }
 .cards {
     padding: 20px 0 20px 0;
