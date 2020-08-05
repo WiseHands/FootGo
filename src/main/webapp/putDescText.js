@@ -4,7 +4,6 @@ function putDescTextById() {
     if (!params) {
         params = " ";
     }
-    console.log('PARAMS LOG ' + params)
     let apiUrl = '/api/game/' + gameId + '/setdesctext'/* + params*/;
 
     fetch(apiUrl, {

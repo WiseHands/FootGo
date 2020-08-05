@@ -1860,15 +1860,15 @@ input.invalid {
     }
 
     .review-team1 img, .review-team2 img {
-        width: 72px;
-        height: 72px;
+/*        width: 72px;*/
+        height: 75px;
     }
     .review-team1 p, .review-team2 p {
         font-size: 1.3rem;
         width: 120px;
     }
     .review-score p {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
     .results-container {
         width: 90% !important;
