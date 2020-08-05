@@ -826,7 +826,7 @@ footer{
 /*    margin: 0 auto;*/
     line-height: 2;
     text-align: center;
-    padding-top: 10px;
+/*    padding-top: 10px;*/
     font-weight: 600;
 }
 .results-container {
@@ -1062,7 +1062,8 @@ input[invalid-input] {
 }
 .review-head {
     display: flex;
-    justify-content: space-between;
+/*    justify-content: space-between;*/
+    justify-content: center;
     width: 500px;
     padding: 20px 0;
 }
@@ -1525,6 +1526,9 @@ footer {
 .goals p {
     margin: 0 auto;
 }
+.table-header {
+    padding-top: 20px;
+}
 .card-team-one {
   display: inline-block;
   width: 0.7em;
@@ -1564,6 +1568,127 @@ input.valid {
 input.invalid {
     border: 1px solid #b61936 !important;
     border-radius: 4px;
+}
+/* material text button start */
+.pure-material-button-text {
+    position: relative;
+/*    display: inline-block;*/
+/*    display: flex;
+    align-self: flex-end;*/
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    padding: 0 8px;
+    min-width: 64px;
+    height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
+    background-color: transparent;
+    font-family: var(--pure-material-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 36px;
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+}
+
+.pure-material-button-text::-moz-focus-inner {
+    border: none;
+}
+
+/* Overlay */
+.pure-material-button-text::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: currentColor;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* Ripple */
+.pure-material-button-text span {
+    position: absolute;
+    border-radius: 50%;
+    /* To make it round */
+    background-color: rgba(33, 150, 243, 0.35);
+
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    /* for positioning */
+    margin-left: -50px;
+
+    animation: ripple 1s;
+    opacity: 0;
+}
+
+.button-link-more {
+    display: flex;
+    align-self: flex-end;
+    justify-content: flex-end;
+}
+
+/* Add animation */
+@keyframes ripple {
+    from {
+        opacity: 1;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(10);
+    }
+}
+
+/* Hover, Focus */
+.pure-material-button-text:hover::before {
+    opacity: 0.04;
+}
+
+/*.pure-material-button-text:focus::before {
+    opacity: 0.12;
+}*/
+
+.pure-material-button-text:hover:focus::before {
+    opacity: 0.16;
+}
+
+/* Active */
+.pure-material-button-text:active::after {
+    opacity: 0.16;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0s;
+}
+
+/* Disabled */
+.pure-material-button-text:disabled {
+    color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
+    background-color: transparent;
+    cursor: initial;
+}
+
+.pure-material-button-text:disabled::before {
+    opacity: 0;
+}
+
+.pure-material-button-text:disabled::after {
+    opacity: 0;
+}
+/* material text button end */
+.table-button {
+    display: flex;
+    max-width: 530px;
+    justify-content: flex-end;
+    margin: 0 auto;
 }
 @media screen and (max-width: 1160px) {
     .main-container {
@@ -1872,7 +1997,7 @@ input.invalid {
     }
     .results-container {
         width: 90% !important;
-        padding: 5px;
+        padding: 7px;
         margin: 7px 0;
     }
     .details-team1, .details-team2 {

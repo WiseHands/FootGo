@@ -26,6 +26,7 @@
             </div>
             <div class="header-text">
                 <a href="/signup" th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><p th:text="#{signup}"></p></a>
+<!-- menu button tournament changer -->
 <!--                <div th:if="${not #lists.isEmpty(season)}" class="season-list">
                     <button th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}" class="dropbtn">
                     </button>
@@ -86,6 +87,7 @@
                 <p th:text="#{home}"></p>
             </a>
         </div>
+<!-- menu button tournament changer -->
 <!--        <div th:if="${!#lists.isEmpty(season)}" class="season-list">
             <button th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}" class="dropbtn"></button>
             <button th:if="${#locale.language == 'uk'}" th:text="${season.name}" class="dropbtn"></button>

@@ -65,6 +65,9 @@
                     </div>
                 </div>
             </div>
+            <a th:href="'/league/' + ${leagueId} + '/results'" class="button-link-more" href="#">
+                <button class="pure-material-button-text" th:text="#{seeMore}"></button>
+            </a>
         </div>
         <div th:if="${not #lists.isEmpty(gameList)}" class="desktop">
             <div th:each="game : ${gameList}" class="matches-bg">
@@ -118,6 +121,9 @@
                     <span th:if="${#locale.language == 'uk'}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.secondTeam.teamName}" class="empty-text-error">Team 2</span>
                     <span th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.secondTeam.getTeamNameTransliterated()}" class="empty-text-error">Team 2</span>
                 </div>
+                <a th:href="'/league/' + ${leagueId} + '/results'" class="button-link-more" href="#">
+                    <button class="pure-material-button-text" th:text="#{seeMore}"></button>
+                </a>
             </div>
         </div>
 
@@ -156,12 +162,18 @@
                     <p th:text="${game.formatTime()}"></p>
                 </div>
             </div>
+            <div class="table-button">
+                <a th:href="'/league/' + ${leagueId} + '/results'" class="button-link-more" href="#">
+                    <button class="pure-material-button-text" th:text="#{seeMore}"></button>
+                </a>
+            </div>
         </div>
-        <div class="button-container">
+<!--        <div class="button-container">
             <a th:href="'/league/' + ${leagueId} + '/results'">
                 <input th:value="#{showAllButton}" class="reg-input-button match-all-button" type="button" value=""/>
             </a>
-        </div>
+        </div>-->
+
 <!--        <div th:each="tour : ${tourList}" class="results-block">
             &lt;!&ndash;<p>Найближчі ігри</p>&ndash;&gt;
             <div>
@@ -268,11 +280,16 @@
                 </div>
             </div>
         </div>
-        <div class="button-container">
+        <div class="table-button">
+            <a th:href="'/league/' + ${leagueId} + '/gametable'" class="button-link-more" href="#">
+                <button class="pure-material-button-text" th:text="#{seeMore}"></button>
+            </a>
+        </div>
+<!--        <div class="button-container">
             <a th:href="'/league/' + ${leagueId} + '/gametable'">
                 <input th:value="#{showAllButton}" class="reg-input-button match-all-button table-button" type="button" value=""/>
             </a>
-        </div>
+        </div>-->
         <p th:text="#{bestScorers}" class="table-header"></p>
         <div class="bomb league">
             <div class="bomb-position auto">
@@ -306,11 +323,16 @@
                 </div>
             </div>
         </div>
-        <div class="button-container">
+        <div class="table-button">
+            <a th:href="'/league/' + ${leagueId} + '/bombardier'" class="button-link-more" href="#">
+                <button class="pure-material-button-text" th:text="#{seeMore}"></button>
+            </a>
+        </div>
+<!--        <div class="button-container">
             <a th:href="'/league/' + ${leagueId} + '/bombardier'">
                 <input th:value="#{showAllButton}" class="reg-input-button match-all-button table-button" type="button" value=""/>
             </a>
-        </div>
+        </div>-->
     </div>
 </div>
 
