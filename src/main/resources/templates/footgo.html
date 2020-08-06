@@ -134,11 +134,19 @@
         <h1 th:text="#{mainHeaderTitle}"></h1>
         <h1 th:if="${not #lists.isEmpty(season)} AND ${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></h1>
         <h1 th:if="${not #lists.isEmpty(season)} AND ${#locale.language == 'uk'}" th:text="${season.name}"></h1>
-        <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}" class="button-container">
+        <div class="button-container">
+            <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}" class="table-button sign-up-button">
+                <a href="/signup" class="button-link-more">
+                    <button class="pure-material-button-text" th:text="#{signupButton}"></button>
+                </a>
+            </div>
+        </div>
+
+<!--        <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}" class="button-container">
             <a href="/signup">
                 <input th:value="#{signupButton}" class="reg-input-button match-all-button" type="button" value=""/>
             </a>
-        </div>
+        </div>-->
         <h1 th:text="#{tournamentIsEmpty}" th:if="${#lists.isEmpty(tournament)}" class="empty-text-error"></h1>
         <h1 th:text="#{seasonIsEmpty}" th:if="${#lists.isEmpty(season)}" class="empty-text-error"></h1>
         <!--            <div class="main-head-teamlogo">
@@ -155,11 +163,18 @@
     <div class="main-head-logo" alt="wiselogo"></div>
     <h1 th:if="${not #lists.isEmpty(season)} AND ${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></h1>
     <h1 th:if="${not #lists.isEmpty(season)} AND ${#locale.language == 'uk'}" th:text="${season.name}"></h1>
-    <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}" class="button-container">
+    <div class="button-container">
+        <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}" class="table-button sign-up-button">
+            <a href="/signup" class="button-link-more">
+                <button class="pure-material-button-text" th:text="#{signupButton}"></button>
+            </a>
+        </div>
+    </div>
+<!--    <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}" class="button-container">
         <a href="/signup">
             <input th:value="#{signupButton}" class="reg-input-button match-all-button" type="button" value=""/>
         </a>
-    </div>
+    </div>-->
     <h1 th:text="#{tournamentIsEmpty}" th:if="${#lists.isEmpty(tournament)}" class="empty-text-error"></h1>
     <h1 th:text="#{seasonIsEmpty}" th:if="${#lists.isEmpty(season)}" class="empty-text-error"></h1>
 </div>

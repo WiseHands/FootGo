@@ -1690,6 +1690,18 @@ input.invalid {
     justify-content: flex-end;
     margin: 0 auto;
 }
+.sign-up-form {
+    display: flex;
+    justify-content: center;
+}
+.sign-up-form button {
+    font-size: 1rem !important;
+    background-color: rgb(33 150 243 / 25%);
+}
+.sign-up-button button {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
 @media screen and (max-width: 1160px) {
     .main-container {
         width: 100%;
