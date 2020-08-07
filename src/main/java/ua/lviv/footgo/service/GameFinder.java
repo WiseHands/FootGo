@@ -65,8 +65,6 @@ public class GameFinder {
 
         gameList = gameList.stream().filter(Game::isCompleted).collect(Collectors.toList());
 
-        System.out.println("GAME_LIST " + gameList);
-
         Collections.sort(gameList, new Comparator<Game>() {
             public int compare(Game o1, Game o2) {
                 return o1.getTour().getTourNumber().compareTo(o2.getTour().getTourNumber());

@@ -1227,7 +1227,7 @@ input[invalid-input] {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding-top: 10px
+/*    padding-top: 10px*/
 }
 .all-players p {
     overflow: hidden;
