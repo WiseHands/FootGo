@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../../hamburger.css">
 </head>
 <body>
-<header>
+<header th:replace="fragments/header :: header"></header>
+<!--<header>
     <div class="header-full">
         <div class="header-first-block">
             <div class="header-icon">
@@ -52,11 +53,25 @@
         </div>
         <div><a class="link-item" th:href="'/cup/' + ${cup.id} + '/results'"><p th:text="#{results}"></p></a></div>
     </div>
-</header>
+</header>-->
 <div class="main-head main-head-results results-background">
     <div class="main-head-title league-page">
         <h1 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></h1>
         <h1 th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></h1>
+    </div>
+</div>
+<div id="bredcrumbs" class="section">
+    <div class="row">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col">
+                    <a th:text="#{home}" href="/" class="breadcrumb"></a>
+                    <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}" th:href="'/cup/' + ${cup.id}" class="breadcrumb"></a>
+                    <a th:if="${#locale.language == 'uk'}" th:text="${cup.name}" th:href="'/cup/' + ${cup.id}" class="breadcrumb"></a>
+                    <a th:text="#{match}" href="#!" class="breadcrumb"></a>
+                </div>
+            </div>
+        </nav>
     </div>
 </div>
 <div class="results-full">

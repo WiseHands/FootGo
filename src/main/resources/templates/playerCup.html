@@ -10,7 +10,8 @@
 	<script src="/imgPlaceholderSetScript.js" type="text/javascript"></script>
 </head>
 <body class="matches-full">
-<header>
+<header th:replace="fragments/header :: header"></header>
+<!--<header>
 	<div class="header-full">
 		<div class="header-first-block">
 			<div>
@@ -53,11 +54,25 @@
 		</div>
 		<div><a class="link-item" th:href="'/cup/' + ${cup.id} + '/player/' + ${player.id}"><p th:text="#{player}"></p></a></div>
 	</div>
-</header>
+</header>-->
 <div class="main-head main-head-results player-background">
 	<div class="main-head-title league-page">
 		<h1 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></h1>
 		<h1 th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></h1>
+	</div>
+</div>
+<div id="bredcrumbs" class="section">
+	<div class="row">
+		<nav>
+			<div class="nav-wrapper">
+				<div class="col">
+					<a th:text="#{home}" href="/" class="breadcrumb"></a>
+					<a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}" th:href="'/cup/' + ${cup.id}" class="breadcrumb"></a>
+					<a th:if="${#locale.language == 'uk'}" th:text="${cup.name}" th:href="'/cup/' + ${cup.id}" class="breadcrumb"></a>
+					<a th:text="#{player}" href="#!" class="breadcrumb"></a>
+				</div>
+			</div>
+		</nav>
 	</div>
 </div>
 <div class="player-card-main">

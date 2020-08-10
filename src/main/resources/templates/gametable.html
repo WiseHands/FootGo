@@ -9,7 +9,8 @@
     <link rel="shortcut icon" href="../../img/footgo-dark-icon.png" type="image/x-icon">
 </head>
 <body class="table-full">
-<header>
+<header th:replace="fragments/header :: header"></header>
+<!--<header>
     <div class="header-full">
         <div class="header-first-block">
             <div class="header-icon">
@@ -30,10 +31,10 @@
                     <p th:if="${#locale.language == 'uk'}" th:text="${league.name}"></p>
                 </a>
                 <a th:href="'/league/' + ${league.id} + '/gametable'"><p th:text="#{championshipTable}"></p></a>
-<!--                <a href="/signup" th:if="${league.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
+&lt;!&ndash;                <a href="/signup" th:if="${league.getIsSubmissionOpened() == false}"><p>Реєстрація</p></a>
                 <a href="/results"><p>Результати</p></a>
                 <a href="/gametable"><p>Таблиця</p></a>
-                <a href="/bombardier"><p>Бомбардири</p></a>-->
+                <a href="/bombardier"><p>Бомбардири</p></a>&ndash;&gt;
             </div>
         </div>
         <div class="header-right-block">
@@ -55,20 +56,32 @@
             </a>
         </div>
         <div><a class="link-item" th:href="'/league/' + ${league.id} + '/gametable'"><p th:text="#{championshipTable}"></p></a></div>
-<!--        <div th:if="${league.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
+&lt;!&ndash;        <div th:if="${league.getIsSubmissionOpened() == false}"><a class="link-item" href="/signup">Реєстрація</a></div>
         <div><a class="link-item" href="/results">Результати</a></div>
         <div><a class="link-item" href="/gametable">Таблиця</a></div>
-        <div><a class="link-item" href="/bombardier">Бомбардири</a></div>-->
+        <div><a class="link-item" href="/bombardier">Бомбардири</a></div>&ndash;&gt;
     </div>
-</header>
-
+</header>-->
 <div class="main-head main-head-results gametable-background">
     <div class="main-head-title league-page">
         <h1 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></h1>
         <h1 th:if="${#locale.language == 'uk'}" th:text="${league.name}"></h1>
     </div>
 </div>
-
+<div id="bredcrumbs" class="section">
+    <div class="row">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col">
+                    <a th:text="#{home}" href="/" class="breadcrumb"></a>
+                    <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}" th:href="'/league/' + ${league.id}" class="breadcrumb"></a>
+                    <a th:if="${#locale.language == 'uk'}" th:text="${league.name}" th:href="'/league/' + ${league.id}" class="breadcrumb"></a>
+                    <a th:text="#{championshipTable}" href="#!" class="breadcrumb"></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
 <div class="table-container">
     <div class="table-head">
         <p th:text="#{championshipTable}"></p>

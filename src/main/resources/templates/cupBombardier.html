@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="../../style.css">
     <link rel="shortcut icon" href="../../img/footgo-dark-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../../hamburger.css">
-
 </head>
 <body class="bomb-full">
-<header>
+<header th:replace="fragments/header :: header"></header>
+<!--<header>
     <div class="header-full">
         <div class="header-first-block">
             <div class="header-icon">
@@ -54,7 +54,7 @@
         </div>
         <div><a class="link-item" th:href="'/cup/' + ${cup.id} + '/bombardier'"><p th:text="#{bestScorers}"></p></a></div>
     </div>
-</header>
+</header>-->
 
 <div class="main-head main-head-results bombardier-background">
     <div class="main-head-title league-page">
@@ -62,7 +62,20 @@
         <h1 th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></h1>
     </div>
 </div>
-
+<div id="bredcrumbs" class="section">
+    <div class="row">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col">
+                    <a th:text="#{home}" href="/" class="breadcrumb"></a>
+                    <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}" th:href="'/cup/' + ${cup.id}" class="breadcrumb"></a>
+                    <a th:if="${#locale.language == 'uk'}" th:text="${cup.name}" th:href="'/cup/' + ${cup.id}" class="breadcrumb"></a>
+                    <a th:text="#{bestScorers}" href="#!" class="breadcrumb"></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
 <div class="bomb-container">
     <div class="bomb-head">
         <p th:text="#{bestScorers}"></p>

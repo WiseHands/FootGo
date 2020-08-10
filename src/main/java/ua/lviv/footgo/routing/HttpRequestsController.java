@@ -124,6 +124,14 @@ public class HttpRequestsController {
         model.addAttribute("tournament", tournament);
         Season season = tournament.getActiveSeason();
         model.addAttribute("season", season);
+        List<League> leagueList = season.getLeagueList();
+        model.addAttribute("leagueList", leagueList);
+        List<Cup> cupList = season.getCupList();
+        model.addAttribute("cupList", cupList);
+        List<Season> seasonList = tournament.getSeasonList().stream()
+                .filter(s -> !s.getId().equals(season.getId()))
+                .collect(Collectors.toList());
+        model.addAttribute("seasonList", seasonList);
         League league = leagueManagementRepository.findById(leagueId).get();
         model.addAttribute("league", league);
         List<Tour> tourList = league.getTours();
@@ -142,6 +150,14 @@ public class HttpRequestsController {
         model.addAttribute("tournament", tournament);
         Season season = tournament.getActiveSeason();
         model.addAttribute("season", season);
+        List<League> leagueList = season.getLeagueList();
+        model.addAttribute("leagueList", leagueList);
+        List<Cup> cupList = season.getCupList();
+        model.addAttribute("cupList", cupList);
+        List<Season> seasonList = tournament.getSeasonList().stream()
+                .filter(s -> !s.getId().equals(season.getId()))
+                .collect(Collectors.toList());
+        model.addAttribute("seasonList", seasonList);
         Cup cup = cupManagementRepository.findById(cupId).get();
         model.addAttribute("cup", cup);
         model.addAttribute("cupId", cupId);
@@ -353,6 +369,14 @@ public class HttpRequestsController {
         model.addAttribute("tournament", tournament);
         Season season = tournament.getActiveSeason();
         model.addAttribute("season", season);
+        List<League> leagueList = season.getLeagueList();
+        model.addAttribute("leagueList", leagueList);
+        List<Cup> cupList = season.getCupList();
+        model.addAttribute("cupList", cupList);
+        List<Season> seasonList = tournament.getSeasonList().stream()
+                .filter(s -> !s.getId().equals(season.getId()))
+                .collect(Collectors.toList());
+        model.addAttribute("seasonList", seasonList);
         League league = leagueManagementRepository.findById(leagueId).get();
         model.addAttribute("league", league);
         List<Tour> tourList = league.getTours();
@@ -379,6 +403,14 @@ public class HttpRequestsController {
         model.addAttribute("tournament", tournament);
         Season season = tournament.getActiveSeason();
         model.addAttribute("season", season);
+        List<League> leagueList = season.getLeagueList();
+        model.addAttribute("leagueList", leagueList);
+        List<Cup> cupList = season.getCupList();
+        model.addAttribute("cupList", cupList);
+        List<Season> seasonList = tournament.getSeasonList().stream()
+                .filter(s -> !s.getId().equals(season.getId()))
+                .collect(Collectors.toList());
+        model.addAttribute("seasonList", seasonList);
         League league = leagueManagementRepository.findById(leagueId).get();
         model.addAttribute("league", league);
 
@@ -398,6 +430,14 @@ public class HttpRequestsController {
         model.addAttribute("tournament", tournament);
         Season season = tournament.getActiveSeason();
         model.addAttribute("season", season);
+        List<League> leagueList = season.getLeagueList();
+        model.addAttribute("leagueList", leagueList);
+        List<Cup> cupList = season.getCupList();
+        model.addAttribute("cupList", cupList);
+        List<Season> seasonList = tournament.getSeasonList().stream()
+                .filter(s -> !s.getId().equals(season.getId()))
+                .collect(Collectors.toList());
+        model.addAttribute("seasonList", seasonList);
         Cup cup = cupManagementRepository.findById(cupId).get();
         model.addAttribute("cup", cup);
 
@@ -411,6 +451,7 @@ public class HttpRequestsController {
         List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
         Tournament tournament = tournaments.get(0);
         Season season = tournament.getActiveSeason();
+        model.addAttribute("season", season);
         List<League> leagueList = season.getLeagueList();
         model.addAttribute("leagueList", leagueList);
         List<Cup> cupList = season.getCupList();
@@ -419,7 +460,6 @@ public class HttpRequestsController {
                 .filter(s -> !s.getId().equals(season.getId()))
                 .collect(Collectors.toList());
         model.addAttribute("seasonList", seasonList);
-        model.addAttribute("season", season);
         Game game = gameRepository.findById(gameId).get();
         model.addAttribute("game", game);
         League league = leagueManagementRepository.findById(leagueId).get();
@@ -434,6 +474,14 @@ public class HttpRequestsController {
         Tournament tournament = tournaments.get(0);
         Season season = tournament.getActiveSeason();
         model.addAttribute("season", season);
+        List<League> leagueList = season.getLeagueList();
+        model.addAttribute("leagueList", leagueList);
+        List<Cup> cupList = season.getCupList();
+        model.addAttribute("cupList", cupList);
+        List<Season> seasonList = tournament.getSeasonList().stream()
+                .filter(s -> !s.getId().equals(season.getId()))
+                .collect(Collectors.toList());
+        model.addAttribute("seasonList", seasonList);
         Game game = gameRepository.findById(gameId).get();
         model.addAttribute("game", game);
         Cup cup = cupManagementRepository.findById(cupId).get();
@@ -542,6 +590,14 @@ public class HttpRequestsController {
         Tournament tournament = tournaments.get(0);
         Season season = tournament.getActiveSeason();
         model.addAttribute("season", season);
+        List<League> leagueList = season.getLeagueList();
+        model.addAttribute("leagueList", leagueList);
+        List<Cup> cupList = season.getCupList();
+        model.addAttribute("cupList", cupList);
+        List<Season> seasonList = tournament.getSeasonList().stream()
+                .filter(s -> !s.getId().equals(season.getId()))
+                .collect(Collectors.toList());
+        model.addAttribute("seasonList", seasonList);
         Player player = playerRepository.findById(playerId).get();
         model.addAttribute("player", player);
         model.addAttribute("playerFirstNameTransliterated", player.getPlayerFirstNameTransliterated());
@@ -559,6 +615,14 @@ public class HttpRequestsController {
         Tournament tournament = tournaments.get(0);
         Season season = tournament.getActiveSeason();
         model.addAttribute("season", season);
+        List<League> leagueList = season.getLeagueList();
+        model.addAttribute("leagueList", leagueList);
+        List<Cup> cupList = season.getCupList();
+        model.addAttribute("cupList", cupList);
+        List<Season> seasonList = tournament.getSeasonList().stream()
+                .filter(s -> !s.getId().equals(season.getId()))
+                .collect(Collectors.toList());
+        model.addAttribute("seasonList", seasonList);
         Player player = playerRepository.findById(playerId).get();
         model.addAttribute("player", player);
         model.addAttribute("playerFirstNameTransliterated", player.getPlayerFirstNameTransliterated());
