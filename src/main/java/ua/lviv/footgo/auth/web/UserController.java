@@ -1,6 +1,7 @@
 package ua.lviv.footgo.auth.web;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -26,6 +27,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import com.nulabinc.zxcvbn.Strength;
 import com.nulabinc.zxcvbn.Zxcvbn;
+import ua.lviv.footgo.entity.Cup;
+import ua.lviv.footgo.entity.League;
 import ua.lviv.footgo.entity.Season;
 import ua.lviv.footgo.entity.Tournament;
 import ua.lviv.footgo.repository.TournamentRepository;
@@ -185,6 +188,14 @@ public class UserController {
             Season season = tournament.getActiveSeason();
             if (!isNull(season)) {
                 model.addAttribute("season", season);
+                List<League> leagueList = season.getLeagueList();
+                model.addAttribute("leagueList", leagueList);
+                List<Cup> cupList = season.getCupList();
+                model.addAttribute("cupList", cupList);
+                List<Season> seasonList = tournament.getSeasonList().stream()
+                        .filter(s -> !s.getId().equals(season.getId()))
+                        .collect(Collectors.toList());
+                model.addAttribute("seasonList", seasonList);
             }
         }
 

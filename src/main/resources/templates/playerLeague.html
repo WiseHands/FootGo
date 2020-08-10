@@ -11,50 +11,6 @@
 </head>
 <body class="matches-full">
 <header th:replace="fragments/header :: header"></header>
-<!--<header>
-	<div class="header-full">
-		<div class="header-first-block">
-			<div>
-				<a href="/"><img class="header-img" src="/img/footgo-light-icon.png" alt="wiselogo"></a>
-			</div>
-			<div class="header-null">
-				<a href="javascript:void(0)" class="icon" onclick="myFunction()">
-					<i class="hamburger fa fa-bars"></i>
-				</a>
-			</div>
-			<div class="header-text">
-				<a href="/">
-					<p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
-					<p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
-				</a>
-				<a th:href="'/league/' + ${league.id}">
-					<p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></p>
-					<p th:if="${#locale.language == 'uk'}" th:text="${league.name}"></p>
-				</a>
-				<a th:href="'/league/' + ${league.id} + '/player/' + ${player.id}"><p th:text="#{player}"></p></a>
-			</div>
-		</div>
-		<div class="header-right-block">
-			<div th:replace="fragments/signInWidget :: signInWidget"></div>
-			<div th:replace="fragments/languageWidget :: languageWidget"></div>
-		</div>
-	</div>
-	<div id="myLinks">
-		<div>
-			<a class="link-item" href="/">
-			    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></p>
-			    <p th:if="${#locale.language == 'uk'}" th:text="${season.name}"></p>
-		    </a>
-		</div>
-		<div>
-			<a class="link-item" th:href="'/league/' + ${league.id}">
-			    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></p>
-			    <p th:if="${#locale.language == 'uk'}" th:text="${league.name}"></p>
-		    </a>
-		</div>
-		<div><a class="link-item" th:href="'/league/' + ${league.id} + '/player/' + ${player.id}"><p th:text="#{player}"></p></a></div>
-	</div>
-</header>-->
 <div class="main-head main-head-results player-background">
 	<div class="main-head-title league-page">
 		<h1 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></h1>
