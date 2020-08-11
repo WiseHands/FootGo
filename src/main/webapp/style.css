@@ -911,6 +911,7 @@ footer{
     min-height: 100%;
 }
 .score-tables {
+    margin-bottom: 30px;
     padding: 15px 0 10px 0;
     width: 35%;
 }
@@ -1227,7 +1228,7 @@ input[invalid-input] {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-/*    padding-top: 10px*/
+    padding-top: 10px
 }
 .all-players p {
     overflow: hidden;
@@ -1343,7 +1344,7 @@ input[invalid-input] {
 /*    white-space: nowrap;*/
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-bottom: 5px;
+/*    margin-bottom: 5px;*/
 }
 .player-card-info p:first-child {
     font-size: 1.5rem;
@@ -1704,12 +1705,12 @@ input.invalid {
 }
 .breadcrumb {
     font-size: 18px;
-    color: rgba(255,255,255,0.7)
+    color: rgba(53, 53, 53, 0.85);
 }
 .breadcrumb:before {
     font-family: "Font Awesome 5 Free";
     content: "/";
-    color: rgba(255,255,255,0.7);
+    color: rgba(53, 53, 53, 0.85);
     vertical-align: top;
     display: inline-flex;
     font-style: normal;
@@ -1721,10 +1722,10 @@ input.invalid {
     font-weight:900;
 }
 .breadcrumb:first-child:before {
-    display: none
+    display: none;
 }
 .breadcrumb:last-child {
-    color: #fff
+    color: #000;
 }
 .section {
     width: 100%;
@@ -1773,9 +1774,10 @@ input.invalid {
     .main-league .main-about:not(:last-child), .main-cup .main-about:not(:last-child) {
         margin-bottom: 10px;
     }
-    .section {
+    .row {
         margin: 0 10px;
     }
+
 }
 @media screen and (max-width: 900px) {
     .league-results-container {
@@ -2131,6 +2133,7 @@ input.invalid {
 :root {
     --main-bg-color: #121212;
     --main-text-color: #e1e1e1;
+    --main-breadcrumbs-text-color: rgba(255,255,255,0.7);
     --main-sf-color: #1d1d1d;
     --main-on-button-color: #bb86fc;
     --main-on-button-color-inactive: #3a2d49;
@@ -2320,6 +2323,12 @@ input.invalid {
     .table tr td, .table tr th {
         color: var(--main-text-color);
         border-color: var(--main-text-color);
+    }
+    .breadcrumb, .breadcrumb:before {
+        color: var(--main-breadcrumbs-text-color);
+    }
+    .breadcrumb:last-child {
+        color: #fff;
     }
 }
 /*Dark-mode end*/
