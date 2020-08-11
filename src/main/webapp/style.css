@@ -751,6 +751,9 @@ footer{
     font-weight: 700;
     margin: 10px 0 10px 0;
 }
+.bomb-team div {
+    overflow: auto;
+}
 .bomb-position div:nth-of-type(n+2), .bomb-player-name div:nth-of-type(n+2), .bomb-scored div:nth-of-type(n+2), .bomb-team div:nth-of-type(n+2)  {
     background-color: rgba(220, 216, 216,0.7);
 }
@@ -1853,7 +1856,7 @@ input.invalid {
         max-width: none;
     }
     .auto {
-        width: auto !important;
+/*        width: auto !important;*/
     }
     .full {
         width: 100% !important;
