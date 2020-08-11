@@ -831,7 +831,7 @@ footer{
 }
 .results-container {
     display: flex;
-    width: 450px;
+    width: 350px;
     background-color: #fff;
     padding: 15px;
     border-radius: 5px;
@@ -1485,10 +1485,9 @@ footer {
   }
 }
 .description-text {
+    width: 450px;
     margin: 0 auto !important;
-/*    text-align: left;
-    padding: 1rem;
-    width: 60%;*/
+    padding: 0;
 }
 .description-text span {
     word-break: break-word;
