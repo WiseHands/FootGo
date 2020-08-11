@@ -213,7 +213,7 @@ public class HttpRequestsController {
         model.addAttribute("thirdPlace", results.get(2));*/
         model.addAttribute("resultList", results);
         //List<PlayerGoals> playerGoals = topScorerService.getResults();
-        List<PlayerGoals> playerGoals = topScorerService.getResultsByLeague(leagueId);
+        List<PlayerGoals> playerGoals = topScorerService.getResultsByLeague(leagueId).stream().limit(10).collect(Collectors.toList());
         model.addAttribute("playerGoals", playerGoals);
         List<Game> games = (List<Game>) gameRepository.findAll();
         Game game = games.get(0);
@@ -288,7 +288,7 @@ public class HttpRequestsController {
         List<Tour> tourList = cup.getTours();
         model.addAttribute("tourList", tourList);
 
-        List<PlayerGoals> playerGoals = topScorerService.getResultsByCup(cupId);
+        List<PlayerGoals> playerGoals = topScorerService.getResultsByCup(cupId).stream().limit(10).collect(Collectors.toList());;
         model.addAttribute("playerGoals", playerGoals);
 
         List<Game> gameList = new ArrayList<Game>();
