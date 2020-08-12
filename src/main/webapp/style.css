@@ -408,6 +408,7 @@ iframe {
     display: flex;
     flex-direction: inherit;
     height: fit-content;
+    height: moz-fit-content;
 }
 .user-registration-form, .reset-password-form {
     width: 100%;
@@ -1030,6 +1031,7 @@ input[invalid-input] {
     border-radius: 10px;
     margin: 0 auto;
     width: fit-content;
+    width: -moz-fit-content;
     margin-bottom: 20px;
 }
 .match-res-date {

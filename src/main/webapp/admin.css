@@ -505,6 +505,7 @@ input[type=text], input[type=tel], input[type=email], input[type=number], select
 .game-create-button {
     padding: 2em 0;
     width: fit-content;
+    width: moz-fit-content;
     margin: 0 auto;
 }
 .game-create-button .add-game-title {
@@ -865,6 +866,7 @@ input[type="file"] {
 .team-defeat {
     display: flex;
     width: fit-content;
+    width: moz-fit-content;
     margin: 0 auto;
     padding: 5px 10px 5px 10px;
     margin-top: 15px;
