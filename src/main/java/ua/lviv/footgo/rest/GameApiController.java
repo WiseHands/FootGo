@@ -1,19 +1,13 @@
 
 package ua.lviv.footgo.rest;
 
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.lviv.footgo.entity.*;
-import ua.lviv.footgo.repository.CardRepository;
-import ua.lviv.footgo.repository.GameRepository;
-import ua.lviv.footgo.repository.GoalRepository;
-import ua.lviv.footgo.repository.TeamRepository;
+import ua.lviv.footgo.repository.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -36,6 +30,9 @@ public class GameApiController {
 
     @Autowired
     CardRepository cardRepository;
+
+    @Autowired
+    PenaltyRepository penaltyRepository;
 
     @DeleteMapping(value = "/clear", consumes = "application/json", produces = "application/json")
     public void clear() {
@@ -175,6 +172,27 @@ public class GameApiController {
         }
         gameRepository.save(game);
         cardRepository.delete(card);
+    }
+
+    @PostMapping(value = "/{id}/penalty", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<String> addPenalty(@PathVariable Long id, @RequestParam Player player, @RequestParam boolean penaltyGoal) {
+        Game game = gameRepository.findById(id).get();
+            Penalty penalty = new Penalty();
+            penalty.setPlayer(player);
+            penalty.setGame(game);
+
+            penaltyRepository.save(penalty);
+            gameRepository.save(game);
+            return ResponseEntity.ok().body("");
+    }
+
+    @DeleteMapping(value = "/{gameId}/penalty/{penaltyId}", consumes = "application/json", produces = "application/json")
+    public void deletePenalty(@PathVariable Long penaltyId, @PathVariable Long gameId) {
+        Game game = gameRepository.findById(gameId).get();
+        Penalty penalty = penaltyRepository.findById(penaltyId).get();
+
+        penaltyRepository.delete(penalty);
+        gameRepository.save(game);
     }
 
     @PostMapping(value = "/{gameId}/completed/{isCompleted}", consumes = "application/json", produces = "application/json")
