@@ -175,11 +175,17 @@ public class GameApiController {
     }
 
     @PostMapping(value = "/{id}/penalty", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> addPenalty(@PathVariable Long id, @RequestParam Player player, @RequestParam boolean penaltyGoal) {
+    public ResponseEntity<String> addPenalty(@PathVariable Long id, @RequestParam Player player, @RequestParam Penalty penaltyGoal, @RequestParam boolean homeTeamPenaltyGoal) {
         Game game = gameRepository.findById(id).get();
             Penalty penalty = new Penalty();
             penalty.setPlayer(player);
             penalty.setGame(game);
+
+            if (homeTeamPenaltyGoal) {
+                game.addPenaltyForFirstTeamPlayer(penaltyGoal);
+            } else {
+                game.addPenaltyForSecondTeamPlayer(penaltyGoal);
+            }
 
             penaltyRepository.save(penalty);
             gameRepository.save(game);
@@ -187,9 +193,15 @@ public class GameApiController {
     }
 
     @DeleteMapping(value = "/{gameId}/penalty/{penaltyId}", consumes = "application/json", produces = "application/json")
-    public void deletePenalty(@PathVariable Long penaltyId, @PathVariable Long gameId) {
+    public void deletePenalty(@PathVariable Long penaltyId, @PathVariable Long gameId, @RequestParam Boolean isHomeTeamPenaltyGoal) {
         Game game = gameRepository.findById(gameId).get();
         Penalty penalty = penaltyRepository.findById(penaltyId).get();
+
+        if (isHomeTeamPenaltyGoal) {
+            game.removePenaltyForFirstTeam(penalty);
+        } else {
+            game.removePenaltyForSecondTeam(penalty);
+        }
 
         penaltyRepository.delete(penalty);
         gameRepository.save(game);

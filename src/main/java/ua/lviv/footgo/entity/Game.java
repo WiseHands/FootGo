@@ -68,6 +68,20 @@ public class Game {
     @OneToMany(cascade = CascadeType.ALL)
     public List<Card> teamBCards;
 
+    public Penalty getTeamAPenalty() {
+        return teamAPenalty;
+    }
+
+    public Penalty getTeamBPenalty() {
+        return teamBPenalty;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public Penalty teamAPenalty;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public Penalty teamBPenalty;
+
     @ManyToOne
     @JoinColumn
     @JsonIgnore
@@ -275,6 +289,23 @@ public class Game {
         this.teamBCards.remove(card);
     }
 
+    public void addPenaltyForFirstTeamPlayer(Penalty penalty) {
+        this.teamAPenalty = penalty;
+    }
+
+    public void addPenaltyForSecondTeamPlayer(Penalty penalty) {
+        this.teamBPenalty = penalty;
+    }
+
+    public void removePenaltyForFirstTeam(Penalty penalty) {
+        this.teamAPenalty.setPlayer(null);
+        this.teamAPenalty.setGame(null);
+    }
+
+    public void removePenaltyForSecondTeam(Penalty penalty) {
+        this.teamBPenalty.setPlayer(null);
+        this.teamBPenalty.setGame(null);
+    }
 
     public boolean isCompleted() {
         return isCompleted;
