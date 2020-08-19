@@ -297,12 +297,14 @@ public class Game {
         this.teamBPenalty = penalty;
     }
 
-    public void removePenaltyForFirstTeam(Penalty penalty) {
+    public void removePenaltyForFirstTeam() {
+        this.teamAPenalty.setPenaltyGoal(null);
         this.teamAPenalty.setPlayer(null);
         this.teamAPenalty.setGame(null);
     }
 
-    public void removePenaltyForSecondTeam(Penalty penalty) {
+    public void removePenaltyForSecondTeam() {
+        this.teamBPenalty.setPenaltyGoal(null);
         this.teamBPenalty.setPlayer(null);
         this.teamBPenalty.setGame(null);
     }

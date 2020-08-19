@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity(name = "penalty")
 public class Penalty {
 
-    public boolean penaltyGoal;
+    public Boolean penaltyGoal;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class Penalty {
         return penaltyGoal;
     }
 
-    public void setPenaltyGoal(boolean value) {
+    public void setPenaltyGoal(Boolean value) {
         this.penaltyGoal = value;
     }
 

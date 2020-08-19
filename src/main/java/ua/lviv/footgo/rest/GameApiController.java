@@ -193,14 +193,14 @@ public class GameApiController {
     }
 
     @DeleteMapping(value = "/{gameId}/penalty/{penaltyId}", consumes = "application/json", produces = "application/json")
-    public void deletePenalty(@PathVariable Long penaltyId, @PathVariable Long gameId, @RequestParam Boolean isHomeTeamPenaltyGoal) {
+    public void deletePenalty(@PathVariable Long penaltyId, @PathVariable Long gameId, @RequestParam boolean isHomeTeamPenaltyGoal) {
         Game game = gameRepository.findById(gameId).get();
         Penalty penalty = penaltyRepository.findById(penaltyId).get();
 
         if (isHomeTeamPenaltyGoal) {
-            game.removePenaltyForFirstTeam(penalty);
+            game.removePenaltyForFirstTeam();
         } else {
-            game.removePenaltyForSecondTeam(penalty);
+            game.removePenaltyForSecondTeam();
         }
 
         penaltyRepository.delete(penalty);
