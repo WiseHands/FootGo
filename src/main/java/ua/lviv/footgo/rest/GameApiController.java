@@ -198,9 +198,9 @@ public class GameApiController {
         Penalty penalty = penaltyRepository.findById(penaltyId).get();
 
         if (isHomeTeamPenaltyGoal) {
-            game.removePenaltyForFirstTeam();
+            game.removePenaltyForFirstTeam(penalty);
         } else {
-            game.removePenaltyForSecondTeam();
+            game.removePenaltyForSecondTeam(penalty);
         }
 
         penaltyRepository.delete(penalty);
