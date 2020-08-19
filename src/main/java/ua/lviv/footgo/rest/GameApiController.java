@@ -175,16 +175,17 @@ public class GameApiController {
     }
 
     @PostMapping(value = "/{id}/penalty", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> addPenalty(@PathVariable Long id, @RequestParam Player player, @RequestParam Penalty penaltyGoal, @RequestParam boolean homeTeamPenaltyGoal) {
+    public ResponseEntity<String> addPenalty(@PathVariable Long id, @RequestParam Player player, @RequestParam Boolean penaltyGoal, @RequestParam boolean homeTeamPenaltyGoal) {
         Game game = gameRepository.findById(id).get();
             Penalty penalty = new Penalty();
+            penalty.setPenaltyGoal(penaltyGoal);
             penalty.setPlayer(player);
             penalty.setGame(game);
 
             if (homeTeamPenaltyGoal) {
-                game.addPenaltyForFirstTeamPlayer(penaltyGoal);
+                game.addPenaltyForFirstTeamPlayer(penalty);
             } else {
-                game.addPenaltyForSecondTeamPlayer(penaltyGoal);
+                game.addPenaltyForSecondTeamPlayer(penalty);
             }
 
             penaltyRepository.save(penalty);
