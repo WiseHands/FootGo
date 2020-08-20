@@ -224,6 +224,7 @@
                     <div class="modal-body">
                         <input id="goals" class="main-input-button" type="button" value="Голи">
                         <input id="cards" class="main-input-button" type="button" value="Картки">
+                        <input id="penaltyGoals" class="main-input-button" type="button" value="Пенальті">
                     </div>
                 </div>
             </div>
@@ -259,6 +260,36 @@
                     <div id="showInputAddCardError" class="text-input-error" style="display:none"><p>Заповніть будь ласка обов'язкові поля</p></div>
                     <div class="goal-add">
                         <input onclick="addCardToPlayer()" id="saveCardButton" class="main-input-button" type="button" value="Додати" disabled >
+                    </div>
+                </div>
+            </div>
+
+            <div id="penaltyModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>Пенальті</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="penalty-goal-type">
+                            <label class="container" for="plusPenaltyGoal">+
+                                <input type="radio" name="Penalty" id="plusPenaltyGoal" value="true">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container" for="minusPenaltyGoal">-
+                                <input type="radio" name="Penalty" id="minusPenaltyGoal" value="false">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="goal-author">
+                            <p>Гравець</p>
+                            <select id="penaltyPlayerSelect">
+                            </select>
+                        </div>
+                    </div>
+                    <div id="showInputAddPenaltyError" class="text-input-error" style="display:none"><p>Заповніть будь ласка обов'язкові поля</p></div>
+                    <div class="goal-add">
+                        <input onclick="addPenaltyGoalToPlayer()" id="savePenaltyButton" class="main-input-button" type="button" value="Додати" disabled >
                     </div>
                 </div>
             </div>
@@ -343,8 +374,8 @@
 
         </div>
     <script src="/modalScript.js"></script>
+    <script src="/createPlayerPenalty.js"></script>
     <script src="/putVideoUrl.js" type="text/javascript"></script>
-    <script src="/putDescText.js" type="text/javascript"></script>
     <script>
         flatpickr("#gameDateTime", {enableTime: true});
         function setGameDateTime() {
@@ -363,10 +394,8 @@
                 console.log("gameTime", response);
             }).then(function(data) {
                 console.log("gameTime", data);
-
             });
         }
-
     </script>
     <script src="/ckeditor5/build/ckeditor.js"></script>
     <script src="/ckeditor5/ckconfig.js"></script>

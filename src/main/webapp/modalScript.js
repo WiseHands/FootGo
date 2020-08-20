@@ -42,6 +42,22 @@ plusHomeTeamGoal.onclick =  function() {
            cardPlayerSelect.appendChild(opt);
         }
     }
+
+    let penaltyGoalHomeTeam = document.getElementById("penaltyGoals");
+    penaltyGoalHomeTeam.onclick = function() {
+        switchModal.style.display = "none";
+    	state.homeTeamPenaltyGoal = true;
+        penaltyModal.style.display = "block";
+        let penaltyPlayerSelect = document.getElementById("penaltyPlayerSelect");
+        penaltyPlayerSelect.innerHTML = '';
+        for(index in window.gameData.firstTeam.players) {
+           let player = window.gameData.firstTeam.players[index];
+           let opt = document.createElement("option");
+           opt.value = player.id;
+           opt.innerHTML = player.firstName + ' ' + player.lastName;
+           penaltyPlayerSelect.appendChild(opt);
+        }
+    }
 }
 
 let plusGuestTeamGoal = document.getElementById("plusGuestTeamGoal");
@@ -75,6 +91,22 @@ plusGuestTeamGoal.onclick =  function() {
            opt.value = player.id;
            opt.innerHTML = player.firstName + ' ' + player.lastName;
            cardPlayerSelect.appendChild(opt);
+        }
+    }
+
+    let penaltyGoalGuestTeam = document.getElementById("penaltyGoals");
+    penaltyGoalGuestTeam.onclick = function() {
+        switchModal.style.display = "none";
+    	state.homeTeamPenaltyGoal = false;
+        penaltyModal.style.display = "block";
+        let penaltyPlayerSelect = document.getElementById("penaltyPlayerSelect");
+        penaltyPlayerSelect.innerHTML = '';
+        for(index in window.gameData.secondTeam.players) {
+           let player = window.gameData.secondTeam.players[index];
+           let opt = document.createElement("option");
+           opt.value = player.id;
+           opt.innerHTML = player.firstName + ' ' + player.lastName;
+           penaltyPlayerSelect.appendChild(opt);
         }
     }
 }

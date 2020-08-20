@@ -542,7 +542,9 @@ input[type=text], input[type=tel], input[type=email], input[type=number], select
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 360px;
+    min-width: 360px;
+    width: max-content;
+    text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -593,12 +595,12 @@ input[type=text], input[type=tel], input[type=email], input[type=number], select
 }
 
 /*modal end*/
-.goal-minute, .goal-author, .goal-second, .card-type {
+.goal-minute, .goal-author, .goal-second, .card-type, .penalty-goal-type {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
-.card-type {
+.card-type, .penalty-goal-type {
     margin: 15px 0 15px 0;
 }
 .modal-body p {
