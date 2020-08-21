@@ -133,6 +133,32 @@
                 </div>
             </div>
 
+            <p th:if="${!#lists.isEmpty(game.teamAPenalty)} OR ${!#lists.isEmpty(game.teamBPenalty)}" class="admin-tour-title">Серія пенальті</p>
+
+            <div th:if="${!#lists.isEmpty(game.teamAPenalty)} OR ${!#lists.isEmpty(game.teamAPenalty)}" class="modal-goal">
+                <div class="team1-goal">
+                    <div th:each="penalty : ${game.teamAPenalty}">
+                        <p>
+                            <span th:if="${penalty.penaltyGoal == true}" class="fas fa-futbol green-ball"></span>
+                            <span th:if="${penalty.penaltyGoal == false}" class="fas fa-futbol red-ball"></span>
+                            <span id="penaltyTeamAPlayerName" th:text="${penalty.player.firstName + ' ' + penalty.player.lastName}"></span>,
+                            <i class=" fas fa-user-minus" th:attr="onclick=${'deletePenaltyGoal(' + game.id + ', ' + penalty.id + ', true)'}"></i>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="team2-goal">
+                    <div th:each="penalty : ${game.teamBPenalty}">
+                        <p>
+                            <span th:if="${penalty.penaltyGoal == true}" class="fas fa-futbol green-ball"></span>
+                            <span th:if="${penalty.penaltyGoal == false}" class="fas fa-futbol red-ball"></span>
+                            <span id="penaltyTeamBPlayerName" th:text="${penalty.player.firstName + ' ' + penalty.player.lastName}"></span>,
+                            <i class="delete-goal fas fa-user-minus" th:attr="onclick=${'deletePenaltyGoal(' + game.id + ', ' + penalty.id + ', false)'}"></i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <p class="description-text">Статистика матчу</p>
             <div class="add-stats">
                 <p th:text="${game.firstTeam.teamName}"></p>

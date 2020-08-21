@@ -32,10 +32,10 @@ Array.prototype.forEach.call(penaltyRadios, function(penaltyRadio) {
 });
 
 function addPenaltyGoalToPlayer(event) {
-   let playerSelect = document.getElementById("cardPlayerSelect");
-   console.log('addCardToPlayer', playerSelect.value, yellowCard.checked, redCard.checked);
-   let params = '?player=' + playerSelect.value + '&cardMinute=' + cardMinute.value + '&cardType=' + card + '&homeTeamCard=' + state.homeTeamGoal;
-   let apiUrl = '/api/game/' + gameId + '/card/' + params;
+   let playerSelect = document.getElementById("penaltyPlayerSelect");
+   console.log('addPenaltyGoalToPlayer', playerSelect.value, plusPenaltyGoal.checked, minusPenaltyGoal.checked);
+   let params = '?player=' + playerSelect.value + '&penaltyGoal=' + penalty + '&homeTeamPenaltyGoal=' + state.homeTeamPenaltyGoal;
+   let apiUrl = '/api/game/' + gameId + '/penalty/' + params;
    fetch(apiUrl, {
        method: 'POST',
        headers: {
@@ -44,15 +44,35 @@ function addPenaltyGoalToPlayer(event) {
    }).then(function(response) {
        console.log(response);
        if(response.ok) {
-           document.getElementById('cardsModal').style.display = "none";
+           document.getElementById('penaltyModal').style.display = "none";
            location.pathname = location.pathname;
        }
        if(response.status === 403) {
-           document.getElementById('cardsModal').style.display = "none";
-           alert('Максимальна кількість карток для гравця');
+           document.getElementById('penaltyModal').style.display = "none";
+           alert('Максимальна кількість забитих голів для гравця');
        }
        return  response.json();
    }).then(function(data) {
        console.log(data);
    })
+}
+
+function deletePenaltyGoal(gameId, penaltyId, homeTeamPenaltyGoal) {
+    console.log('deletePenalty', penaltyId)
+    let apiUrl = '/api/game/' + gameId + '/penalty/' + penaltyId + '?isHomeTeamPenaltyGoal=' + homeTeamPenaltyGoal;
+    fetch(apiUrl, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+    }).then(function(response) {
+        console.log(response);
+        if(response.ok) {
+            location.pathname = location.pathname;
+        } else {
+            alert('Error');
+        }
+        return  response.json();
+    }).then(function(data) {
+    })
 }

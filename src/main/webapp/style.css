@@ -1213,6 +1213,7 @@ input[invalid-input] {
 }
 .match-video {
     padding-top: 25px;
+    font-weight: 600;
 }
 .match-video iframe {
     display: flex;
@@ -1222,6 +1223,20 @@ input[invalid-input] {
 .match-video p {
     text-align: center;
     font-size: 1.8rem;
+}
+.green-ball {
+    color: #16a016;
+    font-size: 1.2rem;
+}
+.team1-goals .ball {
+    margin-left: 5px;
+}
+.team2-goals .ball {
+    margin-right: 5px;
+}
+.red-ball {
+    color: #c95555;
+    font-size: 1.2rem;
 }
 .team-players {
     margin: 0 auto;

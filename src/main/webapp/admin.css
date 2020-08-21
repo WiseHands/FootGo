@@ -1132,6 +1132,20 @@ ul.menu-breadcrumb li a:hover {
     justify-content: center;
     margin-top: 2em;
 }
+.green-ball {
+    color: #16a016;
+}
+.red-ball {
+    color: #c95555;
+}
+.modal-goal .red-ball:hover {
+    color: inherit;
+    cursor: pointer;
+}
+.modal-goal .green-ball:hover {
+    color: inherit;
+    cursor: pointer;
+}
 @media (prefers-color-scheme: dark) {
 :root {
   --main-bg-color: #121212;
