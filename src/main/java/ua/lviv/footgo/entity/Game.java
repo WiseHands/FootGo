@@ -9,6 +9,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 public class Game {
@@ -382,6 +383,30 @@ public class Game {
             return "";
         } else {
             return String.valueOf(teamBGoals.size());
+        }
+    }
+
+    public String formatPenaltyGoalsForTeamA() {
+        if (!isCompleted) {
+            return "";
+        } else {
+            List<Penalty> teamAPenalty = getTeamAPenalty().stream().filter(Penalty::getPenaltyGoal).collect(Collectors.toList());
+/*            if (teamAPenalty.size() >= 5) {*/
+                return String.valueOf(teamAPenalty.size());
+/*            }*/
+/*            return "";*/
+        }
+    }
+
+    public String formatPenaltyGoalsForTeamB() {
+        if (!isCompleted) {
+            return "";
+        } else {
+            List<Penalty> teamBPenalty = getTeamBPenalty().stream().filter(Penalty::getPenaltyGoal).collect(Collectors.toList());
+/*            if (teamBPenalty.size() >= 5) {*/
+                return String.valueOf(teamBPenalty.size());
+/*            }*/
+/*            return "";*/
         }
     }
 

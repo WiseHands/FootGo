@@ -56,6 +56,7 @@
 				<div th:if="${game.isNoTechnicalDefeat() == true}" th:classappend="${game.formatGoalsForTeamA() == ''}?tbd" class="review-score">
 					<p>
 						<span th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</span>
+						<span th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamA() != '0'}" th:text="${' ' + '(' + game.formatPenaltyGoalsForTeamA() + ')'}"></span>
 					    <span th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">TBD</span>
 						<span th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</span>
 						<span th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</span>
@@ -64,6 +65,7 @@
 						:
 <!--						<span th:text="${game.teamBGoals.size()}">0</span>-->
 						<span th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</span>
+						<span th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamB() != '0'}" th:text="${' ' + '(' + game.formatPenaltyGoalsForTeamB() + ')'}"></span>
 						<span th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() == ''}">TBD</span>
 						<span th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</span>
 						<span th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</span>
@@ -117,35 +119,6 @@
 							<span th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${goal.player.getPlayerFirstNameTransliterated() + ' ' + goal.player.getPlayerLastNameTransliterated()}"></span>
 						</a>
 						<span th:text="${' (' + goal.time + '&lsquo;)'}" class="minute"></span>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div th:if="${game.isNoTechnicalDefeat() == true} OR ${not #lists.isEmpty(game.teamACards)} AND ${not #lists.isEmpty(game.teamBCards)}" class="tour-number cards">
-			<p th:text="#{cards}"></p>
-		</div>
-		<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-match">
-			<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-team1">
-				<div th:if="${not #lists.isEmpty(game.teamAPenalty)}" class="team1-goals" th:each="penalty : ${game.teamAPenalty}">
-					<p>
-						<a th:attr="href=${'/cup/' + cupId + '/player/' + penalty.player.id}">
-							<span th:if="${#locale.language == 'uk'}" th:text="${penalty.player.firstName + ' ' + penalty.player.lastName}" class="player-name"></span>
-							<span th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${penalty.player.getPlayerFirstNameTransliterated() + ' ' + penalty.player.getPlayerLastNameTransliterated()}" class="player-name"></span>
-						</a>
-					</p>
-					<span th:if="${penalty.penaltyGoal == true}" class="fas fa-futbol ball green-ball"></span>
-					<span th:if="${penalty.penaltyGoal == false}" class="fas fa-futbol ball red-ball"></span>
-				</div>
-			</div>
-			<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamBCards)}" class="details-team2">
-				<div th:if="${not #lists.isEmpty(game.teamBPenalty)}" class="team2-goals" th:each="penalty : ${game.teamBPenalty}">
-					<span th:if="${penalty.penaltyGoal == true}" class="fas fa-futbol ball green-ball"></span>
-					<span th:if="${penalty.penaltyGoal == false}" class="fas fa-futbol ball red-ball"></span>
-					<p>
-						<a th:attr="href=${'/cup/' + cupId + '/player/' + penalty.player.id}">
-							<span th:if="${#locale.language == 'uk'}" th:text="${penalty.player.firstName + ' ' + penalty.player.lastName}" class="player-name"></span>
-							<span th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${penalty.player.getPlayerFirstNameTransliterated() + ' ' + penalty.player.getPlayerLastNameTransliterated()}" class="player-name"></span>
-						</a>
 					</p>
 				</div>
 			</div>
@@ -271,12 +244,38 @@
 				</div>
 			</div>
 		</div>
-		<div th:if="${game.isNoTechnicalDefeat() == true} OR ${not #lists.isEmpty(game.teamAPenalty)} AND ${not #lists.isEmpty(game.teamBPenalty)}" class="tour-number cards">
+		<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamAPenalty)} OR ${not #lists.isEmpty(game.teamBPenalty)}" class="tour-number cards">
 			<p th:text="#{penaltySeries}"></p>
+		</div>
+		<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-match">
+			<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-team1">
+				<div th:if="${not #lists.isEmpty(game.teamAPenalty)}" class="team1-goals" th:each="penalty : ${game.teamAPenalty}">
+					<p>
+						<a th:attr="href=${'/cup/' + cupId + '/player/' + penalty.player.id}">
+							<span th:if="${#locale.language == 'uk'}" th:text="${penalty.player.firstName + ' ' + penalty.player.lastName}" class="player-name"></span>
+							<span th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${penalty.player.getPlayerFirstNameTransliterated() + ' ' + penalty.player.getPlayerLastNameTransliterated()}" class="player-name"></span>
+						</a>
+					</p>
+					<span th:if="${penalty.penaltyGoal == true}" class="fas fa-futbol ball green-ball"></span>
+					<span th:if="${penalty.penaltyGoal == false}" class="fas fa-futbol ball red-ball"></span>
+				</div>
+			</div>
+			<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamBCards)}" class="details-team2">
+				<div th:if="${not #lists.isEmpty(game.teamBPenalty)}" class="team2-goals" th:each="penalty : ${game.teamBPenalty}">
+					<span th:if="${penalty.penaltyGoal == true}" class="fas fa-futbol ball green-ball"></span>
+					<span th:if="${penalty.penaltyGoal == false}" class="fas fa-futbol ball red-ball"></span>
+					<p>
+						<a th:attr="href=${'/cup/' + cupId + '/player/' + penalty.player.id}">
+							<span th:if="${#locale.language == 'uk'}" th:text="${penalty.player.firstName + ' ' + penalty.player.lastName}" class="player-name"></span>
+							<span th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${penalty.player.getPlayerFirstNameTransliterated() + ' ' + penalty.player.getPlayerLastNameTransliterated()}" class="player-name"></span>
+						</a>
+					</p>
+				</div>
+			</div>
 		</div>
 		<div class="match-video" th:if="${!#strings.isEmpty(game.videoUrl)}">
 			<p th:text="#{matchVideo}"></p>
-			<iframe width="500" height="281" th:attr="src=${game.videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<iframe width="700" height="381" th:attr="src=${game.videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
 		<div class="match-video video-description" th:if="${game.descriptionText != null} AND ${game.descriptionText != ''} AND ${game.descriptionText != ' '}">
 			<p class="match-statistics-title" th:text="#{matchDescription}"></p>

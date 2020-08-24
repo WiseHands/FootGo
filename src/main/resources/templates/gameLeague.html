@@ -53,6 +53,7 @@
 				<div th:if="${game.isNoTechnicalDefeat() == true}" th:classappend="${game.formatGoalsForTeamA() == ''}?tbd" class="review-score">
 					<p>
 						<span th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</span>
+						<span th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamA() != '0'}" th:text="${' ' + '(' + game.formatPenaltyGoalsForTeamA() + ')'}"></span>
 					    <span th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">TBD</span>
 						<span th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</span>
 						<span th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</span>
@@ -61,6 +62,7 @@
 						:
 <!--						<span th:text="${game.teamBGoals.size()}">0</span>-->
 						<span th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</span>
+						<span th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamB() != '0'}" th:text="${' ' + '(' + game.formatPenaltyGoalsForTeamB() + ')'}"></span>
 						<span th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() == ''}">TBD</span>
 						<span th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</span>
 						<span th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</span>
@@ -115,7 +117,7 @@
 				</div>
 			</div>
 		</div>
-		<div th:if="${game.isNoTechnicalDefeat() == true} OR ${not #lists.isEmpty(game.teamACards)} AND ${not #lists.isEmpty(game.teamBCards)}" class="tour-number cards">
+		<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamACards)} OR ${not #lists.isEmpty(game.teamBCards)}" class="tour-number cards">
 			<p th:text="#{cards}"></p>
 		</div>
 		<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-match">
@@ -239,7 +241,7 @@
 				</div>
 			</div>
 		</div>
-		<div th:if="${game.isNoTechnicalDefeat() == true} OR ${not #lists.isEmpty(game.teamAPenalty)} AND ${not #lists.isEmpty(game.teamBPenalty)}" class="tour-number cards">
+		<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamAPenalty)} OR ${not #lists.isEmpty(game.teamBPenalty)}" class="tour-number cards">
 			<p th:text="#{penaltySeries}"></p>
 		</div>
 		<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-match">
@@ -270,7 +272,7 @@
 		</div>
 		<div class="match-video" th:if="${!#strings.isEmpty(game.videoUrl)}">
 			<p th:text="#{matchVideo}"></p>
-			<iframe width="500" height="281" th:attr="src=${game.videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<iframe width="700" height="381" th:attr="src=${game.videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
 		<div class="match-video video-description" th:if="${game.descriptionText != null} AND ${game.descriptionText != ''} AND ${game.descriptionText != ' '}">
 			<p class="match-statistics-title" th:text="#{matchDescription}"></p>

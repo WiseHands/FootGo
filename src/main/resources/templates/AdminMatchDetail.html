@@ -130,7 +130,7 @@
 
             <p th:if="${!#lists.isEmpty(game.teamAPenalty)} OR ${!#lists.isEmpty(game.teamBPenalty)}" class="admin-tour-title">Серія пенальті</p>
 
-            <div th:if="${!#lists.isEmpty(game.teamAPenalty)} OR ${!#lists.isEmpty(game.teamAPenalty)}" class="modal-goal">
+            <div th:if="${!#lists.isEmpty(game.teamAPenalty)} OR ${!#lists.isEmpty(game.teamBPenalty)}" class="modal-goal">
                 <div class="team1-goal">
                     <div th:each="penalty : ${game.teamAPenalty}">
                         <p>

@@ -1030,8 +1030,9 @@ input[invalid-input] {
     padding: 10px;
     border-radius: 10px;
     margin: 0 auto;
-    width: fit-content;
-    width: -moz-fit-content;
+    width: auto;
+/*    width: fit-content;*/
+/*    width: -moz-fit-content;*/
     margin-bottom: 20px;
 }
 .match-res-date {
@@ -1070,7 +1071,8 @@ input[invalid-input] {
     display: flex;
 /*    justify-content: space-between;*/
     justify-content: center;
-    width: 500px;
+    width: auto;
+/*    width: 500px;*/
     padding: 20px 0;
 }
 .review-head p {
@@ -1100,7 +1102,9 @@ input[invalid-input] {
 }
 
 .review-score {
-    width: 150px;
+/*    width: 150px;*/
+    width: 400px;
+    margin: auto;
     padding: 34px 0;
 }
 .review-score p {
@@ -1177,7 +1181,8 @@ input[invalid-input] {
     padding: 20px 0;
 }
 .statistics-item {
-    padding: 10px 0;
+    /*padding: 10px 0;*/
+    padding: 10px 15px 10px 15px;
 }
 .statistics-item-info {
     display: flex;
@@ -1505,7 +1510,8 @@ footer {
   }
 }
 .description-text {
-    width: 450px;
+/*    width: 450px;*/
+    width: 700px;
     margin: 0 auto !important;
     padding: 0;
 }
@@ -2044,7 +2050,8 @@ input.invalid {
         width: 27%;
     }
     .review-head {
-        width: 320px;
+        /*width: 320px;*/
+        width: 400px;
     }
     .matches-bg {
         width: 90%  ;
