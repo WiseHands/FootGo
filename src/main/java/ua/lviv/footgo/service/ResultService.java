@@ -2,10 +2,7 @@ package ua.lviv.footgo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.lviv.footgo.entity.Cup;
-import ua.lviv.footgo.entity.Game;
-import ua.lviv.footgo.entity.League;
-import ua.lviv.footgo.entity.Team;
+import ua.lviv.footgo.entity.*;
 import ua.lviv.footgo.jsonmapper.TeamResults;
 import ua.lviv.footgo.repository.CupManagementRepository;
 import ua.lviv.footgo.repository.GameRepository;
@@ -15,6 +12,7 @@ import ua.lviv.footgo.repository.TeamRepository;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ResultService {
@@ -120,8 +118,10 @@ public class ResultService {
     }
 
     private void _calculateResultForTeamInGame(Game game, Team team, TeamResults teamResults) {
-        int numberOfTeamAGoals = game.getTeamAGoals().size();
-        int numberOfTeamBGoals =  game.getTeamBGoals().size();
+        List<Penalty> teamAPenalty = game.getTeamAPenalty().stream().filter(Penalty::getPenaltyGoal).collect(Collectors.toList());
+        List<Penalty> teamBPenalty = game.getTeamBPenalty().stream().filter(Penalty::getPenaltyGoal).collect(Collectors.toList());
+        int numberOfTeamAGoals = teamAPenalty.size() == 0 ? game.getTeamAGoals().size() : teamAPenalty.size();
+        int numberOfTeamBGoals = teamBPenalty.size() == 0 ? game.getTeamBGoals().size() : teamBPenalty.size();
         if(game.getFirstTeam() == team) {
             if(game.isTeamAHasTechnicalDefeat()) {
                 teamResults.addTechnicalLose();
