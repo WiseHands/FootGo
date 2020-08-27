@@ -103,7 +103,12 @@ public class Game {
         if(this.teamBGoals == null) {
             this.teamBGoals = new ArrayList<>();
         }
-        return  teamAGoals.size() > teamBGoals.size();
+        if (teamAGoals.size() != teamBGoals.size()) {
+            return teamAGoals.size() > teamBGoals.size();
+        } else {
+            System.out.println("getTeamAPenalty().size() + getTeamBPenalty().size()" + getTeamAPenalty().size() + getTeamBPenalty().size());
+            return getTeamAPenalty().size() > getTeamBPenalty().size();
+        }
     }
 
     public boolean hasTeamBWin() {

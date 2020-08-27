@@ -120,8 +120,8 @@ public class ResultService {
     private void _calculateResultForTeamInGame(Game game, Team team, TeamResults teamResults) {
         List<Penalty> teamAPenalty = game.getTeamAPenalty().stream().filter(Penalty::getPenaltyGoal).collect(Collectors.toList());
         List<Penalty> teamBPenalty = game.getTeamBPenalty().stream().filter(Penalty::getPenaltyGoal).collect(Collectors.toList());
-        int numberOfTeamAGoals = teamAPenalty.size() == 0 ? game.getTeamAGoals().size() : teamAPenalty.size();
-        int numberOfTeamBGoals = teamBPenalty.size() == 0 ? game.getTeamBGoals().size() : teamBPenalty.size();
+        int numberOfTeamAGoals = game.getTeamAGoals().size() != game.getTeamBGoals().size() || teamAPenalty.size() == 0 ? game.getTeamAGoals().size() : teamAPenalty.size();
+        int numberOfTeamBGoals = game.getTeamAGoals().size() != game.getTeamBGoals().size() || teamBPenalty.size() == 0 ? game.getTeamBGoals().size() : teamBPenalty.size();
         if(game.getFirstTeam() == team) {
             if(game.isTeamAHasTechnicalDefeat()) {
                 teamResults.addTechnicalLose();
