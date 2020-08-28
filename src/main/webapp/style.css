@@ -1498,8 +1498,12 @@ footer {
     padding-left: 1rem;
 }
 .footer-social {
-    width: 150px;
+    width: auto;
     justify-content: space-around;
+}
+.footer-social a {
+    font-size:32px;
+    padding: 0 5px 0 5px;
 }
 .center-text {
     text-align: center;
@@ -1514,6 +1518,7 @@ footer {
     width: 700px;
     margin: 0 auto !important;
     padding: 0;
+    font-weight: 300;
 }
 .description-text span {
     word-break: break-word;
@@ -2131,7 +2136,7 @@ input.invalid {
         display: flex;
     }
     .footer-social {
-        padding-top: .5em;
+        padding-top: .8em;
     }
     .footer-powered, .footer-social, .footer-shop {
         margin: 0 auto;
