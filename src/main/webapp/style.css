@@ -658,12 +658,13 @@ footer{
 }
 .table, .bomb {
     display: flex;
-    justify-content: center;
+/*    justify-content: center;*/
     max-width: 900px;
     margin: 0 auto;
     line-height: 2.3;
     text-align: center;
     font-size: 1.1em;
+    overflow: auto;
 /*    font-weight: 600;
     margin-bottom: 20px;*/
 }
@@ -1082,7 +1083,8 @@ input[invalid-input] {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 175px;
+    /*width: 175px;*/
+    width: 100%;
 }
 .review-team1 a, .review-team2 a {
     display: flex;
@@ -1103,7 +1105,8 @@ input[invalid-input] {
 
 .review-score {
 /*    width: 150px;*/
-    width: 400px;
+/*    width: 400px;*/
+    width: 100%;
     margin: auto;
     padding: 34px 0;
 }
@@ -2062,7 +2065,8 @@ input.invalid {
     }
     .review-head {
         /*width: 320px;*/
-        width: 400px;
+        /*width: 400px;*/
+        width: 100%
     }
     .matches-bg {
         width: 90%  ;
@@ -2077,7 +2081,8 @@ input.invalid {
         width: 120px;
     }
     .review-score p {
-        font-size: 2rem;
+        /*font-size: 2rem;*/
+        font-size: 1rem;
     }
     .results-container {
         width: 90% !important;
