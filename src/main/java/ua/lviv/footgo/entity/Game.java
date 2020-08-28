@@ -103,11 +103,11 @@ public class Game {
         if(this.teamBGoals == null) {
             this.teamBGoals = new ArrayList<>();
         }
-        if (teamAGoals.size() != teamBGoals.size()) {
+        if (teamAPenalty.size() == 0) {
             return teamAGoals.size() > teamBGoals.size();
         } else {
-            System.out.println("getTeamAPenalty().size() + getTeamBPenalty().size()" + getTeamAPenalty().size() + getTeamBPenalty().size());
-            return getTeamAPenalty().size() > getTeamBPenalty().size();
+            System.out.println("(int) getTeamAPenalty().stream().filter(Penalty::getPenaltyGoal).count() > (int) getTeamBPenalty().stream().filter(Penalty::getPenaltyGoal).count() " + getTeamAPenalty().stream().filter(Penalty::getPenaltyGoal).count() + ' ' + (int) getTeamBPenalty().stream().filter(Penalty::getPenaltyGoal).count());
+            return (int) getTeamAPenalty().stream().filter(Penalty::getPenaltyGoal).count() > (int) getTeamBPenalty().stream().filter(Penalty::getPenaltyGoal).count();
         }
     }
 
@@ -118,7 +118,12 @@ public class Game {
         if(this.teamBGoals == null) {
             this.teamBGoals = new ArrayList<>();
         }
-        return  teamAGoals.size() < teamBGoals.size();
+        if (teamBPenalty.size() == 0) {
+            return teamAGoals.size() < teamBGoals.size();
+        } else {
+            System.out.println("(int) getTeamAPenalty().stream().filter(Penalty::getPenaltyGoal).count() < (int) getTeamBPenalty().stream().filter(Penalty::getPenaltyGoal).count() " + (int) getTeamAPenalty().stream().filter(Penalty::getPenaltyGoal).count() + ' ' + (int) getTeamBPenalty().stream().filter(Penalty::getPenaltyGoal).count());
+            return (int) getTeamAPenalty().stream().filter(Penalty::getPenaltyGoal).count() < (int) getTeamBPenalty().stream().filter(Penalty::getPenaltyGoal).count();
+        }
     }
 
     public void setTeamATechnicalDefeat() {
@@ -152,7 +157,11 @@ public class Game {
 
     @JsonIgnore
     public boolean isADraw() {
-        return teamAGoals.size() == teamBGoals.size();
+        if (teamAPenalty.size() == 0 || teamBPenalty.size() == 0) {
+            return teamAGoals.size() == teamBGoals.size();
+        } else {
+            return false;
+        }
     }
 
     public OffsetDateTime getGameTime() {

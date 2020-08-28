@@ -131,7 +131,7 @@
 					<span th:if="${penalty.penaltyGoal == false}" class="fas fa-futbol ball red-ball"></span>
 				</div>
 			</div>
-			<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamBCards)}" class="details-team2">
+			<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-team2">
 				<div th:if="${not #lists.isEmpty(game.teamBPenalty)}" class="team2-goals" th:each="penalty : ${game.teamBPenalty}">
 					<span th:if="${penalty.penaltyGoal == true}" class="fas fa-futbol ball green-ball"></span>
 					<span th:if="${penalty.penaltyGoal == false}" class="fas fa-futbol ball red-ball"></span>
