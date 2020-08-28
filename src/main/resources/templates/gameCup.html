@@ -150,6 +150,9 @@
 				</div>
 			</div>
 		</div>
+		<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamACards)} OR ${not #lists.isEmpty(game.teamBCards)}" class="tour-number cards">
+			<p th:text="#{cards}"></p>
+		</div>
 		<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-match">
 			<div th:if="${game.isNoTechnicalDefeat() == true}" class="details-team1">
 				<div th:if="${not #lists.isEmpty(game.teamACards)}" class="team1-goals" th:each="card : ${game.teamACards}">
