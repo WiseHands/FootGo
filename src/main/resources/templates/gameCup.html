@@ -56,7 +56,7 @@
 				<div th:if="${game.isNoTechnicalDefeat() == true}" th:classappend="${game.formatGoalsForTeamA() == ''}?tbd" class="review-score">
 					<p>
 						<span th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</span>
-						<span th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamA() != '0'}" th:text="${' ' + '(' + game.formatPenaltyGoalsForTeamA() + ')'}"></span>
+						<span th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamA() != '0'} OR ${game.formatPenaltyGoalsForTeamB() != '0'}" th:text="${' ' + '(' + game.formatPenaltyGoalsForTeamA() + ')'}"></span>
 					    <span th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">TBD</span>
 						<span th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</span>
 						<span th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</span>
@@ -65,7 +65,7 @@
 						:
 <!--						<span th:text="${game.teamBGoals.size()}">0</span>-->
 						<span th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamB()}">game.teamBGoals.size()</span>
-						<span th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamB() != '0'}" th:text="${' ' + '(' + game.formatPenaltyGoalsForTeamB() + ')'}"></span>
+						<span th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamB() != '0'} OR ${game.formatPenaltyGoalsForTeamA() != '0'}" th:text="${' ' + '(' + game.formatPenaltyGoalsForTeamB() + ')'}"></span>
 						<span th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() == ''}">TBD</span>
 						<span th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</span>
 						<span th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</span>

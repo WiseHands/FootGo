@@ -2073,8 +2073,8 @@ input.invalid {
     }
 
     .review-team1 img, .review-team2 img {
-/*        width: 72px;*/
-        height: 75px;
+/*        width: 72px;
+        height: 75px;*/
     }
     .review-team1 p, .review-team2 p {
         font-size: 1.3rem;
