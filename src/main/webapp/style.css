@@ -1111,7 +1111,7 @@ input[invalid-input] {
     padding: 34px 0;
 }
 .review-score p {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 600;
 }
 .review-score-empty {
@@ -1779,6 +1779,7 @@ input.invalid {
     }
     .table-button {
         font-size: 1.5em;
+        width: 100%;
     }
     .vs-container, .score-tables {
         width: 100%;

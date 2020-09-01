@@ -319,6 +319,18 @@ public class CupApiController {
 
     }
 
+    @PostMapping(value = "/{seasonId}/cuplist/{cupId}/tour/details", consumes = "application/json", produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
+    public void createNewGameInTour(@PathVariable Long seasonId, @PathVariable Long cupId, @RequestParam Long tourId) {
+        Season season = seasonRepository.findById(seasonId).get();
+        Cup cup = cupRepository.findById(cupId).get();
+        Tour tour = tourRepository.findById(tourId).get();
+        _createGame(null, null, tour);
+
+        cupRepository.save(cup);
+    }
+
     @DeleteMapping(value = "/{seasonId}/cuplist/{cupId}/game/{gameId}", consumes = "application/json", produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody

@@ -65,11 +65,16 @@
                         <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</p>
                     </a>
                 </div>
-                <div th:if="${game.formatPenaltyGoalsForTeamA() != ''} AND ${game.formatPenaltyGoalsForTeamB() != ''} AND ${game.formatGoalsForTeamA() != ''} AND ${game.formatGoalsForTeamB() != ''}" class="res-score">
-                    <a th:attr="href=${'/league/' + leagueId + '/game/' + game.id}">
-                        <p th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamA() != '0'} OR ${game.formatPenaltyGoalsForTeamB() != '0'}" th:text="'(' + ${game.formatPenaltyGoalsForTeamA()} + ')'"></p>
-                        <p th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamB() != '0'} OR ${game.formatPenaltyGoalsForTeamA() != '0'}" th:text="'(' + ${game.formatPenaltyGoalsForTeamB()} + ')'"></p>
-                    </a>
+                <div th:if="${game.formatGoalsForTeamA() != ''} AND ${game.formatGoalsForTeamB() != ''} AND ${game.formatGoalsForTeamA() != ''} OR ${game.formatGoalsForTeamB() != ''}">
+                    <div th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamA() != ''} OR ${game.formatPenaltyGoalsForTeamB() != ''}"
+                         class="res-score">
+                        <a th:attr="href=${'/league/' + leagueId + '/game/' + game.id}">
+                            <p th:if="${game.formatPenaltyGoalsForTeamA() != '0'} OR ${game.formatPenaltyGoalsForTeamB() != '0'}"
+                               th:text="'(' + ${game.formatPenaltyGoalsForTeamA()} + ')'"></p>
+                            <p th:if="${game.formatPenaltyGoalsForTeamB() != '0'} OR ${game.formatPenaltyGoalsForTeamA() != '0'}"
+                               th:text="'(' + ${game.formatPenaltyGoalsForTeamB()} + ')'"></p>
+                        </a>
+                    </div>
                 </div>
                 <div class="res-date">
                     <p th:text="${game.formatDate()}"></p>

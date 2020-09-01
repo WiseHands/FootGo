@@ -446,7 +446,11 @@
             window.gameData = data;
             document.getElementById('match-over').checked = data.completed;
             document.getElementById('videoLink').value = data.videoUrl;
-            editor.data.set(data.descriptionText);
+            if (data.descriptionText) {
+                editor.data.set(data.descriptionText);
+            } else {
+                editor.data.set('');
+            }
             //document.getElementById('editor').value = data.descriptionText;
 
             formattingGameTime(data.gameTime);
