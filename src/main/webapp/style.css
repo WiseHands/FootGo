@@ -663,7 +663,7 @@ footer{
     margin: 0 auto;
     line-height: 2.3;
     text-align: center;
-    font-size: 1.1em;
+/*    font-size: 1.1em;*/
     overflow: auto;
 /*    font-weight: 600;
     margin-bottom: 20px;*/
@@ -1100,7 +1100,7 @@ input[invalid-input] {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 175px;
+/*    width: 175px;*/
 }
 
 .review-score {

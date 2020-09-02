@@ -43,6 +43,10 @@
                     <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${team.getTeamNameTransliterated()}"></p>
                     <p><span th:text="#{championshipPlace} + ' - ' + ${position}"></span></p>
                 </div>
+                <div class="photo-team-bg">
+                    <img th:attr="src=${team.logoImageUrl}, class=${'light' + ' ' + 'team' + team.id}">
+                    <img th:attr="src=${team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + team.id}">
+                </div>
             </div>
             <h3 th:text="#{games}"></h3>
             <div class="results-all-tour">
@@ -63,22 +67,28 @@
                     </div>
                     <div class="res-score">
                         <a th:attr="href=${'/cup/' + cup.id + '/game/' + game.id}">
-                            <p th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamA() == '0'}" th:text="${game.formatGoalsForTeamA()}">
+                            <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">
                                 game.teamAGoals.size()</p>
-                            <p th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamA() > '0'}" th:text="${game.formatPenaltyGoalsForTeamA()}"></p>
-                            <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">
-                                TBD</p>
+                            <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">TBD</p>
                             <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">0</p>
                             <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">3</p>
-                            <p th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamB() == '0'}" th:text="${game.formatGoalsForTeamB()}">
+                            <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamB()}">
                                 game.teamBGoals.size()</p>
-                            <p th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatPenaltyGoalsForTeamB() > '0'}" th:text="${game.formatPenaltyGoalsForTeamB()}">
-                                game.teamBGoals.size()</p>
-                            <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() == ''}">
-                                TBD</p>
+                            <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamB() == ''}">TBD</p>
                             <p th:if="${game.isTeamAHasTechnicalDefeat() == true}">3</p>
                             <p th:if="${game.isTeamBHasTechnicalDefeat() == true}">0</p>
                         </a>
+                    </div>
+                    <div th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatGoalsForTeamA() != ''} AND ${game.formatGoalsForTeamB() != ''}">
+                        <div th:if="${game.formatPenaltyGoalsForTeamA() != '0'} OR ${game.formatPenaltyGoalsForTeamB() != '0'}">
+                            <div th:if="${game.formatPenaltyGoalsForTeamA() != ''} OR ${game.formatPenaltyGoalsForTeamB() != ''}"
+                                 class="res-score">
+                                <a th:attr="href=${'/cup/' + cup.id + '/game/' + game.id}">
+                                    <p th:text="' ' + '(' + ${game.formatPenaltyGoalsForTeamA()} + ')'"></p>
+                                    <p th:text="' ' + '(' + ${game.formatPenaltyGoalsForTeamB()} + ')'"></p>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="res-date">
                         <p th:text="${game.formatDate()}"></p>
