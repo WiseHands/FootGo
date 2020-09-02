@@ -1779,7 +1779,7 @@ input.invalid {
     }
     .table-button {
         font-size: 1.5em;
-        width: 100%;
+/*        width: 100%;*/
     }
     .vs-container, .score-tables {
         width: 100%;
@@ -2008,8 +2008,9 @@ input.invalid {
         height: 100vh;
     }
     .table, .bomb {
-        width: 98%;
+/*        width: 98%;*/
         line-height: 2;
+        padding: 0 10px 0 10px;
     }
     .main-container {
         flex-direction: column;
@@ -2062,7 +2063,7 @@ input.invalid {
         display: none;
     }
     .bomb-team {
-        width: 27%;
+/*        width: 27%;*/
     }
     .review-head {
         /*width: 320px;*/
@@ -2162,6 +2163,9 @@ input.invalid {
     }
     .header-icon {
         display: none;
+    }
+    .table-button {
+        padding: 0 10px 0 0;
     }
 }
 @media (min-width: 600px) {
