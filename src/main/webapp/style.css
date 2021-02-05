@@ -393,7 +393,7 @@ iframe {
     justify-content: center;
     max-width: 900px;
     margin: 0 auto;
-    padding: 0 0 30px 0;
+    padding: 30px 0 30px 0;
     font-size: 1.2em;
     text-align: center;
 }
@@ -658,7 +658,7 @@ footer{
 }
 .table, .bomb {
     display: flex;
-/*    justify-content: center;*/
+    justify-content: center;
     max-width: 900px;
     margin: 0 auto;
     line-height: 2.3;
@@ -2196,10 +2196,12 @@ input.invalid {
     .main-head-title .main-head-logo {
         background-image: url(img/footgo-light-icon.png);
     }
-    .main-photo, .prev-seasons, .registration-photo, .login-page, .registration-page {
+    .main-photo, .registration-photo, .login-page, .registration-page {
         background: var(--main-bg-color);
     }
-    .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main, .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom, .login-form, .user-registration-form, .photo-team-bg {
+    .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main,
+    .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom, .login-form,
+    .user-registration-form, .photo-team-bg {
         background: var(--main-sf-color);
         color: var(--main-text-color);
     }
@@ -2276,7 +2278,8 @@ input.invalid {
         background: url(/img/tshirt-dark.png) no-repeat;
         background-size: 100%;
     }
-    header, footer, .player-info, .bomb-position div, .bomb-player-name div, .bomb-scored div, .bomb-team div, .table-title, .dropbtn, .sign-in-list, .lang-list {
+    header, footer, .player-info, .bomb-position div, .bomb-player-name div, .bomb-scored div,
+    .bomb-team div, .table-title, .dropbtn, .sign-in-list, .lang-list, .prev-seasons {
         background: var(--main-sf-color);
     }
     input[type=text], input[type=tel], input[type=email], input[type=password] {
