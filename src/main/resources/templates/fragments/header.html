@@ -23,8 +23,8 @@
                     <button th:if="${#locale.language == 'uk'}" th:text="${season.name}" class="dropbtn">
                     </button>
                     <div class="prev-seasons">
-                        <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:each="season : ${seasonList}" href="/" th:text="${season.nameEn}"></a>
-                        <a th:if="${#locale.language == 'uk'}" th:each="season : ${seasonList}" href="/" th:text="${season.name}"></a>
+                        <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:each="season : ${seasonList}" th:href="'/season/' + ${season.id}" th:text="${season.nameEn}"></a>
+                        <a th:if="${#locale.language == 'uk'}" th:each="season : ${seasonList}" th:href="'/season/' + ${season.id}" th:text="${season.name}"></a>
                         <a th:text="#{autumn2019}" href="https://2019.footgo-league.com"></a>
                     </div>
                 </div>
