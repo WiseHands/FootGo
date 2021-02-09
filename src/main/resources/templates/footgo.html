@@ -22,7 +22,7 @@
         <h1 th:if="${not #lists.isEmpty(season)} AND ${#locale.language == 'uk'}" th:text="${season.name}"></h1>
         <div class="button-container">
             <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}" class="table-button sign-up-button">
-                <a href="/signup" class="button-link-more">
+                <a th:href="'/signup/' + ${season.id}" class="button-link-more">
                     <button class="pure-material-button-text" th:text="#{signupButton}"></button>
                 </a>
             </div>

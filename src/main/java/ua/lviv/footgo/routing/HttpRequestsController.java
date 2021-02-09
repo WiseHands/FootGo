@@ -139,7 +139,7 @@ public class HttpRequestsController {
         model.addAttribute("league", leagueList.get(0));*/
         return "signup";
     }
-    @GetMapping({"/season/{seasonId}/signup"})
+    @GetMapping({"/signup/{seasonId}"})
     public String seasonSignup(Model model, @PathVariable("seasonId") Long seasonId) {
         List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
         if (!tournaments.isEmpty()) {
