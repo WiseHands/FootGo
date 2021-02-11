@@ -151,6 +151,9 @@ a, a:hover {
     font-size: 1rem;
     padding: 10px 0 5px 0;
 }
+.main-about a {
+    width: fit-content;
+}
 .main-description {
     padding: 10px 0 0 10px !important;
 }
@@ -684,8 +687,8 @@ footer{
     text-align: left;
 }
 .table-team-name div {
-    display: flex;
-    align-items: center;
+/*    display: flex;
+    align-items: center;*/
 }
 .table-team-name img {
     width: 30px;
@@ -705,10 +708,13 @@ footer{
     text-align: center;
 }
 .table-offset {
-    width: 40px;
+/*    width: 40px;*/
 }
 .table-goals {
     width: 60px;
+}
+.table-title, .bomb-title {
+    padding: 0 5px 0 5px;
 }
 .table-title, .bomb-title {
     background-color: rgba(108, 118, 136, 0.6);

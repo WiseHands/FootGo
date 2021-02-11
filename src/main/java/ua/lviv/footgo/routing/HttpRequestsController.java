@@ -115,7 +115,7 @@ public class HttpRequestsController {
         }
         return "footgo";
     }
-    @GetMapping({"/signup"})
+/*    @GetMapping({"/signup"})
     public String signup(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("name", name);
         List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
@@ -135,10 +135,10 @@ public class HttpRequestsController {
                     .collect(Collectors.toList());
             model.addAttribute("seasonList", seasonList);
         }
-        /*        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
-        model.addAttribute("league", leagueList.get(0));*/
+        *//*        List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
+        model.addAttribute("league", leagueList.get(0));*//*
         return "signup";
-    }
+    }*/
     @GetMapping({"/signup/{seasonId}"})
     public String seasonSignup(Model model, @PathVariable("seasonId") Long seasonId) {
         List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();

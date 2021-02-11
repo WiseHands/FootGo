@@ -4,9 +4,9 @@
     <meta name="viewport" content="width=device-width">
     <title th:text="#{registration}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" th:href="@{/style.css}">
     <link rel="shortcut icon" href="img/footgo-dark-icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="hamburger.css">
+    <link rel="stylesheet" th:href="@{/hamburger.css}">
 </head>
 <body class="registration-photo">
 <header th:replace="fragments/header :: header"></header>
@@ -70,8 +70,8 @@
 
 <div th:replace="fragments/footer :: footer"></div>
 
-<script src="signUpScript.js" type="text/javascript"></script>
-<script src="hamburger.js"></script>
+<script th:src="@{/signUpScript.js}" type="text/javascript"></script>
+<script th:src="@{/hamburger.js}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39722519-3"></script>
 <script>

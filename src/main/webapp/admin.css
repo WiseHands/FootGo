@@ -316,6 +316,7 @@ body p {
     font-size: 1.5rem;
     font-weight: 600;
     text-align: center;
+    line-height: 3rem;
 /*    margin-bottom: 10px;*/
 }
 .team-request p {
