@@ -1070,6 +1070,12 @@ input[invalid-input] {
 .table-button {
     font-size: 1em;
 }
+.table-no-data {
+    text-align: center;
+    line-height: 2.5rem;
+    width: 100%;
+    font-size: 1.5em;
+}
 .review-match {
     display: flex;
     justify-content: center;
@@ -2222,7 +2228,8 @@ input.invalid {
     .main-when ul span {
         background: rgba(255,255,255,0.4);
     }
-    .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3, .bomb-head p, .season-list, .dropbtn, .table-header, .goals p, .table-head p, .matches-full h1, .reg-end p {
+    .header-text p, .res-tour-title, a, a:hover, .table div, .bomb div, .results-block p, .team-results-full h3,
+    .bomb-head p, .season-list, .dropbtn, .table-header, .goals p, .table-head p, .matches-full h1, .reg-end p, .table-no-data {
         color: var(--main-text-color);
     }
     .main-about-team img {
@@ -2258,7 +2265,11 @@ input.invalid {
     .table-title, .bomb-title {
         background: rgba(39, 42, 48, 0.7);
     }
-    .table-position div:nth-of-type(n+2), .table-team-name div:nth-of-type(n+2), .table-games div:nth-of-type(n+2), .table-wins div:nth-of-type(n+2), .table-draws div:nth-of-type(n+2), .table-defeats div:nth-of-type(n+2), .table-goals div:nth-of-type(n+2), .table-points div:nth-of-type(n+2), .bomb-position div:nth-of-type(n+2), .bomb-player-name div:nth-of-type(n+2), .bomb-scored div:nth-of-type(n+2), .bomb-team div:nth-of-type(n+2) {
+    .table-position div:nth-of-type(n+2), .table-team-name div:nth-of-type(n+2), .table-games div:nth-of-type(n+2),
+    .table-wins div:nth-of-type(n+2), .table-draws div:nth-of-type(n+2), .table-defeats div:nth-of-type(n+2),
+    .table-goals div:nth-of-type(n+2), .table-points div:nth-of-type(n+2), .bomb-position div:nth-of-type(n+2),
+    .bomb-player-name div:nth-of-type(n+2), .bomb-scored div:nth-of-type(n+2), .bomb-team div:nth-of-type(n+2),
+    .table-no-data {
         background: rgba(13, 13, 13, 0.7);
     }
     .table-team-name img {

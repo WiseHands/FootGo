@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <a th:href="'/league/' + ${leagueId} + '/results'" class="button-link-more" href="#">
+            <a th:href="'/' + ${seasonId} + '/league/' + ${leagueId} + '/results'" class="button-link-more" href="#">
                 <button class="pure-material-button-text" th:text="#{seeMore}"></button>
             </a>
         </div>
@@ -55,7 +55,7 @@
                 <div class="review-match">
                     <div class="review-head">
                         <div class="review-team1">
-                            <a th:attr="href=${'/league/' + leagueId + '/team/' + game.firstTeam.id}">
+                            <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/team/' + game.firstTeam.id}">
                                 <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
                                 <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
                                 <p th:if="${#locale.language == 'uk'}" th:text="${game.firstTeam.teamName}">Team 1</p>
@@ -64,7 +64,7 @@
                         </div>
                         <div th:if="${game.isNoTechnicalDefeat() == true}"
                              th:classappend="${game.formatGoalsForTeamA() == ''}?tbd" class="review-score">
-                            <a th:attr="href=${'/league/' + leagueId + '/game/' + game.id}">
+                            <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/game/' + game.id}">
                                 <p>
                                     <span th:if="${game.isNoTechnicalDefeat() == true}"
                                           th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()
@@ -93,7 +93,7 @@
                             </a>
                         </div>
                         <div class="review-team2">
-                            <a th:attr="href=${'/league/' + leagueId + '/team/' + game.secondTeam.id}">
+                            <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/team/' + game.secondTeam.id}">
                                 <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
                                 <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
                                 <p th:if="${#locale.language == 'uk'}" th:text="${game.secondTeam.teamName}">Team 2</p>
@@ -111,7 +111,7 @@
                     <span th:if="${#locale.language == 'uk'}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.secondTeam.teamName}" class="empty-text-error">Team 2</span>
                     <span th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.secondTeam.getTeamNameTransliterated()}" class="empty-text-error">Team 2</span>
                 </div>
-                <a th:href="'/league/' + ${leagueId} + '/results'" class="button-link-more" href="#">
+                <a th:href="'/' ${seasonId} + '/league/' + ${leagueId} + '/results'" class="button-link-more" href="#">
                     <button class="pure-material-button-text" th:text="#{seeMore}"></button>
                 </a>
             </div>
@@ -120,13 +120,13 @@
         <div th:if="${not #lists.isEmpty(gameList)}" class="res-tour-allmatch mobile">
             <div class="results-container league-results-container" th:each="game : ${gameList}">
                 <div class="res-teams">
-                    <a th:attr="href=${'/league/' + leagueId + '/team/' + game.firstTeam.id}">
+                    <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/team/' + game.firstTeam.id}">
                         <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
                         <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
                         <p th:if="${#locale.language == 'uk'}" th:text="${game.firstTeam.teamName}">game.firstTeam.teamName</p>
                         <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${game.firstTeam.getTeamNameTransliterated()}">game.firstTeam.teamName</p>
                     </a>
-                    <a th:attr="href=${'/league/' + leagueId + '/team/' + game.secondTeam.id}">
+                    <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/team/' + game.secondTeam.id}">
                         <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
                         <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
                         <p th:if="${#locale.language == 'uk'}" th:text="${game.secondTeam.teamName}">game.secondTeam.teamName</p>
@@ -134,7 +134,7 @@
                     </a>
                 </div>
                 <div class="res-score">
-                    <a th:attr="href=${'/league/' + leagueId + '/game/' + game.id}">
+                    <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/game/' + game.id}">
                         <p th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatGoalsForTeamA() != ''}"
                            th:text="${game.formatGoalsForTeamA()}">game.teamAGoals.size()</p>
                         <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">TBD</p>
@@ -150,7 +150,7 @@
                 <div th:if="${game.isNoTechnicalDefeat() == true} AND ${game.formatGoalsForTeamA() != ''} AND ${game.formatGoalsForTeamB() != ''}">
                     <div th:if="${game.formatPenaltyGoalsForTeamA() != '0'} OR ${game.formatPenaltyGoalsForTeamB() != '0'}"
                          class="res-score">
-                        <a th:attr="href=${'/league/' + leagueId + '/game/' + game.id}">
+                        <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/game/' + game.id}">
                             <p th:text="' ' + '(' + ${game.formatPenaltyGoalsForTeamA()} + ')'"></p>
                             <p th:text="' ' + '(' + ${game.formatPenaltyGoalsForTeamB()} + ')'"></p>
                         </a>
@@ -162,7 +162,7 @@
                 </div>
             </div>
             <div class="table-button">
-                <a th:href="'/league/' + ${leagueId} + '/results'" class="button-link-more" href="#">
+                <a th:href="'/' + ${seasonId} + '/league/' + ${leagueId} + '/results'" class="button-link-more" href="#">
                     <button class="pure-material-button-text" th:text="#{seeMore}"></button>
                 </a>
             </div>
@@ -257,7 +257,7 @@
                 <!--                        </a>-->
                 <!--                    </div>-->
                 <div th:each="result : ${resultList}">
-                    <a th:attr="href=${'/league/' + leagueId + '/team/' + result.team.id}">
+                    <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/team/' + result.team.id}">
                         <img th:attr="src=${result.team.logoImageUrl}, class=${'light' + ' ' + 'team' + result.team.id}">
                         <img th:attr="src=${result.team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + result.team.id}">
                         <p th:if="${#locale.language == 'uk'}" th:text="${result.teamName}"></p>
@@ -279,8 +279,11 @@
                 </div>
             </div>
         </div>
-        <div class="table-button">
-            <a th:href="'/league/' + ${leagueId} + '/gametable'" class="button-link-more" href="#">
+        <div class="table-no-data" th:if="${#lists.isEmpty(resultList)}">
+            <p th:text="#{noTableData}"></p>
+        </div>
+        <div class="table-button" th:if="${!#lists.isEmpty(resultList)}">
+            <a th:href="'/' + ${seasonId} + '/league/' + ${leagueId} + '/gametable'" class="button-link-more" href="#">
                 <button class="pure-material-button-text" th:text="#{seeMore}"></button>
             </a>
         </div>
@@ -295,7 +298,7 @@
             <div class="bomb-player-name full">
                 <div th:text="#{footballPlayer}" class="bomb-title"></div>
                 <div th:each="playerGoal : ${playerGoals}">
-                    <a th:attr="href=${'/league/' + leagueId + '/player/' + playerGoal.player.id}">
+                    <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/player/' + playerGoal.player.id}">
                         <p th:if="${#locale.language == 'uk'}" th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}"></p>
                         <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerGoal.player.getPlayerLastNameTransliterated() + ' ' + playerGoal.player.getPlayerFirstNameTransliterated()}"></p>
                     </a>
@@ -310,15 +313,18 @@
             <div class="bomb-team auto">
                 <div th:text="#{team}" class="bomb-title"></div>
                 <div th:each="playerGoal : ${playerGoals}">
-                    <a th:attr="href=${'/league/' + leagueId + '/team/' + playerGoal.player.team.id}">
+                    <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/team/' + playerGoal.player.team.id}">
                         <p th:if="${#locale.language == 'uk'}" th:text="${playerGoal.player.team.teamName}"></p>
                         <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerGoal.player.team.getTeamNameTransliterated()}"></p>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="table-button">
-            <a th:href="'/league/' + ${leagueId} + '/bombardier'" class="button-link-more" href="#">
+        <div class="table-no-data" th:if="${#lists.isEmpty(playerGoals)}">
+            <p th:text="#{noTableData}"></p>
+        </div>
+        <div class="table-button" th:if="${!#lists.isEmpty(playerGoals)}">
+            <a th:href="'/' + ${seasonId} + '/league/' + ${leagueId} + '/bombardier'" class="button-link-more" href="#">
                 <button class="pure-material-button-text" th:text="#{seeMore}"></button>
             </a>
         </div>
