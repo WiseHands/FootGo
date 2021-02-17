@@ -23,8 +23,8 @@
             <div class="nav-wrapper">
                 <div class="col">
                     <a th:text="#{home}" href="/" class="breadcrumb"></a>
-                    <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}" th:href="'/cup/' + ${cup.id}" class="breadcrumb"></a>
-                    <a th:if="${#locale.language == 'uk'}" th:text="${cup.name}" th:href="'/cup/' + ${cup.id}" class="breadcrumb"></a>
+                    <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}" th:href="'/' + ${seasonId} + '/cup/' + ${cup.id}" class="breadcrumb"></a>
+                    <a th:if="${#locale.language == 'uk'}" th:text="${cup.name}" th:href="'/' + ${seasonId} + '/cup/' + ${cup.id}" class="breadcrumb"></a>
                     <a th:if="${#locale.language == 'uk'}" th:text="${team.teamName}" href="#!" class="breadcrumb"></a>
                     <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${team.getTeamNameTransliterated()}" href="#!" class="breadcrumb"></a>
                 </div>
@@ -52,13 +52,13 @@
             <div class="results-all-tour">
                 <div th:each="game : ${gameList}" class="results-container">
                     <div class="res-teams">
-                        <a th:attr="href=${'/cup/' + cup.id + '/team/' + game.firstTeam.id}">
+                        <a th:attr="href=${'/' + seasonId + '/cup/' + cup.id + '/team/' + game.firstTeam.id}">
                             <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
                             <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
                             <p th:if="${#locale.language == 'uk'}" th:text="${game.firstTeam.teamName}">game.firstTeam.teamName</p>
                             <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${game.firstTeam.getTeamNameTransliterated()}">game.firstTeam.teamName</p>
                         </a>
-                        <a th:attr="href=${'/cup/' + cup.id + '/team/' + game.secondTeam.id}">
+                        <a th:attr="href=${'/' + seasonId + '/cup/' + cup.id + '/team/' + game.secondTeam.id}">
                             <img th:attr="src=${game.secondTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.secondTeam.id}">
                             <img th:attr="src=${game.secondTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.secondTeam.id}">
                             <p th:if="${#locale.language == 'uk'}" th:text="${game.secondTeam.teamName}">game.secondTeam.teamName</p>
@@ -66,7 +66,7 @@
                         </a>
                     </div>
                     <div class="res-score">
-                        <a th:attr="href=${'/cup/' + cup.id + '/game/' + game.id}">
+                        <a th:attr="href=${'/' + seasonId + '/cup/' + cup.id + '/game/' + game.id}">
                             <p th:if="${game.isNoTechnicalDefeat() == true}" th:text="${game.formatGoalsForTeamA()}">
                                 game.teamAGoals.size()</p>
                             <p th:if="${game.isNoTechnicalDefeat() == true} and ${game.formatGoalsForTeamA() == ''}">TBD</p>
@@ -83,7 +83,7 @@
                         <div th:if="${game.formatPenaltyGoalsForTeamA() != '0'} OR ${game.formatPenaltyGoalsForTeamB() != '0'}">
                             <div th:if="${game.formatPenaltyGoalsForTeamA() != ''} OR ${game.formatPenaltyGoalsForTeamB() != ''}"
                                  class="res-score">
-                                <a th:attr="href=${'/cup/' + cup.id + '/game/' + game.id}">
+                                <a th:attr="href=${'/' + seasonId + '/cup/' + cup.id + '/game/' + game.id}">
                                     <p th:text="' ' + '(' + ${game.formatPenaltyGoalsForTeamA()} + ')'"></p>
                                     <p th:text="' ' + '(' + ${game.formatPenaltyGoalsForTeamB()} + ')'"></p>
                                 </a>
@@ -128,7 +128,7 @@
                 <p th:text="#{noPlayers}" class="no-players"></p>
             </div>
             <div th:each="item : ${team.players}">
-                <a th:attr="href=${'/cup/' + cup.id + '/player/' + item.id}">
+                <a th:attr="href=${'/' + seasonId + '/cup/' + cup.id + '/player/' + item.id}">
                     <div class="player-card">
                         <div class="player-photo">
                             <img src="/img/tshirt.png">

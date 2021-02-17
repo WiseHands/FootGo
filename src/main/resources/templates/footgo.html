@@ -182,15 +182,15 @@
         </div>
 
         <div th:if="${not #lists.isEmpty(cupList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}" th:each="cup : ${cupList}" class="main-about">
-            <a th:href="'/cup/' + ${cup.id}">
+            <a th:href="'/' + ${season.id} + '/cup/' + ${cup.id}">
                 <h1 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></h1>
                 <h1 th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></h1>
             </a>
             <div class="main-about-league">
                 <div class="main-team-list">
-                    <!--                        <img src="/img/team-icon.png">-->
+                    <!--<img src="/img/team-icon.png">-->
                     <div th:each="team : ${cup.teamList}">
-                        <a th:href="'/cup/' + ${cup.id} + '/team/' + ${team.id}" class="link-style">
+                        <a th:href="'/' + ${season.id} + '/cup/' + ${cup.id} + '/team/' + ${team.id}" class="link-style">
                             <div th:if="${#locale.language == 'uk'}" th:title="${team.teamName}" class="request-block">
                                 <p th:text="${team.teamName}"></p>
                             </div>
@@ -202,10 +202,10 @@
                 </div>
             </div>
         </div>
-<!--    </div>
-    <div class="main-cup">-->
-
     </div>
+
+    <!--<div class="main-cup">-->
+
     <!--<div class="main-about instagram-iframe">
         <a href="https://www.instagram.com/footgo.league" target="_blank">
             <h1>Instagram</h1>

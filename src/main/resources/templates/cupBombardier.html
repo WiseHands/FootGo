@@ -4,9 +4,9 @@
     <meta name="viewport" content="width=device-width">
     <title th:text="#{bestScorers}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../style.css">
-    <link rel="shortcut icon" href="../../img/footgo-dark-icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../hamburger.css">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="shortcut icon" th:href="@{/img/footgo-dark-icon.png}" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/hamburger.css}">
 </head>
 <body class="bomb-full">
 <header th:replace="fragments/header :: header"></header>
@@ -22,8 +22,8 @@
             <div class="nav-wrapper">
                 <div class="col">
                     <a th:text="#{home}" href="/" class="breadcrumb"></a>
-                    <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}" th:href="'/cup/' + ${cup.id}" class="breadcrumb"></a>
-                    <a th:if="${#locale.language == 'uk'}" th:text="${cup.name}" th:href="'/cup/' + ${cup.id}" class="breadcrumb"></a>
+                    <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}" th:href="'/' + ${seasonId} + '/cup/' + ${cup.id}" class="breadcrumb"></a>
+                    <a th:if="${#locale.language == 'uk'}" th:text="${cup.name}" th:href="'/' + ${seasonId} + '/cup/' + ${cup.id}" class="breadcrumb"></a>
                     <a th:text="#{bestScorers}" href="#!" class="breadcrumb"></a>
                 </div>
             </div>
@@ -45,7 +45,7 @@
         <div class="bomb-player-name">
             <div th:text="#{footballPlayer}" class="bomb-title"></div>
             <div th:each="playerGoal : ${playerGoals}">
-                <a th:attr="href=${'/cup/' + cupId + '/player/' + playerGoal.player.id}">
+                <a th:attr="href=${'/' + seasonId + '/cup/' + cupId + '/player/' + playerGoal.player.id}">
                     <p th:if="${#locale.language == 'uk'}" th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}"></p>
                     <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerGoal.player.getPlayerLastNameTransliterated() + ' ' + playerGoal.player.getPlayerFirstNameTransliterated()}"></p>
                 </a>
@@ -62,7 +62,7 @@
         <div class="bomb-team">
             <div th:text="#{team}" class="bomb-title"></div>
             <div th:each="playerGoal : ${playerGoals}">
-                <a th:attr="href=${'/cup/' + cupId + '/team/' + playerGoal.player.team.id}">
+                <a th:attr="href=${'/' + seasonId + '/cup/' + cupId + '/team/' + playerGoal.player.team.id}">
                     <p th:if="${#locale.language == 'uk'}" th:text="${playerGoal.player.team.teamName}"></p>
                     <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerGoal.player.team.getTeamNameTransliterated()}"></p>
                 </a>
@@ -75,8 +75,8 @@
 
 <div th:replace="fragments/footer :: footer"></div>
 
-<script src="../../signUpScript.js"></script>
-<script src="../../hamburger.js"></script>
+<script th:src="@{/signUpScript.js}"></script>
+<script th:src="@{/hamburger.js}"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39722519-3"></script>
