@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div th:fragment="carousel">
+    <script src="/glide/dist/glide.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="/glide/dist/css/glide.theme.min.css">
+
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                <li class="glide__slide">0</li>
+                <li class="glide__slide">1</li>
+                <li class="glide__slide">2</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+      new Glide(".glide",{
+        type: 'carousel',
+        perView: 5,
+        focusAt: 'center',
+        gap: 40,
+        breakpoints: {
+          1200:{
+            perView: 3
+          },
+          800:{
+            perView: 2
+          }
+        }
+      }).mount();
+    </script>
+</div>
+</body>
+</html>

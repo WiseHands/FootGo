@@ -65,6 +65,7 @@
     <h1 th:text="#{seasonIsEmpty}" th:if="${#lists.isEmpty(season)}" class="empty-text-error"></h1>
 </div>
 <div class="main-block">
+    <div th:replace="fragments/carousel :: carousel"></div>
     <div class="main-text">
         <div class="main-about">
             <h1 th:text="#{mainHeaderTitle}"></h1>

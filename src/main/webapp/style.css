@@ -225,17 +225,12 @@ a, a:hover {
     padding: 0 10px;
 }
 .main-photo {
-    /*background: url("img/foot11.jpg");*/
-    /*background-position: center;*/
-    /*background-size: cover;*/
     background-color: #f7f7f5;
-/*    height: 100vh ;*/
 }
 .main-head {
     background: url("img/mainphoto.jpg");
     background-position: center;
     background-size: cover;
-/*    height: 50vh;*/
     width: 100%;
     padding-top: 15vh;
 }
@@ -245,7 +240,6 @@ a, a:hover {
     background-size: cover;
     height: 50vh;
     width: 100%;
-/*    padding-top: 20vh;*/
 }
 .player-background {
     background: url(img/foot77.jpg);
@@ -253,7 +247,6 @@ a, a:hover {
     background-size: cover;
     height: 50vh;
     width: 100%;
-/*    padding-top: 20vh;*/
 }
 .gametable-background {
     background: url(img/foot22.jpg);
