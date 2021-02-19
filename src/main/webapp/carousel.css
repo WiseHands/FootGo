@@ -1,0 +1,18 @@
+.glide__slide img{
+    width: 100%;
+}
+
+.glide__slide{
+    opacity: .7;
+    transition: .3s linear;
+}
+
+.glide__slide--active{
+    opacity: 1;
+    filter: none;
+}
+
+.glide__slides{
+    align-items: center;
+    overflow: visible;
+}

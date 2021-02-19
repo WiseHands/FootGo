@@ -98,7 +98,7 @@ a, a:hover {
     max-width: 900px;
     margin: 0 auto;
 }
-.main-text, .main-where-when, .main-league, .main-cup {
+.main-text, .main-where-when, .main-league, .main-cup, .carousel {
     display: flex;
     padding-top: 20px;
 }
