@@ -21,11 +21,17 @@ public class Season {
     @Column
     private boolean submissionsOpened;
 
+    @Column
+    private Boolean showSponsors;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<TeamSignUpRequest> teamSubmissionList;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Team> teamList;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Sponsor> sponsorList;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<League> leagueList;
@@ -57,6 +63,14 @@ public class Season {
         this.teamList = teamList;
     }
 
+    public List<Sponsor> getSponsorList() {
+        return sponsorList;
+    }
+
+    public void setSponsorList(List<Sponsor> sponsorList) {
+        this.sponsorList = sponsorList;
+    }
+
     public List<League> getLeagueList() {
         return leagueList;
     }
@@ -81,6 +95,14 @@ public class Season {
         this.submissionsOpened = show;
     }
 
+    public Boolean getShowSponsors() {
+        return showSponsors;
+    }
+
+    public void setShowSponsors(Boolean showSponsors) {
+        this.showSponsors = showSponsors;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -97,13 +119,19 @@ public class Season {
         return name_en;
     }
 
+
     public void addTeam(Team team) {
         if(this.teamList == null) {
             this.teamList = new ArrayList<>();
         }
         this.teamList.add(team);
     }
-
+    public void addSponsor(Sponsor sponsor) {
+        if(this.sponsorList == null) {
+            this.sponsorList = new ArrayList<>();
+        }
+        this.sponsorList.add(sponsor);
+    }
     public void addLeague(League league) {
         if(this.leagueList == null) {
             this.leagueList = new ArrayList<>();

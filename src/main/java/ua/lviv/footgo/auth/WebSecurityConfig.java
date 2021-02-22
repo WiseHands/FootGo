@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
 /*                    .failureUrl("/userLogin?error=loginError")*/
-                .defaultSuccessUrl("/", true).permitAll()
+                .defaultSuccessUrl("/", false).permitAll()
 
                 .and()
                 .logout()
