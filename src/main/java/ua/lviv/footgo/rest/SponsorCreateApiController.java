@@ -27,6 +27,8 @@ public class SponsorCreateApiController {
         Sponsor sponsor = new Sponsor();
         sponsor.setSponsorName(sponsorName);
         sponsor.setSponsorUrl(sponsorUrl);
+        sponsor.setLogoImageUrl(logoImageUrl);
+        sponsor.setLogoImageUrlDark(logoImageUrlDark);
         season.addSponsor(sponsor);
 
         sponsorRepository.save(sponsor);

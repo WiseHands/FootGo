@@ -363,7 +363,7 @@ body p {
 }
 .plogo {
     font-size: 1em !important;
-    margin-bottom: 0.5em;
+    padding: 1rem 0 1rem 0;
 }
 /*input validation*/
 input[invalid-input] {
@@ -823,7 +823,6 @@ span.clear-technical-defeat {
 /*input for file upload*/
 .admin-file-upload, .admin-logo-upload {
     margin-top: 10px;
-    margin-bottom: 10px;
 }
 input[type="file"] {
     position: absolute;

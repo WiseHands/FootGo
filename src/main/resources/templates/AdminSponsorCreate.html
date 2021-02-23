@@ -29,15 +29,38 @@
         <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/sponsors/new'">Створити спонсора</a></li>
     </ul>
     <div class="new-season all-requests">
-        <h1>Назва команди</h1>
-        <input type="text" id="teamName" name="teamName" placeholder="Назва команди" required>
-        <input type="text" id="captainName" name="captainName" placeholder="Ім'я капітана" required>
+        <h1>Спонсор</h1>
+        <input type="text" id="sponsorName" name="sponsorName" placeholder="Назва спонсора" required>
+        <input type="text" id="sponsorUrl" name="sponsorUrl" placeholder="URL спонсора" required>
         <div id="requiredFieldsError" class="text-input-error" style="display:none"><p>Заповніть будь ласка
             обов'язкові поля</p></div>
+
+        <div class="admin-logo-upload">
+            <p class="admin-title-row plogo">Співвідношення сторін - 1:1</p>
+            <img id="logo" src="">
+            <img id="logoDark" src="">
+        </div>
+        <div class="admin-capitan">
+            <input disabled type="text" id="imageUrl" name="logoImageUrl" placeholder="Логотип" required>
+            <input disabled type="text" id="imageUrlDark" name="logoImageUrlDark" placeholder="Логотип (Dark mode)" required>
+        </div>
+        <div class="admin-logo-upload">
+            <label class="fileUploadLabel" for="fileUpload">
+                <div class="fileUpload">Логотип спонсора</div>
+                <input type="file" id="fileUpload" />
+            </label>
+            <label class="fileUploadLabel" for="fileUploadDark">
+                <div class="fileUpload">Логотип спонсора (Dark mode)</div>
+                <input type="file" id="fileUploadDark" />
+            </label>
+            <p id="filename"></p>
+            <p id="filenameDark"></p>
+        </div>
 
         <div><input class="main-input-button" type="button" value="Зберегти" onclick="submissionData()"></div>
 
     </div>
 </div>
+<script th:src="@{/logoUploadScript.js}" type="text/javascript"></script>
 </body>
 </html>

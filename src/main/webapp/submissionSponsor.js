@@ -1,19 +1,19 @@
 function submissionData(event) {
-    let teamName = document.getElementById('teamName').value;
-    let captainName = document.getElementById('captainName').value;
+    const sponsorName = document.getElementById('sponsorName');
+    const sponsorUrl = document.getElementById('sponsorUrl');
+    const imageUrl = document.getElementById('imageUrl');
+    const imageUrlDark = document.getElementById('imageUrlDark');
 
-    const checkEmptyTeamName = document.getElementById("teamName");
-    const checkEmptyCaptainName = document.getElementById("captainName");
-    if (checkEmptyTeamName.value == "" && checkEmptyTeamName.value.length == 0 || checkEmptyCaptainName.value == "" && checkEmptyCaptainName.value.length == 0) {
+    if (sponsorName.value == "" && sponsorName.value.length === 0 || sponsorUrl.value == "" && sponsorUrl.value.length === 0) {
         document.getElementById('requiredFieldsError').style.display = "block";
-        checkEmptyTeamName.classList.add("required-fields");
-        checkEmptyCaptainName.classList.add("required-fields");
+        sponsorName.classList.add("required-fields");
+        sponsorUrl.classList.add("required-fields");
         return false;
     }
-    if(teamName && captainName) {
+    if(sponsorName.value && sponsorUrl.value) {
 
-        let params = '?teamName=' + teamName + '&captainName=' + captainName;
-        let apiUrl = '/api/season/' + seasonId + '/team/new' + params;
+        let params = '?sponsorName=' + sponsorName.value + '&sponsorUrl=' + sponsorUrl.value + '&logoImageUrl=' + imageUrl.value + '&logoImageUrlDark=' + imageUrlDark.value;
+        let apiUrl = '/api/season/' + seasonId + '/sponsors/new' + params;
         fetch(apiUrl, {
             method: 'POST',
             headers: {
@@ -22,10 +22,10 @@ function submissionData(event) {
         }).then(function(response) {
             console.log(response);
             if(response.ok) {
-                location.pathname = '/admin/tournament/' + tournamentId + '/season/' + seasonId + '/team';
+                location.pathname = '/admin/tournament/' + tournamentId + '/season/' + seasonId + '/sponsors';
             }
             else {
-                alert('Помилка при створенні команди');
+                alert('Помилка при створенні спонсора');
             }
             return  response.json();
         }).then(function(data) {

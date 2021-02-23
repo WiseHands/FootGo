@@ -23,7 +23,7 @@
                 <li><a href="#">Спонсори</a></li>
             </ul>
             <div class="requests">
-                <p>Команди</p>
+                <p>Спонсори</p>
                 <div class="all-requests">
                     <div>
                         <a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/sponsors/new'" class="link-style">
@@ -32,11 +32,11 @@
                             </div>
                         </a>
                     </div>
-                    <div th:each="item : ${season.teamList}">
-                        <a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/team/edit?uuid=' + ${item.id}" class="link-style">
+                    <div th:each="item : ${season.sponsorList}">
+                        <a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/sponsor/edit?uuid=' + ${item.id}" class="link-style">
                             <div class="request-block">
-                                <h3 th:text="${item.teamName}"></h3>
-                                <p th:text="${item.captain.captainName}"></p>
+                                <h3 th:text="${item.sponsorName}"></h3>
+                                <p th:text="${item.sponsorUrl}"></p>
                             </div>
                         </a>
                     </div>
