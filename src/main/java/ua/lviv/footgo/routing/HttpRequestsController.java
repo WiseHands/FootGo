@@ -27,6 +27,9 @@ public class HttpRequestsController {
     TeamRepository teamRepository;
 
     @Autowired
+    SponsorRepository sponsorRepository;
+
+    @Autowired
     PlayerRepository playerRepository;
 
     @Autowired
@@ -686,6 +689,15 @@ public class HttpRequestsController {
         model.addAttribute("season", season);
         model.addAttribute("team", teamRepository.findById(uuid).get());
         return "AdminSubmissionTeamEntryEdit";
+    }
+    @GetMapping(value = "/admin/tournament/{tournamentId}/season/{seasonId}/sponsor/edit")
+    public String sponsorEdit(Model model, @PathVariable("tournamentId") Long tournamentId, @PathVariable("seasonId") Long seasonId, @RequestParam long uuid) {
+        Tournament tournament = tournamentRepository.findById(tournamentId).get();
+        model.addAttribute("tournament", tournament);
+        Season season = seasonRepository.findById(seasonId).get();
+        model.addAttribute("season", season);
+        model.addAttribute("sponsor", sponsorRepository.findById(uuid).get());
+        return "AdminSubmissionSponsorEntryEdit";
     }
     @GetMapping(value = "/admin/tournament/{tournamentId}/season/{seasonId}/team/player/edit")
     public String playerEdit(Model model,@PathVariable("tournamentId") Long tournamentId, @PathVariable("seasonId") Long seasonId, @RequestParam long uuid) {
