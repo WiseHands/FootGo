@@ -323,6 +323,9 @@ body p {
     font-size: 1.2rem;
     font-weight: 400;
 }
+.admin-sponsor-name input {
+    width: 50%;
+}
 .admin-team-name {
     align-items: center;
     margin-bottom: 10px;

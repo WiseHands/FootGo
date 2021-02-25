@@ -28,13 +28,13 @@ public class Sponsor {
     private String logoImageUrlDark;
 
     @Column
-    private boolean isActive;
+    private Boolean isActive;
 
-    public boolean isActive() {
+    public Boolean getActive() {
         return isActive;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         isActive = active;
     }
 

@@ -2,14 +2,12 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
     <title>Admin | FootGo League</title>
     <link rel="stylesheet" href="../../../admin.css">
-    <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon"></head>
+    <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+</head>
 <body>
-
     <p th:text="${#authentication.principal.username}"></p>
     <form id="logoutForm" th:action="@{/logout}" method="POST">
 <!--        <input value="Logout" type="submit">-->
