@@ -13,10 +13,16 @@ function putTeamRequestById(data) {
         'Content-Type': 'application/json',
         body: data
       }
-    }).then(function(response){
-        console.log(response)
-        return  response.json();
+    }).then(function(response) {
+      console.log(response);
+      if(response.ok) {
+          location.pathname = '/admin/tournament/' + tournamentId + '/season/' + seasonId + '/submission';
+      }
+      else {
+          alert('Error');
+      }
+      return  response.json();
     }).then(function(data) {
-        console.log(data);
+      console.log(data);
     })
 }

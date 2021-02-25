@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<div class="carousel" th:fragment="carousel">
+<div class="carousel" th:fragment="carousel" th:if="${not #lists.isEmpty(sponsorList)}">
     <script src="/glide/dist/glide.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="/glide/dist/css/glide.core.min.css">
     <link rel="stylesheet" href="/glide/dist/css/glide.theme.min.css">
@@ -12,44 +12,10 @@
     <div class="images glide">
         <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
-                <li class="glide__slide">
-                    <a href="/img/sponsors/download1.png"><img src="/img/sponsors/download1.png" alt=""></a>
-                </li>
-
-                <li class="glide__slide">
-                    <img src="/img/sponsors/download2.png" alt="">
-                </li>
-
-                <li class="glide__slide">
-                    <img src="/img/sponsors/download3.jpg" alt="">
-                </li>
-
-                <li class="glide__slide">
-                    <img src="/img/sponsors/download4.png" alt="">
-                </li>
-
-                <li class="glide__slide">
-                    <img src="/img/sponsors/download5.png" alt="">
-                </li>
-
-                <li class="glide__slide">
-                    <img src="/img/sponsors/download6.png" alt="">
-                </li>
-
-                <li class="glide__slide">
-                    <img src="/img/sponsors/download7.png" alt="">
-                </li>
-
-                <li class="glide__slide">
-                    <img src="/img/sponsors/download8.png" alt="">
-                </li>
-
-                <li class="glide__slide">
-                    <img src="/img/sponsors/download9.png" alt="">
-                </li>
-
-                <li class="glide__slide">
-                    <img src="/img/sponsors/download10.png" alt="">
+                <li class="glide__slide" th:if="${not #lists.isEmpty(season) AND sponsor.getActive() == true}" th:each="sponsor : ${sponsorList}">
+                    <a th:href="${sponsor.sponsorUrl}">
+                        <img th:src="${sponsor.logoImageUrl}" th:alt="${sponsor.sponsorUrl}">
+                    </a>
                 </li>
             </ul>
         </div>

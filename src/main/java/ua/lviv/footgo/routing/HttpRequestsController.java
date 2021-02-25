@@ -85,6 +85,8 @@ public class HttpRequestsController {
                 model.addAttribute("leagueList", leagueList);
                 List<Cup> cupList = season.getCupList();
                 model.addAttribute("cupList", cupList);
+                List<Sponsor> sponsorList = season.getSponsorList();
+                model.addAttribute("sponsorList", sponsorList);
             }
             List<Season> seasonList = tournament.getSeasonList().stream()
                     .filter(s -> !s.getId().equals(season.getId()))
@@ -92,7 +94,7 @@ public class HttpRequestsController {
 /*            List<Season> seasonList = seasonRepository.getSeasonsExceptActive(season.getId());*/
             model.addAttribute("seasonList", seasonList);
         }
-        return "footgo";
+        return "main";
     }
     @GetMapping({"/season/{seasonId}"})
     public String season(Model model, @PathVariable("seasonId") Long seasonId) {
@@ -108,13 +110,15 @@ public class HttpRequestsController {
                 model.addAttribute("leagueList", leagueList);
                 List<Cup> cupList = season.getCupList();
                 model.addAttribute("cupList", cupList);
+                List<Sponsor> sponsorList = season.getSponsorList();
+                model.addAttribute("sponsorList", sponsorList);
             }
             List<Season> seasonList = tournament.getSeasonList().stream()
                     .filter(s -> !s.getId().equals(season.getId()))
                     .collect(Collectors.toList());
             model.addAttribute("seasonList", seasonList);
         }
-        return "footgo";
+        return "main";
     }
 /*    @GetMapping({"/signup"})
     public String signup(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {

@@ -331,7 +331,8 @@ body p {
     margin-bottom: 10px;
 }
 .admin-team-name p {
-    margin-right: 15px;
+/*    margin-right: 15px;*/
+    margin-bottom: 10px;
 }
 .admin-capitan {
     display: flex;
@@ -608,7 +609,7 @@ input[type=text], input[type=tel], input[type=email], input[type=number], select
     margin: 15px 0 15px 0;
 }
 .modal-body p {
-    width: 50%;
+/*    width: 50%;*/
 }
 .goal-minute input, .goal-author select, .goal-second input
 {
@@ -1159,8 +1160,20 @@ ul.menu-breadcrumb li a:hover {
   --main-text-on-button-color: #000000;
   --main-text-on-button-color-inactive: #dab1fe;
   --main-input-field: #3d3d463d;
-  --main-admin-bg-color: #005446;
+  /*--main-admin-bg-color: #005446;*/
+  --main-admin-bg-color: #121212;
 }
+    .admin-img {
+        filter: invert(1);
+    }
+    .fileUpload {
+        background: #383838;
+        border: 2px dotted #bebebe;
+        color: var(--main-text-color);
+    }
+    .close:hover, .close:focus {
+        color: var(--main-on-button-color);
+    }
     .request-block {
         background: var(--main-sf-color);
         color: var(--main-text-color);
