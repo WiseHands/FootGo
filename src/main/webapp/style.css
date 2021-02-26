@@ -102,6 +102,13 @@ a, a:hover {
     display: flex;
     padding-top: 20px;
 }
+.glide__slides {
+    max-height: 240px;
+}
+.glide__slide--active img {
+    max-width: 240px;
+}
+
 .main-league {
     flex-wrap: wrap;
 }
