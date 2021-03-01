@@ -2,13 +2,8 @@ package ua.lviv.footgo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ua.lviv.footgo.entity.Player;
-import ua.lviv.footgo.entity.Sponsor;
-import ua.lviv.footgo.entity.Team;
-import ua.lviv.footgo.repository.CaptainRepository;
+import ua.lviv.footgo.entity.*;
 import ua.lviv.footgo.repository.SponsorRepository;
-import ua.lviv.footgo.repository.TeamRepository;
-
 import java.util.List;
 
 @RestController

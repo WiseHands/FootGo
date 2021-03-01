@@ -1,8 +1,10 @@
 package ua.lviv.footgo.rest;
 
+import com.github.javafaker.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import ua.lviv.footgo.entity.Goal;
 import ua.lviv.footgo.entity.Season;
 import ua.lviv.footgo.entity.Sponsor;
 import ua.lviv.footgo.repository.SeasonRepository;
@@ -34,6 +36,24 @@ public class SponsorCreateApiController {
 
         sponsorRepository.save(sponsor);
         return sponsor;
+    }
+
+    @DeleteMapping(value = "/{seasonId}/sponsors", consumes = "application/json", produces = "application/json")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
+    public void deleteSponsorFromSeason(@PathVariable Long seasonId, @RequestParam Long sponsorId) {
+        Sponsor sponsor = new Sponsor();
+        boolean sponsorIsPresent = sponsorRepository.findById(sponsorId).isPresent();
+        if (sponsorIsPresent) {
+            sponsor = sponsorRepository.findById(sponsorId).get();
+        }
+        Season season = seasonRepository.findById(seasonId).get();
+        season.removeSponsor(sponsor);
+/*        for (Sponsor item : season.getSponsorList()) {*/
+            sponsorRepository.delete(sponsor);
+/*        }*/
+
+        seasonRepository.save(season);
     }
 
 }

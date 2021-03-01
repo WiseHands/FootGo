@@ -132,6 +132,12 @@ public class Season {
         }
         this.sponsorList.add(sponsor);
     }
+    public void removeSponsor(Sponsor sponsor) {
+        if(this.sponsorList == null) {
+            return;
+        }
+        sponsorList.remove(sponsor);
+    }
     public void addLeague(League league) {
         if(this.leagueList == null) {
             this.leagueList = new ArrayList<>();

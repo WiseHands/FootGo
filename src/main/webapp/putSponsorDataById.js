@@ -23,7 +23,9 @@ function putSponsorDataById(data) {
         console.log(response);
         if(response.ok) {
         	document.getElementById('success').style.display = 'block';
-        	location.pathname = location.pathname;
+        	let url = location.href.split("?")[0];
+        	window.history.pushState('object', document.title, url);
+        	location.pathname =  '/admin/tournament/' + tournamentId + '/season/' + seasonId + '/sponsors';
         } else {
             document.getElementById('error').style.display = 'block';
         }
