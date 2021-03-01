@@ -334,17 +334,19 @@ body p {
 /*    margin-right: 15px;*/
     margin-bottom: 10px;
 }
+.image-url {
+    display: none;
+}
 .admin-capitan {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin-bottom: 10px;
 }
 .admin-capitan p {
     margin-bottom: 5px;
     margin-right: 10px;
 }
-.admin-capitan input[type=text], .admin-capitan input[type=tel], .admin-capitan input[type=email] {
+.admin-capitan input[type=text], .admin-capitan input[type=tel], .admin-capitan input[type=email], .admin-capitan input[type=url] {
 
     margin: 10px auto;
 
@@ -374,7 +376,7 @@ input[invalid-input] {
     border: 1px solid #ed002c !important;
     border-radius: 5px;
 }
-input[type=text], input[type=tel], input[type=email], input[type=number], select {
+input[type=text], input[type=tel], input[type=email], input[type=number], input[type=url], select {
     padding: 15px;
     margin: 5px 0 10px 0;
     display: inline-block;
@@ -382,6 +384,12 @@ input[type=text], input[type=tel], input[type=email], input[type=number], select
     border-radius: 5px;
     background: #fff;
     border: 1px solid #00000080;
+}
+#requiredFieldsError {
+    display: none;
+}
+#requiredFieldsError p {
+    font-size: inherit;
 }
 .main-input-button, .save-video-button {
     color: #fff;
@@ -800,7 +808,7 @@ span.clear-technical-defeat {
     display: inline-flex;
     width: 100%;
     justify-content: center;
-    padding-top: 20px;
+    margin-top: 20px;
 /*    position: absolute;
     left: calc(50% - 20px);*/
 }
@@ -1184,7 +1192,7 @@ ul.menu-breadcrumb li a:hover {
     body p, body a, .requests p, ul.menu-breadcrumb li a, ul.menu-breadcrumb li + li:before, ul.menu-breadcrumb li a:hover, .label-check-text, .all-requests h1, .modal-header h2, .team-request h3, .tour-score #goalBtn, .container, .select-team {
         color: var(--main-text-color);
     }
-    input[type=text], input[type=tel], input[type=email], input[type=number], select, textarea {
+    input[type=text], input[type=tel], input[type=email], input[type=number], input[type=url], select, textarea {
         background: var(--main-sf-color);
         color: var(--main-text-color);
     }

@@ -5,10 +5,24 @@ let searchParams = new URLSearchParams(url.search);
 const id = searchParams.get('uuid');
 
 function putSponsorDataById(data) {
-        let sponsorName = document.getElementById('name').value;
-        let sponsorUrl = document.getElementById('url').value;
-        let logoImageUrl = document.getElementById('imageUrl').value;
-        let logoImageUrlDark = document.getElementById('imageUrlDark').value;
+    const sponsorName = document.getElementById('name').value;
+    const sponsorUrl = document.getElementById('url').value;
+    const logoImageUrl = document.getElementById('imageUrl').value;
+    const logoImageUrlDark = document.getElementById('imageUrlDark').value;
+
+    if (sponsorName == "" && sponsorName.length === 0) {
+        document.getElementById('requiredFieldsError').style.display = "block";
+        document.getElementById('name').classList.add("required-fields");
+    }
+
+    if (sponsorUrl == "" && sponsorUrl.length === 0) {
+        document.getElementById('requiredFieldsError').style.display = "block";
+        document.getElementById('url').classList.add("required-fields");
+    }
+
+    if (sponsorName == "" && sponsorName.length === 0 || sponsorUrl == "" && sponsorUrl.length === 0) {
+        return false;
+    }
 
     let params = '?sponsorName=' + sponsorName + '&sponsorUrl=' + sponsorUrl + '&logoImageUrl=' + logoImageUrl + '&logoImageUrlDark=' + logoImageUrlDark;
 

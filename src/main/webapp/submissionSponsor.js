@@ -1,15 +1,28 @@
 function submissionData(event) {
-    const sponsorName = document.getElementById('sponsorName');
-    const sponsorUrl = document.getElementById('sponsorUrl');
-    const imageUrl = document.getElementById('imageUrl');
-    const imageUrlDark = document.getElementById('imageUrlDark');
+    let sponsorName = document.getElementById('sponsorName');
+    let sponsorUrl = document.getElementById('sponsorUrl');
+    let imageUrl = document.getElementById('imageUrl');
+    let imageUrlDark = document.getElementById('imageUrlDark');
 
-    if (sponsorName.value == "" && sponsorName.value.length === 0 || sponsorUrl.value == "" && sponsorUrl.value.length === 0) {
+/*    sponsorName.addEventListener("change", (event) => {
+        const result = document.querySelector('#requiredFieldsError');
+        result.textContent = `${event.target.value}`;
+    });*/
+
+    if (sponsorName.value == "" && sponsorName.value.length === 0) {
         document.getElementById('requiredFieldsError').style.display = "block";
         sponsorName.classList.add("required-fields");
+    }
+
+    if (sponsorUrl.value == "" && sponsorUrl.value.length === 0) {
+        document.getElementById('requiredFieldsError').style.display = "block";
         sponsorUrl.classList.add("required-fields");
+    }
+
+    if (sponsorName.value == "" && sponsorName.value.length === 0 || sponsorUrl.value == "" && sponsorUrl.value.length === 0) {
         return false;
     }
+
     if(sponsorName.value && sponsorUrl.value) {
 
         let params = '?sponsorName=' + sponsorName.value + '&sponsorUrl=' + sponsorUrl.value + '&logoImageUrl=' + imageUrl.value + '&logoImageUrlDark=' + imageUrlDark.value;
