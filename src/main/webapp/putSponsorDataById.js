@@ -24,6 +24,15 @@ function putSponsorDataById(data) {
         return false;
     }
 
+    let urlInput = document.getElementById("url");
+    if (!urlInput.checkValidity()) {
+        urlInput.classList.add("required-fields");
+        document.getElementById('requiredFieldsURLError').style.display = "block";
+        return false;
+    } else {
+        document.getElementById("urlValidationMessage").innerHTML = urlInput.validationMessage;
+    }
+
     let params = '?sponsorName=' + sponsorName + '&sponsorUrl=' + sponsorUrl + '&logoImageUrl=' + logoImageUrl + '&logoImageUrlDark=' + logoImageUrlDark;
 
     let apiUrl = '/sponsor/' + id + params;

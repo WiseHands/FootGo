@@ -32,11 +32,18 @@
         <h1>Спонсор</h1>
         <div class="admin-sponsor-name">
             <input type="text" id="sponsorName" name="sponsorName" placeholder="Назва спонсора" required>
-            <input type="text" id="sponsorUrl" name="sponsorUrl" placeholder="URL спонсора" required>
+            <input type="url" id="sponsorUrl" name="sponsorUrl"
+                   placeholder="URL спонсора, https://example.com"
+                   pattern="https://.*" size="30"
+                   required>
         </div>
         <div id="requiredFieldsError" class="text-input-error">
             <p>Заповніть будь ласка обов'язкові поля</p>
         </div>
+        <div id="requiredFieldsURLError" class="text-input-error">
+            <p>Вкажіть дійсний URL</p>
+        </div>
+        <p id="urlValidationMessage"></p>
         <div class="admin-logo-upload">
             <p class="admin-title-row plogo">Співвідношення сторін - 1:1</p>
             <img id="logo" src="">

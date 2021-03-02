@@ -38,12 +38,20 @@
                 <p class="admin-title-row">Url спонсора</p>
                 <div class="admin-team-name">
                     <div class="admin-capitan admin-sponsor-name">
-                        <input type="url" id="url" name="sponsorUrl" placeholder="Url спонсора" pattern="https?://.+" required th:value="${sponsor.sponsorUrl}">
+                        <input type="url" id="url" name="sponsorUrl"
+                               placeholder="URL спонсора, https://example.com"
+                               pattern="https://.*" size="30"
+                               required
+                               th:value="${sponsor.sponsorUrl}">
                     </div>
                 </div>
                 <div id="requiredFieldsError" class="text-input-error">
                     <p>Заповніть будь ласка обов'язкові поля</p>
                 </div>
+                <div id="requiredFieldsURLError" class="text-input-error">
+                    <p>Вкажіть дійсний URL</p>
+                </div>
+                <p id="urlValidationMessage"></p>
                 <div class="image-url">
                     <input disabled type="text" id="imageUrl" name="logoImageUrl" placeholder="Логотип" required th:value="${sponsor.logoImageUrl}">
                     <input disabled type="text" id="imageUrlDark" name="logoImageUrlDark" placeholder="Логотип (Dark mode)" required th:value="${sponsor.logoImageUrlDark}">

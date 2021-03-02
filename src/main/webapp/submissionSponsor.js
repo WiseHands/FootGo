@@ -19,6 +19,15 @@ function submissionData(event) {
         sponsorUrl.classList.add("required-fields");
     }
 
+    let urlInput = document.getElementById("sponsorUrl");
+    if (!urlInput.checkValidity()) {
+        urlInput.classList.add("required-fields");
+        document.getElementById('requiredFieldsURLError').style.display = "block";
+        return false;
+    } else {
+        document.getElementById("urlValidationMessage").innerHTML = urlInput.validationMessage;
+    }
+
     if (sponsorName.value == "" && sponsorName.value.length === 0 || sponsorUrl.value == "" && sponsorUrl.value.length === 0) {
         return false;
     }

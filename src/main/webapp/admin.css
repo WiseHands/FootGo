@@ -247,7 +247,10 @@ body p {
     padding: .5em;
     border: 0px solid;
     border-radius: 4px;
-    color: #6200ee;
+    color: #b00020;
+}
+.delete-team-button .click-button:hover {
+    background-color: #b0002033;
 }
 .click-button:hover {
     background-color: #f9f5fe;
@@ -385,10 +388,10 @@ input[type=text], input[type=tel], input[type=email], input[type=number], input[
     background: #fff;
     border: 1px solid #00000080;
 }
-#requiredFieldsError {
+#requiredFieldsError, #requiredFieldsURLError {
     display: none;
 }
-#requiredFieldsError p {
+#requiredFieldsError p, #requiredFieldsURLError p {
     font-size: inherit;
 }
 .main-input-button, .save-video-button {
@@ -951,7 +954,7 @@ ol li {
 }
 .text-input-error {
   text-align: center;
-  color: red;
+  color: #b00020;
 }
 /* Cards checkboxes */
 /* The container */
@@ -1213,6 +1216,9 @@ ul.menu-breadcrumb li a:hover {
     }
     .delete-team-button .click-button:hover {
         background-color: #cf667933;
+    }
+    .text-input-error p {
+        color: #cf6679;
     }
     .team-defeat {
         background: #cf6679;

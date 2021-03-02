@@ -56,7 +56,7 @@ a, a:hover {
     font-size: 1.2rem;
     border: none;
 }
-.season-list, lang-switcher {
+.season-list, .lang-switcher {
     position: relative;
     display: inline-block;
 }
@@ -1563,6 +1563,24 @@ footer {
     text-align: inherit;
     line-height: 2em;
 }
+blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+blockquote p {
+    display: inline;
+}
 .cards {
     padding: 20px 0 20px 0;
 }
@@ -1576,30 +1594,30 @@ footer {
     padding-top: 20px;
 }
 .card-team-one {
-  display: inline-block;
-  width: 0.7em;
-  height: 1em;
-  background-size: 100% 100%;
-  transform: rotateZ(25deg);
-  margin-left: 10px;
+    display: inline-block;
+    width: 0.7em;
+    height: 1em;
+    background-size: 100% 100%;
+    transform: rotateZ(25deg);
+    margin-left: 10px;
 }
 .card-team-two {
-  display: inline-block;
-  width: 0.7em;
-  height: 1em;
-  background-size: 100% 100%;
-  transform: rotateZ(25deg);
-  margin-right: 10px;
+    display: inline-block;
+    width: 0.7em;
+    height: 1em;
+    background-size: 100% 100%;
+    transform: rotateZ(25deg);
+    margin-right: 10px;
 }
 .yellow-card {
-  background-image: url(img/yellow_card.svg);
+    background-image: url(img/yellow_card.svg);
 }
 .red-card {
-  background-image: url(img/red_card.svg);
+    background-image: url(img/red_card.svg);
 }
 .dropbtn {
-  background-color: #0D0B20;
-  color: #fff;
+    background-color: #0D0B20;
+    color: #fff;
 }
 .dark {
     display: none;
@@ -2396,6 +2414,9 @@ input.invalid {
     }
     .breadcrumb:last-child {
         color: #fff;
+    }
+    blockquote {
+        background: var(--main-sf-color);
     }
 }
 /*Dark-mode end*/
