@@ -120,6 +120,56 @@ public class HttpRequestsController {
         }
         return "main";
     }
+    @GetMapping({"/season/{seasonId}/sponsor/{sponsorId}"})
+    public String sponsor(Model model, @PathVariable("seasonId") Long seasonId, @PathVariable("sponsorId") Long sponsorId) {
+        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
+
+        if (!tournaments.isEmpty()) {
+            Tournament tournament = tournaments.get(0);
+            model.addAttribute("tournament", tournament);
+            Season season = seasonRepository.findById(seasonId).get();
+            if (!isNull(season)) {
+                model.addAttribute("season", season);
+                List<League> leagueList = season.getLeagueList();
+                model.addAttribute("leagueList", leagueList);
+                List<Cup> cupList = season.getCupList();
+                model.addAttribute("cupList", cupList);
+                List<Sponsor> sponsorList = season.getSponsorList();
+                model.addAttribute("sponsorList", sponsorList);
+                Sponsor sponsor = sponsorRepository.findById(sponsorId).get();
+                model.addAttribute("sponsor", sponsor);
+            }
+            List<Season> seasonList = tournament.getSeasonList().stream()
+                    .filter(s -> !s.getId().equals(season.getId()))
+                    .collect(Collectors.toList());
+            model.addAttribute("seasonList", seasonList);
+        }
+        return "sponsor";
+    }
+/*    @GetMapping({"/season/{seasonId}/sponsor/new"})
+    public String newSponsor(Model model, @PathVariable("seasonId") Long seasonId) {
+        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
+
+        if (!tournaments.isEmpty()) {
+            Tournament tournament = tournaments.get(0);
+            model.addAttribute("tournament", tournament);
+            Season season = seasonRepository.findById(seasonId).get();
+            if (!isNull(season)) {
+                model.addAttribute("season", season);
+                List<League> leagueList = season.getLeagueList();
+                model.addAttribute("leagueList", leagueList);
+                List<Cup> cupList = season.getCupList();
+                model.addAttribute("cupList", cupList);
+                List<Sponsor> sponsorList = season.getSponsorList();
+                model.addAttribute("sponsorList", sponsorList);
+            }
+            List<Season> seasonList = tournament.getSeasonList().stream()
+                    .filter(s -> !s.getId().equals(season.getId()))
+                    .collect(Collectors.toList());
+            model.addAttribute("seasonList", seasonList);
+        }
+        return "newSponsor";
+    }*/
 /*    @GetMapping({"/signup"})
     public String signup(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
         model.addAttribute("name", name);

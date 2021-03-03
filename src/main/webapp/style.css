@@ -66,7 +66,7 @@ a, a:hover {
     position: absolute;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 999;
 }
 .prev-seasons a, .lang-list a, .sign-in-list a {
     color: #fff;
@@ -97,6 +97,9 @@ a, a:hover {
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
+}
+.carousel {
+    padding-bottom: 20px;
 }
 .main-text, .main-where-when, .main-league, .main-cup, .carousel {
     display: flex;
@@ -310,7 +313,7 @@ a, a:hover {
     margin: 0 auto;
     height: 200px;
     width: 200px;
-    background-image: url(img/footgo-dark-icon.png);
+    background-image: url(/img/footgo-dark-icon.png);
     background-size: cover;
 }
 .main-head-teamlogo {
@@ -1373,7 +1376,6 @@ input[invalid-input] {
 .user-card-photo {
     margin: 20px;
     display: flex;
-    align-items: center;
 }
 .player-card-info {
     padding-left: 10px;
@@ -1528,6 +1530,20 @@ footer {
       display: none;
   }
 }
+/* CKEditor font size styles */
+.text-tiny {
+    font-size: .7em;
+}
+.text-small {
+    font-size: .85em;
+}
+.text-big {
+    font-size: 1.4em;
+}
+.text-huge {
+    font-size: 1.8em;
+}
+
 .description-text {
 /*    width: 450px;*/
     width: 700px;

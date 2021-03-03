@@ -1,0 +1,58 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title th:text="#{userProfile} + ' ' + ${#authentication.principal.username}"></title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/hamburger.css">
+    <link rel="shortcut icon" href="/img/footgo-dark-icon.png" type="image/x-icon">
+    <script src="/imgPlaceholderSetScript.js" type="text/javascript"></script>
+</head>
+<body class="matches-full">
+<header th:replace="fragments/header :: header"></header>
+<div class="main-block">
+    <div th:replace="fragments/carousel :: carousel"></div>
+</div>
+<div id="bredcrumbs" class="section">
+    <div class="row">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col">
+                    <a th:text="#{home}" href="/" class="breadcrumb"></a>
+                    <a th:text="#{sponsorInfo}" href="#!" class="breadcrumb"></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<h1 th:text="#{sponsorInfo}"></h1>
+<div class="player-card-main">
+    <div class="player-card-photo user-card-photo">
+        <img src="" th:src="${sponsor.logoImageUrl}">
+        <!--<i class="fas fa-address-card"></i>-->
+    </div>
+    <div class="player-card-info user-card-info">
+        <h2 th:text="${sponsor.sponsorName}"></h2>
+        <p th:text="URL" class="title"></p>
+        <a href="" th:href="${sponsor.sponsorUrl}" th:text="${sponsor.sponsorUrl}"></a>
+        <p th:text="Sponsor_description" class="title"></p>
+        <p th:text="QWERTY"></p>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<script src="/signUpScript.js"></script>
+<script src="/hamburger.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39722519-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-39722519-3');
+</script>
+</body>
+</html>

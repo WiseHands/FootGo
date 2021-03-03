@@ -1056,6 +1056,9 @@ ol li {
     text-align: center;
     margin: .5em 0;
 }
+.fixed-action-btn {
+    display: none;
+}
 @media screen and (max-width: 667px) {
     .league-info, .cup-info {
         margin: 0 auto;
@@ -1082,6 +1085,45 @@ ol li {
     }
     .tour-team1 p, .tour-team2 p {
         width: 80%;
+    }
+    .fixed-action-btn {
+        display: block;
+        position: fixed;
+        bottom: 45px;
+        right: 24px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 997;
+    }
+    .btn-large {
+        font-size: 15px;
+        padding: 0 28px;
+    }
+    .btn-floating {
+        display: inline-block;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        width: 54px;
+        height: 54px;
+        line-height: 54px;
+        padding: 0;
+        background-color: #26a69a;
+        border-radius: 50%;
+        -webkit-transition: background-color .3s;
+        transition: background-color .3s;
+        cursor: pointer;
+        vertical-align: middle;
+    }
+    .purple {
+        background-color: #bb86fc !important;
+    }
+    .btn-floating i {
+        width: inherit;
+        display: inline-flex;
+        text-align: center;
+        font-size: 2.4rem;
     }
 
 }
