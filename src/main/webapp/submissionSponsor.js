@@ -3,6 +3,11 @@ function submissionData(event) {
     let sponsorUrl = document.getElementById('sponsorUrl');
     let imageUrl = document.getElementById('imageUrl');
     let imageUrlDark = document.getElementById('imageUrlDark');
+    let descriptionText = editor.getData();
+
+    if (!descriptionText) {
+        descriptionText = " ";
+    }
 
 /*    sponsorName.addEventListener("change", (event) => {
         const result = document.querySelector('#requiredFieldsError');
@@ -38,6 +43,7 @@ function submissionData(event) {
         let apiUrl = '/api/season/' + seasonId + '/sponsors/new' + params;
         fetch(apiUrl, {
             method: 'POST',
+            body: descriptionText,
             headers: {
               'Content-Type': 'application/json',
             }

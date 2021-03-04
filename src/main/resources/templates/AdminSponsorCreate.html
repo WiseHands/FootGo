@@ -65,11 +65,17 @@
             <p id="filename"></p>
             <p id="filenameDark"></p>
         </div>
+        <div class="add-video-link">
+            <p class="description-text">Інформація про спонсора</p>
+            <textarea name="addDescText" id="editor"></textarea>
+        </div>
 
         <div><input class="main-input-button" type="button" value="Зберегти" onclick="submissionData()"></div>
 
     </div>
 </div>
 <script th:src="@{/logoUploadScript.js}" type="text/javascript"></script>
+<script src="/ckeditor5/build/ckeditor.js"></script>
+<script src="/ckeditor5/ckconfig.js"></script>
 </body>
 </html>

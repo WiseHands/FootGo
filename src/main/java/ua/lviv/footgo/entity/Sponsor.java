@@ -27,6 +27,9 @@ public class Sponsor {
     @Column
     private String logoImageUrlDark;
 
+    @Column(columnDefinition="TEXT")
+    private String descriptionText;
+
     @Column
     private Boolean isActive;
 
@@ -52,6 +55,14 @@ public class Sponsor {
 
     public void setLogoImageUrlDark(String logoImageUrlDark) {
         this.logoImageUrlDark = logoImageUrlDark;
+    }
+
+    public String getDescriptionText() {
+        return descriptionText;
+    }
+
+    public void setDescriptionText(String descriptionText) {
+        this.descriptionText = descriptionText;
     }
 
     public Long getId() {
