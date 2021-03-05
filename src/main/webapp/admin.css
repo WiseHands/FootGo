@@ -783,6 +783,7 @@ span.clear-technical-defeat {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 1rem;
 }
 .add-video-link p {
     font-size: 0.8rem;
@@ -1136,6 +1137,9 @@ ol li {
     text-align: center;
     padding: 0 1em 0 1em;
     flex-wrap: nowrap;
+}
+.add-video-link textarea {
+    display: none;
 }
 .new-season textarea, .tournament-description textarea {
     max-width: 100%;

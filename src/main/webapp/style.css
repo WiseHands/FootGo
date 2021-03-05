@@ -115,7 +115,7 @@ a, a:hover {
 .main-league {
     flex-wrap: wrap;
 }
-.main-where, .main-when, .main-about, .main-video, .request-block, .matches-bg, .logo-team-bg, .photo-team-bg {
+.main-where, .main-when, .main-about, .main-video, .request-block, .matches-bg, .logo-team-bg, .photo-team-bg, sponsor-bg {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -1043,6 +1043,16 @@ input[invalid-input] {
     width: auto;
 /*    width: fit-content;*/
 /*    width: -moz-fit-content;*/
+    margin-bottom: 20px;
+}
+.sponsor-bg {
+    display: flex;
+    flex-direction: column;
+    max-width: 850px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 0 auto;
+    width: auto;
     margin-bottom: 20px;
 }
 .match-res-date {
@@ -2247,7 +2257,7 @@ input.invalid {
     }
     .main-head-title, .main-where, .main-when, .main-about, .main-video, .logo-team-bg, .player-card-main,
     .matches-bg, .results-container, .team-name, .capitan, .footer-container, .footer-bottom, .login-form,
-    .user-registration-form, .photo-team-bg {
+    .user-registration-form, .photo-team-bg, .sponsor-bg {
         background: var(--main-sf-color);
         color: var(--main-text-color);
     }

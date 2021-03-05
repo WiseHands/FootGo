@@ -78,6 +78,10 @@
                     <p id="filename"></p>
                     <p id="filenameDark"></p>
                 </div>
+                <div class="add-video-link">
+                    <p class="description-text">Інформація про спонсора</p>
+                    <textarea name="addDescText" id="editor" th:text="${sponsor.descriptionText}"></textarea>
+                </div>
                 <div class="slogan-button">
                     <input class="main-input-button" type="button" value="Зберегти" onclick="putSponsorDataById()">
                 </div>
@@ -85,5 +89,7 @@
                 <div id="error" class="player-bg"><p>Помилка при збереженні! Зв'яжіться з з адміністраторами footgo.league@gmail.com </p></div>
             </div>
         </div>
+        <script src="/ckeditor5/build/ckeditor.js"></script>
+        <script src="/ckeditor5/ckconfig.js"></script>
     </body>
 </html>

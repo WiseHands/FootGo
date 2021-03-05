@@ -27,7 +27,7 @@ public class SponsorApiController {
 
     @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
     public Sponsor update(@PathVariable Long id, @RequestParam String sponsorName, @RequestParam String sponsorUrl,
-                          @RequestParam String logoImageUrl, @RequestParam String logoImageUrlDark, @RequestBody String descriptionText) {
+                          @RequestParam String logoImageUrl, @RequestParam String logoImageUrlDark, @RequestBody(required = false) String descriptionText) {
         Sponsor sponsor = sponsorRepository.findById(id).get();
         sponsor.setSponsorName(sponsorName);
         sponsor.setSponsorUrl(sponsorUrl);

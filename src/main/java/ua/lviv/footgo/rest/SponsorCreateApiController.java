@@ -22,7 +22,7 @@ public class SponsorCreateApiController {
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
     public Sponsor createNewSponsor(@PathVariable Long seasonId, @RequestParam String sponsorName, @RequestParam String sponsorUrl,
-                                 @RequestParam String logoImageUrl, @RequestParam String logoImageUrlDark, @RequestBody String descriptionText) {
+                                 @RequestParam String logoImageUrl, @RequestParam String logoImageUrlDark, @RequestBody(required = false) String descriptionText) {
         Season season = seasonRepository.findById(seasonId).get();
         Sponsor sponsor = new Sponsor();
         sponsor.setSponsorName(sponsorName);

@@ -5,10 +5,6 @@ function submissionData(event) {
     let imageUrlDark = document.getElementById('imageUrlDark');
     let descriptionText = editor.getData();
 
-    if (!descriptionText) {
-        descriptionText = " ";
-    }
-
 /*    sponsorName.addEventListener("change", (event) => {
         const result = document.querySelector('#requiredFieldsError');
         result.textContent = `${event.target.value}`;
