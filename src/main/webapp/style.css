@@ -1388,9 +1388,8 @@ input[invalid-input] {
     display: flex;
 }
 .player-card-info {
-    padding-left: 10px;
     line-height: 1.6;
-    padding: 10px 10px;
+    padding: 1rem;
 }
 .player-card-info p {
 /*    white-space: nowrap;*/
@@ -1505,7 +1504,7 @@ footer {
     display: flex;
 }
 .footer-powered img {
-    width: 36px;
+    width: 2rem;
     margin-right: 0.5rem;
 }
 .footer-logo p {
@@ -1536,11 +1535,18 @@ footer {
     text-align: center;
 }
 @media (prefers-color-scheme: light) {
+:root {
+    --main-table-lines-color: #0000000d;
+}
   #map {
       display: none;
   }
+  .ck-table thead tr, .ck-table tbody tr th {
+      background: var(--main-table-lines-color);
+  }
 }
 /* CKEditor font size styles */
+
 .text-tiny {
     font-size: .7em;
 }
@@ -1828,6 +1834,10 @@ input.invalid {
 .vs-container .review-head {
     width: 500px;
 }
+.sponsor-description .results-container {
+    width: 90%;
+}
+
 @media screen and (max-width: 1160px) {
     .main-container {
         width: 100%;
@@ -1906,9 +1916,20 @@ input.invalid {
     .matches-bg {
         width: 95%;
     }
-
     .player-card-main {
+        margin-top: 0;
+    }
+    .sponsor-container {
+        margin: 0 auto;
+    }
+    .player-card-main, .sponsor-container {
         width: 90%;
+    }
+    .sponsor-bg .sponsor-description {
+        padding: 1rem;
+    }
+    .matches-full h1 {
+        padding: 0 1rem 0 1rem;
     }
     .main-where-when, .main-text {
         flex-direction: column;
@@ -2064,9 +2085,8 @@ input.invalid {
         height: 100vh;
     }
     .table, .bomb {
-/*        width: 98%;*/
         line-height: 2;
-        padding: 0 10px 0 10px;
+        justify-content: flex-start;
     }
     .main-container {
         flex-direction: column;
@@ -2245,6 +2265,7 @@ input.invalid {
     --main-input-field: #3d3d463d;
     --main-progress-bar-less-color: #9f57e2;
     --main-progress-bar-more-color: #ff0266;
+    --main-table-lines-color: #383838;
 }
     body {
         background: var(--main-bg-color);
@@ -2443,6 +2464,9 @@ input.invalid {
     }
     blockquote {
         background: var(--main-sf-color);
+    }
+    .ck-table thead tr, .ck-table tbody tr th {
+        background: var(--main-table-lines-color);
     }
 }
 /*Dark-mode end*/

@@ -26,7 +26,6 @@
         </nav>
     </div>
 </div>
-<h1 th:text="#{sponsorInfo}"></h1>
 <div class="player-card-main">
     <div class="player-card-photo user-card-photo">
         <img src="" th:src="${sponsor.logoImageUrl}">
@@ -40,10 +39,10 @@
 </div>
 <div class="sponsor-container">
     <div class="sponsor-bg">
-        <div class="match-video video-description"
+        <div class="match-video video-description sponsor-description"
              th:if="${sponsor.descriptionText != null} AND ${sponsor.descriptionText != ''} AND ${sponsor.descriptionText != ' '}">
             <div class="results-container description-text">
-                <div th:utext="${sponsor.descriptionText}"></div>
+                <div class="ck-table" th:utext="${sponsor.descriptionText}"></div>
             </div>
         </div>
     </div>
