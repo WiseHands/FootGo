@@ -24,6 +24,9 @@ public class Team {
     @Column
     private String logoImageUrlDark;
 
+    @Column
+    private String photoImageUrl;
+
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
     private List<Player> players;
 
@@ -98,6 +101,14 @@ public class Team {
 
     public String getTeamNameTransliterated() {
         return Transliterator.transliterate(this.teamName);
+    }
+
+    public String getPhotoImageUrl() {
+        return photoImageUrl;
+    }
+
+    public void setPhotoImageUrl(String photoImageUrl) {
+        this.photoImageUrl = photoImageUrl;
     }
 
 }

@@ -6,8 +6,11 @@ function putTeamAndCaptainById(data) {
         let ad_points = document.getElementById('bonus-points').value;
         let logoImageUrl = document.getElementById('imageUrl').value;
         let logoImageUrlDark = document.getElementById('imageUrlDark').value;
+        let photoImageUrl = document.getElementById('photo').src;
 
-    let params = '?name=' + t_name + '&captainName=' + name + '&captainPhone=' + phone + "&captainEmail=" + email + "&additionalPoints=" + ad_points + "&logoImageUrl=" + logoImageUrl + "&logoImageUrlDark=" + logoImageUrlDark;
+    let params = '?name=' + t_name + '&captainName=' + name + '&captainPhone=' + phone + "&captainEmail=" + email +
+    "&additionalPoints=" + ad_points + "&logoImageUrl=" + logoImageUrl + "&logoImageUrlDark=" + logoImageUrlDark +
+    "&photoImageUrl=" + photoImageUrl;
 
     let apiUrl = '/team/' + id + params;
     fetch(apiUrl, {

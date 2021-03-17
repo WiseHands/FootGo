@@ -9,6 +9,7 @@
 body {
     background-color: #cee0dd;
     margin: 0 auto;
+    padding-bottom: 2.5rem;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 body p {
@@ -867,7 +868,7 @@ input[type="file"] {
     position: relative;
     height: 4em;
     width: 15em;
-    margin: 0px 5px 10px 5px;
+    margin: 0 10px 10px 10px;
 }
 .fileUpload.dragover {
     background-color: #aaa;

@@ -3,8 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let fileInputDark = document.querySelector('#fileUploadDark');
     let filenameContainer = document.querySelector('#filename');
     let filenameContainerDark = document.querySelector('#filenameDark');
+    let photoFilenameContainer = document.querySelector('#photoFilename');
     let dropZone = document.querySelector('#fileUpload');
     let dropZoneDark = document.querySelector('#fileUploadDark');
+    let photoUpload = document.querySelector('#photoUpload');
+    let photoName = document.querySelector('#photoName');
 
     fileInput.addEventListener('change', function() {
       	filenameContainer.innerText = fileInput.value.split('\\').pop();
@@ -12,7 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
     fileInputDark.addEventListener('change', function() {
       	filenameContainerDark.innerText = fileInputDark.value.split('\\').pop();
     });
-
+    photoUpload.addEventListener('change', function() {
+      	photoFilenameContainer.innerText = photoUpload.value.split('\\').pop();
+    });
     fileInput.addEventListener('dragenter', function() {
     	dropZone.classList.add('dragover');
     });
@@ -34,6 +39,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let logoDark = document.getElementById('logoDark');
     if(logoDark.getAttribute('src') == "" || null) {
         logoDark.src = '/img/placeholder.png';
+    }
+    let photo = document.getElementById('photo');
+    if(photo && photo.getAttribute('src') == "" || null) {
+        photo.src = '/img/placeholder.png';
     }
 
     fileInput.onchange = function() {
@@ -77,5 +86,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById("imageUrlDark").value = data.fileViewUri;
                 document.getElementById("logoDark").src = data.fileViewUri;
         });
+    }
+    if (photoUpload) {
+        photoUpload.onchange = function() {
+            let photoUpload = document.querySelector('#photoUpload');
+            const formData = new FormData();
+
+            formData.append('file', photoUpload.files[0]);
+
+            const options = {
+                method: 'POST',
+                body: formData,
+            };
+
+            fetch('/uploadFile', options)
+                .then(function(response) {
+                      return response.json();
+            })
+                .then(function(data){
+                    console.log(data);
+                    document.getElementById("photoUrl").value = data.fileViewUri;
+                    document.getElementById("photo").src = data.fileViewUri;
+            });
+        }
     }
 });

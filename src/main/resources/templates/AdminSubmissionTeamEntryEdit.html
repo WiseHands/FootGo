@@ -42,14 +42,15 @@
                 <div class="admin-capitan">
                     <input type="text" id="bonus-points" name="bonusPoints" placeholder="Бонусні бали" required="">
                 </div>
-                <div class="admin-capitan">
+                <div class="image-url">
                     <input disabled type="text" id="imageUrl" name="logoImageUrl" placeholder="Логотип" required>
                     <input disabled type="text" id="imageUrlDark" name="logoImageUrlDark" placeholder="Логотип (Dark mode)" required>
+                    <input disabled type="text" id="photoUrl" name="photoUrl" placeholder="Фото команди" required>
                 </div>
                 <div class="admin-logo-upload">
-                    <p class="admin-title-row plogo">Співвідношення сторін - 1:1&nbsp;</p>
-                    <img id="logo" src="">
-                    <img id="logoDark" src="">
+                    <p class="admin-title-row plogo">Рекомендоване співвідношення сторін - 1:1 (не більше 1 Mb)</p>
+                    <img id="logo" src="" th:src="${team.logoImageUrl}">
+                    <img id="logoDark" src="" th:src="${team.logoImageUrlDark}">
                 </div>
                 <div class="admin-logo-upload">
                     <label class="fileUploadLabel" for="fileUpload">
@@ -62,6 +63,18 @@
                     </label>
                     <p id="filename"></p>
                     <p id="filenameDark"></p>
+                    <p id="photoFilename"></p>
+                </div>
+                <div class="admin-logo-upload">
+                    <p class="admin-title-row plogo">Розмір фото не більше 1 Mb</p>
+                    <img id="photo" src="" th:src="${team.photoImageUrl}">
+                </div>
+                <div class="admin-logo-upload">
+                    <label class="fileUploadLabel" for="photoUpload">
+                        <div class="fileUpload">Фото команди</div>
+                        <input type="file" id="photoUpload" />
+                    </label>
+                    <p id="photoName"></p>
                 </div>
                 <div class="slogan-button">
                     <input class="main-input-button" type="button" value="Зберегти" onclick="putTeamAndCaptainById()">

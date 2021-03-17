@@ -98,9 +98,6 @@ a, a:hover {
     max-width: 900px;
     margin: 0 auto;
 }
-.carousel {
-    padding-bottom: 20px;
-}
 .main-text, .main-where-when, .main-league, .main-cup, .carousel {
     display: flex;
     padding-top: 20px;
@@ -907,7 +904,6 @@ footer{
     padding: 5px 0;
     background-color: #fff;
     border-radius: 5px;
-    display: none;
 }
 .logo-team-bg {
     display: flex;
@@ -1651,7 +1647,7 @@ blockquote p {
     background-color: #0D0B20;
     color: #fff;
 }
-.dark {
+.dark, .glide__slide a img:first-child + img {
     display: none;
 }
 .video-description {
@@ -2310,7 +2306,7 @@ input.invalid {
         padding-left: 72px;
         height: 72px;
     }
-    .light {
+    .light, .glide__slide a img:first-child {
         display: none !important;
     }
     .main-head-teamlogo img {
@@ -2467,6 +2463,9 @@ input.invalid {
     }
     .ck-table thead tr, .ck-table tbody tr th {
         background: var(--main-table-lines-color);
+    }
+    .glide__slide a img:first-child + img {
+        display: block;
     }
 }
 /*Dark-mode end*/

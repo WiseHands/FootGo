@@ -14,7 +14,8 @@
             <ul class="glide__slides">
                 <li class="glide__slide" th:if="${not #lists.isEmpty(season) AND sponsor.getActive() == true}" th:each="sponsor : ${sponsorList}">
                     <a th:href="${sponsor.sponsorUrl}">
-                        <img th:src="${sponsor.logoImageUrl}" th:alt="${sponsor.sponsorUrl}">
+                        <img th:src="${sponsor.logoImageUrl}" th:alt="${sponsor.sponsorUrl}" src="">
+                        <img th:src="${sponsor.logoImageUrlDark}" th:alt="${sponsor.sponsorUrl}" src="">
                     </a>
                 </li>
             </ul>

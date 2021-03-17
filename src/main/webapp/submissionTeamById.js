@@ -24,7 +24,7 @@ fetch(apiUrl, {
     document.getElementById('imageUrlDark').value = data.logoImageUrlDark;
     document.getElementById("logoDark").src = data.logoImageUrlDark;
 
-    let logo = document.getElementById('logo');
+/*    let logo = document.getElementById('logo');
     if(logo.getAttribute('src') == "" || null || "null") {
         logo.src = '/img/placeholder.png';
     }
@@ -32,7 +32,7 @@ fetch(apiUrl, {
     let logoDark = document.getElementById('logoDark');
     if(logoDark.getAttribute('src') == "" || null || "null") {
         logoDark.src = '/img/placeholder.png';
-    }
+    }*/
 
     console.log(data);
 });

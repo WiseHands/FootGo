@@ -50,8 +50,7 @@
                     <p><span th:text="#{championshipPlace} + ' - ' + ${position}"></span></p>
                 </div>
                 <div class="photo-team-bg">
-                    <img th:attr="src=${team.logoImageUrl}, class=${'light' + ' ' + 'team' + team.id}">
-                    <img th:attr="src=${team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + team.id}">
+                    <img th:attr="src=${team.photoImageUrl}">
                 </div>
             </div>
             <h3 th:text="#{games}"></h3>
