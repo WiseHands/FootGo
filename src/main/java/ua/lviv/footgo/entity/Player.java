@@ -20,6 +20,9 @@ public class Player {
     private Integer number;
     private Boolean isActive;
 
+    @Column(columnDefinition="TEXT")
+    private String descriptionText;
+
     @ManyToOne
     @JoinColumn
     @JsonIgnore
@@ -125,6 +128,14 @@ public class Player {
 
     public String getPlayerLastNameTransliterated() {
         return Transliterator.transliterate(this.lastName);
+    }
+
+    public String getDescriptionText() {
+        return descriptionText;
+    }
+
+    public void setDescriptionText(String descriptionText) {
+        this.descriptionText = descriptionText;
     }
 
 }

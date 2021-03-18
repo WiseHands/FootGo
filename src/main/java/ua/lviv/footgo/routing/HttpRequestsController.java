@@ -787,7 +787,7 @@ public class HttpRequestsController {
         model.addAttribute("tournament", tournament);
         Season season = seasonRepository.findById(seasonId).get();
         model.addAttribute("season", season);
-        model.addAttribute("player", teamRepository.findById(uuid));
+        model.addAttribute("player", playerRepository.findById(uuid).get());
         return "AdminSubmissionPlayerEntryEdit";
     }
     @GetMapping(value = "/admin/tournament/{tournamentId}/season/{seasonId}/team/player/add")

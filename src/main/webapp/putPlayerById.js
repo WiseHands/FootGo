@@ -5,6 +5,7 @@ function putPlayerById(data) {
     let phone = document.getElementById('phone').value;
     let email = document.getElementById('email').value;
     let imageUrl = document.getElementById('imageUrl').value;
+    let descriptionText = editor.getData();
 
     let params = '?firstName=' + firstName
                 + '&lastName=' + lastName
@@ -16,6 +17,7 @@ function putPlayerById(data) {
     let apiUrl = '/player/' + id + params;
     fetch(apiUrl, {
         method: 'PUT',
+        body: descriptionText,
         headers: {
           'Content-Type': 'application/json',
           body: data

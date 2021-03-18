@@ -1915,10 +1915,10 @@ input.invalid {
     .player-card-main {
         margin-top: 0;
     }
-    .sponsor-container {
+    .sponsor-container, .player-container {
         margin: 0 auto;
     }
-    .player-card-main, .sponsor-container {
+    .player-card-main, .sponsor-container, .player-container {
         width: 90%;
     }
     .sponsor-bg .sponsor-description {

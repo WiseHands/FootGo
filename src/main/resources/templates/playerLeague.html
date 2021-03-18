@@ -63,6 +63,16 @@
 		<!--</div>-->
 	</div>
 </div>
+<div class="player-container">
+	<div class="sponsor-bg">
+		<div class="match-video video-description sponsor-description"
+			 th:if="${player.descriptionText != null} AND ${player.descriptionText != ''} AND ${player.descriptionText != ' '}">
+			<div class="results-container description-text">
+				<div class="ck-table" th:utext="${player.descriptionText}"></div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div th:replace="fragments/footer :: footer"></div>
 
