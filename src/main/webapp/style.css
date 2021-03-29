@@ -690,17 +690,21 @@ footer{
 /*    display: flex;
     align-items: center;*/
 }
-.table-team-name img {
+.table-team-name img, .bomb-player-name img {
+    display: block;
+    box-sizing: border-box;
     width: 30px;
-    /*height: 25px;*/
-    padding-left: 5px;
+    margin-left: 5px;
+}
+.bomb-player-name img {
+    border-radius: 50%;
 }
 .table-team-name p {
     padding-left: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.table-team-name a {
+.table-team-name a, .bomb-player-name a {
     display: flex;
     align-items: center;
 }
@@ -770,7 +774,6 @@ footer{
     text-align: left;
 }
 .bomb-player-name p {
-    padding-left: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -2332,10 +2335,6 @@ input.invalid {
     .bomb-player-name div:nth-of-type(n+2), .bomb-scored div:nth-of-type(n+2), .bomb-team div:nth-of-type(n+2),
     .table-no-data {
         background: rgba(13, 13, 13, 0.7);
-    }
-    .table-team-name img {
-        display: block;
-        box-sizing: border-box;
     }
     .table-secondplace img {
     }
