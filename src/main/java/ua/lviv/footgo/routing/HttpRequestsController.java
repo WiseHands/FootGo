@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.lviv.footgo.entity.*;
+import ua.lviv.footgo.jsonmapper.PlayerCards;
 import ua.lviv.footgo.jsonmapper.PlayerGoals;
 import ua.lviv.footgo.jsonmapper.TeamResults;
 import ua.lviv.footgo.repository.*;
@@ -324,6 +325,15 @@ public class HttpRequestsController {
         //List<PlayerGoals> playerGoals = topScorerService.getResults();
         List<PlayerGoals> playerGoals = topScorerService.getResultsByLeague(leagueId).stream().limit(10).collect(Collectors.toList());
         model.addAttribute("playerGoals", playerGoals);
+        List<PlayerCards> playerCards = topScorerService.getCardsByLeague(leagueId).stream().limit(10).collect(Collectors.toList());
+        model.addAttribute("playerCards", playerCards);
+        List<Card> playerYellowCardList = new ArrayList<>();
+        playerCards.forEach(playerCard -> {
+            List<Card> _playerYellowCardList = playerCard.getCardList();
+            playerYellowCardList.addAll(_playerYellowCardList);
+        });
+        model.addAttribute("playerYellowCardList", playerYellowCardList);
+        //playerYellowCardList.forEach(Card::isYellow);
         List<Game> games = (List<Game>) gameRepository.findAll();
         Game game = games.get(0);
         model.addAttribute("game", game);
