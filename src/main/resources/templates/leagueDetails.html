@@ -333,41 +333,40 @@
         <div class="bomb league">
             <div class="bomb-position auto">
                 <div class="bomb-title">№</div>
-                <div th:each="playerCard, iter : ${playerCards}">
-                    <p th:text="${playerCard.formatPosition(iter.index)}"></p>
+                <div th:each="playerYellowCard, iter : ${playerYellowCards}">
+                    <p th:text="${playerYellowCard.formatPosition(iter.index)}"></p>
                 </div>
             </div>
             <div class="bomb-player-name full">
                 <div th:text="#{footballPlayer}" class="bomb-title"></div>
-                <div th:each="playerCard : ${playerCards}">
-                    <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/player/' + playerCard.player.id}">
-                        <img id="cardPlayerPhoto" th:src="${playerCard.player.imageUrl}" src="">
-                        <p th:if="${#locale.language == 'uk'}" th:text="${playerCard.player.lastName + ' ' + playerCard.player.firstName}"></p>
+                <div th:each="playerYellowCard : ${playerYellowCards}">
+                    <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/player/' + playerYellowCard.player.id}">
+                        <img id="cardPlayerPhoto" th:src="${playerYellowCard.player.imageUrl}" src="">
+                        <p th:if="${#locale.language == 'uk'}" th:text="${playerYellowCard.player.lastName + ' ' + playerYellowCard.player.firstName}"></p>
                         <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}"
-                           th:text="${playerCard.player.getPlayerLastNameTransliterated() + ' ' + playerCard.player.getPlayerFirstNameTransliterated()}"></p>
+                           th:text="${playerYellowCard.player.getPlayerLastNameTransliterated() + ' ' + playerYellowCard.player.getPlayerFirstNameTransliterated()}"></p>
                     </a>
                 </div>
             </div>
             <div class="bomb-scored auto">
-                <div th:text="YELLOW" class="bomb-title"></div>
-                <div th:each="playerCard : ${playerCards}">
-<!--                    <p th:text="${playerCard.cardList.size()}"></p>-->
-                    <p th:each="playerCard : ${playerCard.cardList}" th:text="${playerCard.time}"></p>
+                <div th:text="Y" class="bomb-title"></div>
+                <div th:each="playerYellowCard : ${playerYellowCards}">
+                    <p th:text="${playerYellowCard.cardList.size()}"></p>
                 </div>
             </div>
             <div class="bomb-scored auto">
-                <div th:text="RED" class="bomb-title"></div>
-                <div th:each="playerCard : ${playerCards}">
-                    <p th:text="${playerCard.cardList.size()}"></p>
+                <div th:text="R" class="bomb-title"></div>
+                <div th:each="playerRedCard : ${playerRedCards}">
+                    <p th:text="${playerRedCard.cardList.size()}"></p>
                 </div>
             </div>
             <div class="bomb-team auto">
                 <div th:text="#{team}" class="bomb-title"></div>
-                <div th:each="playerCard : ${playerCards}">
-                    <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/team/' + playerCard.player.team.id}">
-                        <p th:if="${#locale.language == 'uk'}" th:text="${playerCard.player.team.teamName}"></p>
+                <div th:each="playerYellowCard : ${playerYellowCards}">
+                    <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/team/' + playerYellowCard.player.team.id}">
+                        <p th:if="${#locale.language == 'uk'}" th:text="${playerYellowCard.player.team.teamName}"></p>
                         <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}"
-                           th:text="${playerCard.player.team.getTeamNameTransliterated()}"></p>
+                           th:text="${playerYellowCard.player.team.getTeamNameTransliterated()}"></p>
                     </a>
                 </div>
             </div>

@@ -318,22 +318,18 @@ public class HttpRequestsController {
         model.addAttribute("gameList", gameList);
 
         List<TeamResults> results = resultService.getResultsByLeague(true, leagueId);
-/*        model.addAttribute("firstPlace", results.get(0));
+/*      model.addAttribute("firstPlace", results.get(0));
         model.addAttribute("secondPlace", results.get(1));
         model.addAttribute("thirdPlace", results.get(2));*/
         model.addAttribute("resultList", results);
         //List<PlayerGoals> playerGoals = topScorerService.getResults();
         List<PlayerGoals> playerGoals = topScorerService.getResultsByLeague(leagueId).stream().limit(10).collect(Collectors.toList());
         model.addAttribute("playerGoals", playerGoals);
-        List<PlayerCards> playerCards = topScorerService.getCardsByLeague(leagueId).stream().limit(10).collect(Collectors.toList());
-        model.addAttribute("playerCards", playerCards);
-        List<Card> playerYellowCardList = new ArrayList<>();
-        playerCards.forEach(playerCard -> {
-            List<Card> _playerYellowCardList = playerCard.getCardList();
-            playerYellowCardList.addAll(_playerYellowCardList);
-        });
-        model.addAttribute("playerYellowCardList", playerYellowCardList);
-        //playerYellowCardList.forEach(Card::isYellow);
+        List<PlayerCards> playerYellowCards = topScorerService.getYellowCardsByLeague(leagueId).stream().limit(10).collect(Collectors.toList());
+        model.addAttribute("playerYellowCards", playerYellowCards);
+        List<PlayerCards> playerRedCards = topScorerService.getRedCardsByLeague(leagueId).stream().limit(10).collect(Collectors.toList());
+        model.addAttribute("playerRedCards", playerRedCards);
+
         List<Game> games = (List<Game>) gameRepository.findAll();
         Game game = games.get(0);
         model.addAttribute("game", game);
