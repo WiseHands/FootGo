@@ -1,0 +1,104 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title th:text="#{bestScorers}"></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="shortcut icon" th:href="@{/img/footgo-dark-icon.png}" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/hamburger.css}">
+</head>
+<body class="bomb-full">
+<header th:replace="fragments/header :: header"></header>
+<div class="main-head main-head-results bombardier-background">
+    <div class="main-head-title league-page">
+        <h1 th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></h1>
+        <h1 th:if="${#locale.language == 'uk'}" th:text="${league.name}"></h1>
+    </div>
+</div>
+<div class="main-block">
+    <div th:replace="fragments/carousel :: carousel"></div>
+</div>
+<div id="bredcrumbs" class="section">
+    <div class="row">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col">
+                    <a th:text="#{home}" href="/" class="breadcrumb"></a>
+                    <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}" th:href="'/' + ${seasonId} + '/league/' + ${league.id}" class="breadcrumb"></a>
+                    <a th:if="${#locale.language == 'uk'}" th:text="${league.name}" th:href="'/' + ${seasonId} + '/league/' + ${league.id}" class="breadcrumb"></a>
+                    <a th:text="#{playerCards}" href="#!" class="breadcrumb"></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="bomb-container">
+    <div class="bomb-head">
+        <p th:text="#{playerCards}"></p>
+    </div>
+
+    <div class="bomb">
+        <div class="bomb-position">
+            <div class="bomb-title">№</div>
+            <div th:each="playerYellowCard, iter : ${playerYellowCards}">
+                <p th:text="${playerYellowCard.formatPosition(iter.index)}"></p>
+            </div>
+        </div>
+        <div class="bomb-player-name">
+            <div th:text="#{footballPlayer}" class="bomb-title"></div>
+            <div th:each="playerYellowCard : ${playerYellowCards}">
+                <a th:attr="href=${'/' + seasonId +  '/league/' + leagueId + '/player/' + playerYellowCard.player.id}">
+                    <img id="cardPlayerPhoto" th:src="${playerYellowCard.player.imageUrl}" src="">
+                    <p th:if="${#locale.language == 'uk'}" th:text="${playerYellowCard.player.lastName + ' ' + playerYellowCard.player.firstName}"></p>
+                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerYellowCard.player.getPlayerLastNameTransliterated() + ' ' + playerYellowCard.player.getPlayerFirstNameTransliterated()}"></p>
+                </a>
+            </div>
+        </div>
+        <div class="bomb-scored">
+            <div th:text="Y" class="bomb-title"></div>
+            <div th:each="playerYellowCard : ${playerYellowCards}">
+                <p th:text="${playerYellowCard.cardList.size()}">
+                    0
+                </p>
+            </div>
+        </div>
+        <div class="bomb-scored">
+            <div th:text="R" class="bomb-title"></div>
+            <div th:each="playerRedCard : ${playerRedCards}">
+                <p th:text="${playerRedCard.cardList.size()}">
+                    0
+                </p>
+            </div>
+        </div>
+        <div class="bomb-team">
+            <div th:text="#{team}" class="bomb-title"></div>
+            <div th:each="playerYellowCard : ${playerYellowCards}">
+                <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/team/' + playerYellowCard.player.team.id}">
+                    <p th:if="${#locale.language == 'uk'}" th:text="${playerYellowCard.player.team.teamName}"></p>
+                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerYellowCard.player.team.getTeamNameTransliterated()}"></p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/signUpScript.js}"></script>
+<script th:src="@{/hamburger.js}"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39722519-3"></script>
+<script th:src="@{/imgPlaceholderSetScript.js}" type="text/javascript"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-39722519-3');
+</script>
+
+</body>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</html>

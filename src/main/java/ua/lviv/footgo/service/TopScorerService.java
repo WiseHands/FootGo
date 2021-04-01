@@ -193,12 +193,96 @@ public class TopScorerService {
 
         return playerCardsList;
     }
+    public List<PlayerCards> getYellowCardsByCup(Long cupId) {
+        Map<Player, PlayerCards> playerCardMap = new HashMap<>();
+        Cup cup = cupManagementRepository.findById(cupId).get();
+
+        List<Team> teamList = cup.getTeamList();
+        List<Tour> tourList = cup.getTours();
+
+        tourList.forEach(tour -> {
+            List<Game> gameList = tour.getGameList();
+            gameList.forEach(game -> {
+                List<Card> cardList = cardRepository.findByGameId(game.getId());
+
+                for (Card _card : cardList) {
+                    if (_card.getGame() == null || !_card.getGame().isCompleted() || _card.getGame().isTeamAHasTechnicalDefeat() || _card.getGame().isTeamBHasTechnicalDefeat()) {
+                        continue;
+                    }
+                    Player _player = _card.getPlayer();
+                    final PlayerCards[] _playerCards = {playerCardMap.get(_player)};
+                    teamList.forEach(team -> {
+                        if (_player.getTeam().getId().equals(team.getId())) {
+                            if (_playerCards[0] == null) {
+                                _playerCards[0] = new PlayerCards();
+                                _playerCards[0].setPlayer(_card.getPlayer());
+                                List<Card> _playerCardList = new ArrayList<>();
+                                _playerCardList.add(_card);
+                                _playerCards[0].setCardList(_playerCardList.stream().filter(Card::isYellow).collect(Collectors.toList()));
+                                playerCardMap.put(_player, _playerCards[0]);
+                            } else {
+                                _playerCards[0].addCard(_card);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+        List<PlayerCards> playerCardsList = new ArrayList<>(playerCardMap.values());
+
+        //playerCardsList.sort(new PlayerCards.SortByCards());
+
+        return playerCardsList;
+    }
     public List<PlayerCards> getRedCardsByLeague(Long leagueId) {
         Map<Player, PlayerCards> playerCardMap = new HashMap<>();
         League league = leagueManagementRepository.findById(leagueId).get();
 
         List<Team> teamList = league.getTeamList();
         List<Tour> tourList = league.getTours();
+
+        tourList.forEach(tour -> {
+            List<Game> gameList = tour.getGameList();
+            gameList.forEach(game -> {
+                List<Card> cardList = cardRepository.findByGameId(game.getId());
+
+                for (Card _card : cardList) {
+                    if (_card.getGame() == null || !_card.getGame().isCompleted() || _card.getGame().isTeamAHasTechnicalDefeat() || _card.getGame().isTeamBHasTechnicalDefeat()) {
+                        continue;
+                    }
+                    Player _player = _card.getPlayer();
+                    final PlayerCards[] _playerCards = {playerCardMap.get(_player)};
+                    teamList.forEach(team -> {
+                        if (_player.getTeam().getId().equals(team.getId())) {
+                            if (_playerCards[0] == null) {
+                                _playerCards[0] = new PlayerCards();
+                                _playerCards[0].setPlayer(_card.getPlayer());
+                                List<Card> _playerCardList = new ArrayList<>();
+                                _playerCardList.add(_card);
+                                _playerCards[0].setCardList(_playerCardList.stream().filter(Card::isRed).collect(Collectors.toList()));
+                                playerCardMap.put(_player, _playerCards[0]);
+                            } else {
+                                _playerCards[0].addCard(_card);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+        List<PlayerCards> playerCardsList = new ArrayList<>(playerCardMap.values());
+
+        //playerCardsList.sort(new PlayerCards.SortByCards());
+
+        return playerCardsList;
+    }
+    public List<PlayerCards> getRedCardsByCup(Long cupId) {
+        Map<Player, PlayerCards> playerCardMap = new HashMap<>();
+        Cup cup = cupManagementRepository.findById(cupId).get();
+
+        List<Team> teamList = cup.getTeamList();
+        List<Tour> tourList = cup.getTours();
 
         tourList.forEach(tour -> {
             List<Game> gameList = tour.getGameList();

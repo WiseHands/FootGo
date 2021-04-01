@@ -325,8 +325,10 @@ public class HttpRequestsController {
         //List<PlayerGoals> playerGoals = topScorerService.getResults();
         List<PlayerGoals> playerGoals = topScorerService.getResultsByLeague(leagueId).stream().limit(10).collect(Collectors.toList());
         model.addAttribute("playerGoals", playerGoals);
+
         List<PlayerCards> playerYellowCards = topScorerService.getYellowCardsByLeague(leagueId).stream().limit(10).collect(Collectors.toList());
         model.addAttribute("playerYellowCards", playerYellowCards);
+
         List<PlayerCards> playerRedCards = topScorerService.getRedCardsByLeague(leagueId).stream().limit(10).collect(Collectors.toList());
         model.addAttribute("playerRedCards", playerRedCards);
 
@@ -553,6 +555,40 @@ public class HttpRequestsController {
         model.addAttribute("league", leagueList.get(0));*/
         return "bombardier";
     }
+    @GetMapping({"/{seasonId}/league/{leagueId}/cards"})
+    public String cards(Model model, @PathVariable("seasonId") Long seasonId, @PathVariable("leagueId") Long leagueId) {
+        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
+        Tournament tournament = tournaments.get(0);
+        model.addAttribute("tournament", tournament);
+
+        Season season = seasonRepository.findById(seasonId).get();
+        model.addAttribute("season", season);
+
+        List<League> leagueList = season.getLeagueList();
+        model.addAttribute("leagueList", leagueList);
+
+        List<Cup> cupList = season.getCupList();
+        model.addAttribute("cupList", cupList);
+
+        List<Sponsor> sponsorList = season.getSponsorList();
+        model.addAttribute("sponsorList", sponsorList);
+
+        List<Season> seasonList = tournament.getSeasonList().stream()
+                .filter(s -> !s.getId().equals(season.getId()))
+                .collect(Collectors.toList());
+        model.addAttribute("seasonList", seasonList);
+
+        League league = leagueManagementRepository.findById(leagueId).get();
+        model.addAttribute("league", league);
+
+        List<PlayerCards> playerYellowCards = topScorerService.getYellowCardsByLeague(leagueId);
+        model.addAttribute("playerYellowCards", playerYellowCards);
+
+        List<PlayerCards> playerRedCards = topScorerService.getRedCardsByLeague(leagueId);
+        model.addAttribute("playerRedCards", playerRedCards);
+
+        return "cards";
+    }
     @GetMapping({"/{seasonId}/cup/{cupId}/bombardier"})
     public String cupBombardier(Model model, @PathVariable("seasonId") Long seasonId, @PathVariable("cupId") Long cupId) {
         List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
@@ -578,6 +614,40 @@ public class HttpRequestsController {
         model.addAttribute("playerGoals", playerGoals);
 
         return "cupBombardier";
+    }
+    @GetMapping({"/{seasonId}/cup/{cupId}/cards"})
+    public String cupCards(Model model, @PathVariable("seasonId") Long seasonId, @PathVariable("cupId") Long cupId) {
+        List<Tournament> tournaments = (List<Tournament>) tournamentRepository.findAll();
+        Tournament tournament = tournaments.get(0);
+        model.addAttribute("tournament", tournament);
+
+        Season season = seasonRepository.findById(seasonId).get();
+        model.addAttribute("season", season);
+
+        List<League> leagueList = season.getLeagueList();
+        model.addAttribute("leagueList", leagueList);
+
+        List<Cup> cupList = season.getCupList();
+        model.addAttribute("cupList", cupList);
+
+        List<Sponsor> sponsorList = season.getSponsorList();
+        model.addAttribute("sponsorList", sponsorList);
+
+        List<Season> seasonList = tournament.getSeasonList().stream()
+                .filter(s -> !s.getId().equals(season.getId()))
+                .collect(Collectors.toList());
+        model.addAttribute("seasonList", seasonList);
+
+        Cup cup = cupManagementRepository.findById(cupId).get();
+        model.addAttribute("cup", cup);
+
+        List<PlayerCards> playerYellowCards = topScorerService.getYellowCardsByCup(cupId);
+        model.addAttribute("playerYellowCards", playerYellowCards);
+
+        List<PlayerCards> playerRedCards = topScorerService.getRedCardsByCup(cupId);
+        model.addAttribute("playerRedCards", playerRedCards);
+
+        return "cupCards";
     }
     @GetMapping({"/{seasonId}/league/{leagueId}/game/{gameId}"})
     public String gameLeagueDetails(Model model, @PathVariable("seasonId") Long seasonId, @PathVariable("leagueId") Long leagueId, @PathVariable("gameId") Long gameId) {

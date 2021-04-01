@@ -813,13 +813,9 @@ span.clear-technical-defeat {
     display: inline-flex;
     width: 100%;
     justify-content: center;
-    margin-top: 20px;
-/*    position: absolute;
-    left: calc(50% - 20px);*/
+    margin: 1.5rem 0 1.5rem 0;
 }
 .label-check-text {
-/*    margin-top: 2em;*/
-    margin-bottom: 1em;
     margin-right: 1em;
     text-align: center;
     font-weight: bold;

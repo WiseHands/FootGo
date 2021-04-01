@@ -371,6 +371,11 @@
                 </div>
             </div>
         </div>
+        <div class="table-button" th:if="${!#lists.isEmpty(playerYellowCards) OR !#lists.isEmpty(playerRedCards)}">
+            <a th:href="'/' + ${seasonId} + '/league/' + ${leagueId} + '/cards'" class="button-link-more" href="#">
+                <button class="pure-material-button-text" th:text="#{seeMore}"></button>
+            </a>
+        </div>
         <div class="table-no-data" th:if="${#lists.isEmpty(playerGoals)}">
             <p th:text="#{noTableData}"></p>
         </div>

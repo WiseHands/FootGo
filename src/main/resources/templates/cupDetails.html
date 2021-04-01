@@ -219,7 +219,7 @@
                 <div th:text="#{footballPlayer}" class="bomb-title"></div>
                 <div th:each="playerGoal : ${playerGoals}">
                     <a th:attr="href=${'/' + seasonId + '/cup/' + cupId + '/player/' + playerGoal.player.id}">
-                        <img id="cardPlayerPhoto" th:src="${playerGoal.player.imageUrl}" src="">
+                        <img id="playerPhoto" th:src="${playerGoal.player.imageUrl}" src="">
                         <p th:if="${#locale.language == 'uk'}" th:text="${playerGoal.player.lastName + ' ' + playerGoal.player.firstName}"></p>
                         <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerGoal.player.getPlayerLastNameTransliterated() + ' ' + playerGoal.player.getPlayerFirstNameTransliterated()}"></p>
                     </a>
@@ -243,6 +243,53 @@
         </div>
         <div class="table-button">
             <a th:href="'/' + ${seasonId} + '/cup/' + ${cupId} + '/bombardier'" class="button-link-more" href="#">
+                <button class="pure-material-button-text" th:text="#{seeMore}"></button>
+            </a>
+        </div>
+        <p th:if="${!#lists.isEmpty(playerYellowCards) OR !#lists.isEmpty(playerRedCards)}" th:text="#{playerCards}" class="table-header"></p>
+        <div th:if="${!#lists.isEmpty(playerYellowCards) OR !#lists.isEmpty(playerRedCards)}" class="bomb league">
+            <div class="bomb-position auto">
+                <div class="bomb-title">№</div>
+                <div th:each="playerYellowCard, iter : ${playerYellowCards}">
+                    <p th:text="${playerYellowCard.formatPosition(iter.index)}"></p>
+                </div>
+            </div>
+            <div class="bomb-player-name full">
+                <div th:text="#{footballPlayer}" class="bomb-title"></div>
+                <div th:each="playerYellowCard : ${playerYellowCards}">
+                    <a th:attr="href=${'/' + seasonId + '/cup/' + cupId + '/player/' + playerYellowCard.player.id}">
+                        <img id="cardPlayerPhoto" th:src="${playerYellowCard.player.imageUrl}" src="">
+                        <p th:if="${#locale.language == 'uk'}" th:text="${playerYellowCard.player.lastName + ' ' + playerYellowCard.player.firstName}"></p>
+                        <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}"
+                           th:text="${playerYellowCard.player.getPlayerLastNameTransliterated() + ' ' + playerYellowCard.player.getPlayerFirstNameTransliterated()}"></p>
+                    </a>
+                </div>
+            </div>
+            <div class="bomb-scored auto">
+                <div th:text="Y" class="bomb-title"></div>
+                <div th:each="playerYellowCard : ${playerYellowCards}">
+                    <p th:text="${playerYellowCard.cardList.size()}"></p>
+                </div>
+            </div>
+            <div class="bomb-scored auto">
+                <div th:text="R" class="bomb-title"></div>
+                <div th:each="playerRedCard : ${playerRedCards}">
+                    <p th:text="${playerRedCard.cardList.size()}"></p>
+                </div>
+            </div>
+            <div class="bomb-team auto">
+                <div th:text="#{team}" class="bomb-title"></div>
+                <div th:each="playerYellowCard : ${playerYellowCards}">
+                    <a th:attr="href=${'/' + seasonId + '/cup/' + cupId + '/team/' + playerYellowCard.player.team.id}">
+                        <p th:if="${#locale.language == 'uk'}" th:text="${playerYellowCard.player.team.teamName}"></p>
+                        <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}"
+                           th:text="${playerYellowCard.player.team.getTeamNameTransliterated()}"></p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="table-button" th:if="${!#lists.isEmpty(playerYellowCards) OR !#lists.isEmpty(playerRedCards)}">
+            <a th:href="'/' + ${seasonId} + '/cup/' + ${cupId} + '/cards'" class="button-link-more" href="#">
                 <button class="pure-material-button-text" th:text="#{seeMore}"></button>
             </a>
         </div>
