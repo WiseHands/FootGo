@@ -329,8 +329,8 @@
                 <button class="pure-material-button-text" th:text="#{seeMore}"></button>
             </a>
         </div>
-        <p th:text="#{playerCards}" class="table-header"></p>
-        <div class="bomb league">
+        <p th:if="${!#lists.isEmpty(playerYellowCards) OR !#lists.isEmpty(playerRedCards)}" th:text="#{playerCards}" class="table-header"></p>
+        <div th:if="${!#lists.isEmpty(playerYellowCards) OR !#lists.isEmpty(playerRedCards)}" class="bomb league">
             <div class="bomb-position auto">
                 <div class="bomb-title">№</div>
                 <div th:each="playerYellowCard, iter : ${playerYellowCards}">

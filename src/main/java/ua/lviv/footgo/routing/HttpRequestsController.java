@@ -436,9 +436,16 @@ public class HttpRequestsController {
 
         List<TeamResults> results = resultService.getResultsByCup(true, cupId);
         model.addAttribute("resultList", results);
+
         List<Game> games = (List<Game>) gameRepository.findAll();
         Game game = games.get(0);
         model.addAttribute("game", game);
+
+        List<PlayerCards> playerYellowCards = topScorerService.getYellowCardsByCup(cupId).stream().limit(10).collect(Collectors.toList());
+        model.addAttribute("playerYellowCards", playerYellowCards);
+
+        List<PlayerCards> playerRedCards = topScorerService.getRedCardsByCup(cupId).stream().limit(10).collect(Collectors.toList());
+        model.addAttribute("playerRedCards", playerRedCards);
 
         return "cupDetails";
     }
