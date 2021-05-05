@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
       	dropZone.classList.remove('dragover');
     });
 
-/*    let img = document.getElementById('image');
+    let img = document.getElementById('image');
     if(img.getAttribute('src') == "" || null || "null") {
         img.src = '/img/img_avatar.png';
-    }*/
+    }
 
     fileInput.onchange = function() {
         let fileInput = document.querySelector('#fileUpload');

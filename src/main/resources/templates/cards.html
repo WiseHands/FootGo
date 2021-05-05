@@ -56,7 +56,9 @@
             </div>
         </div>
         <div class="bomb-scored">
-            <div th:text="Y" class="bomb-title"></div>
+            <div class="bomb-title card-title">
+                <i class="fas fa-square card card-yellow"></i>
+            </div>
             <div th:each="playerYellowCard : ${playerYellowCards}">
                 <p th:text="${playerYellowCard.cardList.size()}">
                     0
@@ -64,7 +66,9 @@
             </div>
         </div>
         <div class="bomb-scored">
-            <div th:text="R" class="bomb-title"></div>
+            <div class="bomb-title card-title">
+                <i class="fas fa-square card card-red"></i>
+            </div>
             <div th:each="playerRedCard : ${playerRedCards}">
                 <p th:text="${playerRedCard.cardList.size()}">
                     0

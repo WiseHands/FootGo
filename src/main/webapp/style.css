@@ -1836,6 +1836,21 @@ input.invalid {
 .sponsor-description .results-container {
     width: 90%;
 }
+.card {
+  transform: rotateZ(25deg);
+}
+.card-title {
+  height: 2.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-yellow {
+  color: #ffff00;
+}
+.card-red {
+  color: #f43636;
+}
 
 @media screen and (max-width: 1160px) {
     .main-container {
@@ -2086,6 +2101,9 @@ input.invalid {
     .table, .bomb {
         line-height: 2;
         justify-content: flex-start;
+    }
+    .card-title {
+        height: 2rem;
     }
     .main-container {
         flex-direction: column;
