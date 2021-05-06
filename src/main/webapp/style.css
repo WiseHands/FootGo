@@ -904,7 +904,7 @@ footer{
     flex-direction: column;
     width: auto;
     margin: 10px auto;
-    padding: 5px 0;
+    padding: 1rem 1rem;
     background-color: #fff;
     border-radius: 5px;
 }

@@ -46,7 +46,7 @@
                     <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${team.getTeamNameTransliterated()}"></p>
                     <p><span th:text="#{championshipPlace} + ' - ' + ${position}"></span></p>
                 </div>
-                <div class="photo-team-bg">
+                <div th:if="${!#lists.isEmpty(team.photoImageUrl)}" class="photo-team-bg">
                     <img th:attr="src=${team.photoImageUrl}">
                 </div>
             </div>
