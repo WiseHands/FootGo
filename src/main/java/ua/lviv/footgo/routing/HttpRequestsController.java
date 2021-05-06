@@ -87,6 +87,7 @@ public class HttpRequestsController {
                 List<Cup> cupList = season.getCupList();
                 model.addAttribute("cupList", cupList);
                 List<Sponsor> sponsorList = season.getSponsorList();
+                sponsorList = sponsorList.stream().filter(Sponsor::getActive).collect(Collectors.toList());
                 model.addAttribute("sponsorList", sponsorList);
             }
             List<Season> seasonList = tournament.getSeasonList().stream()
