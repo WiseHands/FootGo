@@ -1543,6 +1543,9 @@ footer {
   .ck-table thead tr, .ck-table tbody tr th {
       background: var(--main-table-lines-color);
   }
+  .dark {
+      display: none !important;
+  }
 }
 /* CKEditor font size styles */
 

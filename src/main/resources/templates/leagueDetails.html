@@ -114,7 +114,7 @@
                     <span th:if="${#locale.language == 'uk'}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.secondTeam.teamName}" class="empty-text-error">Team 2</span>
                     <span th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.secondTeam.getTeamNameTransliterated()}" class="empty-text-error">Team 2</span>
                 </div>
-                <a th:href="'/' ${seasonId} + '/league/' + ${leagueId} + '/results'" class="button-link-more" href="#">
+                <a th:href="'/' + ${seasonId} + '/league/' + ${leagueId} + '/results'" class="button-link-more" href="#">
                     <button class="pure-material-button-text" th:text="#{seeMore}"></button>
                 </a>
             </div>
@@ -282,7 +282,7 @@
                 </div>
             </div>
         </div>
-        <div class="table-no-data" th:if="${#lists.isEmpty(resultList)}">
+        <div class="table table-no-data" th:if="${#lists.isEmpty(resultList)}">
             <p th:text="#{noTableData}"></p>
         </div>
         <div class="table-button" th:if="${!#lists.isEmpty(resultList)}">
@@ -380,7 +380,7 @@
                 <button class="pure-material-button-text" th:text="#{seeMore}"></button>
             </a>
         </div>
-        <div class="table-no-data" th:if="${#lists.isEmpty(playerGoals)}">
+        <div class="table table-no-data" th:if="${#lists.isEmpty(playerGoals)}">
             <p th:text="#{noTableData}"></p>
         </div>
     </div>
