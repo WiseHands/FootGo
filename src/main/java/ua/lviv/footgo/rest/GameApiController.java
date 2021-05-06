@@ -125,7 +125,7 @@ public class GameApiController {
     }
     private boolean checkIfCardCanBeAdded(Game game, Card.CardType cardType, Player player, boolean homeTeamCard) {
         if (cardType.equals(Card.CardType.YELLOW)) {
-            List<Card> cardList = new ArrayList<Card>();
+            List<Card> cardList;
             if (homeTeamCard) {
                 cardList = game.getTeamACards();
             } else {
@@ -142,7 +142,7 @@ public class GameApiController {
             return howManyYellowCardsPlayerHas < 2;
         }
         else if (cardType.equals(Card.CardType.RED)) {
-            List<Card> cardList = new ArrayList<Card>();
+            List<Card> cardList;
             if (homeTeamCard) {
                 cardList = game.getTeamACards();
             } else {

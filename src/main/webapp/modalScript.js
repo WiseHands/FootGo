@@ -126,17 +126,17 @@ let modalCards = document.querySelector("#cardsModal .close");
 technicalDefeat.onclick = function() {
     tDefeatModal.style.display = "block";
     let teamSelect = document.getElementById("teamSelect");
-        teamSelect.innerHTML = '';
-        let first_team = window.gameData.firstTeam;
-        let second_team = window.gameData.secondTeam;
-        let opt = document.createElement("option");
-        let opt2 = document.createElement("option");
-        opt.value = first_team.id;
-        opt2.value = second_team.id;
-        opt.innerHTML = first_team.teamName;
-        opt2.innerHTML = second_team.teamName;
-        teamSelect.appendChild(opt);
-        teamSelect.appendChild(opt2);
+    teamSelect.innerHTML = '';
+    let first_team = window.gameData.firstTeam;
+    let second_team = window.gameData.secondTeam;
+    let opt = document.createElement("option");
+    let opt2 = document.createElement("option");
+    opt.value = first_team.id;
+    opt2.value = second_team.id;
+    opt.innerHTML = first_team.teamName;
+    opt2.innerHTML = second_team.teamName;
+    teamSelect.appendChild(opt);
+    teamSelect.appendChild(opt2);
 }
 
 // When the user clicks on <span> (x), close the modal

@@ -82,12 +82,18 @@ public class HttpRequestsController {
             Season season = tournament.getActiveSeason();
             if (!isNull(season)) {
                 model.addAttribute("season", season);
+
                 List<League> leagueList = season.getLeagueList();
                 model.addAttribute("leagueList", leagueList);
+
                 List<Cup> cupList = season.getCupList();
                 model.addAttribute("cupList", cupList);
+
                 List<Sponsor> sponsorList = season.getSponsorList();
-                sponsorList = sponsorList.stream().filter(Sponsor::getActive).collect(Collectors.toList());
+                sponsorList = sponsorList
+                        .stream()
+                        .filter(Sponsor::getActive)
+                        .collect(Collectors.toList());
                 model.addAttribute("sponsorList", sponsorList);
             }
             List<Season> seasonList = tournament.getSeasonList().stream()
@@ -106,15 +112,17 @@ public class HttpRequestsController {
             Tournament tournament = tournaments.get(0);
             model.addAttribute("tournament", tournament);
             Season season = seasonRepository.findById(seasonId).get();
-            if (!isNull(season)) {
-                model.addAttribute("season", season);
-                List<League> leagueList = season.getLeagueList();
-                model.addAttribute("leagueList", leagueList);
-                List<Cup> cupList = season.getCupList();
-                model.addAttribute("cupList", cupList);
-                List<Sponsor> sponsorList = season.getSponsorList();
-                model.addAttribute("sponsorList", sponsorList);
-            }
+            model.addAttribute("season", season);
+            List<League> leagueList = season.getLeagueList();
+            model.addAttribute("leagueList", leagueList);
+            List<Cup> cupList = season.getCupList();
+            model.addAttribute("cupList", cupList);
+            List<Sponsor> sponsorList = season.getSponsorList();
+            sponsorList = sponsorList
+                    .stream()
+                    .filter(Sponsor::getActive)
+                    .collect(Collectors.toList());
+            model.addAttribute("sponsorList", sponsorList);
             List<Season> seasonList = tournament.getSeasonList().stream()
                     .filter(s -> !s.getId().equals(season.getId()))
                     .collect(Collectors.toList());
@@ -130,17 +138,19 @@ public class HttpRequestsController {
             Tournament tournament = tournaments.get(0);
             model.addAttribute("tournament", tournament);
             Season season = seasonRepository.findById(seasonId).get();
-            if (!isNull(season)) {
-                model.addAttribute("season", season);
-                List<League> leagueList = season.getLeagueList();
-                model.addAttribute("leagueList", leagueList);
-                List<Cup> cupList = season.getCupList();
-                model.addAttribute("cupList", cupList);
-                List<Sponsor> sponsorList = season.getSponsorList();
-                model.addAttribute("sponsorList", sponsorList);
-                Sponsor sponsor = sponsorRepository.findById(sponsorId).get();
-                model.addAttribute("sponsor", sponsor);
-            }
+            model.addAttribute("season", season);
+            List<League> leagueList = season.getLeagueList();
+            model.addAttribute("leagueList", leagueList);
+            List<Cup> cupList = season.getCupList();
+            model.addAttribute("cupList", cupList);
+            List<Sponsor> sponsorList = season.getSponsorList();
+            sponsorList = sponsorList
+                    .stream()
+                    .filter(Sponsor::getActive)
+                    .collect(Collectors.toList());
+            model.addAttribute("sponsorList", sponsorList);
+            Sponsor sponsor = sponsorRepository.findById(sponsorId).get();
+            model.addAttribute("sponsor", sponsor);
             List<Season> seasonList = tournament.getSeasonList().stream()
                     .filter(s -> !s.getId().equals(season.getId()))
                     .collect(Collectors.toList());
@@ -203,15 +213,17 @@ public class HttpRequestsController {
             Tournament tournament = tournaments.get(0);
             model.addAttribute("tournament", tournament);
             Season season = seasonRepository.findById(seasonId).get();
-            if (!isNull(season)) {
-                model.addAttribute("season", season);
-                List<League> leagueList = season.getLeagueList();
-                model.addAttribute("leagueList", leagueList);
-                List<Cup> cupList = season.getCupList();
-                model.addAttribute("cupList", cupList);
-                List<Sponsor> sponsorList = season.getSponsorList();
-                model.addAttribute("sponsorList", sponsorList);
-            }
+            model.addAttribute("season", season);
+            List<League> leagueList = season.getLeagueList();
+            model.addAttribute("leagueList", leagueList);
+            List<Cup> cupList = season.getCupList();
+            model.addAttribute("cupList", cupList);
+            List<Sponsor> sponsorList = season.getSponsorList();
+            sponsorList = sponsorList
+                    .stream()
+                    .filter(Sponsor::getActive)
+                    .collect(Collectors.toList());
+            model.addAttribute("sponsorList", sponsorList);
             List<Season> seasonList = tournament.getSeasonList().stream()
                     .filter(s -> !s.getId().equals(season.getId()))
                     .collect(Collectors.toList());
@@ -232,6 +244,10 @@ public class HttpRequestsController {
         List<Cup> cupList = season.getCupList();
         model.addAttribute("cupList", cupList);
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
         List<Season> seasonList = tournament.getSeasonList().stream()
                 .filter(s -> !s.getId().equals(season.getId()))
@@ -261,6 +277,10 @@ public class HttpRequestsController {
         List<Cup> cupList = season.getCupList();
         model.addAttribute("cupList", cupList);
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
         List<Season> seasonList = tournament.getSeasonList().stream()
                 .filter(s -> !s.getId().equals(season.getId()))
@@ -296,6 +316,10 @@ public class HttpRequestsController {
         List<Tour> tourList = league.getTours();
         model.addAttribute("tourList", tourList);
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
 
         List<Game> gameList = new ArrayList<Game>();
@@ -352,6 +376,10 @@ public class HttpRequestsController {
         List<Cup> cupList = season.getCupList();
         model.addAttribute("cupList", cupList);
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
         List<Season> seasonList = tournament.getSeasonList().stream()
                 .filter(s -> !s.getId().equals(season.getId()))
@@ -402,6 +430,10 @@ public class HttpRequestsController {
         List<Cup> cupList = season.getCupList();
         model.addAttribute("cupList", cupList);
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
         List<Season> seasonList = tournament.getSeasonList().stream()
                 .filter(s -> !s.getId().equals(season.getId()))
@@ -464,6 +496,10 @@ public class HttpRequestsController {
         List<Cup> cupList = season.getCupList();
         model.addAttribute("cupList", cupList);
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
         List<Season> seasonList = tournament.getSeasonList().stream()
                 .filter(s -> !s.getId().equals(season.getId()))
@@ -509,6 +545,10 @@ public class HttpRequestsController {
         List<Cup> cupList = season.getCupList();
         model.addAttribute("cupList", cupList);
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
         List<Season> seasonList = tournament.getSeasonList().stream()
                 .filter(s -> !s.getId().equals(season.getId()))
@@ -546,6 +586,10 @@ public class HttpRequestsController {
         List<Cup> cupList = season.getCupList();
         model.addAttribute("cupList", cupList);
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
         List<Season> seasonList = tournament.getSeasonList().stream()
                 .filter(s -> !s.getId().equals(season.getId()))
@@ -579,6 +623,10 @@ public class HttpRequestsController {
         model.addAttribute("cupList", cupList);
 
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
 
         List<Season> seasonList = tournament.getSeasonList().stream()
@@ -610,6 +658,10 @@ public class HttpRequestsController {
         List<Cup> cupList = season.getCupList();
         model.addAttribute("cupList", cupList);
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
         List<Season> seasonList = tournament.getSeasonList().stream()
                 .filter(s -> !s.getId().equals(season.getId()))
@@ -639,6 +691,10 @@ public class HttpRequestsController {
         model.addAttribute("cupList", cupList);
 
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
 
         List<Season> seasonList = tournament.getSeasonList().stream()
@@ -669,6 +725,10 @@ public class HttpRequestsController {
         List<Cup> cupList = season.getCupList();
         model.addAttribute("cupList", cupList);
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
         List<Season> seasonList = tournament.getSeasonList().stream()
                 .filter(s -> !s.getId().equals(season.getId()))
@@ -694,6 +754,10 @@ public class HttpRequestsController {
         List<Cup> cupList = season.getCupList();
         model.addAttribute("cupList", cupList);
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
         List<Season> seasonList = tournament.getSeasonList().stream()
                 .filter(s -> !s.getId().equals(season.getId()))
@@ -717,6 +781,10 @@ public class HttpRequestsController {
         List<Cup> cupList = season.getCupList();
         model.addAttribute("cupList", cupList);
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
         List<Season> seasonList = tournament.getSeasonList().stream()
                 .filter(s -> !s.getId().equals(season.getId()))
@@ -745,6 +813,10 @@ public class HttpRequestsController {
         List<Cup> cupList = season.getCupList();
         model.addAttribute("cupList", cupList);
         List<Sponsor> sponsorList = season.getSponsorList();
+        sponsorList = sponsorList
+                .stream()
+                .filter(Sponsor::getActive)
+                .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
         List<Season> seasonList = tournament.getSeasonList().stream()
                 .filter(s -> !s.getId().equals(season.getId()))
