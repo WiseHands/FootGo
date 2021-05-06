@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/glide/dist/css/glide.core.min.css">
     <link rel="stylesheet" href="/glide/dist/css/glide.theme.min.css">
     <link rel="stylesheet" href="/carousel.css">
-    <div class="images glide" th:if="${not #lists.isEmpty(season)">
+    <div class="images glide" th:if="${not #lists.isEmpty(season)}">
         <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
                 <li class="glide__slide" th:if="${sponsor.getActive() == true}" th:each="sponsor : ${sponsorList}">
