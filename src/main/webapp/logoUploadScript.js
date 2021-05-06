@@ -15,9 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
     fileInputDark.addEventListener('change', function() {
       	filenameContainerDark.innerText = fileInputDark.value.split('\\').pop();
     });
-    photoUpload.addEventListener('change', function() {
-      	photoFilenameContainer.innerText = photoUpload.value.split('\\').pop();
-    });
+    if (photoUpload) {
+        photoUpload.addEventListener('change', function() {
+      	    photoFilenameContainer.innerText = photoUpload.value.split('\\').pop();
+        });
+    }
     fileInput.addEventListener('dragenter', function() {
     	dropZone.classList.add('dragover');
     });

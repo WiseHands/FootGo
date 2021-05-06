@@ -1854,6 +1854,11 @@ input.invalid {
 .card-red {
   color: #f43636;
 }
+.logo-team-bg img, .photo-team-bg img {
+    display: block;
+    box-sizing: border-box;
+    width: 50%;
+}
 
 @media screen and (max-width: 1160px) {
     .main-container {
@@ -2362,11 +2367,6 @@ input.invalid {
         background: rgba(13, 13, 13, 0.7);
     }
     .table-secondplace img {
-    }
-    .logo-team-bg img, .photo-team-bg img {
-        display: block;
-        box-sizing: border-box;
-        width: 50%;
     }
     .player-photo{
         background: #14332e;
