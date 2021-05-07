@@ -170,18 +170,24 @@ public class TopScorerService {
                     Player _player = _card.getPlayer();
                     final PlayerCards[] _playerCards = {playerCardMap.get(_player)};
                     teamList.forEach(team -> {
-                        if (_player.getTeam().getId().equals(team.getId())) {
+
+                        if (_player.getTeam().equals(team)) {
                             if (_playerCards[0] == null) {
                                 _playerCards[0] = new PlayerCards();
-                                _playerCards[0].setPlayer(_card.getPlayer());
+                                _playerCards[0].setPlayer(_player);
                                 List<Card> _playerCardList = new ArrayList<>();
-                                _playerCardList.add(_card);
-                                _playerCards[0].setCardList(_playerCardList.stream().filter(Card::isYellow).collect(Collectors.toList()));
+                                if (_card.isYellow()) {
+                                    _playerCardList.add(_card);
+                                }
+                                _playerCards[0].setCardList(_playerCardList);
                                 playerCardMap.put(_player, _playerCards[0]);
                             } else {
-                                _playerCards[0].addCard(_card);
+                                if (_card.isYellow()) {
+                                    _playerCards[0].addCard(_card);
+                                }
                             }
                         }
+
                     });
                 }
             });
@@ -212,19 +218,25 @@ public class TopScorerService {
                     Player _player = _card.getPlayer();
                     final PlayerCards[] _playerCards = {playerCardMap.get(_player)};
                     teamList.forEach(team -> {
-                        if (_player.getTeam().getId().equals(team.getId())) {
+
+                        if (_player.getTeam().equals(team)) {
                             if (_playerCards[0] == null) {
                                 _playerCards[0] = new PlayerCards();
-                                _playerCards[0].setPlayer(_card.getPlayer());
+                                _playerCards[0].setPlayer(_player);
                                 List<Card> _playerCardList = new ArrayList<>();
-                                _playerCardList.add(_card);
-                                _playerCards[0].setCardList(_playerCardList.stream().filter(Card::isYellow).collect(Collectors.toList()));
+                                if (_card.isYellow()) {
+                                    _playerCardList.add(_card);
+                                }
+                                _playerCards[0].setCardList(_playerCardList);
                                 playerCardMap.put(_player, _playerCards[0]);
                             } else {
-                                _playerCards[0].addCard(_card);
+                                if (_card.isYellow()) {
+                                    _playerCards[0].addCard(_card);
+                                }
                             }
                         }
                     });
+
                 }
             });
         });
@@ -252,20 +264,27 @@ public class TopScorerService {
                         continue;
                     }
                     Player _player = _card.getPlayer();
+
                     final PlayerCards[] _playerCards = {playerCardMap.get(_player)};
                     teamList.forEach(team -> {
-                        if (_player.getTeam().getId().equals(team.getId())) {
+
+                        if (_player.getTeam().equals(team)) {
                             if (_playerCards[0] == null) {
                                 _playerCards[0] = new PlayerCards();
-                                _playerCards[0].setPlayer(_card.getPlayer());
+                                _playerCards[0].setPlayer(_player);
                                 List<Card> _playerCardList = new ArrayList<>();
-                                _playerCardList.add(_card);
-                                _playerCards[0].setCardList(_playerCardList.stream().filter(Card::isRed).collect(Collectors.toList()));
+                                if (_card.isRed()) {
+                                    _playerCardList.add(_card);
+                                }
+                                _playerCards[0].setCardList(_playerCardList);
                                 playerCardMap.put(_player, _playerCards[0]);
                             } else {
-                                _playerCards[0].addCard(_card);
+                                if (_card.isRed()) {
+                                    _playerCards[0].addCard(_card);
+                                }
                             }
                         }
+
                     });
                 }
             });
@@ -296,18 +315,24 @@ public class TopScorerService {
                     Player _player = _card.getPlayer();
                     final PlayerCards[] _playerCards = {playerCardMap.get(_player)};
                     teamList.forEach(team -> {
-                        if (_player.getTeam().getId().equals(team.getId())) {
+
+                        if (_player.getTeam().equals(team)) {
                             if (_playerCards[0] == null) {
                                 _playerCards[0] = new PlayerCards();
-                                _playerCards[0].setPlayer(_card.getPlayer());
+                                _playerCards[0].setPlayer(_player);
                                 List<Card> _playerCardList = new ArrayList<>();
-                                _playerCardList.add(_card);
-                                _playerCards[0].setCardList(_playerCardList.stream().filter(Card::isRed).collect(Collectors.toList()));
+                                if (_card.isRed()) {
+                                    _playerCardList.add(_card);
+                                }
+                                _playerCards[0].setCardList(_playerCardList);
                                 playerCardMap.put(_player, _playerCards[0]);
                             } else {
-                                _playerCards[0].addCard(_card);
+                                if (_card.isRed()) {
+                                    _playerCards[0].addCard(_card);
+                                }
                             }
                         }
+
                     });
                 }
             });

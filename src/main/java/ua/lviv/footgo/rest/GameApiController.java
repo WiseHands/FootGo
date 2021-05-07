@@ -134,7 +134,7 @@ public class GameApiController {
 
             int howManyYellowCardsPlayerHas = 0;
             for (Card card : cardList) {
-                if (card.getPlayer().getId().equals(player.getId())) {
+                if (card.getPlayer().equals(player)) {
                    howManyYellowCardsPlayerHas += 1;
                 }
             }
@@ -151,7 +151,7 @@ public class GameApiController {
 
             int howManyRedCardsPlayerHas = 0;
             for (Card card : cardList) {
-                if (card.getPlayer().getId().equals(player.getId())) {
+                if (card.getPlayer().equals(player)) {
                     howManyRedCardsPlayerHas += 1;
                 }
             }

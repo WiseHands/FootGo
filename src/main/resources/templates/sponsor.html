@@ -27,13 +27,13 @@
     </div>
 </div>
 <div class="player-card-main">
-    <div class="player-card-photo user-card-photo">
+    <div class="player-card-photo">
         <img src="" th:src="${sponsor.logoImageUrl}">
         <!--<i class="fas fa-address-card"></i>-->
     </div>
     <div class="player-card-info user-card-info">
         <h2 th:text="${sponsor.sponsorName}"></h2>
-        <p th:text="#{homePage}" class="title"></p>
+<!--        <p th:text="#{homePage}" class="title"></p>-->
         <a href="" th:href="${sponsor.sponsorUrl}" th:text="${sponsor.sponsorUrl}"></a>
     </div>
 </div>

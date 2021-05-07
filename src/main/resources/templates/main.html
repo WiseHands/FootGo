@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
@@ -20,8 +20,8 @@
         <h1 th:text="#{mainHeaderTitle}"></h1>
         <h1 th:if="${not #lists.isEmpty(season)} AND ${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></h1>
         <h1 th:if="${not #lists.isEmpty(season)} AND ${#locale.language == 'uk'}" th:text="${season.name}"></h1>
-        <div class="button-container">
-            <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}" class="table-button sign-up-button">
+        <div class="button-container" th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}">
+            <div class="table-button sign-up-button">
                 <a th:href="'/signup/' + ${season.id}" class="button-link-more">
                     <button class="pure-material-button-text" th:text="#{signupButton}"></button>
                 </a>
@@ -49,8 +49,8 @@
     <div class="main-head-logo" alt="wiselogo"></div>
     <h1 th:if="${not #lists.isEmpty(season)} AND ${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}"></h1>
     <h1 th:if="${not #lists.isEmpty(season)} AND ${#locale.language == 'uk'}" th:text="${season.name}"></h1>
-    <div class="button-container">
-        <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}" class="table-button sign-up-button">
+    <div class="button-container" th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}">
+        <div class="table-button sign-up-button">
             <a href="/signup" class="button-link-more">
                 <button class="pure-material-button-text" th:text="#{signupButton}"></button>
             </a>

@@ -98,7 +98,7 @@ a, a:hover {
     max-width: 900px;
     margin: 0 auto;
 }
-.main-text, .main-where-when, .main-league, .main-cup, .carousel {
+.main-text, .main-where-when, .main-league, .main-cup {
     display: flex;
     padding-top: 20px;
 }
@@ -240,6 +240,8 @@ a, a:hover {
     background-size: cover;
     width: 100%;
     padding-top: 15vh;
+    padding-bottom: 5vh;
+    margin-bottom: 1rem;
 }
 .results-background {
     background: url(img/foot66.jpg);
@@ -291,7 +293,7 @@ a, a:hover {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
-    margin-bottom: 10vh;
+/*    margin-bottom: 10vh;*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -693,7 +695,7 @@ footer{
 .table-team-name img, .bomb-player-name img {
     display: block;
     box-sizing: border-box;
-    width: 30px;
+    width: 25px;
     margin-left: 5px;
 }
 .bomb-player-name img {
@@ -1139,7 +1141,7 @@ input[invalid-input] {
     font-weight: 600;
 }
 .review-score-empty {
-    padding: 34px 0;
+    text-align: center;
 }
 .review-score-empty span {
     font-size: 1.8em;
@@ -1363,7 +1365,7 @@ input[invalid-input] {
 }
 .player-card-main {
     display: flex;
-    width: 850px;
+    width: 100%;
     max-width: 850px;
     margin: 0 auto;
     background: #fff;
@@ -1377,7 +1379,6 @@ input[invalid-input] {
 }
 .player-card-photo img {
     max-width: 200px;
-    width: 100%;
 }
 .user-card-photo i {
     font-size: 9rem;
@@ -1917,7 +1918,6 @@ input.invalid {
     .mobile-head {
         display: block;
         width: 95%;
-        margin-top: 1em;
         margin-bottom: 10px;
     }
     .mobile-head h1 {
@@ -2230,8 +2230,7 @@ input.invalid {
         flex-direction: column;
     }
     .player-card-photo {
-        margin: 0 auto;
-        margin-top: 20px;
+        text-align: center;
     }
     .player-card-info p:first-child {
         text-align: center;
@@ -2273,6 +2272,9 @@ input.invalid {
     .player-card-info p:nth-child(2n+2) {
         text-align: center;
         margin-bottom: .5rem;
+    }
+    header {
+        margin-bottom: 1rem;
     }
 }
 @media (min-width: 600px) {
