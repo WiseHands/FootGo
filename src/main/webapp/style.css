@@ -925,8 +925,9 @@ footer{
 }
 .score-tables {
     margin-bottom: 30px;
-    padding: 15px 0 10px 0;
-    width: 35%;
+    width: auto;
+/*    padding: 15px 0 10px 0;
+    width: 35%;*/
 }
 .results-block p, .table-header {
     text-align: center;
@@ -1173,7 +1174,7 @@ input[invalid-input] {
     align-items: center;
 }
 .team1-goals, .team2-goals {
-    padding-bottom: 5px;
+    margin-bottom: 1rem;
 }
 .team1-goals img {
     padding-left: 5px;
@@ -2120,7 +2121,8 @@ input.invalid {
         width: 100%;
     }
     .league {
-       justify-content: center;
+       justify-content: flex-start;
+       overflow: scroll;
     }
     .table-head p {
         font-size: 1.4em;
