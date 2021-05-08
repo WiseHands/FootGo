@@ -681,9 +681,6 @@ footer{
     color: #018786;
     text-align: center;
 }
-.table-position, .bomb-position {
-    width: 5%;
-}
 .table-team-name {
     width: 45%;
     text-align: left;
@@ -1854,6 +1851,9 @@ input.invalid {
 .card-red {
   color: #f43636;
 }
+.photo-team-bg img {
+    width: 100%;
+}
 .logo-team-bg img, .photo-team-bg img {
     display: block;
     box-sizing: border-box;
@@ -2127,9 +2127,6 @@ input.invalid {
     .table-head p {
         font-size: 1.4em;
     }
-    .table-position, .bomb-position {
-        width: 7%;
-    }
     .table-team-name {
         width: 45%;
         text-align: left;
@@ -2251,7 +2248,7 @@ input.invalid {
         margin: 0 auto;
     }
     .logo-team-bg {
-        width: 50%;
+        width: 95%;
     }
     .match-video iframe {
         height: auto;
@@ -2275,6 +2272,9 @@ input.invalid {
     }
     header {
         margin-bottom: 1rem;
+    }
+    .bomb {
+        justify-content: flex-start;
     }
 }
 @media (min-width: 600px) {
@@ -2495,5 +2495,8 @@ input.invalid {
     .glide__slide a img:first-child + img {
         display: block;
     }
+  .dark {
+      display: block;
+  }
 }
 /*Dark-mode end*/

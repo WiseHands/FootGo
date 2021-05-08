@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
@@ -28,7 +28,8 @@
 </div>
 <div class="player-card-main">
     <div class="player-card-photo">
-        <img src="" th:src="${sponsor.logoImageUrl}">
+        <img class="light" src="" th:src="${sponsor.logoImageUrl}">
+        <img class="dark" src="" th:src="${sponsor.logoImageUrlDark}">
         <!--<i class="fas fa-address-card"></i>-->
     </div>
     <div class="player-card-info user-card-info">
