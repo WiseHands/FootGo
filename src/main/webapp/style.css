@@ -1854,7 +1854,7 @@ input.invalid {
 .photo-team-bg img {
     width: 100%;
 }
-.logo-team-bg img, .photo-team-bg img {
+.logo-team-bg img {
     display: block;
     box-sizing: border-box;
     width: 50%;
