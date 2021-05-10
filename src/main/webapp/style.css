@@ -55,6 +55,7 @@ a, a:hover {
     padding: 16px;
     font-size: 1.2rem;
     border: none;
+    white-space: nowrap;
 }
 .season-list, .lang-switcher {
     position: relative;
