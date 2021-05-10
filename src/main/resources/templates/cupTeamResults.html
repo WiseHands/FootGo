@@ -50,6 +50,15 @@
                        th:text="${team.getTeamNameTransliterated()}"></p>
                     <p><span th:text="#{championshipPlace} + ' - ' + ${position}"></span></p>
                 </div>
+                <div class="team-description-container" th:if="${team.descriptionText != null} AND ${team.descriptionText != ''} AND ${team.descriptionText != ' '}">
+                    <div class="sponsor-bg team-bg">
+                        <div class="match-video video-description sponsor-description">
+                            <div class="results-container description-text">
+                                <div class="ck-table" th:utext="${team.descriptionText}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div th:if="${!#lists.isEmpty(team.photoImageUrl)}" class="photo-team-bg">
                     <img th:attr="src=${team.photoImageUrl}">
                 </div>
