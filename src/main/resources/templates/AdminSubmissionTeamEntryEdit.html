@@ -76,6 +76,10 @@
                     </label>
                     <p id="photoName"></p>
                 </div>
+                <div class="add-video-link">
+                    <p class="description-text">Інформація про команду</p>
+                    <textarea name="addDescText" id="editor" th:text="${team.descriptionText}"></textarea>
+                </div>
                 <div class="slogan-button">
                     <input class="main-input-button" type="button" value="Зберегти" onclick="putTeamAndCaptainById()">
                 </div>
@@ -96,5 +100,7 @@
                 </div>
             </div>
         </div>
+        <script src="/ckeditor5/build/ckeditor.js"></script>
+        <script src="/ckeditor5/ckconfig.js"></script>
     </body>
 </html>

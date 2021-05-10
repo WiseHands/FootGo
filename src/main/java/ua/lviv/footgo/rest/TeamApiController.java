@@ -25,15 +25,20 @@ public class TeamApiController {
 
     @GetMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
     public Team getById(@PathVariable Long id) {
-        Team request = teamRepository.findById(id).get();
-        return request;
+        return teamRepository.findById(id).get();
     }
 
     @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
-    public Team update(@PathVariable Long id, @RequestParam String name, @RequestParam String captainName,
-                       @RequestParam String captainPhone, @RequestParam String captainEmail,
-                       @RequestParam Integer additionalPoints, @RequestParam String logoImageUrl,
-                       @RequestParam String logoImageUrlDark, @RequestParam String photoImageUrl) {
+    public Team update(@PathVariable Long id,
+                       @RequestParam String name,
+                       @RequestParam String captainName,
+                       @RequestParam String captainPhone,
+                       @RequestParam String captainEmail,
+                       @RequestParam Integer additionalPoints,
+                       @RequestParam String logoImageUrl,
+                       @RequestParam String logoImageUrlDark,
+                       @RequestParam String photoImageUrl,
+                       @RequestBody(required = false) String descriptionText) {
         Team team = teamRepository.findById(id).get();
         team.setTeamName(name);
         team.getCaptain().setCaptainName(captainName);
@@ -43,6 +48,7 @@ public class TeamApiController {
         team.setLogoImageUrl(logoImageUrl);
         team.setLogoImageUrlDark(logoImageUrlDark);
         team.setPhotoImageUrl(photoImageUrl);
+        team.setDescriptionText(descriptionText);
 
         teamRepository.save(team);
         return team;

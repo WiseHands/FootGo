@@ -7,6 +7,7 @@ function putTeamAndCaptainById(data) {
         let logoImageUrl = document.getElementById('imageUrl').value;
         let logoImageUrlDark = document.getElementById('imageUrlDark').value;
         let photoImageUrl = document.getElementById('photo').src;
+        let descriptionText = editor.getData();
 
     let params = '?name=' + t_name + '&captainName=' + name + '&captainPhone=' + phone + "&captainEmail=" + email +
     "&additionalPoints=" + ad_points + "&logoImageUrl=" + logoImageUrl + "&logoImageUrlDark=" + logoImageUrlDark +
@@ -15,6 +16,7 @@ function putTeamAndCaptainById(data) {
     let apiUrl = '/team/' + id + params;
     fetch(apiUrl, {
       method: 'PUT',
+      body: descriptionText,
       headers: {
         'Content-Type': 'application/json',
         body: data

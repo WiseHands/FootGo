@@ -46,7 +46,8 @@
                     <img th:attr="src=${team.logoImageUrl}, class=${'light' + ' ' + 'team' + team.id}">
                     <img th:attr="src=${team.logoImageUrlDark}, class=${'dark' + ' ' + 'team' + team.id}">
                     <p th:if="${#locale.language == 'uk'}" th:text="${team.teamName}"></p>
-                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${team.getTeamNameTransliterated()}"></p>
+                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}"
+                       th:text="${team.getTeamNameTransliterated()}"></p>
                     <p><span th:text="#{championshipPlace} + ' - ' + ${position}"></span></p>
                 </div>
                 <div th:if="${!#lists.isEmpty(team.photoImageUrl)}" class="photo-team-bg">

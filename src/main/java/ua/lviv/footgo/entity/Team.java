@@ -30,6 +30,9 @@ public class Team {
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
     private List<Player> players;
 
+    @Column(columnDefinition="TEXT")
+    private String descriptionText;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Captain captain;
@@ -111,4 +114,11 @@ public class Team {
         this.photoImageUrl = photoImageUrl;
     }
 
+    public String getDescriptionText() {
+        return descriptionText;
+    }
+
+    public void setDescriptionText(String descriptionText) {
+        this.descriptionText = descriptionText;
+    }
 }
