@@ -15,9 +15,7 @@ import ua.lviv.footgo.service.GameFinder;
 import ua.lviv.footgo.service.ResultService;
 import ua.lviv.footgo.service.TopScorerService;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
@@ -332,9 +330,12 @@ public class HttpRequestsController {
         OffsetDateTime sevenDaysBeforeNow = OffsetDateTime.now().minusDays(7);
         OffsetDateTime sevenDaysAfterNow = OffsetDateTime.now().plusDays(7);
 
-        gameList = gameList.stream().filter(g ->
-                g.getGameTime().isAfter(sevenDaysBeforeNow) && g.getGameTime().isBefore(sevenDaysAfterNow)
-        ).collect(Collectors.toList());
+        gameList = gameList
+                .stream()
+                .filter(g -> g.getGameTime()
+                        .isAfter(sevenDaysBeforeNow) && g.getGameTime()
+                        .isBefore(sevenDaysAfterNow))
+                .collect(Collectors.toList());
 
         gameList.sort(Comparator.comparing(Game::getGameTime));
         gameList.forEach(game -> {
@@ -351,11 +352,11 @@ public class HttpRequestsController {
         List<PlayerGoals> playerGoals = topScorerService.getResultsByLeague(leagueId).stream().limit(10).collect(Collectors.toList());
         model.addAttribute("playerGoals", playerGoals);
 
-        List<PlayerCards> playerYellowCards = topScorerService.getYellowCardsByLeague(leagueId).stream().limit(10).collect(Collectors.toList());
-        model.addAttribute("playerYellowCards", playerYellowCards);
-
-        List<PlayerCards> playerRedCards = topScorerService.getRedCardsByLeague(leagueId).stream().limit(10).collect(Collectors.toList());
-        model.addAttribute("playerRedCards", playerRedCards);
+        List<PlayerCards> playerCards = topScorerService.getCardsByLeague(leagueId)
+                .stream()
+                .limit(10)
+                .collect(Collectors.toList());
+        model.addAttribute("playerCards", playerCards);
 
         List<Game> games = (List<Game>) gameRepository.findAll();
         Game game = games.get(0);
@@ -474,11 +475,11 @@ public class HttpRequestsController {
         Game game = games.get(0);
         model.addAttribute("game", game);
 
-        List<PlayerCards> playerYellowCards = topScorerService.getYellowCardsByCup(cupId).stream().limit(10).collect(Collectors.toList());
-        model.addAttribute("playerYellowCards", playerYellowCards);
-
-        List<PlayerCards> playerRedCards = topScorerService.getRedCardsByCup(cupId).stream().limit(10).collect(Collectors.toList());
-        model.addAttribute("playerRedCards", playerRedCards);
+        List<PlayerCards> playerCards = topScorerService.getCardsByCup(cupId)
+                .stream()
+                .limit(10)
+                .collect(Collectors.toList());
+        model.addAttribute("playerCards", playerCards);
 
         return "cupDetails";
     }
@@ -637,11 +638,8 @@ public class HttpRequestsController {
         League league = leagueManagementRepository.findById(leagueId).get();
         model.addAttribute("league", league);
 
-        List<PlayerCards> playerYellowCards = topScorerService.getYellowCardsByLeague(leagueId);
-        model.addAttribute("playerYellowCards", playerYellowCards);
-
-        List<PlayerCards> playerRedCards = topScorerService.getRedCardsByLeague(leagueId);
-        model.addAttribute("playerRedCards", playerRedCards);
+        List<PlayerCards> playerCards = topScorerService.getCardsByLeague(leagueId);
+        model.addAttribute("playerCards", playerCards);
 
         return "cards";
     }
@@ -705,11 +703,8 @@ public class HttpRequestsController {
         Cup cup = cupManagementRepository.findById(cupId).get();
         model.addAttribute("cup", cup);
 
-        List<PlayerCards> playerYellowCards = topScorerService.getYellowCardsByCup(cupId);
-        model.addAttribute("playerYellowCards", playerYellowCards);
-
-        List<PlayerCards> playerRedCards = topScorerService.getRedCardsByCup(cupId);
-        model.addAttribute("playerRedCards", playerRedCards);
+        List<PlayerCards> playerCards = topScorerService.getCardsByCup(cupId);
+        model.addAttribute("playerCards", playerCards);
 
         return "cupCards";
     }

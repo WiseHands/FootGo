@@ -8,13 +8,12 @@ import java.util.List;
 
 public class PlayerCards {
     Player player;
-    List<Card> cardList;
+    List<Card> yellowCardList;
+    List<Card> redCardList;
 
-    public static class SortByCards implements Comparator<PlayerCards>
-    {
-        public int compare(PlayerCards a, PlayerCards b)
-        {
-            return b.cardList.size() - a.cardList.size();
+    public static class SortByCards implements Comparator<PlayerCards> {
+        public int compare(PlayerCards a, PlayerCards b) {
+            return (b.yellowCardList.size()+b.redCardList.size()) - (a.yellowCardList.size()+a.redCardList.size());
         }
     }
 
@@ -26,16 +25,28 @@ public class PlayerCards {
         this.player = player;
     }
 
-    public List<Card> getCardList() {
-        return cardList;
+    public List<Card> getYellowCardList() {
+        return yellowCardList;
     }
 
-    public void setCardList(List<Card> cardList) {
-        this.cardList = cardList;
+    public void setYellowCardList(List<Card> yellowCardList) {
+        this.yellowCardList = yellowCardList;
     }
 
-    public void addCard(Card card) {
-        this.cardList.add(card);
+    public void addYellowCard(Card card) {
+        this.yellowCardList.add(card);
+    }
+
+    public void addRedCard(Card card) {
+        this.redCardList.add(card);
+    }
+
+    public List<Card> getRedCardList() {
+        return redCardList;
+    }
+
+    public void setRedCardList(List<Card> redCardList) {
+        this.redCardList = redCardList;
     }
 
     public String formatPosition(Integer index){

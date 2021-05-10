@@ -41,17 +41,18 @@
     <div class="bomb">
         <div class="bomb-position">
             <div class="bomb-title">№</div>
-            <div th:each="playerYellowCard, iter : ${playerYellowCards}">
-                <p th:text="${playerYellowCard.formatPosition(iter.index)}"></p>
+            <div th:each="playerCard, iter : ${playerCards}">
+                <p th:text="${playerCard.formatPosition(iter.index)}"></p>
             </div>
         </div>
         <div class="bomb-player-name">
             <div th:text="#{footballPlayer}" class="bomb-title"></div>
-            <div th:each="playerYellowCard : ${playerYellowCards}">
-                <a th:attr="href=${'/' + seasonId +  '/league/' + leagueId + '/player/' + playerYellowCard.player.id}">
-                    <img id="cardPlayerPhoto" th:src="${playerYellowCard.player.imageUrl}" src="">
-                    <p th:if="${#locale.language == 'uk'}" th:text="${playerYellowCard.player.lastName + ' ' + playerYellowCard.player.firstName}"></p>
-                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerYellowCard.player.getPlayerLastNameTransliterated() + ' ' + playerYellowCard.player.getPlayerFirstNameTransliterated()}"></p>
+            <div th:each="playerCard : ${playerCards}">
+                <a th:attr="href=${'/' + seasonId +  '/league/' + leagueId + '/player/' + playerCard.player.id}">
+                    <img id="cardPlayerPhoto" th:src="${playerCard.player.imageUrl}" src="">
+                    <p th:if="${#locale.language == 'uk'}" th:text="${playerCard.player.lastName + ' ' + playerCard.player.firstName}"></p>
+                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}"
+                       th:text="${playerCard.player.getPlayerLastNameTransliterated() + ' ' + playerCard.player.getPlayerFirstNameTransliterated()}"></p>
                 </a>
             </div>
         </div>
@@ -59,8 +60,8 @@
             <div class="bomb-title card-title">
                 <i class="fas fa-square card card-yellow"></i>
             </div>
-            <div th:each="playerYellowCard : ${playerYellowCards}">
-                <p th:text="${playerYellowCard.cardList.size()}">
+            <div th:each="playerCard : ${playerCards}">
+                <p th:text="${playerCard.yellowCardList.size()}">
                     0
                 </p>
             </div>
@@ -69,18 +70,18 @@
             <div class="bomb-title card-title">
                 <i class="fas fa-square card card-red"></i>
             </div>
-            <div th:each="playerRedCard : ${playerRedCards}">
-                <p th:text="${playerRedCard.cardList.size()}">
+            <div th:each="playerCard : ${playerCards}">
+                <p th:text="${playerCard.redCardList.size()}">
                     0
                 </p>
             </div>
         </div>
         <div class="bomb-team">
             <div th:text="#{team}" class="bomb-title"></div>
-            <div th:each="playerYellowCard : ${playerYellowCards}">
-                <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/team/' + playerYellowCard.player.team.id}">
-                    <p th:if="${#locale.language == 'uk'}" th:text="${playerYellowCard.player.team.teamName}"></p>
-                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerYellowCard.player.team.getTeamNameTransliterated()}"></p>
+            <div th:each="playerCard : ${playerCards}">
+                <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/team/' + playerCard.player.team.id}">
+                    <p th:if="${#locale.language == 'uk'}" th:text="${playerCard.player.team.teamName}"></p>
+                    <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerCard.player.team.getTeamNameTransliterated()}"></p>
                 </a>
             </div>
         </div>

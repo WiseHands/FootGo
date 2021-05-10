@@ -151,7 +151,7 @@ public class TopScorerService {
         return playerGoalsList;
     }
 
-    public List<PlayerCards> getYellowCardsByLeague(Long leagueId) {
+    public List<PlayerCards> getCardsByLeague(Long leagueId) {
         Map<Player, PlayerCards> playerCardMap = new HashMap<>();
         League league = leagueManagementRepository.findById(leagueId).get();
 
@@ -175,15 +175,21 @@ public class TopScorerService {
                             if (_playerCards[0] == null) {
                                 _playerCards[0] = new PlayerCards();
                                 _playerCards[0].setPlayer(_player);
-                                List<Card> _playerCardList = new ArrayList<>();
+                                List<Card> _yellowPlayerCardList = new ArrayList<>();
+                                List<Card> _redPlayerCardList = new ArrayList<>();
                                 if (_card.isYellow()) {
-                                    _playerCardList.add(_card);
+                                    _yellowPlayerCardList.add(_card);
+                                } else {
+                                    _redPlayerCardList.add((_card));
                                 }
-                                _playerCards[0].setCardList(_playerCardList);
+                                _playerCards[0].setYellowCardList(_yellowPlayerCardList);
+                                _playerCards[0].setRedCardList(_redPlayerCardList);
                                 playerCardMap.put(_player, _playerCards[0]);
                             } else {
                                 if (_card.isYellow()) {
-                                    _playerCards[0].addCard(_card);
+                                    _playerCards[0].addYellowCard(_card);
+                                } else {
+                                    _playerCards[0].addRedCard(_card);
                                 }
                             }
                         }
@@ -195,11 +201,11 @@ public class TopScorerService {
 
         List<PlayerCards> playerCardsList = new ArrayList<>(playerCardMap.values());
 
-        //playerCardsList.sort(new PlayerCards.SortByCards());
+        playerCardsList.sort(new PlayerCards.SortByCards());
 
         return playerCardsList;
     }
-    public List<PlayerCards> getYellowCardsByCup(Long cupId) {
+    public List<PlayerCards> getCardsByCup(Long cupId) {
         Map<Player, PlayerCards> playerCardMap = new HashMap<>();
         Cup cup = cupManagementRepository.findById(cupId).get();
 
@@ -223,15 +229,21 @@ public class TopScorerService {
                             if (_playerCards[0] == null) {
                                 _playerCards[0] = new PlayerCards();
                                 _playerCards[0].setPlayer(_player);
-                                List<Card> _playerCardList = new ArrayList<>();
+                                List<Card> _yellowPlayerCardList = new ArrayList<>();
+                                List<Card> _redPlayerCardList = new ArrayList<>();
                                 if (_card.isYellow()) {
-                                    _playerCardList.add(_card);
+                                    _yellowPlayerCardList.add(_card);
+                                } else {
+                                    _redPlayerCardList.add(_card);
                                 }
-                                _playerCards[0].setCardList(_playerCardList);
+                                _playerCards[0].setYellowCardList(_yellowPlayerCardList);
+                                _playerCards[0].setRedCardList(_redPlayerCardList);
                                 playerCardMap.put(_player, _playerCards[0]);
                             } else {
                                 if (_card.isYellow()) {
-                                    _playerCards[0].addCard(_card);
+                                    _playerCards[0].addYellowCard(_card);
+                                } else {
+                                    _playerCards[0].addRedCard(_card);
                                 }
                             }
                         }
@@ -243,104 +255,7 @@ public class TopScorerService {
 
         List<PlayerCards> playerCardsList = new ArrayList<>(playerCardMap.values());
 
-        //playerCardsList.sort(new PlayerCards.SortByCards());
-
-        return playerCardsList;
-    }
-    public List<PlayerCards> getRedCardsByLeague(Long leagueId) {
-        Map<Player, PlayerCards> playerCardMap = new HashMap<>();
-        League league = leagueManagementRepository.findById(leagueId).get();
-
-        List<Team> teamList = league.getTeamList();
-        List<Tour> tourList = league.getTours();
-
-        tourList.forEach(tour -> {
-            List<Game> gameList = tour.getGameList();
-            gameList.forEach(game -> {
-                List<Card> cardList = cardRepository.findByGameId(game.getId());
-
-                for (Card _card : cardList) {
-                    if (_card.getGame() == null || !_card.getGame().isCompleted() || _card.getGame().isTeamAHasTechnicalDefeat() || _card.getGame().isTeamBHasTechnicalDefeat()) {
-                        continue;
-                    }
-                    Player _player = _card.getPlayer();
-
-                    final PlayerCards[] _playerCards = {playerCardMap.get(_player)};
-                    teamList.forEach(team -> {
-
-                        if (_player.getTeam().equals(team)) {
-                            if (_playerCards[0] == null) {
-                                _playerCards[0] = new PlayerCards();
-                                _playerCards[0].setPlayer(_player);
-                                List<Card> _playerCardList = new ArrayList<>();
-                                if (_card.isRed()) {
-                                    _playerCardList.add(_card);
-                                }
-                                _playerCards[0].setCardList(_playerCardList);
-                                playerCardMap.put(_player, _playerCards[0]);
-                            } else {
-                                if (_card.isRed()) {
-                                    _playerCards[0].addCard(_card);
-                                }
-                            }
-                        }
-
-                    });
-                }
-            });
-        });
-
-        List<PlayerCards> playerCardsList = new ArrayList<>(playerCardMap.values());
-
-        //playerCardsList.sort(new PlayerCards.SortByCards());
-
-        return playerCardsList;
-    }
-    public List<PlayerCards> getRedCardsByCup(Long cupId) {
-        Map<Player, PlayerCards> playerCardMap = new HashMap<>();
-        Cup cup = cupManagementRepository.findById(cupId).get();
-
-        List<Team> teamList = cup.getTeamList();
-        List<Tour> tourList = cup.getTours();
-
-        tourList.forEach(tour -> {
-            List<Game> gameList = tour.getGameList();
-            gameList.forEach(game -> {
-                List<Card> cardList = cardRepository.findByGameId(game.getId());
-
-                for (Card _card : cardList) {
-                    if (_card.getGame() == null || !_card.getGame().isCompleted() || _card.getGame().isTeamAHasTechnicalDefeat() || _card.getGame().isTeamBHasTechnicalDefeat()) {
-                        continue;
-                    }
-                    Player _player = _card.getPlayer();
-                    final PlayerCards[] _playerCards = {playerCardMap.get(_player)};
-                    teamList.forEach(team -> {
-
-                        if (_player.getTeam().equals(team)) {
-                            if (_playerCards[0] == null) {
-                                _playerCards[0] = new PlayerCards();
-                                _playerCards[0].setPlayer(_player);
-                                List<Card> _playerCardList = new ArrayList<>();
-                                if (_card.isRed()) {
-                                    _playerCardList.add(_card);
-                                }
-                                _playerCards[0].setCardList(_playerCardList);
-                                playerCardMap.put(_player, _playerCards[0]);
-                            } else {
-                                if (_card.isRed()) {
-                                    _playerCards[0].addCard(_card);
-                                }
-                            }
-                        }
-
-                    });
-                }
-            });
-        });
-
-        List<PlayerCards> playerCardsList = new ArrayList<>(playerCardMap.values());
-
-        //playerCardsList.sort(new PlayerCards.SortByCards());
+        playerCardsList.sort(new PlayerCards.SortByCards());
 
         return playerCardsList;
     }

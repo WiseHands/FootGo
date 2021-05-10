@@ -207,8 +207,8 @@
                 <input class="reg-input-button match-all-button table-button" type="button" value="ПЕРЕГЛЯНУТИ ВСІ"/>
             </a>
         </div>-->
-        <p th:text="#{bestScorers}" class="table-header"></p>
-        <div class="bomb league">
+        <p th:text="#{bestScorers}" class="table-header" th:if="${!#lists.isEmpty(playerGoals)}"></p>
+        <div class="bomb league" th:if="${!#lists.isEmpty(playerGoals)}">
             <div class="bomb-position auto">
                 <div class="bomb-title">№</div>
                 <div th:each="playerGoal, iter : ${playerGoals}">
@@ -241,27 +241,27 @@
                 </div>
             </div>
         </div>
-        <div class="table-button">
+        <div class="table-button" th:if="${!#lists.isEmpty(playerGoals)}">
             <a th:href="'/' + ${seasonId} + '/cup/' + ${cupId} + '/bombardier'" class="button-link-more" href="#">
                 <button class="pure-material-button-text" th:text="#{seeMore}"></button>
             </a>
         </div>
-        <p th:if="${!#lists.isEmpty(playerYellowCards) OR !#lists.isEmpty(playerRedCards)}" th:text="#{playerCards}" class="table-header"></p>
-        <div th:if="${!#lists.isEmpty(playerYellowCards) OR !#lists.isEmpty(playerRedCards)}" class="bomb league">
+        <p th:if="${!#lists.isEmpty(playerCards)}" th:text="#{playerCards}" class="table-header"></p>
+        <div th:if="${!#lists.isEmpty(playerCards)}" class="bomb league">
             <div class="bomb-position auto">
                 <div class="bomb-title">№</div>
-                <div th:each="playerYellowCard, iter : ${playerYellowCards}">
-                    <p th:text="${playerYellowCard.formatPosition(iter.index)}"></p>
+                <div th:each="playerCard, iter : ${playerCards}">
+                    <p th:text="${playerCard.formatPosition(iter.index)}"></p>
                 </div>
             </div>
             <div class="bomb-player-name full">
                 <div th:text="#{footballPlayer}" class="bomb-title"></div>
-                <div th:each="playerYellowCard : ${playerYellowCards}">
-                    <a th:attr="href=${'/' + seasonId + '/cup/' + cupId + '/player/' + playerYellowCard.player.id}">
-                        <img id="cardPlayerPhoto" th:src="${playerYellowCard.player.imageUrl}" src="">
-                        <p th:if="${#locale.language == 'uk'}" th:text="${playerYellowCard.player.lastName + ' ' + playerYellowCard.player.firstName}"></p>
+                <div th:each="playerCard : ${playerCards}">
+                    <a th:attr="href=${'/' + seasonId + '/cup/' + cupId + '/player/' + playerCard.player.id}">
+                        <img id="cardPlayerPhoto" th:src="${playerCard.player.imageUrl}" src="">
+                        <p th:if="${#locale.language == 'uk'}" th:text="${playerCard.player.lastName + ' ' + playerCard.player.firstName}"></p>
                         <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}"
-                           th:text="${playerYellowCard.player.getPlayerLastNameTransliterated() + ' ' + playerYellowCard.player.getPlayerFirstNameTransliterated()}"></p>
+                           th:text="${playerCard.player.getPlayerLastNameTransliterated() + ' ' + playerCard.player.getPlayerFirstNameTransliterated()}"></p>
                     </a>
                 </div>
             </div>
@@ -269,30 +269,30 @@
                 <div class="bomb-title card-title">
                     <i class="fas fa-square card card-yellow"></i>
                 </div>
-                <div th:each="playerYellowCard : ${playerYellowCards}">
-                    <p th:text="${playerYellowCard.cardList.size()}"></p>
+                <div th:each="playerCard : ${playerCards}">
+                    <p th:text="${playerCard.yellowCardList.size()}"></p>
                 </div>
             </div>
             <div class="bomb-scored auto">
                 <div class="bomb-title card-title">
                     <i class="fas fa-square card card-red"></i>
                 </div>
-                <div th:each="playerRedCard : ${playerRedCards}">
-                    <p th:text="${playerRedCard.cardList.size()}"></p>
+                <div th:each="playerCard : ${playerCards}">
+                    <p th:text="${playerCard.redCardList.size()}"></p>
                 </div>
             </div>
             <div class="bomb-team auto">
                 <div th:text="#{team}" class="bomb-title"></div>
-                <div th:each="playerYellowCard : ${playerYellowCards}">
-                    <a th:attr="href=${'/' + seasonId + '/cup/' + cupId + '/team/' + playerYellowCard.player.team.id}">
-                        <p th:if="${#locale.language == 'uk'}" th:text="${playerYellowCard.player.team.teamName}"></p>
+                <div th:each="playerCard : ${playerCards}">
+                    <a th:attr="href=${'/' + seasonId + '/cup/' + cupId + '/team/' + playerCard.player.team.id}">
+                        <p th:if="${#locale.language == 'uk'}" th:text="${playerCard.player.team.teamName}"></p>
                         <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}"
-                           th:text="${playerYellowCard.player.team.getTeamNameTransliterated()}"></p>
+                           th:text="${playerCard.player.team.getTeamNameTransliterated()}"></p>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="table-button" th:if="${!#lists.isEmpty(playerYellowCards) OR !#lists.isEmpty(playerRedCards)}">
+        <div class="table-button" th:if="${!#lists.isEmpty(playerCards)}">
             <a th:href="'/' + ${seasonId} + '/cup/' + ${cupId} + '/cards'" class="button-link-more" href="#">
                 <button class="pure-material-button-text" th:text="#{seeMore}"></button>
             </a>
