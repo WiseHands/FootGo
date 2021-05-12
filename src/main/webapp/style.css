@@ -1033,7 +1033,7 @@ input[invalid-input] {
     background-size: cover;
     height: 100vh;
 }
-.matches-full p {
+.player-card-info p {
     white-space: normal;
 }
 .matches-null {
