@@ -1603,6 +1603,7 @@ footer {
     word-break: break-word;
     text-align: inherit;
     line-height: 2em;
+    white-space: normal;
 }
 blockquote {
     background: #f9f9f9;
