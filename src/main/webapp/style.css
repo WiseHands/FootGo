@@ -420,7 +420,7 @@ iframe {
 }
 .registration-page {
     display: flex;
-    flex-direction: inherit;
+/*    flex-direction: inherit;*/
     height: fit-content;
     height: moz-fit-content;
 }
