@@ -2309,6 +2309,9 @@ input.invalid {
     --main-progress-bar-less-color: #9f57e2;
     --main-progress-bar-more-color: #ff0266;
     --main-table-lines-color: #383838;
+    --primary-button-fill-color: rgb(138, 180, 248);
+    --primary-button-text-color: rgb(32, 33, 36);
+    --primary-button-fill-color-active: rgb(129, 162, 208);
 }
     body {
         background: var(--main-bg-color);
@@ -2326,13 +2329,16 @@ input.invalid {
         color: var(--main-text-color);
     }
     .request-block {
-        background: var(--main-on-button-color-inactive);
-        color: var(--main-text-on-button-color-inactive);
+        background: var(--primary-button-fill-color);
+        color: var(--primary-button-text-color);
     }
-    .request-block:hover {
+    .request-block:active {
+        background: var(--primary-button-fill-color-active);
+    }
+/*    .request-block:hover {
         background: var(--main-on-button-color);
         color: #181220;
-    }
+    }*/
     .main-when ul span {
         background: rgba(255,255,255,0.4);
     }
