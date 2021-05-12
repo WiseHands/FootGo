@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
 </head>
@@ -18,9 +18,13 @@
                 <a href="/signup" th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><p th:text="#{signup}"></p></a>
                 <!-- menu button season changer -->
                 <div th:if="${not #lists.isEmpty(season)}" class="season-list">
-                    <button th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}" class="dropbtn">
+                    <button th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" class="dropbtn">
+                        <span th:text="${season.nameEn}"></span>
+                        <i class="fas fa-chevron-down"></i>
                     </button>
-                    <button th:if="${#locale.language == 'uk'}" th:text="${season.name}" class="dropbtn">
+                    <button th:if="${#locale.language == 'uk'}" class="dropbtn">
+                        <span th:text="${season.name}"></span>
+                        <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="prev-seasons">
                         <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:each="season : ${seasonList}" th:href="'/season/' + ${season.id}" th:text="${season.nameEn}"></a>
@@ -29,40 +33,50 @@
                     </div>
                 </div>
                 <div th:if="${#lists.isEmpty(season)}" class="season-list">
-                    <button th:text="#{seasonListEmpty}" class="dropbtn">
+                    <button class="dropbtn">
+                        <span th:text="#{seasonListEmpty}"></span>
+                        <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="prev-seasons">
                         <a th:text="#{autumn2019}" href="https://2019.footgo-league.com"></a>
                     </div>
                 </div>
-                <div th:if="${not #lists.isEmpty(leagueList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true AND #lists.size(leagueList) >= 3}" class="season-list">
-                    <button th:text="#{leagues}" class="dropbtn"></button>
+                <div th:if="${!#lists.isEmpty(leagueList) AND !#lists.isEmpty(season) AND season.getIsSubmissionOpened() == true AND #lists.size(leagueList) >= 3}" class="season-list">
+                    <button class="dropbtn"></button>
+                    <span th:text="#{leagues}"></span>
+                    <i class="fas fa-chevron-down"></i>
                     <div class="prev-seasons">
                         <a th:each="league : ${leagueList}" th:href="'/' + ${season.id} + '/league/' + ${league.id}" th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></a>
                         <a th:each="league : ${leagueList}" th:href="'/' + ${season.id} + '/league/' + ${league.id}" th:if="${#locale.language == 'uk'}" th:text="${league.name}"></a>
                     </div>
                 </div>
-                <div th:if="${not #lists.isEmpty(cupList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true AND #lists.size(leagueList) >= 3}" class="season-list">
-                    <button th:text="#{cups}" class="dropbtn"></button>
+                <div th:if="${!#lists.isEmpty(cupList) AND !#lists.isEmpty(season) AND season.getIsSubmissionOpened() == true AND #lists.size(leagueList) >= 3}" class="season-list">
+                    <button class="dropbtn">
+                        <span th:text="#{cups}"></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
                     <div class="prev-seasons">
                         <a th:each="cup : ${cupList}" th:href="'/' + ${season.id} + '/cup/' + ${cup.id}" th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></a>
                         <a th:each="cup : ${cupList}" th:href="'/' + ${season.id} + '/cup/' + ${cup.id}" th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></a>
                     </div>
                 </div>
-                <div th:if="${not #lists.isEmpty(leagueList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true AND #lists.size(leagueList) <= 2}" th:each="league : ${leagueList}">
+                <div th:if="${!#lists.isEmpty(leagueList) AND !#lists.isEmpty(season) AND season.getIsSubmissionOpened() == true AND #lists.size(leagueList) <= 2}" th:each="league : ${leagueList}">
                     <a th:href="'/' + ${season.id} + '/league/' + ${league.id}">
                         <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></p>
                         <p th:if="${#locale.language == 'uk'}" th:text="${league.name}"></p>
                     </a>
                 </div>
-                <div th:if="${not #lists.isEmpty(cupList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true AND #lists.size(cupList) <= 2}" th:each="cup : ${cupList}">
+                <div th:if="${!#lists.isEmpty(cupList) AND !#lists.isEmpty(season) AND season.getIsSubmissionOpened() == true AND #lists.size(cupList) <= 2}" th:each="cup : ${cupList}">
                     <a th:href="'/' + ${season.id} + '/cup/' + ${cup.id}">
                         <p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></p>
                         <p th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></p>
                     </a>
                 </div>
-                <div th:if="${not #lists.isEmpty(season) AND not #lists.isEmpty(sponsorList)}" class="season-list">
-                    <button class="dropbtn" th:text="#{sponsors}"></button>
+                <div th:if="${!#lists.isEmpty(season) AND !#lists.isEmpty(sponsorList)}" class="season-list">
+                    <button class="dropbtn">
+                        <span th:text="#{sponsors}"></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
                     <div class="prev-seasons">
                         <a th:each="sponsor : ${sponsorList}" th:href="'/season/' + ${season.id} + '/sponsor/' + ${sponsor.id}" th:text="${sponsor.sponsorName}"></a>
                         <!--<a th:text="#{becomeASponsor}" th:href="'/season/' + ${season.id} + '/sponsor/new'"></a>-->
@@ -76,7 +90,7 @@
         </div>
     </div>
     <div id="myLinks">
-        <div th:if="${not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><a th:text="#{signup}" class="link-item" href="/signup"></a></div>
+        <div th:if="${!#lists.isEmpty(season) AND season.getIsSubmissionOpened() == false}"><a th:text="#{signup}" class="link-item" href="/signup"></a></div>
         <div>
             <a class="link-item" href="/">
                 <p th:text="#{home}"></p>
@@ -84,9 +98,13 @@
         </div>
         <!-- menu button season changer -->
         <div th:if="${!#lists.isEmpty(season)}" class="season-list">
-            <button th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${season.nameEn}" class="dropbtn">
+            <button th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" class="dropbtn">
+                <span th:text="${season.nameEn}"></span>
+                <i class="fas fa-chevron-down"></i>
             </button>
-            <button th:if="${#locale.language == 'uk'}" th:text="${season.name}" class="dropbtn">
+            <button th:if="${#locale.language == 'uk'}" class="dropbtn">
+                <span th:text="${season.name}"></span>
+                <i class="fas fa-chevron-down"></i>
             </button>
             <div class="prev-seasons">
                 <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:each="season : ${seasonList}" th:href="'/season/' + ${season.id}" th:text="${season.nameEn}"></a>
@@ -95,22 +113,27 @@
             </div>
         </div>
         <div th:if="${#lists.isEmpty(season)}" class="season-list">
-            <button th:text="#{seasonListEmpty}" class="dropbtn">
+            <button class="dropbtn">
+                <span th:text="#{seasonListEmpty}"></span>
+                <i class="fas fa-chevron-down"></i>
             </button>
             <div class="prev-seasons">
                 <a th:text="#{autumn2019}" href="https://2019.footgo-league.com"></a>
             </div>
         </div>
-        <div th:if="${not #lists.isEmpty(leagueList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}">
+        <div th:if="${!#lists.isEmpty(leagueList) AND !#lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}">
             <a class="link-item" th:each="league : ${leagueList}" th:href="'/' + ${season.id} + '/league/' + ${league.id}" th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></a>
             <a class="link-item" th:each="league : ${leagueList}" th:href="'/' + ${season.id} + '/league/' + ${league.id}" th:if="${#locale.language == 'uk'}" th:text="${league.name}"></a>
         </div>
-        <div th:if="${not #lists.isEmpty(cupList) AND not #lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}">
+        <div th:if="${!#lists.isEmpty(cupList) AND !#lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}">
             <a class="link-item" th:each="cup : ${cupList}" th:href="'/' + ${season.id} + '/cup/' + ${cup.id}" th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${cup.nameEn}"></a>
             <a class="link-item" th:each="cup : ${cupList}" th:href="'/' + ${season.id} + '/cup/' + ${cup.id}" th:if="${#locale.language == 'uk'}" th:text="${cup.name}"></a>
         </div>
-        <div th:if="${not #lists.isEmpty(season) AND not #lists.isEmpty(sponsorList)}" class="season-list">
-            <button class="dropbtn" th:text="#{sponsors}"></button>
+        <div th:if="${!#lists.isEmpty(season) AND !#lists.isEmpty(sponsorList)}" class="season-list">
+            <button class="dropbtn">
+                <span th:text="#{sponsors}"></span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
             <div class="prev-seasons">
                 <a th:each="sponsor : ${sponsorList}" th:href="'/season/' + ${season.id} + '/sponsor/' + ${sponsor.id}" th:text="${sponsor.sponsorName}"></a>
                 <!--<a th:text="#{becomeASponsor}" th:href="'/season/' + ${season.id} + '/sponsor/new'"></a>-->

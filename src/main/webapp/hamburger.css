@@ -44,6 +44,10 @@
     display: none;
 }
 
+#myLinks div {
+    width: fit-content;
+}
+
 .link-item {
     display: block;
     height: 2em;

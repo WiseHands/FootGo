@@ -49,13 +49,21 @@ a, a:hover {
 .header-text p:hover {
     color: #868686;
 }
-
 .dropbtn {
     cursor: pointer;
     padding: 16px;
     font-size: 1.2rem;
     border: none;
     white-space: nowrap;
+}
+.dropbtn i {
+    font-size: 10pt;
+    vertical-align: middle;
+    margin-left: .3rem;
+    transition: all 0.4s ease-in-out;
+}
+.season-list:hover .dropbtn i {
+    transform: rotate(180deg);
 }
 .season-list, .lang-switcher {
     position: relative;
