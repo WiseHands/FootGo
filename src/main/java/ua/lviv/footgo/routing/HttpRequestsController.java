@@ -339,7 +339,11 @@ public class HttpRequestsController {
 
         gameList.sort(Comparator.comparing(Game::getGameTime));
         gameList.forEach(game -> {
-            System.out.println(game.getGameTime());
+            OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
+            boolean gameIsLive = OffsetDateTime.now().isAfter(game.getGameTime()) && OffsetDateTime.now().isBefore(endGameDate);
+            model.addAttribute("gameIsLive", gameIsLive);
+            System.out.println("gameIsLive " + gameIsLive);
+            System.out.println("GameTime " + game.getGameTime());
         });
         model.addAttribute("gameList", gameList);
 
