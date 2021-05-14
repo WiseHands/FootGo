@@ -37,7 +37,8 @@
     <div th:if="${!#lists.isEmpty(tour.gameList)}" th:each="tour : ${tourList}" class="res-tour">
         <p class="res-tour-title" th:text="#{tour} + ' ' + ${tour.tourNumber}"></p>
         <div class="res-tour-allmatch">
-            <div class="results-container" th:each="game : ${tour.gameList}">
+            <div th:if="${!#lists.isEmpty(game.firstTeam) AND !#lists.isEmpty(game.secondTeam)}" class="results-container" th:each="game : ${tour.gameList}">
+                <div th:replace="fragments/liveBadge :: live"></div>
                 <div class="res-teams">
                     <a th:if="${!#lists.isEmpty(game.firstTeam)}" th:attr="href=${'/' + seasonId + '/cup/' + cupId + '/team/' + game.firstTeam.id}">
                         <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">

@@ -256,14 +256,6 @@ public class HttpRequestsController {
         List<Tour> tourList = league.getTours();
         model.addAttribute("tourList", tourList);
 
-/*        tourList.forEach(tour -> tour.getGameList().forEach(game -> {
-            OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
-            boolean gameIsLive = OffsetDateTime.now()
-                    .isAfter(game.getGameTime()) && OffsetDateTime.now()
-                    .isBefore(endGameDate);
-            model.addAttribute("gameIsLive", gameIsLive);
-        }));*/
-
 /*        List tourList = (List) tourRepository.findAll();
         model.addAttribute("tourList", tourList);
         List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
@@ -345,13 +337,6 @@ public class HttpRequestsController {
                 .collect(Collectors.toList());
 
         gameList.sort(Comparator.comparing(Game::getGameTime));
-        gameList.forEach(game -> {
-            OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
-            boolean gameIsLive = OffsetDateTime.now()
-                    .isAfter(game.getGameTime()) && OffsetDateTime.now()
-                    .isBefore(endGameDate);
-            model.addAttribute("gameIsLive", gameIsLive);
-        });
         model.addAttribute("gameList", gameList);
 
         List<TeamResults> results = resultService.getResultsByLeague(true, leagueId);
@@ -413,13 +398,15 @@ public class HttpRequestsController {
         List<Game> gameList = gameFinder.findAllGamesForTeam(team);
         gameList.sort(Comparator.comparing(Game::getGameTime));
 
-        gameList.forEach(game -> {
+/*        LIVE GAMES LIST*/
+/*        gameList = gameList.stream().filter(game -> {
             OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
             boolean gameIsLive = OffsetDateTime.now()
                     .isAfter(game.getGameTime()) && OffsetDateTime.now()
                     .isBefore(endGameDate);
             model.addAttribute("gameIsLive", gameIsLive);
-        });
+            return gameIsLive;
+        }).collect(Collectors.toList());*/
 
         model.addAttribute("gameList", gameList);
         model.addAttribute("team", team);
@@ -484,13 +471,6 @@ public class HttpRequestsController {
         ).collect(Collectors.toList());
 
         gameList.sort(Comparator.comparing(Game::getGameTime));
-        gameList.forEach(game -> {
-            OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
-            boolean gameIsLive = OffsetDateTime.now()
-                    .isAfter(game.getGameTime()) && OffsetDateTime.now()
-                    .isBefore(endGameDate);
-            model.addAttribute("gameIsLive", gameIsLive);
-        });
         model.addAttribute("gameList", gameList);
 
         List<TeamResults> results = resultService.getResultsByCup(true, cupId);
@@ -539,13 +519,6 @@ public class HttpRequestsController {
 
         List<Game> gameList = gameFinder.findAllGamesForTeam(team);
         gameList.sort(Comparator.comparing(Game::getGameTime));
-        gameList.forEach(game -> {
-            OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
-            boolean gameIsLive = OffsetDateTime.now()
-                    .isAfter(game.getGameTime()) && OffsetDateTime.now()
-                    .isBefore(endGameDate);
-            model.addAttribute("gameIsLive", gameIsLive);
-        });
 
         model.addAttribute("gameList", gameList);
         model.addAttribute("team", team);
@@ -766,11 +739,6 @@ public class HttpRequestsController {
         League league = leagueManagementRepository.findById(leagueId).get();
         model.addAttribute("league", league);
 
-        OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
-        boolean gameIsLive = OffsetDateTime.now()
-                .isAfter(game.getGameTime()) && OffsetDateTime.now()
-                .isBefore(endGameDate);
-        model.addAttribute("gameIsLive", gameIsLive);
         //List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         //model.addAttribute("league", leagueList.get(0));
         return "gameLeague";
@@ -801,11 +769,6 @@ public class HttpRequestsController {
         Cup cup = cupManagementRepository.findById(cupId).get();
         model.addAttribute("cup", cup);
 
-        OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
-        boolean gameIsLive = OffsetDateTime.now()
-                .isAfter(game.getGameTime()) && OffsetDateTime.now()
-                .isBefore(endGameDate);
-        model.addAttribute("gameIsLive", gameIsLive);
         return "gameCup";
     }
     @GetMapping({"/{seasonId}/league/{leagueId}/player/{playerId}"})

@@ -90,6 +90,8 @@ public class Game {
 
     private boolean isCompleted;
 
+    private boolean isLive;
+
     public static class SortByTour implements Comparator<Game> {
         public int compare(Game a, Game b) {
             return b.tour.getTourNumber() - a.tour.getTourNumber();
@@ -240,8 +242,20 @@ public class Game {
         this.tour = tour;
     }
 
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
     public void setCompleted(boolean completed) {
         isCompleted = completed;
+    }
+
+    public boolean isLive() {
+        return isLive;
+    }
+
+    public void setLive(boolean live) {
+        isLive = live;
     }
 
     public GameStats getTeamAStats() {
@@ -318,10 +332,6 @@ public class Game {
 
     public void removePenaltyForSecondTeam(Penalty penalty) {
         this.teamBPenalty.remove(penalty);
-    }
-
-    public boolean isCompleted() {
-        return isCompleted;
     }
 
     public String formatTime() throws ParseException {
@@ -427,4 +437,14 @@ public class Game {
     public boolean isNoTechnicalDefeat() {
         return !this.isTeamAHasTechnicalDefeat() && !this.isTeamBHasTechnicalDefeat();
     }
+
+    public boolean isGameLive() {
+        OffsetDateTime endGameDate = this.getGameTime().plusHours(1);
+        boolean gameIsLive = OffsetDateTime.now()
+                .isAfter(this.getGameTime()) && OffsetDateTime.now()
+                .isBefore(endGameDate);
+        this.setLive(gameIsLive);
+        return gameIsLive;
+    }
+
 }

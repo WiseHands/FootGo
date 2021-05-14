@@ -9,8 +9,12 @@ body {
 body p {
     white-space: nowrap;
 }
-header   {
+header {
     background-color: #0D0B20;
+    position: sticky;
+    top: 0px;
+    z-index: 1000;
+    width: 100%;
 }
 .header-full {
     display: flex;
@@ -1168,7 +1172,7 @@ input[invalid-input] {
     width: 50%;
 }
 .details-team2 {
-    padding-left: 10px;
+    padding-left: 20px;
     width: 50%;
 }
 
@@ -1929,6 +1933,9 @@ input.invalid {
     opacity: 1;
   }
 }
+.results-container .badge {
+    align-self: center;
+}
 
 @media screen and (max-width: 1160px) {
     .main-container {
@@ -1985,6 +1992,24 @@ input.invalid {
 /*    .league-results-container {
         margin: 7px auto !important;
     }*/
+    header {
+        margin-bottom: 1rem;
+    }
+    .header-first-block {
+        width: 100%;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    .header-icon {
+        display: none;
+    }
+    .header-null {
+        flex-grow: 1;
+        display: block;
+    }
+    .header-text {
+        display: none;
+    }
     .main-head {
         display: none;
     }
@@ -2265,8 +2290,11 @@ input.invalid {
         padding: 7px;
         margin: 7px 0;
     }
-    .details-team1, .details-team2 {
+    .details-team1 {
         padding-right: 10px;
+    }
+    .details-team2 {
+        padding-left: 10px;
     }
     .team-results-full {
 /*        height: 100vh;*/
@@ -2315,7 +2343,7 @@ input.invalid {
     .mobile {
         display: flex;
     }
-    .badge {
+    .mobile .badge {
         align-self: center;
     }
     .goals {
@@ -2355,6 +2383,9 @@ input.invalid {
     }
     .bomb {
         justify-content: flex-start;
+    }
+    .results {
+        padding: 0;
     }
 }
 @media (min-width: 600px) {

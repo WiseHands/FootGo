@@ -59,7 +59,7 @@
                 <div class="review-match">
                     <div class="review-head">
                         <div class="review-team1">
-                            <a th:attr="href=${'/' + ${seasonId} + '/cup/' + cupId + '/team/' + game.firstTeam.id}">
+                            <a th:attr="href=${'/' + seasonId + '/cup/' + cupId + '/team/' + game.firstTeam.id}">
                                 <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
                                 <img th:attr="src=${game.firstTeam.logoImageUrlDark}, class=${'dark' + ' ' +  'team' + game.firstTeam.id}">
                                 <p th:if="${#locale.language == 'uk'}" th:text="${game.firstTeam.teamName}">Team 1</p>

@@ -35,11 +35,12 @@
 </div>
 <div class="results-full">
     <div th:each="tour : ${tourList}" class="res-tour">
-        <div th:each="game : ${tour.gameList}">
+        <div th:each="game : ${tour.gameList[0]}">
             <p th:if="${!#lists.isEmpty(game.firstTeam) AND !#lists.isEmpty(game.secondTeam)}" class="res-tour-title" th:text="#{tour} + ' ' + ${tour.tourNumber}"></p>
         </div>
         <div class="res-tour-allmatch">
             <div th:if="${!#lists.isEmpty(game.firstTeam) AND !#lists.isEmpty(game.secondTeam)}" class="results-container" th:each="game : ${tour.gameList}">
+                <div th:replace="fragments/liveBadge :: live"></div>
                 <div class="res-teams">
                     <a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/team/' + game.firstTeam.id}">
                         <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">

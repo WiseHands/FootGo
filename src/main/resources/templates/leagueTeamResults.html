@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
@@ -66,6 +66,7 @@
             <h3 th:text="#{games}"></h3>
             <div class="results-all-tour">
                 <div th:each="game : ${gameList}" class="results-container">
+                    <div th:replace="fragments/liveBadge :: live"></div>
                     <div class="res-teams">
                         <a th:attr="href=${'/' + seasonId + '/league/' + league.id + '/team/' + game.firstTeam.id}">
                             <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">
