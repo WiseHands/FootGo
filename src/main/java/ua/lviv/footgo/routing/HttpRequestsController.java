@@ -256,6 +256,14 @@ public class HttpRequestsController {
         List<Tour> tourList = league.getTours();
         model.addAttribute("tourList", tourList);
 
+/*        tourList.forEach(tour -> tour.getGameList().forEach(game -> {
+            OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
+            boolean gameIsLive = OffsetDateTime.now()
+                    .isAfter(game.getGameTime()) && OffsetDateTime.now()
+                    .isBefore(endGameDate);
+            model.addAttribute("gameIsLive", gameIsLive);
+        }));*/
+
 /*        List tourList = (List) tourRepository.findAll();
         model.addAttribute("tourList", tourList);
         List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
@@ -310,7 +318,6 @@ public class HttpRequestsController {
         model.addAttribute("seasonList", seasonList);
         League league = leagueManagementRepository.findById(leagueId).get();
         model.addAttribute("league", league);
-        /*Tour tour = (Tour) league.getTours();*/
         List<Tour> tourList = league.getTours();
         model.addAttribute("tourList", tourList);
         List<Sponsor> sponsorList = season.getSponsorList();
@@ -320,7 +327,7 @@ public class HttpRequestsController {
                 .collect(Collectors.toList());
         model.addAttribute("sponsorList", sponsorList);
 
-        List<Game> gameList = new ArrayList<Game>();
+        List<Game> gameList = new ArrayList<>();
         List<Game> finalGameList = gameList;
         tourList.forEach(tour -> {
             List<Game> _gameList = tour.getGameList();
@@ -340,10 +347,10 @@ public class HttpRequestsController {
         gameList.sort(Comparator.comparing(Game::getGameTime));
         gameList.forEach(game -> {
             OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
-            boolean gameIsLive = OffsetDateTime.now().isAfter(game.getGameTime()) && OffsetDateTime.now().isBefore(endGameDate);
+            boolean gameIsLive = OffsetDateTime.now()
+                    .isAfter(game.getGameTime()) && OffsetDateTime.now()
+                    .isBefore(endGameDate);
             model.addAttribute("gameIsLive", gameIsLive);
-            System.out.println("gameIsLive " + gameIsLive);
-            System.out.println("GameTime " + game.getGameTime());
         });
         model.addAttribute("gameList", gameList);
 
@@ -352,8 +359,10 @@ public class HttpRequestsController {
         model.addAttribute("secondPlace", results.get(1));
         model.addAttribute("thirdPlace", results.get(2));*/
         model.addAttribute("resultList", results);
-        //List<PlayerGoals> playerGoals = topScorerService.getResults();
-        List<PlayerGoals> playerGoals = topScorerService.getResultsByLeague(leagueId).stream().limit(10).collect(Collectors.toList());
+        List<PlayerGoals> playerGoals = topScorerService.getResultsByLeague(leagueId)
+                .stream()
+                .limit(10)
+                .collect(Collectors.toList());
         model.addAttribute("playerGoals", playerGoals);
 
         List<PlayerCards> playerCards = topScorerService.getCardsByLeague(leagueId)
@@ -403,6 +412,14 @@ public class HttpRequestsController {
 /*        Team team = teamRepository.findById(teamId).get();*/
         List<Game> gameList = gameFinder.findAllGamesForTeam(team);
         gameList.sort(Comparator.comparing(Game::getGameTime));
+
+        gameList.forEach(game -> {
+            OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
+            boolean gameIsLive = OffsetDateTime.now()
+                    .isAfter(game.getGameTime()) && OffsetDateTime.now()
+                    .isBefore(endGameDate);
+            model.addAttribute("gameIsLive", gameIsLive);
+        });
 
         model.addAttribute("gameList", gameList);
         model.addAttribute("team", team);
@@ -468,7 +485,11 @@ public class HttpRequestsController {
 
         gameList.sort(Comparator.comparing(Game::getGameTime));
         gameList.forEach(game -> {
-            System.out.println(game.getGameTime());
+            OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
+            boolean gameIsLive = OffsetDateTime.now()
+                    .isAfter(game.getGameTime()) && OffsetDateTime.now()
+                    .isBefore(endGameDate);
+            model.addAttribute("gameIsLive", gameIsLive);
         });
         model.addAttribute("gameList", gameList);
 
@@ -518,6 +539,13 @@ public class HttpRequestsController {
 
         List<Game> gameList = gameFinder.findAllGamesForTeam(team);
         gameList.sort(Comparator.comparing(Game::getGameTime));
+        gameList.forEach(game -> {
+            OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
+            boolean gameIsLive = OffsetDateTime.now()
+                    .isAfter(game.getGameTime()) && OffsetDateTime.now()
+                    .isBefore(endGameDate);
+            model.addAttribute("gameIsLive", gameIsLive);
+        });
 
         model.addAttribute("gameList", gameList);
         model.addAttribute("team", team);
@@ -737,6 +765,12 @@ public class HttpRequestsController {
         model.addAttribute("game", game);
         League league = leagueManagementRepository.findById(leagueId).get();
         model.addAttribute("league", league);
+
+        OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
+        boolean gameIsLive = OffsetDateTime.now()
+                .isAfter(game.getGameTime()) && OffsetDateTime.now()
+                .isBefore(endGameDate);
+        model.addAttribute("gameIsLive", gameIsLive);
         //List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
         //model.addAttribute("league", leagueList.get(0));
         return "gameLeague";
@@ -766,6 +800,12 @@ public class HttpRequestsController {
         model.addAttribute("game", game);
         Cup cup = cupManagementRepository.findById(cupId).get();
         model.addAttribute("cup", cup);
+
+        OffsetDateTime endGameDate = game.getGameTime().plusHours(1);
+        boolean gameIsLive = OffsetDateTime.now()
+                .isAfter(game.getGameTime()) && OffsetDateTime.now()
+                .isBefore(endGameDate);
+        model.addAttribute("gameIsLive", gameIsLive);
         return "gameCup";
     }
     @GetMapping({"/{seasonId}/league/{leagueId}/player/{playerId}"})

@@ -35,7 +35,7 @@
 </div>
 <div class="results-full">
     <div th:each="tour : ${tourList}" class="res-tour">
-        <div th:each="game : ${tour.gameList[0]}">
+        <div th:each="game : ${tour.gameList}">
             <p th:if="${!#lists.isEmpty(game.firstTeam) AND !#lists.isEmpty(game.secondTeam)}" class="res-tour-title" th:text="#{tour} + ' ' + ${tour.tourNumber}"></p>
         </div>
         <div class="res-tour-allmatch">

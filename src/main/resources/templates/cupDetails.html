@@ -52,6 +52,7 @@
         </div>
         <div th:if="${not #lists.isEmpty(gameList)}" class="desktop">
             <div th:each="game : ${gameList}" class="matches-bg">
+                <div th:replace="fragments/liveBadge :: live"></div>
                 <div class="match-res-date">
                     <p th:text="${game.formatDate()} + ', ' + ${game.formatTime()}"></p>
                 </div>
@@ -122,6 +123,7 @@
 
         <div th:if="${not #lists.isEmpty(gameList)}" class="res-tour-allmatch mobile">
             <div class="results-container league-results-container" th:each="game : ${gameList}">
+                <div th:replace="fragments/liveBadge :: live"></div>
                 <div class="res-teams">
                     <a th:attr="href=${'/' + seasonId + '/cup/' + cupId + '/team/' + game.firstTeam.id}">
                         <img th:attr="src=${game.firstTeam.logoImageUrl}, class=${'light' + ' ' + 'team' + game.firstTeam.id}">

@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
@@ -35,8 +35,8 @@
 	</div>
 </div>
 <div class="matches-container">
-	<div class="matches-null"></div>
 	<div class="matches-bg">
+		<div th:replace="fragments/liveBadge :: live"></div>
 		<div class="tour-number">
 			<p><span th:text="#{tour} + ' ' + ${game.tour.tourNumber}"></span></p>
 		</div>

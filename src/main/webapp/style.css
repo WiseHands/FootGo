@@ -73,6 +73,8 @@ a, a:hover {
     background-color: #0D0B20;
     display: none;
     position: absolute;
+    width: 100%;
+    max-width: fit-content;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 999;
@@ -1036,9 +1038,6 @@ input[invalid-input] {
 .player-card-info p {
     white-space: normal;
 }
-.matches-null {
-    height: 2vh;
-}
 .matches-bg {
     display: flex;
     flex-direction: column;
@@ -1877,6 +1876,7 @@ input.invalid {
   background: #ff334b;
   border-radius: 4px;
   align-self: flex-start;
+  margin: 0.5rem;
 }
 .badge-wrap {
   display: flex;
@@ -2310,6 +2310,12 @@ input.invalid {
     }
     .mobile {
         display: flex;
+    }
+    .badge {
+        align-self: center;
+    }
+    .goals {
+        padding: 0;
     }
     .footer-social {
         padding-top: .8em;
