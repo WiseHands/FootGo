@@ -739,8 +739,6 @@ public class HttpRequestsController {
         League league = leagueManagementRepository.findById(leagueId).get();
         model.addAttribute("league", league);
 
-        //List<League> leagueList = (List<League>) leagueManagementRepository.findAll();
-        //model.addAttribute("league", leagueList.get(0));
         return "gameLeague";
     }
     @GetMapping({"/{seasonId}/cup/{cupId}/game/{gameId}"})
