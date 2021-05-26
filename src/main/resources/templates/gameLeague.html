@@ -166,14 +166,14 @@
 						</a>
 						<span th:text="${' (' + card.time + '&lsquo;)'}" class="minute"></span>
 					</p>
-					<span th:if="${card.isYellow()}" class="yellow-card card-team-one"></span>
-					<span th:if="${card.isRed()}" class="red-card card-team-one"></span>
+					<span th:if="${card.isYellow()}" class="fas fa-square card card-yellow"></span>
+					<span th:if="${card.isRed()}" class="fas fa-square card card-red"></span>
 				</div>
 			</div>
 			<div th:if="${game.isNoTechnicalDefeat() == true} AND ${not #lists.isEmpty(game.teamBCards)}" class="details-team2">
 				<div class="team2-goals" th:each="card : ${game.teamBCards}">
-					<span th:if="${card.isYellow()}" class="yellow-card card-team-two"></span>
-					<span th:if="${card.isRed()}" class="red-card card-team-two"></span>
+					<span th:if="${card.isYellow()}" class="fas fa-square card card-red"></span>
+					<span th:if="${card.isRed()}" class="fas fa-square card card-yellow"></span>
 					<p>
 						<a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/player/' + card.player.id}">
 							<span th:if="${#locale.language == 'uk'}" th:text="${card.player.firstName + ' ' + card.player.lastName}" class="player-name"></span>

@@ -1271,10 +1271,10 @@ input[invalid-input] {
     color: #16a016;
     font-size: 1.2rem;
 }
-.team1-goals .ball {
+.team1-goals .ball, .team1-goals .card {
     margin-left: 5px;
 }
-.team2-goals .ball {
+.team2-goals .ball, .team2-goals .card {
     margin-right: 5px;
 }
 .red-ball {
@@ -1637,28 +1637,6 @@ blockquote p {
 }
 .table-header {
     padding-top: 20px;
-}
-.card-team-one {
-    display: inline-block;
-    width: 0.7em;
-    height: 1em;
-    background-size: 100% 100%;
-    transform: rotateZ(25deg);
-    margin-left: 10px;
-}
-.card-team-two {
-    display: inline-block;
-    width: 0.7em;
-    height: 1em;
-    background-size: 100% 100%;
-    transform: rotateZ(25deg);
-    margin-right: 10px;
-}
-.yellow-card {
-    background-image: url(img/yellow_card.svg);
-}
-.red-card {
-    background-image: url(img/red_card.svg);
 }
 .dropbtn {
     background-color: #0D0B20;
