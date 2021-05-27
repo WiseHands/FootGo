@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
 </head>
@@ -13,7 +13,7 @@
         <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
                 <li th:each="sponsor : ${sponsorList}" class="glide__slide">
-                    <a th:href="${sponsor.sponsorUrl}">
+                    <a th:href="${sponsor.sponsorUrl}" target="_blank">
                         <img th:src="${sponsor.logoImageUrl}" th:alt="${sponsor.sponsorUrl}" src="">
                         <img th:src="${sponsor.logoImageUrlDark}" th:alt="${sponsor.sponsorUrl}" src="">
                     </a>

@@ -27,9 +27,16 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="prev-seasons">
-                        <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:each="season : ${seasonList}" th:href="'/season/' + ${season.id}" th:text="${season.nameEn}"></a>
-                        <a th:if="${#locale.language == 'uk'}" th:each="season : ${seasonList}" th:href="'/season/' + ${season.id}" th:text="${season.name}"></a>
-                        <a th:text="#{autumn2019}" href="https://2019.footgo-league.com"></a>
+                        <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}"
+                           th:each="season : ${seasonList}" th:href="'/season/' + ${season.id}"
+                           th:text="${season.nameEn}">
+                        </a>
+                        <a th:if="${#locale.language == 'uk'}"
+                           th:each="season : ${seasonList}"
+                           th:href="'/season/' + ${season.id}"
+                           th:text="${season.name}">
+                        </a>
+                        <!--<a th:text="#{autumn2019}" href="https://2019.footgo-league.com" target="_blank"></a>-->
                     </div>
                 </div>
                 <div th:if="${#lists.isEmpty(season)}" class="season-list">
@@ -37,9 +44,9 @@
                         <span th:text="#{seasonListEmpty}"></span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
-                    <div class="prev-seasons">
-                        <a th:text="#{autumn2019}" href="https://2019.footgo-league.com"></a>
-                    </div>
+<!--                    <div class="prev-seasons">
+                        <a th:text="#{autumn2019}" href="https://2019.footgo-league.com" target="_blank"></a>
+                    </div>-->
                 </div>
                 <div th:if="${!#lists.isEmpty(leagueList) AND !#lists.isEmpty(season) AND season.getIsSubmissionOpened() == true AND #lists.size(leagueList) >= 3}" class="season-list">
                     <button class="dropbtn"></button>
@@ -109,7 +116,7 @@
             <div class="prev-seasons">
                 <a th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:each="season : ${seasonList}" th:href="'/season/' + ${season.id}" th:text="${season.nameEn}"></a>
                 <a th:if="${#locale.language == 'uk'}" th:each="season : ${seasonList}" th:href="'/season/' + ${season.id}" th:text="${season.name}"></a>
-                <a th:text="#{autumn2019}" href="https://2019.footgo-league.com"></a>
+<!--                <a th:text="#{autumn2019}" href="https://2019.footgo-league.com" target="_blank"></a>-->
             </div>
         </div>
         <div th:if="${#lists.isEmpty(season)}" class="season-list">
@@ -117,9 +124,9 @@
                 <span th:text="#{seasonListEmpty}"></span>
                 <i class="fas fa-chevron-down"></i>
             </button>
-            <div class="prev-seasons">
-                <a th:text="#{autumn2019}" href="https://2019.footgo-league.com"></a>
-            </div>
+<!--            <div class="prev-seasons">
+                <a th:text="#{autumn2019}" href="https://2019.footgo-league.com" target="_blank"></a>
+            </div>-->
         </div>
         <div th:if="${!#lists.isEmpty(leagueList) AND !#lists.isEmpty(season) AND season.getIsSubmissionOpened() == true}">
             <a class="link-item" th:each="league : ${leagueList}" th:href="'/' + ${season.id} + '/league/' + ${league.id}" th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${league.nameEn}"></a>
