@@ -661,6 +661,7 @@ input[type=submit] {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
+    padding-top: 7px;
 }
 .table-head p {
     font-size: 2.2em;
@@ -830,7 +831,7 @@ footer{
 .results {
     max-width: 820px;
     margin: 0 auto;
-/*    padding: 10px 0 10px 0;*/
+    padding: 10px 0 10px 0;
 }
 .res-tour {
     display: flex;
@@ -1050,7 +1051,8 @@ input[invalid-input] {
     border-radius: 10px;
     margin: 0 auto;
     width: auto;
-    margin-top: 20px;
+/*    width: fit-content;*/
+/*    width: -moz-fit-content;*/
     margin-bottom: 20px;
 }
 .sponsor-bg {
@@ -1103,8 +1105,10 @@ input[invalid-input] {
 }
 .review-head {
     display: flex;
+/*    justify-content: space-between;*/
     justify-content: center;
     width: auto;
+/*    width: 500px;*/
     padding: 20px 0;
 }
 .review-head p {
@@ -1114,6 +1118,7 @@ input[invalid-input] {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /*width: 175px;*/
     width: 100%;
 }
 .review-team1 a, .review-team2 a {
@@ -1138,7 +1143,7 @@ input[invalid-input] {
 /*    width: 400px;*/
     width: 100%;
     margin: auto;
-/*    padding: 34px 0;*/
+    padding: 34px 0;
 }
 .review-score p {
     font-size: 2.5rem;
@@ -1630,9 +1635,9 @@ blockquote p {
 .goals p {
     margin: 0 auto;
 }
-/*.table-header {
+.table-header {
     padding-top: 20px;
-}*/
+}
 .dropbtn {
     background-color: #0D0B20;
     color: #fff;
@@ -2234,18 +2239,29 @@ input.invalid {
     .bomb-matches {
         display: none;
     }
+    .bomb-team {
+/*        width: 27%;*/
+    }
     .review-head {
+        /*width: 320px;*/
+        /*width: 400px;*/
         width: 100%
     }
-    .matches-bg, .details-match {
+    .matches-bg {
         width: 90%  ;
+    }
+
+    .review-team1 img, .review-team2 img {
+/*        width: 72px;
+        height: 75px;*/
     }
     .review-team1 p, .review-team2 p {
         font-size: 1.3rem;
         width: 120px;
     }
     .review-score p {
-        font-size: 1.5rem;
+        /*font-size: 2rem;*/
+        font-size: 1rem;
     }
     .results-container {
         width: 90%;
