@@ -1071,7 +1071,8 @@ input[invalid-input] {
 }
 .tour-number  {
     display: flex;
-    margin: 0 auto;
+/*    margin: 0 auto;*/
+    align-self: center;
     font-size: 1.8rem;
     font-weight: 600;
 /*    padding-top: 20px;*/
@@ -1209,7 +1210,7 @@ input[invalid-input] {
 .match-statistics-title {
     font-size: 1.8rem;
     font-weight: 600;
-    padding: 20px 0;
+    padding: 0 0 20px 0;
 }
 .statistics-item {
     /*padding: 10px 0;*/
@@ -1248,7 +1249,7 @@ input[invalid-input] {
     background-color: #000;
 }
 .match-video {
-    padding-top: 25px;
+    padding-top: 20px;
     font-weight: 600;
 }
 .match-video iframe {
@@ -2239,12 +2240,11 @@ input.invalid {
         width: 100%
     }
     .matches-bg, .details-match {
-        width: 90%  ;
+        width: 90%;
+        align-self: center;
     }
 
     .review-team1 img, .review-team2 img {
-/*        width: 72px;
-        height: 75px;*/
     }
     .review-team1 p, .review-team2 p {
         font-size: 1.3rem;
@@ -2265,7 +2265,6 @@ input.invalid {
         padding-left: 10px;
     }
     .team-results-full {
-/*        height: 100vh;*/
         display: block;
     }
     .details-match img {
