@@ -95,7 +95,7 @@
 			<span th:if="${#locale.language == 'uk'}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.secondTeam.teamName}">Team 2</span>
 			<span th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="#{teamTechnicalDefeat} + ' ' + ${game.secondTeam.getTeamNameTransliterated()}">Team 2</span>
 		</div>
-		<div th:if="${game.isNoTechnicalDefeat() == true} AND ${!#lists.isEmpty(game.teamAGoals) || !#lists.isEmpty(game.teamBGoals)}" class="tour-number goals cards">
+		<div th:if="${game.isNoTechnicalDefeat() == true} AND ${!#lists.isEmpty(game.teamAGoals) || !#lists.isEmpty(game.teamBGoals)}" class="tour-number goals">
 			<p th:text="#{goals}"></p>
 		</div>
 		<div th:if="${game.isNoTechnicalDefeat() == true} AND ${!#lists.isEmpty(game.teamAGoals) || !#lists.isEmpty(game.teamBGoals)}" class="details-match">
@@ -185,7 +185,7 @@
 			</div>
 		</div>
 		<div th:if="${not #lists.isEmpty(game.teamAStats)} OR ${not #lists.isEmpty(game.teamBStats)}" class="match-statistics">
-			<p th:text="#{matchStatistics}" class="match-statistics-title"></p>
+			<p th:text="#{matchStatistics}" class="match-statistics-title cards"></p>
 			<div class="statistics-item">
 				<div class="statistics-item-info">
 					<span th:text="${game.teamAStats?.strikes}" id="teamAStrikesData" class="item-info-team1"></span>
@@ -278,11 +278,11 @@
 			</div>
 		</div>
 		<div class="match-video" th:if="${!#strings.isEmpty(game.videoUrl)}">
-			<p th:text="#{matchVideo}"></p>
+			<p class="cards" th:text="#{matchVideo}"></p>
 			<iframe width="700" height="381" th:attr="src=${game.videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
 		<div class="match-video video-description" th:if="${game.descriptionText != null} AND ${game.descriptionText != ''} AND ${game.descriptionText != ' '}">
-			<p class="match-statistics-title" th:text="#{matchDescription}"></p>
+			<p class="match-statistics-title cards" th:text="#{matchDescription}"></p>
 			<div class="results-container description-text">
 				<div th:utext="${game.descriptionText}">
 					game.firstTeam.teamName

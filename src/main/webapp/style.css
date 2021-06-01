@@ -1036,7 +1036,6 @@ input[invalid-input] {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
 }
 .player-card-info p {
     white-space: normal;
@@ -1050,7 +1049,6 @@ input[invalid-input] {
     border-radius: 10px;
     margin: 0 auto;
     width: auto;
-    margin-top: 20px;
     margin-bottom: 20px;
 }
 .sponsor-bg {
@@ -1075,7 +1073,7 @@ input[invalid-input] {
     align-self: center;
     font-size: 1.8rem;
     font-weight: 600;
-/*    padding-top: 20px;*/
+    padding-top: 20px;
 }
 .button-container {
     display: flex;
@@ -1153,6 +1151,7 @@ input[invalid-input] {
 .details-match {
     display: flex;
     font-size: 1.3rem;
+    justify-content: center;
 }
 .details-match p {
     overflow: hidden;
@@ -1210,7 +1209,6 @@ input[invalid-input] {
 .match-statistics-title {
     font-size: 1.8rem;
     font-weight: 600;
-    padding: 0 0 20px 0;
 }
 .statistics-item {
     /*padding: 10px 0;*/
@@ -1249,7 +1247,6 @@ input[invalid-input] {
     background-color: #000;
 }
 .match-video {
-    padding-top: 20px;
     font-weight: 600;
 }
 .match-video iframe {
@@ -1395,10 +1392,8 @@ input[invalid-input] {
     padding: 1rem;
 }
 .player-card-info p {
-/*    white-space: nowrap;*/
     overflow: hidden;
     text-overflow: ellipsis;
-/*    margin-bottom: 5px;*/
 }
 .player-card-info p:first-child {
     font-size: 1.5rem;
@@ -1620,7 +1615,7 @@ blockquote:before {
 blockquote p {
     display: inline;
 }
-.cards {
+.cards, .goals {
     padding: 20px 0 20px 0;
 }
 .goals {
@@ -1961,9 +1956,10 @@ input.invalid {
 
 }
 @media screen and (max-width: 900px) {
-/*    .league-results-container {
-        margin: 7px auto !important;
-    }*/
+
+    body {
+        height: 100%;
+    }
     header {
         margin-bottom: 1rem;
     }
@@ -2312,9 +2308,6 @@ input.invalid {
     }
     .mobile .badge {
         align-self: center;
-    }
-    .goals {
-        padding: 0;
     }
     .footer-social {
         padding-top: .8em;

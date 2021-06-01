@@ -44,7 +44,7 @@
 		<p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerLastNameTransliterated + ' ' + playerFirstNameTransliterated}"></p>
 		<!--<p>Дата народження</p>-->
 		<!--<p>01.01.1900</p>-->
-		<p th:text="#{team} + ':'"></p>
+		<!--<p th:text="#{team} + ':'"></p>-->
 		<div class="player-card-logo-team">
 			<a th:attr="href=${'/' + seasonId + '/league/' + leagueId + '/team/' + player.team.id}">
 				<img th:attr="src=${player.team.logoImageUrl}, class=${'light' + ' ' + 'team' + player.team.id}">
@@ -63,7 +63,7 @@
 		<!--</div>-->
 	</div>
 </div>
-<div class="player-container">
+<div class="player-container" th:if="${player.descriptionText != null} AND ${player.descriptionText != ''} AND ${player.descriptionText != ' '}">
 	<div class="sponsor-bg">
 		<div class="match-video video-description sponsor-description"
 			 th:if="${player.descriptionText != null} AND ${player.descriptionText != ''} AND ${player.descriptionText != ' '}">

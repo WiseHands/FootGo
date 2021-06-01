@@ -44,7 +44,7 @@
 		<p th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="${playerLastNameTransliterated + ' ' + playerFirstNameTransliterated}"></p>
 		<!--<p>Дата народження</p>-->
 		<!--<p>01.01.1900</p>-->
-		<p th:text="#{team} + ':'"></p>
+		<!--<p th:text="#{team} + ':'"></p>-->
 		<div class="player-card-logo-team">
 			<a th:attr="href=${'/' + seasonId + '/cup/' + cupId + '/team/' + player.team.id}">
 				<img th:attr="src=${player.team.logoImageUrl}, class=${'light' + ' ' + 'team' + player.team.id}">

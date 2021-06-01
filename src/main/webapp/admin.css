@@ -14,8 +14,7 @@ body {
 }
 body p {
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis ;
+    overflow: auto;
 }
 .admin-main {
     display: flex;
@@ -370,6 +369,7 @@ body p {
 }
 .admin-title-row {
     text-align: center;
+    white-space: inherit;
 }
 .plogo {
     font-size: 1em !important;
@@ -559,8 +559,7 @@ input[type=text], input[type=tel], input[type=email], input[type=number], input[
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    min-width: 360px;
-    width: max-content;
+    width: fit-content;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
@@ -649,9 +648,6 @@ input[type=text], input[type=tel], input[type=email], input[type=number], input[
 .modal-goal p {
     font-size: 1.2rem;
     padding: 5px 10px;
-    text-align: center;
-    overflow: hidden !important;
-    text-overflow: ellipsis;
 }
 .modal-goal img {
     width: 16px;
@@ -659,11 +655,8 @@ input[type=text], input[type=tel], input[type=email], input[type=number], input[
     padding-right: 5px;
 }
 i.delete-goal {
-/*    font-size: 2rem;*/
     cursor: pointer;
-/*    color: orangered;*/
     padding-left: 5px;
-/*    display: table;*/
 }
 
 span.clear-technical-defeat {
@@ -683,7 +676,6 @@ span.clear-technical-defeat {
     cursor: pointer;
 }
 .team1-goal, .team2-goal {
-/*    width: fit-content;*/
     margin: 0 auto;
 }
 .team1-goal {
@@ -784,7 +776,6 @@ span.clear-technical-defeat {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 1rem;
 }
 .add-video-link p {
     font-size: 0.8rem;
@@ -835,7 +826,7 @@ span.clear-technical-defeat {
 }
 /*input for file upload*/
 .admin-file-upload, .admin-logo-upload {
-    margin-top: 10px;
+    margin: 10px 0 10px 0;
 }
 input[type="file"] {
     position: absolute;
@@ -864,7 +855,6 @@ input[type="file"] {
     position: relative;
     height: 4em;
     width: 15em;
-    margin: 0 10px 10px 10px;
 }
 .fileUpload.dragover {
     background-color: #aaa;
@@ -894,7 +884,6 @@ input[type="file"] {
     text-align: center;
     font-size: 1.5rem !important;
     font-weight: 600;
-    padding-bottom: 1rem;
 }
 #descriptionText {
     padding: 1rem;
@@ -1058,12 +1047,15 @@ ol li {
     display: none;
 }
 @media screen and (max-width: 667px) {
+    .modal-content {
+        width: 95%;
+    }
     .league-info, .cup-info {
         margin: 0 auto;
         width: auto;
     }
     ul.menu-breadcrumb {
-        padding: 0 16px 0 16px !important;
+        padding: 0 16px 16px 16px !important;
     }
     ul.menu-breadcrumb li {
         line-height: 2em;
