@@ -464,9 +464,16 @@ input[type=text], input[type=tel], input[type=email], input[type=number], input[
 .tour-team1-details {
     justify-content: flex-end;
     width: 100%;
+    overflow: auto;
 }
 .tour-team2-details {
+    justify-content: flex-start;
     width: 100%;
+    overflow: auto;
+}
+#leagueTourGames {
+    display: flex;
+    flex-direction: column;
 }
 .tour-team1 {
     justify-content: flex-end;
@@ -477,13 +484,10 @@ input[type=text], input[type=tel], input[type=email], input[type=number], input[
 }
 .tour-team1 p, .tour-team1-details p {
     text-align: right;
-    overflow: hidden;
-    text-overflow: ellipsis;
     padding-right: 10px;
 }
 .tour-team2 p, .tour-team2-details p {
-    overflow: hidden;
-    text-overflow: ellipsis;
+    text-align: left;
     padding-left: 10px;
 }
 .tour-team1 span, .tour-team2 span, .tour-team1-details .plus-team, .tour-team2-details .plus-team {
@@ -1048,6 +1052,10 @@ ol li {
     display: none;
 }
 @media screen and (max-width: 667px) {
+    #leagueTourGames {
+        width: 90%;
+        margin: 0 auto;
+    }
     .modal-content {
         width: 95%;
     }
