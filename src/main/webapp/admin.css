@@ -855,6 +855,7 @@ input[type="file"] {
     position: relative;
     height: 4em;
     width: 15em;
+    margin: 5px;
 }
 .fileUpload.dragover {
     background-color: #aaa;
@@ -1090,8 +1091,11 @@ ol li {
         padding: 0 28px;
     }
     .btn-floating {
-        display: inline-block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: #fff;
+        text-decoration: auto;
         position: relative;
         overflow: hidden;
         z-index: 1;
@@ -1107,13 +1111,11 @@ ol li {
         vertical-align: middle;
     }
     .purple {
-        background-color: #bb86fc !important;
+        background-color: #8ab4f8 !important;
     }
     .btn-floating i {
-        width: inherit;
-        display: inline-flex;
-        text-align: center;
-        font-size: 2.4rem;
+        font-size: 1.5rem;
+        color: #202124;
     }
 
 }

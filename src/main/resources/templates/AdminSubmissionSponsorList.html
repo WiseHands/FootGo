@@ -36,7 +36,7 @@
                     </div>
                     <div class="fixed-action-btn">
                         <a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/sponsors/new'" class="btn-floating btn-large purple">
-                            <i>+</i>
+                            <i class="fa fa-plus" aria-hidden="true"></i>
                         </a>
                     </div>
                     <div th:each="item : ${season.sponsorList}">

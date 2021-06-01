@@ -23,6 +23,11 @@
             <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId}" th:text="${season.name}"></a></li>
             <li><a th:href="'/admin/tournament/' + ${tournamentId} + '/season/' + ${seasonId} + '/submission'">Заявки</a></li>
         </ul>
+        <div class="label-check-center">
+            <p class="label-check-text">Прийом заявок завершено</p>
+            <input type="checkbox" id="request-over" name="request-over" style="display:none">
+            <label for="request-over" class="toggle"><span></span></label>
+        </div>
         <div class="requests">
             <p>Заявки</p>
                 <div class="all-requests">
@@ -35,11 +40,6 @@
                         </a>
                     </div>
                 </div>
-        </div>
-        <div class="label-check-center">
-            <p class="label-check-text">Прийом заявок завершено</p>
-            <input type="checkbox" id="request-over" name="request-over" style="display:none">
-            <label for="request-over" class="toggle"><span></span></label>
         </div>
     </div>
     </body>
