@@ -534,3 +534,28 @@ checkbox.addEventListener( 'change', function(checked) {
         })
 
 });
+
+let doNotCountInGameTableCheckbox = document.querySelector("input[name=doNotCountInGameTable]");
+
+doNotCountInGameTableCheckbox.addEventListener( 'change', function(checked) {
+    if(this.checked) {
+        console.log('checked');
+    } else {
+        console.log('unchecked');
+    }
+
+    let apiUrl = '/api/game/' + gameId + '/doNotCountInGameTable/' + this.checked;
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+        }).then(function(response) {
+            console.log(response);
+            if(response.ok) {
+            } else {
+                alert('Error');
+            }
+        })
+
+});

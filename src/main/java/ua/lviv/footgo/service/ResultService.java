@@ -1,5 +1,7 @@
 package ua.lviv.footgo.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.lviv.footgo.entity.*;
@@ -16,6 +18,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class ResultService {
+
+    private static final Logger logger = LoggerFactory.getLogger(ResultService.class);
 
     @Autowired
     GameRepository gameRepository;
@@ -122,7 +126,8 @@ public class ResultService {
         List<Penalty> teamBPenalty = game.getTeamBPenalty().stream().filter(Penalty::getPenaltyGoal).collect(Collectors.toList());
         int numberOfTeamAGoals = game.getTeamAGoals().size() != game.getTeamBGoals().size() || teamAPenalty.size() == 0 ? game.getTeamAGoals().size() : teamAPenalty.size();
         int numberOfTeamBGoals = game.getTeamAGoals().size() != game.getTeamBGoals().size() || teamBPenalty.size() == 0 ? game.getTeamBGoals().size() : teamBPenalty.size();
-        if(game.getFirstTeam() == team) {
+
+        if(!game.getDoNotCountInGameTable() && game.getFirstTeam() == team) {
             if(game.isTeamAHasTechnicalDefeat()) {
                 teamResults.addTechnicalLose();
             } else if(game.isTeamBHasTechnicalDefeat()) {
@@ -135,7 +140,7 @@ public class ResultService {
                 teamResults.addLoss(numberOfTeamAGoals, numberOfTeamBGoals);
             }
 
-        } else if (game.getSecondTeam() == team) {
+        } else if (!game.getDoNotCountInGameTable() && game.getSecondTeam() == team) {
             if(game.isTeamAHasTechnicalDefeat()) {
                 teamResults.addTechnicalWin();
             } else if(game.isTeamBHasTechnicalDefeat()) {

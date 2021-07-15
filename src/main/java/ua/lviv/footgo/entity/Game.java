@@ -35,6 +35,9 @@ public class Game {
     private Boolean isTeamBHasTechnicalDefeat;
 
     @Column
+    private Boolean doNotCountInGameTable;
+
+    @Column
     private String location;
 
     @OneToOne
@@ -445,6 +448,14 @@ public class Game {
                 .isBefore(endGameDate);
         this.setLive(gameIsLive);
         return gameIsLive;
+    }
+
+    public Boolean getDoNotCountInGameTable() {
+        return doNotCountInGameTable;
+    }
+
+    public void setDoNotCountInGameTable(Boolean doNotCountInGameTable) {
+        this.doNotCountInGameTable = doNotCountInGameTable;
     }
 
 }

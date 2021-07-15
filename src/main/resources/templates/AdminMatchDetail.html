@@ -72,6 +72,11 @@
                 <label for="match-over" class="toggle"><span></span></label>
             </div>
 
+            <div class="label-check-center">
+                <p class="label-check-text">Не враховувати в таблиці результатів</p>
+                <input type="checkbox" id="doNotCountInGameTable" name="doNotCountInGameTable">
+            </div>
+
             <div th:if="${game.isTeamAHasTechnicalDefeat() == true}" class="team-defeat">
                 <p>Техніча поразка&nbsp;</p>
                 <p th:text="${game.firstTeam.teamName}">Команда 1</p>
@@ -436,6 +441,7 @@
         }).then(function(data) {
             window.gameData = data;
             document.getElementById('match-over').checked = data.completed;
+            document.getElementById('doNotCountInGameTable').checked = data.doNotCountInGameTable;
             document.getElementById('videoLink').value = data.videoUrl;
             if (data.descriptionText) {
                 editor.data.set(data.descriptionText);
