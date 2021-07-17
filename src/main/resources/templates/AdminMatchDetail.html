@@ -74,7 +74,8 @@
 
             <div class="label-check-center">
                 <p class="label-check-text">Не враховувати в таблиці результатів</p>
-                <input type="checkbox" id="doNotCountInGameTable" name="doNotCountInGameTable">
+                <input type="checkbox" id="doNotCountInGameTable" name="doNotCountInGameTable" style="display:none">
+                <label for="doNotCountInGameTable" class="toggle"><span></span></label>
             </div>
 
             <div th:if="${game.isTeamAHasTechnicalDefeat() == true}" class="team-defeat">
