@@ -458,4 +458,9 @@ public class Game {
         this.doNotCountInGameTable = doNotCountInGameTable;
     }
 
+    public Game() {
+        super();
+        this.doNotCountInGameTable=false;
+    }
+
 }
